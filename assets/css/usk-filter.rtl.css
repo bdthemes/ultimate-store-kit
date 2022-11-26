@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+body {
+  font-family: "Montserrat", sans-serif; }
+
+.usk-filter {
+  padding: 15px;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */ }
+  .usk-filter ::-webkit-scrollbar {
+    width: 5px; }
+  .usk-filter ::-webkit-scrollbar-track {
+    background: #f1f1f1; }
+  .usk-filter ::-webkit-scrollbar-thumb {
+    background: #adadad; }
+  .usk-filter ::-webkit-scrollbar-thumb:hover {
+    background: #adadad; }
+  .usk-filter .usk-filter-vertical-header {
+    margin-bottom: 20px; }
+    .usk-filter .usk-filter-vertical-header .usk-filter-header-title .usk-title {
+      font-size: 30px;
+      font-weight: 600;
+      color: #373535;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif; }
+  .usk-filter .usk-filters-content-wrapper {
+    margin-bottom: 30px; }
+    .usk-filter .usk-filters-content-wrapper .usk-filter-search {
+      position: relative;
+      display: flex;
+      align-items: center; }
+      .usk-filter .usk-filters-content-wrapper .usk-filter-search input {
+        border: 2px solid #d4d4d4;
+        font-size: 14px;
+        padding: 14px 12px;
+        text-transform: capitalize;
+        font-weight: 500;
+        border-radius: 3px;
+        outline: none;
+        margin-bottom: 10px;
+        width: 100%; }
+      .usk-filter .usk-filters-content-wrapper .usk-filter-search button {
+        position: absolute;
+        top: 17px;
+        left: 30px;
+        font-size: 14px;
+        background: transparent;
+        border: transparent;
+        transition: all 0.3s ease;
+        color: #a49b9b;
+        outline: none; }
+        .usk-filter .usk-filters-content-wrapper .usk-filter-search button i {
+          position: absolute; }
+    .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-title {
+      margin-bottom: 20px; }
+      .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-title .usk-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #383938;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif; }
+    .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content {
+      overflow: auto;
+      max-height: 250px; }
+      .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div {
+        display: flex;
+        align-items: center;
+        margin: 5px 0; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div label {
+          margin: 0;
+          padding-right: 10px; }
+          .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div label span {
+            font-size: 14px;
+            font-weight: 600;
+            color: #00000099;
+            transition: all 0.3s ease;
+            font-family: "Montserrat", sans-serif; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-radio-btn {
+          border: 2px solid #00000099 !important;
+          outline: none; }
+          .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-radio-btn::after {
+            top: 5px;
+            right: 5px; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-input-wrapper .usk-term-label {
+          font-size: 14px;
+          font-weight: 600;
+          color: #00000099;
+          transition: all 0.3s ease;
+          font-family: "Montserrat", sans-serif; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-input-wrapper .usk-checkbox-btn {
+          border: 2px solid #00000099;
+          outline: none;
+          cursor: pointer;
+          border-radius: 3px; }
+          .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-input-wrapper .usk-checkbox-btn:after {
+            right: 7px; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-term-count {
+          margin-right: auto;
+          font-size: 10px;
+          background: #6f6f6f;
+          color: #fff;
+          padding: 5px 12px;
+          border-radius: 3px;
+          transition: all 0.3s ease;
+          border: 1px solid #e2dfdf; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div:hover label span {
+          color: #000; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div:hover .usk-term-count {
+          background: #000; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div:hover .usk-input-wrapper .usk-term-label {
+          color: #000; }
+      .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input {
+        margin-left: 10px;
+        width: 100%; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input .usk-currency {
+          font-size: 16px;
+          font-weight: 600;
+          color: #6f6f6f;
+          padding-left: 8px; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input .usk-input-price {
+          width: 100%;
+          height: 40px;
+          border: 2px solid #eaeaea;
+          border-radius: 3px;
+          outline: none;
+          font-size: 14px;
+          font-weight: 600;
+          color: #6f6f6f;
+          padding: 10px; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input label {
+          font-size: 14px;
+          font-weight: 600;
+          color: #6f6f6f;
+          text-transform: capitalize; }
+      .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-inline-layout {
+        display: flex; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-inline-layout .usk-currency {
+          display: none; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-inline-layout label {
+          display: none; }
+      .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-block-layout {
+        display: inherit; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-block-layout .usk-currency {
+          display: block; }
+        .usk-filter .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-block-layout label {
+          display: block; }
+  .usk-filter .usk-action-btn-wrapper .usk-filter-submit button {
+    width: 100%;
+    background: #8338ec;
+    padding: 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    outline: none;
+    font-weight: 600;
+    border: transparent;
+    transition: all 0.3s ease;
+    color: #fff; }
+    .usk-filter .usk-action-btn-wrapper .usk-filter-submit button:hover {
+      background: #f00; }
+  .usk-filter .usk-action-btn-wrapper .usk-filter-reset .usk-reset-btn {
+    width: 100%;
+    background: #f00;
+    padding: 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    outline: none;
+    font-weight: 600;
+    border: transparent;
+    transition: all 0.3s ease;
+    color: #fff;
+    display: inline-block;
+    text-align: center; }
+    .usk-filter .usk-action-btn-wrapper .usk-filter-reset .usk-reset-btn:hover {
+      background: #8338ec; }
+
+.usk-filter-horizontal {
+  display: block;
+  width: 100%; }
+  .usk-filter-horizontal .usk-filter-header {
+    display: none; }
+  .usk-filter-horizontal .usk-filters-content-wrapper {
+    display: block;
+    width: 100%; }
+    .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter {
+      width: 100%;
+      margin-left: 0px;
+      margin-bottom: 30px; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-title .usk-title {
+        font-size: 14px;
+        border-bottom: 1px solid #d2cbcb;
+        line-height: 40px; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div label span {
+        font-size: 12px; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content div .usk-input-wrapper .usk-term-label {
+        font-size: 12px; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input .usk-currency {
+        font-size: 14px; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input .usk-input-price {
+        font-size: 12px; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-content .usk-range-value .usk-range-input label {
+        font-size: 12px; }
+  .usk-filter-horizontal .usk-action-btn-wrapper .usk-filter-submit button {
+    width: 100%; }
+  .usk-filter-horizontal .usk-action-btn-wrapper .usk-filter-reset .usk-reset-btn {
+    width: 100%; }
+
+.usk-filter-vertical .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap {
+  border-bottom: 2px solid #eaeaea;
+  padding: 30px 0; }
+  .usk-filter-vertical .usk-filters-content-wrapper .usk-single-filter .usk-single-filter-wrap .usk-filter-title .usk-title {
+    font-size: 18px; }
+
+.usk-filter-vertical .usk-action-btn-wrapper .usk-filter-submit {
+  margin-bottom: 10px;
+  display: inherit; }
+
+@media (min-width: 1024px) {
+  .usk-filter
+.usk-filters-content-wrapper
+.usk-filters-inner
+.usk-single-filter-search
+.usk-filter-search
+input {
+    font-size: 16px;
+    padding: 8px 10; }
+  .usk-filter-horizontal {
+    display: flex; }
+    .usk-filter-horizontal .usk-filters-content-wrapper {
+      display: flex; }
+      .usk-filter-horizontal .usk-filters-content-wrapper .usk-single-filter {
+        width: 100%;
+        margin-left: 30px;
+        margin-bottom: 0px; } }
+
+.usk-filter .site .button, button, input[type=submit], input[type=reset], .wp-block-search .wp-block-search__button, .wp-block-button .wp-block-button__link, .wp-block-file a.wp-block-file__button {
+  padding: 0; }
+
+.usk-filter button, input, optgroup, select, textarea {
+  line-height: 1; }
+
+.usk-filte input[type=text], input[type=email], input[type=url], input[type=password], input[type=search], input[type=number], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=datetime], input[type=datetime-local], input[type=color], .site textarea {
+  line-height: 1;
+  padding: 0;
+  margin: 0; }

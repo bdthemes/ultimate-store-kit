@@ -1,0 +1,32 @@
+.ultimate-store-kit {
+  .woocommerce-result-count {
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .usk-shiny-grid-header-tabs {
+    .tab-option {
+      span {
+        width: auto;
+      }
+    }
+  }
+}
+
+
+// THEME COMPATIBILITY
+
+// theme css start
+
+
+.theme-storefront {
+	.edd_download_purchase_form  {
+		margin: 0;
+	}
+}
+.theme-astra {
+
+  .edd_download_purchase_form .edd_purchase_submit_wrapper {
+    margin: 0;
+  }
+}

@@ -1,0 +1,4514 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimate Store Kit\n"
+"POT-Creation-Date: 2022-08-11 18:44+0600\n"
+"PO-Revision-Date: 2022-04-25 14:37+0600\n"
+"Last-Translator: Selim Rana <selim@bdthemes.com>\n"
+"Language-Team: Selim Rana <selim@bdthemes.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: ultimate-store-kit.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: admin/admin-settings.php:43
+msgid "Dashboard"
+msgstr ""
+
+#: admin/admin-settings.php:55 admin/admin-settings.php:70
+msgid "Core Widgets"
+msgstr ""
+
+#: admin/admin-settings.php:81 modules/add-to-cart/widgets/add-to-cart.php:133
+#: modules/add-to-cart/widgets/add-to-cart.php:134
+#: modules/heaven-slider/widgets/heaven-slider.php:301
+#: modules/product-accordion/widgets/product-accordion.php:263
+#: modules/product-table/widgets/product-table.php:371
+#: modules/showcase-slider/widgets/showcase-slider.php:319
+#: traits/global-widget-controls.php:380
+msgid "Add to Cart"
+msgstr ""
+
+#: admin/admin-settings.php:91 modules/brand-grid/module.info.php:5
+#: modules/brand-grid/widgets/brand-grid.php:31
+msgid "Brand Grid"
+msgstr ""
+
+#: admin/admin-settings.php:101 modules/brand-carousel/module.info.php:5
+#: modules/brand-carousel/widgets/brand-carousel.php:33
+msgid "Brand Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:111 modules/edd-category-grid/module.info.php:5
+#: modules/edd-category-grid/widgets/edd-category-grid.php:26
+msgid "EDD Category Grid"
+msgstr ""
+
+#: admin/admin-settings.php:121 modules/edd-category-carousel/module.info.php:5
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:31
+msgid "EDD Category Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:131 modules/edd-beauty-grid/module.info.php:8
+#: modules/edd-beauty-grid/widgets/edd-beauty-grid.php:31
+msgid "EDD Beauty Grid"
+msgstr ""
+
+#: admin/admin-settings.php:141 modules/edd-beauty-carousel/module.info.php:8
+#: modules/edd-beauty-carousel/widgets/edd-beauty-carousel.php:32
+msgid "EDD Beauty Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:151 modules/edd-classic-grid/module.info.php:8
+#: modules/edd-classic-grid/widgets/edd-classic-grid.php:32
+msgid "EDD Classic Grid"
+msgstr ""
+
+#: admin/admin-settings.php:161 modules/edd-classic-carousel/module.info.php:8
+#: modules/edd-classic-carousel/widgets/edd-classic-carousel.php:32
+msgid "EDD Classic Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:171 modules/edd-standard-grid/module.info.php:8
+#: modules/edd-standard-grid/widgets/edd-standard-grid.php:30
+msgid "EDD Standard Grid"
+msgstr ""
+
+#: admin/admin-settings.php:181 modules/edd-standard-carousel/module.info.php:8
+#: modules/edd-standard-carousel/widgets/edd-standard-carousel.php:32
+msgid "EDD Standard Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:191 modules/edd-trendy-grid/module.info.php:8
+#: modules/edd-trendy-grid/widgets/edd-trendy-grid.php:30
+msgid "EDD Trendy Grid"
+msgstr ""
+
+#: admin/admin-settings.php:201 modules/edd-trendy-carousel/module.info.php:8
+#: modules/edd-trendy-carousel/widgets/edd-trendy-carousel.php:32
+msgid "EDD Trendy Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:211 modules/featured-box/module.info.php:5
+#: modules/featured-box/widgets/featured-box.php:32
+#: modules/featured-box/widgets/featured-box.php:513
+msgid "Featured Box"
+msgstr ""
+
+#: admin/admin-settings.php:221 modules/florence-grid/module.info.php:8
+#: modules/florence-grid/widgets/florence-grid.php:31
+msgid "Florence Grid"
+msgstr ""
+
+#: admin/admin-settings.php:231
+#: modules/florence-carousel/widgets/florence-carousel.php:39
+msgid "Florence Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:241 modules/glossy-grid/module.info.php:8
+#: modules/glossy-grid/widgets/glossy-grid.php:33
+msgid "Glossy Grid"
+msgstr ""
+
+#: admin/admin-settings.php:251 modules/glossy-carousel/module.info.php:8
+#: modules/glossy-carousel/widgets/glossy-carousel.php:37
+msgid "Glossy Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:261 modules/heaven-slider/module.info.php:8
+#: modules/heaven-slider/widgets/heaven-slider.php:41
+msgid "Heaven Slider"
+msgstr ""
+
+#: admin/admin-settings.php:271 modules/info-list/widgets/info-list.php:32
+msgid "Info List"
+msgstr ""
+
+#: admin/admin-settings.php:281 modules/mini-cart/module.info.php:5
+#: modules/mini-cart/widgets/mini-cart.php:27
+#: modules/mini-cart/widgets/mini-cart.php:213
+#: modules/mini-cart/widgets/mini-cart.php:288
+msgid "Mini Cart"
+msgstr ""
+
+#: admin/admin-settings.php:291 modules/product-accordion/module.info.php:5
+#: modules/product-accordion/widgets/product-accordion.php:38
+msgid "Product Accordion"
+msgstr ""
+
+#: admin/admin-settings.php:301 modules/product-category/module.info.php:8
+#: modules/product-category/widgets/product-category.php:32
+msgid "Product Category"
+msgstr ""
+
+#: admin/admin-settings.php:311
+#: modules/product-image-accordion/module.info.php:5
+#: modules/product-image-accordion/widgets/product-image-accordion.php:33
+msgid "Product Image Accordion"
+msgstr ""
+
+#: admin/admin-settings.php:321 modules/mini-cart/widgets/mini-cart.php:450
+#: modules/product-list/module.info.php:8
+#: modules/product-list/widgets/product-list.php:40
+msgid "Product List"
+msgstr ""
+
+#: admin/admin-settings.php:331 modules/product-reviews/module.info.php:8
+#: modules/product-reviews/widgets/product-reviews.php:27
+msgid "Product Reviews"
+msgstr ""
+
+#: admin/admin-settings.php:341
+#: modules/product-review-carousel/module.info.php:8
+#: modules/product-review-carousel/widgets/product-review-carousel.php:31
+msgid "Product Review Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:351 modules/product-table/module.info.php:8
+#: modules/product-table/widgets/product-table.php:32
+msgid "Product Table"
+msgstr ""
+
+#: admin/admin-settings.php:361 modules/shiny-grid/module.info.php:8
+#: modules/shiny-grid/widgets/shiny-grid.php:38
+msgid "Shiny Grid"
+msgstr ""
+
+#: admin/admin-settings.php:371 modules/florence-carousel/module.info.php:8
+#: modules/shiny-carousel/module.info.php:8
+#: modules/shiny-carousel/widgets/shiny-carousel.php:37
+msgid "Shiny Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:381 modules/showcase-slider/module.info.php:8
+#: modules/showcase-slider/widgets/showcase-slider.php:38
+msgid "Showcase Slider"
+msgstr ""
+
+#: admin/admin-settings.php:391
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:424
+#: modules/sub-category/module.info.php:8
+#: modules/sub-category/widgets/sub-category.php:30
+#: modules/sub-category/widgets/sub-category.php:425
+msgid "Sub Category"
+msgstr ""
+
+#: admin/admin-settings.php:401 modules/sub-category-carousel/module.info.php:8
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:33
+msgid "Sub Category Carousel"
+msgstr ""
+
+#: admin/admin-settings.php:426 admin/admin-settings.php:444
+msgid ""
+"Thanks for joining the Ultimate Store Kit Pro family. You are in the right "
+"place to build your amazing site\n"
+"              and lift it to the next level. Ultimate Store Kit makes "
+"everything easy for you. Its drag and drop options can\n"
+"              create magic. If you feel any challenges visit our youtube "
+"channel, nock on our support system.\n"
+"              Stay tuned and see you at the top of success."
+msgstr ""
+
+#: admin/admin-settings.php:431 admin/admin-settings.php:448
+msgid "Join our community"
+msgstr ""
+
+#: admin/admin-settings.php:431 admin/admin-settings.php:448
+msgid "for get help or share your idea instantly"
+msgstr ""
+
+#: admin/admin-settings.php:433
+msgid "Read Knowledge Base"
+msgstr ""
+
+#: admin/admin-settings.php:434
+msgid "Participate The Giveaway"
+msgstr ""
+
+#: admin/admin-settings.php:454
+msgid "Try Our Popular Addon - Element Pack"
+msgstr ""
+
+#: admin/admin-settings.php:456
+msgid "Element Pack"
+msgstr ""
+
+#: admin/admin-settings.php:456
+msgid "for"
+msgstr ""
+
+#: admin/admin-settings.php:456
+msgid "Elementor"
+msgstr ""
+
+#: admin/admin-settings.php:456
+msgid ""
+"includes the most commonly used elements\n"
+"              (called widgets) that help you easily manage your website "
+"content by simply using the\n"
+"              drag and drop ability. There is absolutely no programming "
+"knowledge required, seriously!"
+msgstr ""
+
+#: admin/admin-settings.php:469
+msgid "Support And Feedback"
+msgstr ""
+
+#: admin/admin-settings.php:470
+msgid ""
+"Feeling like to consult with an expert? Take live Chat support immediately "
+"from"
+msgstr ""
+
+#: admin/admin-settings.php:470
+msgid "Ultimate Store Kit."
+msgstr ""
+
+#: admin/admin-settings.php:470
+msgid ""
+"We are always ready to help\n"
+"              you 24/7."
+msgstr ""
+
+#: admin/admin-settings.php:472
+msgid ""
+"Or if you’re facing technical issues with our plugin, then please create a "
+"support"
+msgstr ""
+
+#: admin/admin-settings.php:473
+msgid "ticket"
+msgstr ""
+
+#: admin/admin-settings.php:474 admin/admin.php:48
+msgid "Get Support"
+msgstr ""
+
+#: admin/admin-settings.php:475
+msgid "Go knowledge page"
+msgstr ""
+
+#: admin/admin-settings.php:481
+msgid "System Requirement"
+msgstr ""
+
+#: admin/admin-settings.php:490
+msgid "Missing Any Feature?"
+msgstr ""
+
+#: admin/admin-settings.php:491
+msgid ""
+"Are you in need of a feature that’s not available in our plugin? Feel free "
+"to\n"
+"              do a feature request from here,"
+msgstr ""
+
+#: admin/admin-settings.php:493
+msgid "Request Feature"
+msgstr ""
+
+#: admin/admin-settings.php:499
+msgid "Newsletter Subscription"
+msgstr ""
+
+#: admin/admin-settings.php:500
+msgid ""
+"To get updated news, current offers, deals, and tips please subscribe to our "
+"Newsletters."
+msgstr ""
+
+#: admin/admin-settings.php:501
+msgid "Subscribe Now"
+msgstr ""
+
+#: admin/admin-settings.php:534
+msgid "PHP Version:"
+msgstr ""
+
+#: admin/admin-settings.php:550
+msgid "Maximum execution time:"
+msgstr ""
+
+#: admin/admin-settings.php:565
+msgid "Memory Limit:"
+msgstr ""
+
+#: admin/admin-settings.php:581
+msgid "Max Post Limit:"
+msgstr ""
+
+#: admin/admin-settings.php:597
+msgid "Uploads folder writable:"
+msgstr ""
+
+#: admin/admin-settings.php:611
+msgid "MultiSite: "
+msgstr ""
+
+#: admin/admin-settings.php:627
+msgid "GZip Enabled:"
+msgstr ""
+
+#: admin/admin-settings.php:641
+msgid "Debug Mode: "
+msgstr ""
+
+#: admin/admin-settings.php:657
+msgid "Note:"
+msgstr ""
+
+#: admin/admin-settings.php:657
+msgid "If you have multiple addons like"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: admin/admin-settings.php:657
+msgid "Ultimate Store Kit"
+msgstr ""
+
+#: admin/admin-settings.php:658
+msgid ""
+"so you need some more requirement some\n"
+"      cases so make sure you added more memory for others addon too."
+msgstr ""
+
+#: admin/admin-settings.php:756
+msgid "Please wait, Saving settings..."
+msgstr ""
+
+#: admin/admin-settings.php:764
+msgid "Settings Saved Successfully."
+msgstr ""
+
+#: admin/admin-settings.php:771
+msgid "Unknown error, make sure access is correct!"
+msgstr ""
+
+#: admin/admin-settings.php:788
+msgid "Ultimate Store Kit Addon made with love by"
+msgstr ""
+
+#. Author of the plugin/theme
+#: admin/admin-settings.php:788
+msgid "BdThemes"
+msgstr ""
+
+#: admin/admin-settings.php:788
+msgid "Team."
+msgstr ""
+
+#: admin/admin-settings.php:788
+msgid ""
+"All\n"
+"        rights reserved by BdThemes."
+msgstr ""
+
+#: admin/admin.php:48
+msgid "Go for Get Support"
+msgstr ""
+
+#: admin/admin.php:49
+msgid "View Ultimate Store Kit Video Tutorials"
+msgstr ""
+
+#: admin/admin.php:49
+msgid "Video Tutorials"
+msgstr ""
+
+#: admin/admin.php:60 modules/mini-cart/widgets/mini-cart.php:78
+#: modules/sub-category/widgets/sub-category.php:816
+msgid "Settings"
+msgstr ""
+
+#: admin/class-settings-api.php:728
+msgid "Filter Widgets"
+msgstr ""
+
+#: admin/class-settings-api.php:731
+msgid "All Widgets"
+msgstr ""
+
+#: admin/class-settings-api.php:734 admin/class-settings-api.php:753
+msgid "EDD"
+msgstr ""
+
+#: admin/class-settings-api.php:735 admin/class-settings-api.php:752
+msgid "Woocommerce"
+msgstr ""
+
+#: admin/class-settings-api.php:738 admin/class-settings-api.php:757
+#: modules/florence-grid/widgets/florence-grid.php:82
+#: modules/glossy-grid/widgets/glossy-grid.php:83
+#: modules/shiny-grid/widgets/shiny-grid.php:87
+msgid "Grid"
+msgstr ""
+
+#: admin/class-settings-api.php:739 admin/class-settings-api.php:758
+#: traits/global-widget-controls.php:3249
+msgid "Carousel"
+msgstr ""
+
+#: admin/class-settings-api.php:740 admin/class-settings-api.php:759
+#: modules/heaven-slider/widgets/heaven-slider.php:569
+msgid "Slider"
+msgstr ""
+
+#: admin/class-settings-api.php:741 admin/class-settings-api.php:760
+msgid "Others"
+msgstr ""
+
+#: admin/class-settings-api.php:747
+#: includes/controls/group-query/group-control-query.php:234
+#: modules/product-review-carousel/widgets/product-review-carousel.php:206
+#: modules/product-reviews/widgets/product-reviews.php:165
+#: traits/global-terms-query-controls.php:26
+msgid "All"
+msgstr ""
+
+#: admin/class-settings-api.php:767
+msgid "Active All"
+msgstr ""
+
+#: admin/class-settings-api.php:768
+msgid "Deactive All"
+msgstr ""
+
+#: admin/class-settings-api.php:792
+msgid "Save Settings"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:19
+msgid "Source"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:28
+#: modules/product-accordion/widgets/product-accordion.php:180
+#: modules/product-image-accordion/widgets/product-image-accordion.php:147
+#: traits/global-edd-widget-controls.php:240
+#: traits/global-widget-controls.php:105
+msgid "Product Limit"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:37
+#: includes/controls/group-query/group-control-query.php:159
+msgid "Search & Select"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:62
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:156
+#: modules/sub-category/widgets/sub-category.php:159
+#: traits/global-terms-query-controls.php:59
+msgid "Include"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:72
+msgid "Include By"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:77
+#: includes/controls/group-query/group-control-query.php:89
+#: includes/controls/group-query/group-control-query.php:145
+#: includes/controls/group-query/group-control-query.php:179
+msgid "Authors"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:78
+#: includes/controls/group-query/group-control-query.php:106
+#: includes/controls/group-query/group-control-query.php:148
+#: includes/controls/group-query/group-control-query.php:196
+msgid "Terms"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:107
+#: includes/controls/group-query/group-control-query.php:197
+msgid ""
+"Terms are items in a taxonomy. The available taxonomies are: Categories, "
+"Tags, Formats and custom taxonomies."
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:111
+#: includes/controls/group-query/group-control-query.php:201
+msgid "Type and select terms"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:130
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:176
+#: modules/sub-category/widgets/sub-category.php:179
+#: traits/global-terms-query-controls.php:83
+msgid "Exclude"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:140
+msgid "Exclude By"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:146
+msgid "Current Post"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:147
+#: includes/controls/group-query/group-control-query.php:712
+#: traits/global-edd-widget-controls.php:231
+#: traits/global-widget-controls.php:70
+msgid "Manual Selection"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:230
+#: includes/controls/group-query/group-control-query.php:283
+#: includes/helper.php:830
+#: modules/product-review-carousel/widgets/product-review-carousel.php:179
+#: modules/product-reviews/widgets/product-reviews.php:138
+#: traits/global-widget-controls.php:131
+msgid "Date"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:235
+msgid "Past Day"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:236
+msgid "Past Week"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:237
+msgid "Past Month"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:238
+msgid "Past Quarter"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:239
+msgid "Past Year"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:240
+msgid "Custom"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:251
+msgid "Before"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:253
+msgid ""
+"Setting a ‘Before’ date will show all the posts published until the chosen "
+"date (inclusive)."
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:264
+msgid "After"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:266
+msgid ""
+"Setting an ‘After’ date will show all the posts published since the chosen "
+"date (inclusive)."
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:277
+#: modules/product-review-carousel/widgets/product-review-carousel.php:173
+#: modules/product-reviews/widgets/product-reviews.php:132
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:196
+#: modules/sub-category/widgets/sub-category.php:199
+#: traits/global-terms-query-controls.php:133
+msgid "Order By"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:281
+#: includes/helper.php:828 includes/modal/modal-controls.php:306
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:113
+#: modules/featured-box/widgets/featured-box.php:77
+#: modules/featured-box/widgets/featured-box.php:644
+#: modules/heaven-slider/widgets/heaven-slider.php:145
+#: modules/heaven-slider/widgets/heaven-slider.php:688
+#: modules/info-list/widgets/info-list.php:287
+#: modules/info-list/widgets/info-list.php:487
+#: modules/product-accordion/widgets/product-accordion.php:367
+#: modules/product-image-accordion/widgets/product-image-accordion.php:327
+#: modules/product-list/widgets/product-list.php:153
+#: modules/product-review-carousel/widgets/product-review-carousel.php:296
+#: modules/product-review-carousel/widgets/product-review-carousel.php:386
+#: modules/product-reviews/widgets/product-reviews.php:253
+#: modules/product-reviews/widgets/product-reviews.php:342
+#: modules/product-table/widgets/product-table.php:205
+#: modules/product-table/widgets/product-table.php:286
+#: modules/product-table/widgets/product-table.php:1134
+#: modules/product-table/widgets/product-table.php:2343
+#: modules/showcase-slider/widgets/showcase-slider.php:175
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:95
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:374
+#: modules/sub-category/widgets/sub-category.php:375
+#: traits/global-edd-widget-controls.php:190
+#: traits/global-edd-widget-controls.php:285
+#: traits/global-edd-widget-controls.php:879
+#: traits/global-edd-widget-controls.php:1100
+#: traits/global-edd-widget-controls.php:1127
+#: traits/global-edd-widget-controls.php:1154
+#: traits/global-edd-widget-controls.php:1181
+#: traits/global-widget-controls.php:216 traits/global-widget-controls.php:928
+msgid "Title"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:282
+#: includes/helper.php:829
+msgid "ID"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:284
+#: modules/product-review-carousel/widgets/product-review-carousel.php:177
+#: modules/product-review-carousel/widgets/product-review-carousel.php:305
+#: modules/product-review-carousel/widgets/product-review-carousel.php:436
+#: modules/product-reviews/widgets/product-reviews.php:136
+#: modules/product-reviews/widgets/product-reviews.php:262
+#: modules/product-reviews/widgets/product-reviews.php:392
+msgid "Author"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:285
+msgid "Comment Count"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:286
+msgid "Menu Order"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:287
+#: includes/helper.php:831
+#: modules/product-review-carousel/widgets/product-review-carousel.php:181
+#: modules/product-reviews/widgets/product-reviews.php:140
+#: traits/global-widget-controls.php:134
+msgid "Random"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:288
+#: includes/modal/modal-controls.php:419
+#: modules/heaven-slider/widgets/heaven-slider.php:197
+#: modules/mini-cart/templates/cart/mini-cart.php:49
+#: modules/mini-cart/widgets/mini-cart.php:539
+#: modules/product-accordion/widgets/product-accordion.php:151
+#: modules/product-list/widgets/product-list.php:162
+#: modules/product-table/widgets/product-table.php:208
+#: modules/product-table/widgets/product-table.php:338
+#: modules/product-table/widgets/product-table.php:1640
+#: modules/product-table/widgets/product-table.php:2365
+#: modules/showcase-slider/widgets/showcase-slider.php:245
+#: modules/showcase-slider/widgets/showcase-slider.php:655
+#: traits/global-edd-widget-controls.php:326
+#: traits/global-edd-widget-controls.php:1291
+#: traits/global-widget-controls.php:132 traits/global-widget-controls.php:306
+#: traits/global-widget-controls.php:1178
+msgid "Price"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:289
+#: traits/global-widget-controls.php:133
+msgid "Sales"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:296
+#: modules/product-review-carousel/widgets/product-review-carousel.php:188
+#: modules/product-reviews/widgets/product-reviews.php:147
+#: modules/product-table/widgets/product-table.php:216
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:210
+#: modules/sub-category/widgets/sub-category.php:213
+#: traits/global-terms-query-controls.php:149
+#: traits/global-widget-controls.php:142
+msgid "Order"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:300
+msgid "ASC"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:301
+msgid "DESC"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:315
+#: traits/global-widget-controls.php:114
+msgid "Show Product"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:319
+#: traits/global-widget-controls.php:118
+msgid "All Products"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:320
+#: traits/global-widget-controls.php:119
+msgid "On Sale"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:321
+#: traits/global-widget-controls.php:120
+msgid "Featured"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:328
+msgid "Hide Free Product"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:336
+#: traits/global-widget-controls.php:190
+msgid "Hide Out of Stock"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:343
+msgid "Only Featured Image Post"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:344
+msgid "Enable to display posts only when featured image is present."
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:355
+#: traits/global-edd-widget-controls.php:267
+msgid "Query ID"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:356
+#: traits/global-edd-widget-controls.php:268
+msgid "Give your Query a custom unique id to allow server side filtering"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:711
+#: modules/add-to-cart/widgets/add-to-cart.php:85
+msgid "Product"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:713
+#: traits/global-edd-widget-controls.php:232
+msgid "Current Query"
+msgstr ""
+
+#: includes/controls/group-query/group-control-query.php:714
+#: traits/global-edd-widget-controls.php:233
+msgid "Related"
+msgstr ""
+
+#: includes/helper.php:84
+msgid "Select Type"
+msgstr ""
+
+#: includes/helper.php:312
+msgid "Edit Template"
+msgstr ""
+
+#: includes/helper.php:389
+msgid "Select Menu"
+msgstr ""
+
+#: includes/helper.php:426
+msgid "Template Not Found!"
+msgstr ""
+
+#: includes/helper.php:428
+msgid "Select Template"
+msgstr ""
+
+#: includes/helper.php:448
+msgid "No sidebars were found"
+msgstr ""
+
+#: includes/helper.php:450
+msgid "Select Sidebar"
+msgstr ""
+
+#: includes/helper.php:494 includes/helper.php:539
+#: traits/global-widget-controls.php:2012
+msgid "None"
+msgstr ""
+
+#: includes/helper.php:540 modules/sub-category/widgets/sub-category.php:826
+msgid "Fade"
+msgstr ""
+
+#: includes/helper.php:541
+msgid "Scale Up"
+msgstr ""
+
+#: includes/helper.php:542
+msgid "Scale Down"
+msgstr ""
+
+#: includes/helper.php:543
+msgid "Slide Top"
+msgstr ""
+
+#: includes/helper.php:544
+msgid "Slide Bottom"
+msgstr ""
+
+#: includes/helper.php:545
+msgid "Slide Left"
+msgstr ""
+
+#: includes/helper.php:546
+msgid "Slide Right"
+msgstr ""
+
+#: includes/helper.php:547
+msgid "Slide Top Small"
+msgstr ""
+
+#: includes/helper.php:548
+msgid "Slide Bottom Small"
+msgstr ""
+
+#: includes/helper.php:549
+msgid "Slide Left Small"
+msgstr ""
+
+#: includes/helper.php:550
+msgid "Slide Right Small"
+msgstr ""
+
+#: includes/helper.php:551
+msgid "Slide Top Medium"
+msgstr ""
+
+#: includes/helper.php:552
+msgid "Slide Bottom Medium"
+msgstr ""
+
+#: includes/helper.php:553
+msgid "Slide Left Medium"
+msgstr ""
+
+#: includes/helper.php:554
+msgid "Slide Right Medium"
+msgstr ""
+
+#: includes/helper.php:563
+msgid "Multiply"
+msgstr ""
+
+#: includes/helper.php:564
+msgid "Screen"
+msgstr ""
+
+#: includes/helper.php:565 includes/modal/modal-controls.php:232
+msgid "Overlay"
+msgstr ""
+
+#: includes/helper.php:566
+msgid "Darken"
+msgstr ""
+
+#: includes/helper.php:567
+msgid "Lighten"
+msgstr ""
+
+#: includes/helper.php:568
+msgid "Color-Dodge"
+msgstr ""
+
+#: includes/helper.php:569
+msgid "Color-Burn"
+msgstr ""
+
+#: includes/helper.php:570
+msgid "Hard-Light"
+msgstr ""
+
+#: includes/helper.php:571
+msgid "Soft-Light"
+msgstr ""
+
+#: includes/helper.php:572
+msgid "Difference"
+msgstr ""
+
+#: includes/helper.php:573
+msgid "Exclusion"
+msgstr ""
+
+#: includes/helper.php:574
+msgid "Hue"
+msgstr ""
+
+#: includes/helper.php:575
+msgid "Saturation"
+msgstr ""
+
+#: includes/helper.php:576 includes/modal/modal-controls.php:257
+#: includes/modal/modal-controls.php:284 includes/modal/modal-controls.php:323
+#: includes/modal/modal-controls.php:340 includes/modal/modal-controls.php:388
+#: includes/modal/modal-controls.php:406 includes/modal/modal-controls.php:455
+#: includes/modal/modal-controls.php:487 includes/modal/modal-controls.php:522
+#: includes/modal/modal-controls.php:579
+#: modules/add-to-cart/widgets/add-to-cart.php:244
+#: modules/add-to-cart/widgets/add-to-cart.php:352
+#: modules/add-to-cart/widgets/add-to-cart.php:440
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:535
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:654
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:724
+#: modules/edd-category-grid/widgets/edd-category-grid.php:533
+#: modules/edd-category-grid/widgets/edd-category-grid.php:652
+#: modules/edd-category-grid/widgets/edd-category-grid.php:722
+#: modules/featured-box/widgets/featured-box.php:655
+#: modules/featured-box/widgets/featured-box.php:710
+#: modules/featured-box/widgets/featured-box.php:754
+#: modules/featured-box/widgets/featured-box.php:818
+#: modules/featured-box/widgets/featured-box.php:926
+#: modules/glossy-carousel/widgets/glossy-carousel.php:239
+#: modules/glossy-carousel/widgets/glossy-carousel.php:272
+#: modules/heaven-slider/widgets/heaven-slider.php:699
+#: modules/heaven-slider/widgets/heaven-slider.php:771
+#: modules/heaven-slider/widgets/heaven-slider.php:819
+#: modules/heaven-slider/widgets/heaven-slider.php:868
+#: modules/heaven-slider/widgets/heaven-slider.php:897
+#: modules/heaven-slider/widgets/heaven-slider.php:994
+#: modules/heaven-slider/widgets/heaven-slider.php:1022
+#: modules/heaven-slider/widgets/heaven-slider.php:1053
+#: modules/heaven-slider/widgets/heaven-slider.php:1081
+#: modules/heaven-slider/widgets/heaven-slider.php:1111
+#: modules/heaven-slider/widgets/heaven-slider.php:1139
+#: modules/heaven-slider/widgets/heaven-slider.php:1182
+#: modules/heaven-slider/widgets/heaven-slider.php:1263
+#: modules/heaven-slider/widgets/heaven-slider.php:1353
+#: modules/heaven-slider/widgets/heaven-slider.php:1462
+#: modules/info-list/widgets/info-list.php:495
+#: modules/info-list/widgets/info-list.php:547
+#: modules/info-list/widgets/info-list.php:597
+#: modules/info-list/widgets/info-list.php:686
+#: modules/mini-cart/widgets/mini-cart.php:296
+#: modules/mini-cart/widgets/mini-cart.php:368
+#: modules/mini-cart/widgets/mini-cart.php:396
+#: modules/mini-cart/widgets/mini-cart.php:656
+#: modules/mini-cart/widgets/mini-cart.php:790
+#: modules/mini-cart/widgets/mini-cart.php:908
+#: modules/product-accordion/widgets/product-accordion.php:383
+#: modules/product-accordion/widgets/product-accordion.php:440
+#: modules/product-accordion/widgets/product-accordion.php:480
+#: modules/product-accordion/widgets/product-accordion.php:558
+#: modules/product-accordion/widgets/product-accordion.php:620
+#: modules/product-accordion/widgets/product-accordion.php:707
+#: modules/product-accordion/widgets/product-accordion.php:749
+#: modules/product-accordion/widgets/product-accordion.php:887
+#: modules/product-accordion/widgets/product-accordion.php:915
+#: modules/product-accordion/widgets/product-accordion.php:945
+#: modules/product-accordion/widgets/product-accordion.php:991
+#: modules/product-accordion/widgets/product-accordion.php:1032
+#: modules/product-accordion/widgets/product-accordion.php:1062
+#: modules/product-accordion/widgets/product-accordion.php:1098
+#: modules/product-category/widgets/product-category.php:629
+#: modules/product-category/widgets/product-category.php:732
+#: modules/product-category/widgets/product-category.php:855
+#: modules/product-image-accordion/widgets/product-image-accordion.php:335
+#: modules/product-list/widgets/product-list.php:390
+#: modules/product-list/widgets/product-list.php:420
+#: modules/product-list/widgets/product-list.php:450
+#: modules/product-list/widgets/product-list.php:480
+#: modules/product-list/widgets/product-list.php:510
+#: modules/product-review-carousel/widgets/product-review-carousel.php:394
+#: modules/product-review-carousel/widgets/product-review-carousel.php:452
+#: modules/product-review-carousel/widgets/product-review-carousel.php:488
+#: modules/product-review-carousel/widgets/product-review-carousel.php:528
+#: modules/product-review-carousel/widgets/product-review-carousel.php:569
+#: modules/product-reviews/widgets/product-reviews.php:350
+#: modules/product-reviews/widgets/product-reviews.php:408
+#: modules/product-reviews/widgets/product-reviews.php:444
+#: modules/product-reviews/widgets/product-reviews.php:484
+#: modules/product-reviews/widgets/product-reviews.php:525
+#: modules/product-table/widgets/product-table.php:1145
+#: modules/product-table/widgets/product-table.php:1202
+#: modules/product-table/widgets/product-table.php:1235
+#: modules/product-table/widgets/product-table.php:1268
+#: modules/product-table/widgets/product-table.php:1602
+#: modules/product-table/widgets/product-table.php:1706
+#: modules/product-table/widgets/product-table.php:1791
+#: modules/product-table/widgets/product-table.php:1842
+#: modules/product-table/widgets/product-table.php:2066
+#: modules/product-table/widgets/product-table.php:2134
+#: modules/shiny-carousel/widgets/shiny-carousel.php:258
+#: modules/shiny-carousel/widgets/shiny-carousel.php:383
+#: modules/shiny-grid/widgets/shiny-grid.php:250
+#: modules/shiny-grid/widgets/shiny-grid.php:282
+#: modules/showcase-slider/widgets/showcase-slider.php:722
+#: modules/showcase-slider/widgets/showcase-slider.php:810
+#: modules/showcase-slider/widgets/showcase-slider.php:933
+#: modules/showcase-slider/widgets/showcase-slider.php:961
+#: modules/showcase-slider/widgets/showcase-slider.php:989
+#: modules/showcase-slider/widgets/showcase-slider.php:1019
+#: modules/showcase-slider/widgets/showcase-slider.php:1047
+#: modules/showcase-slider/widgets/showcase-slider.php:1078
+#: modules/showcase-slider/widgets/showcase-slider.php:1106
+#: modules/showcase-slider/widgets/showcase-slider.php:1175
+#: modules/showcase-slider/widgets/showcase-slider.php:1298
+#: modules/showcase-slider/widgets/showcase-slider.php:1376
+#: modules/showcase-slider/widgets/showcase-slider.php:1490
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:382
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:432
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:482
+#: modules/sub-category/widgets/sub-category.php:383
+#: modules/sub-category/widgets/sub-category.php:433
+#: modules/sub-category/widgets/sub-category.php:483
+#: traits/global-edd-widget-controls.php:356
+#: traits/global-edd-widget-controls.php:441
+#: traits/global-edd-widget-controls.php:470
+#: traits/global-edd-widget-controls.php:629
+#: traits/global-edd-widget-controls.php:890
+#: traits/global-edd-widget-controls.php:956
+#: traits/global-edd-widget-controls.php:1037
+#: traits/global-edd-widget-controls.php:1089
+#: traits/global-edd-widget-controls.php:1116
+#: traits/global-edd-widget-controls.php:1143
+#: traits/global-edd-widget-controls.php:1170
+#: traits/global-edd-widget-controls.php:1302
+#: traits/global-edd-widget-controls.php:1355
+#: traits/global-edd-widget-controls.php:1475
+#: traits/global-edd-widget-controls.php:1516
+#: traits/global-edd-widget-controls.php:1536
+#: traits/global-widget-controls.php:432 traits/global-widget-controls.php:517
+#: traits/global-widget-controls.php:546 traits/global-widget-controls.php:582
+#: traits/global-widget-controls.php:936 traits/global-widget-controls.php:1002
+#: traits/global-widget-controls.php:1083
+#: traits/global-widget-controls.php:1132
+#: traits/global-widget-controls.php:1249
+#: traits/global-widget-controls.php:1295
+#: traits/global-widget-controls.php:1323
+#: traits/global-widget-controls.php:1351
+#: traits/global-widget-controls.php:1381
+#: traits/global-widget-controls.php:1409
+#: traits/global-widget-controls.php:1440
+#: traits/global-widget-controls.php:1468
+#: traits/global-widget-controls.php:1584
+#: traits/global-widget-controls.php:1704
+#: traits/global-widget-controls.php:1745
+#: traits/global-widget-controls.php:1765
+#: traits/global-widget-controls.php:1804
+#: traits/global-widget-controls.php:1835
+#: traits/global-widget-controls.php:1866
+#: traits/global-widget-controls.php:1896
+#: traits/global-widget-controls.php:1923
+#: traits/global-widget-controls.php:2207
+#: traits/global-widget-controls.php:2330
+#: traits/global-widget-controls.php:2408
+#: traits/global-widget-controls.php:2522
+msgid "Color"
+msgstr ""
+
+#: includes/helper.php:577
+msgid "Luminosity"
+msgstr ""
+
+#: includes/helper.php:586 modules/heaven-slider/widgets/heaven-slider.php:1313
+#: modules/product-table/widgets/product-table.php:204
+msgid "Default"
+msgstr ""
+
+#: includes/helper.php:587 includes/helper.php:604 includes/helper.php:619
+#: includes/helper.php:633 includes/helper.php:651
+msgid "Top Left"
+msgstr ""
+
+#: includes/helper.php:588 includes/helper.php:605 includes/helper.php:620
+#: includes/helper.php:634 includes/helper.php:652
+msgid "Top Center"
+msgstr ""
+
+#: includes/helper.php:589 includes/helper.php:606 includes/helper.php:621
+#: includes/helper.php:635 includes/helper.php:653
+msgid "Top Right"
+msgstr ""
+
+#: includes/helper.php:590 includes/helper.php:622
+#: modules/add-to-cart/widgets/add-to-cart.php:205
+#: modules/brand-carousel/widgets/brand-carousel.php:123
+#: modules/featured-box/widgets/featured-box.php:247
+#: modules/featured-box/widgets/featured-box.php:270
+#: modules/info-list/widgets/info-list.php:159
+#: modules/info-list/widgets/info-list.php:202
+#: modules/mini-cart/widgets/mini-cart.php:245
+#: modules/product-table/widgets/product-table.php:91
+#: modules/product-table/widgets/product-table.php:116
+#: modules/product-table/widgets/product-table.php:1311
+#: traits/global-edd-widget-controls.php:79
+#: traits/global-edd-widget-controls.php:173
+#: traits/global-edd-widget-controls.php:1392
+#: traits/global-widget-controls.php:31 traits/global-widget-controls.php:1621
+msgid "Center"
+msgstr ""
+
+#: includes/helper.php:591 includes/helper.php:607
+msgid "Center Left"
+msgstr ""
+
+#: includes/helper.php:592 includes/helper.php:608
+msgid "Center Right"
+msgstr ""
+
+#: includes/helper.php:593 includes/helper.php:609 includes/helper.php:623
+#: includes/helper.php:636 includes/helper.php:647
+msgid "Bottom Left"
+msgstr ""
+
+#: includes/helper.php:594 includes/helper.php:610 includes/helper.php:624
+#: includes/helper.php:637 includes/helper.php:648
+msgid "Bottom Center"
+msgstr ""
+
+#: includes/helper.php:595 includes/helper.php:611 includes/helper.php:625
+#: includes/helper.php:638 includes/helper.php:649
+msgid "Bottom Right"
+msgstr ""
+
+#: includes/helper.php:650
+msgid "Bottom Justify"
+msgstr ""
+
+#: includes/helper.php:654
+msgid "Top Justify"
+msgstr ""
+
+#: includes/helper.php:655
+msgid "Left Top"
+msgstr ""
+
+#: includes/helper.php:656
+msgid "Left Center"
+msgstr ""
+
+#: includes/helper.php:657
+msgid "Left Bottom"
+msgstr ""
+
+#: includes/helper.php:658
+msgid "Right Top"
+msgstr ""
+
+#: includes/helper.php:659
+msgid "Right Center"
+msgstr ""
+
+#: includes/helper.php:660
+msgid "Right Bottom"
+msgstr ""
+
+#: includes/helper.php:669
+msgid "Extra Small"
+msgstr ""
+
+#: includes/helper.php:670
+msgid "Small"
+msgstr ""
+
+#: includes/helper.php:671
+msgid "Medium"
+msgstr ""
+
+#: includes/helper.php:672
+msgid "Large"
+msgstr ""
+
+#: includes/helper.php:673
+msgid "Extra Large"
+msgstr ""
+
+#: includes/helper.php:714
+msgid "Select Mask"
+msgstr ""
+
+#: includes/helper.php:832
+msgid "Product Price"
+msgstr ""
+
+#: includes/helper.php:833
+msgid "Top Seller"
+msgstr ""
+
+#: includes/helper.php:834
+msgid "Most Reviewed"
+msgstr ""
+
+#: includes/helper.php:835
+msgid "Top Rated"
+msgstr ""
+
+#: includes/helper.php:971
+msgid "Placeholder"
+msgstr ""
+
+#: includes/modal/modal-controls.php:31
+msgid "Modal Settings"
+msgstr ""
+
+#: includes/modal/modal-controls.php:49
+msgid "Modal"
+msgstr ""
+
+#: includes/modal/modal-controls.php:56
+#: modules/add-to-cart/widgets/add-to-cart.php:70
+#: modules/brand-carousel/widgets/brand-carousel.php:65
+#: modules/brand-grid/widgets/brand-grid.php:68
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:71
+#: modules/edd-category-grid/widgets/edd-category-grid.php:65
+#: modules/featured-box/widgets/featured-box.php:69
+#: modules/florence-carousel/widgets/florence-carousel.php:78
+#: modules/florence-grid/widgets/florence-grid.php:71
+#: modules/glossy-carousel/widgets/glossy-carousel.php:76
+#: modules/glossy-grid/widgets/glossy-grid.php:72
+#: modules/heaven-slider/widgets/heaven-slider.php:78
+#: modules/info-list/widgets/info-list.php:69
+#: modules/product-accordion/widgets/product-accordion.php:77
+#: modules/product-category/widgets/product-category.php:81
+#: modules/product-image-accordion/widgets/product-image-accordion.php:71
+#: modules/product-list/widgets/product-list.php:79
+#: modules/product-review-carousel/widgets/product-review-carousel.php:65
+#: modules/product-reviews/widgets/product-reviews.php:58
+#: modules/product-table/widgets/product-table.php:66
+#: modules/shiny-carousel/widgets/shiny-carousel.php:75
+#: modules/shiny-grid/widgets/shiny-grid.php:76
+#: modules/showcase-slider/widgets/showcase-slider.php:75
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:71
+#: modules/sub-category/widgets/sub-category.php:68
+#: traits/global-edd-widget-controls.php:24
+#: traits/global-edd-widget-controls.php:109
+#: traits/global-widget-controls.php:3245
+msgid "Layout"
+msgstr ""
+
+#: includes/modal/modal-controls.php:71
+#: modules/add-to-cart/widgets/add-to-cart.php:414
+#: modules/brand-carousel/widgets/brand-carousel.php:386
+#: modules/brand-grid/widgets/brand-grid.php:321
+#: modules/mini-cart/widgets/mini-cart.php:125
+#: modules/product-image-accordion/widgets/product-image-accordion.php:165
+#: modules/shiny-carousel/widgets/shiny-carousel.php:280
+#: modules/shiny-grid/widgets/shiny-grid.php:321
+msgid "Width"
+msgstr ""
+
+#: includes/modal/modal-controls.php:73 includes/modal/modal-controls.php:89
+#: includes/modal/modal-controls.php:105
+msgid "You must need to update and preview changes for seeing updated result"
+msgstr ""
+
+#: includes/modal/modal-controls.php:87
+#: modules/brand-carousel/widgets/brand-carousel.php:369
+#: modules/brand-grid/widgets/brand-grid.php:304
+#: modules/featured-box/widgets/featured-box.php:198
+#: modules/mini-cart/widgets/mini-cart.php:103
+#: modules/product-image-accordion/widgets/product-image-accordion.php:78
+#: modules/shiny-carousel/widgets/shiny-carousel.php:297
+#: modules/showcase-slider/widgets/showcase-slider.php:1649
+#: traits/global-edd-widget-controls.php:639
+#: traits/global-widget-controls.php:2681
+msgid "Height"
+msgstr ""
+
+#: includes/modal/modal-controls.php:103
+msgid "Animation Type"
+msgstr ""
+
+#: includes/modal/modal-controls.php:108
+msgid "ZoomIn"
+msgstr ""
+
+#: includes/modal/modal-controls.php:109
+msgid "ZoomOut"
+msgstr ""
+
+#: includes/modal/modal-controls.php:110
+msgid "SlideInTop"
+msgstr ""
+
+#: includes/modal/modal-controls.php:111
+msgid "SlideInBottom"
+msgstr ""
+
+#: includes/modal/modal-controls.php:112
+msgid "SlideInLeft"
+msgstr ""
+
+#: includes/modal/modal-controls.php:113
+msgid "SlideInRight"
+msgstr ""
+
+#: includes/modal/modal-controls.php:114
+msgid "slideInLeft"
+msgstr ""
+
+#: includes/modal/modal-controls.php:115
+msgid "slideTop"
+msgstr ""
+
+#: includes/modal/modal-controls.php:116
+msgid "slideBottom"
+msgstr ""
+
+#: includes/modal/modal-controls.php:117
+msgid "slideRight"
+msgstr ""
+
+#: includes/modal/modal-controls.php:118
+msgid "slideLeft"
+msgstr ""
+
+#: includes/modal/modal-controls.php:119
+msgid "rotateIn"
+msgstr ""
+
+#: includes/modal/modal-controls.php:120
+msgid "rotateOut"
+msgstr ""
+
+#: includes/modal/modal-controls.php:121
+msgid "flipInX"
+msgstr ""
+
+#: includes/modal/modal-controls.php:122
+msgid "flipInY"
+msgstr ""
+
+#: includes/modal/modal-controls.php:123
+msgid "swingTop"
+msgstr ""
+
+#: includes/modal/modal-controls.php:124
+msgid "swingBottom"
+msgstr ""
+
+#: includes/modal/modal-controls.php:125
+msgid "swingRight"
+msgstr ""
+
+#: includes/modal/modal-controls.php:126
+msgid "swingLeft"
+msgstr ""
+
+#: includes/modal/modal-controls.php:127
+msgid "flash"
+msgstr ""
+
+#: includes/modal/modal-controls.php:128
+msgid "pulse"
+msgstr ""
+
+#: includes/modal/modal-controls.php:129
+msgid "rubberBand"
+msgstr ""
+
+#: includes/modal/modal-controls.php:130
+msgid "shake"
+msgstr ""
+
+#: includes/modal/modal-controls.php:131
+msgid "swing"
+msgstr ""
+
+#: includes/modal/modal-controls.php:132
+msgid "tada"
+msgstr ""
+
+#: includes/modal/modal-controls.php:133
+msgid "wobble"
+msgstr ""
+
+#: includes/modal/modal-controls.php:134
+msgid "bounce"
+msgstr ""
+
+#: includes/modal/modal-controls.php:135
+msgid "boune"
+msgstr ""
+
+#: includes/modal/modal-controls.php:136
+msgid "bounceIn"
+msgstr ""
+
+#: includes/modal/modal-controls.php:137
+msgid "bounceInUp"
+msgstr ""
+
+#: includes/modal/modal-controls.php:138
+msgid "bounceInDown"
+msgstr ""
+
+#: includes/modal/modal-controls.php:139
+msgid "bounceInRight"
+msgstr ""
+
+#: includes/modal/modal-controls.php:140
+msgid "bounceInLeft"
+msgstr ""
+
+#: includes/modal/modal-controls.php:141
+msgid "unFold"
+msgstr ""
+
+#: includes/modal/modal-controls.php:142
+msgid "flowIn"
+msgstr ""
+
+#: includes/modal/modal-controls.php:149 includes/modal/modal-controls.php:240
+msgid "Close Button"
+msgstr ""
+
+#: includes/modal/modal-controls.php:157
+msgid "Enable Close Button"
+msgstr ""
+
+#: includes/modal/modal-controls.php:159
+#: modules/heaven-slider/widgets/heaven-slider.php:174
+#: modules/mini-cart/widgets/mini-cart.php:148
+#: modules/mini-cart/widgets/mini-cart.php:160
+#: modules/mini-cart/widgets/mini-cart.php:172
+#: modules/mini-cart/widgets/mini-cart.php:184
+#: modules/product-list/widgets/product-list.php:180
+#: modules/showcase-slider/widgets/showcase-slider.php:222
+#: modules/sub-category/widgets/sub-category.php:838
+#: modules/sub-category/widgets/sub-category.php:849
+msgid "Yes"
+msgstr ""
+
+#: includes/modal/modal-controls.php:160
+#: modules/heaven-slider/widgets/heaven-slider.php:175
+#: modules/mini-cart/widgets/mini-cart.php:149
+#: modules/mini-cart/widgets/mini-cart.php:161
+#: modules/mini-cart/widgets/mini-cart.php:173
+#: modules/mini-cart/widgets/mini-cart.php:185
+#: modules/product-list/widgets/product-list.php:181
+#: modules/showcase-slider/widgets/showcase-slider.php:223
+#: modules/sub-category/widgets/sub-category.php:839
+#: modules/sub-category/widgets/sub-category.php:850
+msgid "No"
+msgstr ""
+
+#: includes/modal/modal-controls.php:183
+msgid "Button Style"
+msgstr ""
+
+#: includes/modal/modal-controls.php:187
+msgid "Cancel Simple"
+msgstr ""
+
+#: includes/modal/modal-controls.php:188
+msgid "Cancel Circle"
+msgstr ""
+
+#: includes/modal/modal-controls.php:189
+msgid "Cancel Square"
+msgstr ""
+
+#: includes/modal/modal-controls.php:190
+msgid "Text Simple"
+msgstr ""
+
+#: includes/modal/modal-controls.php:191
+msgid "Text Label"
+msgstr ""
+
+#: includes/modal/modal-controls.php:201
+#: modules/featured-box/widgets/featured-box.php:137
+#: modules/featured-box/widgets/featured-box.php:140
+msgid "Button Text"
+msgstr ""
+
+#: includes/modal/modal-controls.php:203
+msgid "close"
+msgstr ""
+
+#: includes/modal/modal-controls.php:217
+msgid "Modal Style"
+msgstr ""
+
+#: includes/modal/modal-controls.php:224 includes/modal/modal-controls.php:267
+#: includes/modal/modal-controls.php:294 includes/modal/modal-controls.php:532
+#: modules/add-to-cart/widgets/add-to-cart.php:258
+#: modules/add-to-cart/widgets/add-to-cart.php:379
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:560
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:665
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:735
+#: modules/edd-category-grid/widgets/edd-category-grid.php:558
+#: modules/edd-category-grid/widgets/edd-category-grid.php:663
+#: modules/edd-category-grid/widgets/edd-category-grid.php:733
+#: modules/heaven-slider/widgets/heaven-slider.php:578
+#: modules/heaven-slider/widgets/heaven-slider.php:879
+#: modules/heaven-slider/widgets/heaven-slider.php:907
+#: modules/heaven-slider/widgets/heaven-slider.php:1004
+#: modules/heaven-slider/widgets/heaven-slider.php:1032
+#: modules/heaven-slider/widgets/heaven-slider.php:1063
+#: modules/heaven-slider/widgets/heaven-slider.php:1091
+#: modules/heaven-slider/widgets/heaven-slider.php:1121
+#: modules/heaven-slider/widgets/heaven-slider.php:1149
+#: modules/heaven-slider/widgets/heaven-slider.php:1365
+#: modules/heaven-slider/widgets/heaven-slider.php:1474
+#: modules/heaven-slider/widgets/heaven-slider.php:1518
+#: modules/mini-cart/widgets/mini-cart.php:407
+#: modules/mini-cart/widgets/mini-cart.php:678
+#: modules/mini-cart/widgets/mini-cart.php:687
+#: modules/mini-cart/widgets/mini-cart.php:697
+#: modules/mini-cart/widgets/mini-cart.php:814
+#: modules/mini-cart/widgets/mini-cart.php:1025
+#: modules/mini-cart/widgets/mini-cart.php:1043
+#: modules/mini-cart/widgets/mini-cart.php:1061
+#: modules/mini-cart/widgets/mini-cart.php:1112
+#: modules/product-accordion/widgets/product-accordion.php:302
+#: modules/product-accordion/widgets/product-accordion.php:394
+#: modules/product-accordion/widgets/product-accordion.php:451
+#: modules/product-accordion/widgets/product-accordion.php:490
+#: modules/product-accordion/widgets/product-accordion.php:568
+#: modules/product-accordion/widgets/product-accordion.php:897
+#: modules/product-accordion/widgets/product-accordion.php:925
+#: modules/product-accordion/widgets/product-accordion.php:955
+#: modules/product-accordion/widgets/product-accordion.php:1001
+#: modules/product-accordion/widgets/product-accordion.php:1042
+#: modules/product-accordion/widgets/product-accordion.php:1072
+#: modules/product-accordion/widgets/product-accordion.php:1108
+#: modules/product-category/widgets/product-category.php:748
+#: modules/product-category/widgets/product-category.php:772
+#: modules/product-category/widgets/product-category.php:866
+#: modules/product-list/widgets/product-list.php:276
+#: modules/product-list/widgets/product-list.php:400
+#: modules/product-list/widgets/product-list.php:430
+#: modules/product-list/widgets/product-list.php:460
+#: modules/product-list/widgets/product-list.php:490
+#: modules/product-list/widgets/product-list.php:520
+#: modules/product-review-carousel/widgets/product-review-carousel.php:222
+#: modules/product-review-carousel/widgets/product-review-carousel.php:581
+#: modules/product-reviews/widgets/product-reviews.php:181
+#: modules/product-reviews/widgets/product-reviews.php:537
+#: modules/product-table/widgets/product-table.php:1378
+#: modules/product-table/widgets/product-table.php:1463
+#: modules/shiny-carousel/widgets/shiny-carousel.php:272
+#: modules/shiny-carousel/widgets/shiny-carousel.php:395
+#: modules/shiny-grid/widgets/shiny-grid.php:265
+#: modules/shiny-grid/widgets/shiny-grid.php:295
+#: modules/showcase-slider/widgets/showcase-slider.php:576
+#: modules/showcase-slider/widgets/showcase-slider.php:627
+#: modules/showcase-slider/widgets/showcase-slider.php:734
+#: modules/showcase-slider/widgets/showcase-slider.php:822
+#: modules/showcase-slider/widgets/showcase-slider.php:943
+#: modules/showcase-slider/widgets/showcase-slider.php:971
+#: modules/showcase-slider/widgets/showcase-slider.php:999
+#: modules/showcase-slider/widgets/showcase-slider.php:1029
+#: modules/showcase-slider/widgets/showcase-slider.php:1057
+#: modules/showcase-slider/widgets/showcase-slider.php:1088
+#: modules/showcase-slider/widgets/showcase-slider.php:1116
+#: modules/showcase-slider/widgets/showcase-slider.php:1189
+#: modules/showcase-slider/widgets/showcase-slider.php:1312
+#: traits/global-edd-widget-controls.php:513
+#: traits/global-edd-widget-controls.php:586
+#: traits/global-edd-widget-controls.php:799
+#: traits/global-edd-widget-controls.php:850
+#: traits/global-edd-widget-controls.php:1365
+#: traits/global-edd-widget-controls.php:1485
+#: traits/global-edd-widget-controls.php:1526
+#: traits/global-widget-controls.php:848 traits/global-widget-controls.php:899
+#: traits/global-widget-controls.php:1305
+#: traits/global-widget-controls.php:1333
+#: traits/global-widget-controls.php:1361
+#: traits/global-widget-controls.php:1391
+#: traits/global-widget-controls.php:1419
+#: traits/global-widget-controls.php:1450
+#: traits/global-widget-controls.php:1478
+#: traits/global-widget-controls.php:1594
+#: traits/global-widget-controls.php:1714
+#: traits/global-widget-controls.php:1755
+#: traits/global-widget-controls.php:2221
+#: traits/global-widget-controls.php:2344
+msgid "Background"
+msgstr ""
+
+#: includes/modal/modal-controls.php:251 includes/modal/modal-controls.php:317
+#: includes/modal/modal-controls.php:382 includes/modal/modal-controls.php:516
+#: modules/add-to-cart/widgets/add-to-cart.php:237
+#: modules/brand-carousel/widgets/brand-carousel.php:238
+#: modules/brand-grid/widgets/brand-grid.php:220
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:234
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:425
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:529
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:643
+#: modules/edd-category-grid/widgets/edd-category-grid.php:220
+#: modules/edd-category-grid/widgets/edd-category-grid.php:412
+#: modules/edd-category-grid/widgets/edd-category-grid.php:527
+#: modules/edd-category-grid/widgets/edd-category-grid.php:641
+#: modules/featured-box/widgets/featured-box.php:523
+#: modules/featured-box/widgets/featured-box.php:811
+#: modules/florence-carousel/widgets/florence-carousel.php:152
+#: modules/glossy-carousel/widgets/glossy-carousel.php:151
+#: modules/heaven-slider/widgets/heaven-slider.php:1176
+#: modules/heaven-slider/widgets/heaven-slider.php:1346
+#: modules/heaven-slider/widgets/heaven-slider.php:1510
+#: modules/info-list/widgets/info-list.php:366
+#: modules/info-list/widgets/info-list.php:590
+#: modules/product-accordion/widgets/product-accordion.php:377
+#: modules/product-accordion/widgets/product-accordion.php:474
+#: modules/product-accordion/widgets/product-accordion.php:614
+#: modules/product-category/widgets/product-category.php:305
+#: modules/product-category/widgets/product-category.php:476
+#: modules/product-category/widgets/product-category.php:623
+#: modules/product-category/widgets/product-category.php:721
+#: modules/product-image-accordion/widgets/product-image-accordion.php:209
+#: modules/product-table/widgets/product-table.php:584
+#: modules/product-table/widgets/product-table.php:776
+#: modules/product-table/widgets/product-table.php:974
+#: modules/product-table/widgets/product-table.php:1358
+#: modules/product-table/widgets/product-table.php:1699
+#: modules/product-table/widgets/product-table.php:1886
+#: modules/shiny-carousel/widgets/shiny-carousel.php:150
+#: modules/shiny-carousel/widgets/shiny-carousel.php:251
+#: modules/shiny-grid/widgets/shiny-grid.php:243
+#: modules/showcase-slider/widgets/showcase-slider.php:569
+#: modules/showcase-slider/widgets/showcase-slider.php:715
+#: modules/showcase-slider/widgets/showcase-slider.php:1165
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:244
+#: modules/sub-category/widgets/sub-category.php:245
+#: traits/global-edd-widget-controls.php:349
+#: traits/global-edd-widget-controls.php:505
+#: traits/global-edd-widget-controls.php:672
+#: traits/global-edd-widget-controls.php:792
+#: traits/global-edd-widget-controls.php:950
+#: traits/global-edd-widget-controls.php:1349
+#: traits/global-widget-controls.php:425 traits/global-widget-controls.php:628
+#: traits/global-widget-controls.php:721 traits/global-widget-controls.php:841
+#: traits/global-widget-controls.php:996 traits/global-widget-controls.php:1578
+#: traits/global-widget-controls.php:2197
+msgid "Normal"
+msgstr ""
+
+#: includes/modal/modal-controls.php:278 includes/modal/modal-controls.php:334
+#: includes/modal/modal-controls.php:543
+#: modules/add-to-cart/widgets/add-to-cart.php:345
+#: modules/brand-carousel/widgets/brand-carousel.php:434
+#: modules/brand-grid/widgets/brand-grid.php:369
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:366
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:493
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:611
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:718
+#: modules/edd-category-grid/widgets/edd-category-grid.php:352
+#: modules/edd-category-grid/widgets/edd-category-grid.php:480
+#: modules/edd-category-grid/widgets/edd-category-grid.php:609
+#: modules/edd-category-grid/widgets/edd-category-grid.php:716
+#: modules/featured-box/widgets/featured-box.php:599
+#: modules/featured-box/widgets/featured-box.php:919
+#: modules/florence-carousel/widgets/florence-carousel.php:192
+#: modules/glossy-carousel/widgets/glossy-carousel.php:192
+#: modules/heaven-slider/widgets/heaven-slider.php:889
+#: modules/heaven-slider/widgets/heaven-slider.php:1014
+#: modules/heaven-slider/widgets/heaven-slider.php:1073
+#: modules/heaven-slider/widgets/heaven-slider.php:1131
+#: modules/heaven-slider/widgets/heaven-slider.php:1257
+#: modules/heaven-slider/widgets/heaven-slider.php:1455
+#: modules/heaven-slider/widgets/heaven-slider.php:1568
+#: modules/info-list/widgets/info-list.php:442
+#: modules/info-list/widgets/info-list.php:679
+#: modules/product-accordion/widgets/product-accordion.php:434
+#: modules/product-accordion/widgets/product-accordion.php:552
+#: modules/product-accordion/widgets/product-accordion.php:701
+#: modules/product-accordion/widgets/product-accordion.php:907
+#: modules/product-accordion/widgets/product-accordion.php:983
+#: modules/product-accordion/widgets/product-accordion.php:1090
+#: modules/product-category/widgets/product-category.php:432
+#: modules/product-category/widgets/product-category.php:577
+#: modules/product-category/widgets/product-category.php:692
+#: modules/product-category/widgets/product-category.php:844
+#: modules/product-image-accordion/widgets/product-image-accordion.php:270
+#: modules/product-table/widgets/product-table.php:736
+#: modules/product-table/widgets/product-table.php:1784
+#: modules/product-table/widgets/product-table.php:1986
+#: modules/shiny-carousel/widgets/shiny-carousel.php:199
+#: modules/shiny-carousel/widgets/shiny-carousel.php:377
+#: modules/shiny-grid/widgets/shiny-grid.php:275
+#: modules/showcase-slider/widgets/showcase-slider.php:620
+#: modules/showcase-slider/widgets/showcase-slider.php:804
+#: modules/showcase-slider/widgets/showcase-slider.php:953
+#: modules/showcase-slider/widgets/showcase-slider.php:1039
+#: modules/showcase-slider/widgets/showcase-slider.php:1098
+#: modules/showcase-slider/widgets/showcase-slider.php:1288
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:307
+#: modules/sub-category/widgets/sub-category.php:308
+#: traits/global-edd-widget-controls.php:434
+#: traits/global-edd-widget-controls.php:578
+#: traits/global-edd-widget-controls.php:730
+#: traits/global-edd-widget-controls.php:843
+#: traits/global-edd-widget-controls.php:1031
+#: traits/global-edd-widget-controls.php:1108
+#: traits/global-edd-widget-controls.php:1162
+#: traits/global-edd-widget-controls.php:1469
+#: traits/global-widget-controls.php:510 traits/global-widget-controls.php:677
+#: traits/global-widget-controls.php:779 traits/global-widget-controls.php:892
+#: traits/global-widget-controls.php:1077
+#: traits/global-widget-controls.php:1315
+#: traits/global-widget-controls.php:1401
+#: traits/global-widget-controls.php:1460
+#: traits/global-widget-controls.php:1698
+#: traits/global-widget-controls.php:2320
+msgid "Hover"
+msgstr ""
+
+#: includes/modal/modal-controls.php:364 includes/modal/modal-controls.php:471
+#: includes/modal/modal-controls.php:498 includes/modal/modal-controls.php:590
+#: includes/modal/modal-controls.php:650 includes/modal/modal-controls.php:712
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:602
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:710
+#: modules/edd-category-grid/widgets/edd-category-grid.php:600
+#: modules/edd-category-grid/widgets/edd-category-grid.php:708
+#: modules/heaven-slider/widgets/heaven-slider.php:734
+#: modules/heaven-slider/widgets/heaven-slider.php:795
+#: modules/heaven-slider/widgets/heaven-slider.php:1242
+#: modules/info-list/widgets/info-list.php:669
+#: modules/mini-cart/widgets/mini-cart.php:773
+#: modules/mini-cart/widgets/mini-cart.php:891
+#: modules/product-accordion/widgets/product-accordion.php:426
+#: modules/product-accordion/widgets/product-accordion.php:686
+#: modules/product-accordion/widgets/product-accordion.php:771
+#: modules/product-category/widgets/product-category.php:683
+#: modules/product-category/widgets/product-category.php:836
+#: modules/product-image-accordion/widgets/product-image-accordion.php:358
+#: modules/product-list/widgets/product-list.php:567
+#: modules/product-review-carousel/widgets/product-review-carousel.php:428
+#: modules/product-review-carousel/widgets/product-review-carousel.php:474
+#: modules/product-review-carousel/widgets/product-review-carousel.php:510
+#: modules/product-review-carousel/widgets/product-review-carousel.php:550
+#: modules/product-review-carousel/widgets/product-review-carousel.php:593
+#: modules/product-reviews/widgets/product-reviews.php:384
+#: modules/product-reviews/widgets/product-reviews.php:430
+#: modules/product-reviews/widgets/product-reviews.php:466
+#: modules/product-reviews/widgets/product-reviews.php:506
+#: modules/product-reviews/widgets/product-reviews.php:549
+#: modules/product-table/widgets/product-table.php:1180
+#: modules/product-table/widgets/product-table.php:1214
+#: modules/product-table/widgets/product-table.php:1247
+#: modules/product-table/widgets/product-table.php:1281
+#: modules/product-table/widgets/product-table.php:1329
+#: modules/product-table/widgets/product-table.php:1576
+#: modules/product-table/widgets/product-table.php:1676
+#: modules/product-table/widgets/product-table.php:1864
+#: modules/product-table/widgets/product-table.php:1974
+#: modules/product-table/widgets/product-table.php:2105
+#: modules/product-table/widgets/product-table.php:2146
+#: modules/shiny-carousel/widgets/shiny-carousel.php:366
+#: modules/shiny-grid/widgets/shiny-grid.php:393
+#: modules/showcase-slider/widgets/showcase-slider.php:691
+#: modules/showcase-slider/widgets/showcase-slider.php:793
+#: modules/showcase-slider/widgets/showcase-slider.php:1519
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:416
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:466
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:516
+#: modules/sub-category/widgets/sub-category.php:417
+#: modules/sub-category/widgets/sub-category.php:467
+#: modules/sub-category/widgets/sub-category.php:517
+#: traits/global-edd-widget-controls.php:925
+#: traits/global-edd-widget-controls.php:1016
+#: traits/global-edd-widget-controls.php:1278
+#: traits/global-edd-widget-controls.php:1326
+#: traits/global-edd-widget-controls.php:1459
+#: traits/global-widget-controls.php:606 traits/global-widget-controls.php:971
+#: traits/global-widget-controls.php:1062
+#: traits/global-widget-controls.php:1167
+#: traits/global-widget-controls.php:1227
+#: traits/global-widget-controls.php:1688
+#: traits/global-widget-controls.php:1986
+#: traits/global-widget-controls.php:2551
+msgid "Typography"
+msgstr ""
+
+#: includes/modal/modal-controls.php:371
+#: modules/glossy-carousel/widgets/glossy-carousel.php:220
+#: modules/heaven-slider/widgets/heaven-slider.php:163
+#: modules/heaven-slider/widgets/heaven-slider.php:808
+#: modules/product-accordion/widgets/product-accordion.php:142
+#: modules/product-list/widgets/product-list.php:170
+#: modules/product-review-carousel/widgets/product-review-carousel.php:313
+#: modules/product-review-carousel/widgets/product-review-carousel.php:559
+#: modules/product-reviews/widgets/product-reviews.php:270
+#: modules/product-reviews/widgets/product-reviews.php:515
+#: modules/product-table/widgets/product-table.php:329
+#: modules/product-table/widgets/product-table.php:1591
+#: modules/product-table/widgets/product-table.php:2361
+#: modules/showcase-slider/widgets/showcase-slider.php:212
+#: traits/global-widget-controls.php:283 traits/global-widget-controls.php:1239
+msgid "Rating"
+msgstr ""
+
+#: includes/modal/modal-controls.php:400
+#: modules/heaven-slider/widgets/heaven-slider.php:1592
+#: modules/product-accordion/widgets/product-accordion.php:1024
+#: modules/product-table/widgets/product-table.php:1443
+#: modules/showcase-slider/widgets/showcase-slider.php:981
+#: traits/global-edd-widget-controls.php:463
+#: traits/global-edd-widget-controls.php:1510
+#: traits/global-widget-controls.php:539 traits/global-widget-controls.php:1343
+#: traits/global-widget-controls.php:1739
+msgid "Active"
+msgstr ""
+
+#: includes/modal/modal-controls.php:430
+msgid "Regular"
+msgstr ""
+
+#: includes/modal/modal-controls.php:436
+#: modules/product-table/widgets/product-table.php:1650
+#: modules/showcase-slider/widgets/showcase-slider.php:665
+#: traits/global-widget-controls.php:1188
+msgid "Regular Color"
+msgstr ""
+
+#: includes/modal/modal-controls.php:449
+#: modules/heaven-slider/widgets/heaven-slider.php:242
+#: modules/product-accordion/widgets/product-accordion.php:205
+#: modules/product-list/widgets/product-list.php:203
+#: modules/product-list/widgets/product-list.php:381
+#: modules/showcase-slider/widgets/showcase-slider.php:261
+#: traits/global-widget-controls.php:322 traits/global-widget-controls.php:1795
+#: traits/global-widget-template.php:108
+msgid "Sale"
+msgstr ""
+
+#: includes/modal/modal-controls.php:479
+#: modules/mini-cart/widgets/mini-cart.php:196
+#: modules/product-accordion/widgets/product-accordion.php:133
+#: modules/product-table/widgets/product-table.php:206
+#: modules/product-table/widgets/product-table.php:308
+#: modules/product-table/widgets/product-table.php:1191
+#: modules/product-table/widgets/product-table.php:2348
+msgid "Description"
+msgstr ""
+
+#: includes/modal/modal-controls.php:505
+#: modules/featured-box/widgets/featured-box.php:798
+#: modules/heaven-slider/widgets/heaven-slider.php:189
+#: modules/shiny-carousel/widgets/shiny-carousel.php:237
+#: modules/shiny-grid/widgets/shiny-grid.php:229
+#: modules/showcase-slider/widgets/showcase-slider.php:237
+#: modules/showcase-slider/widgets/showcase-slider.php:701
+msgid "Button"
+msgstr ""
+
+#: includes/modal/modal-controls.php:549
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:620
+#: modules/edd-category-grid/widgets/edd-category-grid.php:618
+#: modules/featured-box/widgets/featured-box.php:666
+#: modules/featured-box/widgets/featured-box.php:765
+#: modules/heaven-slider/widgets/heaven-slider.php:710
+#: modules/info-list/widgets/info-list.php:506
+#: modules/mini-cart/widgets/mini-cart.php:668
+#: modules/mini-cart/widgets/mini-cart.php:802
+#: modules/mini-cart/widgets/mini-cart.php:920
+#: modules/product-category/widgets/product-category.php:698
+#: modules/product-image-accordion/widgets/product-image-accordion.php:346
+#: modules/product-review-carousel/widgets/product-review-carousel.php:405
+#: modules/product-review-carousel/widgets/product-review-carousel.php:463
+#: modules/product-review-carousel/widgets/product-review-carousel.php:499
+#: modules/product-review-carousel/widgets/product-review-carousel.php:539
+#: modules/product-reviews/widgets/product-reviews.php:361
+#: modules/product-reviews/widgets/product-reviews.php:419
+#: modules/product-reviews/widgets/product-reviews.php:455
+#: modules/product-reviews/widgets/product-reviews.php:495
+#: modules/product-table/widgets/product-table.php:1156
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:393
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:443
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:493
+#: modules/sub-category/widgets/sub-category.php:394
+#: modules/sub-category/widgets/sub-category.php:444
+#: modules/sub-category/widgets/sub-category.php:494
+#: traits/global-edd-widget-controls.php:901
+#: traits/global-widget-controls.php:947
+msgid "Hover Color"
+msgstr ""
+
+#: includes/modal/modal-controls.php:559
+msgid "Hover Background"
+msgstr ""
+
+#: includes/modal/modal-controls.php:571
+#: modules/heaven-slider/widgets/heaven-slider.php:258
+#: modules/product-accordion/widgets/product-accordion.php:221
+#: modules/product-list/widgets/product-list.php:219
+#: modules/showcase-slider/widgets/showcase-slider.php:277
+#: traits/global-widget-controls.php:338
+msgid "Stock Status"
+msgstr ""
+
+#: includes/modal/modal-controls.php:597
+msgid "SKU"
+msgstr ""
+
+#: includes/modal/modal-controls.php:608 includes/modal/modal-controls.php:670
+msgid "Label"
+msgstr ""
+
+#: includes/modal/modal-controls.php:614 includes/modal/modal-controls.php:676
+#: modules/product-table/widgets/product-table.php:841
+#: modules/product-table/widgets/product-table.php:991
+msgid "Label Color"
+msgstr ""
+
+#: includes/modal/modal-controls.php:625 includes/modal/modal-controls.php:687
+#: modules/product-table/widgets/product-table.php:864
+msgid "Label Typography"
+msgstr ""
+
+#: includes/modal/modal-controls.php:633 includes/modal/modal-controls.php:695
+msgid "Value"
+msgstr ""
+
+#: includes/modal/modal-controls.php:639
+msgid "Sku Color"
+msgstr ""
+
+#: includes/modal/modal-controls.php:659
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:519
+#: modules/edd-category-grid/widgets/edd-category-grid.php:506
+#: modules/heaven-slider/widgets/heaven-slider.php:205
+#: modules/heaven-slider/widgets/heaven-slider.php:1163
+#: modules/product-accordion/widgets/product-accordion.php:113
+#: modules/product-accordion/widgets/product-accordion.php:601
+#: modules/product-category/widgets/product-category.php:613
+#: modules/showcase-slider/widgets/showcase-slider.php:183
+#: traits/global-edd-widget-controls.php:305
+#: traits/global-edd-widget-controls.php:937
+#: traits/global-widget-controls.php:236 traits/global-widget-controls.php:983
+msgid "Category"
+msgstr ""
+
+#: includes/modal/modal-controls.php:701
+msgid "Category Color"
+msgstr ""
+
+#: includes/wishlist-compare.php:25
+msgid "Unauthorized!"
+msgstr ""
+
+#: includes/wishlist-compare.php:29
+msgid "No product selected!"
+msgstr ""
+
+#: includes/wishlist-compare.php:54 traits/global-widget-template.php:33
+msgid "Wishlist item Added!"
+msgstr ""
+
+#: includes/wishlist-compare.php:57
+msgid "Add To Wishlist"
+msgstr ""
+
+#: includes/wishlist-compare.php:119
+msgctxt "Frontend"
+msgid "Remove"
+msgstr ""
+
+#: includes/wishlist-compare.php:120
+msgctxt "Frontend"
+msgid "Product"
+msgstr ""
+
+#: includes/wishlist-compare.php:121
+msgctxt "Frontend"
+msgid "Product Name"
+msgstr ""
+
+#: includes/wishlist-compare.php:122
+msgctxt "Frontend"
+msgid "Unit Price"
+msgstr ""
+
+#: includes/wishlist-compare.php:123
+msgctxt "Frontend"
+msgid "Stock Status"
+msgstr ""
+
+#: includes/wishlist-compare.php:124
+msgctxt "Frontend"
+msgid "Action"
+msgstr ""
+
+#: loader.php:63 loader.php:74
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: modules/add-to-cart/module.info.php:5
+#: modules/add-to-cart/widgets/add-to-cart.php:29
+#: modules/add-to-cart/widgets/add-to-cart.php:227
+msgid "Add To Cart"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:76
+msgid "Select Post"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:95
+msgid "Show Quantity Field"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:97
+#: modules/florence-grid/widgets/florence-grid.php:180
+#: modules/glossy-grid/widgets/glossy-grid.php:181
+#: modules/heaven-slider/widgets/heaven-slider.php:313
+#: modules/product-accordion/widgets/product-accordion.php:275
+#: modules/shiny-grid/widgets/shiny-grid.php:186
+#: modules/showcase-slider/widgets/showcase-slider.php:331
+#: traits/global-widget-controls.php:392
+msgid "Hide"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:98
+#: modules/florence-grid/widgets/florence-grid.php:179
+#: modules/glossy-grid/widgets/glossy-grid.php:180
+#: modules/heaven-slider/widgets/heaven-slider.php:312
+#: modules/product-accordion/widgets/product-accordion.php:274
+#: modules/shiny-grid/widgets/shiny-grid.php:185
+#: modules/showcase-slider/widgets/showcase-slider.php:330
+#: traits/global-widget-controls.php:391
+msgid "Show"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:104
+#: modules/product-review-carousel/widgets/product-review-carousel.php:339
+#: modules/product-reviews/widgets/product-reviews.php:295
+#: modules/product-table/widgets/product-table.php:1431
+#: traits/global-edd-widget-controls.php:1236
+#: traits/global-edd-widget-controls.php:1257
+#: traits/global-edd-widget-controls.php:1443
+#: traits/global-widget-controls.php:1672
+msgid "Space Between"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:118
+msgid "Default Quantity"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:119
+msgid "Buyer will get this number of this Product"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:131
+#: modules/featured-box/widgets/featured-box.php:107
+#: modules/featured-box/widgets/featured-box.php:699
+#: modules/heaven-slider/widgets/heaven-slider.php:214
+#: modules/heaven-slider/widgets/heaven-slider.php:760
+#: modules/info-list/widgets/info-list.php:311
+#: modules/info-list/widgets/info-list.php:539
+#: modules/product-accordion/widgets/product-accordion.php:742
+#: traits/global-widget-controls.php:258 traits/global-widget-controls.php:1120
+msgid "Text"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:145
+#: modules/info-list/widgets/info-list.php:273
+#: modules/info-list/widgets/info-list.php:580
+#: modules/product-accordion/widgets/product-accordion.php:464
+msgid "Icon"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:155
+#: modules/info-list/widgets/info-list.php:127
+msgid "Icon Position"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:160
+#: modules/add-to-cart/widgets/add-to-cart.php:201
+#: modules/brand-carousel/widgets/brand-carousel.php:119
+#: modules/featured-box/widgets/featured-box.php:266
+#: modules/info-list/widgets/info-list.php:132
+#: modules/info-list/widgets/info-list.php:198
+#: modules/mini-cart/widgets/mini-cart.php:88
+#: modules/mini-cart/widgets/mini-cart.php:241
+#: modules/product-table/widgets/product-table.php:87
+#: modules/product-table/widgets/product-table.php:112
+#: modules/product-table/widgets/product-table.php:1307
+#: traits/global-edd-widget-controls.php:75
+#: traits/global-edd-widget-controls.php:169
+#: traits/global-edd-widget-controls.php:1388
+#: traits/global-widget-controls.php:27 traits/global-widget-controls.php:1617
+msgid "Left"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:164
+#: modules/add-to-cart/widgets/add-to-cart.php:209
+#: modules/brand-carousel/widgets/brand-carousel.php:127
+#: modules/featured-box/widgets/featured-box.php:274
+#: modules/info-list/widgets/info-list.php:140
+#: modules/info-list/widgets/info-list.php:206
+#: modules/mini-cart/widgets/mini-cart.php:249
+#: modules/product-table/widgets/product-table.php:95
+#: modules/product-table/widgets/product-table.php:120
+#: modules/product-table/widgets/product-table.php:1315
+#: traits/global-edd-widget-controls.php:83
+#: traits/global-edd-widget-controls.php:177
+#: traits/global-edd-widget-controls.php:1396
+#: traits/global-widget-controls.php:35 traits/global-widget-controls.php:1625
+msgid "Right"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:177
+#: modules/info-list/widgets/info-list.php:179
+#: modules/mini-cart/widgets/mini-cart.php:261
+msgid "Icon Spacing"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:197
+#: modules/brand-carousel/widgets/brand-carousel.php:115
+#: modules/featured-box/widgets/featured-box.php:262
+#: modules/info-list/widgets/info-list.php:194
+#: modules/mini-cart/widgets/mini-cart.php:237
+#: modules/product-review-carousel/widgets/product-review-carousel.php:111
+#: modules/product-table/widgets/product-table.php:1302
+#: traits/global-edd-widget-controls.php:71
+#: traits/global-edd-widget-controls.php:165
+#: traits/global-edd-widget-controls.php:1384
+#: traits/global-widget-controls.php:23 traits/global-widget-controls.php:1613
+msgid "Alignment"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:213
+msgid "Justified"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:277
+#: modules/add-to-cart/widgets/add-to-cart.php:463
+#: modules/brand-carousel/widgets/brand-carousel.php:254
+#: modules/brand-grid/widgets/brand-grid.php:236
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:339
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:466
+#: modules/edd-category-grid/widgets/edd-category-grid.php:325
+#: modules/edd-category-grid/widgets/edd-category-grid.php:453
+#: modules/featured-box/widgets/featured-box.php:539
+#: modules/featured-box/widgets/featured-box.php:838
+#: modules/heaven-slider/widgets/heaven-slider.php:588
+#: modules/heaven-slider/widgets/heaven-slider.php:649
+#: modules/heaven-slider/widgets/heaven-slider.php:919
+#: modules/heaven-slider/widgets/heaven-slider.php:1200
+#: modules/heaven-slider/widgets/heaven-slider.php:1528
+#: modules/info-list/widgets/info-list.php:382
+#: modules/mini-cart/widgets/mini-cart.php:319
+#: modules/mini-cart/widgets/mini-cart.php:718
+#: modules/mini-cart/widgets/mini-cart.php:836
+#: modules/mini-cart/widgets/mini-cart.php:954
+#: modules/product-accordion/widgets/product-accordion.php:335
+#: modules/product-accordion/widgets/product-accordion.php:512
+#: modules/product-accordion/widgets/product-accordion.php:638
+#: modules/product-accordion/widgets/product-accordion.php:814
+#: modules/product-accordion/widgets/product-accordion.php:966
+#: modules/product-accordion/widgets/product-accordion.php:1083
+#: modules/product-category/widgets/product-category.php:405
+#: modules/product-category/widgets/product-category.php:550
+#: modules/product-list/widgets/product-list.php:307
+#: modules/product-review-carousel/widgets/product-review-carousel.php:253
+#: modules/product-reviews/widgets/product-reviews.php:212
+#: modules/product-table/widgets/product-table.php:806
+#: modules/product-table/widgets/product-table.php:1014
+#: modules/product-table/widgets/product-table.php:1729
+#: modules/product-table/widgets/product-table.php:1917
+#: modules/shiny-carousel/widgets/shiny-carousel.php:337
+#: modules/shiny-grid/widgets/shiny-grid.php:362
+#: modules/showcase-slider/widgets/showcase-slider.php:765
+#: modules/showcase-slider/widgets/showcase-slider.php:858
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:280
+#: modules/sub-category/widgets/sub-category.php:281
+#: traits/global-edd-widget-controls.php:974
+#: traits/global-edd-widget-controls.php:1194
+#: traits/global-edd-widget-controls.php:1376
+#: traits/global-widget-controls.php:1020
+#: traits/global-widget-controls.php:1492
+#: traits/global-widget-controls.php:1605
+#: traits/global-widget-controls.php:1944
+msgid "Border"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:303
+#: modules/add-to-cart/widgets/add-to-cart.php:489
+#: modules/brand-carousel/widgets/brand-carousel.php:280
+#: modules/brand-grid/widgets/brand-grid.php:262
+#: modules/featured-box/widgets/featured-box.php:565
+#: modules/featured-box/widgets/featured-box.php:864
+#: modules/florence-carousel/widgets/florence-carousel.php:167
+#: modules/glossy-carousel/widgets/glossy-carousel.php:166
+#: modules/heaven-slider/widgets/heaven-slider.php:613
+#: modules/heaven-slider/widgets/heaven-slider.php:657
+#: modules/heaven-slider/widgets/heaven-slider.php:926
+#: modules/heaven-slider/widgets/heaven-slider.php:1208
+#: modules/heaven-slider/widgets/heaven-slider.php:1383
+#: modules/heaven-slider/widgets/heaven-slider.php:1554
+#: modules/info-list/widgets/info-list.php:408
+#: modules/info-list/widgets/info-list.php:624
+#: modules/mini-cart/widgets/mini-cart.php:327
+#: modules/mini-cart/widgets/mini-cart.php:740
+#: modules/mini-cart/widgets/mini-cart.php:858
+#: modules/mini-cart/widgets/mini-cart.php:976
+#: modules/product-accordion/widgets/product-accordion.php:322
+#: modules/product-accordion/widgets/product-accordion.php:414
+#: modules/product-accordion/widgets/product-accordion.php:663
+#: modules/product-list/widgets/product-list.php:344
+#: modules/product-review-carousel/widgets/product-review-carousel.php:362
+#: modules/product-reviews/widgets/product-reviews.php:318
+#: modules/product-table/widgets/product-table.php:817
+#: modules/product-table/widgets/product-table.php:935
+#: modules/product-table/widgets/product-table.php:1025
+#: modules/product-table/widgets/product-table.php:1109
+#: modules/product-table/widgets/product-table.php:1740
+#: modules/product-table/widgets/product-table.php:1928
+#: modules/shiny-carousel/widgets/shiny-carousel.php:165
+#: modules/shiny-carousel/widgets/shiny-carousel.php:346
+#: modules/shiny-grid/widgets/shiny-grid.php:371
+#: modules/showcase-slider/widgets/showcase-slider.php:773
+#: modules/showcase-slider/widgets/showcase-slider.php:1214
+#: modules/showcase-slider/widgets/showcase-slider.php:1404
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:350
+#: modules/sub-category/widgets/sub-category.php:351
+#: traits/global-edd-widget-controls.php:532
+#: traits/global-edd-widget-controls.php:695
+#: traits/global-edd-widget-controls.php:753
+#: traits/global-edd-widget-controls.php:818
+#: traits/global-edd-widget-controls.php:982
+#: traits/global-edd-widget-controls.php:1422
+#: traits/global-widget-controls.php:643 traits/global-widget-controls.php:744
+#: traits/global-widget-controls.php:802 traits/global-widget-controls.php:867
+#: traits/global-widget-controls.php:1028
+#: traits/global-widget-controls.php:1651
+#: traits/global-widget-controls.php:1952
+#: traits/global-widget-controls.php:2246
+#: traits/global-widget-controls.php:2436
+msgid "Border Radius"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:315
+#: modules/add-to-cart/widgets/add-to-cart.php:508
+#: modules/brand-carousel/widgets/brand-carousel.php:292
+#: modules/brand-grid/widgets/brand-grid.php:274
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:316
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:443
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:584
+#: modules/edd-category-grid/widgets/edd-category-grid.php:302
+#: modules/edd-category-grid/widgets/edd-category-grid.php:430
+#: modules/edd-category-grid/widgets/edd-category-grid.php:582
+#: modules/featured-box/widgets/featured-box.php:577
+#: modules/featured-box/widgets/featured-box.php:877
+#: modules/florence-carousel/widgets/florence-carousel.php:179
+#: modules/glossy-carousel/widgets/glossy-carousel.php:178
+#: modules/heaven-slider/widgets/heaven-slider.php:624
+#: modules/heaven-slider/widgets/heaven-slider.php:937
+#: modules/heaven-slider/widgets/heaven-slider.php:1219
+#: modules/heaven-slider/widgets/heaven-slider.php:1395
+#: modules/info-list/widgets/info-list.php:420
+#: modules/info-list/widgets/info-list.php:636
+#: modules/mini-cart/widgets/mini-cart.php:339
+#: modules/mini-cart/widgets/mini-cart.php:417
+#: modules/mini-cart/widgets/mini-cart.php:752
+#: modules/mini-cart/widgets/mini-cart.php:870
+#: modules/mini-cart/widgets/mini-cart.php:988
+#: modules/mini-cart/widgets/mini-cart.php:1078
+#: modules/product-accordion/widgets/product-accordion.php:403
+#: modules/product-accordion/widgets/product-accordion.php:500
+#: modules/product-accordion/widgets/product-accordion.php:588
+#: modules/product-accordion/widgets/product-accordion.php:674
+#: modules/product-category/widgets/product-category.php:382
+#: modules/product-category/widgets/product-category.php:527
+#: modules/product-category/widgets/product-category.php:665
+#: modules/product-category/widgets/product-category.php:821
+#: modules/product-image-accordion/widgets/product-image-accordion.php:187
+#: modules/product-list/widgets/product-list.php:284
+#: modules/product-list/widgets/product-list.php:532
+#: modules/product-review-carousel/widgets/product-review-carousel.php:230
+#: modules/product-reviews/widgets/product-reviews.php:189
+#: modules/product-table/widgets/product-table.php:829
+#: modules/product-table/widgets/product-table.php:1037
+#: modules/product-table/widgets/product-table.php:1389
+#: modules/product-table/widgets/product-table.php:1752
+#: modules/product-table/widgets/product-table.php:1940
+#: modules/shiny-carousel/widgets/shiny-carousel.php:177
+#: modules/showcase-slider/widgets/showcase-slider.php:605
+#: modules/showcase-slider/widgets/showcase-slider.php:742
+#: modules/showcase-slider/widgets/showcase-slider.php:876
+#: modules/showcase-slider/widgets/showcase-slider.php:1229
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:257
+#: modules/sub-category/widgets/sub-category.php:258
+#: traits/global-edd-widget-controls.php:408
+#: traits/global-edd-widget-controls.php:707
+#: traits/global-edd-widget-controls.php:830
+#: traits/global-edd-widget-controls.php:993
+#: traits/global-edd-widget-controls.php:1213
+#: traits/global-edd-widget-controls.php:1411
+#: traits/global-widget-controls.php:484 traits/global-widget-controls.php:655
+#: traits/global-widget-controls.php:756 traits/global-widget-controls.php:879
+#: traits/global-widget-controls.php:1039
+#: traits/global-widget-controls.php:1511
+#: traits/global-widget-controls.php:1640
+#: traits/global-widget-controls.php:1963
+#: traits/global-widget-controls.php:2261
+msgid "Padding"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:364
+#: modules/brand-carousel/widgets/brand-carousel.php:449
+#: modules/brand-grid/widgets/brand-grid.php:384
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:397
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:499
+#: modules/edd-category-grid/widgets/edd-category-grid.php:383
+#: modules/edd-category-grid/widgets/edd-category-grid.php:486
+#: modules/featured-box/widgets/featured-box.php:614
+#: modules/featured-box/widgets/featured-box.php:947
+#: modules/florence-carousel/widgets/florence-carousel.php:199
+#: modules/glossy-carousel/widgets/glossy-carousel.php:199
+#: modules/heaven-slider/widgets/heaven-slider.php:1280
+#: modules/heaven-slider/widgets/heaven-slider.php:1483
+#: modules/heaven-slider/widgets/heaven-slider.php:1575
+#: modules/heaven-slider/widgets/heaven-slider.php:1599
+#: modules/info-list/widgets/info-list.php:457
+#: modules/info-list/widgets/info-list.php:705
+#: modules/product-accordion/widgets/product-accordion.php:724
+#: modules/product-accordion/widgets/product-accordion.php:1011
+#: modules/product-category/widgets/product-category.php:438
+#: modules/product-category/widgets/product-category.php:593
+#: modules/product-table/widgets/product-table.php:632
+#: modules/product-table/widgets/product-table.php:904
+#: modules/product-table/widgets/product-table.php:1069
+#: modules/product-table/widgets/product-table.php:1474
+#: modules/product-table/widgets/product-table.php:1813
+#: modules/product-table/widgets/product-table.php:1853
+#: modules/product-table/widgets/product-table.php:2015
+#: modules/shiny-carousel/widgets/shiny-carousel.php:206
+#: modules/shiny-carousel/widgets/shiny-carousel.php:404
+#: modules/shiny-grid/widgets/shiny-grid.php:304
+#: modules/showcase-slider/widgets/showcase-slider.php:586
+#: modules/showcase-slider/widgets/showcase-slider.php:635
+#: modules/showcase-slider/widgets/showcase-slider.php:831
+#: modules/showcase-slider/widgets/showcase-slider.php:1326
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:313
+#: modules/sub-category/widgets/sub-category.php:314
+#: traits/global-edd-widget-controls.php:397
+#: traits/global-edd-widget-controls.php:523
+#: traits/global-edd-widget-controls.php:595
+#: traits/global-edd-widget-controls.php:809
+#: traits/global-edd-widget-controls.php:858
+#: traits/global-edd-widget-controls.php:1054
+#: traits/global-edd-widget-controls.php:1495
+#: traits/global-widget-controls.php:473 traits/global-widget-controls.php:684
+#: traits/global-widget-controls.php:858 traits/global-widget-controls.php:907
+#: traits/global-widget-controls.php:1100
+#: traits/global-widget-controls.php:1724
+#: traits/global-widget-controls.php:2358
+msgid "Border Color"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:388
+msgid "Hover Animation"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:403
+msgid "Quantity Field"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:519
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:327
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:454
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:573
+#: modules/edd-category-grid/widgets/edd-category-grid.php:313
+#: modules/edd-category-grid/widgets/edd-category-grid.php:441
+#: modules/edd-category-grid/widgets/edd-category-grid.php:571
+#: modules/featured-box/widgets/featured-box.php:677
+#: modules/featured-box/widgets/featured-box.php:721
+#: modules/featured-box/widgets/featured-box.php:776
+#: modules/featured-box/widgets/featured-box.php:889
+#: modules/heaven-slider/widgets/heaven-slider.php:721
+#: modules/heaven-slider/widgets/heaven-slider.php:782
+#: modules/heaven-slider/widgets/heaven-slider.php:843
+#: modules/heaven-slider/widgets/heaven-slider.php:948
+#: modules/heaven-slider/widgets/heaven-slider.php:1230
+#: modules/heaven-slider/widgets/heaven-slider.php:1407
+#: modules/info-list/widgets/info-list.php:517
+#: modules/info-list/widgets/info-list.php:558
+#: modules/info-list/widgets/info-list.php:648
+#: modules/mini-cart/widgets/mini-cart.php:1091
+#: modules/product-accordion/widgets/product-accordion.php:310
+#: modules/product-accordion/widgets/product-accordion.php:759
+#: modules/product-category/widgets/product-category.php:393
+#: modules/product-category/widgets/product-category.php:538
+#: modules/product-category/widgets/product-category.php:654
+#: modules/product-category/widgets/product-category.php:806
+#: modules/product-list/widgets/product-list.php:295
+#: modules/product-list/widgets/product-list.php:544
+#: modules/product-review-carousel/widgets/product-review-carousel.php:241
+#: modules/product-review-carousel/widgets/product-review-carousel.php:416
+#: modules/product-reviews/widgets/product-reviews.php:200
+#: modules/product-reviews/widgets/product-reviews.php:372
+#: modules/product-table/widgets/product-table.php:2091
+#: modules/showcase-slider/widgets/showcase-slider.php:753
+#: modules/showcase-slider/widgets/showcase-slider.php:887
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:268
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:404
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:454
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:504
+#: modules/sub-category/widgets/sub-category.php:269
+#: modules/sub-category/widgets/sub-category.php:405
+#: modules/sub-category/widgets/sub-category.php:455
+#: modules/sub-category/widgets/sub-category.php:505
+#: traits/global-edd-widget-controls.php:420
+#: traits/global-edd-widget-controls.php:912
+#: traits/global-edd-widget-controls.php:1004
+#: traits/global-edd-widget-controls.php:1224
+#: traits/global-edd-widget-controls.php:1313
+#: traits/global-widget-controls.php:496 traits/global-widget-controls.php:593
+#: traits/global-widget-controls.php:958 traits/global-widget-controls.php:1050
+#: traits/global-widget-controls.php:1155
+#: traits/global-widget-controls.php:1214
+#: traits/global-widget-controls.php:1522
+#: traits/global-widget-controls.php:1974
+msgid "Margin"
+msgstr ""
+
+#: modules/add-to-cart/widgets/add-to-cart.php:601
+#: modules/add-to-cart/widgets/add-to-cart.php:666
+msgid "Please set a valid product"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:73
+#: modules/brand-grid/widgets/brand-grid.php:76
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:95
+#: modules/edd-category-grid/widgets/edd-category-grid.php:88
+#: modules/florence-carousel/widgets/florence-carousel.php:85
+#: modules/florence-grid/widgets/florence-grid.php:90
+#: modules/glossy-carousel/widgets/glossy-carousel.php:83
+#: modules/glossy-grid/widgets/glossy-grid.php:91
+#: modules/info-list/widgets/info-list.php:77
+#: modules/product-category/widgets/product-category.php:120
+#: modules/product-review-carousel/widgets/product-review-carousel.php:71
+#: modules/shiny-carousel/widgets/shiny-carousel.php:82
+#: modules/shiny-grid/widgets/shiny-grid.php:95
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:77
+#: modules/sub-category/widgets/sub-category.php:74
+#: traits/global-edd-widget-controls.php:31
+#: traits/global-edd-widget-controls.php:116
+msgid "Columns"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:92
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:122
+#: modules/edd-category-grid/widgets/edd-category-grid.php:110
+#: modules/florence-carousel/widgets/florence-carousel.php:103
+#: modules/glossy-carousel/widgets/glossy-carousel.php:101
+#: modules/product-review-carousel/widgets/product-review-carousel.php:89
+#: modules/shiny-carousel/widgets/shiny-carousel.php:100
+#: modules/showcase-slider/widgets/showcase-slider.php:106
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:103
+#: modules/sub-category/widgets/sub-category.php:96
+#: traits/global-edd-widget-controls.php:49
+msgid "Item Gap"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:143
+#: modules/brand-grid/widgets/brand-grid.php:128
+msgid "Brand Items"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:153
+#: modules/brand-grid/widgets/brand-grid.php:138
+msgid "Brand Image"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:164
+#: modules/brand-carousel/widgets/brand-carousel.php:166
+#: modules/brand-grid/widgets/brand-grid.php:149
+#: modules/brand-grid/widgets/brand-grid.php:151
+msgid "Brand Name"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:175
+#: modules/brand-grid/widgets/brand-grid.php:160
+msgid "Url"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:177
+#: modules/brand-grid/widgets/brand-grid.php:162
+msgid "https://your-link.com"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:228
+#: modules/brand-grid/widgets/brand-grid.php:210
+#: modules/florence-carousel/widgets/florence-carousel.php:142
+#: modules/glossy-carousel/widgets/glossy-carousel.php:141
+#: modules/info-list/widgets/info-list.php:263
+#: modules/info-list/widgets/info-list.php:356
+#: modules/product-accordion/widgets/product-accordion.php:294
+#: modules/product-list/widgets/product-list.php:268
+#: modules/product-review-carousel/widgets/product-review-carousel.php:214
+#: modules/product-reviews/widgets/product-reviews.php:173
+#: modules/shiny-carousel/widgets/shiny-carousel.php:140
+#: traits/global-widget-controls.php:618
+msgid "Items"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:312
+msgid "Shadow Mode"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:323
+msgid "Shadow Color"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:338
+#: traits/global-widget-controls.php:3478
+msgid "Match Padding"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:339
+#: traits/global-widget-controls.php:3479
+msgid ""
+"You have to add padding for matching overlaping normal/hover box shadow when "
+"you used Box Shadow option."
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:360
+#: modules/brand-carousel/widgets/brand-carousel.php:473
+#: modules/brand-grid/widgets/brand-grid.php:295
+#: modules/brand-grid/widgets/brand-grid.php:408
+msgid "I M A G E"
+msgstr ""
+
+#: modules/brand-carousel/widgets/brand-carousel.php:403
+#: modules/brand-carousel/widgets/brand-carousel.php:482
+#: modules/brand-grid/widgets/brand-grid.php:338
+#: modules/brand-grid/widgets/brand-grid.php:417
+msgid "Opaciry"
+msgstr ""
+
+#: modules/brand-grid/widgets/brand-grid.php:98
+#: modules/info-list/widgets/info-list.php:99
+#: modules/product-category/widgets/product-category.php:142
+msgid "Column Gap"
+msgstr ""
+
+#: modules/brand-grid/widgets/brand-grid.php:112
+#: modules/florence-grid/widgets/florence-grid.php:131
+#: modules/glossy-grid/widgets/glossy-grid.php:132
+#: modules/info-list/widgets/info-list.php:113
+#: modules/shiny-grid/widgets/shiny-grid.php:136
+#: traits/global-edd-widget-controls.php:152
+msgid "Row Gap"
+msgstr ""
+
+#: modules/edd-beauty-carousel/widgets/edd-beauty-carousel.php:140
+#: modules/edd-beauty-grid/widgets/edd-beauty-grid.php:195
+#: modules/edd-classic-carousel/widgets/edd-classic-carousel.php:132
+#: modules/edd-classic-grid/widgets/edd-classic-grid.php:144
+#: modules/edd-standard-carousel/widgets/edd-standard-carousel.php:130
+#: modules/edd-standard-grid/widgets/edd-standard-grid.php:163
+#: modules/edd-trendy-carousel/widgets/edd-trendy-carousel.php:159
+#: modules/edd-trendy-grid/widgets/edd-trendy-grid.php:163
+#: traits/global-edd-widget-controls.php:1083
+msgid "View Details"
+msgstr ""
+
+#: modules/edd-beauty-carousel/widgets/edd-beauty-carousel.php:162
+#: modules/edd-beauty-grid/widgets/edd-beauty-grid.php:219
+#: modules/edd-classic-carousel/widgets/edd-classic-carousel.php:156
+#: modules/edd-classic-grid/widgets/edd-classic-grid.php:168
+#: modules/edd-standard-carousel/widgets/edd-standard-carousel.php:152
+#: modules/edd-standard-grid/widgets/edd-standard-grid.php:146
+#: modules/edd-trendy-carousel/widgets/edd-trendy-carousel.php:142
+#: modules/edd-trendy-grid/widgets/edd-trendy-grid.php:146
+msgid "Starting at: "
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:78
+#: modules/edd-category-grid/widgets/edd-category-grid.php:72
+msgid "Skin"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:82
+#: modules/edd-category-grid/widgets/edd-category-grid.php:76
+#: modules/heaven-slider/widgets/heaven-slider.php:1314
+#: traits/global-widget-controls.php:2114
+msgid "Style 1"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:83
+#: modules/edd-category-grid/widgets/edd-category-grid.php:77
+#: modules/heaven-slider/widgets/heaven-slider.php:1315
+#: traits/global-widget-controls.php:2115
+msgid "Style 2"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:84
+#: modules/edd-category-grid/widgets/edd-category-grid.php:78
+#: modules/heaven-slider/widgets/heaven-slider.php:1316
+#: traits/global-widget-controls.php:2116
+msgid "Style 3"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:85
+#: modules/edd-category-grid/widgets/edd-category-grid.php:79
+#: modules/heaven-slider/widgets/heaven-slider.php:1317
+#: traits/global-widget-controls.php:2117
+msgid "Style 4"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:86
+#: modules/edd-category-grid/widgets/edd-category-grid.php:80
+#: modules/heaven-slider/widgets/heaven-slider.php:1318
+#: traits/global-widget-controls.php:2118
+msgid "Style 5"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:136
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:156
+#: modules/edd-category-grid/widgets/edd-category-grid.php:124
+#: modules/edd-category-grid/widgets/edd-category-grid.php:144
+#: modules/product-category/widgets/product-category.php:156
+msgid "Item Height(px)"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:175
+#: modules/edd-category-grid/widgets/edd-category-grid.php:163
+msgid "Use Static Image"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:184
+#: modules/edd-category-grid/widgets/edd-category-grid.php:172
+msgid "Select Image"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:209
+#: modules/edd-category-grid/widgets/edd-category-grid.php:197
+#: modules/product-category/widgets/product-category.php:197
+msgid "Show Count"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:224
+#: modules/edd-category-grid/widgets/edd-category-grid.php:210
+#: modules/product-category/widgets/product-category.php:295
+#: modules/showcase-slider/widgets/showcase-slider.php:559
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:234
+#: modules/sub-category/widgets/sub-category.php:235
+#: traits/global-edd-widget-controls.php:495
+msgid "Item"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:241
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:373
+#: modules/edd-category-grid/widgets/edd-category-grid.php:227
+#: modules/edd-category-grid/widgets/edd-category-grid.php:359
+msgid "Backgrund"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:249
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:384
+#: modules/edd-category-grid/widgets/edd-category-grid.php:235
+#: modules/edd-category-grid/widgets/edd-category-grid.php:370
+#: modules/product-category/widgets/product-category.php:367
+#: modules/product-image-accordion/widgets/product-image-accordion.php:216
+#: modules/product-image-accordion/widgets/product-image-accordion.php:289
+msgid "Overlay Color"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:262
+#: modules/edd-category-grid/widgets/edd-category-grid.php:248
+#: modules/product-category/widgets/product-category.php:311
+#: modules/product-category/widgets/product-category.php:482
+#: modules/product-image-accordion/widgets/product-image-accordion.php:224
+msgid "Glassmorphism"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:264
+#: modules/edd-category-grid/widgets/edd-category-grid.php:250
+#: modules/product-category/widgets/product-category.php:313
+#: modules/product-category/widgets/product-category.php:484
+#: modules/product-image-accordion/widgets/product-image-accordion.php:226
+#, php-format
+msgid ""
+"This feature will not work in the Firefox browser untill you enable browser "
+"compatibility so please %1s look here %2s"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:277
+#: modules/edd-category-grid/widgets/edd-category-grid.php:263
+#: modules/product-category/widgets/product-category.php:327
+#: modules/product-category/widgets/product-category.php:492
+#: modules/product-image-accordion/widgets/product-image-accordion.php:233
+#: modules/product-image-accordion/widgets/product-image-accordion.php:298
+msgid "Blur Level"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:346
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:473
+#: modules/edd-category-grid/widgets/edd-category-grid.php:332
+#: modules/edd-category-grid/widgets/edd-category-grid.php:460
+#: modules/product-accordion/widgets/product-accordion.php:519
+#: modules/product-accordion/widgets/product-accordion.php:821
+#: modules/product-category/widgets/product-category.php:412
+#: modules/product-category/widgets/product-category.php:557
+#: modules/product-list/widgets/product-list.php:314
+#: modules/product-list/widgets/product-list.php:555
+#: modules/product-review-carousel/widgets/product-review-carousel.php:260
+#: modules/product-reviews/widgets/product-reviews.php:219
+#: modules/product-table/widgets/product-table.php:1411
+#: modules/product-table/widgets/product-table.php:1485
+#: modules/showcase-slider/widgets/showcase-slider.php:594
+#: modules/showcase-slider/widgets/showcase-slider.php:865
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:287
+#: modules/sub-category/widgets/sub-category.php:288
+#: traits/global-edd-widget-controls.php:1202
+#: traits/global-widget-controls.php:1500
+msgid "Radius"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:410
+#: modules/edd-category-grid/widgets/edd-category-grid.php:397
+#: modules/heaven-slider/widgets/heaven-slider.php:139
+#: modules/product-accordion/widgets/product-accordion.php:581
+#: modules/product-category/widgets/product-category.php:459
+#: modules/product-image-accordion/widgets/product-image-accordion.php:157
+#: modules/product-list/widgets/product-list.php:138
+#: modules/product-review-carousel/widgets/product-review-carousel.php:180
+#: modules/product-review-carousel/widgets/product-review-carousel.php:520
+#: modules/product-reviews/widgets/product-reviews.php:139
+#: modules/product-reviews/widgets/product-reviews.php:476
+#: modules/showcase-slider/widgets/showcase-slider.php:169
+#: traits/global-edd-widget-controls.php:782
+#: traits/global-widget-controls.php:210 traits/global-widget-controls.php:831
+msgid "Content"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:546
+#: modules/edd-category-grid/widgets/edd-category-grid.php:544
+#: modules/product-category/widgets/product-category.php:640
+msgid "Backgorund"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:633
+#: modules/edd-category-grid/widgets/edd-category-grid.php:631
+#: modules/product-category/widgets/product-category.php:711
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:201
+#: modules/sub-category/widgets/sub-category.php:204
+#: traits/global-terms-query-controls.php:138
+msgid "Count"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:678
+#: modules/edd-category-grid/widgets/edd-category-grid.php:676
+#: modules/heaven-slider/widgets/heaven-slider.php:1419
+#: modules/product-category/widgets/product-category.php:785
+#: modules/showcase-slider/widgets/showcase-slider.php:1244
+#: traits/global-widget-controls.php:2276
+msgid "Size"
+msgstr ""
+
+#: modules/edd-category-carousel/widgets/edd-category-carousel.php:823
+#: modules/edd-category-grid/widgets/edd-category-grid.php:822
+msgid "Opps, Nothing found to display"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:82
+msgid "New Featured Box"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:83
+#: modules/info-list/widgets/info-list.php:293
+msgid "Enter your title"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:94
+#: modules/info-list/widgets/info-list.php:301
+msgid "Title Link"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:111
+msgid "Don't miss the last opportunity."
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:123
+#: modules/featured-box/widgets/featured-box.php:743
+#: modules/product-review-carousel/widgets/product-review-carousel.php:446
+#: modules/product-reviews/widgets/product-reviews.php:402
+msgid "Meta"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:127
+msgid "Monthly Discount"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:139
+msgid "Shop Now"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:151
+msgid "Link"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:167
+#: modules/heaven-slider/widgets/heaven-slider.php:640
+#: modules/mini-cart/widgets/mini-cart.php:578
+#: modules/product-list/widgets/product-list.php:144
+#: modules/product-list/widgets/product-list.php:327
+#: modules/product-review-carousel/widgets/product-review-carousel.php:287
+#: modules/product-review-carousel/widgets/product-review-carousel.php:331
+#: modules/product-reviews/widgets/product-reviews.php:244
+#: modules/product-reviews/widgets/product-reviews.php:287
+#: modules/product-table/widgets/product-table.php:1089
+#: modules/product-table/widgets/product-table.php:2338
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:333
+#: modules/sub-category/widgets/sub-category.php:334
+#: traits/global-edd-widget-controls.php:662
+#: traits/global-widget-controls.php:711
+msgid "Image"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:190
+msgid "Additional Settings"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:218
+msgid "Content Width"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:238
+msgid "Content Position"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:243
+#: modules/info-list/widgets/info-list.php:136
+#: modules/info-list/widgets/info-list.php:155
+#: modules/mini-cart/widgets/mini-cart.php:91
+#: traits/global-widget-controls.php:2080
+msgid "Top"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:251
+#: modules/info-list/widgets/info-list.php:163
+#: modules/mini-cart/widgets/mini-cart.php:90
+#: traits/global-widget-controls.php:2079
+msgid "Bottom"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:434
+#: modules/info-list/widgets/info-list.php:219
+msgid "Show Title"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:444
+#: modules/heaven-slider/widgets/heaven-slider.php:153
+#: modules/info-list/widgets/info-list.php:229
+#: modules/product-accordion/widgets/product-accordion.php:103
+#: modules/product-list/widgets/product-list.php:98
+#: modules/product-review-carousel/widgets/product-review-carousel.php:119
+#: modules/product-reviews/widgets/product-reviews.php:78
+#: modules/product-table/widgets/product-table.php:295
+#: modules/showcase-slider/widgets/showcase-slider.php:128
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:125
+#: modules/sub-category/widgets/sub-category.php:110
+#: traits/global-edd-widget-controls.php:293
+#: traits/global-widget-controls.php:224
+msgid "Title HTML Tag"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:457
+#: modules/info-list/widgets/info-list.php:242
+msgid "Show Text"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:467
+msgid "Show Meta"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:476
+msgid "Show Button"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:485
+msgid "Show Wrapper link"
+msgstr ""
+
+#: modules/featured-box/widgets/featured-box.php:494
+msgid "Wrapper Link"
+msgstr ""
+
+#: modules/florence-carousel/widgets/florence-carousel.php:129
+#: modules/florence-grid/widgets/florence-grid.php:202
+#: modules/glossy-carousel/widgets/glossy-carousel.php:126
+#: modules/glossy-grid/widgets/glossy-grid.php:203
+#: modules/heaven-slider/widgets/heaven-slider.php:119
+#: modules/product-accordion/widgets/product-accordion.php:171
+#: modules/product-image-accordion/widgets/product-image-accordion.php:138
+#: modules/product-list/widgets/product-list.php:118
+#: modules/product-review-carousel/widgets/product-review-carousel.php:139
+#: modules/product-reviews/widgets/product-reviews.php:98
+#: modules/product-table/widgets/product-table.php:190
+#: modules/shiny-carousel/widgets/shiny-carousel.php:126
+#: modules/shiny-grid/widgets/shiny-grid.php:208
+#: modules/showcase-slider/widgets/showcase-slider.php:150
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:144
+#: modules/sub-category/widgets/sub-category.php:129
+#: traits/global-edd-widget-controls.php:217
+#: traits/global-terms-query-controls.php:14
+#: traits/global-widget-controls.php:59
+msgid "Query"
+msgstr ""
+
+#: modules/florence-carousel/widgets/florence-carousel.php:363
+#: modules/florence-grid/widgets/florence-grid.php:427
+#: modules/glossy-carousel/widgets/glossy-carousel.php:386
+#: modules/glossy-grid/widgets/glossy-grid.php:359
+#: modules/heaven-slider/widgets/heaven-slider.php:1796
+#: modules/heaven-slider/widgets/heaven-slider.php:1817
+#: modules/product-accordion/widgets/product-accordion.php:1257
+#: modules/product-image-accordion/widgets/product-image-accordion.php:455
+#: modules/product-list/widgets/product-list.php:682
+#: modules/shiny-carousel/widgets/shiny-carousel.php:555
+#: modules/showcase-slider/widgets/showcase-slider.php:2461
+msgid "Ops! There no product to display."
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:78
+#: modules/glossy-grid/widgets/glossy-grid.php:79
+#: modules/product-category/widgets/product-category.php:88
+#: modules/shiny-grid/widgets/shiny-grid.php:83
+msgid "Style"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:83
+#: modules/florence-grid/widgets/florence-grid.php:160
+#: modules/glossy-grid/widgets/glossy-grid.php:84
+#: modules/shiny-grid/widgets/shiny-grid.php:88
+#: modules/shiny-grid/widgets/shiny-grid.php:166
+msgid "List"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:117
+#: modules/glossy-grid/widgets/glossy-grid.php:118
+#: modules/shiny-grid/widgets/shiny-grid.php:122
+#: traits/global-edd-widget-controls.php:138
+msgid "Columns Gap"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:147
+#: modules/glossy-grid/widgets/glossy-grid.php:148
+#: modules/shiny-grid/widgets/shiny-grid.php:152
+#: traits/global-edd-widget-controls.php:338
+#: traits/global-widget-controls.php:414
+msgid "Columns Filter"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:155
+#: modules/glossy-grid/widgets/glossy-grid.php:156
+#: modules/shiny-grid/widgets/shiny-grid.php:161
+msgid "Select Column Type"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:161
+#: modules/glossy-grid/widgets/glossy-grid.php:162
+#: modules/shiny-grid/widgets/shiny-grid.php:167
+msgid "Column 2"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:162
+#: modules/glossy-grid/widgets/glossy-grid.php:163
+#: modules/shiny-grid/widgets/shiny-grid.php:168
+msgid "Column 3"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:163
+#: modules/glossy-grid/widgets/glossy-grid.php:164
+#: modules/shiny-grid/widgets/shiny-grid.php:169
+msgid "Column 4"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:164
+#: modules/glossy-grid/widgets/glossy-grid.php:165
+#: modules/shiny-grid/widgets/shiny-grid.php:170
+msgid "Column 5"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:165
+#: modules/glossy-grid/widgets/glossy-grid.php:166
+#: modules/shiny-grid/widgets/shiny-grid.php:171
+msgid "Column 6"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:177
+#: modules/glossy-grid/widgets/glossy-grid.php:178
+#: modules/shiny-grid/widgets/shiny-grid.php:183
+msgid "Result Count"
+msgstr ""
+
+#: modules/florence-grid/widgets/florence-grid.php:192
+#: modules/glossy-grid/widgets/glossy-grid.php:193
+#: modules/product-table/widgets/product-table.php:2047
+#: modules/shiny-grid/widgets/shiny-grid.php:198
+#: traits/global-edd-widget-controls.php:207
+#: traits/global-edd-widget-controls.php:1336
+#: traits/global-widget-controls.php:155 traits/global-widget-controls.php:1565
+msgid "Pagination"
+msgstr ""
+
+#: modules/glossy-carousel/widgets/glossy-carousel.php:233
+msgid "Star"
+msgstr ""
+
+#: modules/glossy-carousel/widgets/glossy-carousel.php:251
+#: modules/heaven-slider/widgets/heaven-slider.php:831
+#: modules/product-table/widgets/product-table.php:1614
+#: modules/product-table/widgets/product-table.php:2079
+#: modules/showcase-slider/widgets/showcase-slider.php:1390
+#: modules/showcase-slider/widgets/showcase-slider.php:1504
+#: traits/global-widget-controls.php:1261
+#: traits/global-widget-controls.php:2422
+#: traits/global-widget-controls.php:2536
+msgid "Active Color"
+msgstr ""
+
+#: modules/glossy-carousel/widgets/glossy-carousel.php:263
+msgid "Review"
+msgstr ""
+
+#: modules/glossy-carousel/widgets/glossy-carousel.php:283
+msgid "Hover color"
+msgstr ""
+
+#: modules/glossy-grid/widgets/glossy-grid.php:161
+msgid "List view"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:84
+#: modules/showcase-slider/widgets/showcase-slider.php:81
+msgid "Item Height"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:107
+#: modules/product-accordion/widgets/product-accordion.php:160
+#: modules/product-image-accordion/widgets/product-image-accordion.php:128
+#: modules/product-list/widgets/product-list.php:108
+#: modules/product-review-carousel/widgets/product-review-carousel.php:129
+#: modules/product-reviews/widgets/product-reviews.php:88
+#: modules/showcase-slider/widgets/showcase-slider.php:139
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:135
+#: traits/global-edd-widget-controls.php:97
+#: traits/global-edd-widget-controls.php:199
+#: traits/global-widget-controls.php:49
+msgid "Image Size"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:130
+#: modules/product-accordion/widgets/product-accordion.php:190
+#: modules/product-list/widgets/product-list.php:129
+#: modules/product-review-carousel/widgets/product-review-carousel.php:281
+#: modules/product-reviews/widgets/product-reviews.php:238
+#: modules/product-table/widgets/product-table.php:231
+#: modules/showcase-slider/widgets/showcase-slider.php:160
+#: traits/global-edd-widget-controls.php:279
+#: traits/global-widget-controls.php:201
+msgid "Additional"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:172
+#: modules/product-list/widgets/product-list.php:178
+#: modules/showcase-slider/widgets/showcase-slider.php:220
+msgid "Hide Review Text"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:223
+#: traits/global-widget-controls.php:270
+msgid "Text Limit"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:236
+#: modules/product-accordion/widgets/product-accordion.php:199
+#: modules/product-list/widgets/product-list.php:197
+#: modules/product-list/widgets/product-list.php:371
+#: modules/showcase-slider/widgets/showcase-slider.php:255
+#: traits/global-widget-controls.php:316 traits/global-widget-controls.php:1785
+msgid "Badge"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:250
+#: modules/product-accordion/widgets/product-accordion.php:213
+#: modules/product-list/widgets/product-list.php:211
+#: modules/showcase-slider/widgets/showcase-slider.php:269
+#: traits/global-widget-controls.php:330
+msgid "Percentage"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:266
+#: modules/product-accordion/widgets/product-accordion.php:229
+#: modules/product-list/widgets/product-list.php:227
+#: modules/product-list/widgets/product-list.php:471
+#: modules/showcase-slider/widgets/showcase-slider.php:285
+#: traits/global-widget-controls.php:346 traits/global-widget-controls.php:1887
+#: traits/global-widget-template.php:123
+msgid "Trending"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:274
+#: modules/product-accordion/widgets/product-accordion.php:237
+#: modules/product-list/widgets/product-list.php:235
+#: modules/showcase-slider/widgets/showcase-slider.php:293
+#: traits/global-widget-controls.php:354 traits/global-widget-template.php:130
+msgid "New"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:282
+#: modules/product-accordion/widgets/product-accordion.php:245
+#: modules/product-list/widgets/product-list.php:243
+#: modules/showcase-slider/widgets/showcase-slider.php:301
+#: traits/global-widget-controls.php:362
+msgid "Newness Days"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:295
+#: modules/product-accordion/widgets/product-accordion.php:257
+#: modules/showcase-slider/widgets/showcase-slider.php:313
+#: traits/global-widget-controls.php:374
+msgid "Action btn"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:310
+#: modules/heaven-slider/widgets/heaven-slider.php:985
+#: modules/product-accordion/widgets/product-accordion.php:272
+#: modules/product-accordion/widgets/product-accordion.php:936
+#: modules/showcase-slider/widgets/showcase-slider.php:328
+#: modules/showcase-slider/widgets/showcase-slider.php:924
+#: traits/global-widget-controls.php:389 traits/global-widget-controls.php:1286
+msgid "Wishlist"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:321
+#: modules/product-accordion/widgets/product-accordion.php:283
+#: modules/product-table/widgets/product-table.php:380
+#: modules/product-table/widgets/product-table.php:1686
+#: modules/product-table/widgets/product-table.php:2369
+#: modules/showcase-slider/widgets/showcase-slider.php:339
+#: traits/global-widget-controls.php:400 traits/global-widget-template.php:52
+msgid "Quick View"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:337
+msgid "Slider Settings"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:344
+msgid "Show Arrows"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:353
+#: modules/showcase-slider/widgets/showcase-slider.php:357
+#: traits/global-widget-controls.php:3260
+msgid "Coverflow Effect"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:365
+#: modules/showcase-slider/widgets/showcase-slider.php:368
+#: traits/global-widget-controls.php:3274
+msgid "Rotate"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:384
+#: modules/showcase-slider/widgets/showcase-slider.php:387
+#: traits/global-widget-controls.php:3296
+msgid "Stretch"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:403
+#: modules/showcase-slider/widgets/showcase-slider.php:406
+#: traits/global-widget-controls.php:3318
+msgid "Modifier"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:422
+#: modules/showcase-slider/widgets/showcase-slider.php:425
+#: traits/global-widget-controls.php:3340
+msgid "Depth"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:450
+#: modules/showcase-slider/widgets/showcase-slider.php:453
+#: traits/global-widget-controls.php:3374
+msgid "Autoplay"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:460
+#: modules/showcase-slider/widgets/showcase-slider.php:463
+#: traits/global-widget-controls.php:3384
+msgid "Autoplay Speed"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:472
+#: modules/showcase-slider/widgets/showcase-slider.php:475
+#: traits/global-widget-controls.php:3396
+msgid "Pause on Hover"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:481
+#: modules/showcase-slider/widgets/showcase-slider.php:484
+#: traits/global-widget-controls.php:3405
+msgid "Slides to Scroll"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:499
+#: modules/showcase-slider/widgets/showcase-slider.php:502
+#: traits/global-widget-controls.php:3423
+msgid "Center Slide"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:500
+#: modules/showcase-slider/widgets/showcase-slider.php:503
+#: traits/global-widget-controls.php:3424
+msgid "Use even items from Layout > Columns settings for better preview."
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:508
+#: modules/showcase-slider/widgets/showcase-slider.php:511
+#: traits/global-widget-controls.php:3432
+msgid "Grab Cursor"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:516
+#: modules/showcase-slider/widgets/showcase-slider.php:519
+#: modules/sub-category/widgets/sub-category.php:836
+#: traits/global-widget-controls.php:3440
+msgid "Loop"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:526
+msgid "mousewheel"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:537
+#: modules/showcase-slider/widgets/showcase-slider.php:530
+#: traits/global-widget-controls.php:3451
+msgid "Animation Speed (ms)"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:555
+#: modules/showcase-slider/widgets/showcase-slider.php:548
+#: traits/global-widget-controls.php:3469
+msgid "Observer"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:556
+#: modules/showcase-slider/widgets/showcase-slider.php:549
+#: traits/global-widget-controls.php:3470
+msgid ""
+"When you use carousel in any hidden place (in tabs, accordion etc) keep it "
+"yes."
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:670
+msgid "Box Shadow"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:860
+#: modules/product-accordion/widgets/product-accordion.php:781
+#: modules/showcase-slider/widgets/showcase-slider.php:850
+#: traits/global-edd-widget-controls.php:1073
+#: traits/global-widget-controls.php:1276
+msgid "Action Button"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:960
+#: modules/showcase-slider/widgets/showcase-slider.php:899
+#: traits/global-widget-controls.php:1551
+msgid "Tooltip Font"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:972
+#: modules/showcase-slider/widgets/showcase-slider.php:911
+msgid "Button Separator"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1044
+#: modules/product-accordion/widgets/product-accordion.php:1053
+#: modules/showcase-slider/widgets/showcase-slider.php:1010
+#: traits/global-widget-controls.php:1372
+msgid "Quickview"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1102
+#: modules/product-accordion/widgets/product-accordion.php:878
+#: modules/product-table/widgets/product-table.php:1873
+#: modules/product-table/widgets/product-table.php:2377
+#: modules/showcase-slider/widgets/showcase-slider.php:1069
+#: traits/global-widget-controls.php:1431
+msgid "Cart"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1298
+#: modules/showcase-slider/widgets/showcase-slider.php:1130
+#: traits/global-widget-controls.php:1996
+#: traits/global-widget-controls.php:2003
+#: traits/global-widget-controls.php:2162
+msgid "Navigation"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1309
+#: traits/global-widget-controls.php:2110
+msgid "Arrows Icon"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1319
+#: traits/global-widget-controls.php:2119
+msgid "Style 6"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1320
+#: traits/global-widget-controls.php:2120
+msgid "Style 7"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1321
+#: traits/global-widget-controls.php:2121
+msgid "Style 8"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1322
+#: traits/global-widget-controls.php:2122
+msgid "Style 9"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1323
+#: traits/global-widget-controls.php:2123
+msgid "Style 10"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1324
+#: traits/global-widget-controls.php:2124
+msgid "Style 11"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1325
+#: traits/global-widget-controls.php:2125
+msgid "Style 12"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1326
+#: traits/global-widget-controls.php:2126
+msgid "Style 13"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1327
+#: traits/global-widget-controls.php:2127
+msgid "Style 14"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1328
+#: traits/global-widget-controls.php:2128
+msgid "Style 15"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1329
+#: traits/global-widget-controls.php:2129
+msgid "Style 16"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1330
+#: traits/global-widget-controls.php:2130
+msgid "Style 17"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1331
+#: traits/global-widget-controls.php:2131
+msgid "Style 18"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1332
+#: traits/global-widget-controls.php:2132
+msgid "Style 19"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1333
+#: traits/global-widget-controls.php:2133
+msgid "Style 20"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1334
+#: traits/global-widget-controls.php:2134
+msgid "Style 21"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1335
+#: traits/global-widget-controls.php:2135
+msgid "Style 22"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1336
+#: traits/global-widget-controls.php:2136
+msgid "Style 23"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1436
+#: modules/showcase-slider/widgets/showcase-slider.php:1265
+#: traits/global-widget-controls.php:2297
+msgid "Space Between Arrows"
+msgstr ""
+
+#: modules/heaven-slider/widgets/heaven-slider.php:1500
+msgid "Thumbs"
+msgstr ""
+
+#: modules/info-list/module.info.php:5
+msgid "Info Box"
+msgstr ""
+
+#: modules/info-list/widgets/info-list.php:151
+msgid "Icon Alignment"
+msgstr ""
+
+#: modules/info-list/widgets/info-list.php:292
+msgid "This is a title"
+msgstr ""
+
+#: modules/info-list/widgets/info-list.php:315
+msgid ""
+"Click edit button to change this text. Lorem ipsum dolor sit amet, "
+"consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, "
+"pulvinar dapibus leo."
+msgstr ""
+
+#: modules/info-list/widgets/info-list.php:337
+msgid "List Item #1"
+msgstr ""
+
+#: modules/info-list/widgets/info-list.php:340
+msgid "List Item #2"
+msgstr ""
+
+#: modules/info-list/widgets/info-list.php:343
+msgid "List Item #3"
+msgstr ""
+
+#: modules/mini-cart/templates/cart/mini-cart.php:58
+msgid "Remove this item"
+msgstr ""
+
+#: modules/mini-cart/templates/cart/mini-cart.php:72
+msgid "No products in the cart."
+msgstr ""
+
+#: modules/mini-cart/templates/cart/mini-cart.php:87
+#: modules/mini-cart/widgets/mini-cart.php:608
+msgid "Subtotal"
+msgstr ""
+
+#: modules/mini-cart/templates/cart/mini-cart.php:95
+msgid "View cart"
+msgstr ""
+
+#: modules/mini-cart/templates/cart/mini-cart.php:98
+msgid "Checkout"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:59
+#: modules/mini-cart/widgets/mini-cart.php:440
+#: modules/mini-cart/widgets/mini-cart.php:1010
+msgid "Offcanvas"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:66
+msgid "Cart Title"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:69
+msgid "Shopping Cart"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:85
+msgid "Position"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:89
+msgid "Right (Default)"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:146
+msgid "Closeable"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:158
+msgid "Start Open"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:170
+msgid "Auto close"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:182
+msgid "click Outside To Close"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:195
+msgid "Auto Close Delay"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:220
+msgid "Show Price Amount"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:228
+msgid "Show Cart Icon"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:307
+#: modules/mini-cart/widgets/mini-cart.php:931
+#: modules/product-table/widgets/product-table.php:794
+#: modules/product-table/widgets/product-table.php:893
+#: modules/product-table/widgets/product-table.php:1002
+#: modules/product-table/widgets/product-table.php:1717
+#: modules/product-table/widgets/product-table.php:1802
+#: modules/product-table/widgets/product-table.php:1905
+#: modules/product-table/widgets/product-table.php:2004
+msgid "Background Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:359
+msgid "Cart Icon"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:387
+msgid "Cart Badge"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:457
+msgid "Cart Title Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:468
+msgid "Cart Border Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:488
+msgid "Product Cart"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:497
+msgid "Title Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:508
+msgid "Title Hover Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:548
+msgid "Quantity Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:559
+msgid "Amount Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:588
+#: modules/product-list/widgets/product-list.php:336
+#: modules/product-review-carousel/widgets/product-review-carousel.php:354
+#: modules/product-reviews/widgets/product-reviews.php:310
+#: modules/product-table/widgets/product-table.php:1101
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:342
+#: modules/sub-category/widgets/sub-category.php:343
+#: traits/global-edd-widget-controls.php:686
+#: traits/global-edd-widget-controls.php:744
+#: traits/global-widget-controls.php:735 traits/global-widget-controls.php:793
+msgid "Image Border"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:596
+msgid "Image Border Radius"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:617
+msgid "Subtotal Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:628
+msgid "Tax Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:647
+msgid "View Cart Button"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:726
+#: modules/mini-cart/widgets/mini-cart.php:844
+#: modules/mini-cart/widgets/mini-cart.php:962
+msgid "Hover Border Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:781
+msgid "Checkout Button"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:823
+#: modules/mini-cart/widgets/mini-cart.php:942
+msgid "Hover Background Color"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:899
+msgid "Product Remove Button"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:1016
+msgid "Content Background"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:1033
+msgid "Item Background"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:1052
+msgid "Item Hover Background"
+msgstr ""
+
+#: modules/mini-cart/widgets/mini-cart.php:1103
+#: modules/product-table/widgets/product-table.php:2034
+msgid "Footer"
+msgstr ""
+
+#: modules/product-accordion/widgets/product-accordion.php:83
+#: modules/product-accordion/widgets/product-accordion.php:530
+#: modules/product-table/widgets/product-table.php:2054
+#: modules/product-table/widgets/product-table.php:2123
+msgid "Spacing"
+msgstr ""
+
+#: modules/product-accordion/widgets/product-accordion.php:121
+#: traits/global-edd-widget-controls.php:314
+#: traits/global-widget-controls.php:245
+msgid "Category HTML Tag"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:92
+msgid "Style-1"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:93
+msgid "Style-2"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:94
+msgid "Style-3"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:95
+msgid "Style-4"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:96
+msgid "Style-5"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:104
+msgid "Item Limit"
+msgstr ""
+
+#: modules/product-category/widgets/product-category.php:177
+msgid "Show Image"
+msgstr ""
+
+#: modules/product-image-accordion/widgets/product-image-accordion.php:99
+msgid "Item Hover Expand(em)"
+msgstr ""
+
+#: modules/product-image-accordion/widgets/product-image-accordion.php:198
+msgid "O V E R L A Y"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:85
+#: modules/product-reviews/widgets/product-reviews.php:64
+msgid "Items Gap"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:246
+msgid "Define newness day from product created date; default newness day is 30"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:411
+#: traits/global-widget-controls.php:1826
+msgid "Discount"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:441
+#: traits/global-widget-controls.php:1857
+msgid "Stock"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:501
+#: traits/global-widget-controls.php:1914
+msgid "new"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:575
+#: traits/global-edd-widget-controls.php:1433
+#: traits/global-widget-controls.php:1662
+msgid "Top Spacing"
+msgstr ""
+
+#: modules/product-list/widgets/product-list.php:590
+msgid "Right Spacing"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:146
+#: modules/product-reviews/widgets/product-reviews.php:105
+msgid "Limit"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:165
+#: modules/product-reviews/widgets/product-reviews.php:124
+#: modules/showcase-slider/widgets/showcase-slider.php:1676
+#: traits/global-edd-widget-controls.php:258
+#: traits/global-widget-controls.php:2708
+msgid "Offset"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:166
+#: modules/product-reviews/widgets/product-reviews.php:125
+msgid " The number of comments to pass over in the query."
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:178
+#: modules/product-reviews/widgets/product-reviews.php:137
+msgid "Approved"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:192
+#: modules/product-reviews/widgets/product-reviews.php:151
+#: modules/product-table/widgets/product-table.php:221
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:215
+#: modules/sub-category/widgets/sub-category.php:218
+#: traits/global-terms-query-controls.php:154
+#: traits/global-widget-controls.php:147
+msgid "Ascending"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:193
+#: modules/product-reviews/widgets/product-reviews.php:152
+#: modules/product-table/widgets/product-table.php:220
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:214
+#: modules/sub-category/widgets/sub-category.php:217
+#: traits/global-terms-query-controls.php:153
+#: traits/global-widget-controls.php:146
+msgid "Descending"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:200
+#: modules/product-reviews/widgets/product-reviews.php:159
+msgid "Status"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:204
+#: modules/product-reviews/widgets/product-reviews.php:163
+msgid "Approve"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:205
+#: modules/product-reviews/widgets/product-reviews.php:164
+msgid "Hold"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:321
+#: modules/product-reviews/widgets/product-reviews.php:278
+msgid "Review Text"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:482
+#: modules/product-reviews/widgets/product-reviews.php:438
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:200
+#: modules/sub-category/widgets/sub-category.php:203
+#: traits/global-terms-query-controls.php:137
+msgid "Name"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:600
+#: modules/product-reviews/widgets/product-reviews.php:556
+msgid "O F F S E T"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:608
+#: modules/product-reviews/widgets/product-reviews.php:564
+msgid "Horizontal offset"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:626
+#: modules/product-reviews/widgets/product-reviews.php:582
+msgid "Vertical Offset"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:686
+#: modules/product-reviews/widgets/product-reviews.php:642
+msgid "Thanks, your review is awaiting for approval"
+msgstr ""
+
+#: modules/product-review-carousel/widgets/product-review-carousel.php:704
+#: modules/product-reviews/widgets/product-reviews.php:660
+msgid "purchase by"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:83
+msgid "Header Alignment"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:108
+msgid "Data Alignment"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:133
+msgid "Top Offset "
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:158
+msgid "Scrollspy Time"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:181
+msgid "Paginatioin"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:199
+#: traits/global-widget-controls.php:127
+msgid "Order by"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:207
+#: modules/product-table/widgets/product-table.php:347
+#: modules/product-table/widgets/product-table.php:1224
+#: modules/product-table/widgets/product-table.php:2353
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:163
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:183
+#: modules/sub-category/widgets/sub-category.php:166
+#: modules/sub-category/widgets/sub-category.php:186
+#: traits/global-terms-query-controls.php:67
+#: traits/global-terms-query-controls.php:91
+#: traits/global-widget-controls.php:79
+msgid "Categories"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:238
+msgid "Show Change Length"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:247
+msgid "Search"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:256
+msgid "Ordering"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:269
+msgid "Show Thumbnail"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:278
+msgid "Open Thumb in Lightbox"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:317
+#: modules/showcase-slider/widgets/showcase-slider.php:200
+msgid "Description Limit"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:355
+#: modules/product-table/widgets/product-table.php:1257
+#: modules/product-table/widgets/product-table.php:2357
+msgid "Tags"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:363
+#: modules/product-table/widgets/product-table.php:1832
+#: modules/product-table/widgets/product-table.php:2373
+msgid "Quantity"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:387
+msgid "Footer Info"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:394
+msgid "S H O W /H I D E"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:402
+msgid "Thumbs hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:407
+#: modules/product-table/widgets/product-table.php:424
+#: modules/product-table/widgets/product-table.php:441
+#: modules/product-table/widgets/product-table.php:458
+#: modules/product-table/widgets/product-table.php:475
+#: modules/product-table/widgets/product-table.php:492
+#: modules/product-table/widgets/product-table.php:509
+#: modules/product-table/widgets/product-table.php:526
+#: modules/product-table/widgets/product-table.php:543
+#: modules/product-table/widgets/product-table.php:560
+#: modules/product-table/widgets/product-table.php:1351
+msgid "Desktop"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:408
+#: modules/product-table/widgets/product-table.php:425
+#: modules/product-table/widgets/product-table.php:442
+#: modules/product-table/widgets/product-table.php:459
+#: modules/product-table/widgets/product-table.php:476
+#: modules/product-table/widgets/product-table.php:493
+#: modules/product-table/widgets/product-table.php:510
+#: modules/product-table/widgets/product-table.php:527
+#: modules/product-table/widgets/product-table.php:544
+#: modules/product-table/widgets/product-table.php:561
+msgid "Tablet"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:409
+#: modules/product-table/widgets/product-table.php:426
+#: modules/product-table/widgets/product-table.php:443
+#: modules/product-table/widgets/product-table.php:460
+#: modules/product-table/widgets/product-table.php:477
+#: modules/product-table/widgets/product-table.php:494
+#: modules/product-table/widgets/product-table.php:511
+#: modules/product-table/widgets/product-table.php:528
+#: modules/product-table/widgets/product-table.php:545
+#: modules/product-table/widgets/product-table.php:562
+#: modules/product-table/widgets/product-table.php:1507
+msgid "Mobile"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:419
+msgid "Title hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:436
+msgid "Description hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:453
+msgid "Categories hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:470
+msgid "Tags hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:487
+msgid "Rating hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:504
+msgid "Price hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:521
+msgid "Quick View hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:538
+msgid "Quantity hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:555
+msgid "Add to Cart hide on"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:574
+msgid "Table"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:592
+msgid "Header Typography"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:604
+msgid "Heading Background"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:618
+msgid "Heading Color"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:648
+#: modules/product-table/widgets/product-table.php:743
+msgid "Odd Row Background"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:662
+msgid "Even Row Background"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:676
+msgid "Cell Border"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:684
+msgid "stripe"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:693
+msgid "Hover Effect"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:701
+msgid "Cell Padding"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:763
+msgid "Search Field"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:783
+#: modules/product-table/widgets/product-table.php:882
+#: modules/product-table/widgets/product-table.php:1366
+#: modules/product-table/widgets/product-table.php:1451
+#: modules/product-table/widgets/product-table.php:1553
+#: modules/product-table/widgets/product-table.php:1893
+#: modules/product-table/widgets/product-table.php:1993
+msgid "Text Color"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:852
+#: modules/shiny-carousel/widgets/shiny-carousel.php:314
+#: modules/shiny-grid/widgets/shiny-grid.php:339
+msgid "Bottom Spacing"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:875
+#: modules/product-table/widgets/product-table.php:1062
+msgid "Focus"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:915
+#: traits/global-edd-widget-controls.php:376
+#: traits/global-widget-controls.php:452
+msgid "Border Width"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:961
+msgid "Select Field"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:981
+msgid "Number Color"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1050
+msgid "Text Typography"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1291
+msgid "Filter Bar"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1338
+msgid "Bottom Space"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1514
+msgid "Button Width(%)"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1531
+msgid "Button Text Color"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1542
+msgid "Button Background"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1564
+msgid "Dropdown Background"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1662
+#: modules/showcase-slider/widgets/showcase-slider.php:677
+#: traits/global-widget-controls.php:1200
+msgid "Sale Color"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:1953
+msgid "Fullwidth Cart"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:2116
+msgid "Page Info"
+msgstr ""
+
+#: modules/product-table/widgets/product-table.php:2486
+msgid "Ops! There is no product"
+msgstr ""
+
+#: modules/shiny-grid/widgets/shiny-grid.php:573
+msgid "Ops! There no product to display"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:192
+msgid "List Description"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:351
+#: traits/global-widget-controls.php:3238
+msgid "Carousel Settings"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1152
+#: traits/global-widget-controls.php:2009
+#: traits/global-widget-controls.php:2184
+msgid "Arrows"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1355
+#: traits/global-widget-controls.php:2010
+#: traits/global-widget-controls.php:2387
+msgid "Dots"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1419
+#: traits/global-widget-controls.php:2451
+msgid "Width(px)"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1439
+#: traits/global-widget-controls.php:2471
+msgid "Height(px)"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1469
+#: traits/global-widget-controls.php:2501
+msgid "Fraction"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1540
+#: traits/global-widget-controls.php:2572
+msgid "Progresbar"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1561
+#: modules/showcase-slider/widgets/showcase-slider.php:1621
+#: traits/global-widget-controls.php:2593
+#: traits/global-widget-controls.php:2653
+msgid "Bar Color"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1575
+#: traits/global-widget-controls.php:2607
+msgid "Progress Color"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1600
+#: traits/global-widget-controls.php:2632
+msgid "Scrollbar"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1635
+#: traits/global-widget-controls.php:2667
+msgid "Drag Color"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1691
+#: modules/showcase-slider/widgets/showcase-slider.php:1769
+#: traits/global-widget-controls.php:2723
+#: traits/global-widget-controls.php:2801
+msgid "Arrows Horizontal Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1730
+#: traits/global-widget-controls.php:2762
+msgid "Arrows Vertical Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1802
+#: traits/global-widget-controls.php:2834
+msgid "Dots Horizontal Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1841
+#: traits/global-widget-controls.php:2873
+msgid "Dots Vertical Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1880
+#: traits/global-widget-controls.php:2912
+msgid "Arrows & Dots Horizontal Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1919
+#: traits/global-widget-controls.php:2951
+msgid "Arrows & Dots Vertical Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1958
+#: modules/showcase-slider/widgets/showcase-slider.php:2101
+#: traits/global-widget-controls.php:2990
+#: traits/global-widget-controls.php:3133
+msgid "Arrows Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:1991
+#: traits/global-widget-controls.php:3023
+msgid "Dots Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:2023
+#: traits/global-widget-controls.php:3055
+msgid "Arrows & Fraction Horizontal Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:2062
+#: traits/global-widget-controls.php:3094
+msgid "Arrows & Fraction Vertical Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:2134
+#: traits/global-widget-controls.php:3166
+msgid "Fraction Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:2166
+#: traits/global-widget-controls.php:3198
+msgid "Progress Offset"
+msgstr ""
+
+#: modules/showcase-slider/widgets/showcase-slider.php:2189
+#: traits/global-widget-controls.php:3221
+msgid "Scrollbar Offset"
+msgstr ""
+
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:202
+#: modules/sub-category/widgets/sub-category.php:205
+#: traits/global-terms-query-controls.php:139
+msgid "Slug"
+msgstr ""
+
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:222
+#: modules/sub-category/widgets/sub-category.php:225
+#: traits/global-terms-query-controls.php:161
+msgid "Hide Empty"
+msgstr ""
+
+#: modules/sub-category-carousel/widgets/sub-category-carousel.php:474
+#: modules/sub-category/widgets/sub-category.php:475
+msgid "All Category"
+msgstr ""
+
+#: modules/sub-category/widgets/sub-category.php:823
+msgid "Effect"
+msgstr ""
+
+#: modules/sub-category/widgets/sub-category.php:827
+msgid "Slide"
+msgstr ""
+
+#: modules/sub-category/widgets/sub-category.php:847
+msgid "Auto Play"
+msgstr ""
+
+#: modules/sub-category/widgets/sub-category.php:858
+msgid "Delay"
+msgstr ""
+
+#: modules/sub-category/widgets/sub-category.php:874
+msgid "Speed"
+msgstr ""
+
+#: traits/global-edd-widget-controls.php:552
+msgid "Item Padding"
+msgstr ""
+
+#: traits/global-edd-widget-controls.php:564
+msgid "Content Padding"
+msgstr ""
+
+#: traits/global-edd-widget-controls.php:621
+msgid "Line Animation"
+msgstr ""
+
+#: traits/global-edd-widget-controls.php:1137
+msgid "Purchase"
+msgstr ""
+
+#: traits/global-terms-query-controls.php:22
+msgid "Type"
+msgstr ""
+
+#: traits/global-terms-query-controls.php:27
+msgid "Only Parents"
+msgstr ""
+
+#: traits/global-terms-query-controls.php:28
+msgid "Only Child"
+msgstr ""
+
+#: traits/global-terms-query-controls.php:108
+msgid "WARNING!, Must Select Parent Category from Child Categories of."
+msgstr ""
+
+#: traits/global-terms-query-controls.php:119
+msgid "Child Categories of"
+msgstr ""
+
+#: traits/global-widget-controls.php:66
+msgctxt "Posts Query Control"
+msgid "Source"
+msgstr ""
+
+#: traits/global-widget-controls.php:69
+msgid "Show All"
+msgstr ""
+
+#: traits/global-widget-controls.php:94
+msgid "Exclude Product(s)"
+msgstr ""
+
+#: traits/global-widget-controls.php:98
+msgid ""
+"Write product id here, if you want to exclude multiple products so use comma "
+"as separator. Such as 1 , 2"
+msgstr ""
+
+#: traits/global-widget-controls.php:164
+msgid "Show Per Page"
+msgstr ""
+
+#: traits/global-widget-controls.php:182
+msgid "Hide Free"
+msgstr ""
+
+#: traits/global-widget-controls.php:571
+msgid "Count Result"
+msgstr ""
+
+#: traits/global-widget-controls.php:1143
+msgid "padding"
+msgstr ""
+
+#: traits/global-widget-controls.php:1533
+msgid "Button Size"
+msgstr ""
+
+#: traits/global-widget-controls.php:2007
+msgid "Arrows and Dots"
+msgstr ""
+
+#: traits/global-widget-controls.php:2008
+msgid "Arrows and Fraction"
+msgstr ""
+
+#: traits/global-widget-controls.php:2011
+msgid "Progress"
+msgstr ""
+
+#: traits/global-widget-controls.php:2022
+msgid "Arrows and Dots Position"
+msgstr ""
+
+#: traits/global-widget-controls.php:2035
+msgid "Arrows and Fraction Position"
+msgstr ""
+
+#: traits/global-widget-controls.php:2048
+msgid "Arrows Position"
+msgstr ""
+
+#: traits/global-widget-controls.php:2061
+msgid "Dots Position"
+msgstr ""
+
+#: traits/global-widget-controls.php:2075
+msgid "Progress Position"
+msgstr ""
+
+#: traits/global-widget-controls.php:2091
+msgid "Dynamic Bullets?"
+msgstr ""
+
+#: traits/global-widget-controls.php:2102
+msgid "Show Scrollbar?"
+msgstr ""
+
+#: traits/global-widget-controls.php:2147
+msgid "Hide Arrows on Mobile"
+msgstr ""
+
+#: traits/global-widget-controls.php:3250
+msgid "Coverflow"
+msgstr ""
+
+#: traits/global-widget-template.php:36
+msgid "Add to Wishlist"
+msgstr ""
+
+#: traits/global-widget-template.php:115
+msgid "In Stock"
+msgstr ""
+
+#: traits/global-widget-template.php:117
+msgid "Out of Stock"
+msgstr ""
+
+#: traits/global-widget-template.php:373
+#, php-format
+msgid "% off"
+msgstr ""
+
+#: ultimate-store-kit.php:84
+msgid ""
+"Ops! Ultimate Store Kit not working because you need to activate the "
+"Elementor plugin first."
+msgstr ""
+
+#: ultimate-store-kit.php:85
+msgid "Activate Elementor Now"
+msgstr ""
+
+#: ultimate-store-kit.php:91
+msgid ""
+"Ops! Ultimate Store Kit not working because you need to install the "
+"Elementor plugin"
+msgstr ""
+
+#: ultimate-store-kit.php:92
+msgid "Install Elementor Now"
+msgstr ""
+
+#: ultimate-store-kit.php:117
+msgid ""
+"Ops! Ultimate Store Kit not working because you need to activate a eCommerce "
+"plugin like WooCommerce or Easy Digital Downloads first."
+msgstr ""
+
+#: ultimate-store-kit.php:122
+msgid ""
+"Ops! Ultimate Store Kit not working because you need to install a eCommerce "
+"plugin like WooCommerce or Easy Digital Download first."
+msgstr ""
+
+#: ultimate-store-kit.php:145
+msgid ""
+"Ops! Ultimate Store Kit not working because you need to activate the Easy "
+"Digital Donwlaods plugin first."
+msgstr ""
+
+#: ultimate-store-kit.php:146
+msgid "Activate Easy Digital Donwlaods Now"
+msgstr ""
+
+#: ultimate-store-kit.php:152
+msgid ""
+"Ops! Ultimate Store Kit not working because you need to install the Easy "
+"Digital Downloads plugin"
+msgstr ""
+
+#: ultimate-store-kit.php:153
+msgid "Install Easy Digital Downloads Now"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bdthemes.com/ultimate-store-kit/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"<a href=\"https://bdthemes.com/ultimate-store-kit/\">Ultimate Store Kit</a> "
+"is a packed of elementor widgets. This plugin gives you extra widgets "
+"features for elementor page builder plugin that help you to build an "
+"ecommerce website with woocommerce."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://bdthemes.com/"
+msgstr ""

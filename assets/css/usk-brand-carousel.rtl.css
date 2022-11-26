@@ -1,0 +1,57 @@
+.usk-brand-carousel {
+  position: relative; }
+
+.usk-brand-carousel-item {
+  position: relative;
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+  transition: all .3s ease; }
+  .usk-brand-carousel-item a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    top: 0; }
+
+.usk-brand-carousel-img {
+  transition: all .3s ease; }
+
+/*------------------------------------
+  brand Carousel elementor-widget Css
+--------------------------------------*/
+.elementor-widget-usk-brand-carousel .usk-arrows-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-arrows-ncx, 0), var(--usk-brand-carousel-arrows-ncy, 40));
+  transform: translate(var(--usk-brand-carousel-arrows-ncx, 0), var(--usk-brand-carousel-arrows-ncy, 40)); }
+
+.elementor-widget-usk-brand-carousel .usk-dots-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-dots-nnx, 0), var(--usk-brand-carousel-dots-nny, 30));
+  transform: translate(var(--usk-brand-carousel-dots-nnx, 0), var(--usk-brand-carousel-dots-nny, 30)); }
+
+.elementor-widget-usk-brand-carousel .usk-arrows-dots-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-both-ncx, 0), var(--usk-brand-carousel-both-ncy, 40));
+  transform: translate(var(--usk-brand-carousel-both-ncx, 0), var(--usk-brand-carousel-both-ncy, 40)); }
+
+.elementor-widget-usk-brand-carousel .usk-arrows-fraction-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-arrows-fraction-ncx, 0), var(--usk-brand-carousel-arrows-fraction-ncy, 40));
+  transform: translate(var(--usk-brand-carousel-arrows-fraction-ncx, 0), var(--usk-brand-carousel-arrows-fraction-ncy, 40)); }
+
+.elementor-widget-usk-brand-carousel .usk-position-center-left .usk-arrows-container,
+.elementor-widget-usk-brand-carousel .usk-position-center-right .usk-arrows-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-arrows-ncx, 0), var(--usk-brand-carousel-arrows-ncy, 0)) rotate(-90deg);
+  transform: translate(var(--usk-brand-carousel-arrows-ncx, 0), var(--usk-brand-carousel-arrows-ncy, 0)) rotate(-90deg); }
+
+.elementor-widget-usk-brand-carousel .usk-position-center-left .usk-dots-container,
+.elementor-widget-usk-brand-carousel .usk-position-center-right .usk-dots-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-dots-nnx, 0), var(--usk-brand-carousel-dots-nny, 0)) rotate(-90deg);
+  transform: translate(var(--usk-brand-carousel-dots-nnx, 0), var(--usk-brand-carousel-dots-nny, 0)) rotate(-90deg); }
+
+.elementor-widget-usk-brand-carousel .usk-position-center-left .usk-arrows-dots-container,
+.elementor-widget-usk-brand-carousel .usk-position-center-right .usk-arrows-dots-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-both-ncx, 0), var(--usk-brand-carousel-both-ncy, 0)) rotate(-90deg);
+  transform: translate(var(--usk-brand-carousel-both-ncx, 0), var(--usk-brand-carousel-both-ncy, 0)) rotate(-90deg); }
+
+.elementor-widget-usk-brand-carousel .usk-position-center-left .usk-arrows-fraction-container,
+.elementor-widget-usk-brand-carousel .usk-position-center-right .usk-arrows-fraction-container {
+  -webkit-transform: translate(var(--usk-brand-carousel-arrows-fraction-ncx, 0), var(--usk-brand-carousel-arrows-fraction-ncy, 0)) rotate(-90deg);
+  transform: translate(var(--usk-brand-carousel-arrows-fraction-ncx, 0), var(--usk-brand-carousel-arrows-fraction-ncy, 0)) rotate(-90deg); }

@@ -1,0 +1,55 @@
+.usk-rating {
+  display: inline-block;
+  .star-rating {
+    display: block;
+    margin: 6px 0px 0 0;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    height: 14px;
+    line-height: 1;
+    font-size: 14px;
+    width: 95px;
+    font-family: star;
+    letter-spacing: 5px;
+    &:before {
+      content: "\73\73\73\73\73";
+      color: #d3ced2;
+      float: left;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+    span {
+      overflow: hidden;
+      float: left;
+      top: 0;
+      left: 0;
+      position: absolute;
+      padding-top: 1.5em;
+      color: #ffcc00;
+      &:before {
+        content: "\53\53\53\53\53";
+        top: 0;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+  &:empty {
+    display: none;
+  }
+  .woocommerce-product-rating {
+    display: inline-block;
+    padding-bottom: 12px;
+    &:after,
+    &:before {
+      content: " ";
+      display: table;
+    }
+  }
+  .woocommerce-review-link {
+    color: #fff;
+    display: none;
+  }
+}

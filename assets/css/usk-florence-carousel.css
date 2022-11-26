@@ -1,0 +1,326 @@
+.usk-florence-carousel .usk-carousel {
+  width: 100%;
+  display: carousel; }
+  .usk-florence-carousel .usk-carousel .usk-item {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-item-box {
+      position: relative; }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-image {
+      position: relative;
+      overflow: hidden; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-image .img {
+        width: 100%;
+        overflow: hidden; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-image .image-default {
+        opacity: 1;
+        transform: scale(1.1);
+        transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s; }
+    .usk-florence-carousel .usk-carousel .usk-item .image-hover {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: all 0.5s ease;
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s; }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-shoping {
+      position: absolute;
+      display: inline-flex;
+      flex-direction: column; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-bottom: 5px;
+        opacity: 0;
+        transform: translateX(25px);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 2px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-action-btn:nth-last-child(1) {
+          margin-bottom: 0; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-action-btn.added_to_cart {
+          display: none; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-wishlist {
+        color: #000;
+        background: #fff;
+        transition: all 0.3s ease; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover {
+          background-color: #2B2D42;
+          color: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active {
+          background-color: #D90429;
+          color: #fff; }
+          .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active:hover {
+            background-color: #D90429; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-compare {
+        transition: all 0.5s ease;
+        color: #000;
+        background: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-compare:hover {
+          background-color: #2B2D42;
+          color: #fff; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-quickview {
+        transition: all 0.6s ease;
+        color: #000;
+        background: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-quickview:hover {
+          background-color: #2B2D42;
+          color: #fff; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-cart {
+        transition: all 0.7s ease;
+        color: #000;
+        background: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-cart.added i::before {
+          display: none; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-cart.added i::after {
+          content: "\2713";
+          font-size: 16px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-cart.loading .icon::before {
+          display: none; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-cart.loading .icon::after {
+          content: "";
+          width: 16px;
+          height: 16px;
+          border: 2px dotted #000;
+          border-radius: 50%;
+          display: inline-block;
+          animation: rotation 2s linear infinite; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-shoping .usk-cart:hover {
+          background-color: #2B2D42;
+          color: #fff; }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper {
+      display: block;
+      position: absolute;
+      text-align: left; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content {
+        display: block; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content > div {
+          display: flex; }
+          .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content > div .usk-badge {
+            text-decoration: none;
+            padding: 4px;
+            font-size: 10px;
+            border-radius: 1px;
+            text-transform: capitalize; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-sale-badge .usk-badge {
+          background: #2B2D42;
+          color: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-sale-badge,
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-percantage-badge,
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-stock-status-badge,
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-trending-badge {
+          margin-bottom: 5px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-percantage-badge .usk-badge {
+          background: #9FA8BC;
+          color: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-stock-status-badge .usk-badge {
+          background: #EF233C;
+          color: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-trending-badge .usk-badge {
+          background: #ff006e;
+          color: #fff; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-new-badge .usk-badge {
+          background: #D90429;
+          color: #fff; }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-content {
+      display: flex;
+      align-items: center;
+      height: 100%; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-content-inner {
+        width: 100%; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category {
+        margin-bottom: 15px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category a {
+          font-size: 11px;
+          color: #9FA8BC;
+          text-transform: uppercase;
+          font-weight: 500;
+          display: inline-block;
+          border: 1px solid #c0c9dd;
+          padding: 2px 10px;
+          transition: all .3s ease; }
+          .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category a:hover {
+            color: #E6EDEF;
+            background: #2B2D42;
+            border: 1px solid #2B2D42; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-title {
+        display: inline-block;
+        margin-bottom: 10px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-title .title {
+          color: #2B2D42;
+          text-transform: capitalize;
+          font-weight: 700;
+          font-size: 16px;
+          margin: 0; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-price {
+        font-size: 12px;
+        font-weight: 700;
+        color: #9FA8BC;
+        margin-bottom: 14px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-price del {
+          font-weight: 500; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-price ins {
+          text-decoration: none;
+          padding-left: 7px; }
+      .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-rating {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0px; }
+        .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-rating .woocommerce-product-rating {
+          display: flex;
+          align-items: center;
+          padding: 0; }
+          .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-rating .woocommerce-product-rating .star-rating {
+            font-size: 12px;
+            margin: 0; }
+    .usk-florence-carousel .usk-carousel .usk-item:hover .usk-image .image-default {
+      opacity: 0;
+      transform: scale(1); }
+    .usk-florence-carousel .usk-carousel .usk-item:hover .usk-image .image-hover {
+      opacity: 1;
+      transform: scale(1.1); }
+    .usk-florence-carousel .usk-carousel .usk-item:hover .usk-shoping .usk-action-btn {
+      opacity: 1;
+      transform: translateX(0px); }
+
+.usk-florence-carousel .usk-carousel-layout {
+  grid-template-columns: repeat(1, 1fr); }
+  .usk-florence-carousel .usk-carousel-layout .usk-item .usk-item-box {
+    overflow: hidden; }
+  .usk-florence-carousel .usk-carousel-layout .usk-item .usk-content {
+    padding: 20px; }
+    .usk-florence-carousel .usk-carousel-layout .usk-item .usk-content .usk-desc {
+      display: none; }
+    .usk-florence-carousel .usk-carousel-layout .usk-item .usk-content .usk-price {
+      margin: 0; }
+  .usk-florence-carousel .usk-carousel-layout .usk-have-rating .usk-content .usk-price {
+    opacity: 1;
+    transition: all 0.3s ease;
+    transform: translateY(0); }
+  .usk-florence-carousel .usk-carousel-layout .usk-have-rating .usk-content .usk-rating {
+    transform: translateY(0);
+    opacity: 0;
+    transition: all 0.3s ease; }
+  .usk-florence-carousel .usk-carousel-layout .usk-have-rating:hover .usk-content .usk-rating {
+    transform: translateY(-20px);
+    opacity: 1; }
+  .usk-florence-carousel .usk-carousel-layout .usk-have-rating:hover .usk-content .usk-price {
+    transform: translateY(-20px);
+    opacity: 0; }
+  .usk-florence-carousel .usk-carousel-layout .usk-shoping {
+    bottom: 15px;
+    right: 15px; }
+    .usk-florence-carousel .usk-carousel-layout .usk-shoping .usk-action-btn {
+      height: 30px;
+      width: 30px; }
+      .usk-florence-carousel .usk-carousel-layout .usk-shoping .usk-action-btn .icon {
+        font-size: 12px; }
+  .usk-florence-carousel .usk-carousel-layout .usk-badge-label-wrapper {
+    top: 15px;
+    left: 15px; }
+
+.usk-florence-carousel .usk-badge-label-wrapper {
+  top: 10px;
+  left: 10px; }
+
+/*------------------------------------
+  Florence Carousel elementor-widget Css
+--------------------------------------*/
+.elementor-widget-usk-florence-carousel .usk-arrows-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 40));
+  transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 40)); }
+
+.elementor-widget-usk-florence-carousel .usk-dots-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 30));
+  transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 30)); }
+
+.elementor-widget-usk-florence-carousel .usk-arrows-dots-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 40));
+  transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 40)); }
+
+.elementor-widget-usk-florence-carousel .usk-arrows-fraction-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 40));
+  transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 40)); }
+
+.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-arrows-container,
+.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-arrows-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 0)) rotate(90deg);
+  transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 0)) rotate(90deg); }
+
+.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-dots-container,
+.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-dots-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 0)) rotate(90deg);
+  transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 0)) rotate(90deg); }
+
+.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-arrows-dots-container,
+.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-arrows-dots-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 0)) rotate(90deg);
+  transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 0)) rotate(90deg); }
+
+.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-arrows-fraction-container,
+.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-arrows-fraction-container {
+  -webkit-transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
+  transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 0)) rotate(90deg); }
+
+@media (min-width: 768px) {
+  .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content > div .usk-badge {
+    padding: 6px; }
+  .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-sale-badge,
+  .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-percantage-badge,
+  .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-stock-status-badge,
+  .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-trending-badge {
+    margin-bottom: 10px; }
+  .usk-florence-carousel .usk-carousel-layout {
+    carousel-template-columns: repeat(2, 1fr); }
+    .usk-florence-carousel .usk-carousel-layout .usk-shoping {
+      bottom: 20px;
+      right: 20px; }
+    .usk-florence-carousel .usk-carousel-layout .usk-badge-label-wrapper {
+      top: 20px;
+      left: 20px; }
+  .usk-florence-carousel .usk-list-layout {
+    carousel-template-columns: repeat(1, 1fr); }
+    .usk-florence-carousel .usk-list-layout .usk-shoping {
+      bottom: 15px;
+      right: 15px; }
+    .usk-florence-carousel .usk-list-layout .usk-badge-label-wrapper {
+      top: 15px;
+      left: 15px; } }
+
+@media (min-width: 1024px) {
+  .usk-florence-carousel .usk-carousel .usk-item .usk-shoping {
+    bottom: 25px;
+    right: 25px; }
+  .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category {
+    margin-bottom: 18px; }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category a {
+      font-size: 13px; }
+  .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-title .title {
+    font-size: 18px; }
+  .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-price {
+    font-size: 14px; }
+  .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-rating .woocommerce-product-rating .star-rating {
+    font-size: 14px; }
+  .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper {
+    top: 25px;
+    left: 25px; }
+    .usk-florence-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content div .usk-badge {
+      padding: 4px 8px;
+      font-size: 11px; }
+  .usk-florence-carousel .usk-carousel-layout {
+    grid-template-columns: repeat(3, 1fr); }
+    .usk-florence-carousel .usk-carousel-layout .usk-item .usk-shoping .usk-action-btn {
+      height: 35px;
+      width: 35px; }
+      .usk-florence-carousel .usk-carousel-layout .usk-item .usk-shoping .usk-action-btn .icon {
+        font-size: 14px; } }
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }

@@ -1,0 +1,8354 @@
+/* ========================================================================
+   Component: Link
+ ========================================================================== */
+/* Muted
+ ========================================================================== */
+a.bdt-link-muted,
+.bdt-link-muted a,
+.bdt-link-toggle .bdt-link-muted {
+  color: #999;
+}
+a.bdt-link-muted:hover,
+.bdt-link-muted a:hover,
+.bdt-link-toggle:hover .bdt-link-muted {
+  color: #666;
+}
+/* Text
+ ========================================================================== */
+a.bdt-link-text,
+.bdt-link-text a,
+.bdt-link-toggle .bdt-link-text {
+  color: inherit;
+}
+a.bdt-link-text:hover,
+.bdt-link-text a:hover,
+.bdt-link-toggle:hover .bdt-link-text {
+  color: #999;
+}
+/* Heading
+ ========================================================================== */
+a.bdt-link-heading,
+.bdt-link-heading a,
+.bdt-link-toggle .bdt-link-heading {
+  color: inherit;
+}
+a.bdt-link-heading:hover,
+.bdt-link-heading a:hover,
+.bdt-link-toggle:hover .bdt-link-heading {
+  color: #1e87f0;
+  text-decoration: none;
+}
+/* Reset
+ ========================================================================== */
+/*
+ * `!important` needed to override inverse component
+ */
+a.bdt-link-reset,
+.bdt-link-reset a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+/* Toggle
+ ========================================================================== */
+.bdt-link-toggle {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+/* ========================================================================
+   Component: Divider
+ ========================================================================== */
+/*
+ * 1. Reset default `hr`
+ * 2. Set margin if a `div` is used for semantical reason
+ */
+[class*='bdt-divider'] {
+  /* 1 */
+  border: none;
+  /* 2 */
+  margin-bottom: 20px;
+}
+/* Add margin if adjacent element */
+* + [class*='bdt-divider'] {
+  margin-top: 20px;
+}
+/* Icon
+ ========================================================================== */
+.bdt-divider-icon {
+  position: relative;
+  height: 20px;
+  background-image: url("../../images/backgrounds/divider-icon.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.bdt-divider-icon::before,
+.bdt-divider-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  max-width: calc(50% - (50px / 2));
+  border-bottom: 1px solid rgba(214, 214, 214, 0.49);
+}
+.bdt-divider-icon::before {
+  left: calc(50% + (50px / 2));
+  width: 100%;
+}
+.bdt-divider-icon::after {
+  right: calc(50% + (50px / 2));
+  width: 100%;
+}
+/* Small
+ ========================================================================== */
+/*
+ * 1. Fix height because of `inline-block`
+ * 2. Using ::after and inline-block to make `text-align` work
+ */
+/* 1 */
+.bdt-divider-small {
+  line-height: 0;
+}
+/* 2 */
+.bdt-divider-small::after {
+  content: "";
+  display: inline-block;
+  width: 100px;
+  max-width: 100%;
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+  vertical-align: top;
+}
+/* Vertical
+ ========================================================================== */
+.bdt-divider-vertical {
+  width: max-content;
+  height: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  border-right: 1px solid rgba(214, 214, 214, 0.49);
+}
+/* ========================================================================
+   Component: List
+ ========================================================================== */
+.bdt-list {
+  padding: 0;
+  list-style: none;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-list > * > :last-child {
+  margin-bottom: 0;
+}
+/*
+ * Style
+ */
+.bdt-list > :nth-child(n+2),
+.bdt-list > * > ul {
+  margin-top: 10px;
+}
+/* Marker modifiers
+ * Moving `::marker` inside `::before` to style it differently
+ * To style the `::marker` is currently only supported in Firefox and Safari
+ ========================================================================== */
+.bdt-list-disc > *,
+.bdt-list-circle > *,
+.bdt-list-square > *,
+.bdt-list-decimal > *,
+.bdt-list-hyphen > * {
+  padding-right: 30px;
+}
+/*
+ * Type modifiers
+ */
+.bdt-list-decimal {
+  counter-reset: decimal;
+}
+.bdt-list-decimal > * {
+  counter-increment: decimal;
+}
+.bdt-list-disc > ::before,
+.bdt-list-circle > ::before,
+.bdt-list-square > ::before,
+.bdt-list-decimal > ::before,
+.bdt-list-hyphen > ::before {
+  content: "";
+  position: relative;
+  right: -30px;
+  width: 30px;
+  height: 1.5em;
+  margin-bottom: -1.5em;
+  display: list-item;
+  list-style-position: inside;
+  text-align: left;
+}
+.bdt-list-disc > ::before {
+  list-style-type: disc;
+}
+.bdt-list-circle > ::before {
+  list-style-type: circle;
+}
+.bdt-list-square > ::before {
+  list-style-type: square;
+}
+.bdt-list-decimal > ::before {
+  content: counter(decimal, decimal) '\200A.\00A0';
+}
+.bdt-list-hyphen > ::before {
+  content: '–\00A0\00A0';
+}
+/*
+ * Color modifiers
+ */
+.bdt-list-muted > ::before {
+  color: #999 !important;
+}
+.bdt-list-emphasis > ::before {
+  color: #333 !important;
+}
+.bdt-list-primary > ::before {
+  color: #1e87f0 !important;
+}
+.bdt-list-secondary > ::before {
+  color: #222 !important;
+}
+/* Image bullet modifier
+ ========================================================================== */
+.bdt-list-bullet > * {
+  padding-right: 30px;
+}
+.bdt-list-bullet > ::before {
+  content: "";
+  display: list-item;
+  position: relative;
+  right: -30px;
+  width: 30px;
+  height: 1.5em;
+  margin-bottom: -1.5em;
+  background-image: url("../../images/backgrounds/list-bullet.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Divider
+ */
+.bdt-list-divider > :nth-child(n+2) {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Striped
+ */
+.bdt-list-striped > * {
+  padding: 10px 10px;
+}
+.bdt-list-striped > :nth-of-type(odd) {
+  background: #f8f8f8;
+}
+.bdt-list-striped > :nth-child(n+2) {
+  margin-top: 0;
+}
+/* Size modifier
+ ========================================================================== */
+.bdt-list-large > :nth-child(n+2),
+.bdt-list-large > * > ul {
+  margin-top: 20px;
+}
+.bdt-list-collapse > :nth-child(n+2),
+.bdt-list-collapse > * > ul {
+  margin-top: 0;
+}
+/*
+ * Divider
+ */
+.bdt-list-large.bdt-list-divider > :nth-child(n+2) {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.bdt-list-collapse.bdt-list-divider > :nth-child(n+2) {
+  margin-top: 0;
+  padding-top: 0;
+}
+/*
+ * Striped
+ */
+.bdt-list-large.bdt-list-striped > * {
+  padding: 20px 10px;
+}
+.bdt-list-collapse.bdt-list-striped > * {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.bdt-list-large.bdt-list-striped > :nth-child(n+2),
+.bdt-list-collapse.bdt-list-striped > :nth-child(n+2) {
+  margin-top: 0;
+}
+/* ========================================================================
+   Component: Description list
+ ========================================================================== */
+/*
+ * Term
+ */
+.bdt-description-list > dt {
+  color: #333;
+}
+.bdt-description-list > dt:nth-child(n+2) {
+  margin-top: 20px;
+}
+/*
+ * Description
+ */
+/* Style modifier
+ ========================================================================== */
+/*
+ * Line
+ */
+.bdt-description-list-divider > dt:nth-child(n+2) {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/* ========================================================================
+   Component: Table
+ ========================================================================== */
+/*
+ * 1. Remove most spacing between table cells.
+ * 2. Behave like a block element
+ * 3. Style
+ */
+.bdt-table {
+  /* 1 */
+  border-collapse: collapse;
+  border-spacing: 0;
+  /* 2 */
+  width: 100%;
+  /* 3 */
+  margin-bottom: 20px;
+}
+/* Add margin if adjacent element */
+* + .bdt-table {
+  margin-top: 20px;
+}
+/* Header cell
+ ========================================================================== */
+/*
+ * 1. Style
+ */
+.bdt-table th {
+  padding: 16px 12px;
+  text-align: right;
+  vertical-align: bottom;
+  /* 1 */
+  font-size: 16px;
+  font-weight: bold;
+  color: #666;
+}
+/* Cell
+ ========================================================================== */
+.bdt-table td {
+  padding: 16px 12px;
+  vertical-align: top;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-table td > :last-child {
+  margin-bottom: 0;
+}
+/* Footer
+ ========================================================================== */
+.bdt-table tfoot {
+  font-size: 0.875rem;
+}
+/* Caption
+ ========================================================================== */
+.bdt-table caption {
+  font-size: 0.875rem;
+  text-align: right;
+  color: #999;
+}
+/* Alignment modifier
+ ========================================================================== */
+.bdt-table-middle,
+.bdt-table-middle td {
+  vertical-align: middle !important;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Divider
+ */
+.bdt-table-divider > tr:not(:first-child),
+.bdt-table-divider > :not(:first-child) > tr,
+.bdt-table-divider > :first-child > tr:not(:first-child) {
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Striped
+ */
+.bdt-table-striped > tr:nth-of-type(odd),
+.bdt-table-striped tbody tr:nth-of-type(odd) {
+  background: #f8f8f8;
+}
+/*
+ * Hover
+ */
+.bdt-table-hover > tr:hover,
+.bdt-table-hover tbody tr:hover {
+  background: #ffd;
+}
+/* Active state
+ ========================================================================== */
+.bdt-table > tr.bdt-active,
+.bdt-table tbody tr.bdt-active {
+  background: #ffd;
+}
+/* Size modifier
+ ========================================================================== */
+.bdt-table-small th,
+.bdt-table-small td {
+  padding: 10px 12px;
+}
+.bdt-table-large th,
+.bdt-table-large td {
+  padding: 22px 12px;
+}
+/* Justify modifier
+ ========================================================================== */
+.bdt-table-justify th:first-child,
+.bdt-table-justify td:first-child {
+  padding-right: 0;
+}
+.bdt-table-justify th:last-child,
+.bdt-table-justify td:last-child {
+  padding-left: 0;
+}
+/* Cell size modifier
+ ========================================================================== */
+.bdt-table-shrink {
+  width: 1px;
+}
+.bdt-table-expand {
+  min-width: 150px;
+}
+/* Cell link modifier
+ ========================================================================== */
+/*
+ * Does not work with `bdt-table-justify` at the moment
+ */
+.bdt-table-link {
+  padding: 0 !important;
+}
+.bdt-table-link > a {
+  display: block;
+  padding: 16px 12px;
+}
+.bdt-table-small .bdt-table-link > a {
+  padding: 10px 12px;
+}
+/* Responsive table
+ ========================================================================== */
+/* Phone landscape and smaller */
+@media (max-width: 959px) {
+  .bdt-table-responsive,
+  .bdt-table-responsive tbody,
+  .bdt-table-responsive th,
+  .bdt-table-responsive td,
+  .bdt-table-responsive tr {
+    display: block;
+  }
+  .bdt-table-responsive thead {
+    display: none;
+  }
+  .bdt-table-responsive th,
+  .bdt-table-responsive td {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+  }
+  .bdt-table-responsive th:not(:first-child):not(.bdt-table-link),
+  .bdt-table-responsive td:not(:first-child):not(.bdt-table-link),
+  .bdt-table-responsive .bdt-table-link:not(:first-child) > a {
+    padding-top: 5px !important;
+  }
+  .bdt-table-responsive th:not(:last-child):not(.bdt-table-link),
+  .bdt-table-responsive td:not(:last-child):not(.bdt-table-link),
+  .bdt-table-responsive .bdt-table-link:not(:last-child) > a {
+    padding-bottom: 5px !important;
+  }
+  .bdt-table-justify.bdt-table-responsive th,
+  .bdt-table-justify.bdt-table-responsive td {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+/* ========================================================================
+   Component: Icon
+ ========================================================================== */
+/*
+ * Note: 1. - 7. is required for `button` elements. Needed for Close and Form Icon component.
+ * 1. Remove margins in Chrome, Safari and Opera.
+ * 2. Remove borders for `button`.
+ * 3. Remove border-radius in Chrome.
+ * 4. Address `overflow` set to `hidden` in IE.
+ * 5. Correct `font` properties and `color` not being inherited for `button`.
+ * 6. Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 7. Remove default `button` padding and background color
+ * 8. Style
+ * 9. Fill all SVG elements with the current text color if no `fill` attribute is set
+ * 10. Let the container fit the height of the icon
+ */
+.bdt-icon {
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  border: none;
+  /* 3 */
+  border-radius: 0;
+  /* 4 */
+  overflow: visible;
+  /* 5 */
+  font: inherit;
+  color: inherit;
+  /* 6 */
+  text-transform: none;
+  /* 7. */
+  padding: 0;
+  background-color: transparent;
+  /* 8 */
+  display: inline-block;
+  /* 9 */
+  fill: currentcolor;
+  /* 10 */
+  line-height: 0;
+}
+/* Required for `button`. */
+button.bdt-icon:not(:disabled) {
+  cursor: pointer;
+}
+/*
+ * Remove the inner border and padding in Firefox.
+ */
+.bdt-icon::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/*
+ * Set the fill and stroke color of all SVG elements to the current text color
+ */
+.bdt-icon:not(.bdt-preserve) [fill*='#']:not(.bdt-preserve) {
+  fill: currentcolor;
+}
+.bdt-icon:not(.bdt-preserve) [stroke*='#']:not(.bdt-preserve) {
+  stroke: currentcolor;
+}
+/*
+ * Fix Firefox blurry SVG rendering: https://bugzilla.mozilla.org/show_bug.cgi?id=1046835
+ */
+.bdt-icon > * {
+  transform: translate(0, 0);
+}
+/* Image modifier
+ ========================================================================== */
+/*
+ * Display images in icon dimensions
+ * 1. Required for `span` with background image
+ * 2. Required for `image`
+ */
+.bdt-icon-image {
+  width: 20px;
+  height: 20px;
+  /* 1 */
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  /* 2 */
+  object-fit: scale-down;
+  max-width: none;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Link
+ */
+.bdt-icon-link {
+  color: #999;
+}
+.bdt-icon-link:hover {
+  color: #666;
+}
+/* OnClick + Active */
+.bdt-icon-link:active,
+.bdt-active > .bdt-icon-link {
+  color: #595959;
+}
+/*
+ * Button
+ * 1. Center icon vertically and horizontally
+ */
+.bdt-icon-button {
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  border-radius: 500px;
+  background: #f8f8f8;
+  color: #999;
+  vertical-align: middle;
+  /* 1 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Hover */
+.bdt-icon-button:hover {
+  background-color: #ebebeb;
+  color: #666;
+}
+/* OnClick + Active */
+.bdt-icon-button:active,
+.bdt-active > .bdt-icon-button {
+  background-color: #dfdfdf;
+  color: #666;
+}
+/* ========================================================================
+   Component: Form Range
+ ========================================================================== */
+/*
+ * 1. Remove default style.
+ * 2. Define consistent box sizing.
+ * 3. Remove `margin` in all browsers.
+ * 4. Align to the center of the line box.
+ * 5. Prevent content overflow if a fixed width is used.
+ * 6. Take the full width.
+ * 7. Remove white background in Chrome.
+ */
+.bdt-range {
+  /* 1 */
+  -webkit-appearance: none;
+  /* 2 */
+  box-sizing: border-box;
+  /* 3 */
+  margin: 0;
+  /* 4 */
+  vertical-align: middle;
+  /* 5 */
+  max-width: 100%;
+  /* 6 */
+  width: 100%;
+  /* 7 */
+  background: transparent;
+}
+/* Focus */
+.bdt-range:focus {
+  outline: none;
+}
+.bdt-range::-moz-focus-outer {
+  border: none;
+}
+/*
+ * Improves consistency of cursor style for clickable elements
+ */
+.bdt-range:not(:disabled)::-webkit-slider-thumb {
+  cursor: pointer;
+}
+.bdt-range:not(:disabled)::-moz-range-thumb {
+  cursor: pointer;
+}
+/*
+ * Track
+ * 1. Safari doesn't have a focus state. Using active instead.
+ */
+/* Webkit */
+.bdt-range::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #ebebeb;
+}
+.bdt-range:focus::-webkit-slider-runnable-track,
+.bdt-range:active::-webkit-slider-runnable-track {
+  background: #dedede;
+}
+/* Firefox */
+.bdt-range::-moz-range-track {
+  height: 3px;
+  background: #ebebeb;
+}
+.bdt-range:focus::-moz-range-track {
+  background: #dedede;
+}
+/*
+ * Thumb
+ * 1. Reset
+ * 2. Style
+ */
+/* Webkit */
+.bdt-range::-webkit-slider-thumb {
+  /* 1 */
+  -webkit-appearance: none;
+  margin-top: -7px;
+  /* 2 */
+  height: 15px;
+  width: 15px;
+  border-radius: 500px;
+  background: #666;
+}
+/* Firefox */
+.bdt-range::-moz-range-thumb {
+  /* 1 */
+  border: none;
+  /* 2 */
+  height: 15px;
+  width: 15px;
+  margin-top: -7px;
+  border-radius: 500px;
+  background: #666;
+}
+/* ========================================================================
+   Component: Form
+ ========================================================================== */
+/*
+ * 1. Define consistent box sizing.
+ *    Default is `content-box` with following exceptions set to `border-box`
+ *    `select`, `input[type="checkbox"]` and `input[type="radio"]`
+ *    `input[type="search"]` in Chrome, Safari and Opera
+ *    `input[type="color"]` in Firefox
+ * 2. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+ * 3. Remove `border-radius` in iOS.
+ * 4. Change font properties to `inherit` in all browsers.
+ */
+.bdt-input,
+.bdt-select,
+.bdt-textarea,
+.bdt-radio,
+.bdt-checkbox {
+  /* 1 */
+  box-sizing: border-box;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  border-radius: 0;
+  /* 4 */
+  font: inherit;
+}
+/*
+ * Show the overflow in Edge.
+ */
+.bdt-input {
+  overflow: visible;
+}
+/*
+ * Remove the inheritance of text transform in Firefox.
+ */
+.bdt-select {
+  text-transform: none;
+}
+/*
+ * 1. Change font properties to `inherit` in all browsers
+ * 2. Don't inherit the `font-weight` and use `bold` instead.
+ * NOTE: Both declarations don't work in Chrome, Safari and Opera.
+ */
+.bdt-select optgroup {
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  font-weight: bold;
+}
+/*
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+.bdt-textarea {
+  overflow: auto;
+}
+/*
+ * Remove the inner padding and cancel buttons in Chrome on OS X and Safari on OS X.
+ */
+.bdt-input[type="search"]::-webkit-search-cancel-button,
+.bdt-input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/*
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+.bdt-input[type="number"]::-webkit-inner-spin-button,
+.bdt-input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+/*
+ * Removes placeholder transparency in Firefox.
+ */
+.bdt-input::-moz-placeholder,
+.bdt-textarea::-moz-placeholder {
+  opacity: 1;
+}
+/*
+ * Improves consistency of cursor style for clickable elements
+ */
+.bdt-radio:not(:disabled),
+.bdt-checkbox:not(:disabled) {
+  cursor: pointer;
+}
+/*
+ * Define consistent border, margin, and padding.
+ */
+.bdt-fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+/* Input, select and textarea
+ * Allowed: `text`, `password`, `datetime`, `datetime-local`, `date`,  `month`,
+            `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`
+ * Disallowed: `range`, `radio`, `checkbox`, `file`, `submit`, `reset` and `image`
+ ========================================================================== */
+/*
+ * Remove default style in iOS.
+ */
+.bdt-input,
+.bdt-textarea {
+  -webkit-appearance: none;
+}
+/*
+ * 1. Prevent content overflow if a fixed width is used
+ * 2. Take the full width
+ * 3. Reset default
+ * 4. Style
+ */
+.bdt-input,
+.bdt-select,
+.bdt-textarea {
+  /* 1 */
+  max-width: 100%;
+  /* 2 */
+  width: 100%;
+  /* 3 */
+  border: 0 none;
+  /* 4 */
+  padding: 0 10px;
+  background: #f8f8f8;
+  color: #666;
+  border-radius: 3px;
+}
+/*
+ * Single-line
+ * 1. Allow any element to look like an `input` or `select` element
+ * 2. Make sure line-height is not larger than height
+ *    Also needed to center the text vertically
+ */
+.bdt-input,
+.bdt-select:not([multiple]):not([size]) {
+  height: 40px;
+  vertical-align: middle;
+  /* 1 */
+  display: inline-block;
+}
+/* 2 */
+.bdt-input:not(input),
+.bdt-select:not(select) {
+  line-height: 40px;
+}
+/*
+ * Multi-line
+ */
+.bdt-select[multiple],
+.bdt-select[size],
+.bdt-textarea {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  vertical-align: top;
+}
+.bdt-select[multiple],
+.bdt-select[size] {
+  resize: vertical;
+}
+/* Focus */
+.bdt-input:focus,
+.bdt-select:focus,
+.bdt-textarea:focus {
+  outline: none;
+  background-color: #ebebeb;
+  color: #666;
+}
+/* Disabled */
+.bdt-input:disabled,
+.bdt-select:disabled,
+.bdt-textarea:disabled {
+  background-color: #f8f8f8;
+  color: #999;
+}
+/*
+ * Placeholder
+ */
+.bdt-input::placeholder {
+  color: #999;
+}
+.bdt-textarea::placeholder {
+  color: #999;
+}
+/* Style modifier (`bdt-input`, `bdt-select` and `bdt-textarea`)
+ ========================================================================== */
+/*
+ * Small
+ */
+.bdt-form-small {
+  font-size: 0.875rem;
+}
+/* Single-line */
+.bdt-form-small:not(textarea):not([multiple]):not([size]) {
+  height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+/* Multi-line */
+textarea.bdt-form-small,
+[multiple].bdt-form-small,
+[size].bdt-form-small {
+  padding: 5px 8px;
+}
+.bdt-form-small:not(select):not(input):not(textarea) {
+  line-height: 30px;
+}
+/*
+ * Large
+ */
+.bdt-form-large {
+  font-size: 1.25rem;
+}
+/* Single-line */
+.bdt-form-large:not(textarea):not([multiple]):not([size]) {
+  height: 55px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+/* Multi-line */
+textarea.bdt-form-large,
+[multiple].bdt-form-large,
+[size].bdt-form-large {
+  padding: 7px 12px;
+}
+.bdt-form-large:not(select):not(input):not(textarea) {
+  line-height: 55px;
+}
+/* Style modifier (`bdt-input`, `bdt-select` and `bdt-textarea`)
+ ========================================================================== */
+/*
+ * Error
+ */
+.bdt-form-danger,
+.bdt-form-danger:focus {
+  color: #f0506e;
+}
+/*
+ * Success
+ */
+.bdt-form-success,
+.bdt-form-success:focus {
+  color: #32d296;
+}
+/*
+ * Blank
+ */
+.bdt-form-blank {
+  background: none;
+}
+/* Width modifiers (`bdt-input`, `bdt-select` and `bdt-textarea`)
+ ========================================================================== */
+/*
+ * Fixed widths
+ * Different widths for mini sized `input` and `select` elements
+ */
+input.bdt-form-width-xsmall {
+  width: 50px;
+}
+select.bdt-form-width-xsmall {
+  width: 75px;
+}
+.bdt-form-width-small {
+  width: 130px;
+}
+.bdt-form-width-medium {
+  width: 200px;
+}
+.bdt-form-width-large {
+  width: 500px;
+}
+/* Select
+ ========================================================================== */
+/*
+ * 1. Remove default style. Also works in Firefox
+ * 2. Style
+ * 3. Set `color` for options in the select dropdown, because the inherited `color` might be too light.
+ */
+.bdt-select:not([multiple]):not([size]) {
+  /* 1 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* 2 */
+  padding-left: 20px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0D%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0D%0A%3C%2Fsvg%3E%0D%0A");
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+/* 3 */
+.bdt-select:not([multiple]):not([size]) option {
+  color: #666;
+}
+/*
+ * Disabled
+ */
+.bdt-select:not([multiple]):not([size]):disabled {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23999%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0D%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23999%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0D%0A%3C%2Fsvg%3E%0D%0A");
+}
+/* Datalist
+ ========================================================================== */
+/*
+ * 1. Remove default style in Chrome
+ */
+.bdt-input[list] {
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+.bdt-input[list]:hover,
+.bdt-input[list]:focus {
+  background-image: url("../../images/backgrounds/form-datalist.svg");
+}
+/* 1 */
+.bdt-input[list]::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+/* Radio and checkbox
+ ========================================================================== */
+/*
+ * 1. Style
+ * 2. Make box more robust so it clips the child element
+ * 3. Vertical alignment
+ * 4. Remove default style
+ * 5. Fix black background on iOS
+ * 6. Center icons
+ */
+.bdt-radio,
+.bdt-checkbox {
+  /* 1 */
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  /* 2 */
+  overflow: hidden;
+  /* 3 */
+  margin-top: -4px;
+  vertical-align: middle;
+  /* 4 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* 5 */
+  background-color: #ebebeb;
+  /* 6 */
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.bdt-radio {
+  border-radius: 50%;
+}
+/* Focus */
+.bdt-radio:focus,
+.bdt-checkbox:focus {
+  background-color: #dedede;
+  outline: none;
+}
+/*
+ * Checked
+ */
+.bdt-radio:checked,
+.bdt-checkbox:checked,
+.bdt-checkbox:indeterminate {
+  background-color: #1e87f0;
+}
+/* Focus */
+.bdt-radio:checked:focus,
+.bdt-checkbox:checked:focus,
+.bdt-checkbox:indeterminate:focus {
+  background-color: #0e6dcd;
+}
+/*
+ * Icons
+ */
+.bdt-radio:checked {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20fill%3D%22%23fff%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0D%0A%3C%2Fsvg%3E");
+}
+.bdt-checkbox:checked {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23fff%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0D%0A%3C%2Fsvg%3E%0D%0A");
+}
+.bdt-checkbox:indeterminate {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Crect%20fill%3D%22%23fff%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0D%0A%3C%2Fsvg%3E");
+}
+/*
+ * Disabled
+ */
+.bdt-radio:disabled,
+.bdt-checkbox:disabled {
+  background-color: #f8f8f8;
+}
+.bdt-radio:disabled:checked {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Ccircle%20fill%3D%22%23999%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0D%0A%3C%2Fsvg%3E");
+}
+.bdt-checkbox:disabled:checked {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23999%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0D%0A%3C%2Fsvg%3E%0D%0A");
+}
+.bdt-checkbox:disabled:indeterminate {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Crect%20fill%3D%22%23999%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0D%0A%3C%2Fsvg%3E");
+}
+/* Legend
+ ========================================================================== */
+/*
+ * Legend
+ * 1. Behave like block element
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 4. Style
+ */
+.bdt-legend {
+  /* 1 */
+  width: 100%;
+  /* 2 */
+  color: inherit;
+  /* 3 */
+  padding: 0;
+  /* 4 */
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+/* Custom controls
+ ========================================================================== */
+/*
+ * 1. Container fits its content
+ * 2. Create position context
+ * 3. Prevent content overflow
+ * 4. Behave like most inline-block elements
+ */
+.bdt-form-custom {
+  /* 1 */
+  display: inline-block;
+  /* 2 */
+  position: relative;
+  /* 3 */
+  max-width: 100%;
+  /* 4 */
+  vertical-align: middle;
+}
+/*
+ * 1. Position and resize the form control to always cover its container
+ * 2. Required for Firefox for positioning to the left
+ * 3. Required for Webkit to make `height` work
+ * 4. Hide controle and show cursor
+ * 5. Needed for the cursor
+ * 6. Clip height caused by 5. Needed for Webkit only
+ */
+.bdt-form-custom select,
+.bdt-form-custom input[type="file"] {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* 2 */
+  right: 0;
+  /* 3 */
+  -webkit-appearance: none;
+  /* 4 */
+  opacity: 0;
+  cursor: pointer;
+}
+.bdt-form-custom input[type="file"] {
+  /* 5 */
+  font-size: 500px;
+  /* 6 */
+  overflow: hidden;
+}
+/* Label
+ ========================================================================== */
+/* Layout
+ ========================================================================== */
+/*
+ * Stacked
+ */
+.bdt-form-stacked .bdt-form-label {
+  display: block;
+  margin-bottom: 10px;
+}
+/*
+ * Horizontal
+ */
+/* Tablet portrait and smaller */
+@media (max-width: 959px) {
+  /* Behave like `bdt-form-stacked` */
+  .bdt-form-horizontal .bdt-form-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-form-horizontal .bdt-form-label {
+    width: 200px;
+    margin-top: 7px;
+    float: right;
+  }
+  .bdt-form-horizontal .bdt-form-controls {
+    margin-right: 215px;
+  }
+  /* Better vertical alignment if controls are checkboxes and radio buttons with text */
+  .bdt-form-horizontal .bdt-form-controls-text {
+    padding-top: 7px;
+  }
+}
+/* Icons
+ ========================================================================== */
+/*
+ * 1. Set position
+ * 2. Set width
+ * 3. Center icon vertically and horizontally
+ * 4. Style
+ */
+.bdt-form-icon {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  /* 2 */
+  width: 40px;
+  /* 3 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* 4 */
+  color: #999;
+}
+/*
+ * Required for `a`.
+ */
+.bdt-form-icon:hover {
+  color: #666;
+}
+/*
+ * Make `input` element clickable through icon, e.g. if it's a `span`
+ */
+.bdt-form-icon:not(a):not(button):not(input) {
+  pointer-events: none;
+}
+/*
+ * Input padding
+ */
+.bdt-form-icon:not(.bdt-form-icon-flip) ~ .bdt-input {
+  padding-right: 40px !important;
+}
+/*
+ * Position modifier
+ */
+.bdt-form-icon-flip {
+  left: 0;
+  right: auto;
+}
+.bdt-form-icon-flip ~ .bdt-input {
+  padding-left: 40px !important;
+}
+/* ========================================================================
+   Component: Button
+ ========================================================================== */
+/*
+ * 1. Remove margins in Chrome, Safari and Opera.
+ * 2. Remove borders for `button`.
+ * 3. Address `overflow` set to `hidden` in IE.
+ * 4. Correct `font` properties and `color` not being inherited for `button`.
+ * 5. Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 6. Remove default style for `input type="submit"`in iOS.
+ * 7. Style
+ * 8. `line-height` is used to create a height because it also centers the text vertically for `a` elements.
+ *    Better would be to use height and flexbox to center the text vertically but flexbox doesn't work in Firefox on `button` elements.
+ * 9. Align text if button has a width
+ * 10. Required for `a`.
+ */
+.bdt-button {
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  border: none;
+  /* 3 */
+  overflow: visible;
+  /* 4 */
+  font: inherit;
+  color: inherit;
+  /* 5 */
+  text-transform: none;
+  /* 6 */
+  -webkit-appearance: none;
+  border-radius: 0;
+  /* 7 */
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 30px;
+  vertical-align: middle;
+  font-size: 16px;
+  /* 8 */
+  line-height: 40px;
+  /* 9 */
+  text-align: center;
+  /* 10 */
+  text-decoration: none;
+  border-radius: 3px;
+}
+.bdt-button:not(:disabled) {
+  cursor: pointer;
+}
+/*
+ * Remove the inner border and padding in Firefox.
+ */
+.bdt-button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/* Hover */
+.bdt-button:hover {
+  /* 9 */
+  text-decoration: none;
+}
+/* OnClick + Active */
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ */
+.bdt-button-default {
+  background-color: #f8f8f8;
+  color: #333;
+}
+/* Hover */
+.bdt-button-default:hover {
+  background-color: #ebebeb;
+  color: #333;
+}
+/* OnClick + Active */
+.bdt-button-default:active,
+.bdt-button-default.bdt-active {
+  background-color: #dfdfdf;
+  color: #333;
+}
+/*
+ * Primary
+ */
+.bdt-button-primary {
+  background-color: #1e87f0;
+  color: #fff;
+}
+/* Hover */
+.bdt-button-primary:hover {
+  background-color: #0f7ae5;
+  color: #fff;
+}
+/* OnClick + Active */
+.bdt-button-primary:active,
+.bdt-button-primary.bdt-active {
+  background-color: #0e6dcd;
+  color: #fff;
+}
+/*
+ * Secondary
+ */
+.bdt-button-secondary {
+  background-color: #222;
+  color: #fff;
+}
+/* Hover */
+.bdt-button-secondary:hover {
+  background-color: #151515;
+  color: #fff;
+}
+/* OnClick + Active */
+.bdt-button-secondary:active,
+.bdt-button-secondary.bdt-active {
+  background-color: #080808;
+  color: #fff;
+}
+/*
+ * Danger
+ */
+.bdt-button-danger {
+  background-color: #f0506e;
+  color: #fff;
+}
+/* Hover */
+.bdt-button-danger:hover {
+  background-color: #ee395b;
+  color: #fff;
+}
+/* OnClick + Active */
+.bdt-button-danger:active,
+.bdt-button-danger.bdt-active {
+  background-color: #ec2147;
+  color: #fff;
+}
+/*
+ * Disabled
+ * The same for all style modifiers
+ */
+.bdt-button-default:disabled,
+.bdt-button-primary:disabled,
+.bdt-button-secondary:disabled,
+.bdt-button-danger:disabled {
+  background-color: #f8f8f8;
+  color: #999;
+}
+/* Size modifiers
+ ========================================================================== */
+.bdt-button-small {
+  padding: 0 15px;
+  line-height: 30px;
+  font-size: 0.875rem;
+}
+.bdt-button-large {
+  padding: 0 40px;
+  line-height: 55px;
+  font-size: 1.25rem;
+}
+/* Text modifiers
+ ========================================================================== */
+/*
+ * Text
+ * 1. Reset
+ * 2. Style
+ */
+.bdt-button-text {
+  /* 1 */
+  padding: 0;
+  line-height: 1.5;
+  background: none;
+  /* 2 */
+  color: #333;
+}
+/* Hover */
+.bdt-button-text:hover {
+  color: #999;
+}
+/* Disabled */
+.bdt-button-text:disabled {
+  color: #999;
+}
+/*
+ * Link
+ * 1. Reset
+ * 2. Style
+ */
+.bdt-button-link {
+  /* 1 */
+  padding: 0;
+  line-height: 1.5;
+  background: none;
+  /* 2 */
+  color: #333;
+}
+/* Hover */
+.bdt-button-link:hover {
+  color: #999;
+  text-decoration: none;
+}
+/* Disabled */
+.bdt-button-link:disabled {
+  color: #999;
+  text-decoration: none;
+}
+/* Group
+ ========================================================================== */
+/*
+ * 1. Using `flex` instead of `inline-block` to prevent whitespace betweent child elements
+ * 2. Behave like button
+ * 3. Create position context
+ */
+.bdt-button-group {
+  /* 1 */
+  display: inline-flex;
+  /* 2 */
+  vertical-align: middle;
+  /* 3 */
+  position: relative;
+}
+/* ========================================================================
+   Component: Section
+ ========================================================================== */
+/*
+ * 1. Make it work with `100vh` and height in general
+ */
+.bdt-section {
+  display: flow-root;
+  box-sizing: border-box;
+  /* 1 */
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .bdt-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-section > :last-child {
+  margin-bottom: 0;
+}
+/* Size modifiers
+ ========================================================================== */
+/*
+ * XSmall
+ */
+.bdt-section-xsmall {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/*
+ * Small
+ */
+.bdt-section-small {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+/*
+ * Large
+ */
+.bdt-section-large {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-section-large {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+}
+/*
+ * XLarge
+ */
+.bdt-section-xlarge {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-section-xlarge {
+    padding-top: 210px;
+    padding-bottom: 210px;
+  }
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ */
+.bdt-section-default {
+  background: #fff;
+}
+/*
+ * Muted
+ */
+.bdt-section-muted {
+  background: #f8f8f8;
+}
+/*
+ * Primary
+ */
+.bdt-section-primary {
+  background: #1e87f0;
+}
+/*
+ * Secondary
+ */
+.bdt-section-secondary {
+  background: #222;
+}
+/* Overlap modifier
+ ========================================================================== */
+/*
+ * Reserved modifier to make a section overlap another section with an border image
+ * Implemented by the theme
+ */
+/* ========================================================================
+   Component: Container
+ ========================================================================== */
+/*
+ * 1. Box sizing has to be `content-box` so the max-width is always the same and
+ *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
+ */
+.bdt-container {
+  display: flow-root;
+  /* 1 */
+  box-sizing: content-box;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-container {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-container > :last-child {
+  margin-bottom: 0;
+}
+/*
+ * Remove padding from nested containers
+ */
+.bdt-container .bdt-container {
+  padding-right: 0;
+  padding-left: 0;
+}
+/* Size modifier
+ ========================================================================== */
+.bdt-container-xsmall {
+  max-width: 750px;
+}
+.bdt-container-small {
+  max-width: 900px;
+}
+.bdt-container-large {
+  max-width: 1400px;
+}
+.bdt-container-xlarge {
+  max-width: 1600px;
+}
+.bdt-container-expand {
+  max-width: none;
+}
+/* Expand modifier
+ ========================================================================== */
+/*
+ * Expand one side only
+ */
+.bdt-container-expand-left {
+  margin-right: 0;
+}
+.bdt-container-expand-right {
+  margin-left: 0;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-container-expand-left.bdt-container-xsmall,
+  .bdt-container-expand-right.bdt-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 30px);
+  }
+  .bdt-container-expand-left.bdt-container-small,
+  .bdt-container-expand-right.bdt-container-small {
+    max-width: calc(50% + (900px / 2) - 30px);
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-container-expand-left,
+  .bdt-container-expand-right {
+    max-width: calc(50% + (1200px / 2) - 40px);
+  }
+  .bdt-container-expand-left.bdt-container-xsmall,
+  .bdt-container-expand-right.bdt-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 40px);
+  }
+  .bdt-container-expand-left.bdt-container-small,
+  .bdt-container-expand-right.bdt-container-small {
+    max-width: calc(50% + (900px / 2) - 40px);
+  }
+  .bdt-container-expand-left.bdt-container-large,
+  .bdt-container-expand-right.bdt-container-large {
+    max-width: calc(50% + (1400px / 2) - 40px);
+  }
+  .bdt-container-expand-left.bdt-container-xlarge,
+  .bdt-container-expand-right.bdt-container-xlarge {
+    max-width: calc(50% + (1600px / 2) - 40px);
+  }
+}
+/* Item
+ ========================================================================== */
+/*
+ * Utility classes to reset container padding on the left or right side
+ * Note: It has to be negative margin on the item, because it's specific to the item.
+ */
+.bdt-container-item-padding-remove-left,
+.bdt-container-item-padding-remove-right {
+  width: calc(100% + 15px);
+}
+.bdt-container-item-padding-remove-left {
+  margin-right: -15px;
+}
+.bdt-container-item-padding-remove-right {
+  margin-left: -15px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-container-item-padding-remove-left,
+  .bdt-container-item-padding-remove-right {
+    width: calc(100% + 30px);
+  }
+  .bdt-container-item-padding-remove-left {
+    margin-right: -30px;
+  }
+  .bdt-container-item-padding-remove-right {
+    margin-left: -30px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-container-item-padding-remove-left,
+  .bdt-container-item-padding-remove-right {
+    width: calc(100% + 40px);
+  }
+  .bdt-container-item-padding-remove-left {
+    margin-right: -40px;
+  }
+  .bdt-container-item-padding-remove-right {
+    margin-left: -40px;
+  }
+}
+/* ========================================================================
+   Component: Grid
+ ========================================================================== */
+/*
+ * 1. Allow cells to wrap into the next line
+ * 2. Reset list
+ */
+.bdt-grid {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/*
+ * Grid cell
+ * Note: Space is allocated solely based on content dimensions, but shrinks: 0 1 auto
+ * Reset margin for e.g. paragraphs
+ */
+.bdt-grid > * {
+  margin: 0;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-grid > * > :last-child {
+  margin-bottom: 0;
+}
+/* Gutter
+ ========================================================================== */
+/*
+ * Default
+ */
+/* Horizontal */
+.bdt-grid {
+  margin-right: -30px;
+}
+.bdt-grid > * {
+  padding-right: 30px;
+}
+/* Vertical */
+.bdt-grid + .bdt-grid,
+.bdt-grid > .bdt-grid-margin,
+* + .bdt-grid-margin {
+  margin-top: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  /* Horizontal */
+  .bdt-grid {
+    margin-right: -40px;
+  }
+  .bdt-grid > * {
+    padding-right: 40px;
+  }
+  /* Vertical */
+  .bdt-grid + .bdt-grid,
+  .bdt-grid > .bdt-grid-margin,
+  * + .bdt-grid-margin {
+    margin-top: 40px;
+  }
+}
+/*
+ * Small
+ */
+/* Horizontal */
+.bdt-grid-small,
+.bdt-grid-column-small {
+  margin-right: -15px;
+}
+.bdt-grid-small > *,
+.bdt-grid-column-small > * {
+  padding-right: 15px;
+}
+/* Vertical */
+.bdt-grid + .bdt-grid-small,
+.bdt-grid + .bdt-grid-row-small,
+.bdt-grid-small > .bdt-grid-margin,
+.bdt-grid-row-small > .bdt-grid-margin,
+* + .bdt-grid-margin-small {
+  margin-top: 15px;
+}
+/*
+ * Medium
+ */
+/* Horizontal */
+.bdt-grid-medium,
+.bdt-grid-column-medium {
+  margin-right: -30px;
+}
+.bdt-grid-medium > *,
+.bdt-grid-column-medium > * {
+  padding-right: 30px;
+}
+/* Vertical */
+.bdt-grid + .bdt-grid-medium,
+.bdt-grid + .bdt-grid-row-medium,
+.bdt-grid-medium > .bdt-grid-margin,
+.bdt-grid-row-medium > .bdt-grid-margin,
+* + .bdt-grid-margin-medium {
+  margin-top: 30px;
+}
+/*
+ * Large
+ */
+/* Horizontal */
+.bdt-grid-large,
+.bdt-grid-column-large {
+  margin-right: -40px;
+}
+.bdt-grid-large > *,
+.bdt-grid-column-large > * {
+  padding-right: 40px;
+}
+/* Vertical */
+.bdt-grid + .bdt-grid-large,
+.bdt-grid + .bdt-grid-row-large,
+.bdt-grid-large > .bdt-grid-margin,
+.bdt-grid-row-large > .bdt-grid-margin,
+* + .bdt-grid-margin-large {
+  margin-top: 40px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  /* Horizontal */
+  .bdt-grid-large,
+  .bdt-grid-column-large {
+    margin-right: -70px;
+  }
+  .bdt-grid-large > *,
+  .bdt-grid-column-large > * {
+    padding-right: 70px;
+  }
+  /* Vertical */
+  .bdt-grid + .bdt-grid-large,
+  .bdt-grid + .bdt-grid-row-large,
+  .bdt-grid-large > .bdt-grid-margin,
+  .bdt-grid-row-large > .bdt-grid-margin,
+  * + .bdt-grid-margin-large {
+    margin-top: 70px;
+  }
+}
+/*
+ * Collapse
+ */
+/* Horizontal */
+.bdt-grid-collapse,
+.bdt-grid-column-collapse {
+  margin-right: 0;
+}
+.bdt-grid-collapse > *,
+.bdt-grid-column-collapse > * {
+  padding-right: 0;
+}
+/* Vertical */
+.bdt-grid + .bdt-grid-collapse,
+.bdt-grid + .bdt-grid-row-collapse,
+.bdt-grid-collapse > .bdt-grid-margin,
+.bdt-grid-row-collapse > .bdt-grid-margin {
+  margin-top: 0;
+}
+/* Divider
+ ========================================================================== */
+.bdt-grid-divider > * {
+  position: relative;
+}
+.bdt-grid-divider > :not(.bdt-first-column)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid rgba(214, 214, 214, 0.49);
+}
+/* Vertical */
+.bdt-grid-divider.bdt-grid-stack > .bdt-grid-margin::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Default
+ */
+/* Horizontal */
+.bdt-grid-divider {
+  margin-right: -60px;
+}
+.bdt-grid-divider > * {
+  padding-right: 60px;
+}
+.bdt-grid-divider > :not(.bdt-first-column)::before {
+  right: 30px;
+}
+/* Vertical */
+.bdt-grid-divider.bdt-grid-stack > .bdt-grid-margin {
+  margin-top: 60px;
+}
+.bdt-grid-divider.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -30px;
+  right: 60px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  /* Horizontal */
+  .bdt-grid-divider {
+    margin-right: -80px;
+  }
+  .bdt-grid-divider > * {
+    padding-right: 80px;
+  }
+  .bdt-grid-divider > :not(.bdt-first-column)::before {
+    right: 40px;
+  }
+  /* Vertical */
+  .bdt-grid-divider.bdt-grid-stack > .bdt-grid-margin {
+    margin-top: 80px;
+  }
+  .bdt-grid-divider.bdt-grid-stack > .bdt-grid-margin::before {
+    top: -40px;
+    right: 80px;
+  }
+}
+/*
+ * Small
+ */
+/* Horizontal */
+.bdt-grid-divider.bdt-grid-small,
+.bdt-grid-divider.bdt-grid-column-small {
+  margin-right: -30px;
+}
+.bdt-grid-divider.bdt-grid-small > *,
+.bdt-grid-divider.bdt-grid-column-small > * {
+  padding-right: 30px;
+}
+.bdt-grid-divider.bdt-grid-small > :not(.bdt-first-column)::before,
+.bdt-grid-divider.bdt-grid-column-small > :not(.bdt-first-column)::before {
+  right: 15px;
+}
+/* Vertical */
+.bdt-grid-divider.bdt-grid-small.bdt-grid-stack > .bdt-grid-margin,
+.bdt-grid-divider.bdt-grid-row-small.bdt-grid-stack > .bdt-grid-margin {
+  margin-top: 30px;
+}
+.bdt-grid-divider.bdt-grid-small.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -15px;
+  right: 30px;
+}
+.bdt-grid-divider.bdt-grid-row-small.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -15px;
+}
+.bdt-grid-divider.bdt-grid-column-small.bdt-grid-stack > .bdt-grid-margin::before {
+  right: 30px;
+}
+/*
+ * Medium
+ */
+/* Horizontal */
+.bdt-grid-divider.bdt-grid-medium,
+.bdt-grid-divider.bdt-grid-column-medium {
+  margin-right: -60px;
+}
+.bdt-grid-divider.bdt-grid-medium > *,
+.bdt-grid-divider.bdt-grid-column-medium > * {
+  padding-right: 60px;
+}
+.bdt-grid-divider.bdt-grid-medium > :not(.bdt-first-column)::before,
+.bdt-grid-divider.bdt-grid-column-medium > :not(.bdt-first-column)::before {
+  right: 30px;
+}
+/* Vertical */
+.bdt-grid-divider.bdt-grid-medium.bdt-grid-stack > .bdt-grid-margin,
+.bdt-grid-divider.bdt-grid-row-medium.bdt-grid-stack > .bdt-grid-margin {
+  margin-top: 60px;
+}
+.bdt-grid-divider.bdt-grid-medium.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -30px;
+  right: 60px;
+}
+.bdt-grid-divider.bdt-grid-row-medium.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -30px;
+}
+.bdt-grid-divider.bdt-grid-column-medium.bdt-grid-stack > .bdt-grid-margin::before {
+  right: 60px;
+}
+/*
+ * Large
+ */
+/* Horizontal */
+.bdt-grid-divider.bdt-grid-large,
+.bdt-grid-divider.bdt-grid-column-large {
+  margin-right: -80px;
+}
+.bdt-grid-divider.bdt-grid-large > *,
+.bdt-grid-divider.bdt-grid-column-large > * {
+  padding-right: 80px;
+}
+.bdt-grid-divider.bdt-grid-large > :not(.bdt-first-column)::before,
+.bdt-grid-divider.bdt-grid-column-large > :not(.bdt-first-column)::before {
+  right: 40px;
+}
+/* Vertical */
+.bdt-grid-divider.bdt-grid-large.bdt-grid-stack > .bdt-grid-margin,
+.bdt-grid-divider.bdt-grid-row-large.bdt-grid-stack > .bdt-grid-margin {
+  margin-top: 80px;
+}
+.bdt-grid-divider.bdt-grid-large.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -40px;
+  right: 80px;
+}
+.bdt-grid-divider.bdt-grid-row-large.bdt-grid-stack > .bdt-grid-margin::before {
+  top: -40px;
+}
+.bdt-grid-divider.bdt-grid-column-large.bdt-grid-stack > .bdt-grid-margin::before {
+  right: 80px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  /* Horizontal */
+  .bdt-grid-divider.bdt-grid-large,
+  .bdt-grid-divider.bdt-grid-column-large {
+    margin-right: -140px;
+  }
+  .bdt-grid-divider.bdt-grid-large > *,
+  .bdt-grid-divider.bdt-grid-column-large > * {
+    padding-right: 140px;
+  }
+  .bdt-grid-divider.bdt-grid-large > :not(.bdt-first-column)::before,
+  .bdt-grid-divider.bdt-grid-column-large > :not(.bdt-first-column)::before {
+    right: 70px;
+  }
+  /* Vertical */
+  .bdt-grid-divider.bdt-grid-large.bdt-grid-stack > .bdt-grid-margin,
+  .bdt-grid-divider.bdt-grid-row-large.bdt-grid-stack > .bdt-grid-margin {
+    margin-top: 140px;
+  }
+  .bdt-grid-divider.bdt-grid-large.bdt-grid-stack > .bdt-grid-margin::before {
+    top: -70px;
+    right: 140px;
+  }
+  .bdt-grid-divider.bdt-grid-row-large.bdt-grid-stack > .bdt-grid-margin::before {
+    top: -70px;
+  }
+  .bdt-grid-divider.bdt-grid-column-large.bdt-grid-stack > .bdt-grid-margin::before {
+    right: 140px;
+  }
+}
+/* Match child of a grid cell
+ ========================================================================== */
+/*
+ * Behave like a block element
+ * 1. Wrap into the next line
+ * 2. Take the full width, at least 100%. Only if no class from the Width component is set.
+ * 3. Expand width even if larger than 100%, e.g. because of negative margin (Needed for nested grids)
+ */
+.bdt-grid-match > *,
+.bdt-grid-item-match {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+}
+.bdt-grid-match > * > :not([class*='bdt-width']),
+.bdt-grid-item-match > :not([class*='bdt-width']) {
+  /* 2 */
+  box-sizing: border-box;
+  width: 100%;
+  /* 3 */
+  flex: auto;
+}
+/* ========================================================================
+   Component: Tile
+ ========================================================================== */
+.bdt-tile {
+  display: flow-root;
+  position: relative;
+  box-sizing: border-box;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-tile {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-tile {
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-tile > :last-child {
+  margin-bottom: 0;
+}
+/* Size modifiers
+ ========================================================================== */
+/*
+ * XSmall
+ */
+.bdt-tile-xsmall {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/*
+ * Small
+ */
+.bdt-tile-small {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+/*
+ * Large
+ */
+.bdt-tile-large {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-tile-large {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+}
+/*
+ * XLarge
+ */
+.bdt-tile-xlarge {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-tile-xlarge {
+    padding-top: 210px;
+    padding-bottom: 210px;
+  }
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ */
+.bdt-tile-default {
+  background-color: #fff;
+}
+/*
+ * Muted
+ */
+.bdt-tile-muted {
+  background-color: #f8f8f8;
+}
+/*
+ * Primary
+ */
+.bdt-tile-primary {
+  background-color: #1e87f0;
+}
+/*
+ * Secondary
+ */
+.bdt-tile-secondary {
+  background-color: #222;
+}
+/* ========================================================================
+   Component: Card
+ ========================================================================== */
+.bdt-card {
+  position: relative;
+  box-sizing: border-box;
+}
+/* Sections
+ ========================================================================== */
+.bdt-card-body {
+  display: flow-root;
+  padding: 30px 30px;
+}
+.bdt-card-header {
+  display: flow-root;
+  padding: 15px 30px;
+}
+.bdt-card-footer {
+  display: flow-root;
+  padding: 15px 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-card-body {
+    padding: 40px 40px;
+  }
+  .bdt-card-header {
+    padding: 20px 40px;
+  }
+  .bdt-card-footer {
+    padding: 20px 40px;
+  }
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-card-body > :last-child,
+.bdt-card-header > :last-child,
+.bdt-card-footer > :last-child {
+  margin-bottom: 0;
+}
+/* Media
+ ========================================================================== */
+/*
+ * Reserved alignment modifier to style the media element, e.g. with `border-radius`
+ * Implemented by the theme
+ */
+/* Title
+ ========================================================================== */
+.bdt-card-title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+/* Badge
+ ========================================================================== */
+/*
+ * 1. Position
+ * 2. Size
+ * 3. Style
+ * 4. Center child vertically
+ */
+.bdt-card-badge {
+  /* 1 */
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  /* 2 */
+  height: 22px;
+  padding: 0 10px;
+  /* 3 */
+  background: #1e87f0;
+  color: #fff;
+  font-size: 0.875rem;
+  /* 4 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+/*
+ * Remove margin from adjacent element
+ */
+.bdt-card-badge:first-child + * {
+  margin-top: 0;
+}
+/* Hover modifier
+ ========================================================================== */
+.bdt-card-hover:not(.bdt-card-default):not(.bdt-card-primary):not(.bdt-card-secondary):hover {
+  background-color: #f8f8f8;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ * Note: Header and Footer are only implemented for the default style
+ */
+.bdt-card-default {
+  background-color: #f8f8f8;
+  color: #666;
+}
+.bdt-card-default .bdt-card-title {
+  color: #333;
+}
+.bdt-card-default.bdt-card-hover:hover {
+  background-color: #ebebeb;
+}
+/*
+ * Primary
+ */
+.bdt-card-primary {
+  background-color: #1e87f0;
+  color: #fff;
+}
+.bdt-card-primary .bdt-card-title {
+  color: #fff;
+}
+.bdt-card-primary.bdt-card-hover:hover {
+  background-color: #0f7ae5;
+}
+/*
+ * Secondary
+ */
+.bdt-card-secondary {
+  background-color: #222;
+  color: #fff;
+}
+.bdt-card-secondary .bdt-card-title {
+  color: #fff;
+}
+.bdt-card-secondary.bdt-card-hover:hover {
+  background-color: #151515;
+}
+/* Size modifier
+ ========================================================================== */
+/*
+ * Small
+ */
+.bdt-card-small.bdt-card-body,
+.bdt-card-small .bdt-card-body {
+  padding: 20px 20px;
+}
+.bdt-card-small .bdt-card-header {
+  padding: 13px 20px;
+}
+.bdt-card-small .bdt-card-footer {
+  padding: 13px 20px;
+}
+/*
+ * Large
+ */
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-card-large.bdt-card-body,
+  .bdt-card-large .bdt-card-body {
+    padding: 70px 70px;
+  }
+  .bdt-card-large .bdt-card-header {
+    padding: 35px 70px;
+  }
+  .bdt-card-large .bdt-card-footer {
+    padding: 35px 70px;
+  }
+}
+/* ========================================================================
+   Component: Close
+ ========================================================================== */
+/*
+ * Adopts `bdt-icon`
+ */
+.bdt-close {
+  color: #999;
+}
+/* Hover */
+.bdt-close:hover {
+  color: #666;
+}
+/* ========================================================================
+   Component: Spinner
+ ========================================================================== */
+/*
+ * Adopts `bdt-icon`
+ */
+/* SVG
+ ========================================================================== */
+.bdt-spinner > * {
+  animation: bdt-spinner-rotate 1.4s linear infinite;
+}
+@keyframes bdt-spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-270deg);
+  }
+}
+/*
+ * Circle
+ */
+.bdt-spinner > * > * {
+  stroke-dasharray: 88px;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: bdt-spinner-dash 1.4s ease-in-out infinite;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+@keyframes bdt-spinner-dash {
+  0% {
+    stroke-dashoffset: 88px;
+  }
+  50% {
+    stroke-dashoffset: 22px;
+    transform: rotate(-135deg);
+  }
+  100% {
+    stroke-dashoffset: 88px;
+    transform: rotate(-450deg);
+  }
+}
+/* ========================================================================
+   Component: Totop
+ ========================================================================== */
+/*
+ * Addopts `bdt-icon`
+ */
+.bdt-totop {
+  padding: 5px;
+  color: #999;
+}
+/* Hover */
+.bdt-totop:hover {
+  color: #666;
+}
+/* OnClick */
+.bdt-totop:active {
+  color: #333;
+}
+/* ========================================================================
+   Component: Marker
+ ========================================================================== */
+/*
+ * Addopts `bdt-icon`
+ */
+.bdt-marker {
+  padding: 5px;
+  background: #222;
+  color: #fff;
+}
+/* Hover */
+.bdt-marker:hover {
+  color: #fff;
+}
+/* ========================================================================
+   Component: Alert
+ ========================================================================== */
+.bdt-alert {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 15px 15px 15px 29px;
+  background: #f8f8f8;
+  color: #666;
+}
+/* Add margin if adjacent element */
+* + .bdt-alert {
+  margin-top: 20px;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-alert > :last-child {
+  margin-bottom: 0;
+}
+/* Close
+ * Adopts `bdt-close`
+ ========================================================================== */
+.bdt-alert-close {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+/*
+ * Remove margin from adjacent element
+ */
+.bdt-alert-close:first-child + * {
+  margin-top: 0;
+}
+/*
+ * Hover
+ */
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Primary
+ */
+.bdt-alert-primary {
+  background: #d8eafc;
+  color: #1e87f0;
+}
+/*
+ * Success
+ */
+.bdt-alert-success {
+  background: #edfbf6;
+  color: #32d296;
+}
+/*
+ * Warning
+ */
+.bdt-alert-warning {
+  background: #fff6ee;
+  color: #faa05a;
+}
+/*
+ * Danger
+ */
+.bdt-alert-danger {
+  background: #fef4f6;
+  color: #f0506e;
+}
+/* ========================================================================
+   Component: Badge
+ ========================================================================== */
+/*
+ * 1. Style
+ * 2. Center child vertically and horizontally
+ */
+.bdt-badge {
+  box-sizing: border-box;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 500px;
+  vertical-align: middle;
+  /* 1 */
+  background: #1e87f0;
+  color: #fff;
+  font-size: 11px;
+  /* 2 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+/*
+ * Required for `a`
+ */
+.bdt-badge:hover {
+  text-decoration: none;
+}
+/* ========================================================================
+   Component: Label
+ ========================================================================== */
+.bdt-label {
+  display: inline-block;
+  padding: 0 10px;
+  background: #1e87f0;
+  line-height: 1.5;
+  font-size: 0.875rem;
+  color: #fff;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+/* Color modifiers
+ ========================================================================== */
+/*
+ * Success
+ */
+.bdt-label-success {
+  background-color: #32d296;
+  color: #fff;
+}
+/*
+ * Warning
+ */
+.bdt-label-warning {
+  background-color: #faa05a;
+  color: #fff;
+}
+/*
+ * Danger
+ */
+.bdt-label-danger {
+  background-color: #f0506e;
+  color: #fff;
+}
+/* ========================================================================
+   Component: Overlay
+ ========================================================================== */
+.bdt-overlay {
+  padding: 30px 30px;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-overlay > :last-child {
+  margin-bottom: 0;
+}
+/* Icon
+ ========================================================================== */
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ */
+.bdt-overlay-default {
+  background: rgba(0, 0, 0, 0.5);
+}
+/*
+ * Primary
+ */
+.bdt-overlay-primary {
+  background: rgba(34, 34, 34, 0.8);
+}
+/* ========================================================================
+   Component: Article
+ ========================================================================== */
+.bdt-article {
+  display: flow-root;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-article > :last-child {
+  margin-bottom: 0;
+}
+/* Adjacent sibling
+ ========================================================================== */
+.bdt-article + .bdt-article {
+  margin-top: 70px;
+}
+/* Title
+ ========================================================================== */
+.bdt-article-title {
+  font-size: 2.23125rem;
+  line-height: 1.2;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-article-title {
+    font-size: 2.625rem;
+  }
+}
+/* Meta
+ ========================================================================== */
+.bdt-article-meta {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #999;
+}
+/* ========================================================================
+   Component: Comment
+ ========================================================================== */
+/* Sections
+ ========================================================================== */
+.bdt-comment-body {
+  display: flow-root;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.bdt-comment-header {
+  display: flow-root;
+  margin-bottom: 20px;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-comment-body > :last-child,
+.bdt-comment-header > :last-child {
+  margin-bottom: 0;
+}
+/* Title
+ ========================================================================== */
+.bdt-comment-title {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+/* Meta
+ ========================================================================== */
+.bdt-comment-meta {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #999;
+}
+/* Avatar
+ ========================================================================== */
+/* List
+ ========================================================================== */
+.bdt-comment-list {
+  padding: 0;
+  list-style: none;
+}
+/* Adjacent siblings */
+.bdt-comment-list > :nth-child(n+2) {
+  margin-top: 70px;
+}
+/*
+ * Sublists
+ * Note: General sibling selector allows reply block between comment and sublist
+ */
+.bdt-comment-list .bdt-comment ~ ul {
+  margin: 70px 0 0 0;
+  padding-right: 30px;
+  list-style: none;
+}
+/* Tablet and bigger */
+@media (min-width: 960px) {
+  .bdt-comment-list .bdt-comment ~ ul {
+    padding-right: 100px;
+  }
+}
+/* Adjacent siblings */
+.bdt-comment-list .bdt-comment ~ ul > :nth-child(n+2) {
+  margin-top: 70px;
+}
+/* Style modifier
+ ========================================================================== */
+/* ========================================================================
+   Component: Search
+ ========================================================================== */
+/*
+ * 1. Container fits its content
+ * 2. Create position context
+ * 3. Prevent content overflow
+ * 4. Reset `form`
+ */
+.bdt-search {
+  /* 1 */
+  display: inline-block;
+  /* 2 */
+  position: relative;
+  /* 3 */
+  max-width: 100%;
+  /* 4 */
+  margin: 0;
+}
+/* Input
+ ========================================================================== */
+/*
+ * Remove the inner padding and cancel buttons in Chrome on OS X and Safari on OS X.
+ */
+.bdt-search-input::-webkit-search-cancel-button,
+.bdt-search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/*
+ * Removes placeholder transparency in Firefox.
+ */
+.bdt-search-input::-moz-placeholder {
+  opacity: 1;
+}
+/*
+ * 1. Define consistent box sizing.
+ * 2. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+ * 3. Remove `border-radius` in iOS.
+ * 4. Change font properties to `inherit` in all browsers
+ * 5. Show the overflow in Edge.
+ * 6. Remove default style in iOS.
+ * 7. Vertical alignment
+ * 8. Take the full container width
+ * 9. Style
+ */
+.bdt-search-input {
+  /* 1 */
+  box-sizing: border-box;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  border-radius: 0;
+  /* 4 */
+  font: inherit;
+  /* 5 */
+  overflow: visible;
+  /* 6 */
+  -webkit-appearance: none;
+  /* 7 */
+  vertical-align: middle;
+  /* 8 */
+  width: 100%;
+  /* 9 */
+  border: none;
+  color: #666;
+}
+.bdt-search-input:focus {
+  outline: none;
+}
+/* Placeholder */
+.bdt-search-input::placeholder {
+  color: #999;
+}
+/* Icon (Adopts `bdt-icon`)
+ ========================================================================== */
+/*
+ * Position above input
+ * 1. Set position
+ * 2. Center icon vertically and horizontally
+ * 3. Style
+ */
+.bdt-search .bdt-search-icon {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  /* 2 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* 3 */
+  color: #999;
+}
+/*
+ * Required for `a`.
+ */
+.bdt-search .bdt-search-icon:hover {
+  color: #999;
+}
+/*
+ * Make `input` element clickable through icon, e.g. if it's a `span`
+ */
+.bdt-search .bdt-search-icon:not(a):not(button):not(input) {
+  pointer-events: none;
+}
+/*
+ * Position modifier
+ */
+.bdt-search .bdt-search-icon-flip {
+  left: 0;
+  right: auto;
+}
+/* Default modifier
+ ========================================================================== */
+.bdt-search-default {
+  width: 240px;
+}
+/*
+ * Input
+ */
+.bdt-search-default .bdt-search-input {
+  height: 40px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background: #f8f8f8;
+}
+/* Focus */
+.bdt-search-default .bdt-search-input:focus {
+  background-color: #ebebeb;
+}
+/*
+ * Icon
+ */
+.bdt-search-default .bdt-search-icon {
+  width: 40px;
+}
+.bdt-search-default .bdt-search-icon:not(.bdt-search-icon-flip) ~ .bdt-search-input {
+  padding-right: 40px;
+}
+.bdt-search-default .bdt-search-icon-flip ~ .bdt-search-input {
+  padding-left: 40px;
+}
+/* Navbar modifier
+ ========================================================================== */
+.bdt-search-navbar {
+  width: 400px;
+}
+/*
+ * Input
+ */
+.bdt-search-navbar .bdt-search-input {
+  height: 40px;
+  background: transparent;
+  font-size: 1.5rem;
+}
+/* Focus */
+/*
+ * Icon
+ */
+.bdt-search-navbar .bdt-search-icon {
+  width: 40px;
+}
+.bdt-search-navbar .bdt-search-icon:not(.bdt-search-icon-flip) ~ .bdt-search-input {
+  padding-right: 40px;
+}
+.bdt-search-navbar .bdt-search-icon-flip ~ .bdt-search-input {
+  padding-left: 40px;
+}
+/* Large modifier
+ ========================================================================== */
+.bdt-search-large {
+  width: 500px;
+}
+/*
+ * Input
+ */
+.bdt-search-large .bdt-search-input {
+  height: 80px;
+  background: transparent;
+  font-size: 2.625rem;
+}
+/* Focus */
+/*
+ * Icon
+ */
+.bdt-search-large .bdt-search-icon {
+  width: 80px;
+}
+.bdt-search-large .bdt-search-icon:not(.bdt-search-icon-flip) ~ .bdt-search-input {
+  padding-right: 80px;
+}
+.bdt-search-large .bdt-search-icon-flip ~ .bdt-search-input {
+  padding-left: 80px;
+}
+/* Toggle
+ ========================================================================== */
+.bdt-search-toggle {
+  color: #999;
+}
+/* Hover */
+.bdt-search-toggle:hover {
+  color: #666;
+}
+/* ========================================================================
+   Component: Nav
+ ========================================================================== */
+/*
+ * Reset
+ */
+.bdt-nav,
+.bdt-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/*
+* 1. Center content vertically, e.g. an icon
+* 2. Imitate white space gap when using flexbox
+* 3. Reset link
+* 4. Space is allocated solely based on content dimensions: 0 0 auto
+ */
+.bdt-nav li > a {
+  /* 1 */
+  display: flex;
+  align-items: center;
+  /* 2 */
+  column-gap: 0.25em;
+  /* 3*/
+  text-decoration: none;
+}
+/* 4 */
+.bdt-nav li > a > * {
+  flex: none;
+}
+/*
+ * Items
+ * Must target `a` elements to exclude other elements (e.g. lists)
+ */
+.bdt-nav > li > a {
+  padding: 5px 0;
+}
+/* Sublists
+ ========================================================================== */
+/*
+ * Level 2
+ * `ul` needed for higher specificity to override padding
+ */
+ul.bdt-nav-sub {
+  padding: 5px 15px 5px 0;
+}
+/*
+ * Level 3 and deeper
+ */
+.bdt-nav-sub ul {
+  padding-right: 15px;
+}
+/*
+ * Items
+ */
+.bdt-nav-sub a {
+  padding: 2px 0;
+}
+/* Parent icon modifier
+ ========================================================================== */
+.bdt-nav-parent-icon > .bdt-parent > a::after {
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: auto;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23666%22%20stroke-width%3D%221.1%22%20points%3D%2210%201%204%207%2010%2013%22%20%2F%3E%0D%0A%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.bdt-nav-parent-icon > .bdt-parent.bdt-open > a::after {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23666%22%20stroke-width%3D%221.1%22%20points%3D%221%204%207%2010%2013%204%22%20%2F%3E%0D%0A%3C%2Fsvg%3E");
+}
+/* Header
+ ========================================================================== */
+.bdt-nav-header {
+  padding: 5px 0;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+.bdt-nav-header:not(:first-child) {
+  margin-top: 20px;
+}
+/* Divider
+ ========================================================================== */
+.bdt-nav > .bdt-nav-divider {
+  margin: 5px 0;
+}
+/* Default modifier
+ ========================================================================== */
+/*
+ * Items
+ */
+.bdt-nav-default > li > a {
+  color: #999;
+}
+/* Hover */
+.bdt-nav-default > li > a:hover {
+  color: #666;
+}
+/* Active */
+.bdt-nav-default > li.bdt-active > a {
+  color: #333;
+}
+/*
+ * Header
+ */
+.bdt-nav-default .bdt-nav-header {
+  color: #333;
+}
+/*
+ * Divider
+ */
+.bdt-nav-default .bdt-nav-divider {
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Sublists
+ */
+.bdt-nav-default .bdt-nav-sub a {
+  color: #999;
+}
+.bdt-nav-default .bdt-nav-sub a:hover {
+  color: #666;
+}
+.bdt-nav-default .bdt-nav-sub li.bdt-active > a {
+  color: #333;
+}
+/* Primary modifier
+ ========================================================================== */
+/*
+ * Items
+ */
+.bdt-nav-primary > li > a {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #999;
+}
+/* Hover */
+.bdt-nav-primary > li > a:hover {
+  color: #666;
+}
+/* Active */
+.bdt-nav-primary > li.bdt-active > a {
+  color: #333;
+}
+/*
+ * Header
+ */
+.bdt-nav-primary .bdt-nav-header {
+  color: #333;
+}
+/*
+ * Divider
+ */
+.bdt-nav-primary .bdt-nav-divider {
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Sublists
+ */
+.bdt-nav-primary .bdt-nav-sub a {
+  color: #999;
+}
+.bdt-nav-primary .bdt-nav-sub a:hover {
+  color: #666;
+}
+.bdt-nav-primary .bdt-nav-sub li.bdt-active > a {
+  color: #333;
+}
+/* Alignment modifier
+ ========================================================================== */
+/*
+ * 1. Center header
+ * 2. Center items
+ */
+/* 1 */
+.bdt-nav-center {
+  text-align: center;
+}
+/* 2 */
+.bdt-nav-center li > a {
+  justify-content: center;
+}
+/* Sublists */
+.bdt-nav-center .bdt-nav-sub,
+.bdt-nav-center .bdt-nav-sub ul {
+  padding-right: 0;
+}
+/* Parent icon modifier  */
+.bdt-nav-center.bdt-nav-parent-icon > .bdt-parent > a::after {
+  margin-right: 0;
+}
+/* Style modifier
+ ========================================================================== */
+.bdt-nav.bdt-nav-divider > :not(.bdt-nav-divider) + :not(.bdt-nav-header, .bdt-nav-divider) {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/* ========================================================================
+   Component: Navbar
+ ========================================================================== */
+/*
+ * 1. Create position context to center navbar group
+ */
+.bdt-navbar {
+  display: flex;
+  /* 1 */
+  position: relative;
+}
+/* Container
+ ========================================================================== */
+.bdt-navbar-container:not(.bdt-navbar-transparent) {
+  background: #f8f8f8;
+}
+/* Groups
+ ========================================================================== */
+/*
+ * 1. Align navs and items vertically if they have a different height
+ * 2. Note: IE 11 requires an extra `div` which affects the center selector
+ */
+.bdt-navbar-left,
+.bdt-navbar-right,
+.bdt-navbar-center,
+.bdt-navbar-center-left > *,
+.bdt-navbar-center-right > * {
+  display: flex;
+  /* 1 */
+  align-items: center;
+}
+/*
+ * Horizontal alignment
+ * 1. Create position context for centered navbar with sub groups (left/right)
+ * 2. Fix text wrapping if content is larger than 50% of the container.
+ * 3. Needed for dropdowns because a new position context is created
+ *    `z-index` must be smaller than off-canvas
+ * 4. Align sub groups for centered navbar
+ */
+.bdt-navbar-right {
+  margin-right: auto;
+}
+.bdt-navbar-center:only-child {
+  margin-right: auto;
+  margin-left: auto;
+  /* 1 */
+  position: relative;
+}
+.bdt-navbar-center:not(:only-child) {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  /* 2 */
+  width: max-content;
+  box-sizing: border-box;
+  /* 3 */
+  z-index: 990;
+}
+/* 4 */
+.bdt-navbar-center-left,
+.bdt-navbar-center-right {
+  position: absolute;
+  top: 0;
+}
+.bdt-navbar-center-left {
+  left: 100%;
+}
+.bdt-navbar-center-right {
+  right: 100%;
+}
+[class*='bdt-navbar-center-'] {
+  width: max-content;
+  box-sizing: border-box;
+}
+/* Nav
+ ========================================================================== */
+/*
+ * 1. Reset list
+ */
+.bdt-navbar-nav {
+  display: flex;
+  /* 1 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/*
+ * Allow items to wrap into the next line
+ * Only not `absolute` positioned groups
+ */
+.bdt-navbar-left,
+.bdt-navbar-right,
+.bdt-navbar-center:only-child {
+  flex-wrap: wrap;
+}
+/*
+ * Items
+ * 1. Center content vertically and horizontally
+ * 2. Imitate white space gap when using flexbox
+ * 3. Dimensions
+ * 4. Style
+ * 5. Required for `a`
+ */
+.bdt-navbar-nav > li > a,
+.bdt-navbar-item,
+.bdt-navbar-toggle {
+  /* 1 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 2 */
+  column-gap: 0.25em;
+  /* 3 */
+  box-sizing: border-box;
+  min-height: 80px;
+  padding: 0 15px;
+  /* 4 */
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 5 */
+  text-decoration: none;
+}
+/*
+ * Nav items
+ */
+.bdt-navbar-nav > li > a {
+  color: #999;
+}
+/*
+ * Hover
+ * Apply hover style also if dropdown is opened
+ */
+.bdt-navbar-nav > li:hover > a,
+.bdt-navbar-nav > li > a[aria-expanded="true"] {
+  color: #666;
+}
+/* OnClick */
+.bdt-navbar-nav > li > a:active {
+  color: #333;
+}
+/* Active */
+.bdt-navbar-nav > li.bdt-active > a {
+  color: #333;
+}
+/* Item
+ ========================================================================== */
+.bdt-navbar-item {
+  color: #666;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-navbar-item > :last-child {
+  margin-bottom: 0;
+}
+/* Toggle
+ ========================================================================== */
+.bdt-navbar-toggle {
+  color: #999;
+}
+.bdt-navbar-toggle:hover,
+.bdt-navbar-toggle[aria-expanded="true"] {
+  color: #666;
+  text-decoration: none;
+}
+/*
+ * Icon
+ * Adopts `bdt-icon`
+ */
+/* Hover */
+/* Subtitle
+ ========================================================================== */
+.bdt-navbar-subtitle {
+  font-size: 0.875rem;
+}
+/* Style modifiers
+ ========================================================================== */
+/* Dropdown
+ ========================================================================== */
+/*
+ * Adopts `bdt-dropdown`
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ * 4. Style
+ */
+.bdt-navbar-dropdown {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: absolute;
+  z-index: 1020;
+  /* 3 */
+  box-sizing: border-box;
+  width: 200px;
+  /* 4 */
+  padding: 15px;
+  background: #f8f8f8;
+  color: #666;
+}
+/* Show */
+.bdt-navbar-dropdown.bdt-open {
+  display: block;
+}
+/*
+ * Direction / Alignment modifiers
+ */
+/* Direction */
+[class*='bdt-navbar-dropdown-top'] {
+  margin-top: 0;
+}
+[class*='bdt-navbar-dropdown-bottom'] {
+  margin-top: 0;
+}
+[class*='bdt-navbar-dropdown-left'] {
+  margin-right: 0;
+}
+[class*='bdt-navbar-dropdown-right'] {
+  margin-right: 0;
+}
+/*
+ * Grid
+ * Adopts `bdt-grid`
+ */
+/* Gutter Horizontal */
+.bdt-navbar-dropdown-grid {
+  margin-right: -30px;
+}
+.bdt-navbar-dropdown-grid > * {
+  padding-right: 30px;
+}
+/* Gutter Vertical */
+.bdt-navbar-dropdown-grid > .bdt-grid-margin {
+  margin-top: 30px;
+}
+/* Stack */
+.bdt-navbar-dropdown-stack .bdt-navbar-dropdown-grid > * {
+  width: 100% !important;
+}
+/*
+ * Width modifier
+ */
+.bdt-navbar-dropdown-width-2:not(.bdt-navbar-dropdown-stack) {
+  width: 400px;
+}
+.bdt-navbar-dropdown-width-3:not(.bdt-navbar-dropdown-stack) {
+  width: 600px;
+}
+.bdt-navbar-dropdown-width-4:not(.bdt-navbar-dropdown-stack) {
+  width: 800px;
+}
+.bdt-navbar-dropdown-width-5:not(.bdt-navbar-dropdown-stack) {
+  width: 1000px;
+}
+/*
+ * Dropbar modifier
+ */
+.bdt-navbar-dropdown-dropbar {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* Dropdown Nav
+ * Adopts `bdt-nav`
+ ========================================================================== */
+/*
+ * Items
+ */
+.bdt-navbar-dropdown-nav > li > a {
+  color: #999;
+}
+/* Hover */
+.bdt-navbar-dropdown-nav > li > a:hover {
+  color: #666;
+}
+/* Active */
+.bdt-navbar-dropdown-nav > li.bdt-active > a {
+  color: #333;
+}
+/*
+ * Header
+ */
+.bdt-navbar-dropdown-nav .bdt-nav-header {
+  color: #333;
+}
+/*
+ * Divider
+ */
+.bdt-navbar-dropdown-nav .bdt-nav-divider {
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Sublists
+ */
+.bdt-navbar-dropdown-nav .bdt-nav-sub a {
+  color: #999;
+}
+.bdt-navbar-dropdown-nav .bdt-nav-sub a:hover {
+  color: #666;
+}
+.bdt-navbar-dropdown-nav .bdt-nav-sub li.bdt-active > a {
+  color: #333;
+}
+/* Dropbar
+ ========================================================================== */
+.bdt-navbar-dropbar {
+  background: #f8f8f8;
+}
+/*
+ * Slide modifier
+ */
+.bdt-navbar-dropbar-slide {
+  position: absolute;
+  z-index: 980;
+  right: 0;
+  left: 0;
+}
+/* ========================================================================
+   Component: Subnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Center items vertically if they have a different height
+ * 3. Gutter
+ * 4. Reset list
+ */
+.bdt-subnav {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  align-items: center;
+  /* 3 */
+  margin-right: -20px;
+  /* 4 */
+  padding: 0;
+  list-style: none;
+}
+/*
+ * 1. Space is allocated solely based on content dimensions: 0 0 auto
+ * 2. Gutter
+ * 3. Create position context for dropdowns
+ */
+.bdt-subnav > * {
+  /* 1 */
+  flex: none;
+  /* 2 */
+  padding-right: 20px;
+  /* 3 */
+  position: relative;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Items must target `a` elements to exclude other elements (e.g. dropdowns)
+ * Using `:first-child` instead of `a` to support `span` elements for text
+ * 1. Center content vertically, e.g. an icon
+ * 2. Imitate white space gap when using flexbox
+ * 3. Style
+ */
+.bdt-subnav > * > :first-child {
+  /* 1 */
+  display: flex;
+  align-items: center;
+  /* 2 */
+  column-gap: 0.25em;
+  /* 3 */
+  color: #999;
+}
+/* Hover */
+.bdt-subnav > * > a:hover {
+  color: #666;
+  text-decoration: none;
+}
+/* Active */
+.bdt-subnav > .bdt-active > a {
+  color: #333;
+}
+/* Divider modifier
+ ========================================================================== */
+/*
+ * Set gutter
+ */
+.bdt-subnav-divider {
+  margin-right: -41px;
+}
+/*
+ * Align items and divider vertically
+ */
+.bdt-subnav-divider > * {
+  display: flex;
+  align-items: center;
+}
+/*
+ * Divider
+ * 1. `nth-child` makes it also work without JS if it's only one row
+ */
+.bdt-subnav-divider > ::before {
+  content: "";
+  height: 1.5em;
+  margin-right: 0px;
+  margin-left: 20px;
+  border-right: 1px solid transparent;
+}
+/* 1 */
+.bdt-subnav-divider > :nth-child(n+2):not(.bdt-first-column)::before {
+  border-right-color: rgba(214, 214, 214, 0.49);
+}
+/* Pill modifier
+ ========================================================================== */
+.bdt-subnav-pill > * > :first-child {
+  padding: 5px 10px;
+  background: transparent;
+  color: #999;
+}
+/* Hover */
+.bdt-subnav-pill > * > a:hover {
+  background-color: #f8f8f8;
+  color: #666;
+}
+/* OnClick */
+.bdt-subnav-pill > * > a:active {
+  background-color: #f8f8f8;
+  color: #666;
+}
+/* Active */
+.bdt-subnav-pill > .bdt-active > a {
+  background-color: #1e87f0;
+  color: #fff;
+}
+/* Disabled
+ * The same for all style modifiers
+ ========================================================================== */
+.bdt-subnav > .bdt-disabled > a {
+  color: #999;
+}
+/* ========================================================================
+   Component: Breadcrumb
+ ========================================================================== */
+/*
+ * Reset list
+ */
+.bdt-breadcrumb {
+  padding: 0;
+  list-style: none;
+}
+/*
+ * 1. Doesn't generate any box and replaced by child boxes
+ */
+.bdt-breadcrumb > * {
+  display: contents;
+}
+/* Items
+ ========================================================================== */
+.bdt-breadcrumb > * > * {
+  font-size: 0.875rem;
+  color: #999;
+}
+/* Hover */
+.bdt-breadcrumb > * > :hover {
+  color: #666;
+  text-decoration: none;
+}
+/* Disabled */
+/* Active */
+.bdt-breadcrumb > :last-child > span,
+.bdt-breadcrumb > :last-child > a:not([href]) {
+  color: #666;
+}
+/*
+ * Divider
+ * `nth-child` makes it also work without JS if it's only one row
+ * 1. Remove space between inline block elements.
+ * 2. Style
+ */
+.bdt-breadcrumb > :nth-child(n+2):not(.bdt-first-column)::before {
+  content: "/";
+  display: inline-block;
+  /* 1 */
+  margin: 0 calc(20px - 4px) 0 20px;
+  /* 2 */
+  font-size: 0.875rem;
+  color: #999;
+}
+/* ========================================================================
+   Component: Pagination
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Gutter
+ * 3. Reset list
+ */
+.bdt-pagination {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin-right: 0;
+  /* 3 */
+  padding: 0;
+  list-style: none;
+}
+/*
+ * 1. Space is allocated solely based on content dimensions: 0 0 auto
+ * 2. Gutter
+ * 3. Create position context for dropdowns
+ */
+.bdt-pagination > * {
+  /* 1 */
+  flex: none;
+  /* 2 */
+  padding-right: 0;
+  /* 3 */
+  position: relative;
+}
+/* Items
+ ========================================================================== */
+/*
+ * 1. Prevent gap if child element is `inline-block`, e.g. an icon
+ * 2. Style
+ */
+.bdt-pagination > * > * {
+  /* 1 */
+  display: block;
+  /* 2 */
+  padding: 5px 10px;
+  color: #999;
+}
+/* Hover */
+.bdt-pagination > * > :hover {
+  color: #666;
+  text-decoration: none;
+}
+/* Active */
+.bdt-pagination > .bdt-active > * {
+  color: #666;
+}
+/* Disabled */
+.bdt-pagination > .bdt-disabled > * {
+  color: #999;
+}
+/* ========================================================================
+   Component: Tab
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Gutter
+ * 3. Reset list
+ */
+.bdt-tab {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin-right: -20px;
+  /* 3 */
+  padding: 0;
+  list-style: none;
+}
+/*
+ * 1. Space is allocated solely based on content dimensions: 0 0 auto
+ * 2. Gutter
+ * 3. Create position context for dropdowns
+ */
+.bdt-tab > * {
+  /* 1 */
+  flex: none;
+  /* 2 */
+  padding-right: 20px;
+  /* 3 */
+  position: relative;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Items must target `a` elements to exclude other elements (e.g. dropdowns)
+ * 1. Center content vertically, e.g. an icon
+ * 2. Imitate white space gap when using flexbox
+ * 3. Center content if a width is set
+ * 4. Style
+ */
+.bdt-tab > * > a {
+  /* 1 */
+  display: flex;
+  align-items: center;
+  /* 2 */
+  column-gap: 0.25em;
+  /* 3 */
+  justify-content: center;
+  /* 4 */
+  padding: 10px 15px;
+  color: #999;
+}
+/* Hover */
+.bdt-tab > * > a:hover {
+  color: #666;
+  text-decoration: none;
+}
+/* Active */
+.bdt-tab > .bdt-active > a {
+  color: #333;
+}
+/* Disabled */
+.bdt-tab > .bdt-disabled > a {
+  color: #999;
+}
+/* Position modifier
+ ========================================================================== */
+/*
+ * Bottom
+ */
+/*
+ * Left + Right
+ * 1. Reset Gutter
+ */
+.bdt-tab-left,
+.bdt-tab-right {
+  flex-direction: column;
+  /* 1 */
+  margin-right: 0;
+}
+/* 1 */
+.bdt-tab-left > *,
+.bdt-tab-right > * {
+  padding-right: 0;
+}
+.bdt-tab-left > * > a {
+  justify-content: left;
+}
+.bdt-tab-right > * > a {
+  justify-content: left;
+}
+/* ========================================================================
+   Component: Slidenav
+ ========================================================================== */
+/*
+ * Adopts `bdt-icon`
+ */
+.bdt-slidenav {
+  padding: 5px 10px;
+  color: rgba(102, 102, 102, 0.5);
+}
+/* Hover */
+.bdt-slidenav:hover {
+  color: rgba(102, 102, 102, 0.9);
+}
+/* OnClick */
+.bdt-slidenav:active {
+  color: rgba(102, 102, 102, 0.5);
+}
+/* Icon modifier
+ ========================================================================== */
+/*
+ * Previous
+ */
+/*
+ * Next
+ */
+/* Size modifier
+ ========================================================================== */
+.bdt-slidenav-large {
+  padding: 10px 10px;
+}
+/* Container
+ ========================================================================== */
+.bdt-slidenav-container {
+  display: flex;
+}
+/* ========================================================================
+   Component: Dotnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Reset list
+ * 3. Gutter
+ */
+.bdt-dotnav {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  margin-right: -12px;
+}
+/*
+ * 1. Space is allocated solely based on content dimensions: 0 0 auto
+ * 2. Gutter
+ */
+.bdt-dotnav > * {
+  /* 1 */
+  flex: none;
+  /* 2 */
+  padding-right: 12px;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Items
+ * 1. Hide text if present
+ */
+.bdt-dotnav > * > * {
+  display: block;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(102, 102, 102, 0.2);
+  /* 1 */
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* Hover */
+.bdt-dotnav > * > :hover {
+  background-color: rgba(102, 102, 102, 0.6);
+}
+/* OnClick */
+.bdt-dotnav > * > :active {
+  background-color: rgba(102, 102, 102, 0.2);
+}
+/* Active */
+.bdt-dotnav > .bdt-active > * {
+  background-color: rgba(102, 102, 102, 0.6);
+}
+/* Modifier: 'bdt-dotnav-vertical'
+ ========================================================================== */
+/*
+ * 1. Change direction
+ * 2. Gutter
+ */
+.bdt-dotnav-vertical {
+  /* 1 */
+  flex-direction: column;
+  /* 2 */
+  margin-right: 0;
+  margin-top: -12px;
+}
+/* 2 */
+.bdt-dotnav-vertical > * {
+  padding-right: 0;
+  padding-top: 12px;
+}
+/* ========================================================================
+   Component: Thumbnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Reset list
+ * 3. Gutter
+ */
+.bdt-thumbnav {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  margin-right: -15px;
+}
+/*
+ * Space is allocated based on content dimensions, but shrinks: 0 1 auto
+ * 1. Gutter
+ */
+.bdt-thumbnav > * {
+  /* 1 */
+  padding-right: 15px;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Items
+ */
+.bdt-thumbnav > * > * {
+  display: inline-block;
+}
+/* Hover */
+/* Active */
+/* Modifier: 'bdt-thumbnav-vertical'
+ ========================================================================== */
+/*
+ * 1. Change direction
+ * 2. Gutter
+ */
+.bdt-thumbnav-vertical {
+  /* 1 */
+  flex-direction: column;
+  /* 2 */
+  margin-right: 0;
+  margin-top: -15px;
+}
+/* 2 */
+.bdt-thumbnav-vertical > * {
+  padding-right: 0;
+  padding-top: 15px;
+}
+/* ========================================================================
+   Component: Accordion
+ ========================================================================== */
+.bdt-accordion {
+  padding: 0;
+  list-style: none;
+}
+/* Item
+ ========================================================================== */
+.bdt-accordion > :nth-child(n+2) {
+  margin-top: 20px;
+}
+/* Title
+ ========================================================================== */
+.bdt-accordion-title {
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: #333;
+}
+/* Hover */
+.bdt-accordion-title:hover {
+  color: #666;
+  text-decoration: none;
+}
+/* Content
+ ========================================================================== */
+.bdt-accordion-content {
+  display: flow-root;
+  margin-top: 20px;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-accordion-content > :last-child {
+  margin-bottom: 0;
+}
+/* ========================================================================
+   Component: Drop
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ */
+.bdt-drop {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: absolute;
+  z-index: 1020;
+  /* 3 */
+  box-sizing: border-box;
+  width: 300px;
+}
+/* Show */
+.bdt-drop.bdt-open {
+  display: block;
+}
+/* Direction / Alignment modifiers
+ ========================================================================== */
+/* Direction */
+[class*='bdt-drop-top'] {
+  margin-top: -20px;
+}
+[class*='bdt-drop-bottom'] {
+  margin-top: 20px;
+}
+[class*='bdt-drop-left'] {
+  margin-right: -20px;
+}
+[class*='bdt-drop-right'] {
+  margin-right: 20px;
+}
+/* Grid modifiers
+ ========================================================================== */
+.bdt-drop-stack .bdt-drop-grid > * {
+  width: 100% !important;
+}
+/* ========================================================================
+   Component: Dropdown
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ * 4. Style
+ */
+.bdt-dropdown {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: absolute;
+  z-index: 1020;
+  /* 3 */
+  box-sizing: border-box;
+  min-width: 200px;
+  /* 4 */
+  padding: 15px;
+  background: #f8f8f8;
+  color: #666;
+}
+/* Show */
+.bdt-dropdown.bdt-open {
+  display: block;
+}
+/* Nav
+ * Adopts `bdt-nav`
+ ========================================================================== */
+.bdt-dropdown-nav {
+  white-space: nowrap;
+}
+/*
+ * Items
+ */
+.bdt-dropdown-nav > li > a {
+  color: #999;
+}
+/* Hover + Active */
+.bdt-dropdown-nav > li > a:hover,
+.bdt-dropdown-nav > li.bdt-active > a {
+  color: #666;
+}
+/*
+ * Header
+ */
+.bdt-dropdown-nav .bdt-nav-header {
+  color: #333;
+}
+/*
+ * Divider
+ */
+.bdt-dropdown-nav .bdt-nav-divider {
+  border-top: 1px solid rgba(214, 214, 214, 0.49);
+}
+/*
+ * Sublists
+ */
+.bdt-dropdown-nav .bdt-nav-sub a {
+  color: #999;
+}
+.bdt-dropdown-nav .bdt-nav-sub a:hover,
+.bdt-dropdown-nav .bdt-nav-sub li.bdt-active > a {
+  color: #666;
+}
+/* Direction / Alignment modifiers
+ ========================================================================== */
+/* Direction */
+[class*='bdt-dropdown-top'] {
+  margin-top: -10px;
+}
+[class*='bdt-dropdown-bottom'] {
+  margin-top: 10px;
+}
+[class*='bdt-dropdown-left'] {
+  margin-right: -10px;
+}
+[class*='bdt-dropdown-right'] {
+  margin-right: 10px;
+}
+/* Grid modifiers
+ ========================================================================== */
+.bdt-dropdown-stack .bdt-dropdown-grid > * {
+  width: 100% !important;
+}
+/* ========================================================================
+   Component: Modal
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Allow scrolling for the modal dialog
+ * 4. Horizontal padding
+ * 5. Mask the background page
+ * 6. Fade-in transition
+ */
+.bdt-modal {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1010;
+  /* 3 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* 4 */
+  padding: 15px 15px;
+  /* 5 */
+  background: rgba(0, 0, 0, 0.6);
+  /* 6 */
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-modal {
+    padding: 50px 30px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-modal {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+/*
+ * Open
+ */
+.bdt-modal.bdt-open {
+  opacity: 1;
+}
+/* Page
+ ========================================================================== */
+/*
+ * Prevent scrollbars
+ */
+.bdt-modal-page {
+  overflow: hidden;
+}
+/* Dialog
+ ========================================================================== */
+/*
+ * 1. Create position context for spinner and close button
+ * 2. Dimensions
+ * 3. `!important` is needed to overwrite `bdt-width-auto`. See `#modal-media-image` in tests
+ * 4. Style
+ * 5. Slide-in transition
+ */
+.bdt-modal-dialog {
+  /* 1 */
+  position: relative;
+  /* 2 */
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 600px;
+  /* 3 */
+  max-width: 100% !important;
+  /* 4 */
+  background: #fff;
+  /* 5 */
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: 0.3s linear;
+  transition-property: opacity, transform;
+  border-radius: 3px;
+}
+/*
+ * Open
+ */
+.bdt-open > .bdt-modal-dialog {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Size modifier
+ ========================================================================== */
+/*
+ * Container size
+ * Take the same size as the Container component
+ */
+.bdt-modal-container .bdt-modal-dialog {
+  width: 1200px;
+}
+/*
+ * Full size
+ * 1. Remove padding and background from modal
+ * 2. Reset all default declarations from modal dialog
+ */
+/* 1 */
+.bdt-modal-full {
+  padding: 0;
+  background: none;
+}
+/* 2 */
+.bdt-modal-full .bdt-modal-dialog {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  transform: translateY(0);
+}
+/* Sections
+ ========================================================================== */
+.bdt-modal-body {
+  display: flow-root;
+  padding: 30px 30px;
+}
+.bdt-modal-header {
+  display: flow-root;
+  padding: 15px 30px;
+  background: #f8f8f8;
+}
+.bdt-modal-footer {
+  display: flow-root;
+  padding: 15px 30px;
+  background: #f8f8f8;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-modal-body > :last-child,
+.bdt-modal-header > :last-child,
+.bdt-modal-footer > :last-child {
+  margin-bottom: 0;
+}
+/* Title
+ ========================================================================== */
+.bdt-modal-title {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 400;
+}
+/* Close
+ * Adopts `bdt-close`
+ ========================================================================== */
+[class*='bdt-modal-close-'] {
+  position: absolute;
+  z-index: 1010;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+}
+/*
+ * Remove margin from adjacent element
+ */
+[class*='bdt-modal-close-']:first-child + * {
+  margin-top: 0;
+}
+/*
+ * Hover
+ */
+/*
+ * Default
+ */
+/*
+ * Outside
+ * 1. Prevent scrollbar on small devices
+ */
+.bdt-modal-close-outside {
+  top: 0;
+  /* 1 */
+  left: -5px;
+  transform: translate(0, -100%);
+  color: #ffffff;
+}
+.bdt-modal-close-outside:hover {
+  color: #fff;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  /* 1 */
+  .bdt-modal-close-outside {
+    left: 0;
+    transform: translate(-100%, -100%);
+  }
+}
+/*
+ * Full
+ */
+/* ========================================================================
+   Component: Lightbox
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Allow scrolling for the modal dialog
+ * 4. Horizontal padding
+ * 5. Mask the background page
+ * 6. Fade-in transition
+ * 7. Prevent cancellation of pointer events while dragging
+ */
+.bdt-lightbox {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1010;
+  /* 5 */
+  background: #000;
+  /* 6 */
+  opacity: 0;
+  transition: opacity 0.15s linear;
+  /* 7 */
+  touch-action: pinch-zoom;
+}
+/*
+ * Open
+ * 1. Center child
+ * 2. Fade-in
+ */
+.bdt-lightbox.bdt-open {
+  display: block;
+  /* 2 */
+  opacity: 1;
+}
+/*
+ * Focus
+ */
+.bdt-lightbox :focus {
+  outline-color: rgba(255, 255, 255, 0.7);
+}
+.bdt-lightbox :focus-visible {
+  outline-color: rgba(255, 255, 255, 0.7);
+}
+/* Page
+ ========================================================================== */
+/*
+ * Prevent scrollbars
+ */
+.bdt-lightbox-page {
+  overflow: hidden;
+}
+/* Item
+ ========================================================================== */
+/*
+ * 1. Center child within the viewport
+ * 2. Not visible by default
+ * 3. Color needed for spinner icon
+ * 4. Optimize animation
+ * 5. Responsiveness
+ *    Using `vh` for `max-height` to fix image proportions after resize in Safari and Opera
+ */
+.bdt-lightbox-items > * {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* 2 */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  /* 3 */
+  color: rgba(255, 255, 255, 0.7);
+  /* 4 */
+  will-change: transform, opacity;
+}
+/* 5 */
+.bdt-lightbox-items > * > * {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.bdt-lightbox-items > * > :not(iframe) {
+  width: auto;
+  height: auto;
+}
+.bdt-lightbox-items > .bdt-active {
+  display: flex;
+}
+/* Toolbar
+ ========================================================================== */
+.bdt-lightbox-toolbar {
+  padding: 10px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+}
+.bdt-lightbox-toolbar > * {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* Toolbar Icon (Close)
+ ========================================================================== */
+.bdt-lightbox-toolbar-icon {
+  padding: 5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+/*
+ * Hover
+ */
+.bdt-lightbox-toolbar-icon:hover {
+  color: #fff;
+}
+/* Button (Slidenav)
+ ========================================================================== */
+/*
+ * 1. Center icon vertically and horizontally
+ */
+.bdt-lightbox-button {
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  /* 1 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Hover */
+.bdt-lightbox-button:hover {
+  color: #fff;
+}
+/* OnClick */
+/* Caption
+ ========================================================================== */
+.bdt-lightbox-caption:empty {
+  display: none;
+}
+/* Iframe
+ ========================================================================== */
+.bdt-lightbox-iframe {
+  width: 80%;
+  height: 80%;
+}
+/* ========================================================================
+   Component: Slideshow
+ ========================================================================== */
+/*
+ * 1. Prevent tab highlighting on iOS.
+ */
+.bdt-slideshow {
+  /* 1 */
+  -webkit-tap-highlight-color: transparent;
+}
+/* Items
+ ========================================================================== */
+/*
+ * 1. Create position and stacking context
+ * 2. Reset list
+ * 3. Clip child elements
+ * 4. Prevent displaying the callout information on iOS.
+ * 5. Disable horizontal panning gestures
+ */
+.bdt-slideshow-items {
+  /* 1 */
+  position: relative;
+  z-index: 0;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  overflow: hidden;
+  /* 4 */
+  -webkit-touch-callout: none;
+  /* 5 */
+  touch-action: pan-y;
+}
+/* Item
+ ========================================================================== */
+/*
+ * 1. Position items above each other
+ * 2. Take the full width
+ * 3. Clip child elements, e.g. for `bdt-cover`
+ * 4. Optimize animation
+ */
+.bdt-slideshow-items > * {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* 2 */
+  left: 0;
+  bottom: 0;
+  /* 3 */
+  overflow: hidden;
+  /* 4 */
+  will-change: transform, opacity;
+}
+/*
+ * Hide not active items
+ */
+.bdt-slideshow-items > :not(.bdt-active) {
+  display: none;
+}
+/* ========================================================================
+   Component: Slider
+ ========================================================================== */
+/*
+ * 1. Prevent tab highlighting on iOS.
+ */
+.bdt-slider {
+  /* 1 */
+  -webkit-tap-highlight-color: transparent;
+}
+/* Container
+ ========================================================================== */
+/*
+ * Clip child elements
+ */
+.bdt-slider-container {
+  overflow: hidden;
+}
+/*
+ * Widen container to prevent box-shadows from clipping, `large-box-shadow`
+ */
+.bdt-slider-container-offset {
+  margin: -11px -25px -39px -25px;
+  padding: 11px 25px 39px 25px;
+}
+/* Items
+ ========================================================================== */
+/*
+ * 1. Optimize animation
+ * 2. Create a containing block. In Safari it's neither created by `transform` nor `will-change`.
+ * 3. Disable horizontal panning gestures
+ */
+.bdt-slider-items {
+  /* 1 */
+  will-change: transform;
+  /* 2 */
+  position: relative;
+  /* 3 */
+  touch-action: pan-y;
+}
+/*
+ * 1. Reset list style without interfering with grid
+ * 2. Prevent displaying the callout information on iOS.
+ */
+.bdt-slider-items:not(.bdt-grid) {
+  display: flex;
+  /* 1 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 2 */
+  -webkit-touch-callout: none;
+}
+.bdt-slider-items.bdt-grid {
+  flex-wrap: nowrap;
+}
+/* Item
+ ========================================================================== */
+/*
+ * 1. Let items take content dimensions (0 0 auto)
+ *    `max-width` needed to keep image responsiveness and prevent content overflow
+ * 3. Create position context
+ */
+.bdt-slider-items > * {
+  /* 1 */
+  flex: none;
+  max-width: 100%;
+  /* 3 */
+  position: relative;
+}
+/* ========================================================================
+   Component: Sticky
+ ========================================================================== */
+/*
+ * Create position context so it's t the same like when fixed.
+ */
+.bdt-sticky {
+  position: relative;
+}
+/*
+ * 1. Force new layer to resolve frame rate issues on devices with lower frame rates
+ */
+.bdt-sticky-fixed {
+  z-index: 980;
+  box-sizing: border-box;
+  margin: 0 !important;
+  /* 1 */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/*
+ * Faster animations
+ */
+.bdt-sticky[class*='bdt-animation-'] {
+  animation-duration: 0.2s;
+}
+.bdt-sticky.bdt-animation-reverse {
+  animation-duration: 0.2s;
+}
+/* ========================================================================
+   Component: Off-canvas
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Set position
+ */
+.bdt-offcanvas {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+}
+/*
+ * Flip modifier
+ */
+.bdt-offcanvas-flip .bdt-offcanvas {
+  left: 0;
+  right: auto;
+}
+/* Bar
+ ========================================================================== */
+/*
+ * 1. Set position
+ * 2. Size and style
+ * 3. Allow scrolling
+ */
+.bdt-offcanvas-bar {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -270px;
+  /* 2 */
+  box-sizing: border-box;
+  width: 270px;
+  padding: 20px 20px;
+  background: #222;
+  /* 3 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-offcanvas-bar {
+    right: -350px;
+    width: 350px;
+    padding: 40px 40px;
+  }
+}
+/* Flip modifier */
+.bdt-offcanvas-flip .bdt-offcanvas-bar {
+  right: auto;
+  left: -270px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-offcanvas-flip .bdt-offcanvas-bar {
+    left: -350px;
+  }
+}
+/*
+ * Open
+ */
+.bdt-open > .bdt-offcanvas-bar {
+  right: 0;
+}
+.bdt-offcanvas-flip .bdt-open > .bdt-offcanvas-bar {
+  right: auto;
+  left: 0;
+}
+/*
+ * Slide Animation (Used in slide and push mode)
+ */
+.bdt-offcanvas-bar-animation {
+  transition: right 0.3s ease-out;
+}
+.bdt-offcanvas-flip .bdt-offcanvas-bar-animation {
+  transition-property: left;
+}
+/*
+ * Reveal Animation
+ * 1. Set position
+ * 2. Clip the bar
+ * 3. Animation
+ * 4. Reset position
+ */
+.bdt-offcanvas-reveal {
+  /* 1 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  /* 2 */
+  width: 0;
+  overflow: hidden;
+  /* 3 */
+  transition: width 0.3s ease-out;
+}
+.bdt-offcanvas-reveal .bdt-offcanvas-bar {
+  /* 4 */
+  right: 0;
+}
+.bdt-offcanvas-flip .bdt-offcanvas-reveal .bdt-offcanvas-bar {
+  /* 4 */
+  right: auto;
+  left: 0;
+}
+.bdt-open > .bdt-offcanvas-reveal {
+  width: 270px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-open > .bdt-offcanvas-reveal {
+    width: 350px;
+  }
+}
+/*
+ * Flip modifier
+ */
+.bdt-offcanvas-flip .bdt-offcanvas-reveal {
+  left: 0;
+  right: auto;
+}
+/* Close
+ * Adopts `bdt-close`
+ ========================================================================== */
+.bdt-offcanvas-close {
+  position: absolute;
+  z-index: 1000;
+  top: 20px;
+  left: 20px;
+  padding: 5px;
+}
+/* Overlay
+ ========================================================================== */
+/*
+ * Overlay the whole page. Needed for the `::before`
+ * 1. Using `100vw` so no modification is needed when off-canvas is flipped
+ * 2. Allow for closing with swipe gesture on devices with pointer events.
+ */
+.bdt-offcanvas-overlay {
+  /* 1 */
+  width: 100vw;
+  /* 2 */
+  touch-action: none;
+}
+/*
+ * 1. Mask the whole page
+ * 2. Fade-in transition
+ */
+.bdt-offcanvas-overlay::before {
+  /* 1 */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+  /* 2 */
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+.bdt-offcanvas-overlay.bdt-open::before {
+  opacity: 1;
+}
+/* Prevent scrolling
+ ========================================================================== */
+/*
+ * Prevent horizontal scrollbar when the content is slide-out
+ * Has to be on the `html` element too to make it work on the `body`
+ */
+.bdt-offcanvas-page,
+.bdt-offcanvas-container {
+  overflow-x: hidden;
+}
+/* Container
+ ========================================================================== */
+/*
+ * Prepare slide-out animation (Used in reveal and push mode)
+ * Using `position: left` instead of `transform` because position `fixed` elements like sticky navbars
+ * lose their fixed state and behaves like `absolute` within a transformed container
+ * 1. Provide a fixed width and prevent shrinking
+ */
+.bdt-offcanvas-container {
+  position: relative;
+  right: 0;
+  transition: right 0.3s ease-out;
+  /* 1 */
+  box-sizing: border-box;
+  width: 100%;
+}
+/*
+ * Activate slide-out animation
+ */
+:not(.bdt-offcanvas-flip).bdt-offcanvas-container-animation {
+  right: 270px;
+}
+.bdt-offcanvas-flip.bdt-offcanvas-container-animation {
+  right: -270px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  :not(.bdt-offcanvas-flip).bdt-offcanvas-container-animation {
+    right: 350px;
+  }
+  .bdt-offcanvas-flip.bdt-offcanvas-container-animation {
+    right: -350px;
+  }
+}
+/* ========================================================================
+   Component: Switcher
+ ========================================================================== */
+/*
+ * Reset list
+ */
+.bdt-switcher {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Hide not active items
+ */
+.bdt-switcher > :not(.bdt-active) {
+  display: none;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-switcher > * > :last-child {
+  margin-bottom: 0;
+}
+/* ========================================================================
+   Component: Leader
+ ========================================================================== */
+.bdt-leader {
+  overflow: hidden;
+}
+/*
+ * 1. Place element in text flow
+ * 2. Never break into a new line
+ * 3. Get a string back with as many repeating characters to fill the container
+ * 4. Prevent wrapping. Overflowing characters will be clipped by the container
+ */
+.bdt-leader-fill::after {
+  /* 1 */
+  display: inline-block;
+  margin-right: 15px;
+  /* 2 */
+  width: 0;
+  /* 3 */
+  content: attr(data-fill);
+  /* 4 */
+  white-space: nowrap;
+}
+/*
+ * Hide if media does not match
+ */
+.bdt-leader-fill.bdt-leader-hide::after {
+  display: none;
+}
+/*
+ * Pass fill character to JS
+ */
+:root {
+  --bdt-leader-fill-content: '.';
+}
+/* ========================================================================
+   Component: Iconnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Reset list
+ * 3. Gutter
+ */
+.bdt-iconnav {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  margin-right: -10px;
+}
+/*
+ * Space is allocated based on content dimensions, but shrinks: 0 1 auto
+ * 1. Gutter
+ */
+.bdt-iconnav > * {
+  /* 1 */
+  padding-right: 10px;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Items must target `a` elements to exclude other elements (e.g. dropdowns)
+ * 1. Center content vertically if there is still some text
+ * 2. Imitate white space gap when using flexbox
+ * 3. Force text not to affect item height
+ * 4. Style
+ * 5. Required for `a` if there is still some text
+ */
+.bdt-iconnav > * > a {
+  /* 1 */
+  display: flex;
+  align-items: center;
+  /* 2 */
+  column-gap: 0.25em;
+  /* 3 */
+  line-height: 0;
+  /* 4 */
+  color: #999;
+  /* 5 */
+  text-decoration: none;
+}
+/* Hover */
+.bdt-iconnav > * > a:hover {
+  color: #666;
+}
+/* Active */
+.bdt-iconnav > .bdt-active > a {
+  color: #666;
+}
+/* Modifier: 'bdt-iconnav-vertical'
+ ========================================================================== */
+/*
+ * 1. Change direction
+ * 2. Gutter
+ */
+.bdt-iconnav-vertical {
+  /* 1 */
+  flex-direction: column;
+  /* 2 */
+  margin-right: 0;
+  margin-top: -10px;
+}
+/* 2 */
+.bdt-iconnav-vertical > * {
+  padding-right: 0;
+  padding-top: 10px;
+}
+/* ========================================================================
+   Component: Notification
+ ========================================================================== */
+/*
+ * 1. Set position
+ * 2. Dimensions
+ */
+.bdt-notification {
+  /* 1 */
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1040;
+  /* 2 */
+  box-sizing: border-box;
+  width: 450px;
+}
+/* Position modifiers
+========================================================================== */
+.bdt-notification-top-right,
+.bdt-notification-bottom-right {
+  right: auto;
+  left: 10px;
+}
+.bdt-notification-top-center,
+.bdt-notification-bottom-center {
+  right: 50%;
+  margin-right: -225px;
+}
+.bdt-notification-bottom-left,
+.bdt-notification-bottom-right,
+.bdt-notification-bottom-center {
+  top: auto;
+  bottom: 10px;
+}
+/* Responsiveness
+========================================================================== */
+/* Phones portrait and smaller */
+@media (max-width: 639px) {
+  .bdt-notification {
+    right: 10px;
+    left: 10px;
+    width: auto;
+    margin: 0;
+  }
+}
+/* Message
+========================================================================== */
+.bdt-notification-message {
+  position: relative;
+  padding: 15px;
+  background: #f8f8f8;
+  color: #666;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+* + .bdt-notification-message {
+  margin-top: 10px;
+}
+/* Close
+ * Adopts `bdt-close`
+ ========================================================================== */
+.bdt-notification-close {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+.bdt-notification-message:hover .bdt-notification-close {
+  display: block;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Primary
+ */
+.bdt-notification-message-primary {
+  color: #1e87f0;
+}
+/*
+ * Success
+ */
+.bdt-notification-message-success {
+  color: #32d296;
+}
+/*
+ * Warning
+ */
+.bdt-notification-message-warning {
+  color: #faa05a;
+}
+/*
+ * Danger
+ */
+.bdt-notification-message-danger {
+  color: #f0506e;
+}
+/* ========================================================================
+   Component: Tooltip
+ ========================================================================== */
+/*
+ * 1. Hide by default
+ * 2. Position
+ * 3. Remove tooltip from document flow to keep the UIkit container from changing its size when injected into the document initially
+ * 4. Dimensions
+ * 5. Style
+ */
+.bdt-tooltip {
+  /* 1 */
+  display: none;
+  /* 2 */
+  position: absolute;
+  z-index: 1030;
+  /* 3 */
+  top: 0;
+  /* 4 */
+  box-sizing: border-box;
+  max-width: 200px;
+  padding: 3px 6px;
+  /* 5 */
+  background: #666;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+}
+/* Show */
+.bdt-tooltip.bdt-active {
+  display: block;
+}
+/* Direction / Alignment modifiers
+ ========================================================================== */
+/* Direction */
+[class*='bdt-tooltip-top'] {
+  margin-top: -10px;
+}
+[class*='bdt-tooltip-bottom'] {
+  margin-top: 10px;
+}
+[class*='bdt-tooltip-left'] {
+  margin-right: -10px;
+}
+[class*='bdt-tooltip-right'] {
+  margin-right: 10px;
+}
+/* ========================================================================
+   Component: Placeholder
+ ========================================================================== */
+.bdt-placeholder {
+  margin-bottom: 20px;
+  padding: 30px 30px;
+  background: #f8f8f8;
+}
+/* Add margin if adjacent element */
+* + .bdt-placeholder {
+  margin-top: 20px;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-placeholder > :last-child {
+  margin-bottom: 0;
+}
+/* ========================================================================
+   Component: Progress
+ ========================================================================== */
+/*
+ * 1. Add the correct vertical alignment in all browsers.
+ * 2. Behave like a block element.
+ * 3. Remove borders in Firefox.
+ * 4. Remove default style in Chrome, Safari and Edge.
+ * 5. Style
+ */
+.bdt-progress {
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+  display: block;
+  width: 100%;
+  /* 3 */
+  border: 0;
+  /* 4 */
+  background-color: #f8f8f8;
+  /* 5 */
+  margin-bottom: 20px;
+  height: 15px;
+}
+/* Add margin if adjacent element */
+* + .bdt-progress {
+  margin-top: 20px;
+}
+/*
+ * Show background color set on `bdt-progress` in Chrome, Safari and Edge.
+ */
+.bdt-progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+/*
+ * Progress Bar
+ * 1. Transitions don't work on `::-moz-progress-bar` pseudo element in Firefox yet.
+ *    https://bugzilla.mozilla.org/show_bug.cgi?id=662351
+ */
+.bdt-progress::-webkit-progress-value {
+  background-color: #1e87f0;
+  transition: width 0.6s ease;
+}
+.bdt-progress::-moz-progress-bar {
+  background-color: #1e87f0;
+  /* 1 */
+  transition: width 0.6s ease;
+}
+/* ========================================================================
+   Component: Sortable
+ ========================================================================== */
+.bdt-sortable {
+  position: relative;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-sortable > :last-child {
+  margin-bottom: 0;
+}
+/* Drag
+ ========================================================================== */
+.bdt-sortable-drag {
+  position: fixed !important;
+  z-index: 1050 !important;
+  pointer-events: none;
+}
+/* Placeholder
+ ========================================================================== */
+.bdt-sortable-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+/* Empty modifier
+ ========================================================================== */
+.bdt-sortable-empty {
+  min-height: 50px;
+}
+/* Handle
+ ========================================================================== */
+/* Hover */
+.bdt-sortable-handle:hover {
+  cursor: move;
+}
+/* ========================================================================
+   Component: Countdown
+ ========================================================================== */
+/* Item
+ ========================================================================== */
+/* Number
+ ========================================================================== */
+/*
+ * 1. Make numbers all of the same size to prevent jumping. Must be supported by the font.
+ * 2. Style
+ */
+.bdt-countdown-number {
+  /* 1 */
+  font-variant-numeric: tabular-nums;
+  /* 2 */
+  font-size: 2rem;
+  line-height: 0.8;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-countdown-number {
+    font-size: 4rem;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-countdown-number {
+    font-size: 6rem;
+  }
+}
+/* Separator
+ ========================================================================== */
+.bdt-countdown-separator {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-countdown-separator {
+    font-size: 2rem;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-countdown-separator {
+    font-size: 3rem;
+  }
+}
+/* Label
+ ========================================================================== */
+/* ========================================================================
+   Component: Animation
+ ========================================================================== */
+[class*='bdt-animation-'] {
+  animation: 0.5s ease-out both;
+}
+/* Animations
+ ========================================================================== */
+/*
+ * Fade
+ */
+.bdt-animation-fade {
+  animation-name: bdt-fade;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+}
+/*
+ * Scale
+ */
+.bdt-animation-scale-up {
+  animation-name: bdt-fade, bdt-scale-up;
+}
+.bdt-animation-scale-down {
+  animation-name: bdt-fade, bdt-scale-down;
+}
+/*
+ * Slide
+ */
+.bdt-animation-slide-top {
+  animation-name: bdt-fade, bdt-slide-top;
+}
+.bdt-animation-slide-bottom {
+  animation-name: bdt-fade, bdt-slide-bottom;
+}
+.bdt-animation-slide-left {
+  animation-name: bdt-fade, bdt-slide-left;
+}
+.bdt-animation-slide-right {
+  animation-name: bdt-fade, bdt-slide-right;
+}
+/*
+ * Slide Small
+ */
+.bdt-animation-slide-top-small {
+  animation-name: bdt-fade, bdt-slide-top-small;
+}
+.bdt-animation-slide-bottom-small {
+  animation-name: bdt-fade, bdt-slide-bottom-small;
+}
+.bdt-animation-slide-left-small {
+  animation-name: bdt-fade, bdt-slide-left-small;
+}
+.bdt-animation-slide-right-small {
+  animation-name: bdt-fade, bdt-slide-right-small;
+}
+/*
+ * Slide Medium
+ */
+.bdt-animation-slide-top-medium {
+  animation-name: bdt-fade, bdt-slide-top-medium;
+}
+.bdt-animation-slide-bottom-medium {
+  animation-name: bdt-fade, bdt-slide-bottom-medium;
+}
+.bdt-animation-slide-left-medium {
+  animation-name: bdt-fade, bdt-slide-left-medium;
+}
+.bdt-animation-slide-right-medium {
+  animation-name: bdt-fade, bdt-slide-right-medium;
+}
+/*
+ * Kenburns
+ */
+.bdt-animation-kenburns {
+  animation-name: bdt-kenburns;
+  animation-duration: 15s;
+}
+/*
+ * Shake
+ */
+.bdt-animation-shake {
+  animation-name: bdt-shake;
+}
+/*
+ * SVG Stroke
+ * The `--bdt-animation-stroke` custom property contains the longest path length.
+ * Set it manually or use `bdt-svg="stroke-animation: true"` to set it automatically.
+ * All strokes are animated by the same pace and doesn't end simultaneously.
+ * To end simultaneously, `pathLength="1"` could be used, but it's not working in Safari yet.
+ */
+.bdt-animation-stroke {
+  animation-name: bdt-stroke;
+  animation-duration: 2s;
+  stroke-dasharray: var(--bdt-animation-stroke);
+}
+/* Direction modifier
+ ========================================================================== */
+.bdt-animation-reverse {
+  animation-direction: reverse;
+  animation-timing-function: ease-in;
+}
+/* Duration modifier
+ ========================================================================== */
+.bdt-animation-fast {
+  animation-duration: 0.1s;
+}
+/* Toggle animation based on the State of the Parent Element
+ ========================================================================== */
+.bdt-animation-toggle:not(:hover):not(:focus) [class*='bdt-animation-'] {
+  animation-name: none;
+}
+/* Keyframes used by animation classes
+ ========================================================================== */
+/*
+ * Fade
+ */
+@keyframes bdt-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/*
+ * Scale
+ */
+@keyframes bdt-scale-up {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bdt-scale-down {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/*
+ * Slide
+ */
+@keyframes bdt-slide-top {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bdt-slide-bottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bdt-slide-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes bdt-slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/*
+ * Slide Small
+ */
+@keyframes bdt-slide-top-small {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bdt-slide-bottom-small {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bdt-slide-left-small {
+  0% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes bdt-slide-right-small {
+  0% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/*
+ * Slide Medium
+ */
+@keyframes bdt-slide-top-medium {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bdt-slide-bottom-medium {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bdt-slide-left-medium {
+  0% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes bdt-slide-right-medium {
+  0% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/*
+ * Kenburns
+ */
+@keyframes bdt-kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+/*
+ * Shake
+ */
+@keyframes bdt-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(9px);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  30% {
+    transform: translateX(7px);
+  }
+  40% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  70% {
+    transform: translateX(3px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  90% {
+    transform: translateX(1px);
+  }
+}
+/*
+ * Stroke
+ */
+@keyframes bdt-stroke {
+  0% {
+    stroke-dashoffset: var(--bdt-animation-stroke);
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+/* ========================================================================
+   Component: Width
+ ========================================================================== */
+/* Equal child widths
+ ========================================================================== */
+[class*='bdt-child-width'] > * {
+  box-sizing: border-box;
+  width: 100%;
+}
+.bdt-child-width-1-2 > * {
+  width: 50%;
+}
+.bdt-child-width-1-3 > * {
+  width: calc(100% * 1 / 3.001);
+}
+.bdt-child-width-1-4 > * {
+  width: 25%;
+}
+.bdt-child-width-1-5 > * {
+  width: 20%;
+}
+.bdt-child-width-1-6 > * {
+  width: calc(100% * 1 / 6.001);
+}
+.bdt-child-width-auto > * {
+  width: auto;
+}
+/*
+ * 1. Reset the `min-width`, which is set to auto by default, because
+ *    flex items won't shrink below their minimum intrinsic content size.
+ *    Using `1px` instead of `0`, so items still wrap into the next line,
+ *    if they have zero width and padding and the predecessor is 100% wide.
+ */
+.bdt-child-width-expand > :not([class*='bdt-width']) {
+  flex: 1;
+  /* 1 */
+  min-width: 1px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-child-width-1-1\@s > * {
+    width: 100%;
+  }
+  .bdt-child-width-1-2\@s > * {
+    width: 50%;
+  }
+  .bdt-child-width-1-3\@s > * {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-child-width-1-4\@s > * {
+    width: 25%;
+  }
+  .bdt-child-width-1-5\@s > * {
+    width: 20%;
+  }
+  .bdt-child-width-1-6\@s > * {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-child-width-auto\@s > * {
+    width: auto;
+  }
+  .bdt-child-width-expand\@s > :not([class*='bdt-width']) {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-child-width-1-1\@m > * {
+    width: 100%;
+  }
+  .bdt-child-width-1-2\@m > * {
+    width: 50%;
+  }
+  .bdt-child-width-1-3\@m > * {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-child-width-1-4\@m > * {
+    width: 25%;
+  }
+  .bdt-child-width-1-5\@m > * {
+    width: 20%;
+  }
+  .bdt-child-width-1-6\@m > * {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-child-width-auto\@m > * {
+    width: auto;
+  }
+  .bdt-child-width-expand\@m > :not([class*='bdt-width']) {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-child-width-1-1\@l > * {
+    width: 100%;
+  }
+  .bdt-child-width-1-2\@l > * {
+    width: 50%;
+  }
+  .bdt-child-width-1-3\@l > * {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-child-width-1-4\@l > * {
+    width: 25%;
+  }
+  .bdt-child-width-1-5\@l > * {
+    width: 20%;
+  }
+  .bdt-child-width-1-6\@l > * {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-child-width-auto\@l > * {
+    width: auto;
+  }
+  .bdt-child-width-expand\@l > :not([class*='bdt-width']) {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-child-width-1-1\@xl > * {
+    width: 100%;
+  }
+  .bdt-child-width-1-2\@xl > * {
+    width: 50%;
+  }
+  .bdt-child-width-1-3\@xl > * {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-child-width-1-4\@xl > * {
+    width: 25%;
+  }
+  .bdt-child-width-1-5\@xl > * {
+    width: 20%;
+  }
+  .bdt-child-width-1-6\@xl > * {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-child-width-auto\@xl > * {
+    width: auto;
+  }
+  .bdt-child-width-expand\@xl > :not([class*='bdt-width']) {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Single Widths
+ ========================================================================== */
+/*
+ * 1. `max-width` is needed for the pixel-based classes
+ */
+[class*='bdt-width'] {
+  box-sizing: border-box;
+  width: 100%;
+  /* 1 */
+  max-width: 100%;
+}
+/* Halves */
+.bdt-width-1-2 {
+  width: 50%;
+}
+/* Thirds */
+.bdt-width-1-3 {
+  width: calc(100% * 1 / 3.001);
+}
+.bdt-width-2-3 {
+  width: calc(100% * 2 / 3.001);
+}
+/* Quarters */
+.bdt-width-1-4 {
+  width: 25%;
+}
+.bdt-width-3-4 {
+  width: 75%;
+}
+/* Fifths */
+.bdt-width-1-5 {
+  width: 20%;
+}
+.bdt-width-2-5 {
+  width: 40%;
+}
+.bdt-width-3-5 {
+  width: 60%;
+}
+.bdt-width-4-5 {
+  width: 80%;
+}
+/* Sixths */
+.bdt-width-1-6 {
+  width: calc(100% * 1 / 6.001);
+}
+.bdt-width-5-6 {
+  width: calc(100% * 5 / 6.001);
+}
+/* Pixel */
+.bdt-width-small {
+  width: 150px;
+}
+.bdt-width-medium {
+  width: 300px;
+}
+.bdt-width-large {
+  width: 450px;
+}
+.bdt-width-xlarge {
+  width: 600px;
+}
+.bdt-width-2xlarge {
+  width: 750px;
+}
+/* Auto */
+.bdt-width-auto {
+  width: auto;
+}
+/* Expand */
+.bdt-width-expand {
+  flex: 1;
+  min-width: 1px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  /* Whole */
+  .bdt-width-1-1\@s {
+    width: 100%;
+  }
+  /* Halves */
+  .bdt-width-1-2\@s {
+    width: 50%;
+  }
+  /* Thirds */
+  .bdt-width-1-3\@s {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-width-2-3\@s {
+    width: calc(100% * 2 / 3.001);
+  }
+  /* Quarters */
+  .bdt-width-1-4\@s {
+    width: 25%;
+  }
+  .bdt-width-3-4\@s {
+    width: 75%;
+  }
+  /* Fifths */
+  .bdt-width-1-5\@s {
+    width: 20%;
+  }
+  .bdt-width-2-5\@s {
+    width: 40%;
+  }
+  .bdt-width-3-5\@s {
+    width: 60%;
+  }
+  .bdt-width-4-5\@s {
+    width: 80%;
+  }
+  /* Sixths */
+  .bdt-width-1-6\@s {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-width-5-6\@s {
+    width: calc(100% * 5 / 6.001);
+  }
+  /* Pixel */
+  .bdt-width-small\@s {
+    width: 150px;
+  }
+  .bdt-width-medium\@s {
+    width: 300px;
+  }
+  .bdt-width-large\@s {
+    width: 450px;
+  }
+  .bdt-width-xlarge\@s {
+    width: 600px;
+  }
+  .bdt-width-2xlarge\@s {
+    width: 750px;
+  }
+  /* Auto */
+  .bdt-width-auto\@s {
+    width: auto;
+  }
+  /* Expand */
+  .bdt-width-expand\@s {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  /* Whole */
+  .bdt-width-1-1\@m {
+    width: 100%;
+  }
+  /* Halves */
+  .bdt-width-1-2\@m {
+    width: 50%;
+  }
+  /* Thirds */
+  .bdt-width-1-3\@m {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-width-2-3\@m {
+    width: calc(100% * 2 / 3.001);
+  }
+  /* Quarters */
+  .bdt-width-1-4\@m {
+    width: 25%;
+  }
+  .bdt-width-3-4\@m {
+    width: 75%;
+  }
+  /* Fifths */
+  .bdt-width-1-5\@m {
+    width: 20%;
+  }
+  .bdt-width-2-5\@m {
+    width: 40%;
+  }
+  .bdt-width-3-5\@m {
+    width: 60%;
+  }
+  .bdt-width-4-5\@m {
+    width: 80%;
+  }
+  /* Sixths */
+  .bdt-width-1-6\@m {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-width-5-6\@m {
+    width: calc(100% * 5 / 6.001);
+  }
+  /* Pixel */
+  .bdt-width-small\@m {
+    width: 150px;
+  }
+  .bdt-width-medium\@m {
+    width: 300px;
+  }
+  .bdt-width-large\@m {
+    width: 450px;
+  }
+  .bdt-width-xlarge\@m {
+    width: 600px;
+  }
+  .bdt-width-2xlarge\@m {
+    width: 750px;
+  }
+  /* Auto */
+  .bdt-width-auto\@m {
+    width: auto;
+  }
+  /* Expand */
+  .bdt-width-expand\@m {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  /* Whole */
+  .bdt-width-1-1\@l {
+    width: 100%;
+  }
+  /* Halves */
+  .bdt-width-1-2\@l {
+    width: 50%;
+  }
+  /* Thirds */
+  .bdt-width-1-3\@l {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-width-2-3\@l {
+    width: calc(100% * 2 / 3.001);
+  }
+  /* Quarters */
+  .bdt-width-1-4\@l {
+    width: 25%;
+  }
+  .bdt-width-3-4\@l {
+    width: 75%;
+  }
+  /* Fifths */
+  .bdt-width-1-5\@l {
+    width: 20%;
+  }
+  .bdt-width-2-5\@l {
+    width: 40%;
+  }
+  .bdt-width-3-5\@l {
+    width: 60%;
+  }
+  .bdt-width-4-5\@l {
+    width: 80%;
+  }
+  /* Sixths */
+  .bdt-width-1-6\@l {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-width-5-6\@l {
+    width: calc(100% * 5 / 6.001);
+  }
+  /* Pixel */
+  .bdt-width-small\@l {
+    width: 150px;
+  }
+  .bdt-width-medium\@l {
+    width: 300px;
+  }
+  .bdt-width-large\@l {
+    width: 450px;
+  }
+  .bdt-width-xlarge\@l {
+    width: 600px;
+  }
+  .bdt-width-2xlarge\@l {
+    width: 750px;
+  }
+  /* Auto */
+  .bdt-width-auto\@l {
+    width: auto;
+  }
+  /* Expand */
+  .bdt-width-expand\@l {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  /* Whole */
+  .bdt-width-1-1\@xl {
+    width: 100%;
+  }
+  /* Halves */
+  .bdt-width-1-2\@xl {
+    width: 50%;
+  }
+  /* Thirds */
+  .bdt-width-1-3\@xl {
+    width: calc(100% * 1 / 3.001);
+  }
+  .bdt-width-2-3\@xl {
+    width: calc(100% * 2 / 3.001);
+  }
+  /* Quarters */
+  .bdt-width-1-4\@xl {
+    width: 25%;
+  }
+  .bdt-width-3-4\@xl {
+    width: 75%;
+  }
+  /* Fifths */
+  .bdt-width-1-5\@xl {
+    width: 20%;
+  }
+  .bdt-width-2-5\@xl {
+    width: 40%;
+  }
+  .bdt-width-3-5\@xl {
+    width: 60%;
+  }
+  .bdt-width-4-5\@xl {
+    width: 80%;
+  }
+  /* Sixths */
+  .bdt-width-1-6\@xl {
+    width: calc(100% * 1 / 6.001);
+  }
+  .bdt-width-5-6\@xl {
+    width: calc(100% * 5 / 6.001);
+  }
+  /* Pixel */
+  .bdt-width-small\@xl {
+    width: 150px;
+  }
+  .bdt-width-medium\@xl {
+    width: 300px;
+  }
+  .bdt-width-large\@xl {
+    width: 450px;
+  }
+  .bdt-width-xlarge\@xl {
+    width: 600px;
+  }
+  .bdt-width-2xlarge\@xl {
+    width: 750px;
+  }
+  /* Auto */
+  .bdt-width-auto\@xl {
+    width: auto;
+  }
+  /* Expand */
+  .bdt-width-expand\@xl {
+    flex: 1;
+    min-width: 1px;
+  }
+}
+/* Intrinsic Widths
+ ========================================================================== */
+.bdt-width-max-content {
+  width: max-content;
+}
+.bdt-width-min-content {
+  width: min-content;
+}
+/* ========================================================================
+   Component: Height
+ ========================================================================== */
+[class*='bdt-height'] {
+  box-sizing: border-box;
+}
+/*
+ * Only works if parent element has a height set
+ */
+.bdt-height-1-1 {
+  height: 100%;
+}
+/*
+ * Useful to create image teasers
+ */
+.bdt-height-viewport {
+  min-height: 100vh;
+}
+.bdt-height-viewport-2 {
+  min-height: 200vh;
+}
+.bdt-height-viewport-3 {
+  min-height: 300vh;
+}
+.bdt-height-viewport-4 {
+  min-height: 400vh;
+}
+/*
+ * Pixel
+ * Useful for `overflow: auto`
+ */
+.bdt-height-small {
+  height: 150px;
+}
+.bdt-height-medium {
+  height: 300px;
+}
+.bdt-height-large {
+  height: 450px;
+}
+.bdt-height-max-small {
+  max-height: 150px;
+}
+.bdt-height-max-medium {
+  max-height: 300px;
+}
+.bdt-height-max-large {
+  max-height: 450px;
+}
+/* ========================================================================
+   Component: Text
+ ========================================================================== */
+/* Style modifiers
+ ========================================================================== */
+.bdt-text-lead {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #333;
+}
+.bdt-text-meta {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #999;
+}
+/* Size modifiers
+ ========================================================================== */
+.bdt-text-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.bdt-text-large {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+.bdt-text-default {
+  font-size: 16px;
+  line-height: 1.5;
+}
+/* Weight modifier
+ ========================================================================== */
+.bdt-text-light {
+  font-weight: 300;
+}
+.bdt-text-normal {
+  font-weight: 400;
+}
+.bdt-text-bold {
+  font-weight: 700;
+}
+.bdt-text-lighter {
+  font-weight: lighter;
+}
+.bdt-text-bolder {
+  font-weight: bolder;
+}
+/* Style modifier
+ ========================================================================== */
+.bdt-text-italic {
+  font-style: italic;
+}
+/* Transform modifier
+ ========================================================================== */
+.bdt-text-capitalize {
+  text-transform: capitalize !important;
+}
+.bdt-text-uppercase {
+  text-transform: uppercase !important;
+}
+.bdt-text-lowercase {
+  text-transform: lowercase !important;
+}
+/* Decoration modifier
+ ========================================================================== */
+.bdt-text-decoration-none {
+  text-decoration: none !important;
+}
+/* Color modifiers
+ ========================================================================== */
+.bdt-text-muted {
+  color: #999 !important;
+}
+.bdt-text-emphasis {
+  color: #333 !important;
+}
+.bdt-text-primary {
+  color: #1e87f0 !important;
+}
+.bdt-text-secondary {
+  color: #222 !important;
+}
+.bdt-text-success {
+  color: #32d296 !important;
+}
+.bdt-text-warning {
+  color: #faa05a !important;
+}
+.bdt-text-danger {
+  color: #f0506e !important;
+}
+/* Background modifier
+ ========================================================================== */
+/*
+ * 1. The background clips to the foreground text. Works in all browsers.
+ * 2. Default color is set to transparent.
+ * 3. Container fits the text
+ * 4. Style
+ */
+.bdt-text-background {
+  /* 1 */
+  -webkit-background-clip: text;
+  /* 2 */
+  color: transparent !important;
+  /* 3 */
+  display: inline-block;
+  /* 4 */
+  background-color: #1e87f0;
+}
+/* Alignment modifiers
+ ========================================================================== */
+.bdt-text-left {
+  text-align: right !important;
+}
+.bdt-text-right {
+  text-align: left !important;
+}
+.bdt-text-center {
+  text-align: center !important;
+}
+.bdt-text-justify {
+  text-align: justify !important;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-text-left\@s {
+    text-align: right !important;
+  }
+  .bdt-text-right\@s {
+    text-align: left !important;
+  }
+  .bdt-text-center\@s {
+    text-align: center !important;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-text-left\@m {
+    text-align: right !important;
+  }
+  .bdt-text-right\@m {
+    text-align: left !important;
+  }
+  .bdt-text-center\@m {
+    text-align: center !important;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-text-left\@l {
+    text-align: right !important;
+  }
+  .bdt-text-right\@l {
+    text-align: left !important;
+  }
+  .bdt-text-center\@l {
+    text-align: center !important;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-text-left\@xl {
+    text-align: right !important;
+  }
+  .bdt-text-right\@xl {
+    text-align: left !important;
+  }
+  .bdt-text-center\@xl {
+    text-align: center !important;
+  }
+}
+/*
+ * Vertical
+ */
+.bdt-text-top {
+  vertical-align: top !important;
+}
+.bdt-text-middle {
+  vertical-align: middle !important;
+}
+.bdt-text-bottom {
+  vertical-align: bottom !important;
+}
+.bdt-text-baseline {
+  vertical-align: baseline !important;
+}
+/* Wrap modifiers
+ ========================================================================== */
+/*
+ * Prevent text from wrapping onto multiple lines
+ */
+.bdt-text-nowrap {
+  white-space: nowrap;
+}
+/*
+ * 1. Make sure a max-width is set after which truncation can occur
+ * 2. Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
+ * 3. Fix for table cells
+ */
+.bdt-text-truncate {
+  /* 1 */
+  max-width: 100%;
+  /* 2 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 2 */
+th.bdt-text-truncate,
+td.bdt-text-truncate {
+  max-width: 0;
+}
+/*
+ * Wrap long words onto the next line and break them if they are too long to fit.
+ * 1. Make it work with table cells in all browsers.
+ * Note: Not using `hyphens: auto` because it hyphenates text even if not needed.
+ */
+.bdt-text-break {
+  overflow-wrap: break-word;
+}
+/* 1 */
+th.bdt-text-break,
+td.bdt-text-break {
+  word-break: break-word;
+}
+/* ========================================================================
+   Component: Column
+ ========================================================================== */
+[class*='bdt-column-'] {
+  column-gap: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  [class*='bdt-column-'] {
+    column-gap: 40px;
+  }
+}
+/*
+ * Fix image 1px line wrapping into the next column in Chrome
+ */
+[class*='bdt-column-'] img {
+  transform: translate3d(0, 0, 0);
+}
+/* Divider
+ ========================================================================== */
+/*
+ * 1. Double the column gap
+ */
+.bdt-column-divider {
+  column-rule: 1px solid rgba(214, 214, 214, 0.49);
+  /* 1 */
+  column-gap: 60px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-column-divider {
+    column-gap: 80px;
+  }
+}
+/* Width modifiers
+ ========================================================================== */
+.bdt-column-1-2 {
+  column-count: 2;
+}
+.bdt-column-1-3 {
+  column-count: 3;
+}
+.bdt-column-1-4 {
+  column-count: 4;
+}
+.bdt-column-1-5 {
+  column-count: 5;
+}
+.bdt-column-1-6 {
+  column-count: 6;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-column-1-2\@s {
+    column-count: 2;
+  }
+  .bdt-column-1-3\@s {
+    column-count: 3;
+  }
+  .bdt-column-1-4\@s {
+    column-count: 4;
+  }
+  .bdt-column-1-5\@s {
+    column-count: 5;
+  }
+  .bdt-column-1-6\@s {
+    column-count: 6;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-column-1-2\@m {
+    column-count: 2;
+  }
+  .bdt-column-1-3\@m {
+    column-count: 3;
+  }
+  .bdt-column-1-4\@m {
+    column-count: 4;
+  }
+  .bdt-column-1-5\@m {
+    column-count: 5;
+  }
+  .bdt-column-1-6\@m {
+    column-count: 6;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-column-1-2\@l {
+    column-count: 2;
+  }
+  .bdt-column-1-3\@l {
+    column-count: 3;
+  }
+  .bdt-column-1-4\@l {
+    column-count: 4;
+  }
+  .bdt-column-1-5\@l {
+    column-count: 5;
+  }
+  .bdt-column-1-6\@l {
+    column-count: 6;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-column-1-2\@xl {
+    column-count: 2;
+  }
+  .bdt-column-1-3\@xl {
+    column-count: 3;
+  }
+  .bdt-column-1-4\@xl {
+    column-count: 4;
+  }
+  .bdt-column-1-5\@xl {
+    column-count: 5;
+  }
+  .bdt-column-1-6\@xl {
+    column-count: 6;
+  }
+}
+/* Make element span across all columns
+ * Does not work in Firefox yet
+ ========================================================================== */
+.bdt-column-span {
+  column-span: all;
+}
+/* ========================================================================
+   Component: Cover
+ ========================================================================== */
+/*
+ * Works with iframes and embedded content
+ * 1. Use attribute to apply transform instantly. Needed if transform is transitioned.
+ * 2. Reset responsiveness for embedded content
+ * 3. Center object
+ * Note: Percent values on the `top` property only works if this element
+ *       is absolute positioned or if the container has a height
+ */
+/* 1 */
+[bdt-cover],
+[data-bdt-cover] {
+  /* 2 */
+  max-width: none;
+  /* 3 */
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  --bdt-position-translate-x: -50%;
+  --bdt-position-translate-y: -50%;
+  transform: translate(var(--bdt-position-translate-x), var(--bdt-position-translate-y));
+}
+iframe[bdt-cover],
+iframe[data-bdt-cover] {
+  pointer-events: none;
+}
+/* Container
+ ========================================================================== */
+/*
+ * 1. Parent container which clips resized object
+ * 2. Needed if the child is positioned absolute. See note above
+ */
+.bdt-cover-container {
+  /* 1 */
+  overflow: hidden;
+  /* 2 */
+  position: relative;
+}
+/* ========================================================================
+   Component: Background
+ ========================================================================== */
+/* Color
+ ========================================================================== */
+.bdt-background-default {
+  background-color: #fff;
+}
+.bdt-background-muted {
+  background-color: #f8f8f8;
+}
+.bdt-background-primary {
+  background-color: #1e87f0;
+}
+.bdt-background-secondary {
+  background-color: #222;
+}
+/* Size
+ ========================================================================== */
+.bdt-background-cover,
+.bdt-background-contain,
+.bdt-background-width-1-1,
+.bdt-background-height-1-1 {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.bdt-background-cover {
+  background-size: cover;
+}
+.bdt-background-contain {
+  background-size: contain;
+}
+.bdt-background-width-1-1 {
+  background-size: 100%;
+}
+.bdt-background-height-1-1 {
+  background-size: auto 100%;
+}
+/* Position
+ ========================================================================== */
+.bdt-background-top-left {
+  background-position: 100% 0;
+}
+.bdt-background-top-center {
+  background-position: 50% 0;
+}
+.bdt-background-top-right {
+  background-position: 0% 0;
+}
+.bdt-background-center-left {
+  background-position: 100% 50%;
+}
+.bdt-background-center-center {
+  background-position: 50% 50%;
+}
+.bdt-background-center-right {
+  background-position: 0% 50%;
+}
+.bdt-background-bottom-left {
+  background-position: 100% 100%;
+}
+.bdt-background-bottom-center {
+  background-position: 50% 100%;
+}
+.bdt-background-bottom-right {
+  background-position: 0% 100%;
+}
+/* Repeat
+ ========================================================================== */
+.bdt-background-norepeat {
+  background-repeat: no-repeat;
+}
+/* Attachment
+ ========================================================================== */
+/*
+ * 1. Fix bug introduced in Chrome 67: the background image is not visible if any element on the page uses `translate3d`
+ */
+.bdt-background-fixed {
+  background-attachment: fixed;
+  /* 1 */
+  backface-visibility: hidden;
+}
+/*
+ * Exclude touch devices because `fixed` doesn't work on iOS and Android
+ */
+@media (pointer: coarse) {
+  .bdt-background-fixed {
+    background-attachment: scroll;
+  }
+}
+/* Image
+ ========================================================================== */
+/* Phone portrait and smaller */
+@media (max-width: 639px) {
+  .bdt-background-image\@s {
+    background-image: none !important;
+  }
+}
+/* Phone landscape and smaller */
+@media (max-width: 959px) {
+  .bdt-background-image\@m {
+    background-image: none !important;
+  }
+}
+/* Tablet landscape and smaller */
+@media (max-width: 1199px) {
+  .bdt-background-image\@l {
+    background-image: none !important;
+  }
+}
+/* Desktop and smaller */
+@media (max-width: 1599px) {
+  .bdt-background-image\@xl {
+    background-image: none !important;
+  }
+}
+/* Blend modes
+ ========================================================================== */
+.bdt-background-blend-multiply {
+  background-blend-mode: multiply;
+}
+.bdt-background-blend-screen {
+  background-blend-mode: screen;
+}
+.bdt-background-blend-overlay {
+  background-blend-mode: overlay;
+}
+.bdt-background-blend-darken {
+  background-blend-mode: darken;
+}
+.bdt-background-blend-lighten {
+  background-blend-mode: lighten;
+}
+.bdt-background-blend-color-dodge {
+  background-blend-mode: color-dodge;
+}
+.bdt-background-blend-color-burn {
+  background-blend-mode: color-burn;
+}
+.bdt-background-blend-hard-light {
+  background-blend-mode: hard-light;
+}
+.bdt-background-blend-soft-light {
+  background-blend-mode: soft-light;
+}
+.bdt-background-blend-difference {
+  background-blend-mode: difference;
+}
+.bdt-background-blend-exclusion {
+  background-blend-mode: exclusion;
+}
+.bdt-background-blend-hue {
+  background-blend-mode: hue;
+}
+.bdt-background-blend-saturation {
+  background-blend-mode: saturation;
+}
+.bdt-background-blend-color {
+  background-blend-mode: color;
+}
+.bdt-background-blend-luminosity {
+  background-blend-mode: luminosity;
+}
+/* ========================================================================
+   Component: Align
+ ========================================================================== */
+/*
+ * Default
+ */
+[class*='bdt-align'] {
+  display: block;
+  margin-bottom: 30px;
+}
+* + [class*='bdt-align'] {
+  margin-top: 30px;
+}
+/*
+ * Center
+ */
+.bdt-align-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+/*
+ * Left/Right
+ */
+.bdt-align-left {
+  margin-top: 0;
+  margin-left: 30px;
+  float: right;
+}
+.bdt-align-right {
+  margin-top: 0;
+  margin-right: 30px;
+  float: left;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-align-left\@s {
+    margin-top: 0;
+    margin-left: 30px;
+    float: right;
+  }
+  .bdt-align-right\@s {
+    margin-top: 0;
+    margin-right: 30px;
+    float: left;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-align-left\@m {
+    margin-top: 0;
+    margin-left: 30px;
+    float: right;
+  }
+  .bdt-align-right\@m {
+    margin-top: 0;
+    margin-right: 30px;
+    float: left;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-align-left\@l {
+    margin-top: 0;
+    float: right;
+  }
+  .bdt-align-right\@l {
+    margin-top: 0;
+    float: left;
+  }
+  .bdt-align-left,
+  .bdt-align-left\@s,
+  .bdt-align-left\@m,
+  .bdt-align-left\@l {
+    margin-left: 40px;
+  }
+  .bdt-align-right,
+  .bdt-align-right\@s,
+  .bdt-align-right\@m,
+  .bdt-align-right\@l {
+    margin-right: 40px;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-align-left\@xl {
+    margin-top: 0;
+    margin-left: 40px;
+    float: right;
+  }
+  .bdt-align-right\@xl {
+    margin-top: 0;
+    margin-right: 40px;
+    float: left;
+  }
+}
+/* ========================================================================
+   Component: SVG
+ ========================================================================== */
+/*
+ * 1. Fill all SVG elements with the current text color if no `fill` attribute is set
+ * 2. Set the fill and stroke color of all SVG elements to the current text color
+ */
+/* 1 */
+.bdt-svg,
+.bdt-svg:not(.bdt-preserve) [fill*='#']:not(.bdt-preserve) {
+  fill: currentcolor;
+}
+.bdt-svg:not(.bdt-preserve) [stroke*='#']:not(.bdt-preserve) {
+  stroke: currentcolor;
+}
+/*
+ * Fix Firefox blurry SVG rendering: https://bugzilla.mozilla.org/show_bug.cgi?id=1046835
+ */
+.bdt-svg {
+  transform: translate(0, 0);
+}
+/* ========================================================================
+   Component: Utility
+ ========================================================================== */
+/* Panel
+ ========================================================================== */
+.bdt-panel {
+  display: flow-root;
+  position: relative;
+  box-sizing: border-box;
+}
+/*
+ * Remove margin from the last-child
+ */
+.bdt-panel > :last-child {
+  margin-bottom: 0;
+}
+/*
+ * Scrollable
+ */
+.bdt-panel-scrollable {
+  height: 170px;
+  padding: 10px;
+  border: 1px solid rgba(214, 214, 214, 0.49);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  resize: both;
+}
+/* Clearfix
+ ========================================================================== */
+/*
+ * 1. `table-cell` is used with `::before` because `table` creates a 1px gap when it becomes a flex item, only in Webkit
+ * 2. `table` is used again with `::after` because `clear` only works with block elements.
+ * Note: `display: block` with `overflow: hidden` is currently not working in the latest Safari
+ */
+/* 1 */
+.bdt-clearfix::before {
+  content: "";
+  display: table-cell;
+}
+/* 2 */
+.bdt-clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Float
+ ========================================================================== */
+/*
+ * 1. Prevent content overflow
+ */
+.bdt-float-left {
+  float: right;
+}
+.bdt-float-right {
+  float: left;
+}
+/* 1 */
+[class*='bdt-float-'] {
+  max-width: 100%;
+}
+/* Overfow
+ ========================================================================== */
+.bdt-overflow-hidden {
+  overflow: hidden;
+}
+/*
+ * Enable scrollbars if content is clipped
+ * Note: Firefox ignores `padding-bottom` for the scrollable overflow https://bugzilla.mozilla.org/show_bug.cgi?id=748518
+ */
+.bdt-overflow-auto {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.bdt-overflow-auto > :last-child {
+  margin-bottom: 0;
+}
+/* Resize
+ ========================================================================== */
+.bdt-resize {
+  resize: both;
+}
+.bdt-resize-vertical {
+  resize: vertical;
+}
+/* Display
+ ========================================================================== */
+.bdt-display-block {
+  display: block !important;
+}
+.bdt-display-inline {
+  display: inline !important;
+}
+.bdt-display-inline-block {
+  display: inline-block !important;
+}
+/* Inline
+ ========================================================================== */
+/*
+ * 1. Container fits its content
+ * 2. Create position context
+ * 3. Prevent content overflow
+ * 4. Behave like most inline-block elements
+ * 5. Force new layer without creating a new stacking context
+ *    to fix 1px glitch when combined with overlays and transitions in Webkit
+ * 6. Clip child elements
+ */
+[class*='bdt-inline'] {
+  /* 1 */
+  display: inline-block;
+  /* 2 */
+  position: relative;
+  /* 3 */
+  max-width: 100%;
+  /* 4 */
+  vertical-align: middle;
+  /* 5 */
+  -webkit-backface-visibility: hidden;
+}
+.bdt-inline-clip {
+  /* 6 */
+  overflow: hidden;
+}
+/* Responsive objects
+ ========================================================================== */
+/*
+ * Preserve original dimensions
+ * Because `img, `video`, `canvas` and  `audio` are already responsive by default, see Base component
+ */
+.bdt-preserve-width,
+.bdt-preserve-width canvas,
+.bdt-preserve-width img,
+.bdt-preserve-width svg,
+.bdt-preserve-width video {
+  max-width: none;
+}
+/*
+ * Responsiveness
+ * Corrects `max-width` and `max-height` behavior if padding and border are used
+ */
+.bdt-responsive-width,
+.bdt-responsive-height {
+  box-sizing: border-box;
+}
+/*
+ * 1. Set a maximum width. `important` needed to override `bdt-preserve-width img`
+ * 2. Auto scale the height. Only needed if `height` attribute is present
+ */
+.bdt-responsive-width {
+  /* 1 */
+  max-width: 100% !important;
+  /* 2 */
+  height: auto;
+}
+/*
+ * 1. Set a maximum height. Only works if the parent element has a fixed height
+ * 2. Auto scale the width. Only needed if `width` attribute is present
+ * 3. Reset max-width, which `img, `video`, `canvas` and  `audio` already have by default
+ */
+.bdt-responsive-height {
+  /* 1 */
+  max-height: 100%;
+  /* 2 */
+  width: auto;
+  /* 3 */
+  max-width: none;
+}
+/*
+ * Fix initial iframe width. Without the viewport is expanded on iOS devices
+ */
+[bdt-responsive],
+[data-bdt-responsive] {
+  max-width: 100%;
+}
+/* Object
+ ========================================================================== */
+.bdt-object-cover {
+  object-fit: cover;
+}
+.bdt-object-contain {
+  object-fit: contain;
+}
+.bdt-object-fill {
+  object-fit: fill;
+}
+.bdt-object-none {
+  object-fit: none;
+}
+.bdt-object-scale-down {
+  object-fit: scale-down;
+}
+/* 
+ * Position
+ */
+.bdt-object-top-left {
+  object-position: 0 0;
+}
+.bdt-object-top-center {
+  object-position: 50% 0;
+}
+.bdt-object-top-right {
+  object-position: 100% 0;
+}
+.bdt-object-center-left {
+  object-position: 0 50%;
+}
+.bdt-object-center-center {
+  object-position: 50% 50%;
+}
+.bdt-object-center-right {
+  object-position: 100% 50%;
+}
+.bdt-object-bottom-left {
+  object-position: 0 100%;
+}
+.bdt-object-bottom-center {
+  object-position: 50% 100%;
+}
+.bdt-object-bottom-right {
+  object-position: 100% 100%;
+}
+/* Border
+ ========================================================================== */
+.bdt-border-circle {
+  border-radius: 50%;
+}
+.bdt-border-pill {
+  border-radius: 500px;
+}
+.bdt-border-rounded {
+  border-radius: 5px;
+}
+/*
+ * Fix `overflow: hidden` to be ignored with border-radius and CSS transforms in Webkit
+ */
+.bdt-inline-clip[class*='bdt-border-'] {
+  -webkit-transform: translateZ(0);
+}
+/* Box-shadow
+ ========================================================================== */
+.bdt-box-shadow-small {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.bdt-box-shadow-medium {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+.bdt-box-shadow-large {
+  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
+}
+.bdt-box-shadow-xlarge {
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16);
+}
+/*
+ * Hover
+ */
+[class*='bdt-box-shadow-hover'] {
+  transition: box-shadow 0.1s ease-in-out;
+}
+.bdt-box-shadow-hover-small:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.bdt-box-shadow-hover-medium:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+.bdt-box-shadow-hover-large:hover {
+  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
+}
+.bdt-box-shadow-hover-xlarge:hover {
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16);
+}
+/* Box-shadow bottom
+ ========================================================================== */
+/*
+ * 1. Set position.
+ * 2. Set style
+ * 3. Fix shadow being clipped in Safari if container is animated
+ */
+@supports (filter: blur(0)) {
+  .bdt-box-shadow-bottom {
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  .bdt-box-shadow-bottom::after {
+    content: "";
+    /* 1 */
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    /* 2 */
+    height: 30px;
+    border-radius: 100%;
+    background: #444;
+    filter: blur(20px);
+    /* 3 */
+    will-change: filter;
+  }
+}
+/* Drop cap
+ ========================================================================== */
+/*
+ * 1. Firefox doesn't apply `::first-letter` if the first letter is inside child elements
+ *    https://bugzilla.mozilla.org/show_bug.cgi?id=214004
+ * 2. In Firefox, a floating `::first-letter` doesn't have a line box and there for no `line-height`
+ *    https://bugzilla.mozilla.org/show_bug.cgi?id=317933
+ */
+.bdt-dropcap::first-letter,
+.bdt-dropcap > p:first-of-type::first-letter {
+  display: block;
+  margin-left: 10px;
+  float: right;
+  font-size: 4.5em;
+  line-height: 1;
+}
+/* 2 */
+@-moz-document url-prefix() {
+  .bdt-dropcap::first-letter,
+  .bdt-dropcap > p:first-of-type::first-letter {
+    margin-top: 1.1%;
+  }
+}
+/* Logo
+ ========================================================================== */
+/*
+ * 1. Required for `a`
+ */
+.bdt-logo {
+  font-size: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #333;
+  /* 1 */
+  text-decoration: none;
+}
+/* Hover */
+.bdt-logo:hover {
+  color: #333;
+  /* 1 */
+  text-decoration: none;
+}
+.bdt-logo > :where(img, svg, video) {
+  display: block;
+}
+.bdt-logo-inverse {
+  display: none;
+}
+/* Disabled State
+ ========================================================================== */
+.bdt-disabled {
+  pointer-events: none;
+}
+/* Drag State
+ ========================================================================== */
+/*
+ * 1. Needed if moving over elements with have their own cursor on hover, e.g. links or buttons
+ * 2. Fix dragging over iframes
+ */
+.bdt-drag,
+.bdt-drag * {
+  cursor: move;
+}
+/* 2 */
+.bdt-drag iframe {
+  pointer-events: none;
+}
+/* Dragover State
+ ========================================================================== */
+/*
+ * Create a box-shadow when dragging a file over the upload area
+ */
+.bdt-dragover {
+  box-shadow: 0 0 20px rgba(100, 100, 100, 0.3);
+}
+/* Blend modes
+ ========================================================================== */
+.bdt-blend-multiply {
+  mix-blend-mode: multiply;
+}
+.bdt-blend-screen {
+  mix-blend-mode: screen;
+}
+.bdt-blend-overlay {
+  mix-blend-mode: overlay;
+}
+.bdt-blend-darken {
+  mix-blend-mode: darken;
+}
+.bdt-blend-lighten {
+  mix-blend-mode: lighten;
+}
+.bdt-blend-color-dodge {
+  mix-blend-mode: color-dodge;
+}
+.bdt-blend-color-burn {
+  mix-blend-mode: color-burn;
+}
+.bdt-blend-hard-light {
+  mix-blend-mode: hard-light;
+}
+.bdt-blend-soft-light {
+  mix-blend-mode: soft-light;
+}
+.bdt-blend-difference {
+  mix-blend-mode: difference;
+}
+.bdt-blend-exclusion {
+  mix-blend-mode: exclusion;
+}
+.bdt-blend-hue {
+  mix-blend-mode: hue;
+}
+.bdt-blend-saturation {
+  mix-blend-mode: saturation;
+}
+.bdt-blend-color {
+  mix-blend-mode: color;
+}
+.bdt-blend-luminosity {
+  mix-blend-mode: luminosity;
+}
+/* Transform
+========================================================================== */
+.bdt-transform-center {
+  transform: translate(50%, -50%);
+}
+/* Transform Origin
+========================================================================== */
+.bdt-transform-origin-top-left {
+  transform-origin: 100% 0;
+}
+.bdt-transform-origin-top-center {
+  transform-origin: 50% 0;
+}
+.bdt-transform-origin-top-right {
+  transform-origin: 0% 0;
+}
+.bdt-transform-origin-center-left {
+  transform-origin: 100% 50%;
+}
+.bdt-transform-origin-center-right {
+  transform-origin: 0% 50%;
+}
+.bdt-transform-origin-bottom-left {
+  transform-origin: 100% 100%;
+}
+.bdt-transform-origin-bottom-center {
+  transform-origin: 50% 100%;
+}
+.bdt-transform-origin-bottom-right {
+  transform-origin: 0% 100%;
+}
+/* ========================================================================
+   Component: Flex
+ ========================================================================== */
+.bdt-flex {
+  display: flex;
+}
+.bdt-flex-inline {
+  display: inline-flex;
+}
+/* Alignment
+ ========================================================================== */
+/*
+ * Align items along the main axis of the current line of the flex container
+ * Row: Horizontal
+ */
+.bdt-flex-left {
+  justify-content: flex-start;
+}
+.bdt-flex-center {
+  justify-content: center;
+}
+.bdt-flex-right {
+  justify-content: flex-end;
+}
+.bdt-flex-between {
+  justify-content: space-between;
+}
+.bdt-flex-around {
+  justify-content: space-around;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-flex-left\@s {
+    justify-content: flex-start;
+  }
+  .bdt-flex-center\@s {
+    justify-content: center;
+  }
+  .bdt-flex-right\@s {
+    justify-content: flex-end;
+  }
+  .bdt-flex-between\@s {
+    justify-content: space-between;
+  }
+  .bdt-flex-around\@s {
+    justify-content: space-around;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-flex-left\@m {
+    justify-content: flex-start;
+  }
+  .bdt-flex-center\@m {
+    justify-content: center;
+  }
+  .bdt-flex-right\@m {
+    justify-content: flex-end;
+  }
+  .bdt-flex-between\@m {
+    justify-content: space-between;
+  }
+  .bdt-flex-around\@m {
+    justify-content: space-around;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-flex-left\@l {
+    justify-content: flex-start;
+  }
+  .bdt-flex-center\@l {
+    justify-content: center;
+  }
+  .bdt-flex-right\@l {
+    justify-content: flex-end;
+  }
+  .bdt-flex-between\@l {
+    justify-content: space-between;
+  }
+  .bdt-flex-around\@l {
+    justify-content: space-around;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-flex-left\@xl {
+    justify-content: flex-start;
+  }
+  .bdt-flex-center\@xl {
+    justify-content: center;
+  }
+  .bdt-flex-right\@xl {
+    justify-content: flex-end;
+  }
+  .bdt-flex-between\@xl {
+    justify-content: space-between;
+  }
+  .bdt-flex-around\@xl {
+    justify-content: space-around;
+  }
+}
+/*
+ * Align items in the cross axis of the current line of the flex container
+ * Row: Vertical
+ */
+.bdt-flex-stretch {
+  align-items: stretch;
+}
+.bdt-flex-top {
+  align-items: flex-start;
+}
+.bdt-flex-middle {
+  align-items: center;
+}
+.bdt-flex-bottom {
+  align-items: flex-end;
+}
+/* Direction
+ ========================================================================== */
+.bdt-flex-row {
+  flex-direction: row;
+}
+.bdt-flex-row-reverse {
+  flex-direction: row-reverse;
+}
+.bdt-flex-column {
+  flex-direction: column;
+}
+.bdt-flex-column-reverse {
+  flex-direction: column-reverse;
+}
+/* Wrap
+ ========================================================================== */
+.bdt-flex-nowrap {
+  flex-wrap: nowrap;
+}
+.bdt-flex-wrap {
+  flex-wrap: wrap;
+}
+.bdt-flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+/*
+ * Aligns items within the flex container when there is extra space in the cross-axis
+ * Only works if there is more than one line of flex items
+ */
+.bdt-flex-wrap-stretch {
+  align-content: stretch;
+}
+.bdt-flex-wrap-top {
+  align-content: flex-start;
+}
+.bdt-flex-wrap-middle {
+  align-content: center;
+}
+.bdt-flex-wrap-bottom {
+  align-content: flex-end;
+}
+.bdt-flex-wrap-between {
+  align-content: space-between;
+}
+.bdt-flex-wrap-around {
+  align-content: space-around;
+}
+/* Item ordering
+ ========================================================================== */
+/*
+ * Default is 0
+ */
+.bdt-flex-first {
+  order: -1;
+}
+.bdt-flex-last {
+  order: 99;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-flex-first\@s {
+    order: -1;
+  }
+  .bdt-flex-last\@s {
+    order: 99;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-flex-first\@m {
+    order: -1;
+  }
+  .bdt-flex-last\@m {
+    order: 99;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-flex-first\@l {
+    order: -1;
+  }
+  .bdt-flex-last\@l {
+    order: 99;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-flex-first\@xl {
+    order: -1;
+  }
+  .bdt-flex-last\@xl {
+    order: 99;
+  }
+}
+/* Item dimensions
+ ========================================================================== */
+/*
+ * Initial: 0 1 auto
+ * Content dimensions, but shrinks
+ */
+/*
+ * No Flex: 0 0 auto
+ * Content dimensions
+ */
+.bdt-flex-none {
+  flex: none;
+}
+/*
+ * Relative Flex: 1 1 auto
+ * Space is allocated considering content
+ */
+.bdt-flex-auto {
+  flex: auto;
+}
+/*
+ * Absolute Flex: 1 1 0%
+ * Space is allocated solely based on flex
+ */
+.bdt-flex-1 {
+  flex: 1;
+}
+/* ========================================================================
+   Component: Margin
+ ========================================================================== */
+/*
+ * Default
+ */
+.bdt-margin {
+  margin-bottom: 20px;
+}
+* + .bdt-margin {
+  margin-top: 20px !important;
+}
+.bdt-margin-top {
+  margin-top: 20px !important;
+}
+.bdt-margin-bottom {
+  margin-bottom: 20px !important;
+}
+.bdt-margin-left {
+  margin-right: 20px !important;
+}
+.bdt-margin-right {
+  margin-left: 20px !important;
+}
+/* Small
+ ========================================================================== */
+.bdt-margin-small {
+  margin-bottom: 10px;
+}
+* + .bdt-margin-small {
+  margin-top: 10px !important;
+}
+.bdt-margin-small-top {
+  margin-top: 10px !important;
+}
+.bdt-margin-small-bottom {
+  margin-bottom: 10px !important;
+}
+.bdt-margin-small-left {
+  margin-right: 10px !important;
+}
+.bdt-margin-small-right {
+  margin-left: 10px !important;
+}
+/* Medium
+ ========================================================================== */
+.bdt-margin-medium {
+  margin-bottom: 40px;
+}
+* + .bdt-margin-medium {
+  margin-top: 40px !important;
+}
+.bdt-margin-medium-top {
+  margin-top: 40px !important;
+}
+.bdt-margin-medium-bottom {
+  margin-bottom: 40px !important;
+}
+.bdt-margin-medium-left {
+  margin-right: 40px !important;
+}
+.bdt-margin-medium-right {
+  margin-left: 40px !important;
+}
+/* Large
+ ========================================================================== */
+.bdt-margin-large {
+  margin-bottom: 40px;
+}
+* + .bdt-margin-large {
+  margin-top: 40px !important;
+}
+.bdt-margin-large-top {
+  margin-top: 40px !important;
+}
+.bdt-margin-large-bottom {
+  margin-bottom: 40px !important;
+}
+.bdt-margin-large-left {
+  margin-right: 40px !important;
+}
+.bdt-margin-large-right {
+  margin-left: 40px !important;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-margin-large {
+    margin-bottom: 70px;
+  }
+  * + .bdt-margin-large {
+    margin-top: 70px !important;
+  }
+  .bdt-margin-large-top {
+    margin-top: 70px !important;
+  }
+  .bdt-margin-large-bottom {
+    margin-bottom: 70px !important;
+  }
+  .bdt-margin-large-left {
+    margin-right: 70px !important;
+  }
+  .bdt-margin-large-right {
+    margin-left: 70px !important;
+  }
+}
+/* XLarge
+ ========================================================================== */
+.bdt-margin-xlarge {
+  margin-bottom: 70px;
+}
+* + .bdt-margin-xlarge {
+  margin-top: 70px !important;
+}
+.bdt-margin-xlarge-top {
+  margin-top: 70px !important;
+}
+.bdt-margin-xlarge-bottom {
+  margin-bottom: 70px !important;
+}
+.bdt-margin-xlarge-left {
+  margin-right: 70px !important;
+}
+.bdt-margin-xlarge-right {
+  margin-left: 70px !important;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-margin-xlarge {
+    margin-bottom: 140px;
+  }
+  * + .bdt-margin-xlarge {
+    margin-top: 140px !important;
+  }
+  .bdt-margin-xlarge-top {
+    margin-top: 140px !important;
+  }
+  .bdt-margin-xlarge-bottom {
+    margin-bottom: 140px !important;
+  }
+  .bdt-margin-xlarge-left {
+    margin-right: 140px !important;
+  }
+  .bdt-margin-xlarge-right {
+    margin-left: 140px !important;
+  }
+}
+/* Auto
+ ========================================================================== */
+.bdt-margin-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.bdt-margin-auto-top {
+  margin-top: auto !important;
+}
+.bdt-margin-auto-bottom {
+  margin-bottom: auto !important;
+}
+.bdt-margin-auto-left {
+  margin-right: auto !important;
+}
+.bdt-margin-auto-right {
+  margin-left: auto !important;
+}
+.bdt-margin-auto-vertical {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-margin-auto\@s {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .bdt-margin-auto-left\@s {
+    margin-right: auto !important;
+  }
+  .bdt-margin-auto-right\@s {
+    margin-left: auto !important;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-margin-auto\@m {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .bdt-margin-auto-left\@m {
+    margin-right: auto !important;
+  }
+  .bdt-margin-auto-right\@m {
+    margin-left: auto !important;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-margin-auto\@l {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .bdt-margin-auto-left\@l {
+    margin-right: auto !important;
+  }
+  .bdt-margin-auto-right\@l {
+    margin-left: auto !important;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-margin-auto\@xl {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .bdt-margin-auto-left\@xl {
+    margin-right: auto !important;
+  }
+  .bdt-margin-auto-right\@xl {
+    margin-left: auto !important;
+  }
+}
+/* Remove
+ ========================================================================== */
+.bdt-margin-remove {
+  margin: 0 !important;
+}
+.bdt-margin-remove-top {
+  margin-top: 0 !important;
+}
+.bdt-margin-remove-bottom {
+  margin-bottom: 0 !important;
+}
+.bdt-margin-remove-left {
+  margin-right: 0 !important;
+}
+.bdt-margin-remove-right {
+  margin-left: 0 !important;
+}
+.bdt-margin-remove-vertical {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.bdt-margin-remove-adjacent + *,
+.bdt-margin-remove-first-child > :first-child {
+  margin-top: 0 !important;
+}
+.bdt-margin-remove-last-child > :last-child {
+  margin-bottom: 0 !important;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-margin-remove-left\@s {
+    margin-right: 0 !important;
+  }
+  .bdt-margin-remove-right\@s {
+    margin-left: 0 !important;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-margin-remove-left\@m {
+    margin-right: 0 !important;
+  }
+  .bdt-margin-remove-right\@m {
+    margin-left: 0 !important;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-margin-remove-left\@l {
+    margin-right: 0 !important;
+  }
+  .bdt-margin-remove-right\@l {
+    margin-left: 0 !important;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-margin-remove-left\@xl {
+    margin-right: 0 !important;
+  }
+  .bdt-margin-remove-right\@xl {
+    margin-left: 0 !important;
+  }
+}
+/* ========================================================================
+   Component: Padding
+ ========================================================================== */
+.bdt-padding {
+  padding: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-padding {
+    padding: 40px;
+  }
+}
+/* Small
+ ========================================================================== */
+.bdt-padding-small {
+  padding: 15px;
+}
+/* Large
+ ========================================================================== */
+.bdt-padding-large {
+  padding: 40px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-padding-large {
+    padding: 70px;
+  }
+}
+/* Remove
+ ========================================================================== */
+.bdt-padding-remove {
+  padding: 0 !important;
+}
+.bdt-padding-remove-top {
+  padding-top: 0 !important;
+}
+.bdt-padding-remove-bottom {
+  padding-bottom: 0 !important;
+}
+.bdt-padding-remove-left {
+  padding-right: 0 !important;
+}
+.bdt-padding-remove-right {
+  padding-left: 0 !important;
+}
+.bdt-padding-remove-vertical {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.bdt-padding-remove-horizontal {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+/* ========================================================================
+   Component: Position
+ ========================================================================== */
+:root {
+  --bdt-position-margin-offset: 0px;
+}
+/* Directions
+ ========================================================================== */
+/*
+ * 1. Prevent content overflow.
+ */
+[class*='bdt-position-top'],
+[class*='bdt-position-bottom'],
+[class*='bdt-position-left'],
+[class*='bdt-position-right'],
+[class*='bdt-position-center'] {
+  position: absolute !important;
+  /* 1 */
+  max-width: calc(100% - (var(--bdt-position-margin-offset) * 2));
+  box-sizing: border-box;
+}
+/*
+ * Edges
+ * Don't use `width: 100%` because it's wrong if the parent has padding.
+ */
+.bdt-position-top {
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.bdt-position-bottom {
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.bdt-position-left {
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.bdt-position-right {
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+/*
+ * Corners
+ */
+.bdt-position-top-left {
+  top: 0;
+  right: 0;
+}
+.bdt-position-top-right {
+  top: 0;
+  left: 0;
+}
+.bdt-position-bottom-left {
+  bottom: 0;
+  right: 0;
+}
+.bdt-position-bottom-right {
+  bottom: 0;
+  left: 0;
+}
+/*
+ * Center
+ * 1. Fix text wrapping if content is larger than 50% of the container.
+ *    Using `max-content` requires `max-width` of 100% which is set generally.
+ */
+.bdt-position-center {
+  top: calc(50% - var(--bdt-position-margin-offset));
+  right: calc(50% - var(--bdt-position-margin-offset));
+  --bdt-position-translate-x: -50%;
+  --bdt-position-translate-y: -50%;
+  transform: translate(var(--bdt-position-translate-x), var(--bdt-position-translate-y));
+  /* 1 */
+  width: max-content;
+}
+/* Vertical */
+[class*='bdt-position-center-left'],
+[class*='bdt-position-center-right'] {
+  top: calc(50% - var(--bdt-position-margin-offset));
+  --bdt-position-translate-y: -50%;
+  transform: translate(0, var(--bdt-position-translate-y));
+}
+.bdt-position-center-left {
+  right: 0;
+}
+.bdt-position-center-right {
+  left: 0;
+}
+.bdt-position-center-left-out {
+  left: 100%;
+  width: max-content;
+}
+.bdt-position-center-right-out {
+  right: 100%;
+  width: max-content;
+}
+/* Horizontal */
+.bdt-position-top-center,
+.bdt-position-bottom-center {
+  right: calc(50% - var(--bdt-position-margin-offset));
+  --bdt-position-translate-x: -50%;
+  transform: translate(var(--bdt-position-translate-x), 0);
+  /* 1 */
+  width: max-content;
+}
+.bdt-position-top-center {
+  top: 0;
+}
+.bdt-position-bottom-center {
+  bottom: 0;
+}
+/*
+ * Cover
+ */
+.bdt-position-cover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+/* Margin
+ ========================================================================== */
+.bdt-position-small {
+  margin: 15px;
+  --bdt-position-margin-offset: 15px;
+}
+.bdt-position-medium {
+  margin: 30px;
+  --bdt-position-margin-offset: 30px;
+}
+.bdt-position-large {
+  margin: 30px;
+  --bdt-position-margin-offset: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-position-large {
+    margin: 50px;
+    --bdt-position-margin-offset: 50px;
+  }
+}
+/* Schemes
+ ========================================================================== */
+.bdt-position-relative {
+  position: relative  !important;
+}
+.bdt-position-absolute {
+  position: absolute  !important;
+}
+.bdt-position-fixed {
+  position: fixed  !important;
+}
+.bdt-position-sticky {
+  position: sticky  !important;
+}
+/* Layer
+ ========================================================================== */
+.bdt-position-z-index {
+  z-index: 1;
+}
+.bdt-position-z-index-negative {
+  z-index: -1;
+}
+/* ========================================================================
+   Component: Transition
+ ========================================================================== */
+/* Transitions
+ ========================================================================== */
+/*
+ * The toggle is triggered on touch devices by two methods:
+ * 1. Using `:focus` and tabindex
+ * 2. Using `:hover` and a `touchstart` event listener registered on the document
+ *    (Doesn't work on Surface touch devices)
+ */
+:where(.bdt-transition-fade),
+:where([class*='bdt-transition-scale']),
+:where([class*='bdt-transition-slide']) {
+  --bdt-position-translate-x: 0;
+  --bdt-position-translate-y: 0;
+}
+.bdt-transition-fade,
+[class*='bdt-transition-scale'],
+[class*='bdt-transition-slide'] {
+  --bdt-translate-x: 0;
+  --bdt-translate-y: 0;
+  --bdt-scale-x: 1;
+  --bdt-scale-y: 1;
+  transform: translate(var(--bdt-position-translate-x), var(--bdt-position-translate-y)) translate(var(--bdt-translate-x), var(--bdt-translate-y)) scale(var(--bdt-scale-x), var(--bdt-scale-y));
+  transition: 0.3s ease-out;
+  transition-property: opacity, transform, filter;
+  opacity: 0;
+}
+/*
+ * Fade
+ */
+.bdt-transition-toggle:hover .bdt-transition-fade,
+.bdt-transition-toggle:focus .bdt-transition-fade,
+.bdt-transition-toggle .bdt-transition-fade:focus-within,
+.bdt-transition-active.bdt-active .bdt-transition-fade {
+  opacity: 1;
+}
+/*
+ * Scale
+ * 1. Make image rendering the same during the transition as before and after. Prefixed because of Safari.
+ */
+/* 1 */
+[class*='bdt-transition-scale'] {
+  -webkit-backface-visibility: hidden;
+}
+.bdt-transition-scale-up {
+  --bdt-scale-x: 1;
+  --bdt-scale-y: 1;
+}
+.bdt-transition-scale-down {
+  --bdt-scale-x: 1.03;
+  --bdt-scale-y: 1.03;
+}
+/* Show */
+.bdt-transition-toggle:hover .bdt-transition-scale-up,
+.bdt-transition-toggle:focus .bdt-transition-scale-up,
+.bdt-transition-toggle .bdt-transition-scale-up:focus-within,
+.bdt-transition-active.bdt-active .bdt-transition-scale-up {
+  --bdt-scale-x: 1.03;
+  --bdt-scale-y: 1.03;
+  opacity: 1;
+}
+.bdt-transition-toggle:hover .bdt-transition-scale-down,
+.bdt-transition-toggle:focus .bdt-transition-scale-down,
+.bdt-transition-toggle .bdt-transition-scale-down:focus-within,
+.bdt-transition-active.bdt-active .bdt-transition-scale-down {
+  --bdt-scale-x: 1;
+  --bdt-scale-y: 1;
+  opacity: 1;
+}
+/*
+ * Slide
+ */
+.bdt-transition-slide-top {
+  --bdt-translate-y: -100%;
+}
+.bdt-transition-slide-bottom {
+  --bdt-translate-y: 100%;
+}
+.bdt-transition-slide-left {
+  --bdt-translate-x: -100%;
+}
+.bdt-transition-slide-right {
+  --bdt-translate-x: 100%;
+}
+.bdt-transition-slide-top-small {
+  --bdt-translate-y: calc(-1 * 10px);
+}
+.bdt-transition-slide-bottom-small {
+  --bdt-translate-y: 10px;
+}
+.bdt-transition-slide-left-small {
+  --bdt-translate-x: calc(-1 * 10px);
+}
+.bdt-transition-slide-right-small {
+  --bdt-translate-x: 10px;
+}
+.bdt-transition-slide-top-medium {
+  --bdt-translate-y: calc(-1 * 50px);
+}
+.bdt-transition-slide-bottom-medium {
+  --bdt-translate-y: 50px;
+}
+.bdt-transition-slide-left-medium {
+  --bdt-translate-x: calc(-1 * 50px);
+}
+.bdt-transition-slide-right-medium {
+  --bdt-translate-x: 50px;
+}
+/* Show */
+.bdt-transition-toggle:hover [class*='bdt-transition-slide'],
+.bdt-transition-toggle:focus [class*='bdt-transition-slide'],
+.bdt-transition-toggle [class*='bdt-transition-slide']:focus-within,
+.bdt-transition-active.bdt-active [class*='bdt-transition-slide'] {
+  --bdt-translate-x: 0;
+  --bdt-translate-y: 0;
+  opacity: 1;
+}
+/* Opacity modifier
+ ========================================================================== */
+.bdt-transition-opaque {
+  opacity: 1;
+}
+/* Duration modifiers
+ ========================================================================== */
+.bdt-transition-slow {
+  transition-duration: 0.7s;
+}
+/* ========================================================================
+   Component: Visibility
+ ========================================================================== */
+/*
+ * Hidden
+ * `hidden` attribute also set here to make it stronger
+ */
+[hidden],
+.bdt-hidden {
+  display: none !important;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .bdt-hidden\@s {
+    display: none !important;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .bdt-hidden\@m {
+    display: none !important;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .bdt-hidden\@l {
+    display: none !important;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+  .bdt-hidden\@xl {
+    display: none !important;
+  }
+}
+/*
+ * Visible
+ */
+/* Phone portrait and smaller */
+@media (max-width: 639px) {
+  .bdt-visible\@s {
+    display: none !important;
+  }
+}
+/* Phone landscape and smaller */
+@media (max-width: 959px) {
+  .bdt-visible\@m {
+    display: none !important;
+  }
+}
+/* Tablet landscape and smaller */
+@media (max-width: 1199px) {
+  .bdt-visible\@l {
+    display: none !important;
+  }
+}
+/* Desktop and smaller */
+@media (max-width: 1599px) {
+  .bdt-visible\@xl {
+    display: none !important;
+  }
+}
+/* Visibility
+ ========================================================================== */
+.bdt-invisible {
+  visibility: hidden !important;
+}
+/* Based on the State of the Parent Element
+ ========================================================================== */
+/*
+ * Can't use `display: none` nor `visibility: hidden` because both are not focusable.
+ * The target stays visible if any element within receives focus through keyboard.
+ */
+/*
+ * Discard space when hidden.
+ */
+.bdt-visible-toggle:not(:hover):not(:focus) .bdt-hidden-hover:not(:focus-within) {
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+/*
+ * Keep space when hidden.
+ */
+.bdt-visible-toggle:not(:hover):not(:focus) .bdt-invisible-hover:not(:focus-within) {
+  opacity: 0 !important;
+}
+/* Based on Hover Capability of the Pointing Device
+ ========================================================================== */
+/*
+ * Hover
+ */
+/* Hide if primary pointing device doesn't support hover, e.g. touch screens. */
+@media (hover: none) {
+  .bdt-hidden-touch {
+    display: none !important;
+  }
+}
+/* Hide if primary pointing device supports hover, e.g. mice. */
+@media (hover) {
+  .bdt-hidden-notouch {
+    display: none !important;
+  }
+}
+/* ========================================================================
+   Component: Inverse
+ ========================================================================== */
+/*
+ * Implemented class depends on the general theme color
+ * `bdt-light` is for light colors on dark backgrounds
+ * `bdt-dark` is or dark colors on light backgrounds
+ */
+/* ========================================================================
+   Component: Print
+ ========================================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+.bdt-modal-full {
+  overflow-x: hidden;
+}
+.hook-modal-dialog {
+  border-radius: 3px;
+}
+.hook-modal-title {
+  font-weight: 400;
+}
+.bdt-cover {
+  max-width: none !important;
+}
+.bdt-drop .bdt-card p:empty {
+  display: none;
+}
+.bdt-drop .bdt-card p:not(:first-child) {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.bdt-tooltip {
+  padding: 7px 12px;
+  background: #464646;
+  border-radius: 3px;
+  font-size: 13px;
+}
+.elementor-align-justify .bdt-button {
+  width: 100%;
+}
+.bdt-notification .bdt-spinner {
+  vertical-align: middle;
+}
+.bdt-notification .bdt-spinner svg {
+  width: 20px;
+  height: auto;
+}
+.bdt-notification .bdt-icon {
+  margin-left: 10px;
+  vertical-align: middle;
+  line-height: normal;
+}
+.bdt-notification .bdt-close {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.bdt-notification .bdt-notification-message {
+  padding: 20px 20px 20px 40px;
+  background: #ffffff;
+  font-size: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+.bdt-slideshow .bdt-slideshow-items {
+  padding: 0;
+  margin: 0;
+}
+.bdt-slideshow .bdt-slideshow-items[bdt-height-viewport] .bdt-slideshow-item img {
+  width: auto !important;
+  height: auto;
+}
+.bdt-modal-full {
+  background-color: #fff;
+}
+.hook-button {
+  border-radius: 3px;
+}
+.hook-form {
+  border-radius: 3px;
+}
+.bdt-sticky-wrapper {
+  width: 100%;
+}
+.bdt-heading-title:before,
+.bdt-heading-tag:before,
+.bdt-slide-title:before {
+  content: none;
+}
+.bdt-tippy-tooltip {
+  outline: none;
+}
+[class*="elementor-widget-bdt-"] a:hover {
+  text-decoration: none;
+}
+@media (max-width: 1200px) {
+  .bdt-user-login a.elementor-button .elementor-button-icon,
+  .bdt-user-register a.elementor-button .elementor-button-icon {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+}

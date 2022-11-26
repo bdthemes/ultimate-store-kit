@@ -1,0 +1,232 @@
+.usk-heaven-slider {
+  display: flex;
+  height: 570px;
+  overflow: hidden;
+  padding: 15px;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  border-radius: 5px;
+  position: relative; }
+  .usk-heaven-slider .usk-main-slider {
+    width: 100%; }
+    .usk-heaven-slider .usk-main-slider .usk-item .usk-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: all .6s ease-in-out; }
+    .usk-heaven-slider .usk-main-slider .usk-item.swiper-slide-duplicate-active .usk-badge-label-wrapper,
+    .usk-heaven-slider .usk-main-slider .usk-item.swiper-slide-duplicate-active .usk-content, .usk-heaven-slider .usk-main-slider .usk-item.swiper-slide-active .usk-badge-label-wrapper,
+    .usk-heaven-slider .usk-main-slider .usk-item.swiper-slide-active .usk-content {
+      opacity: 1;
+      visibility: visible; }
+    .usk-heaven-slider .usk-main-slider .usk-item.swiper-slide-duplicate-active .usk-image-wrap, .usk-heaven-slider .usk-main-slider .usk-item.swiper-slide-active .usk-image-wrap {
+      opacity: 1; }
+    .usk-heaven-slider .usk-main-slider .usk-item-box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      grid-row-gap: 20px; }
+    .usk-heaven-slider .usk-main-slider .usk-image-wrap {
+      width: 100%;
+      opacity: 0;
+      transition: all .3s ease-in-out; }
+      .usk-heaven-slider .usk-main-slider .usk-image-wrap .usk-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .usk-heaven-slider .usk-main-slider .usk-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+    .usk-heaven-slider .usk-main-slider .usk-category {
+      margin-bottom: 10px; }
+      .usk-heaven-slider .usk-main-slider .usk-category a {
+        font-size: 14px;
+        color: #5f5f74;
+        font-weight: 600;
+        text-transform: capitalize;
+        transition: all .3s ease-in-out; }
+        .usk-heaven-slider .usk-main-slider .usk-category a:hover {
+          color: #5bb300; }
+    .usk-heaven-slider .usk-main-slider .usk-title {
+      margin: 0 0 10px;
+      font-size: 25px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: capitalize; }
+      .usk-heaven-slider .usk-main-slider .usk-title a {
+        color: #1f2027;
+        text-decoration: none;
+        transition: all .3s ease-in-out; }
+        .usk-heaven-slider .usk-main-slider .usk-title a:hover {
+          color: #5bb300; }
+    .usk-heaven-slider .usk-main-slider .usk-text {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #6b6b6e;
+      margin-bottom: 10px; }
+      .usk-heaven-slider .usk-main-slider .usk-text p {
+        margin: 0; }
+    .usk-heaven-slider .usk-main-slider .usk-price {
+      display: flex;
+      align-items: center;
+      grid-column-gap: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 18px; }
+      .usk-heaven-slider .usk-main-slider .usk-price del {
+        color: #8d8e9c; }
+      .usk-heaven-slider .usk-main-slider .usk-price ins {
+        color: #5bb300;
+        text-decoration: none; }
+    .usk-heaven-slider .usk-main-slider .usk-action-btn {
+      display: flex;
+      align-items: center;
+      grid-column-gap: 10px; }
+      .usk-heaven-slider .usk-main-slider .usk-action-btn a {
+        position: relative;
+        color: #fff;
+        font-size: 12px;
+        padding: 12px;
+        line-height: 12px;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: #5bb300; }
+        .usk-heaven-slider .usk-main-slider .usk-action-btn a:hover {
+          background-color: #1f2027; }
+      .usk-heaven-slider .usk-main-slider .usk-action-btn .usk-wishlist.usk-active {
+        background-color: #1f2027; }
+    .usk-heaven-slider .usk-main-slider .usk-rating {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 30px; }
+      .usk-heaven-slider .usk-main-slider .usk-rating .woocommerce-product-rating {
+        display: flex;
+        align-items: center;
+        padding: 0; }
+        .usk-heaven-slider .usk-main-slider .usk-rating .woocommerce-product-rating .star-rating {
+          font-size: 12px;
+          margin: 0; }
+  .usk-heaven-slider .usk-badge-label-wrapper {
+    align-items: center;
+    margin: 5px 0 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease; }
+    .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content {
+      display: flex; }
+      .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content > div {
+        display: flex; }
+        .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content > div .usk-badge {
+          font-size: 10px;
+          color: #fff;
+          padding: 6px 8px;
+          border-radius: 5px;
+          text-transform: uppercase;
+          margin-right: 10px; }
+      .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content .usk-sale-badge .usk-badge {
+        background: #2B2D42;
+        color: #fff; }
+      .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content .usk-percantage-badge .usk-badge {
+        background: #9FA8BC;
+        color: #fff; }
+      .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content .usk-stock-status-badge .usk-badge {
+        background: #EF233C;
+        color: #fff; }
+      .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content .usk-trending-badge .usk-badge {
+        background: #ff006e;
+        color: #fff; }
+      .usk-heaven-slider .usk-badge-label-wrapper .usk-badge-label-content .usk-new-badge .usk-badge {
+        background: #D90429;
+        color: #fff; }
+  .usk-heaven-slider .usk-thumbs-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: none;
+    padding: 5px; }
+    .usk-heaven-slider .usk-thumbs-slider .usk-item-box,
+    .usk-heaven-slider .usk-thumbs-slider .usk-image-wrap {
+      height: 100%;
+      width: 100%; }
+    .usk-heaven-slider .usk-thumbs-slider .usk-image-wrap {
+      padding: 10px; }
+    .usk-heaven-slider .usk-thumbs-slider .usk-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px; }
+    .usk-heaven-slider .usk-thumbs-slider .usk-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer; }
+      .usk-heaven-slider .usk-thumbs-slider .usk-item:before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 5px;
+        transition: all .3s ease-in-out; }
+  .usk-heaven-slider .usk-navigation-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin: 15px;
+    grid-column-gap: 10px; }
+  .usk-heaven-slider .usk-nav-btn {
+    color: #1f2027;
+    font-size: 16px;
+    display: flex;
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    z-index: 1; }
+    .usk-heaven-slider .usk-nav-btn:hover {
+      color: #5bb300; }
+
+@media (min-width: 768px) {
+  .usk-heaven-slider {
+    padding: 30px;
+    height: 440px; }
+    .usk-heaven-slider .usk-thumbs-slider {
+      display: block; }
+    .usk-heaven-slider .usk-main-slider {
+      width: calc(100% - 130px); }
+      .usk-heaven-slider .usk-main-slider .usk-title {
+        margin: 0 0 10px; }
+      .usk-heaven-slider .usk-main-slider .usk-text {
+        margin-bottom: 15px; }
+      .usk-heaven-slider .usk-main-slider .usk-price {
+        font-size: 18px; }
+      .usk-heaven-slider .usk-main-slider .usk-image-wrap {
+        width: 100%; }
+      .usk-heaven-slider .usk-main-slider .usk-content {
+        width: 100%; }
+      .usk-heaven-slider .usk-main-slider .usk-item-box {
+        flex-direction: row;
+        grid-column-gap: 30px; }
+    .usk-heaven-slider .usk-navigation-wrap {
+      margin: 35px; } }
+
+@media (min-width: 1024px) {
+  .usk-heaven-slider {
+    height: 600px; }
+    .usk-heaven-slider .usk-main-slider .usk-title {
+      font-size: 40px; }
+    .usk-heaven-slider .usk-main-slider .usk-text {
+      font-size: 16px; } }

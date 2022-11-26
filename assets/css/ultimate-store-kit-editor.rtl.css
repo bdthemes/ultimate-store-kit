@@ -1,0 +1,32 @@
+#elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon, #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title {
+  color: #EF233C; }
+
+#elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon .usk-widget-icon:after, #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title .usk-widget-icon:after {
+  opacity: 1; }
+
+.elementor-element .icon {
+  position: relative; }
+
+.elementor-element .icon .usk-widget-icon:after {
+  content: "\e997";
+  position: absolute;
+  font-family: 'ultimate-store-kit';
+  left: 8px;
+  top: 8px;
+  font-size: 14px;
+  opacity: .7; }
+
+.elementor-element .icon .usk-widget-icon.usk-new:after {
+  color: #EF233C;
+  opacity: 1; }
+
+.usk-new-control:after {
+  content: 'NEW';
+  background-color: orangered;
+  color: #fff;
+  font-size: 7px;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 3px 4px;
+  margin-right: 5px;
+  vertical-align: middle; }

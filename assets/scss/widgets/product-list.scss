@@ -1,0 +1,158 @@
+.ultimate-store-kit {
+  // padding: 50px 0;
+  .usk-list-wrap {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(1, 1fr);
+    .usk-item {
+      border: 1px solid #dcd4d4;
+      padding: 5px;
+      border-radius: 8px;
+      position: relative;
+      .usk-item-box {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        .usk-image-wrap {
+          width: 170px;
+          height: 100%;
+          a {
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 8px;
+            }
+          }
+        }
+        .usk-content {
+          width: 100%;
+          padding: 10px;
+          .usk-title {
+            .title {
+              font-weight: 700;
+              line-height: 1.4;
+              margin-bottom: 5px;
+              font-size: 12px;
+              color: #161616c7;
+              text-decoration: none;
+              transition: all 0.3s cubic-bezier(0.18, 0.43, 0.58, 1);
+            }
+          }
+          .usk-rating {
+            margin-bottom: 8px;
+            .woocommerce-review-link {
+              display: none;
+            }
+          }
+          .usk-price {
+            color: #f06004;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            del {
+              color: #7e7777;
+            }
+            ins {
+              text-decoration: none;
+              padding-left: 10px;
+            }
+          }
+        }
+
+        .usk-badge-label-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            visibility: hidden;
+            @media screen and (min-width:768px){
+              visibility: visible;
+            }
+            .usk-badge-wrap {
+              margin-left: 10px;
+              &:nth-child(1) {
+                 margin-left: 0;
+               }
+                .usk-badge {
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    padding: 5px 8px;
+                    border-radius: 2px;
+                    font-size: 10px;
+                    display: block;
+                }
+            }
+            .usk-sale-badge {
+                .usk-badge {
+                    background: #264653;
+                    color: #fff;
+                }
+            }
+            .usk-percantage-badge {
+                .usk-badge {
+                    background: #F7996E;
+                    color: #fff;
+                }
+            }
+            .usk-stock-status-badge {
+                .usk-badge {
+                    background: #712F79;
+                    color: #fff;
+                }
+            }
+            .usk-trending-badge {
+                .usk-badge {
+                    background: #FF2E00;
+                    color: #fff;
+                }
+            }
+            .usk-new-badge {
+                .usk-badge {
+                    background: #06D6A0;
+                    color: #fff;
+                }
+            }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .ultimate-store-kit-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .ultimate-store-kit {
+    .usk-list-wrap {
+      .usk-item {
+        padding: 10px;
+        .usk-item-box {
+          .usk-content {
+            padding: 20px;
+            .usk-title {
+              outline: none;
+              .title{
+                font-weight: 700;
+                margin-bottom: 10px;
+                font-size: 16px;
+              }
+            }
+            .usk-rating {
+              margin-bottom: 10px;
+            }
+            .usk-price {
+              font-size: 12px;
+            }
+          }
+          .usk-image-wrap {
+            max-width: 100px;
+          }
+        }
+      }
+    }
+  }
+}

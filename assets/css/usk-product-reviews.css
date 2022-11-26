@@ -1,0 +1,92 @@
+.ultimate-store-kit-container {
+  display: flow-root;
+  box-sizing: content-box;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px; }
+
+.ultimate-store-kit * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: middle; }
+
+.ultimate-store-kit-review-wrapper .usk-review-grid-wrap {
+  grid-template-columns: repeat(1, 1fr);
+  display: grid;
+  grid-gap: 30px; }
+  .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item {
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    position: relative; }
+    .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap {
+      display: inline-flex;
+      align-items: center;
+      position: relative; }
+      .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper {
+        display: flex;
+        align-items: center; }
+        .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-avatar-image {
+          width: 80px; }
+          .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-avatar-image img {
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+        .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content {
+          width: 100%; }
+          .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-author-name {
+            font-size: 14px;
+            text-transform: capitalize;
+            font-weight: 500; }
+            .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-author-name span {
+              color: #6f6f6f;
+              font-weight: 400; }
+            .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-author-name a {
+              text-decoration: none;
+              color: #252323; }
+          .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-title {
+            font-size: 16px;
+            font-weight: 500; }
+            .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-title a {
+              text-decoration: none;
+              color: #3e3e3e;
+              transition: all 0.3s ease; }
+              .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-title a:hover {
+                color: #f00; }
+    .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-rating {
+      position: absolute;
+      top: -22px;
+      right: 25px; }
+      .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-rating span .usk-rating-icon {
+        color: #ffc107;
+        font-size: 46px; }
+      .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-rating .usk-rating-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 18px;
+        margin-top: 2px;
+        font-weight: 700; }
+    .ultimate-store-kit-review-wrapper .usk-review-grid-wrap .usk-review-item .usk-review-text {
+      font-size: 14px;
+      color: #6f6f6f;
+      text-transform: capitalize;
+      line-height: 1.6;
+      margin-top: 30px; }
+
+@media (min-width: 768px) {
+  .ultimate-store-kit-review-wrapper .usk-review-grid-wrap {
+    grid-template-columns: repeat(2, 1fr); } }
+
+@media (min-width: 1024px) {
+  .ultimate-store-kit-container {
+    padding-left: 40px;
+    padding-right: 40px; }
+  .ultimate-store-kit-review-wrapper .usk-review-grid-wrap {
+    grid-template-columns: repeat(3, 1fr); } }

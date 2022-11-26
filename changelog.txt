@@ -1,0 +1,31 @@
+## 1.2.0 [22th August 2022]
+
+### Added
+
+- Mentor slider widget added
+
+## 1.1.0 [11th August 2022]
+
+### Added
+
+- Heaven slider widget added
+
+## 1.0.2 [26th June 2022]
+
+### Updated
+
+- Query Builder Assets improvement
+
+### Fixed
+
+- Mini Cart widget issue fixed.
+
+## 1.0.1 [05th June 2022]
+
+### Fixed
+
+- Wishlist issue Fixed.
+- Mini Cart widget styling issue fixed.
+
+## 1.0.0
+- Initial Release

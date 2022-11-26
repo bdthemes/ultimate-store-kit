@@ -1,0 +1,18 @@
+.usk-brand-grid {
+  display: grid; }
+
+.usk-brand-grid-item {
+  position: relative;
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+  transition: all .3s ease; }
+  .usk-brand-grid-item a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0; }
+
+.usk-brand-grid-img {
+  transition: all .3s ease; }

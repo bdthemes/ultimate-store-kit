@@ -1,0 +1,50 @@
+.usk-info-list {
+  display: grid; }
+  .usk-info-list .usk-content {
+    width: 100%; }
+
+.usk-info-list-item {
+  position: relative;
+  padding: 20px;
+  display: inline-flex; }
+
+.usk-info-list-icon span {
+  color: #2B2D42;
+  font-size: 16px;
+  display: inline-flex; }
+
+.usk-info-list-icon svg {
+  fill: #2B2D42;
+  width: 1em;
+  max-width: inherit; }
+
+.usk-info-list-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: capitalize; }
+  .usk-info-list-title a {
+    color: #2B2D42;
+    transition: all .3s ease; }
+    .usk-info-list-title a:hover {
+      color: #D90429; }
+
+.usk-info-list-text {
+  font-size: 15px;
+  color: #2B2D42; }
+  .usk-info-list-text p {
+    margin: 0; }
+
+.usk-info-style-top .usk-info-list-item {
+  flex-direction: column; }
+
+.usk-info-style-left .usk-info-list-item {
+  align-items: center;
+  flex-direction: row; }
+
+.usk-info-style-right .usk-info-list-item {
+  align-items: center;
+  flex-direction: row-reverse; }
+
+.usk-info-style-right .usk-content {
+  text-align: left; }

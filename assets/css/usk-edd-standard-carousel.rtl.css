@@ -1,0 +1,144 @@
+.usk-edd-standard-carousel .usk-edd-standard-carousel-item {
+  transition: all .3s ease-in-out;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  overflow: hidden;
+  background-color: #fff; }
+  .usk-edd-standard-carousel .usk-edd-standard-carousel-item:hover {
+    border-color: #f00; }
+    .usk-edd-standard-carousel .usk-edd-standard-carousel-item:hover .usk-action-button,
+    .usk-edd-standard-carousel .usk-edd-standard-carousel-item:hover .edd-add-to-cart {
+      opacity: 1;
+      transform: translateY(0); }
+    .usk-edd-standard-carousel .usk-edd-standard-carousel-item:hover .usk-edd-content {
+      transform: translateY(-50px); }
+    .usk-edd-standard-carousel .usk-edd-standard-carousel-item:hover .usk-details-button a {
+      transform: scale(1);
+      opacity: 1;
+      transition-delay: .3s; }
+
+.usk-edd-standard-carousel .usk-edd-standard-carousel-image {
+  position: relative; }
+  .usk-edd-standard-carousel .usk-edd-standard-carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+.usk-edd-standard-carousel .usk-action-button {
+  position: absolute;
+  bottom: -29%;
+  right: 0;
+  text-align: center;
+  left: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; }
+  .usk-edd-standard-carousel .usk-action-button input[type=submit] {
+    display: none; }
+  .usk-edd-standard-carousel .usk-action-button a,
+  .usk-edd-standard-carousel .usk-action-button .edd-add-to-cart {
+    padding: 15px 30px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all .3s ease;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 0;
+    line-height: 1;
+    border: 0; }
+  .usk-edd-standard-carousel .usk-action-button .blue,
+  .usk-edd-standard-carousel .usk-action-button .edd-add-to-cart {
+    background-color: #000;
+    transition: background .3s ease; }
+    .usk-edd-standard-carousel .usk-action-button .blue:hover,
+    .usk-edd-standard-carousel .usk-action-button .edd-add-to-cart:hover {
+      background-color: #d71400; }
+  .usk-edd-standard-carousel .usk-action-button .usk-details-button a {
+    background-color: #d71400;
+    transition: background .3s ease; }
+    .usk-edd-standard-carousel .usk-action-button .usk-details-button a:hover {
+      background-color: #000; }
+
+.usk-edd-standard-carousel .usk-edd-content {
+  text-align: center;
+  padding: 20px;
+  transform: translateY(0);
+  transition: all .3s ease; }
+
+.usk-edd-standard-carousel .usk-edd-category {
+  margin-bottom: 6px;
+  display: inline-block; }
+  .usk-edd-standard-carousel .usk-edd-category a {
+    color: #5b5d66;
+    font-size: 13px;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all .3s ease-in-out; }
+    .usk-edd-standard-carousel .usk-edd-category a:hover {
+      color: #d71400; }
+
+.usk-edd-standard-carousel .usk-edd-title {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0 0 6px; }
+  .usk-edd-standard-carousel .usk-edd-title a {
+    color: rgba(40, 40, 57, 0.96);
+    text-decoration: none;
+    transition: all .3s ease-in-out; }
+    .usk-edd-standard-carousel .usk-edd-title a:hover {
+      color: #d71400; }
+
+.usk-edd-standard-carousel .usk-edd-price {
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  grid-column-gap: 10px; }
+
+.elementor-widget-usk-edd-standard-carousel .usk-arrows-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-arrows-ncx, 0), var(--usk-edd-standard-carousel-arrows-ncy, 0));
+  transform: translate(var(--usk-edd-standard-carousel-arrows-ncx, 0), var(--usk-edd-standard-carousel-arrows-ncy, 0)); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-dots-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-dots-nnx, 0), var(--usk-edd-standard-carousel-dots-nny, 30));
+  transform: translate(var(--usk-edd-standard-carousel-dots-nnx, 0), var(--usk-edd-standard-carousel-dots-nny, 30)); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-arrows-dots-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-both-ncx, 0), var(--usk-edd-standard-carousel-both-ncy, 40));
+  transform: translate(var(--usk-edd-standard-carousel-both-ncx, 0), var(--usk-edd-standard-carousel-both-ncy, 40)); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-arrows-fraction-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-arrows-fraction-ncx, 0), var(--usk-edd-standard-carousel-arrows-fraction-ncy, 40));
+  transform: translate(var(--usk-edd-standard-carousel-arrows-fraction-ncx, 0), var(--usk-edd-standard-carousel-arrows-fraction-ncy, 40)); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-left .usk-arrows-container,
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-right .usk-arrows-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-arrows-ncx, 0), var(--usk-edd-standard-carousel-arrows-ncy, 0)) rotate(-90deg);
+  transform: translate(var(--usk-edd-standard-carousel-arrows-ncx, 0), var(--usk-edd-standard-carousel-arrows-ncy, 0)) rotate(-90deg); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-left .usk-dots-container,
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-right .usk-dots-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-dots-nnx, 0), var(--usk-edd-standard-carousel-dots-nny, 0)) rotate(-90deg);
+  transform: translate(var(--usk-edd-standard-carousel-dots-nnx, 0), var(--usk-edd-standard-carousel-dots-nny, 0)) rotate(-90deg); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-left .usk-arrows-dots-container,
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-right .usk-arrows-dots-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-both-ncx, 0), var(--usk-edd-standard-carousel-both-ncy, 0)) rotate(-90deg);
+  transform: translate(var(--usk-edd-standard-carousel-both-ncx, 0), var(--usk-edd-standard-carousel-both-ncy, 0)) rotate(-90deg); }
+
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-left .usk-arrows-fraction-container,
+.elementor-widget-usk-edd-standard-carousel .usk-position-center-right .usk-arrows-fraction-container {
+  -webkit-transform: translate(var(--usk-edd-standard-carousel-arrows-fraction-ncx, 0), var(--usk-edd-standard-carousel-arrows-fraction-ncy, 0)) rotate(-90deg);
+  transform: translate(var(--usk-edd-standard-carousel-arrows-fraction-ncx, 0), var(--usk-edd-standard-carousel-arrows-fraction-ncy, 0)) rotate(-90deg); }

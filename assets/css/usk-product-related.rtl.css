@@ -1,0 +1,12 @@
+.usk-product-related .product {
+  background-color: #fff;
+  padding: 30px !important;
+  transition: all .3s ease; }
+  .usk-product-related .product:hover {
+    box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16); }
+
+.usk-product-related .woocommerce-loop-product__title {
+  font-size: 22px !important; }
+
+.usk-product-related .add_to_cart_button.ajax_add_to_cart:hover {
+  color: #fff !important; }
