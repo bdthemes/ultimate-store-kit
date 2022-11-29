@@ -28,22 +28,67 @@ class Product_Image extends Module_Base {
         return ['account', 'my-account', 'address'];
     }
 
-    public function get_style_depends() {
+//    public function get_style_depends() {
+//        if ($this->usk_is_edit_mode()) {
+//            return ['usk-all-styles'];
+//        } else {
+//            return ['usk-product-image'];
+//        }
+//    }
+
+
+    public function get_script_depends()
+    {
+        $scripts = [];
+        if (current_theme_supports('wc-product-gallery-zoom')) {
+            $scripts[] = 'zoom';
+        }
+        if (current_theme_supports('wc-product-gallery-slider')) {
+            $scripts[] = 'flexslider';
+        }
+        if (current_theme_supports('wc-product-gallery-lightbox')) {
+            $scripts[] = 'photoswipe-ui-default';
+        }
+        $scripts[] = 'wc-single-product';
+
+        return $scripts;
+    }
+
+    public function get_style_depends()
+    {
+        $styles = ['photoswipe', 'photoswipe-default-skin', 'woocommerce_prettyPhoto_css'];
+
+        if (current_theme_supports('wc-product-gallery-lightbox')) {
+            $styles[] = 'photoswipe-default-ski';
+            add_action('wp_footer', 'woocommerce_photoswipe');
+        }
+
         if ($this->usk_is_edit_mode()) {
-            return ['usk-all-styles'];
+            return array_merge(['usk-all-styles-pro'], $styles);
         } else {
-            return ['usk-product-image'];
+            return array_merge(['usk-product-image'], $styles);
         }
     }
+
+
 
     // public function get_custom_help_url() {
     //     return 'https://youtu.be/ksy2uZ5Hg3M';
     // }
 
     protected function render() {
-        $product = wc_get_product();
         $this->__set_editor_builder_data();
         woocommerce_show_product_images();
-        // woocommerce_show_product_thumbnails();
+
+        // On render widget from Editor - trigger the init manually.
+        if ( $this->usk_is_edit_mode() ) {
+            ?>
+            <script>
+                jQuery( '.woocommerce-product-gallery' ).each( function() {
+                    jQuery( this ).wc_product_gallery();
+                } );
+            </script>
+            <?php
+        }
     }
 }

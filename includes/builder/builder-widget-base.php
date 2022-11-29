@@ -47,6 +47,33 @@ abstract class Builder_Widget_Base extends Widget_Base {
 	/**
 	 * Set editor product
 	 */
+
+    /**
+     * Set editor product
+     */
+//    public function __set_editor_builder_data()
+//    {
+//
+//        if (!$this->is_ultimate_builder_editor()) {
+//            return;
+//        }
+//
+//        global $post;
+//
+////        print_r($post);
+//
+//        $templateId = wp_cache_get('ultimate_store_template_id');
+//        $posts = wp_cache_get('ultimate_store_template_sample_post');
+////        print_r($posts);exit;
+//
+//        if ($posts instanceof \WP_Query && $posts->have_posts() && $templateId == $post->ID) {
+//            foreach ($posts->posts as $post) {
+//                $GLOBALS['post'] = $post;
+//                setup_postdata($post);
+//            }
+//        }
+//    }
+//
 	public function __set_editor_builder_data() {
 
 		if (!$this->is_ultimate_builder_editor()) return;

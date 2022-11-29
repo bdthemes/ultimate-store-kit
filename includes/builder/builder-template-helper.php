@@ -5,6 +5,16 @@ namespace UltimateStoreKit\Includes\Builder;
 class Builder_Template_Helper
 {
 
+    public static function isTemplateEditMode()
+    {
+        if(get_post_type() == Meta::POST_TYPE){
+            return true;
+        }
+
+        if(isset($_REQUEST[Meta::POST_TYPE])){
+            return true;
+        }
+    }
 
 	public static function separator(){
 		return '|';
