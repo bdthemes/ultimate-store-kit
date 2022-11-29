@@ -77,7 +77,6 @@ class Product_Image extends Module_Base {
     // }
 
     protected function render() {
-        $this->__set_editor_builder_data();
         woocommerce_show_product_images();
 
         // On render widget from Editor - trigger the init manually.

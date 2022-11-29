@@ -136,13 +136,7 @@ class Product_Price extends Module_Base {
     }
 
     protected function render() {
-        //	    global $product;
-        //	    $product = wc_get_product();
-
-        $this->__set_editor_builder_data();
-
-
-?>
+        ?>
 
         <div class="usk-product-price">
             <?php
