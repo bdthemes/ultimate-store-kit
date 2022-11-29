@@ -51,60 +51,57 @@ abstract class Builder_Widget_Base extends Widget_Base {
     /**
      * Set editor product
      */
-//    public function __set_editor_builder_data()
-//    {
+    public function __set_editor_builder_data()
+    {
+
+        if (!$this->is_ultimate_builder_editor()) {
+            return;
+        }
+
+        global $post;
+
+        $templateId = get_transient('ultimate_store_template_id');
+        $posts      = get_transient('ultimate_store_template_sample_post');
+
+        if ($posts instanceof \WP_Query && $posts->have_posts() && $templateId == $post->ID) {
+            foreach ($posts->posts as $post) {
+                $GLOBALS['post'] = $post;
+                setup_postdata($post);
+            }
+        }
+    }
+
+//	public function __set_editor_builder_data() {
 //
-//        if (!$this->is_ultimate_builder_editor()) {
-//            return;
-//        }
+//		if (!$this->is_ultimate_builder_editor()) return;
 //
-//        global $post;
+//		global $post, $wp_query;
 //
-////        print_r($post);
+//		$meta     = get_post_meta($post->ID);
+//		$postMeta = optional($meta[Meta::TEMPLATE_TYPE])[0];
+//		$postMeta = explode('|', $postMeta);
+//		$postType = $postMeta[0];
 //
-//        $templateId = wp_cache_get('ultimate_store_template_id');
-//        $posts = wp_cache_get('ultimate_store_template_sample_post');
-////        print_r($posts);exit;
+//		$args = [
+//			'post_type'      => $postType,
+//			'post_status'    => ['publish', 'pending', 'draft', 'future'],
+//			'posts_per_page' => 1,
+//		];
 //
-//        if ($posts instanceof \WP_Query && $posts->have_posts() && $templateId == $post->ID) {
-//            foreach ($posts->posts as $post) {
-//                $GLOBALS['post'] = $post;
-//                setup_postdata($post);
-//            }
-//        }
-//    }
+//		$sample_product = optional($meta)[Meta::SAMPLE_POST_ID];
 //
-	public function __set_editor_builder_data() {
-
-		if (!$this->is_ultimate_builder_editor()) return;
-
-		global $post, $wp_query;
-
-		$meta     = get_post_meta($post->ID);
-		$postMeta = optional($meta[Meta::TEMPLATE_TYPE])[0];
-		$postMeta = explode('|', $postMeta);
-		$postType = $postMeta[0];
-
-		$args = [
-			'post_type'      => $postType,
-			'post_status'    => ['publish', 'pending', 'draft', 'future'],
-			'posts_per_page' => 1,
-		];
-
-		$sample_product = optional($meta)[Meta::SAMPLE_POST_ID];
-
-		if ($sample_product = optional($sample_product)[0]) {
-			$args['p'] = $sample_product;
-		}
-
-		$wp_query = new \WP_Query($args);
-
-		if ($wp_query->have_posts()) {
-			foreach ($wp_query->posts as $post) {
-				setup_postdata($post);
-			}
-		} else {
-			esc_html_e('Please add at least one product with "publish", "pending", "draft" or "future" status', 'ultimate-store-kit');
-		}
-	}
+//		if ($sample_product = optional($sample_product)[0]) {
+//			$args['p'] = $sample_product;
+//		}
+//
+//		$wp_query = new \WP_Query($args);
+//
+//		if ($wp_query->have_posts()) {
+//			foreach ($wp_query->posts as $post) {
+//				setup_postdata($post);
+//			}
+//		} else {
+//			esc_html_e('Please add at least one product with "publish", "pending", "draft" or "future" status', 'ultimate-store-kit');
+//		}
+//	}
 }

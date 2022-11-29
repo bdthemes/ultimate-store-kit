@@ -46,8 +46,8 @@ class Builder_Post_Singleton
 
         if ($wp_query->have_posts()) {
             $post = $wp_query->posts[0];
-            wp_cache_set('ultimate_store_template_id', $postId);
-            wp_cache_set('ultimate_store_template_sample_post', $wp_query);
+            set_transient('ultimate_store_template_id', $postId);
+            set_transient('ultimate_store_template_sample_post', $wp_query);
             $GLOBALS['post'] = $post;
             setup_postdata($post);
         }
