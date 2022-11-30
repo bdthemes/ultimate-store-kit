@@ -19,9 +19,9 @@ class Builder_Integration {
 	public $current_template_id = null;
 
 	function __construct() {
-        add_filter('template_include', [$this, 'set_builder_template'], 12);
+        add_filter('template_include', [$this, 'set_builder_template'], 9999);
+        add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);
         add_action('elementor/documents/register_controls', [$this, 'register_document_controls']);
-        add_action('elementor/editor/init', [$this, 'set_sample_post'], 12);
     }
 
     function set_sample_post()
