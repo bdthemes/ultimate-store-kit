@@ -129,9 +129,7 @@ class Product_Meta extends Module_Base {
     public function render() {
         global $product;
         // $product = wc_get_product();
-
-        $this->__set_editor_builder_data();
-?>
+        ?>
         <div class="usk-product-meta">
 
             <?php do_action('woocommerce_product_meta_start'); ?>

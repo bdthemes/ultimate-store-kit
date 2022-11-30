@@ -4,6 +4,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+use Elementor\Controls_Manager;
 use UltimateStoreKit\Includes\Builder\Builder_Template_Helper;
 use  UltimateStoreKit\Base\Singleton;
 use UltimateStoreKit\Includes\Builder\Meta;
@@ -81,6 +82,19 @@ class Builder_Integration {
                 'query_args' => [
                     'post_type' => $postType
                 ],
+            ]
+        );
+
+        $document->add_control(
+            'usk_builder_sample_apply_preview',
+            [
+                'type' => Controls_Manager::BUTTON,
+                'label' => esc_html__( 'Apply & Preview', 'ultimate-store-kit' ),
+                'label_block' => true,
+                'show_label' => false,
+                'text' => esc_html__( 'Apply & Preview', 'ultimate-store-kit' ),
+                'separator' => 'none',
+                'event' => 'ultimateStoreKitBuilderSetting:applySinglePagePostOnPreview',
             ]
         );
 

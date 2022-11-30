@@ -2,7 +2,6 @@
 
 namespace UltimateStoreKit\Base;
 
-use Elementor\Widget_Base;
 use UltimateStoreKit\Includes\Builder\Builder_Widget_Base;
 use UltimateStoreKit\Ultimate_Store_Kit_Loader;
 
@@ -19,10 +18,5 @@ abstract class Module_Base extends Builder_Widget_Base {
         }
 
         return false;
-    }
-
-    public function __construct( $data = [], $args = null ) {
-        parent::__construct( $data, $args );
-        $this->__set_editor_builder_data();
     }
 }
