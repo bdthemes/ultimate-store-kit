@@ -3,6 +3,7 @@
 namespace UltimateStoreKit\Modules\ProductImage\Widgets;
 
 use UltimateStoreKit\Base\Module_Base;
+use UltimateStoreKit\Includes\Builder\Builder_Template_Helper;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -37,12 +38,36 @@ class Product_Image extends Module_Base {
 //    }
 
 
+    public function get_script_depends()
+    {
+        $scripts = [];
+        if (current_theme_supports('wc-product-gallery-zoom')) {
+            $scripts[] = 'zoom';
+        }
+        if (current_theme_supports('wc-product-gallery-slider')) {
+            $scripts[] = 'flexslider';
+        }
+        if (current_theme_supports('wc-product-gallery-lightbox')) {
+            $scripts[] = 'photoswipe-ui-default';
+        }
+        $scripts[] = 'wc-single-product';
+
+        return $scripts;
+    }
+
     public function get_style_depends()
     {
+        $styles = ['photoswipe', 'photoswipe-default-skin', 'woocommerce_prettyPhoto_css'];
+
+        if (current_theme_supports('wc-product-gallery-lightbox')) {
+            $styles[] = 'photoswipe-default-ski';
+            add_action('wp_footer', 'woocommerce_photoswipe');
+        }
+
         if ($this->usk_is_edit_mode()) {
-            return ['usk-all-styles-pro'];
+            return array_merge(['usk-all-styles-pro'], $styles);
         } else {
-            return ['usk-product-image'];
+            return array_merge(['usk-product-image'], $styles);
         }
     }
 
@@ -54,16 +79,12 @@ class Product_Image extends Module_Base {
 
     protected function render() {
 
-        if($this->usk_is_edit_mode()){
-            $this->load_assets_dependencies();
-        }
-
         $this->usk_set_single_post_type_editor_builder_data();
 
         woocommerce_show_product_images();
 
+        if($this->usk_is_edit_mode()):
         // On render widget from Editor - trigger the init manually.
-        if ( $this->usk_is_edit_mode() ) {
             ?>
             <script>
                 jQuery( '.woocommerce-product-gallery' ).each( function() {
@@ -71,25 +92,6 @@ class Product_Image extends Module_Base {
                 } );
             </script>
             <?php
-        }
-    }
-
-    private function load_assets_dependencies() {
-        if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) {
-            wp_enqueue_script( 'zoom' );
-        }
-        if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
-            wp_enqueue_script( 'flexslider' );
-        }
-        if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
-            wp_enqueue_script( 'photoswipe-ui-default' );
-            wp_enqueue_style( 'photoswipe-default-skin' );
-            add_action( 'wp_footer', 'woocommerce_photoswipe' );
-        }
-        wp_enqueue_script( 'wc-single-product' );
-
-        wp_enqueue_style( 'photoswipe' );
-        wp_enqueue_style( 'photoswipe-default-skin' );
-        wp_enqueue_style( 'woocommerce_prettyPhoto_css' );
+        endif;
     }
 }
