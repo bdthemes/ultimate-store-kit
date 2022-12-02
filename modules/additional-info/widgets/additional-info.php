@@ -67,7 +67,7 @@ class Additional_Info extends Module_Base {
     }
     
     public function __render() {
-        $this->usk_set_single_post_type_editor_builder_data();
+        $this->usk_set_single_post_preview_data();
         $product = wc_get_product();
 
         if (empty($product)) {

@@ -136,7 +136,7 @@ class Product_Price extends Module_Base {
     }
 
     protected function render() {
-        $this->usk_set_single_post_type_editor_builder_data();
+        $this->usk_set_single_post_preview_data();
 
 
 

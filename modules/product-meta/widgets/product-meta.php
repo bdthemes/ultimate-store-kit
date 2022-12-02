@@ -129,7 +129,7 @@ class Product_Meta extends Module_Base {
     public function render() {
         // global $product;
 
-        $this->usk_set_single_post_type_editor_builder_data();
+        $this->usk_set_single_post_preview_data();
         $product = wc_get_product();
 ?>
         <div class="usk-product-meta">

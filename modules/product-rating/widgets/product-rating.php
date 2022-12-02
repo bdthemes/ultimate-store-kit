@@ -145,7 +145,7 @@ class Product_Rating extends Module_Base {
         //     return;
         // }
 
-        $this->usk_set_single_post_type_editor_builder_data();
+        $this->usk_set_single_post_preview_data();
 
         $rating_count = $product->get_rating_count();
         $review_count = $product->get_review_count();

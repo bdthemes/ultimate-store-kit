@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use Elementor\Controls_Manager;
+use Elementor\Plugin;
 use UltimateStoreKit\Includes\Builder\Builder_Template_Helper;
 use  UltimateStoreKit\Base\Singleton;
 use UltimateStoreKit\Includes\Builder\Meta;
@@ -21,9 +22,25 @@ class Builder_Integration {
     function __construct() {
         add_filter('template_include', [$this, 'set_builder_template'], 9999);
         add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);
+
+        add_action( 'print_default_editor_scripts', array( $this, 'my_custom_fonts' ) );
+
         add_action('elementor/documents/register_controls', [$this, 'register_document_controls']);
     }
 
+    public function my_custom_fonts()
+    {
+        if(is_admin() && Plugin::instance()->editor->is_edit_mode()){
+            if (isset($_REQUEST['usk-template'])) {
+                wp_register_style('usk-template-builder-hide-preview-btn-inline', false); // phpcs:ignore
+                wp_enqueue_style('usk-template-builder-hide-preview-btn-inline');
+                wp_add_inline_style(
+                    'usk-template-builder-hide-preview-btn-inline',
+                    '#elementor-panel-footer-saver-preview {display:none!important}'
+                );
+            }
+        }
+    }
     function set_sample_post()
     {
         if (Builder_Template_Helper::isTemplateEditMode()) {

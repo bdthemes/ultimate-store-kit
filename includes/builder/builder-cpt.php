@@ -83,17 +83,27 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			return $actions;
 		}
 
-		if (get_post_meta($post->ID, Meta::EDIT_WITH, true) == 'gutenberg') {
-			$actions['usk_edit_with_gutenberg'] = sprintf(
-				'<a href="%1$s">%2$s</a>',
-				add_query_arg(['post' => $post->ID, 'action' => 'edit'], admin_url('post.php')),
-				esc_html__('Edit with Gutenberg', 'ultimate-store-kit')
-			);
+        if (isset($actions['edit_with_elementor'])) {
+            unset($actions['edit_with_elementor']);
+        }
 
-			if (isset($actions['edit_with_elementor'])) {
-				unset($actions['edit_with_elementor']);
-			}
-		}
+        if (get_post_meta($post->ID, Meta::EDIT_WITH, true) == 'gutenberg') {
+            $actions['usk_edit_with_gutenberg'] = sprintf(
+                '<a href="%1$s">%2$s</a>',
+                add_query_arg(['post' => $post->ID, 'action' => 'edit'], admin_url('post.php')),
+                esc_html__('Edit with Gutenberg', 'ultimate-store-kit')
+            );
+
+        }
+
+        if (get_post_meta($post->ID, Meta::EDIT_WITH, true) == 'elementor') {
+            $actions['usk_edit_with_elementor'] = sprintf(
+                '<a href="%1$s">%2$s</a>',
+                add_query_arg(['post' => $post->ID, 'action' => 'elementor','usk-template' => 1], admin_url('post.php')),
+                esc_html__('Edit with Elementor', 'ultimate-store-kit')
+            );
+
+        }
 
 		$editActionLink = sprintf(
 			'<a href="%1$s" data-id="%2$s" >%3$s</a>',

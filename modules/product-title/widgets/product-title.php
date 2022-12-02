@@ -95,7 +95,7 @@ class Product_Title extends Module_Base {
     }
 
     protected function render() {
-        $this->__set_editor_builder_data();
+        $this->usk_set_single_post_preview_data();
         woocommerce_template_single_title();
     }
 }

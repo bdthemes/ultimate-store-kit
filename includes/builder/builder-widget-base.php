@@ -48,7 +48,7 @@ abstract class Builder_Widget_Base extends Widget_Base {
 	/**
 	 * Set editor data for ajax save only
 	 */
-	public function usk_set_single_post_type_editor_builder_data() {
+	public function usk_set_single_post_preview_data() {
 
 		if (!$this->is_ultimate_builder_editor()) {
 			return;
