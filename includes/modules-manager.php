@@ -77,7 +77,7 @@ final class Manager {
             }
             // register widget JS
             if (ModuleService::has_module_script($module_id)) {
-                wp_register_script('usk-' . $module_id, BDTUSK_URL . 'assets/js/modules/usk-' . $module_id . $suffix . '.js', ['jquery', 'bdt-uikit', 'elementor-frontend'], BDTUSK_VER, true);
+                wp_register_script('usk-' . $module_id, BDTUSK_URL . 'assets/js/widgets/usk-' . $module_id . $suffix . '.js', ['jquery', 'bdt-uikit', 'elementor-frontend'], BDTUSK_VER, true);
             }
         }
 

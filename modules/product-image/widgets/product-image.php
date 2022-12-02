@@ -22,24 +22,23 @@ class Product_Image extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-single'];
     }
 
     public function get_keywords() {
         return ['account', 'my-account', 'address'];
     }
 
-//    public function get_style_depends() {
-//        if ($this->usk_is_edit_mode()) {
-//            return ['usk-all-styles'];
-//        } else {
-//            return ['usk-product-image'];
-//        }
-//    }
+    //    public function get_style_depends() {
+    //        if ($this->usk_is_edit_mode()) {
+    //            return ['usk-all-styles'];
+    //        } else {
+    //            return ['usk-product-image'];
+    //        }
+    //    }
 
 
-    public function get_script_depends()
-    {
+    public function get_script_depends() {
         $scripts = [];
         if (current_theme_supports('wc-product-gallery-zoom')) {
             $scripts[] = 'zoom';
@@ -55,8 +54,7 @@ class Product_Image extends Module_Base {
         return $scripts;
     }
 
-    public function get_style_depends()
-    {
+    public function get_style_depends() {
         $styles = ['photoswipe', 'photoswipe-default-skin', 'woocommerce_prettyPhoto_css'];
 
         if (current_theme_supports('wc-product-gallery-lightbox')) {
@@ -83,15 +81,15 @@ class Product_Image extends Module_Base {
 
         woocommerce_show_product_images();
 
-        if($this->usk_is_edit_mode()):
-        // On render widget from Editor - trigger the init manually.
-            ?>
+        if ($this->usk_is_edit_mode()) :
+            // On render widget from Editor - trigger the init manually.
+?>
             <script>
-                jQuery( '.woocommerce-product-gallery' ).each( function() {
-                    jQuery( this ).wc_product_gallery();
-                } );
+                jQuery('.woocommerce-product-gallery').each(function() {
+                    jQuery(this).wc_product_gallery();
+                });
             </script>
-            <?php
+<?php
         endif;
     }
 }

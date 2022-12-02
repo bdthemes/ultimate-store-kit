@@ -21,7 +21,7 @@ class Product_Stock extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-single'];
     }
 
     public function get_keywords() {
@@ -48,8 +48,8 @@ class Product_Stock extends Module_Base {
     }
 
     protected function render() {
+        $this->usk_set_single_post_type_editor_builder_data();
         global $product;
-        $product = wc_get_product();
         echo wc_get_stock_html($product);
     }
 }

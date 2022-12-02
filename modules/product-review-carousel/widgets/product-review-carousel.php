@@ -562,9 +562,6 @@ class Product_Review_Carousel extends Module_Base {
             [
                 'label'     => esc_html__('Rating', 'ultimate-store-kit'),
                 'tab'       => Controls_Manager::TAB_STYLE,
-                // 'condition' => [
-                //     'show_rating' => 'yes',
-                // ],
             ]
         );
         $this->add_control(

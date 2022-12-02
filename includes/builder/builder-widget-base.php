@@ -45,26 +45,25 @@ abstract class Builder_Widget_Base extends Widget_Base {
 	}
 
 
-    /**
-     * Set editor data for ajax save only
-     */
-    public function usk_set_single_post_type_editor_builder_data()
-    {
+	/**
+	 * Set editor data for ajax save only
+	 */
+	public function usk_set_single_post_type_editor_builder_data() {
 
-        if (!$this->is_ultimate_builder_editor()) {
-            return;
-        }
+		if (!$this->is_ultimate_builder_editor()) {
+			return;
+		}
 
-        global $post;
+		global $post;
 
-        $templateId = get_transient('ultimate_store_template_id_'.get_current_user_id());
-        $posts      = get_transient('ultimate_store_template_sample_post_'.get_current_user_id());
+		$templateId = get_transient('ultimate_store_template_id_' . get_current_user_id());
+		$posts      = get_transient('ultimate_store_template_sample_post_' . get_current_user_id());
 
-        if ($posts instanceof \WP_Query && $posts->have_posts() && $templateId == $post->ID) {
-            foreach ($posts->posts as $post) {
-                $GLOBALS['post'] = $post;
-                setup_postdata($post);
-            }
-        }
-    }
+		if ($posts instanceof \WP_Query && $posts->have_posts() && $templateId == $post->ID) {
+			foreach ($posts->posts as $post) {
+				$GLOBALS['post'] = $post;
+				setup_postdata($post);
+			}
+		}
+	}
 }

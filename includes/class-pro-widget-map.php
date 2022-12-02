@@ -26,7 +26,7 @@ class Pro_Widget_Map
                             'categories' => ['ultimate-store-kit-pro'],
                             'name'       => $widget['name'],
                             'title'      => $widget['label'],
-                            'icon'       => 'upk-icon-' . $widget['name'] . ' bdt-pro-unlock-icon',
+                            'icon'       => 'usk-icon-' . $widget['name'] . ' bdt-pro-unlock-icon',
                             'action_button' => [
                                 'classes'   => ['elementor-button', 'elementor-button-success'],
                                 'text'      => esc_html__('See it in Action', 'ultimate-store-kit'),

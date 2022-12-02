@@ -28,6 +28,7 @@ module.exports = function (grunt) {
                     'assets/css/usk-florence-carousel.css': 'assets/scss/widgets/florence-carousel.scss',
                     'assets/css/usk-sub-category.css': 'assets/scss/widgets/sub-category.scss',
                     'assets/css/usk-sub-category-carousel.css': 'assets/scss/widgets/sub-category-carousel.scss',
+                    'assets/css/usk-product-category-carousel.css': 'assets/scss/widgets/product-category-carousel.scss',
                     'assets/css/usk-product-image-accordion.css': 'assets/scss/widgets/product-image-accordion.scss',
                     'assets/css/usk-product-list.css': 'assets/scss/widgets/product-list.scss',
                     'assets/css/usk-product-reviews.css': 'assets/scss/widgets/product-reviews.scss',
@@ -105,6 +106,7 @@ module.exports = function (grunt) {
                         'assets/js/widgets/usk-showcase-slider.js',
                         'assets/js/widgets/usk-sub-category.js',
                         'assets/js/widgets/usk-sub-category-carousel.js',
+                        'assets/js/widgets/usk-product-category-carousel.js',
                         'assets/js/widgets/usk-heaven-slider.js',
                         'assets/js/widgets/usk-mentor-slider.js',
                         //EDD

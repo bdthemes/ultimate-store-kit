@@ -1,46 +1,46 @@
-( function( $ ) {
+(function ($) {
 
 	'use strict';
 
 	var UltimateStoreKitEditor = {
-		shouldReload:false,
-		init: function() {
-			elementor.channels.editor.on( 'section:activated', UltimateStoreKitEditor.onAnimatedBoxSectionActivated );
+		shouldReload: false,
+		init: function () {
+			elementor.channels.editor.on('section:activated', UltimateStoreKitEditor.onAnimatedBoxSectionActivated);
 
-			window.elementor.on( 'preview:loaded', function() {
+			window.elementor.on('preview:loaded', function () {
 				elementor.$preview[0].contentWindow.UltimateStoreKitEditor = UltimateStoreKitEditor;
 				UltimateStoreKitEditor.onPreviewLoaded();
 			});
 
-			elementor.channels.editor.on( 'ultimateStoreKitBuilderSetting:applySinglePagePostOnPreview', UltimateStoreKitEditor.ApplyPreviewPostId );
+			elementor.channels.editor.on('ultimateStoreKitBuilderSetting:applySinglePagePostOnPreview', UltimateStoreKitEditor.ApplyPreviewPostId);
 			elementor.channels.editor.on('saved', UltimateStoreKitEditor.savedBuilder)
 
 		},
 
 
-		savedBuilder:function () {
-			if(UltimateStoreKitEditor.shouldReload){
+		savedBuilder: function () {
+			if (UltimateStoreKitEditor.shouldReload) {
 				UltimateStoreKitEditor.shouldReload = false;
 				window.location.href = window.location.href;
 			}
 		},
-		ApplyPreviewPostId:function () {
+		ApplyPreviewPostId: function () {
 			UltimateStoreKitEditor.shouldReload = true;
 			$("#elementor-panel-saver-button-publish").trigger('click');
 		},
 
-		onPreviewLoaded: function() {
+		onPreviewLoaded: function () {
 			var elementorFrontend = $('#elementor-preview-iframe')[0].contentWindow.elementorFrontend;
 
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/widget', function( $scope ) {
-				$scope.find( '.usk-elementor-template-edit-link' ).on( 'click', function( event ) {
-					window.open( $( this ).attr( 'href' ) );
+			elementorFrontend.hooks.addAction('frontend/element_ready/widget', function ($scope) {
+				$scope.find('.usk-elementor-template-edit-link').on('click', function (event) {
+					window.open($(this).attr('href'));
 				});
 			});
 		}
 	};
 
-	$( window ).on( 'elementor:init', UltimateStoreKitEditor.init );
+	$(window).on('elementor:init', UltimateStoreKitEditor.init);
 
 	window.UltimateStoreKitEditor = UltimateStoreKitEditor;
 
@@ -140,4 +140,4 @@
 	});
 
 
-}( jQuery ) );
+}(jQuery));

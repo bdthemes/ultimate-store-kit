@@ -23,7 +23,7 @@ class Product_Price extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-single'];
     }
 
     public function get_keywords() {
@@ -136,7 +136,11 @@ class Product_Price extends Module_Base {
     }
 
     protected function render() {
-        ?>
+        $this->usk_set_single_post_type_editor_builder_data();
+
+
+
+?>
 
         <div class="usk-product-price">
             <?php
