@@ -23,7 +23,7 @@ class Breadcrumbs extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-single'];
     }
 
     public function get_keywords() {
@@ -91,23 +91,23 @@ class Breadcrumbs extends Module_Base {
             ]
         );
 
-        $this->add_responsive_control(
-            'align',
+        $this->add_control(
+            'alignment',
             [
-                'label'     => __('Alignment', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::CHOOSE,
-                'options'   => [
-                    'left'   => [
+                'label'         => __('Alignment', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::CHOOSE,
+                'options'       => [
+                    'left'      => [
                         'title' => __('Left', 'ultimate-store-kit'),
-                        'icon'  => 'fas fa-align-left',
+                        'icon'  => 'eicon-h-align-left',
                     ],
-                    'center' => [
+                    'center'    => [
                         'title' => __('Center', 'ultimate-store-kit'),
-                        'icon'  => 'fas fa-align-center',
+                        'icon'  => 'eicon-h-align-center',
                     ],
-                    'right'  => [
+                    'right'     => [
                         'title' => __('Right', 'ultimate-store-kit'),
-                        'icon'  => 'fas fa-align-right',
+                        'icon'  => 'eicon-h-align-right',
                     ],
                 ],
                 'selectors' => [
@@ -117,15 +117,11 @@ class Breadcrumbs extends Module_Base {
         );
 
 
+
         $this->end_controls_section();
     }
 
-    protected function render() {
-        global $product;
-        $product = wc_get_product();
-        // if ($this->__set_editor_product()) {
-?>
-
+    protected function render() { ?>
         <div class="usk-wc-breadcrumb-wrapper">
             <?php woocommerce_breadcrumb(); ?>
         </div>

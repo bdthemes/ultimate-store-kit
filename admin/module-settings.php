@@ -431,6 +431,18 @@ class ModuleService {
                     'video_url'    => '',
                 ],
                 [
+                    'name'         => 'product-category-carousel',
+                    'label'        => esc_html__('Product Category Carousel', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'free',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce others new',
+                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-category-carousel/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'product-image-accordion',
                     'label'        => esc_html__('Product Image Accordion', 'ultimate-store-kit'),
                     'type'         => 'checkbox',

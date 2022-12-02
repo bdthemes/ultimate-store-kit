@@ -23,7 +23,7 @@ class Product_Meta extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-single'];
     }
 
     public function get_keywords() {
@@ -127,9 +127,11 @@ class Product_Meta extends Module_Base {
 
 
     public function render() {
-        global $product;
-        // $product = wc_get_product();
-        ?>
+        // global $product;
+
+        $this->usk_set_single_post_type_editor_builder_data();
+        $product = wc_get_product();
+?>
         <div class="usk-product-meta">
 
             <?php do_action('woocommerce_product_meta_start'); ?>

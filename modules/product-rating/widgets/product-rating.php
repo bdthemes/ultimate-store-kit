@@ -23,7 +23,7 @@ class Product_Rating extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-single'];
     }
 
     public function get_keywords() {
@@ -141,9 +141,11 @@ class Product_Rating extends Module_Base {
     protected function render() {
         global $product;
 
-        // if ((!wc_review_ratings_enabled()) or (!$this->__set_editor_product())) {
+        // if ((!wc_review_ratings_enabled()) or (!$this->usk_set_single_post_type_editor_builder_data())) {
         //     return;
         // }
+
+        $this->usk_set_single_post_type_editor_builder_data();
 
         $rating_count = $product->get_rating_count();
         $review_count = $product->get_review_count();

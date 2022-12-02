@@ -76,6 +76,10 @@ if (!_is_usk_pro_activated()) {
 	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
 }
 
+if (function_exists('usk_license_validation') && true !== usk_license_validation()) {
+	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
+}
+
 require(dirname(__FILE__) . '/includes/utils.php');
 
 

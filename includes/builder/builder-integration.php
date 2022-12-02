@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 use Elementor\Controls_Manager;
@@ -13,12 +13,12 @@ use UltimateStoreKit\Includes\Controls\SelectInput\Dynamic_Select;
 
 class Builder_Integration {
 
-	use Singleton;
+    use Singleton;
 
-	private $current_template = null;
-	public $current_template_id = null;
+    private $current_template = null;
+    public $current_template_id = null;
 
-	function __construct() {
+    function __construct() {
         add_filter('template_include', [$this, 'set_builder_template'], 9999);
         add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);
         add_action('elementor/documents/register_controls', [$this, 'register_document_controls']);
@@ -215,63 +215,63 @@ class Builder_Integration {
 
     public function getThemeTemplatePath( $slug ) {
 
-		$fullPath  = get_template_directory()."/ultimate-store-kit/$slug";
-		if ( file_exists( $fullPath ) ) {
-			return $fullPath;
-		}
-	}
+        $fullPath  = get_template_directory()."/ultimate-store-kit/$slug";
+        if ( file_exists( $fullPath ) ) {
+            return $fullPath;
+        }
+    }
 
-	public function getPluginTemplatePath( $slug ) {
+    public function getPluginTemplatePath( $slug ) {
 
-		$fullPath  = BDTUSK_PATH."includes/builder/templates/$slug";
-		if ( file_exists( $fullPath ) ) {
-			return $fullPath;
-		}
-	}
-
-
-	/**
-	 * Get Template Path ID
-	 *
-	 * @param $slug
-	 * @param $postType
-	 *
-	 * @return mixed|void|null
-	 */
-	public function get_template_id( $slug, $postType = false ) {
-
-		if ( null !== $this->current_template_id ) {
-			return $this->current_template_id;
-		}
-
-		$templateId = Builder_Template_Helper::getTemplate( $slug, $postType );
-		$this->current_template_id = apply_filters( 'ultimate-woo-kit-builder/custom-shop-template', $templateId );
-
-		return $this->current_template_id;
-	}
+        $fullPath  = BDTUSK_PATH."includes/builder/templates/$slug";
+        if ( file_exists( $fullPath ) ) {
+            return $fullPath;
+        }
+    }
 
 
-	/**
-	 * Get Template Path
-	 *
-	 * @param $slug
-	 * @param $default
-	 *
-	 * @return mixed|string|void
-	 */
-	protected function getTemplatePath( $slug, $default = '' ) {
-		$phpSlug = "{$slug}.php";
+    /**
+     * Get Template Path ID
+     *
+     * @param $slug
+     * @param $postType
+     *
+     * @return mixed|void|null
+     */
+    public function get_template_id( $slug, $postType = false ) {
 
-		if($template = $this->getThemeTemplatePath($phpSlug)){
-			return $template;
-		}
+        if ( null !== $this->current_template_id ) {
+            return $this->current_template_id;
+        }
 
-		if($template = $this->getPluginTemplatePath($phpSlug)){
-			return $template;
-		}
+        $templateId = Builder_Template_Helper::getTemplate( $slug, $postType );
+        $this->current_template_id = apply_filters( 'ultimate-woo-kit-builder/custom-shop-template', $templateId );
 
-		return $default;
-	}
+        return $this->current_template_id;
+    }
+
+
+    /**
+     * Get Template Path
+     *
+     * @param $slug
+     * @param $default
+     *
+     * @return mixed|string|void
+     */
+    protected function getTemplatePath( $slug, $default = '' ) {
+        $phpSlug = "{$slug}.php";
+
+        if($template = $this->getThemeTemplatePath($phpSlug)){
+            return $template;
+        }
+
+        if($template = $this->getPluginTemplatePath($phpSlug)){
+            return $template;
+        }
+
+        return $default;
+    }
 
 }
 

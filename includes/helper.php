@@ -1071,3 +1071,25 @@ function ultimate_store_kit_quick_view_product_images() {
 	</div>
 <?php
 }
+
+
+/**
+ * License Validation
+ */
+if (!function_exists('usk_license_validation')) {
+	function usk_license_validation() {
+
+		if (function_exists('_is_usk_pro_activated') && false === _is_usk_pro_activated()) {
+			return false;
+		}
+
+		$license_key   = trim(get_option('ultimate_post_kit_license_key'));
+
+		if (isset($license_key) && !empty($license_key)) {
+			return true;
+		} else {
+			return false;
+		}
+		return false;
+	}
+}

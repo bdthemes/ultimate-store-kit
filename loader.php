@@ -131,7 +131,11 @@ class Ultimate_Store_Kit_Loader {
         //GLOBAL CONTROLS
         require_once BDTUSK_PATH . 'traits/global-widget-controls.php';
         require_once BDTUSK_PATH . 'traits/global-widget-template.php';
-        require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
+
+
+        if (class_exists('woocommerce')) {
+            require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
+        }
 
         if (is_admin()) {
             if (!defined('BDTUSK_CH')) {
@@ -251,12 +255,18 @@ class Ultimate_Store_Kit_Loader {
 
         wp_enqueue_script('usk-editor', BDTUSK_ASSETS_URL . 'js/ultimate-store-kit-editor' . $suffix . '.js', ['backbone-marionette', 'elementor-common-modules', 'elementor-editor-modules',], BDTUSK_VER, true);
 
+        $_is_usk_pro_activated = false;
+        if (function_exists('usk_license_validation') && true === usk_license_validation()) {
+            $_is_usk_pro_activated = true;
+        }
+
         $localize_data = [
-            'pro_installed'  => _is_usk_pro_activated(),
+            'pro_installed'         => _is_usk_pro_activated(),
+            'pro_license_activated' => $_is_usk_pro_activated,
             'promotional_widgets'   => [],
         ];
 
-        if (!_is_usk_pro_activated()) {
+        if (!$_is_usk_pro_activated) {
             $pro_widget_map = new \UltimateStoreKit\Includes\Pro_Widget_Map();
             $localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
         }
@@ -306,8 +316,8 @@ class Ultimate_Store_Kit_Loader {
         $elementor = Plugin::$instance;
 
         // Add element category in panel
+        $elementor->elements_manager->add_category('ultimate-store-kit-single', ['title' => 'Ultimate Store Kit (Single)', 'icon' => 'font']);
         $elementor->elements_manager->add_category(BDTUSK_SLUG, ['title' => BDTUSK_TITLE, 'icon' => 'font']);
-
     }
     // /**
     //  * initialize the category
