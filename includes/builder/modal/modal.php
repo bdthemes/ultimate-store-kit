@@ -2,7 +2,7 @@
     <div id="ultimate-builder-kit-builder-modal-wrapper">
         <div class="usk-template-modal-header">
             <div class="usk-modal-logo-wrap">
-                <img class="usk-modal-logo" src="<?php echo esc_attr(BDTUSK_ADM_ASSETS_URL.'/images/logo.svg') ?>" alt="">
+                <img class="usk-modal-logo" src="<?php echo esc_attr(BDTUSK_ADM_ASSETS_URL . '/images/logo.svg') ?>" alt="">
                 <span class="usk-logo-text">New Template</span>
             </div>
             <div class="usk-modal-close-button">
@@ -32,36 +32,36 @@
                         $templates = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::templateForSelectDropdown();
                         $separator = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::separator();
 
-                       // print_r($separator);
+                        print_r($separator);
 
 
                         // It is single
                         if (count($templates) == 1) {
                             $templateKey = array_key_last($templates);
                             $template    = $templates[$templateKey];
-                            foreach ($template as $key => $item):
+                            foreach ($template as $key => $item) :
                                 $selectValue = "{$templateKey}{$separator}{$key}";
-                            ?>
+                        ?>
                                 <option value="<?php echo esc_attr($selectValue) ?>"><?php echo esc_attr($item) ?></option>
-                            <?php
+                                <?php
                             endforeach;
                         }
 
                         if (count($templates) > 1) {
-                            foreach ($templates as $keys => $items):
-                                $label = ucwords(str_replace(['-','_'],[' '], $keys));
+                            foreach ($templates as $keys => $items) :
+                                $label = ucwords(str_replace(['-', '_'], [' '], $keys));
                                 if (is_array($items)) {
-                                    ?>
+                                ?>
                                     <optgroup label="<?php echo $label ?>"><?php
-                                        foreach ($items as $key => $item):
-                                            $itemValue = "{$keys}{$separator}{$key}"
-                                            ?>
+                                                                            foreach ($items as $key => $item) :
+                                                                                $itemValue = "{$keys}{$separator}{$key}"
+                                                                            ?>
                                             <option value="<?php echo esc_attr($itemValue) ?>"><?php echo esc_attr($item) ?></option>
                                         <?php
-                                        endforeach;
+                                                                            endforeach;
                                         ?>
                                     </optgroup>
-                                    <?php
+                        <?php
                                 }
                             endforeach;
                         }

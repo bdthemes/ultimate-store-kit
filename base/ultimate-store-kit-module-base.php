@@ -17,7 +17,7 @@ abstract class Ultimate_Store_Kit_Module_Base extends Module {
 	}
 
 	public function __construct() {
-		add_action('elementor/widgets/widgets_registered', [$this, 'init_widgets']);
+		add_action('elementor/widgets/register', [$this, 'init_widgets']);
 	}
 
 	public function init_widgets() {
@@ -26,7 +26,7 @@ abstract class Ultimate_Store_Kit_Module_Base extends Module {
 
 		foreach ($this->get_widgets() as $widget) {
 			$class_name = $this->get_reflection()->getNamespaceName() . '\Widgets\\' . $widget;
-			$widget_manager->register_widget_type(new $class_name());
+			$widget_manager->register(new $class_name());
 		}
 	}
 

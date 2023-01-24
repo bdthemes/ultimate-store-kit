@@ -120,7 +120,7 @@ class Dynamic_Select extends Base_Data_Control {
     }
 }
 
-add_action('elementor/controls/controls_registered', function () {
+add_action('elementor/controls/register', function () {
     $controls_manager = Plugin::$instance->controls_manager;
-    $controls_manager->register_control(Dynamic_Select::TYPE, new Dynamic_Select());
+    $controls_manager->register(new Dynamic_Select());
 });

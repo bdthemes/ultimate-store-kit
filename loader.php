@@ -224,8 +224,8 @@ class Ultimate_Store_Kit_Loader {
         $direction_suffix = is_rtl() ? '.rtl' : '';
 
         wp_enqueue_style('ultimate-store-kit-site', BDTUSK_ASSETS_URL . 'css/ultimate-store-kit-site' . $direction_suffix . '.css', [], BDTUSK_VER);
-        wp_enqueue_style('slick-modal', BDTUSK_ASSETS_URL . 'vendor/css/slickmodal' . $direction_suffix . '.css', [], BDTUSK_VER);
-        wp_enqueue_style('toolslide-css', BDTUSK_ASSETS_URL . 'vendor/css/toolslide' . $direction_suffix . '.css', [], BDTUSK_VER);
+        wp_enqueue_style('slick-modal', BDTUSK_ASSETS_URL . 'vendor/css/slickmodal.css', [], BDTUSK_VER);
+        wp_enqueue_style('toolslide-css', BDTUSK_ASSETS_URL . 'vendor/css/toolslide.css', [], BDTUSK_VER);
     }
 
 

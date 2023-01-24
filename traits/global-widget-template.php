@@ -136,7 +136,7 @@ trait Global_Widget_Template {
         $hide_arrow_on_mobile = $settings['hide_arrow_on_mobile'] ? ' usk-visible@m' : '';
 
         if ('arrows' == $settings['navigation']) : ?>
-            <div class="usk-position-z-index usk-position-<?php echo esc_html($settings['arrows_position'] . $hide_arrow_on_mobile); ?>">
+            <div style="direction: ltr;" class="usk-position-z-index usk-position-<?php echo esc_html($settings['arrows_position'] . $hide_arrow_on_mobile); ?>">
                 <div class="usk-arrows-container usk-slidenav-container">
                     <a href="" class="usk-navigation-prev usk-slidenav-previous usk-icon usk-slidenav">
                         <i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>

@@ -953,7 +953,7 @@ class UltimateStoreKit_Admin_Settings {
     </div>
 
     <?php if (!defined('BDTUSK_WL')) {
-      $this->footer_info();
+      //$this->footer_info();
     } ?>
 
     <?php

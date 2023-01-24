@@ -48,15 +48,6 @@ class Add_To_Cart extends Module_Base {
         }
     }
 
-    // public function get_custom_help_url() {
-    //     return 'https://youtu.be/471vvaA9WQY';
-    // }
-
-    public function on_export($element) {
-        unset($element['settings']['product_id']);
-
-        return $element;
-    }
 
     public function unescape_html($safe_text, $text) {
         return $text;
@@ -67,24 +58,6 @@ class Add_To_Cart extends Module_Base {
             'section_product',
             [
                 'label' => esc_html__('Layout', 'ultimate-store-kit'),
-            ]
-        );
-
-        $post_list = get_posts(['numberposts' => 50, 'post_type' => 'product',]);
-
-        $post_list_options = ['0' => esc_html__('Select Post', 'ultimate-store-kit')];
-
-        foreach ($post_list as $list) :
-            $post_list_options[$list->ID] = $list->post_title;
-        endforeach;
-
-        $this->add_control(
-            'product_id',
-            [
-                'label'   => esc_html__('Product', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::SELECT2,
-                'options' => $post_list_options,
-                'default' => ['0'],
             ]
         );
 
@@ -545,21 +518,9 @@ class Add_To_Cart extends Module_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-
-        // if (!$this->__set_editor_product()) {
-        //     return;
-        // }
-
-        if (!empty($settings['product_id'])) {
-            $product_id = $settings['product_id'];
-        } elseif (wp_doing_ajax()) {
-            $product_id = esc_attr($_POST['post_id']);
-        } else {
-            $product_id = get_queried_object_id();
-        }
-
+        $this->usk_set_single_post_preview_data();
         global $product;
-        $product = wc_get_product($product_id);
+        $product = wc_get_product(get_the_ID());
         if ($settings['show_quantity']) {
             $this->render_form_button($product);
         } else {

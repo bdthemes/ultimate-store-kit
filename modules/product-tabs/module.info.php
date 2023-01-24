@@ -5,6 +5,6 @@ return [
 	'title'              => esc_html__('Product Tabs', 'ultimate-store-kit'),
 	'required'           => true,
 	'default_activation' => true,
-	// 'has_style' 		 => true,
+	'has_style' 		 => true,
 	// 'has_script' 		 => true,
 ];

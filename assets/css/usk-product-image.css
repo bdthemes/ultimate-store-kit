@@ -1,0 +1,8 @@
+.woocommerce div.product div.images .woocommerce-product-gallery__image:nth-child(n+2) {
+  margin: 10px 10px 0px 0px; }
+
+.woocommerce div.product div.images {
+  margin-bottom: 2em; }
+
+.elementor-element.elementor-widget-empty {
+  background-color: transparent !important; }

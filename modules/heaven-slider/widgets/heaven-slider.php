@@ -83,17 +83,17 @@ class Heaven_Slider extends Module_Base {
             [
                 'label' => esc_html__('Item Height', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', 'vh', 'em' ],
-				'range' => [
-					'px' => [
-						'min' => 200,
-						'max' => 1080,
-					],
-					'vh' => [
-						'min' => 10,
-						'max' => 100,
-					],
-				],
+                'size_units' => ['px', 'vh', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 200,
+                        'max' => 1080,
+                    ],
+                    'vh' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                ],
                 'selectors'  => [
                     '{{WRAPPER}} .usk-heaven-slider' => 'height: {{SIZE}}{{UNIT}}',
                 ],
@@ -332,7 +332,7 @@ class Heaven_Slider extends Module_Base {
                 'default' => 'yes',
             ]
         );
-        
+
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -460,7 +460,7 @@ class Heaven_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'slider_items_border',
-                'label'          => __( 'Border', 'ultimate-store-kit' ),
+                'label'          => __('Border', 'ultimate-store-kit'),
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',
@@ -539,21 +539,21 @@ class Heaven_Slider extends Module_Base {
         );
 
         $this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'ultimate-store-kit' ),
-				'selector' => '{{WRAPPER}} .usk-heaven-slider .usk-main-slider .usk-image-wrap .usk-img',
-			]
-		);
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'box_shadow',
+                'label' => esc_html__('Box Shadow', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-heaven-slider .usk-main-slider .usk-image-wrap .usk-img',
+            ]
+        );
 
         $this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'image_css_filters',
-				'selector' => '{{WRAPPER}} .usk-heaven-slider .usk-main-slider .usk-image-wrap .usk-img',
-			]
-		);
+            Group_Control_Css_Filter::get_type(),
+            [
+                'name' => 'image_css_filters',
+                'selector' => '{{WRAPPER}} .usk-heaven-slider .usk-main-slider .usk-image-wrap .usk-img',
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -1400,7 +1400,7 @@ class Heaven_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'thumbs_items_border',
-                'label'          => __( 'Border', 'ultimate-store-kit' ),
+                'label'          => __('Border', 'ultimate-store-kit'),
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',
@@ -1460,7 +1460,7 @@ class Heaven_Slider extends Module_Base {
         );
 
         $this->end_controls_tab();
-        
+
         $this->start_controls_tab(
             'tabs_thumbs_active',
             [
@@ -1494,18 +1494,18 @@ class Heaven_Slider extends Module_Base {
         global $product;
         $settings = $this->get_settings_for_display();
         $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
-        ?>
+?>
         <div class="usk-image-wrap">
             <img class="usk-img" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
         </div>
-        <?php
+    <?php
     }
-    
+
     public function render_slider_header() {
         $settings = $this->get_settings_for_display();
         $this->add_render_attribute('slider', 'class', ['usk-heaven-slider']);
         $id = 'ultimate-store-kit-' . $this->get_id();
-        
+
         $this->add_render_attribute('slider', 'id', $id);
 
         $this->add_render_attribute(
@@ -1531,178 +1531,178 @@ class Heaven_Slider extends Module_Base {
                                 "prevEl" => "#" . $id . " .usk-button-prev",
                             ],
                             "lazy" => [
-								"loadPrevNext"  => "true",
-							],
+                                "loadPrevNext"  => "true",
+                            ],
 
                         ]))
                     ]
                 ]
             ]
         );
-        ?>
+    ?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('slider'); ?>>
                 <div class="swiper usk-main-slider">
                     <div class="swiper-wrapper">
                     <?php
-    }
+                }
 
-    public function render_slider_footer() {
-        $settings = $this->get_settings_for_display();
-        ?>
+                public function render_slider_footer() {
+                    $settings = $this->get_settings_for_display();
+                    ?>
+                    </div>
                 </div>
-            </div>
 
-            <?php if ($settings['show_arrows']) : ?>
-            <div class="usk-navigation-wrap">
-                <div class="usk-nav-btn usk-button-next">
-                    <i class="usk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-                </div>
-                <div class="usk-nav-btn usk-button-prev">
-                    <i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
-                </div>
-            </div>
-            <?php endif; ?>
-
-            <!-- thumbsslider -->
-            <div thumbsSlider="" class="usk-thumbs-slider">
-                <div class="swiper-wrapper">
-                <?php $this->render_thumbs_item(); ?>
-                </div>
-            </div>
-            <!-- thumbsslider -->
-        </div>
-    </div>
-    <?php
-    }
-
-    public function print_price_output($output) {
-        $tags = [
-            'del' => ['aria-hidden' => []],
-            'span'  => ['class' => []],
-            'bdi' => [],
-            'ins' => [],
-        ];
-
-        if (isset($output)) {
-            echo wp_kses($output, $tags);
-        }
-    }
-    
-    public function render_loop_item() {
-        $settings = $this->get_settings_for_display();
-        $id = 'usk-wc-product-' . $this->get_id();
-        $modal_id = wp_unique_id('modal-id-');
-
-        // $wp_query = $this->render_query();
-        $this->query_product();
-        $wp_query = $this->get_query();
-        if ($wp_query->have_posts()) { ?>
-        <?php while ($wp_query->have_posts()) : $wp_query->the_post();
-        global $product;
-        $tooltip_position = 'top';
-
-        $rating_count = $product->get_rating_count();
-        $average = $product->get_average_rating();
-        if ($settings['show_rating'] == 'yes') {
-            $this->add_render_attribute('usk-item', 'class', ['usk-item swiper-slide', 'usk-have-rating'], true);
-        } else {
-            $this->add_render_attribute('usk-item', 'class', ['usk-item swiper-slide'], true);
-        }
-
-        ?>
-        <div <?php $this->print_render_attribute_string('usk-item'); ?>>
-            <div class="usk-item-box">
-                <?php $this->render_image(); ?>
-                <div class="usk-content">
-
-                    <div class="usk-badge-label-wrapper">
-                        <div class="usk-badge-label-content">
-                            <?php $this->register_global_template_badge_label(); ?>
+                <?php if ($settings['show_arrows']) : ?>
+                    <div class="usk-navigation-wrap" style="direction:ltr;">
+                        <div class="usk-nav-btn usk-button-next">
+                            <i class="usk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+                        </div>
+                        <div class="usk-nav-btn usk-button-prev">
+                            <i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
                         </div>
                     </div>
+                <?php endif; ?>
 
-                    <div>
-
-                        <?php if ('yes' == $settings['show_category']) : ?>
-                            <?php printf('<div class="usk-category">%1$s</div>', wc_get_product_category_list($product->get_id())); ?>
-                        <?php endif; ?>
-    
-                        <?php if ('yes' == $settings['show_title']) :
-                            printf('<%1$s class="usk-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], $product->get_permalink(), $product->get_title());
-                        endif; ?>
-    
-                        <?php if ('yes' == $settings['show_excerpt']) : ?>
-                            <div class="usk-text">
-                                <?php echo wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...'); ?>
-                            </div>
-                        <?php endif; ?>
-    
-                        <?php if ('yes' == $settings['show_price']) : ?>
-                            <div class="usk-price">
-                                <?php
-                                $this->print_price_output($product->get_price_html());
-                                ?>
-                            </div>
-                        <?php endif; ?>
-    
-                        <?php if ('yes' == $settings['show_rating']) : ?>
-                            <div class="usk-rating">
-                                <span><?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <?php if ('yes' == $settings['show_cart'] or 'yes' == $settings['show_wishlist'] or 'yes' == $settings['show_quick_view']) : ?>
-                        <div class="usk-action-btn">
-                            <?php
-                            $this->register_global_template_add_to_cart($tooltip_position);
-                            $this->register_global_template_add_to_wishlist($tooltip_position);
-                            $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                            ?>
-                        </div>
-                        <?php endif; ?>
+                <!-- thumbsslider -->
+                <div thumbsSlider="" class="usk-thumbs-slider">
+                    <div class="swiper-wrapper">
+                        <?php $this->render_thumbs_item(); ?>
                     </div>
-                    <!-- div uses for space  -->
-                    <div></div>
-
                 </div>
+                <!-- thumbsslider -->
             </div>
         </div>
-        <?php endwhile;
-            wp_reset_postdata();
-        } else {
-            echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
-        }
-    }
+        <?php
+                }
 
-    public function render_thumbs_item() {
-        $settings = $this->get_settings_for_display();
-        $this->query_product();
-        $wp_query = $this->get_query();
-        if ($wp_query->have_posts()) { ?>
-        <?php while ($wp_query->have_posts()) : $wp_query->the_post();
-        global $product;
+                public function print_price_output($output) {
+                    $tags = [
+                        'del' => ['aria-hidden' => []],
+                        'span'  => ['class' => []],
+                        'bdi' => [],
+                        'ins' => [],
+                    ];
 
-        ?>
-       <div class="swiper-slide usk-item">
-            <div class="usk-item-box">
-                <?php $this->render_image(); ?>
-            </div>
-        </div>
-        <?php endwhile;
-            wp_reset_postdata();
-        } else {
-            echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
-        }
-    }
+                    if (isset($output)) {
+                        echo wp_kses($output, $tags);
+                    }
+                }
 
-    public function render() {
-        $this->render_slider_header();
-        $this->render_loop_item();
-        $this->render_slider_footer();
-    }
-    public function query_product() {
-        $default = $this->getGroupControlQueryArgs();
-        $this->_query = new WP_Query($default);
-    }
-}
+                public function render_loop_item() {
+                    $settings = $this->get_settings_for_display();
+                    $id = 'usk-wc-product-' . $this->get_id();
+                    $modal_id = wp_unique_id('modal-id-');
+
+                    // $wp_query = $this->render_query();
+                    $this->query_product();
+                    $wp_query = $this->get_query();
+                    if ($wp_query->have_posts()) { ?>
+            <?php while ($wp_query->have_posts()) : $wp_query->the_post();
+                            global $product;
+                            $tooltip_position = 'top';
+
+                            $rating_count = $product->get_rating_count();
+                            $average = $product->get_average_rating();
+                            if ($settings['show_rating'] == 'yes') {
+                                $this->add_render_attribute('usk-item', 'class', ['usk-item swiper-slide', 'usk-have-rating'], true);
+                            } else {
+                                $this->add_render_attribute('usk-item', 'class', ['usk-item swiper-slide'], true);
+                            }
+
+            ?>
+                <div <?php $this->print_render_attribute_string('usk-item'); ?>>
+                    <div class="usk-item-box">
+                        <?php $this->render_image(); ?>
+                        <div class="usk-content">
+
+                            <div class="usk-badge-label-wrapper">
+                                <div class="usk-badge-label-content">
+                                    <?php $this->register_global_template_badge_label(); ?>
+                                </div>
+                            </div>
+
+                            <div>
+
+                                <?php if ('yes' == $settings['show_category']) : ?>
+                                    <?php printf('<div class="usk-category">%1$s</div>', wc_get_product_category_list($product->get_id())); ?>
+                                <?php endif; ?>
+
+                                <?php if ('yes' == $settings['show_title']) :
+                                    printf('<%1$s class="usk-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], $product->get_permalink(), $product->get_title());
+                                endif; ?>
+
+                                <?php if ('yes' == $settings['show_excerpt']) : ?>
+                                    <div class="usk-text">
+                                        <?php echo wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...'); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ('yes' == $settings['show_price']) : ?>
+                                    <div class="usk-price">
+                                        <?php
+                                        $this->print_price_output($product->get_price_html());
+                                        ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ('yes' == $settings['show_rating']) : ?>
+                                    <div class="usk-rating">
+                                        <span><?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ('yes' == $settings['show_cart'] or 'yes' == $settings['show_wishlist'] or 'yes' == $settings['show_quick_view']) : ?>
+                                    <div class="usk-action-btn">
+                                        <?php
+                                        $this->register_global_template_add_to_cart($tooltip_position);
+                                        $this->register_global_template_add_to_wishlist($tooltip_position);
+                                        $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
+                                        ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <!-- div uses for space  -->
+                            <div></div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile;
+                        wp_reset_postdata();
+                    } else {
+                        echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
+                    }
+                }
+
+                public function render_thumbs_item() {
+                    $settings = $this->get_settings_for_display();
+                    $this->query_product();
+                    $wp_query = $this->get_query();
+                    if ($wp_query->have_posts()) { ?>
+            <?php while ($wp_query->have_posts()) : $wp_query->the_post();
+                            global $product;
+
+            ?>
+                <div class="swiper-slide usk-item">
+                    <div class="usk-item-box">
+                        <?php $this->render_image(); ?>
+                    </div>
+                </div>
+<?php endwhile;
+                        wp_reset_postdata();
+                    } else {
+                        echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
+                    }
+                }
+
+                public function render() {
+                    $this->render_slider_header();
+                    $this->render_loop_item();
+                    $this->render_slider_footer();
+                }
+                public function query_product() {
+                    $default = $this->getGroupControlQueryArgs();
+                    $this->_query = new WP_Query($default);
+                }
+            }

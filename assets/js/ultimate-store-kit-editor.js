@@ -135,8 +135,11 @@
 				childView: categoriesView.prototype.childView.prototype.childView.extend(promotionalWidgetHandler)
 			})
 		});
-
 		return panel;
+	});
+
+	$('iframe').load(function () {
+		$("iframe").contents().find(".usk-template-builder-template").addClass('woocommerce woocommerce-page');
 	});
 
 

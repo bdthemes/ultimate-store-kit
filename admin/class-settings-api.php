@@ -903,9 +903,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                         <form class="settings-save" method="post" action="admin-ajax.php?action=ultimate_store_kit_settings_save">
                             <input type="hidden" name="id" value="<?php echo esc_attr($form['id']); ?>">
 
-                            <?php
-
-                            if (!current_user_can('manage_options')) {
+                            <?php if (!current_user_can('manage_options')) {
                                 return;
                             }
 
@@ -918,9 +916,6 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                             do_action('wsa_form_bottom_' . $form['id'], $form);
 
                             ?>
-
-
-
 
                             <div class="ultimate-store-kit-footer-info bdt-container-xlarge">
 

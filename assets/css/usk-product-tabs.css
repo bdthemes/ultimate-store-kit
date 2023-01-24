@@ -1,0 +1,57 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0; }
+  .tabs li a {
+    color: #5c5a7d;
+    padding: 16px 14px !important;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    background-color: #f4f4f4; }
+  .tabs li.active a {
+    color: #004aff !important;
+    background-color: #fff; }
+  .tabs li a {
+    position: relative;
+    z-index: 11; }
+
+.woocommerce-tabs .panel {
+  margin-top: 30px !important; }
+
+.comment-reply-title {
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+  display: inline-block; }
+
+.comment-form-rating,
+.comment-form-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  margin-bottom: 20px; }
+
+.comment-form select#rating {
+  padding: 15px; }
+
+.woocommerce .usk-product-tabs table.shop_attributes th {
+  width: auto;
+  text-align: left;
+  padding: 15px;
+  font-size: 14px;
+  color: #494b70; }
+
+.woocommerce .usk-product-tabs table.shop_attributes td {
+  font-style: normal;
+  padding: 15px;
+  font-size: 14px; }
+
+.comment-reply-title {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: inline-block; }

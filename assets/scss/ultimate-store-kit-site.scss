@@ -126,6 +126,14 @@
     }
 }
 
+//Inline font feature fixing
+[class*=" elementor-widget-usk-"] {
+	svg.e-font-icon-svg {
+		height: 1em;
+		width: 1em;
+	}
+}
+
 /*-------------------------------------
    usk Shiny Widget header scss
    --------------------------------------*/

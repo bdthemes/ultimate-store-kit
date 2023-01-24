@@ -135,8 +135,7 @@ class Product_Related extends Module_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-        // global $product;`
-        $product = wc_get_product();
+        global $product;
         $column = (int) $settings['column'];
 
 ?>

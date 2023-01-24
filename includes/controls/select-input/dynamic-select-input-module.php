@@ -122,7 +122,7 @@ class Dynamic_Select_Input_Module {
 	/**
 	 * @return string[]|\WP_Taxonomy[]
 	 */
-	protected function getAllPublicTaxonomies() {
+	public function getAllPublicTaxonomies() {
 		return array_values(get_taxonomies(['public' => true]));
 	}
 

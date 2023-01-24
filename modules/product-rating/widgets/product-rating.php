@@ -139,14 +139,13 @@ class Product_Rating extends Module_Base {
     }
 
     protected function render() {
-        global $product;
 
         // if ((!wc_review_ratings_enabled()) or (!$this->usk_set_single_post_type_editor_builder_data())) {
         //     return;
         // }
 
         $this->usk_set_single_post_preview_data();
-
+        global $product;
         $rating_count = $product->get_rating_count();
         $review_count = $product->get_review_count();
         $average      = $product->get_average_rating();
@@ -154,20 +153,12 @@ class Product_Rating extends Module_Base {
         if ($rating_count >= 0) : ?>
 
             <div class="usk-product-rating">
-                <?php echo wc_get_rating_html($average, $rating_count); // WPCS: XSS ok.
-                ?>
+                <?php echo wc_get_rating_html($average, $rating_count); ?>
                 <?php if (comments_open()) : ?>
-                    <?php //phpcs:disable
-                    ?>
                     <a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf(_n('%s customer review', '%s customer reviews', $review_count, 'woocommerce'), '<span class="count">' . esc_html($review_count) . '</span>'); ?>)</a>
-                    <?php // phpcs:enable
-                    ?>
                 <?php endif ?>
             </div>
 
 <?php endif;
-    }
-
-    public function render_plain_content() {
     }
 }

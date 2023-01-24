@@ -11,3 +11,30 @@
 
 .theme-astra .edd_download_purchase_form .edd_purchase_submit_wrapper {
   margin: 0; }
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+  border: 0 !important;
+  background-color: transparent !important;
+  color: 0 !important;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important; }
+
+.woocommerce div.product .woocommerce-tabs ul.tabs::before {
+  content: none !important; }
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after, .woocommerce div.product .woocommerce-tabs ul.tabs li::before {
+  content: none !important; }
+
+.woocommerce #content div.product .woocommerce-tabs ul.tabs::after, .woocommerce #content div.product .woocommerce-tabs ul.tabs::before, .woocommerce div.product .woocommerce-tabs ul.tabs::after, .woocommerce div.product .woocommerce-tabs ul.tabs::before, .woocommerce-page #content div.product .woocommerce-tabs ul.tabs::after, .woocommerce-page #content div.product .woocommerce-tabs ul.tabs::before, .woocommerce-page div.product .woocommerce-tabs ul.tabs::after, .woocommerce-page div.product .woocommerce-tabs ul.tabs::before {
+  content: none !important; }
+
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+  position: relative; }

@@ -31,7 +31,13 @@ class Product_Tabs extends Module_Base {
     public function get_keywords() {
         return ['wc', 'single', 'tabs'];
     }
-
+    public function get_style_depends() {
+        if ($this->usk_is_edit_mode()) {
+            return ['usk-all-styles'];
+        } else {
+            return ['usk-product-tabs'];
+        }
+    }
 
     protected function register_controls() {
 
@@ -43,33 +49,33 @@ class Product_Tabs extends Module_Base {
             ]
         );
 
-        $this->add_responsive_control(
-            'tabs_nav_layout',
-            [
-                'label'     => __('Layout', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::CHOOSE,
-                'options'   => [
-                    'inline'   => [
-                        'title' => __('Inline', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-ellipsis-h',
-                    ],
-                    'block' => [
-                        'title' => __('Block', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-editor-list-ul',
-                    ],
-                ],
-                'desktop_default' => 'inline',
-                'tablet_default' => 'inline',
-                'mobile_default' => 'inline',
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li' => '{{VALUE}};',
-                ],
-                'selectors_dictionary' => [
-                    'inline' => 'display: inline-flex !important;',
-                    'block' => 'display: flex !important;',
-                ]
-            ]
-        );
+        // $this->add_responsive_control(
+        //     'tabs_nav_layout',
+        //     [
+        //         'label'     => __('Layout', 'ultimate-store-kit'),
+        //         'type'      => Controls_Manager::CHOOSE,
+        //         'options'   => [
+        //             'inline'   => [
+        //                 'title' => __('Inline', 'ultimate-store-kit'),
+        //                 'icon'  => 'eicon-ellipsis-h',
+        //             ],
+        //             'block' => [
+        //                 'title' => __('Block', 'ultimate-store-kit'),
+        //                 'icon'  => 'eicon-editor-list-ul',
+        //             ],
+        //         ],
+        //         'desktop_default' => 'inline',
+        //         'tablet_default' => 'inline',
+        //         'mobile_default' => 'inline',
+        //         'selectors' => [
+        //             '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li' => '{{VALUE}};',
+        //         ],
+        //         'selectors_dictionary' => [
+        //             'inline' => 'display: inline-flex !important;',
+        //             'block' => 'display: flex !important;',
+        //         ]
+        //     ]
+        // );
 
         $this->add_responsive_control(
             'tabs_nav_align',
@@ -95,7 +101,7 @@ class Product_Tabs extends Module_Base {
                 'mobile_default' => 'left',
                 'toggle' => false,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -107,16 +113,27 @@ class Product_Tabs extends Module_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
+        $this->add_responsive_control(
+            'tabs_nav_item_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
                 'name'        => 'tabs_nav_border',
-                'selector'    => '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs',
+                'selector'    => '{{WRAPPER}} .usk-product-tabs ul.wc-tabs',
             ]
         );
 
@@ -138,7 +155,7 @@ class Product_Tabs extends Module_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -150,16 +167,17 @@ class Product_Tabs extends Module_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
+
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'tabs_nav_item_typography',
-                'selector' => '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li',
+                'selector' => '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li',
             ]
         );
 
@@ -167,7 +185,7 @@ class Product_Tabs extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'        => 'tabs_nav_item_border',
-                'selector'    => '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a',
+                'selector'    => '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a',
             ]
         );
 
@@ -179,7 +197,7 @@ class Product_Tabs extends Module_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
                 ],
             ]
         );
@@ -199,7 +217,7 @@ class Product_Tabs extends Module_Base {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a'   => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -209,7 +227,7 @@ class Product_Tabs extends Module_Base {
             [
                 'name'      => 'tabs_nav_item_bg',
                 'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a',
+                'selector'  => '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a',
             ]
         );
 
@@ -230,7 +248,7 @@ class Product_Tabs extends Module_Base {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a:hover'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a:hover'   => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -240,7 +258,7 @@ class Product_Tabs extends Module_Base {
             [
                 'name'      => 'tabs_nav_item_bg_hover',
                 'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a:hover',
+                'selector'  => '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a:hover',
             ]
         );
 
@@ -253,7 +271,7 @@ class Product_Tabs extends Module_Base {
                     'tabs_nav_item_border_border!' => '',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li a:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li a:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -274,7 +292,7 @@ class Product_Tabs extends Module_Base {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li.active a'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li.active a'   => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -284,7 +302,7 @@ class Product_Tabs extends Module_Base {
             [
                 'name'      => 'tabs_nav_bg_active',
                 'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li.active a',
+                'selector'  => '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li.active a',
             ]
         );
 
@@ -297,7 +315,7 @@ class Product_Tabs extends Module_Base {
                     'tabs_nav_item_border_border!' => '',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-data-tabs ul.wc-tabs li.active a' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-tabs ul.wc-tabs li.active a' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -324,7 +342,7 @@ class Product_Tabs extends Module_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-data-tabs .wc-tab' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-product-tabs .wc-tab' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -334,7 +352,18 @@ class Product_Tabs extends Module_Base {
             [
                 'name'      => 'tabs_content_bg',
                 'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-data-tabs .wc-tab',
+                'selector'  => '{{WRAPPER}} .usk-product-tabs .wc-tab',
+            ]
+        );
+
+        $this->add_control(
+            'tabs_content_color',
+            [
+                'label'     => __('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-product-tabs .wc-tab' => 'color: {{VALUE}}',
+                ],
             ]
         );
 
@@ -342,7 +371,7 @@ class Product_Tabs extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'        => 'tabs_content_border',
-                'selector'    => '{{WRAPPER}} .usk-product-data-tabs .wc-tab',
+                'selector'    => '{{WRAPPER}} .usk-product-tabs .wc-tab',
             ]
         );
 
@@ -353,7 +382,7 @@ class Product_Tabs extends Module_Base {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-data-tabs .wc-tab' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .usk-product-tabs .wc-tab' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
                 ],
             ]
         );
@@ -361,24 +390,34 @@ class Product_Tabs extends Module_Base {
         $this->end_controls_section();
     }
 
-    protected function render() {
-        global $product;
+    public function render() {
+        $product_tabs = apply_filters('woocommerce_product_tabs', array());
 
-        // if ($this->__set_editor_product()) {
-        $product = wc_get_product();
+        if (!empty($product_tabs)) : ?>
 
-        if (empty($product)) {
-            return;
-        }
+            <div class="usk-product-tabs woocommerce-tabs wc-tabs-wrapper">
+                <ul class="tabs wc-tabs" role="tablist">
+                    <?php foreach ($product_tabs as $key => $product_tab) : ?>
+                        <li class="<?php echo esc_attr($key); ?>_tab" id="tab-title-<?php echo esc_attr($key); ?>" role="tab" aria-controls="tab-<?php echo esc_attr($key); ?>">
+                            <a href="#tab-<?php echo esc_attr($key); ?>">
+                                <?php echo wp_kses_post(apply_filters('woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key)); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <?php foreach ($product_tabs as $key => $product_tab) : ?>
+                    <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr($key); ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr($key); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr($key); ?>">
+                        <?php
+                        if (isset($product_tab['callback'])) {
+                            call_user_func($product_tab['callback'], $key, $product_tab);
+                        } ?>
+                    </div>
+                <?php endforeach; ?>
 
-        setup_postdata($product->get_id());
+                <?php do_action('woocommerce_product_after_tabs'); ?>
+            </div>
 
-?>
-
-        <div class="usk-product-data-tabs">
-            <?php woocommerce_output_product_data_tabs();  ?>
-        </div>
-
+        <?php endif; ?>
         <script>
             // below code will work only on editor mode.
             jQuery('.wc-tabs li').removeClass('active');
@@ -392,10 +431,8 @@ class Product_Tabs extends Module_Base {
                 // Check for active
                 jQuery('.wc-tabs li').removeClass('active');
                 jQuery(this).parent().addClass('active');
-
                 // Display active tab
                 let currentTab = jQuery(this).attr('href');
-
                 jQuery('.woocommerce-Tabs-panel').hide();
                 jQuery(currentTab).show();
 
@@ -409,7 +446,7 @@ class Product_Tabs extends Module_Base {
         if (wp_doing_ajax()) {
         ?>
             <script>
-                jQuery('.usk-tabs-wrapper, .woocommerce-tabs, #rating').trigger('init');
+                jQuery('.woocommerce-tabs, #rating').trigger('init');
             </script>
 
 <?php

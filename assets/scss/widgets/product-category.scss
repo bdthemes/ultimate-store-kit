@@ -258,6 +258,41 @@
     transition: transform 0.3s cubic-bezier(.17,.73,.66,.99) 0s,z-index 0.3s step-end,opacity 0.3s ease;
   }
 }
+
+&.style-6 {
+  .usk-item {
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    border: 0;
+  }
+
+  .usk-content {
+    position: unset;
+  }
+
+  .usk-product-category-image {
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      padding: 5px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+    }
+  }
+
+  .usk-category-count {
+    display: none;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
 }
 @media (min-width: 768px) {
   .usk-product-category {

@@ -16,7 +16,15 @@ module.exports = function (grunt) {
                     // 'assets/css/admin.css': 'assets/scss/admin.scss',
                     'admin/assets/css/usk-admin.css': 'assets/scss/admin.scss',
                     'assets/css/elementor.css': 'assets/scss/elementor.scss',
-                    'assets/css/overrides.css': 'assets/scss/overrides.scss',
+                    // 'assets/css/overrides.css': 'vendor/css/slickmodal.css',
+
+                    //PAGES
+                    'assets/css/usk-page-checkout.css': 'assets/scss/widgets/page-checkout.scss',
+                    'assets/css/usk-page-order.css': 'assets/scss/widgets/page-order.scss',
+                    'assets/css/usk-page-cart.css': 'assets/scss/widgets/page-cart.scss',
+                    'assets/css/usk-page-my-account.css': 'assets/scss/widgets/page-my-account.scss',
+                    'assets/css/usk-page-single.css': 'assets/scss/widgets/page-single.scss',
+
                     //Widget Css
                     'assets/css/usk-florence-grid.css': 'assets/scss/widgets/florence-grid.scss',
                     'assets/css/usk-florence-carousel.css': 'assets/scss/widgets/florence-carousel.scss',
@@ -48,6 +56,8 @@ module.exports = function (grunt) {
 
 
                     'assets/css/usk-product-related.css': 'assets/scss/widgets/product-related.scss',
+                    'assets/css/usk-product-tabs.css': 'assets/scss/widgets/product-tabs.scss',
+                    'assets/css/usk-product-image.css': 'assets/scss/widgets/product-image.scss',
                     //EDD
                     'assets/css/usk-edd-category-carousel.css': 'assets/scss/widgets/edd-category-carousel.scss',
                     'assets/css/usk-edd-category-grid.css': 'assets/scss/widgets/edd-category-grid.scss',
@@ -118,7 +128,7 @@ module.exports = function (grunt) {
                         'assets/js/widgets/usk-edd-category-carousel.js',
 
                         //CHECKOUT PAGE
-                        // 'assets/js/widgets/usk-checkout-coupon-form.js',
+                        'assets/js/widgets/usk-page-checkout.js',
                         // 'assets/js/widgets/usk-checkout-login-form.js',
                     ]
                 }

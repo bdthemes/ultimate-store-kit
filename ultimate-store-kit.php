@@ -15,7 +15,8 @@
  */
 
 // Some pre define value for easy use
-define('BDTUSK_VER', '1.2.0');
+define('BDTUSK_VER', time());
+// define('BDTUSK_VER', '1.2.0');
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
