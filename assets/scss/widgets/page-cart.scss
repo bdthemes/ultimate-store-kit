@@ -1,5 +1,5 @@
 
-.usk-cart {
+.usk-page-cart {
     .woocommerce-cart-form{
           .shop_table {
             border: 1px solid rgba(0,0,0,.1);
@@ -214,27 +214,27 @@
 }
 
 @media (min-width: 768px) {
-    .usk-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
+    .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
         width: 50%;
     }
 }
 @media (min-width: 1024px) {
-    .usk-cart .woocommerce-cart-form .shop_table .actions .coupon {
+    .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon {
         float: left;
     }
-    .usk-cart .woocommerce-cart-form .shop_table .actions .button {
+    .usk-page-cart .woocommerce-cart-form .shop_table .actions .button {
         width: 130px;
         font-size: 14px;
     }
-    .usk-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
+    .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
         width: 140px;
         font-size: 14px;
         margin-bottom: 0;
     }
-    .usk-cart .cart-collaterals .cart_totals .shop_table th, .usk-cart .cart-collaterals .cart_totals .shop_table td {
+    .usk-page-cart .cart-collaterals .cart_totals .shop_table th, .usk-page-cart .cart-collaterals .cart_totals .shop_table td {
         width: 50%;
     }
-    .usk-cart .cart-collaterals .cart_totals .wc-proceed-to-checkout .button {
+    .usk-page-cart .cart-collaterals .cart_totals .wc-proceed-to-checkout .button {
         height: 55px;
         line-height: 55px;
         font-size: 14px;

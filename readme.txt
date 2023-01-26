@@ -1,15 +1,15 @@
 === Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Product Table, Woocommerce Slider ===
-Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, rakibulpk, muhammadasik
+Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor, store kit, pagebuilder addon, addons, edd, bdthemes
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.0.1
+Tested up to: 6.1.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.7.2
+Elementor tested up to: 3.10.1
 
 Best addon for elementor WordPress plugin with 33+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -69,6 +69,7 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [Brand Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/brand-carousel/) - The Brand Carousel widget is the perfect tool for displaying your business brand partners on your eCommerce web front with a lucrative interface with carousel animations to attract more visitors into your business. Boost your business with the perfect display tool for WordPress
 0. [Featured Box](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/featured-box/) - With the Featured Box widget, you can display your eCommerce store products in a wide banner along with a meta title, title, product image, and a read more button so users can learn more. The hover background animations make it ideal for displaying store products
 0. [Info List](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/info-list/) - Using the Info List widget, you can create a dynamic product list with a fully customizable interface containing title, icon, description, and media (if necessary) to provide a detailed introduction to the viewers on your eCommerce website. Minimalistic and efficient
+0. [QR Code](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/qr-code/) - 
 
 = WooCommerce 🚾 =
 
@@ -92,6 +93,26 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [Showcase Slider](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/showcase-slider/) - Your online shop is incomplete without the Showcase Slider widget for eCommerce. This is a distinct slider tool providing a large canvas for displaying your featured product with half-revealed products on each side and eye-catchy slider animations for more user engagement.
 0. [Sub Category](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/sub-category/) - By using the Sub Category widget, you can display your eCommerce shop products in sub categories with special animation effects to make them more visually appealing. Using this widget, you can customize your product gallery to better suit your business and boost user experience
 0. [Sub Category Caousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/sub-category-carousel/) - The Sub Category Carousel widget features a carousel layout to display your product subcategories alongside your entire product lineup so that your visitors can see all the products without getting lost in the numbers. Make it useful by letting your visitors experience it for themselves.
+0. [Additional Information](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/additional-information/) - 
+0. [Breadcrumbs](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/breadcrumbs/) - 
+0. [Page Cart](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-cart/) - 
+0. [Page Checkout](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-checkout/) - 
+0. [Page My Account](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-my-account/) - 
+0. [Page Order](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-order/) - 
+0. [Page Single](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-single/) - 
+0. [Product Category Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-category-carousel/) - 
+0. [Product Description](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-description/) - 
+0. [Product Filter](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-filter/) - 
+0. [Product Image](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-image/) - 
+0. [Product Meta](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-meta/) - 
+0. [Product Price](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-price/) - 
+0. [Product Rating](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-rating/) - 
+0. [Product Related](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-related/) - 
+0. [Product Stock](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-stock/) - 
+0. [Product Table](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-table/) - 
+0. [Product Tabs](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-tabs/) - 
+0. [Product Title](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-title/) - 
+0. [Up Sells](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/up-sells/) - 
 
 = Easy Digital Downloads 💲 =
 
@@ -105,6 +126,8 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [EDD Standard Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-standard-grid/) - EDD Standard Grid by Ultimate Store Kit for WordPress makes it easy to create a standard eCommerce product grid. Featuring a wide variety of customization options, the widget enables you to quickly create a customized product gallery according to your specifications
 0. [EDD Trendy Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-trendy-carousel/) - The EDD Trending Carousel provides a refreshing product slider interface to onboard your eCommerce store products for display. With customizable hover animations, the carousel products show the product details and purchase button when hovered
 0. [EDD Trendy Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-trendy-grid/) - EDD Trendy Grid displays your eCommerce product gallery in a well-organized grid formation, with a minimum amount of product information displayed on the grid and hidden buttons visible upon hovering. The hover animation used in the widget makes it highly user interactive.
+0. [EDD Product Review Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-product-review-carousel/) - 
+0. [EDD Product Reviews](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-product-reviews/) - 
 
 More widgets & extensions are coming soon...
 
@@ -150,6 +173,55 @@ e.g.
 
 
 == Changelog ==
+
+
+= 1.3.0 [25th January 2023] =
+
+* Added: Additional information widget added
+* Added: Breadcrumbs widget added
+* Added: Page cart widget added
+* Added: Page checkout widget added
+* Added: Page my account widget added
+* Added: Page order widget added
+* Added: Page single widget added
+* Added: Product category carousel widget added
+* Added: Product description widget added
+* Added: Product filter widget added
+* Added: Product image widget added
+* Added: Product meta widget added
+* Added: Product price widget added
+* Added: Product rating widget added
+* Added: Product related widget added
+* Added: Product stock widget added
+* Added: Product table widget added
+* Added: Product tabs widget added
+* Added: Product title widget added
+* Added: QR Code widget added
+* Added: Up sells widget added
+* Added: Account address widget added
+* Added: Account dashboard
+* Added: Account details
+* Added: Account downloads
+* Added: Account login form
+* Added: Account logout
+* Added: Account navigation
+* Added: Account order details
+* Added: Account orders
+* Added: Account registration form
+* Added: Checkout additional info
+* Added: Checkout billing ddress
+* Added: Checkout coupon form
+* Added: Checkout login form
+* Added: Checkout order review
+* Added: Checkout payment
+* Added: Checkout shipping form
+* Added: Checkout shipping methods
+* Added: EDD product review carousel
+* Added: EDD product reviews
+* Added: Thankyou order
+* Added: Thankyou order confirmation
+* Added: Thankyou order customer address
+* Added: Thankyou order details
 
 = 1.2.0 [22th August 2022] =
 

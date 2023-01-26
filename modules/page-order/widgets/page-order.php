@@ -26,7 +26,7 @@ class Page_Order extends Module_Base {
     }
 
     public function get_title() {
-        return BDTUSK . esc_html__('Page Order', 'ultimate-store-kit');
+        return BDTUSK . esc_html__('Order Page', 'ultimate-store-kit');
     }
 
     public function get_icon() {

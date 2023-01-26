@@ -1,5 +1,7 @@
 //pages
 @import "page-checkout.scss";
+@import "page-cart.scss";
+@import "page-my-account.scss";
 
 @import "florence-grid.scss";
 @import "florence-carousel.scss";
@@ -17,7 +19,7 @@
 @import "shiny-carousel.scss";
 @import "showcase-slider.scss";
 @import "mini-cart.scss";
-@import "add-to-cart.scss";
+// @import "add-to-cart.scss";
 @import "edd-category-carousel.scss";
 @import "edd-category-grid.scss";
 @import "brand-grid.scss";
@@ -28,10 +30,9 @@
 @import "featured-box.scss";
 @import "heaven-slider.scss";
 @import "mentor-slider.scss";
-@import "filter.scss";
-@import "product-related.scss";
-@import "product-tabs.scss";
-@import "product-image.scss";
+// @import "product-related.scss";
+// @import "product-tabs.scss";
+// @import "product-image.scss";
 
 //EDD
 @import "edd-beauty-grid.scss";

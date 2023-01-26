@@ -32,7 +32,6 @@ module.exports = function (grunt) {
                     'assets/css/usk-glossy-carousel.css': 'assets/scss/widgets/glossy-carousel.scss',
                     'assets/css/usk-product-accordion.css': 'assets/scss/widgets/product-accordion.scss',
                     'assets/css/usk-product-category.css': 'assets/scss/widgets/product-category.scss',
-                    'assets/css/usk-add-to-cart.css': 'assets/scss/widgets/add-to-cart.scss',
                     'assets/css/usk-florence-carousel.css': 'assets/scss/widgets/florence-carousel.scss',
                     'assets/css/usk-sub-category.css': 'assets/scss/widgets/sub-category.scss',
                     'assets/css/usk-sub-category-carousel.css': 'assets/scss/widgets/sub-category-carousel.scss',
@@ -52,12 +51,12 @@ module.exports = function (grunt) {
                     'assets/css/usk-featured-box.css': 'assets/scss/widgets/featured-box.scss',
                     'assets/css/usk-heaven-slider.css': 'assets/scss/widgets/heaven-slider.scss',
                     'assets/css/usk-mentor-slider.css': 'assets/scss/widgets/mentor-slider.scss',
-                    'assets/css/usk-filter.css': 'assets/scss/widgets/filter.scss',
+                    // 'assets/css/usk-filter.css': 'assets/scss/widgets/filter.scss',
 
 
-                    'assets/css/usk-product-related.css': 'assets/scss/widgets/product-related.scss',
-                    'assets/css/usk-product-tabs.css': 'assets/scss/widgets/product-tabs.scss',
-                    'assets/css/usk-product-image.css': 'assets/scss/widgets/product-image.scss',
+                    // 'assets/css/usk-product-related.css': 'assets/scss/widgets/product-related.scss',
+                    // 'assets/css/usk-product-tabs.css': 'assets/scss/widgets/product-tabs.scss',
+                    // 'assets/css/usk-product-image.css': 'assets/scss/widgets/product-image.scss',
                     //EDD
                     'assets/css/usk-edd-category-carousel.css': 'assets/scss/widgets/edd-category-carousel.scss',
                     'assets/css/usk-edd-category-grid.css': 'assets/scss/widgets/edd-category-grid.scss',

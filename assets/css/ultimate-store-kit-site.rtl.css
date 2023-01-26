@@ -646,6 +646,10 @@ div.pp_pic_holder {
     .ultimate-store-kit-wishlist-wrap .usk-table .stock-title {
       display: none; }
 
+[class*=" elementor-widget-usk-"] svg.e-font-icon-svg {
+  height: 1em;
+  width: 1em; }
+
 /*-------------------------------------
    usk Shiny Widget header scss
    --------------------------------------*/

@@ -392,6 +392,27 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             $plugin_path = isset($args['plugin_path']) ? $args['plugin_path'] : '';
             $paid        = isset($args['paid']) ? $args['paid'] : '';
 
+
+            $used_widgets = self::get_used_widgets_obj();
+            $widget_name = 'usk-' . $args['id'];
+            $used_widgets_count = 0;
+
+
+            if (isset($used_widgets)) {
+                $used_widgets_count = (in_array($widget_name, array_keys($used_widgets)) ? $used_widgets[$widget_name] : 0);
+                if ($used_widgets_count === 0) {
+                    $widget_name  = str_replace('_', '-', $widget_name);
+                    $used_widgets_count = (in_array($widget_name, array_keys($used_widgets)) ? $used_widgets[$widget_name] : 0);
+                }
+            }
+
+            $widget_using_status = '</span> <br><span class="usk-widget-count-text">Total Used  - ' . esc_html($used_widgets_count) . ' </span>';
+
+            // remove counts
+            if (isset($args['id']) && $args['id'] == 'not') {
+                $widget_using_status = '';
+            }
+
             $html = '';
 
 
@@ -403,7 +424,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             $html .= '<i class="usk-icon-' . esc_attr($args['id']) . '" aria-hidden="true"></i>';
 
             $html  .= sprintf('<label for="bdt_%1$s[%2$s]">', $args['section'], $args['id']);
-            $html .= '<span scope="row" class="bdt-option-label">' . $args['name'] . '</span>';
+            $html .= '<span scope="row" class="bdt-option-label">' . $args['name'] . $widget_using_status;
             $html  .= '</label>';
 
 

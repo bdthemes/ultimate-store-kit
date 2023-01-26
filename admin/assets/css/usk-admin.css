@@ -798,3 +798,8 @@
 @media (min-width: 1200px) {
   .bdt-dashboard-panel .bdt-card-body {
     padding: 45px 45px; } }
+
+
+    .usk-widget-count-text{
+  font-size: 11px; color: #b7b7b7; margin-top: 7px; display: block; text-transform: uppercase;
+}

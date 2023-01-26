@@ -145,7 +145,7 @@ class UltimateStoreKit_Admin_Settings {
     if (null === $names) {
       $names = array_map(
         function ($item) {
-          return isset($item['name']) ? 'ultimate-store-kit-' . str_replace('_', '-', $item['name']) : 'none';
+          return isset($item['name']) ? 'usk-' . str_replace('_', '-', $item['name']) : 'none';
         },
         self::$modules_list_only_widgets
       );
@@ -169,7 +169,7 @@ class UltimateStoreKit_Admin_Settings {
     if (null === $names) {
       $names = array_map(
         function ($item) {
-          return isset($item['name']) ? 'ultimate-store-kit-' . str_replace('_', '-', $item['name']) : 'none';
+          return isset($item['name']) ? 'usk-' . str_replace('_', '-', $item['name']) : 'none';
         },
         self::$modules_list
       );
@@ -267,7 +267,7 @@ class UltimateStoreKit_Admin_Settings {
     if (null === $names) {
       $names = array_map(
         function ($item) {
-          return isset($item['name']) ? 'ultimate-store-kit-' . str_replace('_', '-', $item['name']) : 'none';
+          return isset($item['name']) ? 'usk-' . str_replace('_', '-', $item['name']) : 'none';
         },
         self::$modules_list_only_edd_widgets
       );
@@ -527,7 +527,7 @@ class UltimateStoreKit_Admin_Settings {
           <div class="bdt-card bdt-card-body bdt-tryaddon-bg">
             <h1 class="bdt-feature-title">Try Our Others Addons</h1>
             <p style="max-width: 520px;">
-              <b>Element Pack, Ultimate Post Kit, Ultimate Store Kit, Pixel Gallery & Live Copy Paste </b> addons for <b>Elementor</b> is the best slider, blogs and eCommerce plugin for WordPress.
+              <b>Element Pack, Ultimate Store Kit, Ultimate Store Kit, Pixel Gallery & Live Copy Paste </b> addons for <b>Elementor</b> is the best slider, blogs and eCommerce plugin for WordPress.
             </p>
             <div class="bdt-others-plugins-link">
               <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">Element pack</a>
@@ -554,12 +554,12 @@ class UltimateStoreKit_Admin_Settings {
 
   function ultimate_store_kit_get_pro() {
   ?>
-    <div class=usk-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
+    <div class="bdt-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
 
       <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card" style="max-width: 800px; margin-left: auto; margin-right: auto;">
-        <div class="bdt-width-1-1@m usk-comparision bdt-text-center">
+        <div class="bdt-width-1-1@m bdt-comparision bdt-text-center">
           <h1 class="bdt-text-bold">WHY GO WITH PRO?</h1>
-          <h2>Just Compare With Ultimate Post Kit Free Vs Pro</h2>
+          <h2>Just Compare With Ultimate Store Kit Free Vs Pro</h2>
 
 
           <div>
@@ -637,7 +637,7 @@ class UltimateStoreKit_Admin_Settings {
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
-              <li class="">
+              <!-- <li class="">
                 <div class="bdt-grid">
                   <div class="bdt-width-expand@m">Elementor Extended Widgets</div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
@@ -671,15 +671,15 @@ class UltimateStoreKit_Admin_Settings {
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
-              </li>
+              </li> -->
 
             </ul>
 
 
-            <div class=usk-dashboard-divider"></div>
+            <div class="bdt-dashboard-divider"></div>
 
 
-            <div class=usk-more-features">
+            <div class="bdt-more-features">
               <ul class="bdt-list bdt-list-divider bdt-text-left" style="font-size: 16px;">
                 <li>
                   <div class="bdt-grid">
@@ -738,11 +738,11 @@ class UltimateStoreKit_Admin_Settings {
                 </li>
               </ul>
 
-              <!-- <div class=usk-dashboard-divider"></div> -->
+              <!-- <div class="bdt-dashboard-divider"></div> -->
 
               <?php if (true !== _is_usk_pro_activated()) : ?>
-                <div class=usk-purchase-button">
-                  <a href="https://bdthemes.com/pixel-gallery/#a851ca7" target="_blank">Purchase Now</a>
+                <div class="bdt-purchase-button">
+                  <a href="https://storekit.pro/pricing" target="_blank">Purchase Now</a>
                 </div>
               <?php endif; ?>
 
@@ -929,12 +929,12 @@ class UltimateStoreKit_Admin_Settings {
       ?>
 
       <?php if (_is_usk_pro_activated() !== true) : ?>
-        <div id="ultimate_store_kit_get_pro" class=usk-option-page group">
+        <div id="ultimate_store_kit_get_pro" class="bdt-option-page group">
           <?php $this->ultimate_store_kit_get_pro(); ?>
         </div>
       <?php endif; ?>
 
-      <div id="ultimate_store_kit_license_settings_page" class=usk-option-page group">
+      <div id="ultimate_store_kit_license_settings_page" class="bdt-option-page group">
 
         <?php
         if (_is_usk_pro_activated() == true) {

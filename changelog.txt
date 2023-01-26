@@ -1,3 +1,53 @@
+## 1.3.0 [25th January 2023]
+
+### Added
+
+- Additional information widget added
+- Breadcrumbs widget added
+- Page cart widget added
+- Page checkout widget added
+- Page my account widget added
+- Page order widget added
+- Page single widget added
+- Product category carousel widget added
+- Product description widget added
+- Product filter widget added
+- Product image widget added
+- Product meta widget added
+- Product price widget added
+- Product rating widget added
+- Product related widget added
+- Product stock widget added
+- Product table widget added
+- Product tabs widget added
+- Product title widget added
+- QR Code widget added
+- Up sells widget added
+- Account address widget added
+- Account dashboard
+- Account details
+- Account downloads
+- Account login form
+- Account logout
+- Account navigation
+- Account order details
+- Account orders
+- Account registration form
+- Checkout additional info
+- Checkout billing ddress
+- Checkout coupon form
+- Checkout login form
+- Checkout order review
+- Checkout payment
+- Checkout shipping form
+- Checkout shipping methods
+- EDD product review carousel
+- EDD product reviews
+- Thankyou order
+- Thankyou order confirmation
+- Thankyou order customer address
+- Thankyou order details
+
 ## 1.2.0 [22th August 2022]
 
 ### Added
