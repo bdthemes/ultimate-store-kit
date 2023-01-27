@@ -75,7 +75,9 @@
       top: 4px; }
     .ultimate-store-kit-dashboard.wrap .bdt-option-page .usk-option-item .bdt-option-label {
       font-size: 15px;
-      font-weight: 500; }
+      font-weight: 500;
+      display: inline-block;
+      color: #272c32; }
     .ultimate-store-kit-dashboard.wrap .bdt-option-page .usk-option-item .bdt-option-demo,
     .ultimate-store-kit-dashboard.wrap .bdt-option-page .usk-option-item .bdt-option-video {
       padding: 5px;
@@ -228,7 +230,7 @@
         .ultimate-store-kit-dashboard.wrap .bdt-option-page .bdt-options > .usk-option-item > .bdt-option-item-inner:hover {
           color: #052442;
           box-shadow: none; }
-          .ultimate-store-kit-dashboard.wrap .bdt-option-page .bdt-options > .usk-option-item > .bdt-option-item-inner:hover .bdt-widget-count-text {
+          .ultimate-store-kit-dashboard.wrap .bdt-option-page .bdt-options > .usk-option-item > .bdt-option-item-inner:hover .usk-widget-count-text {
             color: #7c99b7; }
           .ultimate-store-kit-dashboard.wrap .bdt-option-page .bdt-options > .usk-option-item > .bdt-option-item-inner:hover [class^="usk-icon-"] {
             color: #052442; }
@@ -379,8 +381,8 @@
   #ultimate_store_kit_other_settings_page .bdt-options > .usk-option-item > .bdt-option-item-inner .description {
     margin-top: 20px; }
 
-#ultimate_store_kit_elementor_extend_page .bdt-widget-count-text,
-#ultimate_store_kit_other_settings_page .bdt-widget-count-text {
+#ultimate_store_kit_elementor_extend_page .usk-widget-count-text,
+#ultimate_store_kit_other_settings_page .usk-widget-count-text {
   display: none; }
 
 #ultimate_store_kit_api_settings_page .bdt-options > .usk-option-item > .bdt-option-item-inner {
@@ -783,10 +785,10 @@
   .ultimate-store-kit-dashboard.wrap .bdt-button {
     width: 100%; } }
 
-.bdt-widget-count-text {
+.usk-widget-count-text {
   font-size: 11px;
   color: #b7b7b7;
-  margin-top: 7px;
+  margin-top: 10px;
   display: block;
   text-transform: uppercase; }
 
@@ -798,8 +800,3 @@
 @media (min-width: 1200px) {
   .bdt-dashboard-panel .bdt-card-body {
     padding: 45px 45px; } }
-
-
-    .usk-widget-count-text{
-  font-size: 11px; color: #b7b7b7; margin-top: 7px; display: block; text-transform: uppercase;
-}

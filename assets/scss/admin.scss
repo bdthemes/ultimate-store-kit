@@ -142,6 +142,8 @@ $card-background: #fff;
         .bdt-option-label {
           font-size: 15px;
           font-weight: 500;
+          display: inline-block;
+          color: #272c32;
         }
 
         .bdt-option-demo,
@@ -425,7 +427,7 @@ $card-background: #fff;
               color: #052442;
               box-shadow: none;
 
-              .bdt-widget-count-text {
+              .usk-widget-count-text {
                 color: #7c99b7;
               }
 
@@ -659,7 +661,7 @@ $card-background: #fff;
 
 #ultimate_store_kit_elementor_extend_page,
 #ultimate_store_kit_other_settings_page {
-  .bdt-widget-count-text {
+  .usk-widget-count-text {
     display: none;
   }
 }
@@ -1282,10 +1284,10 @@ $card-background: #fff;
   }
 }
 
-.bdt-widget-count-text {
+.usk-widget-count-text {
   font-size: 11px;
   color: #b7b7b7;
-  margin-top: 7px;
+  margin-top: 10px;
   display: block;
   text-transform: uppercase;
 }
