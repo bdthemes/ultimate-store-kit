@@ -1,17 +1,17 @@
-## 1.3.0 [25th January 2023]
+## 1.3.0 [28th January 2023]
 
 ### Added
+- Template Builder Added
 
 - Additional information widget added
 - Breadcrumbs widget added
-- Page cart widget added
-- Page checkout widget added
-- Page my account widget added
-- Page order widget added
-- Page single widget added
+- Cart Page widget added
+- Checkout Page widget added
+- Account Page widget added
+- Order Page widget added
+- Single product page widget added
 - Product category carousel widget added
 - Product description widget added
-- Product filter widget added
 - Product image widget added
 - Product meta widget added
 - Product price widget added
@@ -22,31 +22,30 @@
 - Product tabs widget added
 - Product title widget added
 - QR Code widget added
-- Up sells widget added
 - Account address widget added
-- Account dashboard
-- Account details
-- Account downloads
-- Account login form
-- Account logout
-- Account navigation
-- Account order details
-- Account orders
-- Account registration form
-- Checkout additional info
-- Checkout billing ddress
-- Checkout coupon form
-- Checkout login form
-- Checkout order review
-- Checkout payment
-- Checkout shipping form
-- Checkout shipping methods
-- EDD product review carousel
-- EDD product reviews
-- Thankyou order
-- Thankyou order confirmation
-- Thankyou order customer address
-- Thankyou order details
+- Account dashboard widget added
+- Account details widget added
+- Account downloads widget added
+- Account login form widget added
+- Account logout widget added
+- Account navigation widget added
+- Account order details widget added
+- Account orders widget added
+- Account registration form widget added
+- Checkout additional info widget added
+- Checkout billing ddress widget added
+- Checkout coupon form widget added
+- Checkout login form widget added
+- Checkout order review widget added
+- Checkout payment widget added
+- Checkout shipping form widget added
+- Checkout shipping methods widget added
+- EDD product review carousel widget added
+- EDD product reviews widget added
+- Thankyou order widget added
+- Thankyou order confirmation widget added
+- Thankyou order customer address widget added
+- Thankyou order details widget added
 
 ## 1.2.0 [22th August 2022]
 

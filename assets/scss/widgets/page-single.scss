@@ -4,12 +4,34 @@
         padding: 10px 20px !important;
         color: #000 !important;
     }
+    .woocommerce-tabs ul.tabs .active a{
+        background: #fff !important;
+    }
     .woocommerce .quantity .qty {
         height: 36px;
     }
     .woocommerce div.product .woocommerce-tabs .panel {
         margin-top: 30px;
         padding: 0;
+    }
+    .products.columns-4 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 30px;
+        li {
+            border: 1px solid #eee;
+            padding: 30px !important;
+            display: inline-block;
+            border-radius: 5px;
+        }
+    }
+    .product .onsale {
+        margin: 20px !important;
+    }
+
+    select,
+    textarea {
+        border: 1px solid #ddd;
     }
 }
 

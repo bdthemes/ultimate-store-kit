@@ -4,6 +4,11 @@
 @import "./modal.scss";
 @import "./elementor.scss";
 
+//Common Css 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .ultimate-store-kit * {
 
     // margin: 0;
@@ -1309,3 +1314,27 @@
         display: none;
     }
 }
+
+ .woocommerce-tabs ul.tabs li a {
+        background-color: #ddd;
+        padding: 10px 20px !important;
+        color: #000 !important;
+    }
+    .woocommerce .quantity .qty {
+        height: 36px;
+    }
+    .woocommerce div.product .woocommerce-tabs .panel {
+        margin-top: 30px;
+        padding: 0;
+    }
+    .products.columns-4 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        li {
+            border: 1px solid #eee;
+            padding: 30px !important;
+            display: inline-block;
+            border-radius: 5px;
+        }
+    }
