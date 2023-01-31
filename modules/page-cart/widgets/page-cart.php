@@ -25,7 +25,7 @@ class Page_Cart extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit-pro'];
+        return ['ultimate-store-kit'];
     }
 
     public function get_style_depends() {

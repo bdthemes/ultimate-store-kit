@@ -52,7 +52,7 @@
 			jQuery('body').append(`<style>.bdt-pro-unlock-icon:after{right: auto !important; left: 5px !important;}</style>`);
 		});
 
-		if (UltimateStoreKitConfigEditor.pro_installed || UltimateStoreKitConfigEditor.promotional_widgets <= 0) return panel;
+		if (UltimateStoreKitConfigEditor.pro_license_activated || UltimateStoreKitConfigEditor.promotional_widgets <= 0) return panel;
 
 		var promotionalWidgetHandler,
 			promotionalWidgets = UltimateStoreKitConfigEditor.promotional_widgets,
@@ -61,7 +61,6 @@
 			categoriesView = panel.categories.view,
 			elementsView = panel.elements.view,
 			freeCategoryIndex, proWidgets = [];
-
 
 		_.each(promotionalWidgets, function (widget, index) {
 			elementsCollection.add({

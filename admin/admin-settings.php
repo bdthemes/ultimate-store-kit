@@ -81,6 +81,15 @@ class UltimateStoreKit_Admin_Settings {
       [$this, 'display_page'],
     );
 
+    add_submenu_page(
+      self::PAGE_ID,
+      BDTUSK_TITLE,
+      esc_html__('Others Widgets', 'ultimate-store-kit'),
+      'manage_options',
+      self::PAGE_ID . '#ultimate_store_kit_general_modules',
+      [$this, 'display_page'],
+    );
+
     if (true !== _is_usk_pro_activated()) {
       add_submenu_page(
         self::PAGE_ID,
@@ -116,11 +125,10 @@ class UltimateStoreKit_Admin_Settings {
   }
 
   protected function ultimate_store_kit_admin_settings() {
-
     return ModuleService::get_widget_settings(function ($settings) {
       $settings_fields    = $settings['settings_fields'];
 
-      self::$modules_list = array_merge($settings_fields['ultimate_store_kit_active_modules'], $settings_fields['ultimate_store_kit_edd_modules']);
+      self::$modules_list = array_merge($settings_fields['ultimate_store_kit_active_modules'], $settings_fields['ultimate_store_kit_edd_modules'], $settings_fields['ultimate_store_kit_general_modules']);
       self::$modules_list_only_widgets  = $settings_fields['ultimate_store_kit_active_modules'];
       self::$modules_list_only_edd_widgets = $settings_fields['ultimate_store_kit_edd_modules'];
 
@@ -495,7 +503,7 @@ class UltimateStoreKit_Admin_Settings {
         <div class="bdt-width-1-3@m bdt-support-section">
           <div class="bdt-support-content bdt-card bdt-card-body">
             <h1 class="bdt-feature-title">Support And Feedback</h1>
-            <p>Feeling like to consult with an expert? Take live Chat support immediately from <a href="https://bdthemes.com/ultimate-store-kit/" target="_blank" rel="">UltimteStoreKit</a>. We are always
+            <p>Feeling like to consult with an expert? Take live Chat support immediately from <a href="https://storekit.pro/" target="_blank" rel="">UltimteStoreKit</a>. We are always
               ready to help
               you 24/7.</p>
             <p><strong>Or if you’re facing technical issues with our plugin, then please create a support
@@ -527,7 +535,7 @@ class UltimateStoreKit_Admin_Settings {
           <div class="bdt-card bdt-card-body bdt-tryaddon-bg">
             <h1 class="bdt-feature-title">Try Our Others Addons</h1>
             <p style="max-width: 520px;">
-              <b>Element Pack, Ultimate Store Kit, Ultimate Store Kit, Pixel Gallery & Live Copy Paste </b> addons for <b>Elementor</b> is the best slider, blogs and eCommerce plugin for WordPress.
+              <b>Element Pack, Prime Slider, Ultimate Post Kit, Pixel Gallery & Live Copy Paste </b> addons for <b>Elementor</b> is the best slider, blogs and eCommerce plugin for WordPress.
             </p>
             <div class="bdt-others-plugins-link">
               <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">Element pack</a>
@@ -1089,6 +1097,29 @@ class UltimateStoreKit_Admin_Settings {
         jQuery('#ultimate_store_kit_edd_modules_page a.bdt-deactive-all-widget').click(function() {
 
           jQuery('#ultimate_store_kit_edd_modules_page .checkbox:visible').not("[disabled]").each(function() {
+            jQuery(this).removeAttr('checked');
+          });
+
+          jQuery(this).addClass('bdt-active');
+          jQuery('a.bdt-active-all-widget').removeClass('bdt-active');
+        });
+
+        /**
+         * Others Widget
+         */
+        jQuery('#ultimate_store_kit_general_modules_page a.bdt-active-all-widget').click(function() {
+
+          jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
+            jQuery(this).attr('checked', 'checked').prop("checked", true);
+          });
+
+          jQuery(this).addClass('bdt-active');
+          jQuery('a.bdt-deactive-all-widget').removeClass('bdt-active');
+        });
+
+        jQuery('#ultimate_store_kit_general_modules_page a.bdt-deactive-all-widget').click(function() {
+
+          jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
             jQuery(this).removeAttr('checked');
           });
 

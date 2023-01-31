@@ -21,7 +21,7 @@ class ModuleService {
             'ultimate_store_kit_active_modules' => [
                 [
                     'name'         => 'add-to-cart',
-                    'label'        => esc_html__('Add to Cart (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Add to Cart (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "on",
                     'plugin_name'  => 'woocommerce',
@@ -33,7 +33,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'additional-information',
-                    'label'        => esc_html__('Additional Information (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Additional Information (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "on",
                     'plugin_name'  => 'woocommerce',
@@ -165,7 +165,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'breadcrumbs',
-                    'label'        => esc_html__('Breadcrumbs (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Breadcrumbs (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "on",
                     'widget_type'  => 'pro',
@@ -468,7 +468,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-description',
-                    'label'        => esc_html__('Product Description (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Description (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "on",
                     'widget_type'  => 'free',
@@ -492,7 +492,7 @@ class ModuleService {
                 // ],
                 [
                     'name'         => 'product-image',
-                    'label'        => esc_html__('Product Image (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Image (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -528,7 +528,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-meta',
-                    'label'        => esc_html__('Product Meta (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Meta (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -540,7 +540,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-price',
-                    'label'        => esc_html__('Product Price (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Price (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -552,7 +552,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-rating',
-                    'label'        => esc_html__('Product Rating (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Rating (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -564,7 +564,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-related',
-                    'label'        => esc_html__('Product Related (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Related (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -600,7 +600,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-stock',
-                    'label'        => esc_html__('Product Stock (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Stock (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -624,7 +624,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-tabs',
-                    'label'        => esc_html__('Product Tabs (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Tabs (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',
@@ -636,7 +636,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-title',
-                    'label'        => esc_html__('Product Title (single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Product Title (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "off",
                     'widget_type'  => 'pro',

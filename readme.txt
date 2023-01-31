@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
 Elementor tested up to: 3.10.1
 
-Best addon for elementor WordPress plugin with 33+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
+Best addon for elementor WordPress plugin with 75+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
 
 == Description ==
@@ -20,7 +20,7 @@ Are you tired of slowing your eCommerce website with an unexpectedly large numbe
 
 Grab the Ultimate Store Kit plugin for eCommerce [Elementor](https://wordpress.org/plugins/elementor/) and build unique online shop websites in minutes. Using this plugin, you can create personalized store product pages, landing pages, featured product pages, and several other features, including tags, badges, wishlists, buttons, and so forth.
 
-[Ultimate Store Kit](https://bdthemes.net/demo/wordpress/ultimate-store-kit/) for Elementor plugin has been developed to give web developers and designers an effortless way of creating amazing eCommerce websites. With the Ultimate Store Kit for Elementor, there is no need to have a long list of plugins slowing your website down.
+[Ultimate Store Kit](https://storekit.pro/) for Elementor plugin has been developed to give web developers and designers an effortless way of creating amazing eCommerce websites. With the Ultimate Store Kit for Elementor, there is no need to have a long list of plugins slowing your website down.
 The plugin comes with all necessary elements that you may require while building an eCommerce website on WordPress - Product Grid/List, Product Carousel, Product Category Grid, Product Accordion, Product Image Accordion, Product Table, Product Slider, Product Review Grid, and so on. The Ultimate Store Kit for Elementor also gives control over the design elements by letting users change colors and font sizes as per their needs!
 
 https://youtu.be/uX7TaFJgs9w
@@ -59,78 +59,116 @@ Ultimate Store Kit is the perfect tool for web designers who want customized sto
 There is no reason to install multiple WooCommerce plugins, just Ultimate Store Kit is enough.
 
 ###USEFUL LINKS 👇###
-**[Live Demo](https://bdthemes.net/demo/wordpress/ultimate-store-kit/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
+**[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
 
 == Free Widgets for Lifetime: 🔥 ==
 
-= Static 🌅 =
-
-0. [Brand Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/brand-grid/) - The Brand Grid widget makes it possible to display your branding partners and associates with an explicit grid interface combined with advanced animations, hover effects, and a unique content delivery idea for your eCommerce web store. Perfect for branding products too.
-0. [Brand Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/brand-carousel/) - The Brand Carousel widget is the perfect tool for displaying your business brand partners on your eCommerce web front with a lucrative interface with carousel animations to attract more visitors into your business. Boost your business with the perfect display tool for WordPress
-0. [Featured Box](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/featured-box/) - With the Featured Box widget, you can display your eCommerce store products in a wide banner along with a meta title, title, product image, and a read more button so users can learn more. The hover background animations make it ideal for displaying store products
-0. [Info List](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/info-list/) - Using the Info List widget, you can create a dynamic product list with a fully customizable interface containing title, icon, description, and media (if necessary) to provide a detailed introduction to the viewers on your eCommerce website. Minimalistic and efficient
-0. [QR Code](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/qr-code/) -
-
 = WooCommerce 🚾 =
 
-0. [Add To Cart](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/add-to-cart/) - The Add To Cart button is a necessary feature for an eCommerce website to let the users select and manage the products they wish to purchase. Ultimate Store Kit provides customizable Add To Cart buttons so you can create unique cart buttons with suitable styles that go along with the products
-0. [Florence Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/florence-carousel/) - The Florence Carousel widget is a minimal yet impactful product carousel to build a tasteful WooCommerce featured product page by utilizing the clean and eye-catchy product layout, seamless transitions, and dual image on hover feature; a better chance to convert more visitors into customers.
-0. [Florence Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/florence-grid/) - The Florence grid widget for WooCommerce is a dynamic product grid with a minimalistic product view that offers dual image transition on hover along with the product rating and add-to-cart button. The grid is fully compatible with Elementor to provide seamless product onboarding functionalities.
-0. [Glossy Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/glossy-carousel/) - The Glossy Carousel widget takes the product visualization to the next step by bringing in a slider-type simulation for your eCommerce website product gallery to showcase your products with cozy animations and double image transitions. A great tool for product showcase
-0. [Glossy Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/glossy-grid/) - The Glossy Grid widget combines visual effects such as double image transition and add-to-cart reveal buttons to display product specific controls over a grid layout on your WooCommerce website whether it's the landing page, or product gallery, or featured product section.
-0. [Heaven Slider](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/heaven-slider/) - For a classy online shop, it's best to put up a noise-less banner in the page's hero section to highlight your most wanted products. With the Heaven Slider widget, it becomes very easy to show your product image, name, price tag, add-to-cart button, and thumbs of all the featured products with enough white spacing. The right kind of interface that you are looking for.
-0. [Mentor Slider](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/mentor-slider/) - Setting up an online WordPress Store to feature your brand products is a dream project. As much as say, the Mentor Slider by Ultimate Store Kit can make the dream happen by letting you take advantage of its ergonomic slider interface to display featured products uniquely. Mentor is built for adding taste, class, and authority to your online business.
-0. [Mini Cart](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/mini-cart/) - The Mini Cart feature allows you to display an icon on your eCommerce website where users can access their shopping carts and see the number of products they've selected to purchase. With our mini cart widget, you can create customized cart icons with lots of customization options
-0. [Product Accordion](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-accordion/) - Save your space and make product hunting enjoyable by using the Product Accordion widget by Ultimate Store Kit. The accordion widget lets you onboard your online shop products along with the product description, add-to-cart button, and badges within the accordion
-0. [Product Category](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-category/) - The eCommerce Product Category widget is used for displaying your online shop goods by their corresponding category in your WordPress shopping site. Best for designing product archive page to show all available product categories along with the number of products for sale
-0. [Product Image Accordion](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-image-accordion/) - The Product Image Accordion displays product images inside a compact accordion window that stretches the image whenever a user hovers over the image. The hover effect triggers the add-to-cart, favorite, and quick view buttons with a popping animation effect
-0. [Product List](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-list/) - Using the Product List widget, you can display eCommerce products within your online shop to grab the attention of visitors. The widget provides a minimalistic layout that only focuses on the product along with highlighting colorful product badges on the list
-0. [Product Reviews](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-reviews/) - Consumer reviews have great importance for your eCommerce store in order to spread the business with a positive vibe. Use our Product Reviews widget to display customer reviews along with the user rating, purchase item information, and interactive designs for more attention
-0. [Product Review Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-review-carousel/) - When your eCommerce store contains a large variety of products for sale, you definitely need our Product Review Carousel to onboard and display your shop products beautifully and boost user experience. The widget lets you customize the gallery interface however and whenever you like.
-0. [Product Table](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-table/) - The Product Table widget by Ultimate Store Kit provides a refreshing table layout to onboard your online store products with thumb images, SEO titles, categories, ratings, prices, quantity, preview, and add-to-cart button. Makes it easier for users to navigate products through search consoles
-0. [Shiny Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/shiny-carousel/) - Creating a stunning product showcase can be easy as pie if you had the Shiny Carousel widget by Ultimate Store Kit. It is an attractive sliding product gallery that lets you display product images along with new product badge, discounts, add-to-cart, favorite button, and rating
-0. [Shiny Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/shiny-carousel/) - Using the Shiny Grid widget, you can display a spicing product gallery with a flipping transition effect that pops up every time users hover over any product and reveals a funky add-to-cart button along with the favorite button and rating of the specific product in your eCommerce website
-0. [Showcase Slider](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/showcase-slider/) - Your online shop is incomplete without the Showcase Slider widget for eCommerce. This is a distinct slider tool providing a large canvas for displaying your featured product with half-revealed products on each side and eye-catchy slider animations for more user engagement.
-0. [Sub Category](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/sub-category/) - By using the Sub Category widget, you can display your eCommerce shop products in sub categories with special animation effects to make them more visually appealing. Using this widget, you can customize your product gallery to better suit your business and boost user experience
-0. [Sub Category Caousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/sub-category-carousel/) - The Sub Category Carousel widget features a carousel layout to display your product subcategories alongside your entire product lineup so that your visitors can see all the products without getting lost in the numbers. Make it useful by letting your visitors experience it for themselves.
-0. [Additional Information](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/additional-information/) -
-0. [Breadcrumbs](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/breadcrumbs/) -
-0. [Page Cart](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-cart/) -
-0. [Page Checkout](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-checkout/) -
-0. [Page My Account](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-my-account/) -
-0. [Page Order](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-order/) -
-0. [Page Single](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-single/) -
-0. [Product Category Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-category-carousel/) -
-0. [Product Description](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-description/) -
-0. [Product Filter](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-filter/) -
-0. [Product Image](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-image/) -
-0. [Product Meta](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-meta/) -
-0. [Product Price](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-price/) -
-0. [Product Rating](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-rating/) -
-0. [Product Related](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-related/) -
-0. [Product Stock](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-stock/) -
-0. [Product Table](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-table/) -
-0. [Product Tabs](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-tabs/) -
-0. [Product Title](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-title/) -
-0. [Up Sells](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/up-sells/) -
+0. [Florence Carousel](https://storekit.pro/demo/florence-carousel/) - The Florence Carousel widget is a minimal yet impactful product carousel to build a tasteful WooCommerce featured product page by utilizing the clean and eye-catchy product layout, seamless transitions, and dual image on hover feature; a better chance to convert more visitors into customers.
+0. [Florence Grid](https://storekit.pro/demo/florence-grid/) - The Florence grid widget for WooCommerce is a dynamic product grid with a minimalistic product view that offers dual image transition on hover along with the product rating and add-to-cart button. The grid is fully compatible with Elementor to provide seamless product onboarding functionalities.
+0. [Glossy Carousel](https://storekit.pro/demo/glossy-carousel/) - The Glossy Carousel widget takes the product visualization to the next step by bringing in a slider-type simulation for your eCommerce website product gallery to showcase your products with cozy animations and double image transitions. A great tool for product showcase
+0. [Glossy Grid](https://storekit.pro/demo/glossy-grid/) - The Glossy Grid widget combines visual effects such as double image transition and add-to-cart reveal buttons to display product specific controls over a grid layout on your WooCommerce website whether it's the landing page, or product gallery, or featured product section.
+0. [Heaven Slider](https://storekit.pro/demo/heaven-slider/) - For a classy online shop, it's best to put up a noise-less banner in the page's hero section to highlight your most wanted products. With the Heaven Slider widget, it becomes very easy to show your product image, name, price tag, add-to-cart button, and thumbs of all the featured products with enough white spacing. The right kind of interface that you are looking for.
+0. [Mentor Slider](https://storekit.pro/demo/mentor-slider/) - Setting up an online WordPress Store to feature your brand products is a dream project. As much as say, the Mentor Slider by Ultimate Store Kit can make the dream happen by letting you take advantage of its ergonomic slider interface to display featured products uniquely. Mentor is built for adding taste, class, and authority to your online business.
+0. [Mini Cart](https://storekit.pro/demo/mini-cart/) - The Mini Cart feature allows you to display an icon on your eCommerce website where users can access their shopping carts and see the number of products they've selected to purchase. With our mini cart widget, you can create customized cart icons with lots of customization options
+0. [Product Accordion](https://storekit.pro/demo/product-accordion/) - Save your space and make product hunting enjoyable by using the Product Accordion widget by Ultimate Store Kit. The accordion widget lets you onboard your online shop products along with the product description, add-to-cart button, and badges within the accordion
+0. [Product Category](https://storekit.pro/demo/product-category/) - The eCommerce Product Category widget is used for displaying your online shop goods by their corresponding category in your WordPress shopping site. Best for designing product archive page to show all available product categories along with the number of products for sale
+0. [Product Image Accordion](https://storekit.pro/demo/product-image-accordion/) - The Product Image Accordion displays product images inside a compact accordion window that stretches the image whenever a user hovers over the image. The hover effect triggers the add-to-cart, favorite, and quick view buttons with a popping animation effect
+0. [Product List](https://storekit.pro/demo/product-list/) - Using the Product List widget, you can display eCommerce products within your online shop to grab the attention of visitors. The widget provides a minimalistic layout that only focuses on the product along with highlighting colorful product badges on the list
+0. [Product Reviews](https://storekit.pro/demo/product-reviews/) - Consumer reviews have great importance for your eCommerce store in order to spread the business with a positive vibe. Use our Product Reviews widget to display customer reviews along with the user rating, purchase item information, and interactive designs for more attention
+0. [Product Review Carousel](https://storekit.pro/demo/product-review-carousel/) - When your eCommerce store contains a large variety of products for sale, you definitely need our Product Review Carousel to onboard and display your shop products beautifully and boost user experience. The widget lets you customize the gallery interface however and whenever you like.
+0. [Product Table](https://storekit.pro/demo/product-table/) - The Product Table widget by Ultimate Store Kit provides a refreshing table layout to onboard your online store products with thumb images, SEO titles, categories, ratings, prices, quantity, preview, and add-to-cart button. Makes it easier for users to navigate products through search consoles
+0. [Shiny Carousel](https://storekit.pro/demo/shiny-carousel/) - Creating a stunning product showcase can be easy as pie if you had the Shiny Carousel widget by Ultimate Store Kit. It is an attractive sliding product gallery that lets you display product images along with new product badge, discounts, add-to-cart, favorite button, and rating
+0. [Shiny Grid](https://storekit.pro/demo/shiny-carousel/) - Using the Shiny Grid widget, you can display a spicing product gallery with a flipping transition effect that pops up every time users hover over any product and reveals a funky add-to-cart button along with the favorite button and rating of the specific product in your eCommerce website
+0. [Showcase Slider](https://storekit.pro/demo/showcase-slider/) - Your online shop is incomplete without the Showcase Slider widget for eCommerce. This is a distinct slider tool providing a large canvas for displaying your featured product with half-revealed products on each side and eye-catchy slider animations for more user engagement.
+0. [Sub Category](https://storekit.pro/demo/sub-category/) - By using the Sub Category widget, you can display your eCommerce shop products in sub categories with special animation effects to make them more visually appealing. Using this widget, you can customize your product gallery to better suit your business and boost user experience
+0. [Sub Category Caousel](https://storekit.pro/demo/sub-category-carousel/) - The Sub Category Carousel widget features a carousel layout to display your product subcategories alongside your entire product lineup so that your visitors can see all the products without getting lost in the numbers. Make it useful by letting your visitors experience it for themselves.
+0. [Product Category Carousel](https://storekit.pro/demo/product-category-carousel/) - Display eCommerce store products by their belonging category for more direct filtering
+0. [Product Table](https://storekit.pro/demo/product-table/) -
+0. [Page Cart](https://storekit.pro/demo/page-cart/) -
+0. [Page Checkout](https://storekit.pro/demo/page-checkout/) -
+0. [Page My Account](https://storekit.pro/demo/page-my-account/) -
+0. [Page Order](https://storekit.pro/demo/page-order/) -
+0. [Page Single](https://storekit.pro/demo/page-single/) -
+0. [Up Sells](https://storekit.pro/demo/up-sells/) - The Upsells widget helps display the created upsell product list inside the single product page
 
 = Easy Digital Downloads 💲 =
 
-0. [EDD Beauty Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-beauty-carousel/) - Using the EDD Beauty Carousel widget for WordPress, you can design the perfect eCommerce store pages to display your top-selling products in a carousel slider layout and amaze your visitors into peeking a second look at your products as well as boost engagement and ROI
-0. [EDD Beauty Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-beauty-grid/) - EDD Beauty Grid is the perfect widget to onboard and display your eCommerce store products with a classy design and interactive hover animations to make them more engaging. Best for showing your featured products or displaying new arrivals on your landing page
-0. [EDD Category Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-category-carousel/) - You can easily display your eCommerce products by categories in a dynamic carousel window using the EDD Category Carousel widget. You can customize the widget to your liking by adding custom images, queries, navigations, and lots more. Simple yet powerful tool for your store
-0. [EDD Category Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-category-grid/) - For integrating EDD with Ultimate Store Kit, the EDD Category Grid displays your products in a well-arranged grid format, making them easy to see and navigate. The widget offers lots of customization options for further personalizing the grid appearance.
-0. [EDD Classic Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-classic-carousel/) - If you are using the EDD Classic Carousel widget, you can design your eCommerce store product gallery or featured product slider with a classy design to revive the brand image similar to your physical store inside your online store. This widget is easy to use and flexible to adjust to your store's specific needs.
-0. [EDD Classic Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-classic-grid/) - With the Classic Grid for EDD, your online store can be smartly transformed into a classic brand while using advanced tools to make your store as functional as ever. The widget allows you to easily customize your store's interface based on your preferences.
-0. [EDD Standard Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-standard-carousel/) - With the EDD Standard Carousel widget, your eCommerce website is equipped with an average yet powerful product slider that can be customized to pull out the appearance of your shop along with a fancy hover animation to add a touch of class to your standard product pages.
-0. [EDD Standard Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-standard-grid/) - EDD Standard Grid by Ultimate Store Kit for WordPress makes it easy to create a standard eCommerce product grid. Featuring a wide variety of customization options, the widget enables you to quickly create a customized product gallery according to your specifications
-0. [EDD Trendy Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-trendy-carousel/) - The EDD Trending Carousel provides a refreshing product slider interface to onboard your eCommerce store products for display. With customizable hover animations, the carousel products show the product details and purchase button when hovered
-0. [EDD Trendy Grid](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-trendy-grid/) - EDD Trendy Grid displays your eCommerce product gallery in a well-organized grid formation, with a minimum amount of product information displayed on the grid and hidden buttons visible upon hovering. The hover animation used in the widget makes it highly user interactive.
-0. [EDD Product Review Carousel](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-product-review-carousel/) -
-0. [EDD Product Reviews](https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-product-reviews/) -
+0. [EDD Beauty Carousel](https://storekit.pro/demo/edd-beauty-carousel/) - Using the EDD Beauty Carousel widget for WordPress, you can design the perfect eCommerce store pages to display your top-selling products in a carousel slider layout and amaze your visitors into peeking a second look at your products as well as boost engagement and ROI
+0. [EDD Beauty Grid](https://storekit.pro/demo/edd-beauty-grid/) - EDD Beauty Grid is the perfect widget to onboard and display your eCommerce store products with a classy design and interactive hover animations to make them more engaging. Best for showing your featured products or displaying new arrivals on your landing page
+0. [EDD Category Carousel](https://storekit.pro/demo/edd-category-carousel/) - You can easily display your eCommerce products by categories in a dynamic carousel window using the EDD Category Carousel widget. You can customize the widget to your liking by adding custom images, queries, navigations, and lots more. Simple yet powerful tool for your store
+0. [EDD Category Grid](https://storekit.pro/demo/edd-category-grid/) - For integrating EDD with Ultimate Store Kit, the EDD Category Grid displays your products in a well-arranged grid format, making them easy to see and navigate. The widget offers lots of customization options for further personalizing the grid appearance.
+0. [EDD Classic Carousel](https://storekit.pro/demo/edd-classic-carousel/) - If you are using the EDD Classic Carousel widget, you can design your eCommerce store product gallery or featured product slider with a classy design to revive the brand image similar to your physical store inside your online store. This widget is easy to use and flexible to adjust to your store's specific needs.
+0. [EDD Classic Grid](https://storekit.pro/demo/edd-classic-grid/) - With the Classic Grid for EDD, your online store can be smartly transformed into a classic brand while using advanced tools to make your store as functional as ever. The widget allows you to easily customize your store's interface based on your preferences.
+0. [EDD Standard Carousel](https://storekit.pro/demo/edd-standard-carousel/) - With the EDD Standard Carousel widget, your eCommerce website is equipped with an average yet powerful product slider that can be customized to pull out the appearance of your shop along with a fancy hover animation to add a touch of class to your standard product pages.
+0. [EDD Standard Grid](https://storekit.pro/demo/edd-standard-grid/) - EDD Standard Grid by Ultimate Store Kit for WordPress makes it easy to create a standard eCommerce product grid. Featuring a wide variety of customization options, the widget enables you to quickly create a customized product gallery according to your specifications
+0. [EDD Trendy Carousel](https://storekit.pro/demo/edd-trendy-carousel/) - The EDD Trending Carousel provides a refreshing product slider interface to onboard your eCommerce store products for display. With customizable hover animations, the carousel products show the product details and purchase button when hovered
+0. [EDD Trendy Grid](https://storekit.pro/demo/edd-trendy-grid/) - EDD Trendy Grid displays your eCommerce product gallery in a well-organized grid formation, with a minimum amount of product information displayed on the grid and hidden buttons visible upon hovering. The hover animation used in the widget makes it highly user interactive.
+
+= Others 🌅 =
+
+0. [Brand Grid](https://storekit.pro/demo/brand-grid/) - The Brand Grid widget makes it possible to display your branding partners and associates with an explicit grid interface combined with advanced animations, hover effects, and a unique content delivery idea for your eCommerce web store. Perfect for branding products too.
+0. [Brand Carousel](https://storekit.pro/demo/brand-carousel/) - The Brand Carousel widget is the perfect tool for displaying your business brand partners on your eCommerce web front with a lucrative interface with carousel animations to attract more visitors into your business. Boost your business with the perfect display tool for WordPress
+0. [Featured Box](https://storekit.pro/demo/featured-box/) - With the Featured Box widget, you can display your eCommerce store products in a wide banner along with a meta title, title, product image, and a read more button so users can learn more. The hover background animations make it ideal for displaying store products
+0. [Info List](https://storekit.pro/demo/info-list/) - Using the Info List widget, you can create a dynamic product list with a fully customizable interface containing title, icon, description, and media (if necessary) to provide a detailed introduction to the viewers on your eCommerce website. Minimalistic and efficient
+0. [QR Code](https://storekit.pro/demo/qr-code/) - Display a dynamic scanable QR code for individual products or the shop landing page with custom settings
+
+== Pro version Widgets 🔥 ==
+
+= WooCommerce 🚾 =
+
+0. [Account Address](https://storekit.pro/demo/account-address/) - Whether it is Billing address or Shipping Adress, You can add them both using just one widget
+0. [Account Dashboard](https://storekit.pro/demo/account-dashboard/) - This widget displays the message about the purpose of your Dashboard.
+0. [Account Details](https://storekit.pro/demo/account-details/) - This widget will help to display the details information of a User
+0. [Account Downloads](https://storekit.pro/demo/account-downloads/) - For Digital product its a perfect widget to show the download progress
+0. [Account Login-form](https://storekit.pro/demo/account-login-form/) - A login Form with the field of User name and Password For each individual User to maintain their personal account
+0. [Account Logout](https://storekit.pro/demo/account-logout/) - A  button for Logout from any User account to keep the account signed out in any device
+0. [Account Navigation](https://storekit.pro/demo/account-navigation/) - A side bar navigation for user to navigate through the account to get access in all feature in one click
+0. [Account Order-details](https://storekit.pro/demo/account-order-details/) - All the orders will be listed here with the quantity and price
+0. [Account Orders](https://storekit.pro/demo/account-orders/) - A list of Total Order will be enlisted in this widget for any woocommerce store
+0. [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Let your visitors sign up for their user account by inserting their email
+0. [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Customizable Add to cart button for a quick product carting maneuver for the visitors or users of your website
+0. [Additional Information](https://storekit.pro/demo/additional-information/) - Additional product information tab for single pages to deliver more info per need
+0. [Add To Cart](https://storekit.pro/demo/add-to-cart/) - A complete cart page for customers to view their purchasing products and total costing, coupon, shipping, and other details
+0. [Checkout Additional Info](https://storekit.pro/demo/checkout-additional-info/) - Helps attach additional information for the checkout page to let users learn more about terms and conditions or anything you want them to know
+0. [Checkout Billing Address](https://storekit.pro/demo/checkout-billing-address/) - Custom billing form for vistiors/users/customers to inlcude their personal information safely for product billing/delivery purpose
+0. [Checkout Coupon Form](https://storekit.pro/demo/checkout-coupon-form/) - Helps add coupon codes on the checkout page with a very familiar user interface
+0. [Checkout Login Form](https://storekit.pro/demo/checkout-login-form/) - Let returning customers login into the cart directly from the checkout page
+0. [Checkout Order Review](https://storekit.pro/demo/checkout-order-review/) - A quick review window for customers to see what products they got in their checkout page
+0. [Checkout Payment](https://storekit.pro/demo/checkout-payment/) - Add and integrate checkout payment methods and gateaways while using this widget to link to the process
+0. [Checkout Shipping Form](https://storekit.pro/demo/checkout-shipping-form/) - Let users add their shipping details to recieve the ordered products in the same/different address
+0. [Checkout Shipping Methods](https://storekit.pro/demo/checkout-shipping-methods/) - Display shipping options and rates for checkouts for your online store users/visitors/customers
+0. [Product Description](https://storekit.pro/demo/product-description/) -
+0. [Product Image](https://storekit.pro/demo/product-image/) -
+0. [Product Meta](https://storekit.pro/demo/product-meta/) - The Meta widget let's you add specific product data like SKU, category, and tag for quick info
+0. [Product Price](https://storekit.pro/demo/product-price/) - Add dynamic product price tag to the single page editor with before-after prices
+0. [Product Rating](https://storekit.pro/demo/product-rating/) - Display and customize product rating from the users on the single product page
+0. [Product Related](https://storekit.pro/demo/product-related/) -
+0. [Product Stock](https://storekit.pro/demo/product-stock/) - Add single page product current stock information through the dynamic Stock widget
+0. [Product Tabs](https://storekit.pro/demo/product-tabs/) -
+0. [Product Title](https://storekit.pro/demo/product-title/) - Display single page title beloging to the individual product page
+0. [Thankyou Order](https://storekit.pro/demo/thankyou-order/) - Helps displaying a customized thanks message upon ordering a product
+0. [Thankyou Order Confirmation](https://storekit.pro/demo/thankyou-order-confirmation/) - Lets the shop owner display mini status of the order in the thank you page after the customer checked out the products
+0. [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Helps display customer location information on the thank you page after checkout
+0. [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Displays a complete order details on the thank you page after checkout
+
+= Easy Digital Downloads 💲 =
+
+0. [EDD Product Reviews](https://storekit.pro/demo/edd-product-reviews/) - Helps display specific or centralized original product reviews based on the EDD platform
+0. [EDD Product Review Carousel](https://storekit.pro/demo/edd-product-review-carousel/) - Helps display customer reviews in a carousel slider format based on the EDD platform
+
+= Others 🌅 =
+
+0. [Breadcrumbs](https://storekit.pro/demo/breadcrumbs/) - The Breadcrumbs widget helps display page links for easy user navigation and discerning page position
 
 More widgets & extensions are coming soon...
 
+= Template Builder 💎 =
+
+Enjoy the full length of Online Store Page customizations with Template Builder. This option can render all pages inside WordPress and lets you choose unique designs at your preferences.
+
+Build, customize, and manage single pages, cart pages, and every pages belonging to your store.
 
 == Common Issues and Solutions: 🐣 ==
 
@@ -175,54 +213,51 @@ e.g.
 == Changelog ==
 
 
-= 1.3.0 [28th January 2023] =
-* Added: Template Builder Added
+= 1.3.0 [30th January 2023] =
 
-* Added: Additional information widget
-* Added: Breadcrumbs widget
-* Added: Page cart widget
-* Added: Page checkout widget
-* Added: Page my account widget
-* Added: Page order widget
-* Added: Page single widget
-* Added: Product category carousel widget
-* Added: Product description widget
-* Added: Product filter widget
-* Added: Product image widget
-* Added: Product meta widget
-* Added: Product price widget
-* Added: Product rating widget
-* Added: Product related widget
-* Added: Product stock widget
-* Added: Product table widget
-* Added: Product tabs widget
-* Added: Product title widget
-* Added: QR Code widget
-* Added: Up sells widget
-* Added: Account address widget
-* Added: Account dashboard widget
-* Added: Account details widget
-* Added: Account downloads widget
-* Added: Account login form widget
-* Added: Account logout widget
-* Added: Account navigation widget
-* Added: Account order details widget
-* Added: Account orders widget
-* Added: Account registration form widget
-* Added: Checkout additional info widget
-* Added: Checkout billing address widget
-* Added: Checkout coupon form widget
-* Added: Checkout login form widget
-* Added: Checkout order review widget
-* Added: Checkout payment widget
-* Added: Checkout shipping form widget
-* Added: Checkout shipping methods widget
-* Added: EDD product review carousel widget
-* Added: EDD product reviews widget
-* Added: Thankyou order widget
-* Added: Thankyou order confirmation widget
-* Added: Thankyou order customer address widget
-* Added: Thankyou order details widget
+* Added: Template Builder Added
+* Added: Additional Information (Single) widget added
+* Added: Account Address widget added
+* Added: Account Dashboard widget added
+* Added: Account Details widget added
+* Added: Account Download widget added
+* Added: Account Login Form widget added
+* Added: Account Logout widget added
+* Added: Account Navigation widget added
+* Added: Account Order Details widget added
+* Added: Account Orders widget added
+* Added: Account Registration Form widget added
+* Added: Breadcrumbs (Single) widget added
+* Added: Checkout Additional Info widget added
+* Added: Checkout Billing Address widget added
+* Added: Checkout Coupon Form widget added
+* Added: Checkout Login Form widget added
+* Added: Checkout Order Review widget added
+* Added: Checkout Payment widget added
+* Added: Checkout Shipping Methods widget added
+* Added: Checkout Shipping Form widget added
+* Added: Cart (Page) widget added
+* Added: Checkout (Page) widget added
+* Added: My Account (Page) widget added
+* Added: Order (Page) widget added
+* Added: Single Product (Page) widget added
+* Added: Product Category Carousel widget added
+* Added: Product Description (Single) widget added
+* Added: Product Image (Single) widget added
+* Added: Product Meta (Single) widget added
+* Added: Product Price (Single) widget added
+* Added: Product Rating (Single) widget added
+* Added: Product Related (Single) widget added
+* Added: Product Stock (Single) widget added
+* Added: Product Tabs (Single) widget added
+* Added: Product Title (Single) widget added
+* Added: Thank You Order widget added
+* Added: Thank You Order Details widget added
+* Added: Thank You Order Customer Address widget added
+* Added: Thank You Order Confirmation widget added
+* Added: EDD Product Review widget added
+* Added: EDD Product Review Carousel widget added
+* Added: QR Code widget added
 
 = 1.2.0 [22th August 2022] =
 

@@ -829,7 +829,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                     <div bdt-filter="target: .bdt-options" class="bdt-options-parent" id="bdt-options-parent-<?php echo esc_attr($i); ?>">
 
 
-                        <?php if ($form['id'] == 'ultimate_store_kit_active_modules' or $form['id'] == 'ultimate_store_kit_edd_modules' or $form['id'] == 'ultimate_store_kit_elementor_extend') : ?>
+                        <?php if ($form['id'] == 'ultimate_store_kit_active_modules' or $form['id'] == 'ultimate_store_kit_edd_modules' or $form['id'] == 'ultimate_store_kit_general_modules') : ?>
 
                             <div class="bdt-widget-filter-wrapper bdt-grid">
 
@@ -841,19 +841,16 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                                                 <li class="bdt-widget-all bdt-active" bdt-filter-control="*"><a href="#">All</a></li>
                                                 <li class="bdt-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#">Free</a></li>
                                                 <li class="usk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#">Pro</a></li>
-                                                <li class="bdt-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#">New</a></li>
-                                                <!-- <li class="bdt-widget-woocommerce" bdt-filter-control="filter: [data-content-type*='woocommerce']; group: data-widget-type"><a href="#">Woocommerce</a></li>
-                                                <li class="bdt-widget-edd" bdt-filter-control="filter: [data-content-type*='edd']; group: data-widget-type"><a href="#">EDD</a></li> -->
                                             </ul>
                                         </div>
 
-                                        <?php if ($form['id'] == 'ultimate_store_kit_active_modules' or $form['id'] == 'ultimate_store_kit_edd_modules') : ?>
+                                        <?php if ($form['id'] == 'ultimate_store_kit_active_modules' || $form['id'] == 'ultimate_store_kit_edd_modules' || $form['id'] == 'ultimate_store_kit_general_modules') : ?>
 
                                             <div>
                                                 <button class="bdt-button bdt-button-default" type="button">Filter By Page</button>
                                                 <div bdt-dropdown="animation: bdt-animation-slide-top-small; duration: 300">
                                                     <ul class="bdt-nav bdt-subnav-pill bdt-dropdown-nav bdt-widget-filter bdt-widget-content-type">
-                                                        <!-- <li class="bdt-widget-general" bdt-filter-control="filter: [data-content-type*='general']; group: data-widget-type"><a href="#">General</a></li> -->
+                                                        <li class="bdt-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#">New</a></li>
                                                         <li class="bdt-widget-single" bdt-filter-control="filter: [data-content-type*='single']; group: data-widget-type"><a href="#">Single</a></li>
                                                         <li class="bdt-widget-archive" bdt-filter-control="filter: [data-content-type*='archive']; group: data-widget-type"><a href="#">Archive</a></li>
                                                         <li class="bdt-widget-cart" bdt-filter-control="filter: [data-content-type*='cart']; group: data-widget-type"><a href="#">Cart</a></li>
