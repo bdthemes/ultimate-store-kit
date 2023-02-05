@@ -16,7 +16,7 @@ class Admin {
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 			add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
 		}
-		
+
 		add_action('admin_init', [$this, 'admin_script']);
 
 		add_action('plugins_loaded', [$this, 'plugin_meta']);
@@ -76,11 +76,10 @@ class Admin {
 
 			if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 				wp_enqueue_script('chart', BDTUSK_ADMIN_URL . 'assets/js/chart.min.js', ['jquery'], '3.9.3', true);
-				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin' . $suffix . '.js', ['jquery', 'chart'], BDTUSK_VER, true);
-			}else{
-				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin' . $suffix . '.js', ['jquery'], BDTUSK_VER, true);
+				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.js', ['jquery', 'chart'], BDTUSK_VER, true);
+			} else {
+				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.js', ['jquery'], BDTUSK_VER, true);
 			}
-
 		}
 	}
 }

@@ -1,16 +1,16 @@
-.usk-page-my-account {
+// .usk-page-my-account {
 
-    .woocommerce {
-        display: flex;
-        gap: 30px;
-        flex-direction: column;
-    }
-
+    // .woocommerce {
+    //     display: flex;
+    //     gap: 30px;
+    //     flex-direction: column;
+    // }
+.woocommerce-MyAccount-navigation{
     ul {
         margin: 0;
         padding: 0;
         list-style: none;
-        
+
         li {
             a {
                 color: #3c3c47;
@@ -34,6 +34,7 @@
         }
 
     }
+}
     .woocommerce-MyAccount-content {
         p {
             margin: 0 0 20px;
@@ -45,12 +46,16 @@
             color: #000;
         }
     }
-   
-   .woocommerce::after,
-   .woocommerce::before {
-        content: unset !important;
-    }
-}
+
+//    .woocommerce::after,
+//    .woocommerce::before {
+//         content: unset !important;
+//     }
+// }
+
+
+
+
 
 @media (min-width: 768px) {
     .usk-page-my-account {
