@@ -209,6 +209,8 @@ e.g.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Start use it by go to elementor editor.
 
+https://youtu.be/9J4zCaDcPnk
+
 
 == Changelog ==
 
