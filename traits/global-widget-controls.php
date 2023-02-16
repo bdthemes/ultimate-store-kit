@@ -394,6 +394,19 @@ trait Global_Widget_Controls {
                 'default' => 'yes',
             ]
         );
+
+        $this->add_control(
+            'show_compare',
+            [
+                'label' => esc_html__('Compare', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'ultimate-store-kit'),
+                'label_off' => esc_html__('Hide', 'ultimate-store-kit'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
         $this->add_control(
             'show_quick_view',
             [

@@ -4,18 +4,18 @@
  * Plugin Name: Ultimate Store Kit
  * Plugin URI: https://bdthemes.com/ultimate-store-kit/
  * Description: <a href="https://bdthemes.com/ultimate-store-kit/">Ultimate Store Kit</a> is a packed of elementor widgets. This plugin gives you extra widgets features for elementor page builder plugin that help you to build an ecommerce website with woocommerce.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-store-kit
  * Domain Path: /languages
  * License: GPL3
  * Elementor requires at least: 3.0.0
- * Elementor tested up to: 3.10.1
+ * Elementor tested up to: 3.11.0
  */
 
 // Some pre define value for easy use
-define('BDTUSK_VER', '1.3.0');
+define('BDTUSK_VER', '1.3.1');
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
@@ -32,6 +32,15 @@ define('BDTUSK_ADM_PATH', BDTUSK_PATH . 'admin/');
 define('BDTUSK_ADM_ASSETS_URL', BDTUSK_URL . 'admin/assets/');
 
 define('BDTUSK_TITLE', 'Ultimate Store Kit');
+
+/**
+ * The code that runs during plugin activation.
+ */
+function bdthemes_ultimate_store_kit_activate_plugin() {
+	require_once plugin_dir_path(__FILE__) . 'includes/ultimate-store-kit-activator.php';
+	Ultimate_Store_Kit_Activator::activate();
+}
+// register_activation_hook(__FILE__, 'bdthemes_ultimate_store_kit_activate_plugin');
 
 
 

@@ -28,7 +28,7 @@ class ModuleService {
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'widget_type'  => 'pro',
                     'content_type' => 'woocommerce single',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/add-to-cart/',
+                    'demo_url'     => 'https://storekit.pro/demo/add-to-cart/',
                     'video_url'    => '',
                 ],
                 [
@@ -40,7 +40,7 @@ class ModuleService {
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'widget_type'  => 'pro',
                     'content_type' => 'woocommerce single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/additional-information/',
+                    'demo_url'     => 'https://storekit.pro/demo/additional-information/',
                     'video_url'    => '',
                 ],
                 [
@@ -52,7 +52,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-address/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-address/',
                     'video_url'    => '',
                 ],
                 [
@@ -64,7 +64,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-dashboard/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-dashboard/',
                     'video_url'    => '',
                 ],
                 [
@@ -76,7 +76,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-details/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-details/',
                     'video_url'    => '',
                 ],
                 [
@@ -88,7 +88,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-downloads/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-downloads/',
                     'video_url'    => '',
                 ],
                 [
@@ -100,7 +100,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-login-form/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-login-form/',
                     'video_url'    => '',
                 ],
                 [
@@ -112,7 +112,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-logout/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-logout/',
                     'video_url'    => '',
                 ],
                 [
@@ -124,7 +124,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-navigation/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-navigation/',
                     'video_url'    => '',
                 ],
                 [
@@ -136,7 +136,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-order-details/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-order-details/',
                     'video_url'    => '',
                 ],
                 [
@@ -148,7 +148,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-orders/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-orders/',
                     'video_url'    => '',
                 ],
                 [
@@ -160,7 +160,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/account-registration-form/',
+                    'demo_url'     => 'https://storekit.pro/demo/account-registration-form/',
                     'video_url'    => '',
                 ],
                 [
@@ -172,7 +172,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/breadcrumbs/',
+                    'demo_url'     => 'https://storekit.pro/demo/breadcrumbs/',
                     'video_url'    => '',
                 ],
                 // CHECKOUT
@@ -185,7 +185,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-additional-info/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-additional-info/',
                     'video_url'    => '',
                 ],
                 [
@@ -197,7 +197,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-billing-address/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-billing-address/',
                     'video_url'    => '',
                 ],
                 [
@@ -209,7 +209,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-coupon-form/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-coupon-form/',
                     'video_url'    => '',
                 ],
                 [
@@ -221,7 +221,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-login-form/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-login-form/',
                     'video_url'    => '',
                 ],
                 [
@@ -233,7 +233,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-order-review/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-order-review/',
                     'video_url'    => '',
                 ],
                 [
@@ -245,7 +245,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-payment/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-payment/',
                     'video_url'    => '',
                 ],
                 [
@@ -257,7 +257,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-shipping-methods/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-shipping-methods/',
                     'video_url'    => '',
                 ],
                 [
@@ -269,7 +269,31 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/checkout-shipping-form/',
+                    'demo_url'     => 'https://storekit.pro/demo/checkout-shipping-form/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'compare-button',
+                    'label'        => esc_html__('Compare Button', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'others new',
+                    'demo_url'     => 'https://storekit.pro/demo/compare-button/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'compare-products',
+                    'label'        => esc_html__('Compare Products', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'others new',
+                    'demo_url'     => 'https://storekit.pro/demo/compare-products/',
                     'video_url'    => '',
                 ],
 
@@ -282,7 +306,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/florence-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/florence-grid/',
                     'video_url'    => 'https://youtu.be/5UDpy3MqFbU',
                 ],
                 [
@@ -294,7 +318,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/florence-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/florence-carousel/',
                     'video_url'    => 'https://youtu.be/eqAsEwqcKdM',
                 ],
                 [
@@ -306,7 +330,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/glossy-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/glossy-grid/',
                     'video_url'    => 'https://youtu.be/H-EwEpbeXFA',
                 ],
                 [
@@ -318,7 +342,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/glossy-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/glossy-carousel/',
                     'video_url'    => 'https://youtu.be/P9proLYapgQ',
                 ],
                 [
@@ -330,7 +354,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/heaven-slider/',
+                    'demo_url'     => 'https://storekit.pro/demo/heaven-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -342,7 +366,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/info-list/',
+                    'demo_url'     => 'https://storekit.pro/demo/info-list/',
                     'video_url'    => '',
                 ],
 
@@ -355,7 +379,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/mentor-slider/',
+                    'demo_url'     => 'https://storekit.pro/demo/mentor-slider/',
                     'video_url'    => '',
                 ],
                 [
@@ -367,7 +391,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/mini-cart/',
+                    'demo_url'     => 'https://storekit.pro/demo/mini-cart/',
                     'video_url'    => '',
                 ],
                 [
@@ -379,7 +403,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce cart new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-cart/',
+                    'demo_url'     => 'https://storekit.pro/demo/page-cart/',
                     'video_url'    => '',
                 ],
                 [
@@ -391,21 +415,21 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce checkout new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-checkout/',
+                    'demo_url'     => 'https://storekit.pro/demo/page-checkout/',
                     'video_url'    => '',
                 ],
-                [
-                    'name'         => 'page-my-account',
-                    'label'        => esc_html__('My Account (Page)', 'ultimate-store-kit'),
-                    'type'         => 'checkbox',
-                    'default'      => "off",
-                    'widget_type'  => 'free',
-                    'plugin_name'  => 'woocommerce',
-                    'plugin_path'  => 'woocommerce/woocommerce.php',
-                    'content_type' => 'woocommerce account new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-my-account/',
-                    'video_url'    => '',
-                ],
+                // [
+                //     'name'         => 'page-my-account',
+                //     'label'        => esc_html__('My Account (Page)', 'ultimate-store-kit'),
+                //     'type'         => 'checkbox',
+                //     'default'      => "off",
+                //     'widget_type'  => 'free',
+                //     'plugin_name'  => 'woocommerce',
+                //     'plugin_path'  => 'woocommerce/woocommerce.php',
+                //     'content_type' => 'woocommerce account new',
+                //     'demo_url'     => 'https://storekit.pro/demo/page-my-account/',
+                //     'video_url'    => '',
+                // ],
                 [
                     'name'         => 'page-order',
                     'label'        => esc_html__('Order (Page)', 'ultimate-store-kit'),
@@ -415,7 +439,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce order thankyou new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-order/',
+                    'demo_url'     => 'https://storekit.pro/demo/page-order/',
                     'video_url'    => '',
                 ],
                 [
@@ -427,7 +451,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/page-single/',
+                    'demo_url'     => 'https://storekit.pro/demo/page-single/',
                     'video_url'    => '',
                 ],
                 [
@@ -439,7 +463,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-accordion/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-accordion/',
                     'video_url'    => '',
                 ],
                 [
@@ -451,7 +475,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-category/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-category/',
                     'video_url'    => '',
                 ],
                 [
@@ -463,7 +487,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-category-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-category-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -475,7 +499,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-description/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-description/',
                     'video_url'    => '',
                 ],
                 // [
@@ -487,7 +511,7 @@ class ModuleService {
                 //     'plugin_name'  => 'woocommerce',
                 //     'plugin_path'  => 'woocommerce/woocommerce.php',
                 //     'content_type' => 'archive new',
-                //     'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-filter/',
+                //     'demo_url'     => 'https://storekit.pro/demo/product-filter/',
                 //     'video_url'    => '',
                 // ],
                 [
@@ -499,7 +523,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-image/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-image/',
                     'video_url'    => '',
                 ],
                 [
@@ -511,7 +535,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-image-accordion/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-image-accordion/',
                     'video_url'    => '',
                 ],
                 [
@@ -523,7 +547,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-list/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-list/',
                     'video_url'    => 'https://youtu.be/qJQ9wfdoMKg',
                 ],
                 [
@@ -535,7 +559,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-meta/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-meta/',
                     'video_url'    => '',
                 ],
                 [
@@ -547,7 +571,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-price/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-price/',
                     'video_url'    => '',
                 ],
                 [
@@ -559,7 +583,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-rating/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-rating/',
                     'video_url'    => '',
                 ],
                 [
@@ -571,7 +595,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-related/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-related/',
                     'video_url'    => '',
                 ],
                 [
@@ -583,7 +607,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-reviews/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-reviews/',
                     'video_url'    => 'https://youtu.be/cjpkFVWBmH4',
                 ],
                 [
@@ -595,7 +619,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-review-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-review-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -607,7 +631,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-stock/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-stock/',
                     'video_url'    => '',
                 ],
                 [
@@ -619,7 +643,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-table/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-table/',
                     'video_url'    => '',
                 ],
                 [
@@ -631,7 +655,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-tabs/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-tabs/',
                     'video_url'    => '',
                 ],
                 [
@@ -643,7 +667,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce single new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/product-title/',
+                    'demo_url'     => 'https://storekit.pro/demo/product-title/',
                     'video_url'    => '',
                 ],
                 [
@@ -655,7 +679,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/shiny-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/shiny-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -667,7 +691,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/shiny-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/shiny-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -679,7 +703,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce slider',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/showcase-slider/',
+                    'demo_url'     => 'https://storekit.pro/demo/showcase-slider/',
                     'video_url'    => '',
                 ],
 
@@ -692,7 +716,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/sub-category/',
+                    'demo_url'     => 'https://storekit.pro/demo/sub-category/',
                     'video_url'    => '',
                 ],
                 [
@@ -704,7 +728,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/sub-category-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/sub-category-carousel/',
                     'video_url'    => '',
                 ],
 
@@ -717,7 +741,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/thankyou-order/',
+                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order/',
                     'video_url'    => '',
                 ],
                 [
@@ -729,7 +753,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/thankyou-order-details/',
+                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order-details/',
                     'video_url'    => '',
                 ],
                 [
@@ -741,7 +765,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/thankyou-order-customer-address/',
+                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order-customer-address/',
                     'video_url'    => '',
                 ],
                 [
@@ -753,7 +777,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/thankyou-order-confirmation/',
+                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order-confirmation/',
                     'video_url'    => '',
                 ],
 
@@ -768,7 +792,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-category-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-category-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -780,7 +804,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-category-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-category-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -792,7 +816,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-beauty-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-beauty-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -804,7 +828,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-beauty-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-beauty-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -816,7 +840,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-classic-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-classic-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -828,7 +852,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-classic-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-classic-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -840,7 +864,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'pro',
                     'content_type' => 'edd new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-product-reviews/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-product-reviews/',
                     'video_url'    => '',
                 ],
                 [
@@ -852,7 +876,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'pro',
                     'content_type' => 'edd new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-product-review-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-product-review-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -864,7 +888,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-standard-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-standard-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -876,7 +900,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-standard-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-standard-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -888,7 +912,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-trendy-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-trendy-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -900,7 +924,7 @@ class ModuleService {
                     'plugin_path'  => 'easy-digital-downloads/easy-digital-downloads.php',
                     'widget_type'  => 'free',
                     'content_type' => 'edd carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/edd-trendy-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-trendy-carousel/',
                     'video_url'    => '',
                 ]
             ],
@@ -912,7 +936,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'grid',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/brand-grid/',
+                    'demo_url'     => 'https://storekit.pro/demo/brand-grid/',
                     'video_url'    => '',
                 ],
                 [
@@ -922,7 +946,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'carousel',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/brand-carousel/',
+                    'demo_url'     => 'https://storekit.pro/demo/brand-carousel/',
                     'video_url'    => '',
                 ],
                 [
@@ -932,7 +956,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'free',
                     'content_type' => 'others',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/featured-box/',
+                    'demo_url'     => 'https://storekit.pro/demo/featured-box/',
                     'video_url'    => '',
                 ],
                 [
@@ -942,7 +966,7 @@ class ModuleService {
                     'default'      => "on",
                     'widget_type'  => 'pro',
                     'content_type' => 'woocommerce others new',
-                    'demo_url'     => 'https://bdthemes.net/demo/wordpress/ultimate-store-kit/demo/qr-code/',
+                    'demo_url'     => 'https://storekit.pro/demo/qr-code/',
                     'video_url'    => '',
                 ],
             ],

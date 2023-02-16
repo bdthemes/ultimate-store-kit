@@ -117,3 +117,13 @@
   transform: translateY(15px);
   height: 5px;
   width: 100%; }
+
+[class*=" elementor-widget-usk-"] .swiper-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; }
+
+[class*=" elementor-widget-usk-"] .swiper-pagination-fraction, [class*=" elementor-widget-usk-"] .swiper-pagination-custom, [class*=" elementor-widget-usk-"] .swiper-horizontal > .swiper-pagination-bullets, [class*=" elementor-widget-usk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: auto; }

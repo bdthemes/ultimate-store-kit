@@ -1093,3 +1093,44 @@ if (!function_exists('usk_license_validation')) {
 		return false;
 	}
 }
+
+
+
+function usk_get_compare_products($user_id = 0) {
+	$_compare_products_key = '_ultimate_store_kit_compare_products';
+	$_compare_products     = [];
+	if ($user_id != 0) {
+		$_compare_products = get_user_meta($user_id, $_compare_products_key, true) ?: [];
+	} elseif (isset($_COOKIE[$_compare_products_key])) {
+		$_compare_products = unserialize(stripslashes($_COOKIE[sanitize_text_field($_compare_products_key)]));
+	}
+
+	return apply_filters('ultimate_store_kit_compare_products', array_unique($_compare_products));
+}
+
+function usk_get_compare_products_count() {
+	$count    = 0;
+	$user_id  = get_current_user_id();
+	$products = usk_get_compare_products($user_id);
+	if (is_array($products)) {
+		$count = count($products);
+	}
+	return $count;
+}
+
+
+
+
+if (!function_exists('ultimate_store_kit_get_compare_product_slug')) {
+	function ultimate_store_kit_compare_product_slug() {
+		return 'compare-products';
+	}
+}
+
+
+if (!function_exists('ultimate_store_kit_is_compare_product_page')) {
+	function ultimate_store_kit_is_compare_product_page() {
+		$page_slug = ultimate_store_kit_compare_product_slug();
+		return is_page($page_slug);
+	}
+}

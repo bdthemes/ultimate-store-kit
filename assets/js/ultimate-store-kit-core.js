@@ -132,6 +132,40 @@
             },
         });
     });
+
+        $(".ajax_add_to_compare").on("click", function (e) {
+          var $this = $(this);
+          var $product_id = $this.data("product_id");
+          $.ajax({
+            url: ultimate_store_kit_ajax_config.ajaxurl,
+            data: {
+              action: "usk_add_to_compare_products",
+              product_id: $product_id,
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (response) {
+              if (response.action === "added") {
+                $(".usk-compare-button")
+                  .find(".usk-compare-count")
+                  .html(response.count);
+                $this.addClass("usk-active").attr({
+                  href: response.url,
+                  "aria-label": response.message,
+                });
+              } else {
+                $this.attr({
+                  href: "javascript:void(0);",
+                  "aria-label": response.message,
+                });
+              }
+            },
+            error: function (response) {
+              console.log(response);
+            },
+          });
+        });
+
     $(".ajax_add_to_cart").on("click", function (e) {
         e.preventDefault();
         var $this = $(this);

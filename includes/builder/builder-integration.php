@@ -262,7 +262,7 @@ class Builder_Integration {
         }
 
         $templateId = Builder_Template_Helper::getTemplate( $slug, $postType );
-        $this->current_template_id = apply_filters( 'ultimate-woo-kit-builder/custom-shop-template', $templateId );
+        $this->current_template_id = apply_filters( 'ultimate-store-kit-builder/custom-shop-template', $templateId );
 
         return $this->current_template_id;
     }

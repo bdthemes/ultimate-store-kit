@@ -487,6 +487,7 @@ class Shiny_Grid extends Module_Base {
             <?php $this->render_add_to_cart(); ?>
             <div class="usk-shoping">
                 <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
+                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
                 <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
             </div>
             <div class="usk-badge-label-wrapper">

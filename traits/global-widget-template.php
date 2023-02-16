@@ -40,7 +40,33 @@ trait Global_Widget_Template {
                 <i class="icon eicon-heart"></i>
             </a>
         <?php endif; ?>
+    <?php
+    }
+
+    function register_global_template_add_to_compare($tooltip_position) {
+        global $product;
+        $settings = $this->get_settings_for_display();
+        $user_id          = get_current_user_id();
+        $product_id       = $product->get_ID();
+        $compare_products = usk_get_compare_products($user_id);
+        $is_compared      = in_array($product_id, $compare_products);
+
+        if (!empty($is_compared)) {
+            $tooltip  = esc_html__('Added', 'ultimate-store-kit');
+            $selected = 'usk-active';
+        } else {
+            $tooltip  = esc_html__('Compare', 'ultimate-store-kit');
+            $selected = '';
+        } ?>
+        <?php if ($settings['show_compare'] == 'yes') : ?>
+            <a href="javascript:void(0)" class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>" data-product_id="<?php echo $product_id; ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
+                <i class="icon eicon-flow"></i>
+            </a>
+            <?php
+            ?>
+        <?php endif; ?>
         <?php
+
     }
 
 

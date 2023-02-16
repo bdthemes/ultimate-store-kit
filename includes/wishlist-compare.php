@@ -17,6 +17,10 @@ final class WishlistCompare {
         add_action('wp_ajax_usk_add_to_wishlist', [$this, 'usk_add_to_wishlist']);
         add_action('wp_ajax_nopriv_usk_add_to_wishlist', [$this, 'usk_add_to_wishlist']);
         add_action('woocommerce_account_wishlist_endpoint', [$this, 'usk_wishlist_content']);
+        add_action('wp_ajax_usk_add_to_compare_products', [$this, 'usk_add_to_compare_products']);
+        add_action('wp_ajax_usk_remove_from_compare_products', [$this, 'usk_remove_from_compare_products']);
+        add_action('wp_ajax_nopriv_usk_remove_from_compare_products', [$this, 'usk_remove_from_compare_products']);
+        add_action('wp_ajax_nopriv_usk_add_to_compare_products', [$this, 'usk_add_to_compare_products']);
         add_filter('woocommerce_account_menu_items', [$this, 'usk_wishlist_link_my_account']);
         add_filter('query_vars', [$this, 'usk_wishlist_query_vars'], 0);
         add_action('init', [$this, 'usk_add_rewrite_flash_rules_endpoint']);
@@ -72,6 +76,90 @@ final class WishlistCompare {
         setcookie($_wishlist_key, serialize($wishlist), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
         // }
     }
+
+
+    //======================================
+    //=========COMPARE PRODUCTS=============
+    //======================================
+    public function usk_add_to_compare_products() {
+        $response = [
+            'status'  => 0,
+            'message' => __('Unauthorized!', 'usk'),
+        ];
+
+        if (!isset($_POST['product_id'])) {
+            $response['message'] = __('No product selected!', 'usk');
+            wp_send_json($response);
+        }
+
+        $user_id          = get_current_user_id();
+        $compare_products = usk_get_compare_products($user_id);
+
+        // count compare products
+        if (is_array($compare_products)) {
+            $response['count'] = count($compare_products) + 1;
+        }
+
+        //add to compare products
+        $response['action'] = 'added';
+        $compare_products[] = $_POST['product_id'];
+
+        $compare_products = array_unique($compare_products);
+        $compare_page_slug  = ultimate_store_kit_compare_product_slug();
+
+        // update compare_productsusk_add_to_compare_products
+        $this->ultimate_store_kit_set_compare_products($compare_products, $user_id);
+
+        // send response
+        $response['status'] = 1;
+        if ($response['action'] == 'added') {
+            $response['message'] = __("Added", "ultimate-store-kit");
+            $response['url']     = get_permalink(get_page_by_path($compare_page_slug));
+            wp_send_json($response);
+        } else {
+            $response['message'] = __("Compare", "ultimate-store-kit");
+            wp_send_json($response);
+        }
+    }
+    public function usk_remove_from_compare_products() {
+        $response = [
+            'status'  => 0,
+            'message' => __('Unauthorized!', 'ultimate-store-kit'),
+        ];
+        if (!isset($_POST['product_id'])) {
+            $response['message'] = __('No product selected!', 'ultimate-store-kit');
+            wp_send_json($response);
+        }
+        $user_id          = get_current_user_id();
+        $compare_products = usk_get_compare_products($user_id);
+
+        //add remove from compare products
+        if (($key = array_search($_POST['product_id'], $compare_products)) !== false) {
+            $response['action'] = 'removed';
+            unset($compare_products[$key]);
+        }
+        $compare_products = array_unique($compare_products);
+
+        // update compare_products
+        $this->ultimate_store_kit_set_compare_products($compare_products, $user_id);
+
+        // send response
+        $response['status']  = 1;
+        $response['message'] = sprintf(__('compare products item %s!', 'ultimate-store-kit'), $response['action']);
+        wp_send_json($response);
+    }
+    public function ultimate_store_kit_set_compare_products($compare_products, $user_id = 0) {
+        $_compare_products_key = '_ultimate_store_kit_compare_products';
+        $_compare_products     = [];
+
+        if ($user_id != 0) {
+            update_user_meta($user_id, $_compare_products_key, $compare_products);
+        } else {
+            setcookie($_compare_products_key, serialize($compare_products), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
+        }
+    }
+
+
 
     //===========================================
 

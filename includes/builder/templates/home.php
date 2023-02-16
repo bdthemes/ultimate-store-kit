@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -15,15 +16,14 @@
  * @version 3.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 get_header();
 
-do_action( 'ultimate-woo-kit-builder/woocommerce/before-main-content' );
+do_action('ultimate-store-kit-builder/woocommerce/before-main-content');
 
-if ( class_exists( 'Elementor\Plugin' ) ) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+if (class_exists('Elementor\Plugin')) {
+	echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
 }
 
-do_action( 'ultimate-woo-kit-builder/woocommerce/after-main-content' );
+do_action('ultimate-store-kit-builder/woocommerce/after-main-content');
 get_footer();
-

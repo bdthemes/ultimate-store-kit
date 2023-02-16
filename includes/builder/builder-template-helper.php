@@ -26,6 +26,7 @@ class Builder_Template_Helper {
             'cart'          => 'Cart Page',
             'checkout'      => 'Checkout',
             'myaccount'     => 'My Account',
+            // 'compare-product'     => 'Compare Products',
         ];
 
         if ($wcItems = WC()->query->get_query_vars()) {
