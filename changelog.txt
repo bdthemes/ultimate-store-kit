@@ -1,12 +1,18 @@
 ## 1.3.1 [16th February 2023]
 
-###Fixed
+### Added
+
+- Swiper Library v8.4.5 compatibility added
+
+### Fixed
+
 - Minified Js issue fixed.
 - Some Minor issue fixed.
 
 ## 1.3.0 [30th January 2023]
 
 ### Added
+
 - Template Builder Added
 - Additional Information (Single) widget added
 - Account Address widget added

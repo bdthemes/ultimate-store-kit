@@ -9,7 +9,7 @@ Tested up to: 6.1.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.11.0
+Elementor tested up to: 3.11.1
 
 Best addon for elementor WordPress plugin with 75+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -216,9 +216,9 @@ https://youtu.be/9J4zCaDcPnk
 
 = 1.3.1 [16th February 2023] =
 
-* Fixed: minified js issue.
-* Fixed: some minor issue.
-
+* Added: Swiper Library v8.4.5 compatibility added
+* Fixed: minified js issue
+* Fixed: some minor issue
 
 = 1.3.0 [30th January 2023] =
 
