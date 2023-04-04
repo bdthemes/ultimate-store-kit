@@ -222,6 +222,7 @@
 	align-items: center;
 	grid-column-gap: 10px;
     cursor: pointer;
+    line-height: 1;
 	.woocommerce-Price-amount.amount {
 		font-size: 16px;
 		color: #25262d;
@@ -236,8 +237,8 @@
 	}
 	.usk-cart-badge {
         position: absolute;
-        right: -12px;
-        top: 0;
+        right: -10px;
+        top: -6px;
         font-size: 10px;
         background: #f00;
         width: 15px;

@@ -780,7 +780,30 @@ class ModuleService {
                     'demo_url'     => 'https://storekit.pro/demo/thankyou-order-confirmation/',
                     'video_url'    => '',
                 ],
-
+                [
+                    'name'         => 'wishlist-button',
+                    'label'        => esc_html__('Wishlist Button', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce others new',
+                    'demo_url'     => 'https://storekit.pro/demo/wishlist-button/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'wishlist-products',
+                    'label'        => esc_html__('Wishlist Products', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce others new',
+                    'demo_url'     => 'https://storekit.pro/demo/wishlist-products/',
+                    'video_url'    => '',
+                ],
             ],
             'ultimate_store_kit_edd_modules' => [
                 [
@@ -968,7 +991,7 @@ class ModuleService {
                     'content_type' => 'woocommerce others new',
                     'demo_url'     => 'https://storekit.pro/demo/qr-code/',
                     'video_url'    => '',
-                ],
+                ]
             ],
         ];
 

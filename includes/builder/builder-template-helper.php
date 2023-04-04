@@ -27,6 +27,7 @@ class Builder_Template_Helper {
             'checkout'      => 'Checkout',
             'myaccount'     => 'My Account',
             // 'compare-product'     => 'Compare Products',
+            // 'wishlist'     => 'Wishlist',
         ];
 
         if ($wcItems = WC()->query->get_query_vars()) {

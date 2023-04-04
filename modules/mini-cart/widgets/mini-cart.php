@@ -143,17 +143,17 @@ class Mini_Cart extends Module_Base {
 				'frontend_available' => true,
 			]
 		);
-		$this->add_control(
-			'usk_mini_cart_closeable',
-			[
-				'label'         => esc_html__('Closeable', 'ultimate-store-kit'),
-				'type'          => Controls_Manager::SWITCHER,
-				'label_on'      => esc_html__('Yes', 'ultimate-store-kit'),
-				'label_off'     => esc_html__('No', 'ultimate-store-kit'),
-				'render_type' => 'none',
-				'frontend_available' => true,
-			]
-		);
+		// $this->add_control(
+		// 	'usk_mini_cart_closeable',
+		// 	[
+		// 		'label'         => esc_html__('Closeable', 'ultimate-store-kit'),
+		// 		'type'          => Controls_Manager::SWITCHER,
+		// 		'label_on'      => esc_html__('Yes', 'ultimate-store-kit'),
+		// 		'label_off'     => esc_html__('No', 'ultimate-store-kit'),
+		// 		'render_type' => 'none',
+		// 		'frontend_available' => true,
+		// 	]
+		// );
 
 		$this->add_control(
 			'usk_mini_cart_startOpen',
@@ -182,7 +182,7 @@ class Mini_Cart extends Module_Base {
 		$this->add_control(
 			'usk_mini_cart_clickOutsideToClose',
 			[
-				'label'         => esc_html__('click Outside To Close', 'ultimate-store-kit'),
+				'label'         => esc_html__('Click Outside To Close', 'ultimate-store-kit'),
 				'type'          => Controls_Manager::SWITCHER,
 				'label_on'      => esc_html__('Yes', 'ultimate-store-kit'),
 				'label_off'     => esc_html__('No', 'ultimate-store-kit'),
@@ -296,10 +296,24 @@ class Mini_Cart extends Module_Base {
 		$this->add_control(
 			'mini_cart_price_amount_color',
 			[
-				'label'     => esc_html__('Color', 'ultimate-store-kit'),
+				'label'     => esc_html__('Amount Color', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .bdt-mini-cart-price-amount *' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'show_price_amount' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'mini_cart_icon_color',
+			[
+				'label'     => esc_html__('Icon Color', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .usk-cart-icon i' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -352,35 +366,7 @@ class Mini_Cart extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'price_amount_typography',
-				'selector' => '{{WRAPPER}} .bdt-mini-cart-wrapper .bdt-cart-button-text',
-			]
-		);
-
-		$this->add_control(
-			'mini_cart_icon_style',
-			[
-				'label' 	=> esc_html__('Cart Icon', 'ultimate-store-kit'),
-				'type' 		=> Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'mini_cart_icon_color',
-			[
-				'label'     => esc_html__('Color', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .usk-cart-icon i' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'mini_cart_icon_typography',
-				'selector' => '{{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .usk-cart-icon i',
+				'selector' => '{{WRAPPER}} .bdt-mini-cart-inner .woocommerce-Price-amount.amount, {{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .usk-cart-icon i',
 			]
 		);
 
@@ -1141,7 +1127,7 @@ class Mini_Cart extends Module_Base {
 			return;
 		}
 		$product_count = WC()->cart->get_cart_contents_count();
-		$this->add_render_attribute('mini-cart', 'type', 'button');
+		// $this->add_render_attribute('mini-cart', 'type', 'button');
 		$this->add_render_attribute('mini-cart', 'id', $toggleID);
 		$this->add_render_attribute('mini-cart', [
 			'class' => ['usk-mini-cart-toggle-btn'],
@@ -1177,9 +1163,11 @@ class Mini_Cart extends Module_Base {
 
 					<?php if ($settings['show_cart_icon'] === 'yes') : ?>
 						<span class="bdt-mini-cart-button-icon">
-							<?php if (($product_count != 0)) : ?>
-								<span class="usk-cart-badge"><?php echo esc_html($product_count); ?></span>
-							<?php endif; ?>
+							<?php //if (($product_count != 0)) :
+							?>
+							<span class="usk-cart-badge"><?php echo esc_html($product_count); ?></span>
+							<?php //endif;
+							?>
 							<span class="usk-cart-icon">
 								<i class="eicon-cart" aria-hidden="true"></i>
 							</span>

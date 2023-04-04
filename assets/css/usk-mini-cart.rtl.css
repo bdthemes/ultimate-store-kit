@@ -177,7 +177,8 @@
   display: inline-flex;
   align-items: center;
   grid-column-gap: 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  line-height: 1; }
   .bdt-mini-cart-inner .woocommerce-Price-amount.amount {
     font-size: 16px;
     color: #25262d;
@@ -189,8 +190,8 @@
     color: #25262d; }
   .bdt-mini-cart-inner .usk-cart-badge {
     position: absolute;
-    left: -12px;
-    top: 0;
+    left: -10px;
+    top: -6px;
     font-size: 10px;
     background: #f00;
     width: 15px;

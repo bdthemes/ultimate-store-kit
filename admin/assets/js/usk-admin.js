@@ -65,30 +65,30 @@ jQuery(document).ready(function ($) {
         // end total active
 
         // modules
-        var moduleUsedWidget = jQuery('#ultimate_store_kit_active_modules_page').find('.bdt-used-widget');
+        var moduleUsedWidget = jQuery('#ultimate_store_kit_active_modules_page').find('.usk-used-widget');
         var moduleUsedWidgetCount = jQuery('#ultimate_store_kit_active_modules_page').find('.bdt-options .usk-used').length;
 
 
         moduleUsedWidget.text(moduleUsedWidgetCount);
-        var moduleUnusedWidget = jQuery('#ultimate_store_kit_active_modules_page').find('.bdt-unused-widget');
+        var moduleUnusedWidget = jQuery('#ultimate_store_kit_active_modules_page').find('.usk-unused-widget');
         var moduleUnusedWidgetCount = jQuery('#ultimate_store_kit_active_modules_page').find('.bdt-options .usk-unused').length;
         moduleUnusedWidget.text(moduleUnusedWidgetCount);
 
         // 3rd party
-        var thirdPartyUsedWidget = jQuery('#ultimate_store_kit_edd_modules_page').find('.bdt-used-widget');
+        var thirdPartyUsedWidget = jQuery('#ultimate_store_kit_edd_modules_page').find('.usk-used-widget');
         var thirdPartyUsedWidgetCount = jQuery('#ultimate_store_kit_edd_modules_page').find('.bdt-options .usk-used').length;
         thirdPartyUsedWidget.text(thirdPartyUsedWidgetCount);
 
-        var thirdPartyUnusedWidget = jQuery('#ultimate_store_kit_edd_modules_page').find('.bdt-unused-widget');
+        var thirdPartyUnusedWidget = jQuery('#ultimate_store_kit_edd_modules_page').find('.usk-unused-widget');
         var thirdPartyUnusedWidgetCount = jQuery('#ultimate_store_kit_edd_modules_page').find('.bdt-options .usk-unused').length;
         thirdPartyUnusedWidget.text(thirdPartyUnusedWidgetCount);
 
         // others
-        var othersUsedWidget = jQuery('#ultimate_store_kit_general_modules_page').find('.bdt-used-widget');
+        var othersUsedWidget = jQuery('#ultimate_store_kit_general_modules_page').find('.usk-used-widget');
         var othersUsedWidgetCount = jQuery('#ultimate_store_kit_general_modules_page').find('.bdt-options .usk-used').length;
         othersUsedWidget.text(othersUsedWidgetCount);
 
-        var othersUnusedWidget = jQuery('#ultimate_store_kit_general_modules_page').find('.bdt-unused-widget');
+        var othersUnusedWidget = jQuery('#ultimate_store_kit_general_modules_page').find('.usk-unused-widget');
         var othersUnusedWidgetCount = jQuery('#ultimate_store_kit_general_modules_page').find('.bdt-options .usk-unused').length;
         othersUnusedWidget.text(othersUnusedWidgetCount);
 

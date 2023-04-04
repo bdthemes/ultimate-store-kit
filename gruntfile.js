@@ -13,10 +13,8 @@ module.exports = function (grunt) {
                     'assets/css/ultimate-store-kit-editor.css': 'assets/scss/ultimate-store-kit-editor.scss',
                     'assets/css/ultimate-store-kit-preview.css': 'assets/scss/ultimate-store-kit-preview.scss',
                     'assets/css/ultimate-store-kit-font.css': 'assets/scss/ultimate-store-kit-font.scss',
-                    // 'assets/css/admin.css': 'assets/scss/admin.scss',
                     'admin/assets/css/usk-admin.css': 'assets/scss/admin.scss',
                     'assets/css/elementor.css': 'assets/scss/elementor.scss',
-                    // 'assets/css/overrides.css': 'vendor/css/slickmodal.css',
 
                     //PAGES
                     'assets/css/usk-page-checkout.css': 'assets/scss/widgets/page-checkout.scss',
@@ -51,12 +49,7 @@ module.exports = function (grunt) {
                     'assets/css/usk-featured-box.css': 'assets/scss/widgets/featured-box.scss',
                     'assets/css/usk-heaven-slider.css': 'assets/scss/widgets/heaven-slider.scss',
                     'assets/css/usk-mentor-slider.css': 'assets/scss/widgets/mentor-slider.scss',
-                    // 'assets/css/usk-filter.css': 'assets/scss/widgets/filter.scss',
 
-
-                    // 'assets/css/usk-product-related.css': 'assets/scss/widgets/product-related.scss',
-                    // 'assets/css/usk-product-tabs.css': 'assets/scss/widgets/product-tabs.scss',
-                    // 'assets/css/usk-product-image.css': 'assets/scss/widgets/product-image.scss',
                     //EDD
                     'assets/css/usk-edd-category-carousel.css': 'assets/scss/widgets/edd-category-carousel.scss',
                     'assets/css/usk-edd-category-grid.css': 'assets/scss/widgets/edd-category-grid.scss',
@@ -128,7 +121,6 @@ module.exports = function (grunt) {
 
                         //CHECKOUT PAGE
                         'assets/js/widgets/usk-page-checkout.js',
-                        // 'assets/js/widgets/usk-checkout-login-form.js',
                     ]
                 }
             },

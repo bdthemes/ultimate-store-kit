@@ -11,11 +11,11 @@
  * Domain Path: /languages
  * License: GPL3
  * Elementor requires at least: 3.0.0
- * Elementor tested up to: 3.11.1
+ * Elementor tested up to: 3.11.2
  */
 
 // Some pre define value for easy use
-define('BDTUSK_VER', '1.3.1');
+define('BDTUSK_VER', time());
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
@@ -36,10 +36,10 @@ define('BDTUSK_TITLE', 'Ultimate Store Kit');
 /**
  * The code that runs during plugin activation.
  */
-function bdthemes_ultimate_store_kit_activate_plugin() {
-	require_once plugin_dir_path(__FILE__) . 'includes/ultimate-store-kit-activator.php';
-	Ultimate_Store_Kit_Activator::activate();
-}
+// function bdthemes_ultimate_store_kit_activate_plugin() {
+// 	require_once plugin_dir_path(__FILE__) . 'includes/ultimate-store-kit-activator.php';
+// 	Ultimate_Store_Kit_Activator::activate();
+// }
 // register_activation_hook(__FILE__, 'bdthemes_ultimate_store_kit_activate_plugin');
 
 

@@ -869,14 +869,14 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                                             <?php if ($form['id'] != 'ultimate_store_kit_elementor_extend' or $form['id'] == 'ultimate_store_kit_edd_modules') : ?>
 
                                                 <div>
-                                                    <ul class="bdt-subnav bdt-subnav-pill bdt-widget-filter bdt-used-unused-widgets bdt-flex-inline">
-                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='bdt-used']; group: data-content-type">
+                                                    <ul class="bdt-subnav bdt-subnav-pill bdt-widget-filter usk-used-unused-widgets bdt-flex-inline">
+                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-used']; group: data-content-type">
                                                             <a href="#">Used
-                                                                <span class="bdt-badge bdt-used-widget"></span>
+                                                                <span class="bdt-badge usk-used-widget"></span>
                                                             </a>
                                                         </li>
-                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='bdt-unused']; group: data-content-type"><a href="#" bdt-tooltip="Don't need unused widget? Click on the Deactivate All button.">Unused
-                                                                <span class="bdt-badge bdt-unused-widget bdt-danger"></span>
+                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-unused']; group: data-content-type"><a href="#" bdt-tooltip="Don't need unused widget? Click on the Deactivate All button.">Unused
+                                                                <span class="bdt-badge usk-unused-widget bdt-danger"></span>
                                                             </a>
                                                         </li>
                                                     </ul>

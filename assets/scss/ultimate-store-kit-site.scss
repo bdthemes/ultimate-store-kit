@@ -19,8 +19,8 @@
     }
 }
 
-.ultimate-store-kit-wishlist-wrap {
-    padding-top: 50px;
+.usk-wishlist-products {
+    // padding-top: 50px;
 
     .usk-table {
         width: 100%;
@@ -369,8 +369,8 @@
    -------------------------------------------*/
 
 @media (min-width: 576px) {
-    .ultimate-store-kit-wishlist-wrap {
-        padding-top: 100px;
+    .usk-wishlist-products {
+        // padding-top: 100px;
 
         .usk-table {
             .usk-product-image {
@@ -1316,44 +1316,44 @@
 }
 
 // my account page
-.woocommerce-MyAccount-navigation{
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+// .woocommerce-MyAccount-navigation{
+//     ul {
+//         margin: 0;
+//         padding: 0;
+//         list-style: none;
 
-        li {
-            a {
-                color: #3c3c47;
-                font-weight: 600;
-                font-size: 13px;
-                text-transform: capitalize;
-                display: block;
-                padding: 10px 15px;
-                transition: background-color .3s ease;
-            }
-            &.is-active {
-                a {
-                    background-color: #f1f1f1;
-                }
-            }
-            &:hover {
-                a {
-                    background-color: #f7f7f7;
-                }
-            }
-        }
+//         li {
+//             a {
+//                 color: #3c3c47;
+//                 font-weight: 600;
+//                 font-size: 13px;
+//                 text-transform: capitalize;
+//                 display: block;
+//                 padding: 10px 15px;
+//                 transition: background-color .3s ease;
+//             }
+//             &.is-active {
+//                 a {
+//                     background-color: #f1f1f1;
+//                 }
+//             }
+//             &:hover {
+//                 a {
+//                     background-color: #f7f7f7;
+//                 }
+//             }
+//         }
 
-    }
-}
-.woocommerce-MyAccount-content {
-    p {
-        margin: 0 0 20px;
-        font-size: 14px;
-        color: #797d85;
-        font-weight: 400;
-    }
-    a {
-        color: #000;
-    }
-}
+//     }
+// }
+// .woocommerce-MyAccount-content {
+//     p {
+//         margin: 0 0 20px;
+//         font-size: 14px;
+//         color: #797d85;
+//         font-weight: 400;
+//     }
+//     a {
+//         color: #000;
+//     }
+// }
