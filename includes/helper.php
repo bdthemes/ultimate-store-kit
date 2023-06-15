@@ -1118,19 +1118,27 @@ function usk_get_compare_products_count() {
 	return $count;
 }
 
+//if (!function_exists('ultimate_store_kit_get_compare_product_slug')) {
+//    function ultimate_store_kit_compare_product_slug() {
+//        return 'compare-products';
+//    }
+//}
 
-
-
-if (!function_exists('ultimate_store_kit_get_compare_product_slug')) {
-	function ultimate_store_kit_compare_product_slug() {
-		return 'compare-products';
-	}
+if (!function_exists('ultimate_store_kit_compare_product_page')) {
+    function ultimate_store_kit_compare_product_page() {
+        if($postId = intval(get_option( 'bdt_usk_compare_products_page_id' ))){
+            $post = get_post($postId);
+            if($post->post_status == 'publish'){
+                return $post->ID;
+            }
+        }
+    }
 }
-
 
 if (!function_exists('ultimate_store_kit_is_compare_product_page')) {
 	function ultimate_store_kit_is_compare_product_page() {
-		$page_slug = ultimate_store_kit_compare_product_slug();
-		return is_page($page_slug);
+		if ($page = ultimate_store_kit_compare_product_page() ) {
+			return is_page( $page->ID );
+		}
 	}
 }

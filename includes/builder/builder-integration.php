@@ -226,7 +226,7 @@ class Builder_Integration {
             }
         }
 
-		if ($page_Id = intval(get_option( 'bdt_usk_compare_page_id' )) ) {
+		if ($page_Id = intval(get_option( 'bdt_usk_compare_products_page_id' )) ) {
 			if(is_page($page_Id)){
 				if ($custom_template = $this->get_template_id('compare-products','product')) {
 					$this->current_template_id = $custom_template;

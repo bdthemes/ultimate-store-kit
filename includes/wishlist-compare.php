@@ -86,6 +86,12 @@ final class WishlistCompare {
         // }
     }
 
+	public function get_compare_product_page_id() {
+		if($comparePage = ultimate_store_kit_compare_product_page()){
+			return $comparePage->ID;
+		}
+	}
+
 
     //======================================
     //=========COMPARE PRODUCTS=============
@@ -114,7 +120,6 @@ final class WishlistCompare {
         $compare_products[] = $_POST['product_id'];
 
         $compare_products = array_unique($compare_products);
-        $compare_page_slug  = ultimate_store_kit_compare_product_slug();
 
         // update compare_productsusk_add_to_compare_products
         $this->ultimate_store_kit_set_compare_products($compare_products, $user_id);
@@ -123,7 +128,11 @@ final class WishlistCompare {
         $response['status'] = 1;
         if ($response['action'] == 'added') {
             $response['message'] = __("Added", "ultimate-store-kit");
-            $response['url']     = get_permalink(get_page_by_path($compare_page_slug));
+	        $response['url']  = '';
+			if($pageId = $this->get_compare_product_page_id()){
+				$response['url']     = get_permalink($pageId);
+			}
+
             wp_send_json($response);
         } else {
             $response['message'] = __("Compare", "ultimate-store-kit");
