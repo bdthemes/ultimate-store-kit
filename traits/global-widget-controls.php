@@ -2700,7 +2700,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .swiper-container-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .' . $this->get_name() . ' .swiper-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
                 ],
                 'condition'   => [
                     'show_scrollbar' => 'yes'
@@ -3234,7 +3234,7 @@ trait Global_Widget_Controls {
                 'label'   => __('Scrollbar Offset', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::SLIDER,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .swiper-container-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .' . $this->get_name() . ' .swiper-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
                 ],
                 'condition'   => [
                     'show_scrollbar' => 'yes'
@@ -3502,7 +3502,7 @@ trait Global_Widget_Controls {
                     'size' => 10
                 ],
                 'selectors'   => [
-                    '{{WRAPPER}} .swiper-container' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
                 ],
             ]
         );

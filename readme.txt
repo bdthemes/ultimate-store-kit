@@ -2,16 +2,16 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor, store kit, pagebuilder addon, addons, edd, bdthemes
-Stable tag: 1.3.2
+Stable tag: 1.5.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.2.2
+Tested up to: 6.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.14.1
+Elementor tested up to: 3.15.2
 
-Best addon for elementor WordPress plugin with 75+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
+Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
 
 == Description ==
@@ -85,12 +85,11 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [Sub Category](https://storekit.pro/demo/sub-category/) - By using the Sub Category widget, you can display your eCommerce shop products in sub categories with special animation effects to make them more visually appealing. Using this widget, you can customize your product gallery to better suit your business and boost user experience
 0. [Sub Category Caousel](https://storekit.pro/demo/sub-category-carousel/) - The Sub Category Carousel widget features a carousel layout to display your product subcategories alongside your entire product lineup so that your visitors can see all the products without getting lost in the numbers. Make it useful by letting your visitors experience it for themselves.
 0. [Product Category Carousel](https://storekit.pro/demo/product-category-carousel/) - Display eCommerce store products by their belonging category for more direct filtering
-0. [Product Table](https://storekit.pro/demo/product-table/) -
-0. [Page Cart](https://storekit.pro/demo/page-cart/) -
-0. [Page Checkout](https://storekit.pro/demo/page-checkout/) -
-0. [Page My Account](https://storekit.pro/demo/page-my-account/) -
-0. [Page Order](https://storekit.pro/demo/page-order/) -
-0. [Page Single](https://storekit.pro/demo/page-single/) -
+0. [Page Cart](https://storekit.pro/demo/page-cart/) - Display a customized cart page where all the products are listed after the customer is done add-to-cart them. The interface offers flexible customizations for single pages.
+0. [Page Checkout](https://storekit.pro/demo/page-checkout/) - Create and serve a customized checkout page where your customers will finalize deals. We added a lot of options here so you can make the widget display attractive checkout pages.
+0. [Page My Account](https://storekit.pro/demo/page-my-account/) - Let your users visit their own account by using the Page My Account widget to create an eye-comforting account page in your online store.
+0. [Page Order](https://storekit.pro/demo/page-order/) - Display the total order value, shipping costs, and related info in a customizable order completion form.
+0. [Page Single](https://storekit.pro/demo/page-single/) - This is a single page widget meant for designing the single page structure for your products. Comes with lots of options and customizations to make creative interfaces.
 0. [Up Sells](https://storekit.pro/demo/up-sells/) - The Upsells widget helps display the created upsell product list inside the single product page
 
 = Easy Digital Downloads 💲 =
@@ -130,7 +129,8 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Let your visitors sign up for their user account by inserting their email
 0. [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Customizable Add to cart button for a quick product carting maneuver for the visitors or users of your website
 0. [Additional Information](https://storekit.pro/demo/additional-information/) - Additional product information tab for single pages to deliver more info per need
-0. [Add To Cart](https://storekit.pro/demo/add-to-cart/) - A complete cart page for customers to view their purchasing products and total costing, coupon, shipping, and other details
+0. [Compare Button](https://storekit.pro/demo/compare-button/) - 
+0. [Compare Products](https://storekit.pro/demo/compare-products/) - 
 0. [Checkout Additional Info](https://storekit.pro/demo/checkout-additional-info/) - Helps attach additional information for the checkout page to let users learn more about terms and conditions or anything you want them to know
 0. [Checkout Billing Address](https://storekit.pro/demo/checkout-billing-address/) - Custom billing form for vistiors/users/customers to inlcude their personal information safely for product billing/delivery purpose
 0. [Checkout Coupon Form](https://storekit.pro/demo/checkout-coupon-form/) - Helps add coupon codes on the checkout page with a very familiar user interface
@@ -139,19 +139,21 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [Checkout Payment](https://storekit.pro/demo/checkout-payment/) - Add and integrate checkout payment methods and gateaways while using this widget to link to the process
 0. [Checkout Shipping Form](https://storekit.pro/demo/checkout-shipping-form/) - Let users add their shipping details to recieve the ordered products in the same/different address
 0. [Checkout Shipping Methods](https://storekit.pro/demo/checkout-shipping-methods/) - Display shipping options and rates for checkouts for your online store users/visitors/customers
-0. [Product Description](https://storekit.pro/demo/product-description/) -
-0. [Product Image](https://storekit.pro/demo/product-image/) -
+0. [Product Description](https://storekit.pro/demo/product-description/) - Design the single product descriptions by utilizing this widget meant for single pages. Customizations are available to let you explore unique interfaces.
+0. [Product Image](https://storekit.pro/demo/product-image/) - Use the Product Image widget to design your single product pages or archives with additional option to customize the image over the canvas.
 0. [Product Meta](https://storekit.pro/demo/product-meta/) - The Meta widget let's you add specific product data like SKU, category, and tag for quick info
 0. [Product Price](https://storekit.pro/demo/product-price/) - Add dynamic product price tag to the single page editor with before-after prices
 0. [Product Rating](https://storekit.pro/demo/product-rating/) - Display and customize product rating from the users on the single product page
-0. [Product Related](https://storekit.pro/demo/product-related/) -
+0. [Product Related](https://storekit.pro/demo/product-related/) - Display related products on existing products when customers are going for them. With our widget, you can also customized the interface and add your brand values on your single pages.
 0. [Product Stock](https://storekit.pro/demo/product-stock/) - Add single page product current stock information through the dynamic Stock widget
-0. [Product Tabs](https://storekit.pro/demo/product-tabs/) -
+0. [Product Tabs](https://storekit.pro/demo/product-tabs/) - With the Product Tabs widget, you can effortlessly customize the existing tabs of products and change lots of visual interfaces for maximum user interaction.
 0. [Product Title](https://storekit.pro/demo/product-title/) - Display single page title beloging to the individual product page
 0. [Thankyou Order](https://storekit.pro/demo/thankyou-order/) - Helps displaying a customized thanks message upon ordering a product
 0. [Thankyou Order Confirmation](https://storekit.pro/demo/thankyou-order-confirmation/) - Lets the shop owner display mini status of the order in the thank you page after the customer checked out the products
 0. [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Helps display customer location information on the thank you page after checkout
 0. [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Displays a complete order details on the thank you page after checkout
+0. [Wishlist Button](https://storekit.pro/demo/wishlist-button/) - Let's you create and customize a miniature product wishlist button on your online store where your customers can store and access product information that they want to.
+0. [Wishlist Products](https://storekit.pro/demo/wishlist-products/) - Let's you customize the wishlist page appearance and layout with lots of resourceful customization options added to your arsenal.
 
 = Easy Digital Downloads 💲 =
 
@@ -214,14 +216,30 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 1.3.2 [11th July 2023] =
+= 1.5.0 [16th August 2023] =
 
-* Added: Compare Products widget added
-* Added: Compare Button widget added
-* Added: Wishlist Products widget added
-* Added: Wishlist button widget added
-* Fixed: Fixed: minified js issue
-* Fixed: some minor issue
+* Added: up sells widget added
+* Fixed: Single page widget fixed
+* Fixed: Product Tabs widget issue fixed
+* Fixed: Compatibility issue fixed
+
+= 1.4.1 [1st August 2023] =
+
+* Added: Background, border, padding & Coupon Label style options added cart page widget
+* Fixed: Store Kit Admin Search Issue fixed
+* Fixed: Navigation issue fixed in showcase slider widget
+* Fixed: Coupon field color issue fixed in cart page widget
+* Fixed: Coupon issue fixed in Checkout Page (Thanks to Andre)
+* Fixed: Tabs title active color, padding issue fixed in product tabs widget
+
+= 1.4.0 [16th July 2023] =
+
+* Added: Compare Products widget added (pro)
+* Added: Compare Button widget added (pro)
+* Added: Wishlist Products widget added (pro)
+* Added: Wishlist button widget added (pro)
+* Updated: System improved
+* Fixed: Elementor pro version 3.14.0 (swiper carousel) compatibility issue fixed
 
 = 1.3.1 [12th February 2023] =
 

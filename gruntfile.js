@@ -50,6 +50,9 @@ module.exports = function (grunt) {
                     'assets/css/usk-heaven-slider.css': 'assets/scss/widgets/heaven-slider.scss',
                     'assets/css/usk-mentor-slider.css': 'assets/scss/widgets/mentor-slider.scss',
 
+                    //new
+                    'assets/css/usk-up-sells.css': 'assets/scss/widgets/up-sells.scss',
+
                     //EDD
                     'assets/css/usk-edd-category-carousel.css': 'assets/scss/widgets/edd-category-carousel.scss',
                     'assets/css/usk-edd-category-grid.css': 'assets/scss/widgets/edd-category-grid.scss',

@@ -9,3 +9,11 @@
 
 .usk-page-single form.cart * {
   text-align: center; }
+
+.usk-page-single .woocommerce ul.products {
+  display: inline-block !important; }
+  .usk-page-single .woocommerce ul.products li {
+    border: 1px solid #eee;
+    padding: 30px !important;
+    display: inline-block;
+    border-radius: 5px; }

@@ -2,6 +2,8 @@
 
 namespace UltimateStoreKit\Traits;
 
+use Elementor\Plugin;
+
 // use WP_Query;
 
 
@@ -367,11 +369,17 @@ trait Global_Widget_Template {
                     ]
                 ]
             ]
-        ); ?>
+        ); 
+        
+        $swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+		$this->add_render_attribute('swiper', 'class', 'swiper-carousel ' . $swiper_class);
+        
+        ?>
+
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('usk-carousel-wrapper'); ?>>
                 <div <?php $this->print_render_attribute_string('carousel'); ?>>
-                    <div class="swiper-container">
+                    <div <?php echo $this->get_render_attribute_string('swiper'); ?>>
                         <div class="swiper-wrapper">
                             <?php
                         }

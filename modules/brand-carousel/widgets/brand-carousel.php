@@ -349,7 +349,7 @@
                         'size' => 10
                     ],
                     'selectors'   => [
-                        '{{WRAPPER}} .swiper-container' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+                        '{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
                     ],
                 ]
             );
@@ -357,7 +357,7 @@
 			$this->add_control(
 				'image_heading',
 				[
-					'label'     => __('I M A G E', 'ultimate-store-kit'),
+					'label'     => __('IMAGE', 'ultimate-store-kit'),
 					'type'      => Controls_Manager::HEADING,
 					'separator' => 'before'
 				]

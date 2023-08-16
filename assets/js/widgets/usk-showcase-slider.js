@@ -5,7 +5,7 @@
     if (!$gridCarousel.length) {
       return;
     }
-    var $gridCarouselContainer = $gridCarousel.find(".swiper-container");
+    var $gridCarouselContainer = $gridCarousel.find(".swiper-carousel");
     var $settings = $gridCarousel.data("settings");
 
       const Swiper = elementorFrontend.utils.swiper;

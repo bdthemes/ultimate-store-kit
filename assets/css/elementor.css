@@ -26,7 +26,9 @@
 .usk-dots-container .swiper-pagination-bullets-dynamic {
   overflow: hidden;
   font-size: 0;
-  width: 100% !important; }
+  width: 100% !important;
+  left: 0 !important;
+  transform: translateX(0) !important; }
 
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
@@ -117,13 +119,6 @@
   transform: translateY(15px);
   height: 5px;
   width: 100%; }
-
-[class*=" elementor-widget-usk-"] .swiper-container {
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  overflow: hidden;
-  z-index: 1; }
 
 [class*=" elementor-widget-usk-"] .swiper-pagination-fraction, [class*=" elementor-widget-usk-"] .swiper-pagination-custom, [class*=" elementor-widget-usk-"] .swiper-horizontal > .swiper-pagination-bullets, [class*=" elementor-widget-usk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: auto; }

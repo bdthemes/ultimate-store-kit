@@ -431,19 +431,23 @@
 
 //Swiper css
     .ultimate-store-kit{
+        .swiper-coverflow,
         .swiper-container-coverflow {
         padding-top: 15px;
         .swiper-slide {
             transition-property: transform, border, background;
         }
     }
+    .swiper-horizontal>.swiper-pagination-progress,
     .swiper-container-horizontal>.swiper-pagination-progress {
         top: auto;
         bottom: 0;
     }
      .swiper-pagination-fraction,
     .swiper-pagination-custom,
-    .swiper-container-horizontal .swiper-pagination-bullets,
+    .swiper-horizontal .swiper-pagination-bullets,
+    .swiper-horizontal+.swiper-pagination-bullets,
+.swiper-container-horizontal .swiper-pagination-bullets,
     .swiper-container-horizontal+.swiper-pagination-bullets {
         bottom: -50px;
         width: 100%;
@@ -461,8 +465,11 @@
     }
 
     /* Swiper */
-    .swiper-container .elementor-lightbox-content-source {
+    .swiper,
+    .swiper-container {
+    .elementor-lightbox-content-source {
         display: none;
+    }
     }
 
     .swiper-slide {
@@ -471,6 +478,8 @@
         overflow: hidden;
     }
 
+    .swiper-horizontal+.swiper-pagination-progressbar,
+    .swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite, 
     .swiper-container-horizontal+.swiper-pagination-progressbar,
     .swiper-container-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
         width: 100%;
@@ -502,11 +511,13 @@
     }
 
     .elementor-pagination-position-outside {
+        .swiper,
         .swiper-container {
             padding-bottom: 40px;
         }
 
         .swiper-pagination-fraction,
+        .swiper-horizontal>.swiper-pagination-bullets,
         .swiper-container-horizontal>.swiper-pagination-bullets {
             bottom: 0;
         }
