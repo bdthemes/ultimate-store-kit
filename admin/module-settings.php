@@ -418,6 +418,7 @@ class ModuleService {
                     'demo_url'     => 'https://storekit.pro/demo/page-checkout/',
                     'video_url'    => '',
                 ],
+            
                 // [
                 //     'name'         => 'page-my-account',
                 //     'label'        => esc_html__('My Account (Page)', 'ultimate-store-kit'),
@@ -804,6 +805,18 @@ class ModuleService {
                     'demo_url'     => 'https://storekit.pro/demo/wishlist-products/',
                     'video_url'    => '',
                 ],
+                [
+                    'name'         => 'up-sells',
+                    'label'        => esc_html__('Upsells', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'free',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce others new',
+                    'demo_url'     => 'https://storekit.pro/demo/up-sells/',
+                    'video_url'    => '',
+                ],
             ],
             'ultimate_store_kit_edd_modules' => [
                 [
@@ -988,10 +1001,10 @@ class ModuleService {
                     'type'         => 'checkbox',
                     'default'      => "on",
                     'widget_type'  => 'pro',
-                    'content_type' => 'woocommerce others new',
+                    'content_type' => 'others new',
                     'demo_url'     => 'https://storekit.pro/demo/qr-code/',
                     'video_url'    => '',
-                ]
+                ],
             ],
         ];
 

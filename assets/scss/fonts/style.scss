@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?k90e4n') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?k90e4n') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?k90e4n') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?k90e4n##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?4ozhgz') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?4ozhgz') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?4ozhgz') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?4ozhgz##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.usk-icon-compare-products {
+  &:before {
+    content: $usk-icon-compare-products; 
+  }
+}
+.usk-icon-wishlist-button {
+  &:before {
+    content: $usk-icon-wishlist-button; 
+  }
+}
+.usk-icon-wishlist-products {
+  &:before {
+    content: $usk-icon-wishlist-products; 
+  }
+}
 .usk-icon-product-category-carousel {
   &:before {
     content: $usk-icon-product-category-carousel; 
@@ -447,9 +462,9 @@
     content: $usk-icon-product-title; 
   }
 }
-.usk-icon-up-sale {
+.usk-icon-up-sells {
   &:before {
-    content: $usk-icon-up-sale; 
+    content: $usk-icon-up-sells; 
   }
 }
 .usk-icon-add-to-cart {

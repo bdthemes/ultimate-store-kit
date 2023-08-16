@@ -1,0 +1,26 @@
+.elementor-widget-usk-up-sells.usk-up-sells-show-heading-yes section.up-sells.upsells.products h2 {
+  display: block; }
+
+.elementor-widget-usk-up-sells .usk-upsells section.products {
+  display: inline-block; }
+  .elementor-widget-usk-up-sells .usk-upsells section.products li.product {
+    border: 1px solid #eee;
+    padding: 30px !important;
+    display: inline-block;
+    border-radius: 5px; }
+  .elementor-widget-usk-up-sells .usk-upsells section.products h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: none; }
+    .elementor-widget-usk-up-sells .usk-upsells section.products h2 a {
+      color: #000; }
+
+.elementor-widget-usk-up-sells section.up-sells.upsells.products h2 {
+  display: none; }
+
+.elementor-widget-usk-up-sells ul.products li.product, .elementor-widget-usk-up-sells .woocommerce-page ul.products li.product {
+  border: 1px solid #eee;
+  padding: 30px !important;
+  display: inline-block;
+  border-radius: 5px; }

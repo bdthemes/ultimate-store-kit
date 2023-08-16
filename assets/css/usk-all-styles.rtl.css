@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .usk-slider .swiper-pagination,
 .usk-dots-container .swiper-pagination,
 .usk-arrows-dots-container .swiper-pagination {
@@ -26,7 +27,9 @@
 .usk-dots-container .swiper-pagination-bullets-dynamic {
   overflow: hidden;
   font-size: 0;
-  width: 100% !important; }
+  width: 100% !important;
+  right: 0 !important;
+  transform: translateX(0) !important; }
 
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
@@ -117,13 +120,6 @@
   transform: translateY(15px);
   height: 5px;
   width: 100%; }
-
-[class*=" elementor-widget-usk-"] .swiper-container {
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-  overflow: hidden;
-  z-index: 1; }
 
 [class*=" elementor-widget-usk-"] .swiper-pagination-fraction, [class*=" elementor-widget-usk-"] .swiper-pagination-custom, [class*=" elementor-widget-usk-"] .swiper-horizontal > .swiper-pagination-bullets, [class*=" elementor-widget-usk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: auto; }
@@ -630,7 +626,9 @@ div.pp_pic_holder {
 .usk-dots-container .swiper-pagination-bullets-dynamic {
   overflow: hidden;
   font-size: 0;
-  width: 100% !important; }
+  width: 100% !important;
+  right: 0 !important;
+  transform: translateX(0) !important; }
 
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
@@ -721,13 +719,6 @@ div.pp_pic_holder {
   transform: translateY(15px);
   height: 5px;
   width: 100%; }
-
-[class*=" elementor-widget-usk-"] .swiper-container {
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-  overflow: hidden;
-  z-index: 1; }
 
 [class*=" elementor-widget-usk-"] .swiper-pagination-fraction, [class*=" elementor-widget-usk-"] .swiper-pagination-custom, [class*=" elementor-widget-usk-"] .swiper-horizontal > .swiper-pagination-bullets, [class*=" elementor-widget-usk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: auto; }
@@ -985,21 +976,28 @@ div.pp_pic_holder {
 
 .ultimate-store-kit {
   /* Swiper */ }
+  .ultimate-store-kit .swiper-coverflow,
   .ultimate-store-kit .swiper-container-coverflow {
     padding-top: 15px; }
+    .ultimate-store-kit .swiper-coverflow .swiper-slide,
     .ultimate-store-kit .swiper-container-coverflow .swiper-slide {
       transition-property: transform, border, background; }
+  .ultimate-store-kit .swiper-horizontal > .swiper-pagination-progress,
   .ultimate-store-kit .swiper-container-horizontal > .swiper-pagination-progress {
     top: auto;
     bottom: 0; }
   .ultimate-store-kit .swiper-pagination-fraction,
   .ultimate-store-kit .swiper-pagination-custom,
+  .ultimate-store-kit .swiper-horizontal .swiper-pagination-bullets,
+  .ultimate-store-kit .swiper-horizontal + .swiper-pagination-bullets,
   .ultimate-store-kit .swiper-container-horizontal .swiper-pagination-bullets,
   .ultimate-store-kit .swiper-container-horizontal + .swiper-pagination-bullets {
     bottom: -50px;
     width: 100%; }
     .ultimate-store-kit .swiper-pagination-fraction .swiper-pagination-bullet,
     .ultimate-store-kit .swiper-pagination-custom .swiper-pagination-bullet,
+    .ultimate-store-kit .swiper-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
+    .ultimate-store-kit .swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet,
     .ultimate-store-kit .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
     .ultimate-store-kit .swiper-container-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
       width: 10px;
@@ -1007,12 +1005,15 @@ div.pp_pic_holder {
       margin: 0 5px; }
   .ultimate-store-kit .usk-navigation-type-arrows-fraction .swiper-pagination {
     position: initial; }
+  .ultimate-store-kit .swiper .elementor-lightbox-content-source,
   .ultimate-store-kit .swiper-container .elementor-lightbox-content-source {
     display: none; }
   .ultimate-store-kit .swiper-slide {
     border-style: solid;
     border-width: 0;
     overflow: hidden; }
+  .ultimate-store-kit .swiper-horizontal + .swiper-pagination-progressbar,
+  .ultimate-store-kit .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
   .ultimate-store-kit .swiper-container-horizontal + .swiper-pagination-progressbar,
   .ultimate-store-kit .swiper-container-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
     width: 100%;
@@ -1032,9 +1033,11 @@ div.pp_pic_holder {
   .ultimate-store-kit .elementor-pagination-position-inside .swiper-pagination-fraction,
   .ultimate-store-kit .elementor-pagination-position-inside .swiper-container-horizontal > .swiper-pagination-bullets {
     bottom: 10px; }
+  .ultimate-store-kit .elementor-pagination-position-outside .swiper,
   .ultimate-store-kit .elementor-pagination-position-outside .swiper-container {
     padding-bottom: 40px; }
   .ultimate-store-kit .elementor-pagination-position-outside .swiper-pagination-fraction,
+  .ultimate-store-kit .elementor-pagination-position-outside .swiper-horizontal > .swiper-pagination-bullets,
   .ultimate-store-kit .elementor-pagination-position-outside .swiper-container-horizontal > .swiper-pagination-bullets {
     bottom: 0; }
 
@@ -1600,6 +1603,803 @@ div.pp_pic_holder {
   .usk-hide-mobile {
     display: none; } }
 
+@font-face {
+  font-family: "ultimate-store-kit";
+  src: url("../fonts/ultimate-store-kit.woff2?4ozhgz") format("woff2"), url("../fonts/ultimate-store-kit.ttf?4ozhgz") format("truetype"), url("../fonts/ultimate-store-kit.woff?4ozhgz") format("woff"), url("../fonts/ultimate-store-kit.svg?4ozhgz#ultimate-store-kit") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+
+[class^="usk-icon-"], [class*=" usk-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "ultimate-store-kit" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.usk-icon-compare-products:before {
+  content: ""; }
+
+.usk-icon-wishlist-button:before {
+  content: ""; }
+
+.usk-icon-wishlist-products:before {
+  content: ""; }
+
+.usk-icon-product-category-carousel:before {
+  content: ""; }
+
+.usk-icon-page-my-account:before {
+  content: ""; }
+
+.usk-icon-page-single:before {
+  content: ""; }
+
+.usk-icon-page-order:before {
+  content: ""; }
+
+.usk-icon-page-checkout:before {
+  content: ""; }
+
+.usk-icon-additional-information:before {
+  content: ""; }
+
+.usk-icon-mentor-slider:before {
+  content: ""; }
+
+.usk-icon-account-details:before {
+  content: ""; }
+
+.usk-icon-account-downloads:before {
+  content: ""; }
+
+.usk-icon-account-login-form:before {
+  content: ""; }
+
+.usk-icon-checkout-additional-info:before {
+  content: ""; }
+
+.usk-icon-checkout-order-review:before {
+  content: ""; }
+
+.usk-icon-edd-product-review-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-product-reviews:before {
+  content: ""; }
+
+.usk-icon-product-image:before {
+  content: ""; }
+
+.usk-icon-thankyou-order:before {
+  content: ""; }
+
+.usk-icon-thankyou-order-confirmation:before {
+  content: ""; }
+
+.usk-icon-thankyou-order-customer-address:before {
+  content: ""; }
+
+.usk-icon-thankyou-order-details:before {
+  content: ""; }
+
+.usk-icon-account-address:before {
+  content: ""; }
+
+.usk-icon-account-dashboard:before {
+  content: ""; }
+
+.usk-icon-account-download:before {
+  content: ""; }
+
+.usk-icon-account-login:before {
+  content: ""; }
+
+.usk-icon-account-logout:before {
+  content: ""; }
+
+.usk-icon-account-navigation:before {
+  content: ""; }
+
+.usk-icon-account-order-details:before {
+  content: ""; }
+
+.usk-icon-account-orders:before {
+  content: ""; }
+
+.usk-icon-account-registration-form:before {
+  content: ""; }
+
+.usk-icon-page-cart:before {
+  content: ""; }
+
+.usk-icon-checkout-additional-Info:before {
+  content: ""; }
+
+.usk-icon-checkout-billing-address:before {
+  content: ""; }
+
+.usk-icon-checkout-coupon-form:before {
+  content: ""; }
+
+.usk-icon-checkout-login-form:before {
+  content: ""; }
+
+.usk-icon-checkout-payment:before {
+  content: ""; }
+
+.usk-icon-checkout-shipping-form:before {
+  content: ""; }
+
+.usk-icon-checkout-shipping-methods:before {
+  content: ""; }
+
+.usk-icon-qr-code:before {
+  content: ""; }
+
+.usk-icon-edd-trendy-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-trendy-grid:before {
+  content: ""; }
+
+.usk-icon-edd-standard-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-standard-grid:before {
+  content: ""; }
+
+.usk-icon-edd-classic-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-classic-grid:before {
+  content: ""; }
+
+.usk-icon-edd-beauty-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-beauty-grid:before {
+  content: ""; }
+
+.usk-icon-product-review-carousel:before {
+  content: ""; }
+
+.usk-icon-sub-category-carousel:before {
+  content: ""; }
+
+.usk-icon-mini-cart:before {
+  content: ""; }
+
+.usk-icon-edd-product:before {
+  content: ""; }
+
+.usk-icon-edd-product-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-category-carousel:before {
+  content: ""; }
+
+.usk-icon-edd-category-grid:before {
+  content: ""; }
+
+.usk-icon-heaven-slider:before {
+  content: ""; }
+
+.usk-icon-info-list:before {
+  content: ""; }
+
+.usk-icon-featured-box:before {
+  content: ""; }
+
+.usk-icon-brand-grid:before {
+  content: ""; }
+
+.usk-icon-brand-carousel:before {
+  content: ""; }
+
+.usk-icon-sub-category:before {
+  content: ""; }
+
+.usk-icon-showcase-slider:before {
+  content: ""; }
+
+.usk-icon-florence-carousel:before {
+  content: ""; }
+
+.usk-icon-breadcrumbs:before {
+  content: ""; }
+
+.usk-icon-compare:before {
+  content: ""; }
+
+.usk-icon-compare-button:before {
+  content: ""; }
+
+.usk-icon-product-filter:before {
+  content: ""; }
+
+.usk-icon-florence-grid:before {
+  content: ""; }
+
+.usk-icon-glossy-carousel:before {
+  content: ""; }
+
+.usk-icon-glossy-grid:before {
+  content: ""; }
+
+.usk-icon-product-meta:before {
+  content: ""; }
+
+.usk-icon-product-accordion:before {
+  content: ""; }
+
+.usk-icon-product-category:before {
+  content: ""; }
+
+.usk-icon-product-gallery:before {
+  content: ""; }
+
+.usk-icon-product-image-accordion:before {
+  content: ""; }
+
+.usk-icon-product-list:before {
+  content: ""; }
+
+.usk-icon-product-reviews:before {
+  content: ""; }
+
+.usk-icon-product-table:before {
+  content: ""; }
+
+.usk-icon-product-rating:before {
+  content: ""; }
+
+.usk-icon-recently-view-product:before {
+  content: ""; }
+
+.usk-icon-shiny-carousel:before {
+  content: ""; }
+
+.usk-icon-shiny-grid:before {
+  content: ""; }
+
+.usk-icon-short-description:before {
+  content: ""; }
+
+.usk-icon-product-related:before {
+  content: ""; }
+
+.usk-icon-product-tabs:before {
+  content: ""; }
+
+.usk-icon-product-stock:before {
+  content: ""; }
+
+.usk-icon-product-title:before {
+  content: ""; }
+
+.usk-icon-up-sells:before {
+  content: ""; }
+
+.usk-icon-add-to-cart:before {
+  content: ""; }
+
+.usk-icon-product-description:before {
+  content: ""; }
+
+.usk-icon-product-images:before {
+  content: ""; }
+
+.usk-icon-product-price:before {
+  content: ""; }
+
+.usk-icon-arrow-left-0:before {
+  content: ""; }
+
+.usk-icon-arrow-right-0:before {
+  content: ""; }
+
+.usk-icon-arrow-left-1:before {
+  content: ""; }
+
+.usk-icon-arrow-right-1:before {
+  content: ""; }
+
+.usk-icon-arrow-left-2:before {
+  content: ""; }
+
+.usk-icon-arrow-right-2:before {
+  content: ""; }
+
+.usk-icon-arrow-left-3:before {
+  content: ""; }
+
+.usk-icon-arrow-right-3:before {
+  content: ""; }
+
+.usk-icon-arrow-left-4:before {
+  content: ""; }
+
+.usk-icon-arrow-right-4:before {
+  content: ""; }
+
+.usk-icon-arrow-left-5:before {
+  content: ""; }
+
+.usk-icon-arrow-right-5:before {
+  content: ""; }
+
+.usk-icon-arrow-left-6:before {
+  content: ""; }
+
+.usk-icon-arrow-right-6:before {
+  content: ""; }
+
+.usk-icon-arrow-left-7:before {
+  content: ""; }
+
+.usk-icon-arrow-right-7:before {
+  content: ""; }
+
+.usk-icon-arrow-left-8:before {
+  content: ""; }
+
+.usk-icon-arrow-right-8:before {
+  content: ""; }
+
+.usk-icon-arrow-left-9:before {
+  content: ""; }
+
+.usk-icon-arrow-right-9:before {
+  content: ""; }
+
+.usk-icon-arrow-left-10:before {
+  content: ""; }
+
+.usk-icon-arrow-right-10:before {
+  content: ""; }
+
+.usk-icon-arrow-left-11:before {
+  content: ""; }
+
+.usk-icon-arrow-right-11:before {
+  content: ""; }
+
+.usk-icon-arrow-left-12:before {
+  content: ""; }
+
+.usk-icon-arrow-right-12:before {
+  content: ""; }
+
+.usk-icon-arrow-left-13:before {
+  content: ""; }
+
+.usk-icon-arrow-right-13:before {
+  content: ""; }
+
+.usk-icon-arrow-left-14:before {
+  content: ""; }
+
+.usk-icon-arrow-right-14:before {
+  content: ""; }
+
+.usk-icon-arrow-left-15:before {
+  content: ""; }
+
+.usk-icon-arrow-right-15:before {
+  content: ""; }
+
+.usk-icon-arrow-left-16:before {
+  content: ""; }
+
+.usk-icon-arrow-right-16:before {
+  content: ""; }
+
+.usk-icon-arrow-left-17:before {
+  content: ""; }
+
+.usk-icon-arrow-right-17:before {
+  content: ""; }
+
+.usk-icon-arrow-left-18:before {
+  content: ""; }
+
+.usk-icon-arrow-right-18:before {
+  content: ""; }
+
+.usk-icon-arrow-up-1:before {
+  content: ""; }
+
+.usk-icon-arrow-down-1:before {
+  content: ""; }
+
+.usk-icon-arrow-up-2:before {
+  content: ""; }
+
+.usk-icon-arrow-down-2:before {
+  content: ""; }
+
+.usk-icon-arrow-up-3:before {
+  content: ""; }
+
+.usk-icon-arrow-down-3:before {
+  content: ""; }
+
+.usk-icon-arrow-up-4:before {
+  content: ""; }
+
+.usk-icon-arrow-down-4:before {
+  content: ""; }
+
+.usk-icon-arrow-up-5:before {
+  content: ""; }
+
+.usk-icon-arrow-down-5:before {
+  content: ""; }
+
+.usk-icon-arrow-up-7:before {
+  content: ""; }
+
+.usk-icon-arrow-down-7:before {
+  content: ""; }
+
+.usk-icon-arrow-up-8:before {
+  content: ""; }
+
+.usk-icon-arrow-down-8:before {
+  content: ""; }
+
+.usk-icon-arrow-left-circle-1:before {
+  content: ""; }
+
+.usk-icon-arrow-right-circle-1:before {
+  content: ""; }
+
+.usk-icon-arrow-left-circle-2:before {
+  content: ""; }
+
+.usk-icon-arrow-right-circle-2:before {
+  content: ""; }
+
+.usk-icon-arrow-left-circle-3:before {
+  content: ""; }
+
+.usk-icon-arrow-right-circle-3:before {
+  content: ""; }
+
+.usk-icon-arrow-left-circle-4:before {
+  content: ""; }
+
+.usk-icon-arrow-right-circle-4:before {
+  content: ""; }
+
+.usk-icon-arrow-left-square-1:before {
+  content: ""; }
+
+.usk-icon-arrow-right-square-1:before {
+  content: ""; }
+
+.usk-icon-ultimate-store-kit:before {
+  content: ""; }
+
+.usk-icon-grid-list:before {
+  content: ""; }
+
+.usk-icon-grid-2:before {
+  content: ""; }
+
+.usk-icon-grid-3:before {
+  content: ""; }
+
+.usk-icon-grid-4:before {
+  content: ""; }
+
+.usk-icon-grid-5:before {
+  content: ""; }
+
+.usk-icon-grid-6:before {
+  content: ""; }
+
+.usk-icon-hexagon-zigzag:before {
+  content: ""; }
+
+.usk-icon-bulge-rectangle:before {
+  content: ""; }
+
+.usk-icon-hexagon-radius2:before {
+  content: ""; }
+
+.usk-icon-hexagon:before {
+  content: ""; }
+
+.usk-icon-hexagon-radius:before {
+  content: ""; }
+
+.usk-icon-g2:before {
+  content: ""; }
+
+.usk-icon-plus-2:before {
+  content: ""; }
+
+.usk-icon-user:before {
+  content: ""; }
+
+.usk-icon-eye:before {
+  content: ""; }
+
+.usk-icon-preview:before {
+  content: ""; }
+
+.usk-icon-email:before {
+  content: ""; }
+
+.usk-icon-meneame:before {
+  content: ""; }
+
+.usk-icon-moimir:before {
+  content: ""; }
+
+.usk-icon-instapaper:before {
+  content: ""; }
+
+.usk-icon-surfingbird:before {
+  content: ""; }
+
+.usk-icon-livejournal:before {
+  content: ""; }
+
+.usk-icon-baidu:before {
+  content: ""; }
+
+.usk-icon-line:before {
+  content: ""; }
+
+.usk-icon-twitter:before {
+  content: ""; }
+
+.usk-icon-linkedin:before {
+  content: ""; }
+
+.usk-icon-github:before {
+  content: ""; }
+
+.usk-icon-youtube:before {
+  content: ""; }
+
+.usk-icon-xing:before {
+  content: ""; }
+
+.usk-icon-instagram:before {
+  content: ""; }
+
+.usk-icon-tumblr:before {
+  content: ""; }
+
+.usk-icon-apple:before {
+  content: ""; }
+
+.usk-icon-android:before {
+  content: ""; }
+
+.usk-icon-dribbble:before {
+  content: ""; }
+
+.usk-icon-skype:before {
+  content: ""; }
+
+.usk-icon-vk:before {
+  content: ""; }
+
+.usk-icon-weibo:before {
+  content: ""; }
+
+.usk-icon-renren:before {
+  content: ""; }
+
+.usk-icon-wordpress:before {
+  content: ""; }
+
+.usk-icon-google:before {
+  content: ""; }
+
+.usk-icon-delicious:before {
+  content: ""; }
+
+.usk-icon-digg:before {
+  content: ""; }
+
+.usk-icon-soundcloud:before {
+  content: ""; }
+
+.usk-icon-wechat:before {
+  content: ""; }
+
+.usk-icon-pinterest:before {
+  content: ""; }
+
+.usk-icon-whatsapp:before {
+  content: ""; }
+
+.usk-icon-odnoklassniki:before {
+  content: ""; }
+
+.usk-icon-pocket:before {
+  content: ""; }
+
+.usk-icon-safari:before {
+  content: ""; }
+
+.usk-icon-chrome:before {
+  content: ""; }
+
+.usk-icon-firefox:before {
+  content: ""; }
+
+.usk-icon-opera:before {
+  content: ""; }
+
+.usk-icon-ie:before {
+  content: ""; }
+
+.usk-icon-vimeo:before {
+  content: ""; }
+
+.usk-icon-reddit:before {
+  content: ""; }
+
+.usk-icon-edge:before {
+  content: ""; }
+
+.usk-icon-blogger:before {
+  content: ""; }
+
+.usk-icon-facebook:before {
+  content: ""; }
+
+.usk-icon-messenger:before {
+  content: ""; }
+
+.usk-icon-googleplay:before {
+  content: ""; }
+
+.usk-icon-mix:before {
+  content: ""; }
+
+.usk-icon-telegram:before {
+  content: ""; }
+
+.usk-icon-uikit:before {
+  content: ""; }
+
+.usk-icon-viber:before {
+  content: ""; }
+
+.usk-icon-flipboard:before {
+  content: ""; }
+
+.usk-icon-buffer:before {
+  content: ""; }
+
+.usk-icon-evernote:before {
+  content: ""; }
+
+.usk-icon-plus:before {
+  content: ""; }
+
+.usk-icon-search:before {
+  content: ""; }
+
+.usk-icon-edit:before {
+  content: ""; }
+
+.usk-icon-video-player:before {
+  content: ""; }
+
+.usk-icon-tutorial:before {
+  content: ""; }
+
+.usk-icon-post:before {
+  content: ""; }
+
+.usk-icon-picture:before {
+  content: ""; }
+
+.usk-icon-music:before {
+  content: ""; }
+
+.usk-icon-video:before {
+  content: ""; }
+
+.usk-icon-code:before {
+  content: ""; }
+
+.usk-icon-location:before {
+  content: ""; }
+
+.usk-icon-clock:before {
+  content: ""; }
+
+.usk-icon-calendar:before {
+  content: ""; }
+
+.usk-icon-bubble:before {
+  content: ""; }
+
+.usk-icon-bubbles:before {
+  content: ""; }
+
+.usk-icon-quote:before {
+  content: ""; }
+
+.usk-icon-spinner:before {
+  content: ""; }
+
+.usk-icon-loading:before {
+  content: ""; }
+
+.usk-icon-spinner-2:before {
+  content: ""; }
+
+.usk-icon-enlarge:before {
+  content: ""; }
+
+.usk-icon-lock:before {
+  content: ""; }
+
+.usk-icon-menu:before {
+  content: ""; }
+
+.usk-icon-website:before {
+  content: ""; }
+
+.usk-icon-url:before {
+  content: ""; }
+
+.usk-icon-link:before {
+  content: ""; }
+
+.usk-icon-star-empty:before {
+  content: ""; }
+
+.usk-icon-star-half:before {
+  content: ""; }
+
+.usk-icon-star-full:before {
+  content: ""; }
+
+.usk-icon-heart-full:before {
+  content: ""; }
+
+.usk-icon-heart-empty:before {
+  content: ""; }
+
+.usk-icon-gallery:before {
+  content: ""; }
+
+.usk-icon-question:before {
+  content: ""; }
+
+.usk-icon-plus3:before {
+  content: ""; }
+
+.usk-icon-checkmark:before {
+  content: ""; }
+
+.usk-icon-new-tab:before {
+  content: ""; }
+
+.usk-icon-behance:before {
+  content: ""; }
+
+.usk-icon-yelp:before {
+  content: ""; }
+
 .usk-page-checkout {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -1865,7 +2665,6 @@ div.pp_pic_holder {
         .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text:focus {
           border: 1px solid #7b7373; }
     .usk-page-cart .woocommerce-cart-form .shop_table .actions .button {
-      height: 40px;
       width: 100%;
       background: transparent;
       border: 1px solid #e62a3f;
@@ -2004,6 +2803,14 @@ div.pp_pic_holder {
 
 .usk-page-single form.cart * {
   text-align: center; }
+
+.usk-page-single .woocommerce ul.products {
+  display: inline-block !important; }
+  .usk-page-single .woocommerce ul.products li {
+    border: 1px solid #eee;
+    padding: 30px !important;
+    display: inline-block;
+    border-radius: 5px; }
 
 .usk-florence-grid .usk-grid {
   width: 100%;
@@ -4307,6 +5114,7 @@ html {
   .ultimate-store-kit-review-wrapper .usk-review-grid-wrap {
     grid-template-columns: repeat(3, 1fr); } }
 
+.usk-product-review-carousel .swiper,
 .usk-product-review-carousel .swiper-container {
   padding-top: 40px !important;
   padding-bottom: 40px !important; }
@@ -4970,6 +5778,7 @@ html {
 
 .usk-shiny-carousel {
   --btn-width: 100%; }
+  .usk-shiny-carousel .swiper,
   .usk-shiny-carousel .swiper-container {
     margin: 0 !important;
     padding: 0 !important; }
@@ -7109,6 +7918,33 @@ html {
   .usk-mentor-slider .swiper-pagination {
     display: flex;
     grid-gap: 5px; } }
+
+.elementor-widget-usk-up-sells.usk-up-sells-show-heading-yes section.up-sells.upsells.products h2 {
+  display: block; }
+
+.elementor-widget-usk-up-sells .usk-upsells section.products {
+  display: inline-block; }
+  .elementor-widget-usk-up-sells .usk-upsells section.products li.product {
+    border: 1px solid #eee;
+    padding: 30px !important;
+    display: inline-block;
+    border-radius: 5px; }
+  .elementor-widget-usk-up-sells .usk-upsells section.products h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: none; }
+    .elementor-widget-usk-up-sells .usk-upsells section.products h2 a {
+      color: #000; }
+
+.elementor-widget-usk-up-sells section.up-sells.upsells.products h2 {
+  display: none; }
+
+.elementor-widget-usk-up-sells ul.products li.product, .elementor-widget-usk-up-sells .woocommerce-page ul.products li.product {
+  border: 1px solid #eee;
+  padding: 30px !important;
+  display: inline-block;
+  border-radius: 5px; }
 
 .usk-edd-beauty-grid .usk-edd-beauty-grid-wrapper {
   display: grid;

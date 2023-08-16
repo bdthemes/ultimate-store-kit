@@ -145,6 +145,41 @@ class Page_Cart extends Module_Base {
         );
 
         $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'cart_heading_background',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table th',
+                'exclude'   => [
+                    'image'
+                ]
+            ]
+        );
+        //border
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'cart_heading_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table th',
+            ]
+        );
+        //padding
+        $this->add_responsive_control(
+            'cart_heading_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+        $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'cart_heading_typo',
@@ -412,6 +447,35 @@ class Page_Cart extends Module_Base {
             ]
         );
 
+        //label color
+        $this->add_control(
+            'coupon_label_heading',
+            [
+                'label'   => esc_html__('Coupon Label', 'ultimate-store-kit-pro') . BDTUSK_NC,
+                'type'    => Controls_Manager::HEADING,
+            ]
+        );
+
+        //color 
+        $this->add_control(
+            'coupon_label_color',
+            [
+                'label'     => __('Color', 'ultimate-store-kit-pro'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-cart .coupon label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        //typography
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'coupon_label_typo',
+                'selector' => '{{WRAPPER}} .usk-page-cart .coupon label',
+            ]
+        );
 
         // coupon field
         $this->add_control(
@@ -419,6 +483,7 @@ class Page_Cart extends Module_Base {
             [
                 'label'   => esc_html__('Coupon Field', 'ultimate-store-kit-pro'),
                 'type'    => Controls_Manager::HEADING,
+                'separator' => 'before'
             ]
         );
 
@@ -428,7 +493,7 @@ class Page_Cart extends Module_Base {
                 'label'     => __('Color', 'ultimate-store-kit-pro'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-cart .coupon #coupon_code' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-cart .coupon #coupon_code::placeholder' => 'color: {{VALUE}};',
                 ],
             ]
         );

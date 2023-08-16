@@ -91,7 +91,6 @@
         .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text:focus {
           border: 1px solid #7b7373; }
     .usk-page-cart .woocommerce-cart-form .shop_table .actions .button {
-      height: 40px;
       width: 100%;
       background: transparent;
       border: 1px solid #e62a3f;

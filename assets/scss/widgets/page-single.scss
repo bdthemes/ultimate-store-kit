@@ -11,6 +11,20 @@
     form.cart * {
         text-align:center;
     }
+
+    .woocommerce ul.products{
+        display: inline-block !important;
+        // display: grid;
+        // grid-template-columns: repeat(3, 1fr);
+        // grid-gap: 30px;
+        li {
+            border: 1px solid #eee;
+            padding: 30px !important;
+            display: inline-block;
+            border-radius: 5px;
+        }
+    }
+
     // display: none;
     // .woocommerce-tabs ul.tabs li a {
     //     background-color: #ddd;

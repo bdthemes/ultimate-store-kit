@@ -1,5 +1,6 @@
 .usk-shiny-carousel {
   --btn-width: 100%; }
+  .usk-shiny-carousel .swiper,
   .usk-shiny-carousel .swiper-container {
     margin: 0 !important;
     padding: 0 !important; }

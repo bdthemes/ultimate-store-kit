@@ -282,7 +282,7 @@ class Brand_Grid extends Module_Base {
         $this->add_control(
             'image_heading',
             [
-                'label'     => __('I M A G E', 'ultimate-store-kit'),
+                'label'     => __('IMAGE', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before'
             ]
@@ -395,7 +395,7 @@ class Brand_Grid extends Module_Base {
         $this->add_control(
             'image_heading_hover',
             [
-                'label'     => __('I M A G E', 'ultimate-store-kit'),
+                'label'     => __('IMAGE', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before'
             ]

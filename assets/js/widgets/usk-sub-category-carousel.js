@@ -5,7 +5,7 @@
     if (!$SubCategoryCarousel.length) {
       return;
     }
-    var $SubCategoryCarouselContainer = $SubCategoryCarousel.find(".swiper-container");
+    var $SubCategoryCarouselContainer = $SubCategoryCarousel.find(".swiper-carousel");
     var $carouselSettings = $SubCategoryCarousel.find('.usk-carousel').data("settings");
 
     const Swiper = elementorFrontend.utils.swiper;

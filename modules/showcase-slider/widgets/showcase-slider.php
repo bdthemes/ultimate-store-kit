@@ -10,6 +10,8 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
+use Elementor\Plugin;
+
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
@@ -1664,7 +1666,7 @@ class Showcase_Slider extends Module_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .swiper-container-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
+                    '{{WRAPPER}} .usk-showcase-slider .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .usk-showcase-slider .swiper-horizontal > .swiper-scrollbar' => 'height: {{SIZE}}px;',
                 ],
                 'condition'   => [
                     'show_scrollbar' => 'yes'
@@ -2198,7 +2200,7 @@ class Showcase_Slider extends Module_Base {
                 'label'   => __('Scrollbar Offset', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::SLIDER,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .swiper-container-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
+                    '{{WRAPPER}} .usk-showcase-slider .swiper-container-horizontal > .swiper-scrollbar, {{WRAPPER}} .usk-showcase-slider .swiper-horizontal > .swiper-scrollbar' => 'bottom: {{SIZE}}px;',
                 ],
                 'condition'   => [
                     'show_scrollbar' => 'yes'
@@ -2312,9 +2314,8 @@ class Showcase_Slider extends Module_Base {
                             "speed"          => $settings["speed"]["size"],
                             "pauseOnHover"   => ("yes" == $settings["pauseonhover"]) ? true : false,
                             "slidesPerView"  => 1,
-                            // "slidesPerView"  => (int) $settings["columns_mobile"],
-                            "slidesPerGroup" => (int) $settings["slides_to_scroll_mobile"],
-                            "spaceBetween"   => (int) $settings["items_gap_mobile"]["size"],
+                            "slidesPerGroup" => isset($settings["slides_to_scroll_mobile"]) ? (int)$settings["slides_to_scroll_mobile"] : 1,
+							"spaceBetween"   => !empty($settings["items_gap_mobile"]["size"]) ? (int)$settings["items_gap_mobile"]["size"] : 20,
                             "centeredSlides" => true,
                             "grabCursor"     => ($settings["grab_cursor"] === "yes") ? true : false,
                             "effect"         => 'coverflow',
@@ -2323,15 +2324,13 @@ class Showcase_Slider extends Module_Base {
                             "breakpoints"               => [
                                 (int) $viewport_md         => [
                                     "slidesPerView"  => 1.7,
-                                    // "slidesPerView"  => (int) $settings["columns_tablet"],
-                                    "spaceBetween"     => (int) $settings["items_gap_tablet"]["size"],
-                                    "slidesPerGroup" => (int) $settings["slides_to_scroll_tablet"]
+                                    "spaceBetween"   => !empty($settings["items_gap_tablet"]["size"]) ? (int)$settings["items_gap_tablet"]["size"] : 20,
+									"slidesPerGroup" => isset($settings["slides_to_scroll_tablet"]) ? (int)$settings["slides_to_scroll_tablet"] : 1,
                                 ],
                                 (int) $viewport_lg         => [
                                     "slidesPerView"  => 2,
-                                    // "slidesPerView"  => (int) $settings["columns"],
-                                    "spaceBetween"   => (int) $settings["items_gap"]["size"],
-                                    "slidesPerGroup" => (int) $settings["slides_to_scroll"]
+                                    "spaceBetween"   => !empty($settings["items_gap"]["size"]) ? (int)$settings["items_gap"]["size"] : 20,
+									"slidesPerGroup" => isset($settings["slides_to_scroll"]) ? (int)$settings["slides_to_scroll"] : 1,
                                 ]
                             ],
                             "navigation"         => [
@@ -2361,10 +2360,13 @@ class Showcase_Slider extends Module_Base {
                 ]
             ]
         );
+
+        $swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
+        $this->add_render_attribute('swiper', 'class', 'usk-showcase-slider-wrapper swiper-carousel ' . $swiper_class);
         ?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('slider'); ?>>
-                <div class="usk-showcase-slider-wrapper swiper-container">
+                <div <?php echo $this->get_render_attribute_string('swiper'); ?>>
                     <div class="swiper-wrapper">
                     <?php
                 }
