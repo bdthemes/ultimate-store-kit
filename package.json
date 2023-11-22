@@ -1,31 +1,23 @@
 {
   "name": "ultimate-store-kit",
   "version": "1.0.0",
+  "description": "=== Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Product Table, Woocommerce Slider === Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik Donate link: http://bdthemes.com/ Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor, store kit, pagebuilder addon, addons, edd, bdthemes Stable tag: 1.5.1 Requires PHP: 7.0.0 Requires at least: 5.0.0 Tested up to: 6.4.1 License: GPL3 License URI: http://www.gnu.org/licenses/gpl-3.0.html Elementor requires at least: 3.0.0 Elementor tested up to: 3.17.3",
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "ultimate-store-kit",
-    "theme"
-  ],
   "author": "bdthemes",
   "license": "ISC",
-  "devDependencies": {
-    "grunt": "^1.5.3",
+  "dependencies": {
+    "grunt": "^1.6.1",
     "grunt-contrib-less": "^3.0.0",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-uglify": "^5.2.2",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-rtlcss": "^2.0.2",
     "grunt-sass": "^3.1.0",
-    "grunt-terser": "^1.0.0",
+    "grunt-terser": "^2.0.0",
     "jit-grunt": "^0.10.0",
-    "node-sass": "^5.0.0"
-  },
-  "dependencies": {
-    "grunt-contrib-concat": "^1.0.1",
-    "sass": "^1.32.8",
-    "vue": "^2.6.12"
+    "node-sass": "^9.0.0"
   }
 }
