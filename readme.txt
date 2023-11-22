@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor, store kit, pagebuilder addon, addons, edd, bdthemes
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.3
+Tested up to: 6.4.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.15.2
+Elementor tested up to: 3.17.3
 
 Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -129,8 +129,8 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 0. [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Let your visitors sign up for their user account by inserting their email
 0. [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Customizable Add to cart button for a quick product carting maneuver for the visitors or users of your website
 0. [Additional Information](https://storekit.pro/demo/additional-information/) - Additional product information tab for single pages to deliver more info per need
-0. [Compare Button](https://storekit.pro/demo/compare-button/) - 
-0. [Compare Products](https://storekit.pro/demo/compare-products/) - 
+0. [Compare Button](https://storekit.pro/demo/compare-button/) -
+0. [Compare Products](https://storekit.pro/demo/compare-products/) -
 0. [Checkout Additional Info](https://storekit.pro/demo/checkout-additional-info/) - Helps attach additional information for the checkout page to let users learn more about terms and conditions or anything you want them to know
 0. [Checkout Billing Address](https://storekit.pro/demo/checkout-billing-address/) - Custom billing form for vistiors/users/customers to inlcude their personal information safely for product billing/delivery purpose
 0. [Checkout Coupon Form](https://storekit.pro/demo/checkout-coupon-form/) - Helps add coupon codes on the checkout page with a very familiar user interface
@@ -215,6 +215,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 1.5.1 [22nd November 2023] =
+
+* Fixed: Compatibility issue fixed
 
 = 1.5.0 [16th August 2023] =
 

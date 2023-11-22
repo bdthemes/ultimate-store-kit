@@ -821,7 +821,7 @@ class UltimateStoreKit_Admin_Settings {
           <span class="label1"><?php esc_html_e('Memory Limit:', 'ultimate-store-kit'); ?> </span>
 
           <?php
-          if ($memory_limit < '256') {
+          if (intval($memory_limit) < '256') {
             printf('<span class="invalid">%1$s</span>', wp_kses($no_icon, $icon_validation));
             printf('<span class="label2">Currently: %1$s (Min: 256M Recommended)</span>', esc_html($memory_limit));
           } else {
@@ -837,7 +837,7 @@ class UltimateStoreKit_Admin_Settings {
           <span class="label1"><?php esc_html_e('Max Post Limit:', 'ultimate-store-kit'); ?> </span>
 
           <?php
-          if ($post_limit < '32') {
+          if (intval($post_limit) < '32') {
             printf('<span class="invalid">%1$s</span>',  wp_kses($no_icon, $icon_validation));
             printf('<span class="label2">Currently: %1$s (Min: 32M Recommended)</span>', esc_html($post_limit));
           } else {
