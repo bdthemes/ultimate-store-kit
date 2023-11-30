@@ -5,8 +5,7 @@ namespace UltimateStoreKit\Base\Support;
 use ArrayAccess;
 use ArrayObject;
 
-class Optional implements ArrayAccess
-{
+class Optional implements ArrayAccess {
     /**
      * The underlying object.
      *
@@ -20,8 +19,7 @@ class Optional implements ArrayAccess
      * @param  mixed  $value
      * @return void
      */
-    public function __construct($value)
-    {
+    public function __construct($value) {
         $this->value = $value;
     }
 
@@ -31,8 +29,7 @@ class Optional implements ArrayAccess
      * @param  string  $key
      * @return mixed
      */
-    public function __get($key)
-    {
+    public function __get($key) {
         if (is_object($this->value)) {
             return isset($this->value->{$key}) ? $this->value->{$key} : null;
         }
@@ -44,8 +41,7 @@ class Optional implements ArrayAccess
      * @param  mixed  $name
      * @return bool
      */
-    public function __isset($name)
-    {
+    public function __isset($name) {
         if (is_object($this->value)) {
             return isset($this->value->{$name});
         }
@@ -63,18 +59,16 @@ class Optional implements ArrayAccess
      * @param  mixed  $key
      * @return bool
      */
-    public function offsetExists($key)
-    {
+    #[\ReturnTypeWillChange]
+    public function offsetExists($key): bool {
         return $this->accessible($this->value) && $this->exists($this->value, $key);
     }
 
-    protected function accessible($value)
-    {
+    protected function accessible($value) {
         return is_array($value) || $value instanceof ArrayAccess;
     }
 
-    protected function exists($array, $key)
-    {
+    protected function exists($array, $key) {
         if ($array instanceof ArrayAccess) {
             return $array->offsetExists($key);
         }
@@ -88,14 +82,14 @@ class Optional implements ArrayAccess
      * @param  mixed  $key
      * @return mixed
      */
-    public function offsetGet($key)
-    {
+    #[\ReturnTypeWillChange]
+    public function offsetGet($key) {
         return $this->get($this->value, $key);
     }
 
-    protected function get($array, $key, $default = null)
-    {
-        if (! $this->accessible($array)) {
+
+    protected function get($array, $key, $default = null) {
+        if (!$this->accessible($array)) {
             return $this->value($default);
         }
 
@@ -122,9 +116,8 @@ class Optional implements ArrayAccess
         return $array;
     }
 
-    protected function value($value)
-    {
-        return $value instanceof Closure ? $value() : $value;
+    protected function value($value) {
+        return $value instanceof \Closure ? $value() : $value;
     }
 
     /**
@@ -134,8 +127,7 @@ class Optional implements ArrayAccess
      * @param  mixed  $value
      * @return void
      */
-    public function offsetSet($key, $value): void
-    {
+    public function offsetSet($key, $value): void {
         if ($this->accessible($this->value)) {
             $this->value[$key] = $value;
         }
@@ -147,8 +139,7 @@ class Optional implements ArrayAccess
      * @param  string  $key
      * @return void
      */
-    public function offsetUnset($key): void
-    {
+    public function offsetUnset($key): void {
         if ($this->accessible($this->value)) {
             unset($this->value[$key]);
         }
