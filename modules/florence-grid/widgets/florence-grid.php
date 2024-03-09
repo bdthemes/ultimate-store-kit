@@ -395,9 +395,9 @@ class Florence_Grid extends Module_Base {
                             <div class="usk-content">
                                 <div class="usk-content-inner">
                                     <?php if ('yes' == $settings['show_category']) : ?>
-                                        <?php printf('<%1$s class="usk-category">%2$s</%1$s>', $settings['category_tags'], wc_get_product_category_list($product->get_id())); ?>
+                                        <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wc_get_product_category_list($product->get_id())); ?>
                                     <?php endif; ?>
-                                    <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', $settings['title_tags'], esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
+                                    <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
                                     <?php if ('yes' == $settings['show_excerpt']) : ?>
                                         <div class="usk-desc">
                                             <?php echo wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...'); ?>
@@ -410,7 +410,7 @@ class Florence_Grid extends Module_Base {
                                     <?php endif; ?>
                                     <?php if ('yes' == $settings['show_rating']) : ?>
                                         <div class="usk-rating">
-                                            <span><?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
+                                            <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
                                         </div>
                                     <?php endif; ?>
                                 </div>

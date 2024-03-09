@@ -3,7 +3,7 @@
   display: grid;
   grid-gap: 40px; }
   .usk-florence-grid .usk-grid .usk-item {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2); }
     .usk-florence-grid .usk-grid .usk-item .usk-item-box {
       position: relative; }
     .usk-florence-grid .usk-grid .usk-item .usk-image {
@@ -134,6 +134,7 @@
         .usk-florence-grid .usk-grid .usk-item .usk-content .usk-category a {
           font-size: 11px;
           color: #9FA8BC;
+          border: 1px solid #c0c9dd;
           text-transform: uppercase;
           font-weight: 500;
           display: inline-block;

@@ -147,7 +147,7 @@ class EDD_Classic_Carousel extends Module_Base {
                         endif;
 
                         if ($settings['show_title']) :
-                            printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], esc_url(get_the_permalink()), esc_html(get_the_title()));
+                            printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url(get_the_permalink()), esc_html(get_the_title()));
                         endif;
 
                         if ($settings['show_price']) : ?>

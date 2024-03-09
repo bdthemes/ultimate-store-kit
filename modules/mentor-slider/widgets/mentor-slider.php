@@ -1694,7 +1694,7 @@ class Mentor_Slider extends Module_Base {
                     <?php endif; ?>
 
                     <?php if ('yes' == $settings['show_title']) :
-                        printf('<%1$s class="usk-title" data-swiper-parallax-X="-100"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], $product->get_permalink(), $product->get_title());
+                        printf('<%1$s class="usk-title" data-swiper-parallax-X="-100"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), $product->get_permalink(), $product->get_title());
                     endif; ?>
 
                     <?php if ('yes' == $settings['show_excerpt']) : ?>
@@ -1713,7 +1713,7 @@ class Mentor_Slider extends Module_Base {
 
                     <?php if ('yes' == $settings['show_rating']) : ?>
                         <div class="usk-rating" data-swiper-parallax-X="-250">
-                            <span><?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
+                            <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
                         </div>
                     <?php endif; ?>
 

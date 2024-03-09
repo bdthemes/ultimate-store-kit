@@ -128,7 +128,7 @@ class EDD_Beauty_Carousel extends Module_Base {
                     <div class="usk-edd-beauty-carousel-image-wrapper">
                         <div class="usk-edd-beauty-carousel-image">
                             <a href="<?php the_permalink(); ?>">
-                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo get_the_title(); ?>">
+                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
                             </a>
                             <div class="usk-action-button">
                                 <?php if (function_exists('edd_price')) { ?>
@@ -153,7 +153,7 @@ class EDD_Beauty_Carousel extends Module_Base {
                         endif;
 
                         if ($settings['show_title']) :
-                            printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], esc_url(get_the_permalink()), esc_html(get_the_title()));
+                            printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url(get_the_permalink()), esc_html(get_the_title()));
                         endif;
 
                         if ($settings['show_price']) : ?>

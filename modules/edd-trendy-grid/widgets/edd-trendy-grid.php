@@ -110,7 +110,7 @@ class EDD_Trendy_Grid extends Module_Base {
                 );
 
         ?>
-            <div <?php echo $this->get_render_attribute_string('edd-trendy-grids-wrapper'); ?>>
+            <div <?php $this->print_render_attribute_string('edd-trendy-grids-wrapper'); ?>>
                 <?php
                 while ($wp_query->have_posts()) {
                     $wp_query->the_post();
@@ -130,7 +130,7 @@ class EDD_Trendy_Grid extends Module_Base {
                                 endif;
 
                                 if ($settings['show_title']) :
-                                    printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], esc_url(get_the_permalink()), esc_html(get_the_title()));
+                                    printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url(get_the_permalink()), esc_html(get_the_title()));
                                 endif; ?>
                             </div>
                             <div class="usk-edd-trendy-grid-image">
