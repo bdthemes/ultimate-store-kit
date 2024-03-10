@@ -15,7 +15,10 @@
     padding: 30px;
     overflow: hidden; }
   .usk-mentor-slider .usk-category {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 5px; }
     .usk-mentor-slider .usk-category a {
       font-size: 14px;
       color: #5f5f74;

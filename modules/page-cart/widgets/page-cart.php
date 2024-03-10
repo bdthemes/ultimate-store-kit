@@ -1157,7 +1157,7 @@ class Page_Cart extends Module_Base {
 
                                 <tr>
                                     <td class="usk-product-remove" data-title="<?php esc_html_e('Remove', 'ultimate-store-kit-pro'); ?>">
-                                        <a href="<?php echo esc_url(wc_get_cart_remove_url($item)); ?>" class="remove" aria-label="Remove this item" data-product_id="<?php echo $values['product_id']; ?>" data-product_sku="<?php echo $product_names['sku']; ?>">
+                                        <a href="<?php echo esc_url(wc_get_cart_remove_url($item)); ?>" class="remove" aria-label="Remove this item" data-product_id="<?php echo esc_html($values['product_id']); ?>" data-product_sku="<?php echo esc_html($product_names['sku']); ?>">
                                             ×
                                         </a>
                                     </td>
@@ -1167,9 +1167,9 @@ class Page_Cart extends Module_Base {
                                             $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $values, $item);
 
                                             if (!$product_permalink) {
-                                                echo $thumbnail; // PHPCS: XSS ok.
+                                                echo wp_kses_post($thumbnail); // PHPCS: XSS ok.
                                             } else {
-                                                printf('<a href="%s">%s</a>', esc_url($product_permalink), $thumbnail); // PHPCS: XSS ok.
+                                                printf('<a href="%s">%s</a>', esc_url($product_permalink), wp_kses_post($thumbnail)); // PHPCS: XSS ok.
                                             }
                                             ?>
                                         </td>
@@ -1188,7 +1188,7 @@ class Page_Cart extends Module_Base {
                                             do_action('woocommerce_after_cart_item_name', $values, $item);
 
                                             // Meta data.
-                                            echo wc_get_formatted_cart_item_data($values); // PHPCS: XSS ok.
+                                            echo wp_kses_post(wc_get_formatted_cart_item_data($values)); // PHPCS: XSS ok.
 
                                             // Backorder notification.
                                             if ($_product->backorders_require_notification() && $_product->is_on_backorder($values['quantity'])) {
@@ -1201,7 +1201,7 @@ class Page_Cart extends Module_Base {
                                     <?php if ($settings['show_price'] == 'yes') : ?>
                                         <td class="usk-product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
                                             <?php
-                                            echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $values, $item); // PHPCS: XSS ok.
+                                            echo wp_kses_post(apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $values, $item)); // PHPCS: XSS ok.
                                             ?>
                                         </td>
                                     <?php endif; ?>
@@ -1226,7 +1226,7 @@ class Page_Cart extends Module_Base {
                                                 );
                                             }
 
-                                            echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $item, $values); // PHPCS: XSS ok.
+                                            echo wp_kses_post(apply_filters('woocommerce_cart_item_quantity', $product_quantity, $item, $values)); // PHPCS: XSS ok.
 
                                             ?>
                                         </td>
@@ -1235,7 +1235,7 @@ class Page_Cart extends Module_Base {
                                     <?php if ($settings['show_subtotal'] == 'yes') : ?>
                                         <td class="usk-product-subtotal" data-title="<?php esc_html_e('Subtotal', 'ultimate-store-kit-pro'); ?>">
                                             <?php
-                                            echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $values['quantity']), $values, $item); // PHPCS: XSS ok.
+                                            echo wp_kses_post(apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $values['quantity']), $values, $item)); // PHPCS: XSS ok.
                                             ?>
                                         </td>
                                     <?php endif; ?>

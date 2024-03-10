@@ -521,11 +521,8 @@
 			if ( empty( $settings['brand_items'] ) ) {
 				return;
 			}
-			
-			// $this->add_render_attribute( 'brand-carousel', 'class', 'usk-brand-carousel' );
 
 			?>
-        	<!-- <div <?php //$this->print_render_attribute_string( 'brand-carousel' ); ?>> -->
 			<?php foreach ( $settings['brand_items'] as $item ) : 
 				
 				$thumb_url = Group_Control_Image_Size::get_attachment_image_src($item['image']['id'], 'thumbnail', $settings);
@@ -546,7 +543,7 @@
 		
 				?>
 				<div class="swiper-slide">
-				<div <?php echo $this->get_render_attribute_string('item-wrap'); ?> title="<?php echo esc_html($item['brand_name']); ?>">
+				<div <?php $this->print_render_attribute_string('item-wrap'); ?> title="<?php echo esc_html($item['brand_name']); ?>">
 					<img class="usk-brand-carousel-img" src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_html($item['brand_name']); ?>">
 					<?php 
 					if ( !empty($item['link']['url']) ){

@@ -2,6 +2,12 @@
 
 ### Fixed
 
+- Tooltip issue fixed in florence grid widget
+
+## 1.5.2 [1st January 2024]
+
+### Fixed
+
 - Single page editor php error issue fixed
 
 ## 1.5.1 [22nd November 2023]

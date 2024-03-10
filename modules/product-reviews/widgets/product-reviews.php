@@ -614,7 +614,7 @@ class Product_Reviews extends Module_Base {
                 $settings = $this->get_settings_for_display(); ?>
         <div class="usk-review-avatar-image">
             <a href="#">
-                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo get_the_title(); ?>">
+                <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
             </a>
         </div>
         <?php
@@ -653,12 +653,12 @@ class Product_Reviews extends Module_Base {
                             <div class="usk-review-content">
                                 <?php
                                 if ($settings['show_title']) :
-                                    printf('<%1$s class="usk-review-title"><a href="%3$s">%2$s</a></%1$s>', $settings['title_tags'], $product->get_name(), $product->get_permalink());
+                                    printf('<%1$s class="usk-review-title"><a href="%3$s">%2$s</a></%1$s>', esc_attr($settings['title_tags']), esc_html($product->get_name()), esc_url($product->get_permalink()));
                                 endif; ?>
                                 <?php if ($settings['show_author']) : ?>
                                     <div class="usk-review-author-name">
                                         <span><?php esc_html_e('purchase by', 'ultimate-store-kit'); ?></span>
-                                        <?php printf('<a href="%2$s">%1$s</a>', $comment->comment_author, get_the_author_meta('url')); ?>
+                                        <?php printf('<a href="%2$s">%1$s</a>', esc_html($comment->comment_author), esc_url(get_the_author_meta('url'))); ?>
                                     </div>
                                 <?php endif; ?>
                             </div>

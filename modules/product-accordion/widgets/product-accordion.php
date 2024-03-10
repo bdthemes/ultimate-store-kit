@@ -1140,7 +1140,7 @@ class Product_Accordion extends Module_Base {
                                 </div>
                                 <div class="usk-content-wrapper">
                                     <?php if ('yes' == $settings['show_category']) :
-                                        printf('<div class="usk-category">%1$s</div>', $categories);
+                                        printf('<div class="usk-category">%1$s</div>', wp_kses_post($categories));
                                     endif; ?>
                                     <?php if ('yes' == $settings['show_price']) : ?>
                                         <div class="usk-price">
@@ -1156,7 +1156,7 @@ class Product_Accordion extends Module_Base {
                                     endif; ?>
                                     <?php if ('yes' == $settings['show_rating']) : ?>
                                         <div class="usk-rating">
-                                            <span><?php echo $this->register_global_template_wc_rating($average, $rating_count) ?></span>
+                                            <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)) ?></span>
                                         </div>
                                     <?php endif; ?>
                                     <div class="usk-action-btn usk-shoping">

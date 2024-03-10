@@ -984,7 +984,7 @@ class Featured_Box extends Module_Base
         );
 
         if (!empty($settings['title'])) {
-            printf('<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', $settings['title_tag'], $this->get_render_attribute_string('title-link'), wp_kses_post($settings['title']));
+            printf('<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), $this->get_render_attribute_string('title-link'), wp_kses_post($settings['title']));
         }
     }
 
@@ -1062,7 +1062,7 @@ class Featured_Box extends Module_Base
         ?>
         <?php if (( ! empty($settings['readmore_link']['url'])) && ( $settings['show_readmore'] )) : ?>
             <div class="usk-link-btn">
-                <a <?php echo $this->get_render_attribute_string('readmore-link'); ?>>
+                <a <?php $this->print_render_attribute_string('readmore-link'); ?>>
                     <span><?php echo esc_html($settings['readmore_text']); ?></span>
                 </a>
             </div>

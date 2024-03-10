@@ -2366,7 +2366,7 @@ class Showcase_Slider extends Module_Base {
         ?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('slider'); ?>>
-                <div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+                <div <?php $this->print_render_attribute_string('swiper'); ?>>
                     <div class="swiper-wrapper">
                     <?php
                 }
@@ -2441,15 +2441,15 @@ class Showcase_Slider extends Module_Base {
                         <div class="usk-item-box">
                             <div class="usk-content">
                                 <?php if ('yes' == $settings['show_category']) : ?>
-                                    <?php printf('<div class="usk-category">%1$s</div>', wc_get_product_category_list($product->get_id(), ' | ')); ?>
+                                    <?php printf('<div class="usk-category">%1$s</div>', wp_kses_post(wc_get_product_category_list($product->get_id(), ' '))); ?>
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_title']) :
-                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', $settings['title_tags'], $product->get_permalink(), $product->get_title());
+                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
                                 endif; ?>
                             </div>
                             <div class="usk-price-button-wrap">
                                 <?php if ('yes' == $settings['show_button']) :
-                                    printf('<div class="usk-button"><a href="%s">details</a></div>', get_permalink());
+                                    printf('<div class="usk-button"><a href="%s">details</a></div>', esc_url(get_permalink()));
                                 endif; ?>
                                 <?php if (('yes' == $settings['show_price'])) : ?>
                                     <div class="usk-price">
@@ -2460,7 +2460,7 @@ class Showcase_Slider extends Module_Base {
                                 <?php endif; ?>
                                 <?php if (('yes' == $settings['show_rating'])) : ?>
                                     <div class="usk-rating">
-                                        <?php echo $this->register_global_template_wc_rating($average, $rating_count); ?>
+                                        <?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?>
                                     </div>
                                 <?php endif; ?>
                             </div>

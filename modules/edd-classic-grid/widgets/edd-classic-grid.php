@@ -121,7 +121,7 @@ class EDD_Classic_Grid extends Module_Base {
                 );
 
         ?>
-            <div <?php echo $this->get_render_attribute_string('edd-classic-grids-wrapper'); ?>>
+            <div <?php $this->print_render_attribute_string('edd-classic-grids-wrapper'); ?>>
                 <?php
                 while ($wp_query->have_posts()) {
                     $wp_query->the_post();
@@ -132,12 +132,12 @@ class EDD_Classic_Grid extends Module_Base {
                         <div class="usk-edd-classic-grid-image-wrapper">
                             <div class="usk-edd-classic-grid-image">
                                 <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo get_the_title(); ?>">
+                                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
                                 </a>
                                 <div class="usk-action-button">
                                     <?php if (function_exists('edd_price')) { ?>
                                         <?php if (!edd_has_variable_prices(get_the_ID())) { ?>
-                                            <?php echo edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button'); ?>
+                                            <?php echo esc_url(edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button')); ?>
                                         <?php } ?>
                                     <?php } ?>
                                     <div class="usk-details-button">
@@ -159,7 +159,7 @@ class EDD_Classic_Grid extends Module_Base {
                             endif;
 
                             if ($settings['show_title']) :
-                                printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], esc_url(get_the_permalink()), esc_html(get_the_title()));
+                                printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url(get_the_permalink()), esc_html(get_the_title()));
                             endif;
 
                             if ($settings['show_price']) : ?>

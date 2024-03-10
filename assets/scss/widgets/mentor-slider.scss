@@ -23,7 +23,10 @@
 
 	.usk-category {
 		margin-bottom: 10px;
-		 a {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		a {
 			font-size: 14px;
 			color: #5f5f74;
 			font-weight: 600;

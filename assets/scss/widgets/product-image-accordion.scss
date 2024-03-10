@@ -180,26 +180,25 @@
         z-index 0s step-end, opacity 0.4s ease;
       .usk-category {
         margin-bottom: 15px;
-        span {
-          display: inline-flex;
+        display: inline-flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        a {
+          background: transparent;
+          border: 1px solid #ef233c;
+          padding: 4px 12px;
+          text-decoration: none;
+          color: #ef233c;
+          font-size: 10px;
+          text-transform: uppercase;
+          font-weight: 500;
+          border-radius: 3px;
+          transition: all 0.3s ease;
 
-          a {
-            background: transparent;
-            border: 1px solid #ef233c;
-            padding: 4px 12px;
-            text-decoration: none;
-            color: #ef233c;
-            font-size: 10px;
-            text-transform: uppercase;
-            font-weight: 500;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-
-            &:hover {
-              background: #d90429;
-              border: 1px solid #d90429;
-              color: #fff;
-            }
+          &:hover {
+            background: #d90429;
+            border: 1px solid #d90429;
+            color: #fff;
           }
         }
       }

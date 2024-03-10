@@ -2406,7 +2406,7 @@ class Product_Table extends Module_Base {
                                 <?php if ($settings['show_description']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-description'); ?>>
                                         <div class="usk-wc-product-description">
-                                            <?php echo wp_trim_words(get_the_excerpt(), $settings['description_limit'], '...'); ?>
+                                            <?php echo wp_kses_post(wp_trim_words(get_the_excerpt(), $settings['description_limit'], '...')); ?>
                                         </div>
                                     </td>
                                 <?php endif; ?>
@@ -2414,7 +2414,7 @@ class Product_Table extends Module_Base {
                                 <?php if ($settings['show_categories']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-categories'); ?>>
                                         <span class="usk-wc-product-categories">
-                                            <?php echo wc_get_product_category_list(get_the_ID(), ', ', '<span>', '</span>'); ?>
+                                            <?php echo wp_kses_post(wc_get_product_category_list(get_the_ID(), ', ', '<span>', '</span>')); ?>
                                         </span>
                                     </td>
                                 <?php endif; ?>
@@ -2422,7 +2422,7 @@ class Product_Table extends Module_Base {
                                 <?php if ($settings['show_tags']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-tags'); ?>>
                                         <span class="usk-wc-product-tags">
-                                            <?php echo wc_get_product_tag_list(get_the_ID(), ', ', '<span>', '</span>'); ?>
+                                            <?php echo wp_kses_post(wc_get_product_tag_list(get_the_ID(), ', ', '<span>', '</span>')); ?>
                                         </span>
                                     </td>
                                 <?php endif; ?>
@@ -2430,7 +2430,7 @@ class Product_Table extends Module_Base {
                                 <?php if ($settings['show_rating']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-rating'); ?>>
                                         <div class="usk-wc-rating">
-                                            <?php echo $this->register_global_template_wc_rating($average, $rating_count); ?>
+                                            <?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?>
                                         </div>
                                     </td>
                                 <?php endif; ?>
@@ -2502,7 +2502,7 @@ class Product_Table extends Module_Base {
             ?>
             <div <?php $this->print_render_attribute_string('product_image_wrapper'); ?>>
                 <a <?php $this->print_render_attribute_string('product_image'); ?>>
-                    <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), 'thumbnail'); ?>" alt="<?php echo get_the_title(); ?>">
+                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), 'thumbnail')); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
                 </a>
             </div>
         <?php

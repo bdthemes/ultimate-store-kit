@@ -314,9 +314,9 @@ class Glossy_Carousel extends Module_Base {
         }
 ?>
         <div class="usk-image">
-            <a href="<?php echo get_permalink(); ?>">
-                <img class="img default-image" src="<?php echo esc_url($product_image); ?>" alt="<?php echo get_the_title(); ?>">
-                <img class="img hover-image" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo get_the_title(); ?>">
+            <a href="<?php echo esc_url(get_permalink()); ?>">
+                <img class="img default-image" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img hover-image" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
             </a>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content">
@@ -357,7 +357,7 @@ class Glossy_Carousel extends Module_Base {
                         <?php $this->render_image(); ?>
                         <div class="usk-content">
                             <?php if ('yes' == $settings['show_title']) :
-                                printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', $settings['title_tags'], esc_url($product->get_permalink()), esc_html($product->get_title()));
+                                printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
                             endif; ?>
                             <?php if ('yes' == $settings['show_price']) : ?>
                                 <div class="usk-price">
@@ -366,7 +366,7 @@ class Glossy_Carousel extends Module_Base {
                             <?php endif; ?>
                             <?php if ('yes' == $settings['show_rating']) : ?>
                                 <div class="usk-rating">
-                                    <?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
+                                    <?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
                                 </div>
                             <?php endif; ?>
                         </div>

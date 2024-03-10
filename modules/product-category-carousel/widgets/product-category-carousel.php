@@ -909,10 +909,10 @@ class Product_Category_Carousel extends Module_Base {
 					</div>
 				<?php endif; ?>
 				<div class="usk-content">
-					<?php printf('<h3 class="title">%s</h3>', $category->name); ?>
+					<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
 					<?php
 					if ($settings['show_count']) :
-						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span><span class="usk-count-text">products</span></p>', $category->count);
+						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span><span class="usk-count-text">%s</span></p>', esc_html($category->count), esc_html__('products', 'ultimate-store-kit'));
 					endif;
 					?>
 				</div>

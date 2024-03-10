@@ -55,6 +55,9 @@
 
 		.usk-category {
 			margin-bottom: 10px;
+			display: inline-flex;
+			gap: 5px;
+			flex-wrap: wrap;
 			 a {
 				font-size: 14px;
 				color: #5f5f74;

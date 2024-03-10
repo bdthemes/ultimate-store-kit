@@ -117,24 +117,25 @@
     transform: translateY(50px);
     transition: transform 0.4s cubic-bezier(0.17, 0.73, 0.66, 0.99) 0s, z-index 0s step-end, opacity 0.4s ease; }
     .usk-product-image-accordion .usk-item .usk-content .usk-category {
-      margin-bottom: 15px; }
-      .usk-product-image-accordion .usk-item .usk-content .usk-category span {
-        display: inline-flex; }
-        .usk-product-image-accordion .usk-item .usk-content .usk-category span a {
-          background: transparent;
-          border: 1px solid #ef233c;
-          padding: 4px 12px;
-          text-decoration: none;
-          color: #ef233c;
-          font-size: 10px;
-          text-transform: uppercase;
-          font-weight: 500;
-          border-radius: 3px;
-          transition: all 0.3s ease; }
-          .usk-product-image-accordion .usk-item .usk-content .usk-category span a:hover {
-            background: #d90429;
-            border: 1px solid #d90429;
-            color: #fff; }
+      margin-bottom: 15px;
+      display: inline-flex;
+      gap: 5px;
+      flex-wrap: wrap; }
+      .usk-product-image-accordion .usk-item .usk-content .usk-category a {
+        background: transparent;
+        border: 1px solid #ef233c;
+        padding: 4px 12px;
+        text-decoration: none;
+        color: #ef233c;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 3px;
+        transition: all 0.3s ease; }
+        .usk-product-image-accordion .usk-item .usk-content .usk-category a:hover {
+          background: #d90429;
+          border: 1px solid #d90429;
+          color: #fff; }
     .usk-product-image-accordion .usk-item .usk-content .usk-title {
       margin-bottom: 10px;
       font-size: 18px;

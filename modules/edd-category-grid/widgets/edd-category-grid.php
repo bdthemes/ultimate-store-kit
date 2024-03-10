@@ -805,9 +805,9 @@ class EDD_Category_Grid extends Module_Base {
 				<a <?php $this->print_render_attribute_string('edd-category-item'); ?>>
 					<?php $this->render_image(); ?>
 					<div class="edd-content">
-						<?php printf('<h3 class="title">%s</h3>', $category->name); ?>
+						<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
 						<?php if ($settings['show_count']) :
-							printf('<p class="edd-category-count"><span class="edd-count-number">%s</span><span class="edd-count-text">products</span></p>', $category->count);
+							printf('<p class="edd-category-count"><span class="edd-count-number">%s</span><span class="edd-count-text">products</span></p>', esc_html($category->count));
 						endif;
 						?>
 					</div>
@@ -819,7 +819,7 @@ class EDD_Category_Grid extends Module_Base {
 					// }
 					endforeach;
 				} else {
-					printf('<span class="bdt-warning">%s</span>', __('Opps, Nothing found to display', 'ultimate-store-kit'));
+					printf('<span class="bdt-warning">%s</span>', esc_html__('Opps, Nothing found to display', 'ultimate-store-kit'));
 				}
 			}
 
