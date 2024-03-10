@@ -742,7 +742,7 @@ class Info_List extends Module_Base
         );
 
         if (!empty($item['title'])) {
-            printf('<%1$s class="usk-info-list-title"><a %2$s title="%3$s">%3$s</a></%1$s>', $settings['title_tag'], $this->get_render_attribute_string('title-link'), wp_kses_post($item['title']));
+            printf('<%1$s class="usk-info-list-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), $this->get_render_attribute_string('title-link'), wp_kses_post($item['title']));
         }
     }
 
@@ -779,7 +779,7 @@ class Info_List extends Module_Base
             $this->add_render_attribute('item-wrap', 'class', 'usk-info-list-item elementor-repeater-item-' . esc_attr($item['_id']), true);
     
             ?>
-            <div <?php echo $this->get_render_attribute_string('item-wrap'); ?>>
+            <div <?php $this->print_render_attribute_string('item-wrap'); ?>>
 
                 <?php if (!empty($item['list_icon']['value'])) : ?>
                     <div class="usk-info-list-icon">

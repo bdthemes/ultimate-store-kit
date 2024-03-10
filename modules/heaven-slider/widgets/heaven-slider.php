@@ -1110,6 +1110,18 @@ class Heaven_Slider extends Module_Base {
                 ],
             ]
         );
+        
+        $this->add_responsive_control(
+            'category_space_between',
+            [
+                'label'      => esc_html__('Space Between', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-heaven-slider .usk-category' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1625,16 +1637,16 @@ class Heaven_Slider extends Module_Base {
                             <div>
 
                                 <?php if ('yes' == $settings['show_category']) : ?>
-                                    <?php printf('<div class="usk-category">%1$s</div>', wc_get_product_category_list($product->get_id())); ?>
+                                    <?php printf('<div class="usk-category">%1$s</div>', wp_kses_post(wc_get_product_category_list($product->get_id(), ' '))); ?>
                                 <?php endif; ?>
 
                                 <?php if ('yes' == $settings['show_title']) :
-                                    printf('<%1$s class="usk-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), $product->get_permalink(), $product->get_title());
+                                    printf('<%1$s class="usk-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
                                 endif; ?>
 
                                 <?php if ('yes' == $settings['show_excerpt']) : ?>
                                     <div class="usk-text">
-                                        <?php echo wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...'); ?>
+                                        <?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...')); ?>
                                     </div>
                                 <?php endif; ?>
 

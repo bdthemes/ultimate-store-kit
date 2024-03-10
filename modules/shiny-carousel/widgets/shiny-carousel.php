@@ -437,9 +437,9 @@ class Shiny_Carousel extends Module_Base {
         }
 ?>
         <div class="usk-image">
-            <a href="<?php echo get_permalink(); ?>">
-                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo get_the_title(); ?>">
-                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo get_the_title(); ?>">
+            <a href="<?php echo esc_url(get_permalink()); ?>">
+                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
             </a>
             <?php $this->render_add_to_cart(); ?>
             <div class="usk-shoping">
@@ -524,6 +524,7 @@ class Shiny_Carousel extends Module_Base {
                 $rating_count = $product->get_rating_count();
                 $average = $product->get_average_rating();
                 $have_rating = ('yes' === $settings['show_rating']) ? 'usk-have-rating' : '';
+                $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
 
             ?>
                 <div class="swiper-slide">
@@ -532,9 +533,9 @@ class Shiny_Carousel extends Module_Base {
                             <?php $this->render_image(); ?>
                             <div class="usk-content">
                                 <?php if ('yes' == $settings['show_category']) : ?>
-                                    <?php printf('<%1$s class="usk-category">%2$s</%1$s>', $settings['category_tags'], wc_get_product_category_list($product->get_id())); ?>
+                                    <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
                                 <?php endif; ?>
-                                <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', $settings['title_tags'], esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
+                                <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
                                 <?php if ('yes' == $settings['show_price']) : ?>
                                     <div class="usk-price">
                                         <?php $this->print_price_output($product->get_price_html()); ?>
@@ -542,7 +543,7 @@ class Shiny_Carousel extends Module_Base {
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_rating']) : ?>
                                     <div class="usk-rating">
-                                        <span><?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
+                                        <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
                                     </div>
                                 <?php endif; ?>
                             </div>

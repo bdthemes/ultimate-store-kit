@@ -408,7 +408,7 @@ class Product_Image_Accordion extends Module_Base {
                         <div class="usk-image-wrap">
                             <div class="usk-image">
                                 <a href="#">
-                                    <img class="usk-img" src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo get_the_title(); ?>">
+                                    <img class="usk-img" src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
                                 </a>
                             </div>
                         </div>
@@ -421,13 +421,11 @@ class Product_Image_Accordion extends Module_Base {
                             <div class="usk-content">
                                 <?php if ('yes' == $settings['show_category']) : ?>
                                     <div class="usk-category">
-                                        <span>
-                                            <?php echo wc_get_product_category_list($product->get_id()); ?>
-                                        </span>
+                                        <?php echo wp_kses_post(wc_get_product_category_list($product->get_id(), ' ')); ?>
                                     </div>
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_title']) :
-                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', $settings['title_tags'], $product->get_permalink(), $product->get_title());
+                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
                                 endif; ?>
                                 <?php if ('yes' == $settings['show_price']) : ?>
                                     <div class="usk-price">
@@ -436,7 +434,7 @@ class Product_Image_Accordion extends Module_Base {
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_rating']) : ?>
                                     <div class="usk-rating">
-                                        <span><?php echo $this->register_global_template_wc_rating($average, $rating_count); ?></span>
+                                        <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
                                     </div>
                                 <?php endif; ?>
                             </div>

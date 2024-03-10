@@ -1068,6 +1068,18 @@ trait Global_Widget_Controls {
                 ],
             ]
         );
+        
+        $this->add_responsive_control(
+            'category_space_between',
+            [
+                'label'      => esc_html__('Space Between', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [

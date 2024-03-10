@@ -126,12 +126,12 @@ class EDD_Trendy_Carousel extends Module_Base {
                             endif;
 
                             if ($settings['show_title']) :
-                                printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', $settings['title_tags'], esc_url(get_the_permalink()), esc_html(get_the_title()));
+                                printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url(get_the_permalink()), esc_html(get_the_title()));
                             endif; ?>
                         </div>
                         <div class="usk-edd-trendy-carousel-image">
                             <a href="<?php the_permalink(); ?>">
-                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo get_the_title(); ?>">
+                                <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
                             </a>
                         </div>
                         <div class="usk-edd-content">
@@ -139,7 +139,7 @@ class EDD_Trendy_Carousel extends Module_Base {
                             if ($settings['show_price']) : ?>
                                 <div class="usk-edd-price">
                                     <?php if (edd_has_variable_prices(get_the_ID())) {
-                                        esc_html_e('Starting at: ', 'bdthemes-element-pack');
+                                        esc_html_e('Starting at: ', 'ultimate-store-kit');
                                         edd_price(get_the_ID());
                                     } else {
                                         edd_price(get_the_ID());
@@ -152,11 +152,11 @@ class EDD_Trendy_Carousel extends Module_Base {
                         <div class="usk-action-button">
                             <?php if (function_exists('edd_price')) { ?>
                                 <?php if (!edd_has_variable_prices(get_the_ID())) { ?>
-                                    <?php echo edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button'); ?>
+                                    <?php echo esc_url(edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button')); ?>
                                 <?php } ?>
                             <?php } ?>
                             <div class="usk-details-button">
-                                <a href="<?php the_permalink(); ?>"><span><?php esc_html_e('View Details', 'bdthemes-element-pack'); ?></span></a>
+                                <a href="<?php the_permalink(); ?>"><span><?php esc_html_e('View Details', 'ultimate-store-kit'); ?></span></a>
                             </div>
                         </div>
                     </div>

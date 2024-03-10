@@ -92,6 +92,9 @@
       }
       .usk-category {
         margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
         a {
           font-size: 12px;
           border-width: 1px;

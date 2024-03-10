@@ -402,7 +402,7 @@ class UltimateStoreKit_Admin_Settings {
     <div class="bdt-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
       <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
         <div class="bdt-width-1-2@m bdt-width-1-4@l">
-          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?> <?php echo $track_nw_msg; ?>>
+          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
 
             <?php
             $used_widgets    = count(self::get_used_widgets());
@@ -413,15 +413,15 @@ class UltimateStoreKit_Admin_Settings {
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
                 <h1 class="bdt-feature-title">All Widgets</h1>
-                <div class="bdt-widget-count">Used: <b><?php echo $used_widgets; ?></b></div>
-                <div class="bdt-widget-count">Unused: <b><?php echo $un_used_widgets; ?></b></div>
+                <div class="bdt-widget-count">Used: <b><?php echo esc_html($used_widgets); ?></b></div>
+                <div class="bdt-widget-count">Unused: <b><?php echo esc_html($un_used_widgets); ?></b></div>
                 <div class="bdt-widget-count">Total:
-                  <b><?php echo $used_widgets + $un_used_widgets; ?></b>
+                  <b><?php echo esc_html($used_widgets) + esc_html($un_used_widgets); ?></b>
                 </div>
               </div>
 
               <div class="bdt-canvas-wrap">
-                <canvas id="bdt-db-total-status" style="height: 120px; width: 120px;" data-label="Total Widgets Status - (<?php echo $used_widgets + $un_used_widgets; ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>" data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
+                <canvas id="bdt-db-total-status" style="height: 120px; width: 120px;" data-label="Total Widgets Status - (<?php echo esc_attr($used_widgets) + esc_attr($un_used_widgets); ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_widgets) . ',' . esc_attr($un_used_widgets); ?>" data-bg="#FFD166, #fff4d9" data-bg-hover="#0673e1, #e71522"></canvas>
               </div>
             </div>
 
@@ -439,15 +439,15 @@ class UltimateStoreKit_Admin_Settings {
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
                 <h1 class="bdt-feature-title">WooCommerce</h1>
-                <div class="bdt-widget-count">Used: <b><?php echo $used_only_widgets; ?></b></div>
-                <div class="bdt-widget-count">Unused: <b><?php echo $unused_only_widgets; ?></b></div>
+                <div class="bdt-widget-count">Used: <b><?php echo esc_html($used_only_widgets); ?></b></div>
+                <div class="bdt-widget-count">Unused: <b><?php echo esc_html($unused_only_widgets); ?></b></div>
                 <div class="bdt-widget-count">Total:
-                  <b><?php echo $used_only_widgets + $unused_only_widgets; ?></b>
+                  <b><?php echo esc_html($used_only_widgets) + esc_html($unused_only_widgets); ?></b>
                 </div>
               </div>
 
               <div class="bdt-canvas-wrap">
-                <canvas id="bdt-db-only-widget-status" style="height: 120px; width: 120px;" data-label="WooCommerce Widgets Status - (<?php echo $used_only_widgets + $unused_only_widgets; ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_only_widgets) . ',' . esc_attr($unused_only_widgets); ?>" data-bg="#EF476F, #ffcdd9" data-bg-hover="#0673e1, #e71522"></canvas>
+                <canvas id="bdt-db-only-widget-status" style="height: 120px; width: 120px;" data-label="WooCommerce Widgets Status - (<?php echo esc_attr($used_only_widgets) + esc_attr($unused_only_widgets); ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_only_widgets) . ',' . esc_attr($unused_only_widgets); ?>" data-bg="#EF476F, #ffcdd9" data-bg-hover="#0673e1, #e71522"></canvas>
               </div>
             </div>
 
@@ -465,14 +465,14 @@ class UltimateStoreKit_Admin_Settings {
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
                 <h1 class="bdt-feature-title">EDD</h1>
-                <div class="bdt-widget-count">Used: <b><?php echo $used_only_edd_widgets; ?></b></div>
-                <div class="bdt-widget-count">Unused: <b><?php echo $unused_only_edd_widgets; ?></b></div>
-                <div class="bdt-widget-count">Total: <b><?php echo $used_only_edd_widgets + $unused_only_edd_widgets; ?></b>
+                <div class="bdt-widget-count">Used: <b><?php echo esc_html($used_only_edd_widgets); ?></b></div>
+                <div class="bdt-widget-count">Unused: <b><?php echo esc_html($unused_only_edd_widgets); ?></b></div>
+                <div class="bdt-widget-count">Total: <b><?php echo esc_html($used_only_edd_widgets) + esc_html($unused_only_edd_widgets); ?></b>
                 </div>
               </div>
 
               <div class="bdt-canvas-wrap">
-                <canvas id="bdt-db-only-edd_widgets-status" style="height: 120px; width: 120px;" data-label="EDD Widgets Status - (<?php echo $used_only_edd_widgets + $unused_only_edd_widgets; ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_only_edd_widgets) . ',' . esc_attr($unused_only_edd_widgets); ?>" data-bg="#06D6A0, #B6FFEC" data-bg-hover="#0673e1, #e71522"></canvas>
+                <canvas id="bdt-db-only-edd_widgets-status" style="height: 120px; width: 120px;" data-label="EDD Widgets Status - (<?php echo esc_attr($used_only_edd_widgets) + esc_attr($unused_only_edd_widgets); ?>)" data-labels="<?php echo esc_attr('Used, Unused'); ?>" data-value="<?php echo esc_attr($used_only_edd_widgets) . ',' . esc_attr($unused_only_edd_widgets); ?>" data-bg="#06D6A0, #B6FFEC" data-bg-hover="#0673e1, #e71522"></canvas>
               </div>
             </div>
 

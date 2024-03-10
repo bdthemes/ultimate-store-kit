@@ -55,7 +55,7 @@ function ultimate_store_kit_render_mini_cart_item($cart_item_key, $cart_item) {
 			echo apply_filters('woocommerce_cart_item_remove_link', sprintf(
 				'<a href="%s" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s"><span><i class="eicon-editor-close"></i></span></a>',
 				esc_url(wc_get_cart_remove_url($cart_item_key)),
-				__('Remove this item', 'ultimate-store-kit'),
+				esc_html__('Remove this item', 'ultimate-store-kit'),
 				esc_attr($product_id),
 				esc_attr($cart_item_key),
 				esc_attr($_product->get_sku())
@@ -84,7 +84,7 @@ if (empty($cart_items)) { ?>
 		<div class="usk-mini-cart-content-footer">
 			<div class="bdt-mini-cart-subtotal">
 				<div>
-					<strong><?php echo __('Subtotal', 'ultimate-store-kit'); ?>:</strong>
+					<strong><?php echo esc_html__('Subtotal', 'ultimate-store-kit'); ?>:</strong>
 				</div>
 				<div>
 					<?php echo WC()->cart->get_cart_subtotal(); ?>
@@ -92,10 +92,10 @@ if (empty($cart_items)) { ?>
 			</div>
 			<div class="bdt-mini-cart-footer-buttons">
 				<a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="bdt-button-view-cart ">
-					<span class="usk-button-text"><?php echo __('View cart', 'ultimate-store-kit'); ?></span>
+					<span class="usk-button-text"><?php echo esc_html__('View cart', 'ultimate-store-kit'); ?></span>
 				</a>
 				<a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="bdt-button-checkout ">
-					<span class="usk-button-text"><?php echo __('Checkout', 'ultimate-store-kit'); ?></span>
+					<span class="usk-button-text"><?php echo esc_html__('Checkout', 'ultimate-store-kit'); ?></span>
 				</a>
 			</div>
 		</div>

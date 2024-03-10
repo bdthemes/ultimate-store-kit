@@ -135,7 +135,7 @@ class EDD_Trendy_Grid extends Module_Base {
                             </div>
                             <div class="usk-edd-trendy-grid-image">
                                 <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']); ?>" alt="<?php echo get_the_title(); ?>">
+                                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
                                 </a>
                             </div>
                             <div class="usk-edd-content">
@@ -156,7 +156,7 @@ class EDD_Trendy_Grid extends Module_Base {
                             <div class="usk-action-button">
                                 <?php if (function_exists('edd_price')) { ?>
                                     <?php if (!edd_has_variable_prices(get_the_ID())) { ?>
-                                        <?php echo edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button'); ?>
+                                        <?php echo wp_kses_post(edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button')); ?>
                                     <?php } ?>
                                 <?php } ?>
                                 <div class="usk-details-button">

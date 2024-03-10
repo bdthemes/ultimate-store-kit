@@ -871,7 +871,7 @@ class Page_Order extends Module_Base {
                     echo esc_html('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'ultimate-store-kit-pro');
                 ?>
                 <?php else :
-                    echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__($order_received_text, 'ultimate-store-kit-pro'), $order);
+                    echo wp_kses_post(apply_filters('woocommerce_thankyou_order_received_text', esc_html__($order_received_text, 'ultimate-store-kit-pro'), $order));
                 endif; ?>
             </p>
         </div>
@@ -977,7 +977,7 @@ class Page_Order extends Module_Base {
             </li>
             <li class="order-status">
                 <span class="usk-label"><?php echo esc_html__('Order status', 'ultimate-store-kit-pro'); ?></span>
-                <strong class="usk-value"><?php echo wc_get_order_status_name($order->get_status()) ?></strong>
+                <strong class="usk-value"><?php echo wp_kses_post(wc_get_order_status_name($order->get_status())); ?></strong>
             </li>
             <li class="total">
                 <span class="usk-label"><?php esc_html_e('Total:', 'woocommerce'); ?></span>

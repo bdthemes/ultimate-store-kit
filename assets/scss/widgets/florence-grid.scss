@@ -225,6 +225,9 @@ $usk-color: #674399;
 
 				.usk-category {
 					margin-bottom: 15px;
+					display: inline-flex;
+					flex-wrap: wrap;
+					gap: 5px;
 
 					a {
 						font-size: 11px;
@@ -247,7 +250,7 @@ $usk-color: #674399;
 				}
 
 				.usk-title {
-					display: inline-block;
+					// display: inline-block;
 					margin-bottom: 10px;
 
 					.title {

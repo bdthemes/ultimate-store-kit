@@ -65,7 +65,10 @@
       font-weight: bold;
       margin: 0; }
   .usk-showcase-slider .usk-item .usk-category {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; }
     .usk-showcase-slider .usk-item .usk-category a {
       font-size: 12px;
       border-width: 1px;

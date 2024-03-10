@@ -137,7 +137,7 @@ class EDD_Classic_Grid extends Module_Base {
                                 <div class="usk-action-button">
                                     <?php if (function_exists('edd_price')) { ?>
                                         <?php if (!edd_has_variable_prices(get_the_ID())) { ?>
-                                            <?php echo edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button'); ?>
+                                            <?php echo esc_url(edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button')); ?>
                                         <?php } ?>
                                     <?php } ?>
                                     <div class="usk-details-button">

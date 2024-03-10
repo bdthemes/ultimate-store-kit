@@ -2910,7 +2910,10 @@ div.pp_pic_holder {
       .usk-florence-grid .usk-grid .usk-item .usk-content .usk-content-inner {
         width: 100%; }
       .usk-florence-grid .usk-grid .usk-item .usk-content .usk-category {
-        margin-bottom: 15px; }
+        margin-bottom: 15px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 5px; }
         .usk-florence-grid .usk-grid .usk-item .usk-content .usk-category a {
           font-size: 11px;
           color: #9FA8BC;
@@ -2926,7 +2929,6 @@ div.pp_pic_holder {
             background: #2B2D42;
             border-color: #2B2D42; }
       .usk-florence-grid .usk-grid .usk-item .usk-content .usk-title {
-        display: inline-block;
         margin-bottom: 10px; }
         .usk-florence-grid .usk-grid .usk-item .usk-content .usk-title .title {
           color: #2B2D42;
@@ -3240,13 +3242,15 @@ div.pp_pic_holder {
       .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-content-inner {
         width: 100%; }
       .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category {
-        margin-bottom: 15px; }
+        margin-bottom: 15px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 5px; }
         .usk-florence-carousel .usk-carousel .usk-item .usk-content .usk-category a {
           font-size: 11px;
           color: #9FA8BC;
           text-transform: uppercase;
           font-weight: 500;
-          display: inline-block;
           border: 1px solid #c0c9dd;
           padding: 2px 10px;
           transition: all .3s ease; }
@@ -4800,24 +4804,25 @@ html {
     transform: translateY(50px);
     transition: transform 0.4s cubic-bezier(0.17, 0.73, 0.66, 0.99) 0s, z-index 0s step-end, opacity 0.4s ease; }
     .usk-product-image-accordion .usk-item .usk-content .usk-category {
-      margin-bottom: 15px; }
-      .usk-product-image-accordion .usk-item .usk-content .usk-category span {
-        display: inline-flex; }
-        .usk-product-image-accordion .usk-item .usk-content .usk-category span a {
-          background: transparent;
-          border: 1px solid #ef233c;
-          padding: 4px 12px;
-          text-decoration: none;
-          color: #ef233c;
-          font-size: 10px;
-          text-transform: uppercase;
-          font-weight: 500;
-          border-radius: 3px;
-          transition: all 0.3s ease; }
-          .usk-product-image-accordion .usk-item .usk-content .usk-category span a:hover {
-            background: #d90429;
-            border: 1px solid #d90429;
-            color: #fff; }
+      margin-bottom: 15px;
+      display: inline-flex;
+      gap: 5px;
+      flex-wrap: wrap; }
+      .usk-product-image-accordion .usk-item .usk-content .usk-category a {
+        background: transparent;
+        border: 1px solid #ef233c;
+        padding: 4px 12px;
+        text-decoration: none;
+        color: #ef233c;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 3px;
+        transition: all 0.3s ease; }
+        .usk-product-image-accordion .usk-item .usk-content .usk-category a:hover {
+          background: #d90429;
+          border: 1px solid #d90429;
+          color: #fff; }
     .usk-product-image-accordion .usk-item .usk-content .usk-title {
       margin-bottom: 10px;
       font-size: 18px;
@@ -6126,7 +6131,10 @@ html {
       font-weight: bold;
       margin: 0; }
   .usk-showcase-slider .usk-item .usk-category {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; }
     .usk-showcase-slider .usk-item .usk-category a {
       font-size: 12px;
       border-width: 1px;
@@ -7427,7 +7435,10 @@ html {
       flex-direction: column;
       justify-content: space-between; }
     .usk-heaven-slider .usk-main-slider .usk-category {
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      display: inline-flex;
+      gap: 5px;
+      flex-wrap: wrap; }
       .usk-heaven-slider .usk-main-slider .usk-category a {
         font-size: 14px;
         color: #5f5f74;
@@ -7633,7 +7644,10 @@ html {
     padding: 30px;
     overflow: hidden; }
   .usk-mentor-slider .usk-category {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 5px; }
     .usk-mentor-slider .usk-category a {
       font-size: 14px;
       color: #5f5f74;

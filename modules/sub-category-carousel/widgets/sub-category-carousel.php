@@ -574,7 +574,7 @@ class Sub_Category_Carousel extends Module_Base {
                                     if (!(empty($img_url))) : ?>
                                         <div class="usk-item swiper-slide">
                                             <a href="#" class="usk-image-wrap">
-                                                <img class="usk-img" src="<?php echo $img_url; ?>" />
+                                                <img class="usk-img" src="<?php echo esc_url($img_url); ?>" />
                                             </a>
                                         </div>
                                 <?php
@@ -585,19 +585,19 @@ class Sub_Category_Carousel extends Module_Base {
                         </div>
                         <div class="usk-category-content">
 
-                            <?php printf('<%1$s class="usk-category-name">%2$s</%1$s>', $settings['title_tags'], esc_html($category->name)); ?>
+                            <?php printf('<%1$s class="usk-category-name">%2$s</%1$s>', esc_attr($settings['title_tags']), esc_html($category->name)); ?>
                             <ul class="usk-category-list">
                                 <?php
                                 foreach ($taxonomies as $key => $subcategory) :
                                     if (($subcategory->parent == $category->term_id) && ($subcategory->count > 0)) {
-                                        printf('<li><a href="%1$s">%2$s</a></li>', get_term_link($subcategory->term_id, 'product_cat'), $subcategory->name);
+                                        printf('<li><a href="%1$s">%2$s</a></li>', esc_url(get_term_link($subcategory->term_id, 'product_cat')), esc_html($subcategory->name));
                                     }
                                 endforeach;
                                 ?>
                             </ul>
 
                             <div class="usk-link-btn">
-                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="eicon-arrow-right"></i>', esc_html('All ' . $category->name . ''), get_term_link($category->term_id, 'product_cat')); ?>
+                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="eicon-arrow-right"></i>', esc_html('All ' . $category->name . ''), esc_url(get_term_link($category->term_id, 'product_cat'))); ?>
                                 </a>
                             </div>
                         </div>

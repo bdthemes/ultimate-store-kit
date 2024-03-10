@@ -42,7 +42,10 @@
       flex-direction: column;
       justify-content: space-between; }
     .usk-heaven-slider .usk-main-slider .usk-category {
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      display: inline-flex;
+      gap: 5px;
+      flex-wrap: wrap; }
       .usk-heaven-slider .usk-main-slider .usk-category a {
         font-size: 14px;
         color: #5f5f74;
