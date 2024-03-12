@@ -1167,6 +1167,10 @@ class UltimateStoreKit_Admin_Settings {
           jQuery(this).removeAttr('checked');
           jQuery(this).attr("disabled", true);
         });
+        jQuery('#ultimate_store_kit_general_modules_page .usk-pro-inactive .checkbox').each(function() {
+          jQuery(this).removeAttr('checked');
+          jQuery(this).attr("disabled", true);
+        });
 
 
       });

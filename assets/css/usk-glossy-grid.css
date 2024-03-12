@@ -175,10 +175,9 @@ html {
       display: none; }
     .usk-glossy-grid .usk-grid-layout .usk-item .usk-content .usk-price {
       justify-content: center; }
-  .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon {
-    width: 30px;
-    height: 30px; }
-    .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon::before {
+  .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a {
+    padding: 10px; }
+    .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon {
       font-size: 10px; }
 
 .usk-glossy-grid .usk-list-layout {
@@ -187,10 +186,9 @@ html {
     display: flex;
     align-items: center;
     height: 100%; }
-  .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a .icon {
-    width: 23px;
-    height: 23px; }
-    .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a .icon::before {
+  .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a {
+    padding: 10px; }
+    .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a .icon {
       font-size: 10px; }
   .usk-glossy-grid .usk-list-layout .usk-content {
     display: flex;
@@ -224,9 +222,10 @@ html {
       font-size: 10px; }
   .usk-glossy-grid .usk-grid-layout {
     grid-template-columns: repeat(2, 1fr); }
-    .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon {
-      width: 30px;
-      height: 30px; }
+    .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a {
+      padding: 10px; }
+      .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon {
+        font-size: 12px; }
   .usk-glossy-grid .usk-list-layout {
     grid-template-columns: repeat(1, 1fr); }
     .usk-glossy-grid .usk-list-layout .usk-content {
@@ -248,17 +247,15 @@ html {
       margin-bottom: 10px; }
   .usk-glossy-grid .usk-grid-layout {
     grid-template-columns: repeat(3, 1fr); }
-    .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon {
-      width: 35px;
-      height: 35px; }
-      .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon::before {
+    .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a {
+      padding: 12px; }
+      .usk-glossy-grid .usk-grid-layout .usk-item .usk-shoping a .icon {
         font-size: 14px; }
   .usk-glossy-grid .usk-list-layout {
     grid-template-columns: repeat(2, 1fr); }
-    .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a .icon {
-      width: 30px;
-      height: 30px; }
-      .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a .icon::before {
+    .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a {
+      padding: 10px; }
+      .usk-glossy-grid .usk-list-layout .usk-item .usk-shoping a .icon {
         font-size: 12px; }
     .usk-glossy-grid .usk-list-layout .usk-content {
       padding: 20px; }

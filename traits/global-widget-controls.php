@@ -230,27 +230,29 @@ trait Global_Widget_Controls {
                 ]
             ]
         );
-        $this->add_control(
-            'show_category',
-            [
-                'label' => esc_html__('Category', 'ultimate-store-kit'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'separator' => 'before'
-            ]
-        );
-        $this->add_control(
-            'category_tags',
-            [
-                'label'     => esc_html__('Category HTML Tag', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SELECT,
-                'default'   => 'h5',
-                'options'   => ultimate_store_kit_title_tags(),
-                'condition' => [
-                    'show_category' => 'yes',
-                ],
-            ]
-        );
+        if ($this->get_name() !==  'usk-glossy-grid') :
+            $this->add_control(
+                'show_category',
+                [
+                    'label' => esc_html__('Category', 'ultimate-store-kit'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'default' => 'yes',
+                    'separator' => 'before'
+                ]
+            );
+            $this->add_control(
+                'category_tags',
+                [
+                    'label'     => esc_html__('Category HTML Tag', 'ultimate-store-kit'),
+                    'type'      => Controls_Manager::SELECT,
+                    'default'   => 'h5',
+                    'options'   => ultimate_store_kit_title_tags(),
+                    'condition' => [
+                        'show_category' => 'yes',
+                    ],
+                ]
+            );
+        endif;
         if ($this->get_name() !==  'usk-product-image-accordion') :
             $this->add_control(
                 'show_excerpt',
@@ -286,20 +288,7 @@ trait Global_Widget_Controls {
                 'separator' => 'before'
             ]
         );
-        // $this->add_control(
-        //     'hide_customer_review',
-        //     [
-        //         'label' => esc_html__('Hide Review Text', 'ultimate-store-kit'),
-        //         'type' => Controls_Manager::SWITCHER,
-        //         'default' => 'yes',
-        //         'condition' => [
-        //             'show_rating' => 'yes',
-        //         ],
-        //         'selectors' => [
-        //             // '{{WRAPPER}} .' . $this->get_name() . ' .usk-rating   .woocommerce-review-link' => 'display:none',
-        //         ],
-        //     ]
-        // );
+
         $this->add_control(
             'show_price',
             [
@@ -1064,7 +1053,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid .usk-item .usk-content .usk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1240,7 +1229,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid .usk-item .usk-content .usk-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1555,7 +1544,7 @@ trait Global_Widget_Controls {
         $this->add_responsive_control(
             'action_btn_size',
             [
-                'label'         => __('Button Size', 'ultimate-store-kit'),
+                'label'         => __('Icon Size', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SLIDER,
                 'size_units'    => ['px'],
                 'range'         => [
@@ -1566,7 +1555,7 @@ trait Global_Widget_Controls {
                     ]
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a .icon' => 'width: {{SIZE}}{{UNIT}}; height:{{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; text-align:center;',
+                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1594,44 +1583,6 @@ trait Global_Widget_Controls {
                 ],
             ]
         );
-        $this->start_controls_tabs(
-            'pagination_normal'
-        );
-        $this->start_controls_tab(
-            'pagination_tab_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'pagination_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'pagination_background',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'pagination_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a',
-                'separator' => 'before'
-            ]
-        );
         $this->add_control(
             'pagination_alignment',
             [
@@ -1656,9 +1607,47 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination' => 'justify-content: {{VALUE}};',
                 ],
-                'separator' => 'before',
             ]
         );
+        $this->start_controls_tabs(
+            'pagination_normal'
+        );
+        $this->start_controls_tab(
+            'pagination_tab_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'pagination_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'pagination_background',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'pagination_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a',
+                'separator' => 'before'
+            ]
+        );
+        
         $this->add_responsive_control(
             'pagination_padding',
             [
@@ -1698,10 +1687,10 @@ trait Global_Widget_Controls {
                 'type'          => Controls_Manager::SLIDER,
                 'default'       => [
                     'unit'      => 'px',
-                    'size'      => 5,
+                    'size'      => 10,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1712,7 +1701,6 @@ trait Global_Widget_Controls {
                 'name'     => 'pagination_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a, {{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a li span',
-                // 'exclude'  => ['letter_spacing', 'text_decoration', 'text_transform', 'font_size', 'line_height'],
             ]
         );
 
@@ -1736,7 +1724,7 @@ trait Global_Widget_Controls {
         $this->add_control(
             'hover_pagination_background',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a:hover' => 'background:{{VALUE}};',
@@ -1750,10 +1738,7 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a:hover' => 'border-color:{{VALUE}};',
-                ],
-                // 'condition' => [
-                //     'pagination_border!' => ' '
-                // ]
+                ]
             ]
         );
 
@@ -1777,7 +1762,7 @@ trait Global_Widget_Controls {
         $this->add_control(
             'active_pagination_background',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li.usk-active a' => 'background:{{VALUE}};',
@@ -1787,14 +1772,11 @@ trait Global_Widget_Controls {
         $this->add_control(
             'active_pagination_border_color',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li.usk-active a' => 'border-color: {{VALUE}};',
-                ],
-                // 'condition' => [
-                //     'pagination_border!' => ''
-                // ]
+                ]
             ]
         );
         $this->end_controls_tab();

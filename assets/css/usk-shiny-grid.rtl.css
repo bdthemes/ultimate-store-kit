@@ -10,7 +10,8 @@ html {
     display: grid; }
     .usk-shiny-grid .usk-grid .usk-item {
       position: relative;
-      box-shadow: 0 2px 5px 0px rgba(163, 163, 163, 0.2); }
+      box-shadow: 0 2px 5px 0px rgba(163, 163, 163, 0.2);
+      overflow: hidden; }
       .usk-shiny-grid .usk-grid .usk-item .usk-image {
         position: relative;
         overflow: hidden; }

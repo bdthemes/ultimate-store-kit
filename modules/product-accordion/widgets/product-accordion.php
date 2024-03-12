@@ -61,6 +61,9 @@ class Product_Accordion extends Module_Base {
         return ['micromodal', 'usk-accordion'];
     }
 
+    public function get_custom_help_url() {
+        return 'https://youtu.be/uWSRAnKjEEU?si=VAxAf_aryJYvmqbQ';
+    }
 
     public function get_query() {
         return $this->_query;

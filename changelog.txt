@@ -1,8 +1,24 @@
-## 1.5.2 [1st January 2024]
+## 1.5.3 [11th March 2024]
+
+### Added
+
+- Categories space between option added in relevant widgets
+- Image size option added in product list widget
 
 ### Fixed
 
 - Tooltip issue fixed in florence grid widget
+- Dashboard pro features enable issue fixed
+- Security issue fixed
+- Pagination spacing issue fixed
+- Action button icon size issue fixed [Note: all widgets need to check]
+- Price margin issue fixed
+- Image style controls not working issue fixed in product list widget
+- Category margin issue fixed
+
+### Removed
+
+- Category controls removed in glossy widget
 
 ## 1.5.2 [1st January 2024]
 

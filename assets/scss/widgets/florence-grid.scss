@@ -8,6 +8,7 @@ $usk-color: #674399;
 
 		.usk-item {
 			box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+			overflow: hidden;
 
 			.usk-item-box {
 				position: relative;
@@ -379,8 +380,7 @@ $usk-color: #674399;
 			right: 15px;
 
 			.usk-action-btn {
-				height: 30px;
-				width: 30px;
+				padding: 10px;
 
 				.icon {
 					font-size: 12px;
@@ -433,8 +433,7 @@ $usk-color: #674399;
 				right: 10px;
 
 				.usk-action-btn {
-					height: 20px;
-					width: 20px;
+					padding: 8px;
 
 					.icon {
 						font-size: 10px;
@@ -571,8 +570,7 @@ $usk-color: #674399;
 
 				.usk-shoping {
 					.usk-action-btn {
-						height: 30px;
-						width: 30px;
+						padding: 10px;
 
 						.icon {
 							font-size: 12px;
@@ -588,8 +586,7 @@ $usk-color: #674399;
 			.usk-item {
 				.usk-shoping {
 					.usk-action-btn {
-						height: 35px;
-						width: 35px;
+						padding: 12px;
 
 						.icon {
 							font-size: 14px;

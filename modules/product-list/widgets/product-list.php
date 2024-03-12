@@ -278,6 +278,26 @@ class Product_List extends Module_Base {
                 'selector'  => '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item',
             ]
         );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'item_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item',
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'item_border_radius',
+            [
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_control(
             'item_padding',
             [
@@ -289,34 +309,12 @@ class Product_List extends Module_Base {
                 ],
             ]
         );
-        $this->add_control(
-            'item_margin',
-            [
-                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item'    => 'border: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+        
         $this->add_group_control(
-            Group_Control_Border::get_type(),
+            Group_Control_Box_Shadow::get_type(),
             [
-                'name'      => 'item_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item',
-            ]
-        );
-        $this->add_control(
-            'item_border_radius',
-            [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+                'name'     => 'item_shadow',
+                'selector' => '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item',
             ]
         );
         $this->end_controls_section();
@@ -358,6 +356,28 @@ class Product_List extends Module_Base {
                     'shadow_position',
                 ],
                 'selector' => '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item .usk-item-box .usk-image-wrap',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'item_image_size',
+            [
+                'label' => esc_html__('Image Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 50,
+                        'max' => 500,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap .usk-item .usk-item-box .usk-image-wrap' => 'width: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
 

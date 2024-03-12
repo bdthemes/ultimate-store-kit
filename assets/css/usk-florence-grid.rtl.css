@@ -3,7 +3,8 @@
   display: grid;
   grid-gap: 40px; }
   .usk-florence-grid .usk-grid .usk-item {
-    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2); }
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+    overflow: hidden; }
     .usk-florence-grid .usk-grid .usk-item .usk-item-box {
       position: relative; }
     .usk-florence-grid .usk-grid .usk-item .usk-image {
@@ -215,8 +216,7 @@
     bottom: 15px;
     left: 15px; }
     .usk-florence-grid .usk-grid-layout .usk-shoping .usk-action-btn {
-      height: 30px;
-      width: 30px; }
+      padding: 10px; }
       .usk-florence-grid .usk-grid-layout .usk-shoping .usk-action-btn .icon {
         font-size: 12px; }
   .usk-florence-grid .usk-grid-layout .usk-badge-label-wrapper {
@@ -249,8 +249,7 @@
     bottom: 10px;
     left: 10px; }
     .usk-florence-grid .usk-list-layout .usk-item .usk-shoping .usk-action-btn {
-      height: 20px;
-      width: 20px; }
+      padding: 8px; }
       .usk-florence-grid .usk-list-layout .usk-item .usk-shoping .usk-action-btn .icon {
         font-size: 10px; }
 
@@ -310,15 +309,13 @@
       .usk-florence-grid .usk-list-layout .usk-item .usk-content .usk-desc {
         display: inherit; }
     .usk-florence-grid .usk-list-layout .usk-item .usk-shoping .usk-action-btn {
-      height: 30px;
-      width: 30px; }
+      padding: 10px; }
       .usk-florence-grid .usk-list-layout .usk-item .usk-shoping .usk-action-btn .icon {
         font-size: 12px; }
   .usk-florence-grid .usk-grid-layout {
     grid-template-columns: repeat(3, 1fr); }
     .usk-florence-grid .usk-grid-layout .usk-item .usk-shoping .usk-action-btn {
-      height: 35px;
-      width: 35px; }
+      padding: 12px; }
       .usk-florence-grid .usk-grid-layout .usk-item .usk-shoping .usk-action-btn .icon {
         font-size: 14px; } }
 

@@ -327,39 +327,43 @@
 /*------------------------------------------
     Ultimate Store Kit Pagination Style
   -------------------------------------------*/
-.usk-pagination {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin: 30px 0;
-    font-weight: 500;
-    li {
-        a {
-            color: #2b2d42;
-            font-size: 12px;
-            margin: 0 8px;
-            transition: all 0.3s ease;
-            border: 1px solid #2b2d42;
-            padding: 4px 10px;
-            border-radius: 2px;
-
-            &:hover {
+[class*=" elementor-widget-usk-"] {
+    .usk-pagination {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 30px 0;
+        font-weight: 500;
+        padding: 0;
+        gap: 10px;
+        li {
+            a {
+                color: #2b2d42;
+                font-size: 12px;
+                margin: 0;
+                transition: all 0.3s ease;
+                border: 1px solid #2b2d42;
+                padding: 4px 10px;
+                border-radius: 2px;
+    
+                &:hover {
+                    background: #2b2d42;
+                    color: #edf2f4;
+                }
+            }
+    
+            &:nth-child(1) {
+                a {
+                    margin-left: 0;
+                }
+            }
+        }
+    
+        .usk-active {
+            a {
                 background: #2b2d42;
                 color: #edf2f4;
             }
-        }
-
-        &:nth-child(1) {
-            a {
-                margin-left: 0;
-            }
-        }
-    }
-
-    .usk-active {
-        a {
-            background: #2b2d42;
-            color: #edf2f4;
         }
     }
 }
@@ -1309,62 +1313,25 @@
 
 /* HIDE ON SPECIFIC DEVICES*/
 @media (min-width: 768px) and (max-width: 1023px) {
-    .usk-hide-tablet {
-        display: none;
+    [class*=" elementor-widget-usk-"] {
+        .usk-hide-tablet {
+            display: none !important;
+        }
     }
 }
 
 @media (min-width: 1024px) {
-    .usk-hide-desktop {
-        display: none;
+    [class*=" elementor-widget-usk-"] {
+        .usk-hide-desktop {
+            display: none !important;
+        }
     }
 }
 
 @media (max-width: 767px) {
-    .usk-hide-mobile {
-        display: none;
+    [class*=" elementor-widget-usk-"] {
+        .usk-hide-mobile {
+            display: none !important;
+        }
     }
 }
-
-// my account page
-// .woocommerce-MyAccount-navigation{
-//     ul {
-//         margin: 0;
-//         padding: 0;
-//         list-style: none;
-
-//         li {
-//             a {
-//                 color: #3c3c47;
-//                 font-weight: 600;
-//                 font-size: 13px;
-//                 text-transform: capitalize;
-//                 display: block;
-//                 padding: 10px 15px;
-//                 transition: background-color .3s ease;
-//             }
-//             &.is-active {
-//                 a {
-//                     background-color: #f1f1f1;
-//                 }
-//             }
-//             &:hover {
-//                 a {
-//                     background-color: #f7f7f7;
-//                 }
-//             }
-//         }
-
-//     }
-// }
-// .woocommerce-MyAccount-content {
-//     p {
-//         margin: 0 0 20px;
-//         font-size: 14px;
-//         color: #797d85;
-//         font-weight: 400;
-//     }
-//     a {
-//         color: #000;
-//     }
-// }

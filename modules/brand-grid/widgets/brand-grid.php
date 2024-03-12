@@ -473,7 +473,7 @@ class Brand_Grid extends Module_Base {
                     <img class="usk-brand-grid-img" src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_html($item['brand_name']); ?>">
                     <?php
                     if (!empty($item['link']['url'])) {
-                        printf('<a %1$s title="%2$s"></a>', $this->print_render_attribute_string('link'), wp_kses_post($item['brand_name']));
+                        printf('<a %1$s title="%2$s"></a>', $this->get_render_attribute_string('link'), wp_kses_post($item['brand_name']));
                     } ?>
                 </div>
 
