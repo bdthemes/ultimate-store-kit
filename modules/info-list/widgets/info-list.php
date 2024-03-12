@@ -56,9 +56,9 @@ class Info_List extends Module_Base
         }
     }
         
-    // public function get_custom_help_url() {
-    //  return 'https://youtu.be/a_wJL950Kz4';
-    // }
+    public function get_custom_help_url() {
+     return 'https://youtu.be/vVCYUAPuqcg?si=ld1BjZ6KIy3OU62Y';
+    }
         
     protected function register_controls()
     {

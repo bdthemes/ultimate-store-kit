@@ -391,7 +391,7 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'show_hide_options_separator',
             [
-                'label'     => esc_html__('S H O W /H I D E', 'ultimate-store-kit'),
+                'label'     => esc_html__('SHOW / HIDE', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before'
             ]

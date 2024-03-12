@@ -535,7 +535,9 @@ class Shiny_Carousel extends Module_Base {
                                 <?php if ('yes' == $settings['show_category']) : ?>
                                     <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
                                 <?php endif; ?>
-                                <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
+                                <?php if ('yes' == $settings['show_title']) : ?>
+                                    <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
+                                <?php endif; ?>
                                 <?php if ('yes' == $settings['show_price']) : ?>
                                     <div class="usk-price">
                                         <?php $this->print_price_output($product->get_price_html()); ?>

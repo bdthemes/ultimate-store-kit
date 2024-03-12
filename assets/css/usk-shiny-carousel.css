@@ -6,7 +6,8 @@
     padding: 0 !important; }
   .usk-shiny-carousel .usk-carousel .usk-item {
     background: #fff;
-    border: 1px solid #e0e9ec; }
+    border: 1px solid #e0e9ec;
+    overflow: hidden; }
     .usk-shiny-carousel .usk-carousel .usk-item .usk-image {
       position: relative;
       overflow: hidden;

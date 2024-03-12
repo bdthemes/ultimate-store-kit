@@ -53,6 +53,10 @@ class EDD_Beauty_Carousel extends Module_Base {
         }
     }
 
+    public function get_custom_help_url() {
+		return 'https://youtu.be/YxPfPZUu_3M?si=8zJ9aWZ1NV4iOubs';
+	}
+
     public function get_query() {
         return $this->_query;
     }
