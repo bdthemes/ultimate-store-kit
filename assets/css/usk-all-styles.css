@@ -5208,8 +5208,8 @@ html {
         align-items: center;
         grid-column-gap: 12px; }
         .usk-wc-products-table .dataTables_wrapper .dataTables_length label select {
-          height: 30px;
-          width: 60px;
+          height: auto;
+          width: auto;
           border-color: #d0d1e9;
           border-radius: 3px; }
     .usk-wc-products-table .dataTables_wrapper .dataTables_info {

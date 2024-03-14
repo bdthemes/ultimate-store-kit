@@ -67,16 +67,6 @@ class Product_Table extends Module_Base {
             ]
         );
 
-        // $this->add_control(
-        //     'hide_header',
-        //     [
-        //         'label'   => esc_html__('Hide Header', 'ultimate-store-kit'),
-        //         'type'    => Controls_Manager::SWITCHER,
-        //         'default' => 'no',
-        //         'return'  => 'yes',
-        //     ]
-        // );
-
         $this->add_control(
             'table_header_alignment',
             [
@@ -128,53 +118,14 @@ class Product_Table extends Module_Base {
         );
 
         $this->add_control(
-            'hash_top_offset',
+            'show_searching',
             [
-                'label'     => esc_html__('Top Offset ', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'size_units' => ['px', ''],
-                'range' => [
-                    'px' => [
-                        'min' => 1,
-                        'max' => 1000,
-                        'step' => 5,
-                    ],
-
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 70,
-                ],
-                'condition' => [
-                    'active_hash' => 'yes',
-                    'show_filter_bar' => 'yes',
-                ],
+                'label'   => esc_html__('Search', 'ultimate-store-kit'),
+                'type'    => Controls_Manager::SWITCHER,
+                'separator' => 'before',
             ]
         );
 
-        $this->add_control(
-            'hash_scrollspy_time',
-            [
-                'label'     => esc_html__('Scrollspy Time', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'size_units' => ['ms', ''],
-                'range' => [
-                    'px' => [
-                        'min' => 500,
-                        'max' => 5000,
-                        'step' => 1000,
-                    ],
-                ],
-                'default'   => [
-                    'unit' => 'px',
-                    'size' => 1000,
-                ],
-                'condition' => [
-                    'active_hash' => 'yes',
-                    'show_filter_bar' => 'yes',
-                ],
-            ]
-        );
         $this->add_control(
             'show_pagination',
             [
@@ -182,6 +133,39 @@ class Product_Table extends Module_Base {
                 'type'    => Controls_Manager::SWITCHER,
             ]
         );
+
+        $this->add_control(
+            'show_info',
+            [
+                'label'   => esc_html__('Footer Info', 'ultimate-store-kit'),
+                'type'    => Controls_Manager::SWITCHER,
+                'condition' => [
+                    'show_pagination' => 'yes'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'show_change_length',
+            [
+                'label'   => esc_html__('Length Select Field', 'ultimate-store-kit'),
+                'type'    => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'condition' => [
+                    'show_pagination' => 'yes'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'show_ordering',
+            [
+                'label'   => esc_html__('Ordering', 'ultimate-store-kit'),
+                'type'    => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+            ]
+        );
+        
 
         $this->end_controls_section();
         $this->start_controls_section(
@@ -229,37 +213,6 @@ class Product_Table extends Module_Base {
             'section_woocommerce_additional',
             [
                 'label' => esc_html__('Additional', 'ultimate-store-kit'),
-            ]
-        );
-
-        $this->add_control(
-            'show_change_length',
-            [
-                'label'   => esc_html__('Show Change Length', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'show_searching',
-            [
-                'label'   => esc_html__('Search', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::SWITCHER,
-                'default' => 'no',
-            ]
-        );
-
-        $this->add_control(
-            'show_ordering',
-            [
-                'label'   => esc_html__('Ordering', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-                'separator' => 'after',
-                // 'condition' => [
-                //     'hide_header!' => 'yes'
-                // ],
             ]
         );
 
@@ -381,13 +334,7 @@ class Product_Table extends Module_Base {
                 'type'    => Controls_Manager::SWITCHER,
             ]
         );
-        $this->add_control(
-            'show_info',
-            [
-                'label'   => esc_html__('Footer Info', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::SWITCHER,
-            ]
-        );
+
         $this->add_control(
             'show_hide_options_separator',
             [
@@ -958,10 +905,10 @@ class Product_Table extends Module_Base {
         $this->start_controls_section(
             'section_select_field_style',
             [
-                'label'     => esc_html__('Select Field', 'ultimate-store-kit'),
+                'label'     => esc_html__('Length Select Field', 'ultimate-store-kit'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => [
-                    'show_info' => 'yes'
+                    'show_change_length' => 'yes'
                 ]
             ]
         );
@@ -1047,10 +994,7 @@ class Product_Table extends Module_Base {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'select_text_typography',
-                'label'     => esc_html__('Text Typography', 'ultimate-store-kit'),
-                //'scheme'    => Schemes\Typography::TYPOGRAPHY_4,
-                'selector'  => '{{WRAPPER}} .usk-wc-products .dataTables_length label',
-                'separator' => 'before',
+                'selector'  => '{{WRAPPER}} .usk-wc-products .dataTables_length label, {{WRAPPER}} .usk-wc-products .dataTables_length label select',
             ]
         );
 
@@ -1240,6 +1184,17 @@ class Product_Table extends Module_Base {
             ]
         );
 
+        $this->add_control(
+            'categories_hover_color',
+            [
+                'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-wc-products-table .usk-categories .usk-wc-product-categories a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1282,306 +1237,6 @@ class Product_Table extends Module_Base {
                 'selector' => '{{WRAPPER}} .usk-wc-product-tags, {{WRAPPER}} .usk-wc-product-tags a',
             ]
         );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'section_design_filter',
-            [
-                'label'     => esc_html__('Filter Bar', 'ultimate-store-kit'),
-                'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'show_filter_bar' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'filter_alignment',
-            [
-                'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::CHOOSE,
-                'default' => 'center',
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__('Left', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__('Center', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-center',
-                    ],
-                    'right' => [
-                        'title' => esc_html__('Right', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-right',
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters-wrapper' => 'text-align: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'typography_filter',
-                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                //'scheme'   => Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .usk-product-table-filters li',
-            ]
-        );
-
-        $this->add_control(
-            'filter_spacing',
-            [
-                'label'     => esc_html__('Bottom Space', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters-wrapper' => 'margin-bottom: {{SIZE}}{{UNIT}}',
-                ],
-            ]
-        );
-
-        $this->start_controls_tabs('tabs_style_desktop');
-
-        $this->start_controls_tab(
-            'filter_tab_desktop',
-            [
-                'label' => __('Desktop', 'ultimate-store-kit')
-            ]
-        );
-
-        $this->add_control(
-            'desktop_filter_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::HEADING,
-            ]
-        );
-
-        $this->add_control(
-            'color_filter',
-            [
-                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'separator' => 'before',
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters li' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'desktop_filter_background',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters li' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'desktop_filter_padding',
-            [
-                'label'      => __('Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-table-filters li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
-                ]
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'        => 'desktop_filter_border',
-                'placeholder' => '1px',
-                'default'     => '1px',
-                'selector'    => '{{WRAPPER}} .usk-product-table-filters li'
-            ]
-        );
-
-        $this->add_control(
-            'desktop_filter_radius',
-            [
-                'label'      => __('Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-table-filters li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;'
-                ]
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'desktop_filter_shadow',
-                'selector' => '{{WRAPPER}} .usk-product-table-filters li'
-            ]
-        );
-
-        $this->add_control(
-            'filter_item_spacing',
-            [
-                'label'     => esc_html__('Space Between', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters > li.usk-product-table-filter:not(:last-child)'  => 'margin-right: calc({{SIZE}}{{UNIT}}/2)',
-                    '{{WRAPPER}} .usk-product-table-filters > li.usk-product-table-filter:not(:first-child)' => 'margin-left: calc({{SIZE}}{{UNIT}}/2)',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'desktop_filter_active',
-            [
-                'label' => esc_html__('Active', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::HEADING,
-            ]
-        );
-
-        $this->add_control(
-            'color_filter_active',
-            [
-                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'separator' => 'before',
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters li.usk-active' => 'color: {{VALUE}}; border-bottom-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'desktop_active_filter_background',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters li.usk-active' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'desktop_active_filter_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-table-filters li.usk-active' => 'border-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'desktop_active_filter_radius',
-            [
-                'label'      => __('Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-table-filters li.usk-active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;'
-                ]
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'desktop_active_filter_shadow',
-                'selector' => '{{WRAPPER}} .usk-product-table-filters li.usk-active'
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'filter_tab_mobile',
-            [
-                'label' => __('Mobile', 'ultimate-store-kit')
-            ]
-        );
-
-        $this->add_control(
-            'filter_mbtn_width',
-            [
-                'label' => __('Button Width(%)', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 2,
-                        'max' => 100
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-button' => 'width: {{SIZE}}%;'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'filter_mbtn_color',
-            [
-                'label'     => __('Button Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-button' => 'color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'filter_mbtn_background',
-            [
-                'label'     => __('Button Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-button' => 'background-color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'filter_mbtn_dropdown_color',
-            [
-                'label'     => __('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-dropdown-nav li' => 'color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'filter_mbtn_dropdown_background',
-            [
-                'label'     => __('Dropdown Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-dropdown' => 'background-color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'filter_mbtn_dropdown_typography',
-                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                //'scheme'   => Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .usk-dropdown-nav li',
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
 
         $this->end_controls_section();
 
@@ -2414,7 +2069,7 @@ class Product_Table extends Module_Base {
                                 <?php if ($settings['show_categories']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-categories'); ?>>
                                         <span class="usk-wc-product-categories">
-                                            <?php echo wp_kses_post(wc_get_product_category_list(get_the_ID(), ', ', '<span>', '</span>')); ?>
+                                            <?php echo wp_kses_post(wc_get_product_category_list(get_the_ID(), ' ', '<span>', '</span>')); ?>
                                         </span>
                                     </td>
                                 <?php endif; ?>
