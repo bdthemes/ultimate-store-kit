@@ -864,7 +864,7 @@ class Page_Order extends Module_Base {
 ?>
         <div class="usk-page-order-heading">
             <?php if ($settings['thankyou_show_order_id'] === 'yes') :
-                printf('<h3 class="thankyou-order-heading">%1$s # %2$s</h3>', esc_html('Order', 'ultimate-store-kit-pro'), esc_html($order->get_order_number()));
+                printf('<h3 class="thankyou-order-heading">%1$s # %2$s</h3>', esc_html__('Order', 'ultimate-store-kit-pro'), esc_html($order->get_order_number()));
             endif; ?>
             <p class="thankyou-order-desc">
                 <?php if ($order->has_status('failed')) :
