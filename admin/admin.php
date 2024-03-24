@@ -20,6 +20,12 @@ class Admin {
 		add_action('admin_init', [$this, 'admin_script']);
 
 		add_action('plugins_loaded', [$this, 'plugin_meta']);
+		add_action('admin_init', [ $this, 'notice_styles' ] );
+	}
+
+
+	function notice_styles(){
+		wp_enqueue_style('usk-admin-notice', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-notice.css', [], BDTUSK_VER);
 	}
 
 	/**
@@ -42,6 +48,7 @@ class Admin {
 		wp_enqueue_style('ultimate-store-kit-editor', BDTUSK_ASSETS_URL . 'css/ultimate-store-kit-editor' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_enqueue_style('ultimate-store-kit-admin', BDTUSK_ADM_ASSETS_URL . 'css/usk-admin' . $direction_suffix . '.css', [], BDTUSK_VER);
 	}
+
 
 
 	public function plugin_row_meta($plugin_meta, $plugin_file) {
