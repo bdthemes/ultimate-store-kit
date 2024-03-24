@@ -14,6 +14,8 @@ module.exports = function (grunt) {
                     'assets/css/ultimate-store-kit-preview.css': 'assets/scss/ultimate-store-kit-preview.scss',
                     'assets/css/ultimate-store-kit-font.css': 'assets/scss/ultimate-store-kit-font.scss',
                     'admin/assets/css/usk-admin.css': 'assets/scss/admin.scss',
+                    'admin/assets/css/usk-admin-notice.css': 'assets/scss/admin-notice.scss',
+
                     'assets/css/elementor.css': 'assets/scss/elementor.scss',
 
                     //PAGES
