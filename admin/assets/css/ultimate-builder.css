@@ -55,7 +55,7 @@ body.post-type-usk-template-builder .row-actions span.inline
 .usk-modal-close-button a{
     text-decoration: none;
 }
-.usk-modal-close-button .eicon-editor-close {
+.usk-modal-close-button .usk-icon-close {
     font-size: 22px;
     color: #8D99AE;
 }

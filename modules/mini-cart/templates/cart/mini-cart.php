@@ -53,7 +53,7 @@ function ultimate_store_kit_render_mini_cart_item($cart_item_key, $cart_item) {
 		<div class="bdt-mini-cart-product-remove">
 			<?php
 			echo apply_filters('woocommerce_cart_item_remove_link', sprintf(
-				'<a href="%s" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s"><span><i class="eicon-editor-close"></i></span></a>',
+				'<a href="%s" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s"><span><i class="usk-icon-close"></i></span></a>',
 				esc_url(wc_get_cart_remove_url($cart_item_key)),
 				esc_html__('Remove this item', 'ultimate-store-kit'),
 				esc_attr($product_id),

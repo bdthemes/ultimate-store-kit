@@ -738,6 +738,10 @@ div.pp_pic_holder {
     background: #2b2d42;
     color: #edf2f4; }
 
+[class*=" elementor-widget-usk-"] .usk-item .usk-shoping a .icon {
+  width: 1em;
+  height: 1em; }
+
 /*------------------------------------------
    usk Shiny Widget rating position scss
    -------------------------------------------*/

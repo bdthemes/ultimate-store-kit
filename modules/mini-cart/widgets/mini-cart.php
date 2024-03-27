@@ -1169,7 +1169,7 @@ class Mini_Cart extends Module_Base {
 							<?php //endif;
 							?>
 							<span class="usk-cart-icon">
-								<i class="eicon-cart" aria-hidden="true"></i>
+								<i class="usk-icon-cart" aria-hidden="true"></i>
 							</span>
 						</span>
 					<?php

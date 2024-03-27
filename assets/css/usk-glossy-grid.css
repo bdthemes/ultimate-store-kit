@@ -115,7 +115,7 @@ html {
       right: auto; }
       .usk-glossy-grid .usk-grid .usk-item .usk-shoping a {
         text-decoration: none;
-        display: block;
+        display: flex;
         text-align: center;
         border: 1px solid transparent;
         margin-bottom: 5px;

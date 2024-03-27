@@ -349,7 +349,7 @@ function ultimate_store_kit_template_edit_link($template_id) {
 
 		$final_url = add_query_arg(['elementor' => ''], get_permalink($template_id));
 
-		$output = sprintf('<a class="usk-elementor-template-edit-link" href="%s" title="%s" target="_blank"><i class="eicon-edit"></i></a>', esc_url($final_url), esc_html__('Edit Template', 'ultimate-store-kit'));
+		$output = sprintf('<a class="usk-elementor-template-edit-link" href="%s" title="%s" target="_blank"><i class="usk-icon-edit"></i></a>', esc_url($final_url), esc_html__('Edit Template', 'ultimate-store-kit'));
 
 		return $output;
 	}

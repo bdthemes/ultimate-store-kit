@@ -7,6 +7,7 @@
 
 ### Fixed
 
+- Icon not showing issue fixed
 - Tooltip issue fixed in florence grid widget
 - Dashboard pro features enable issue fixed
 - Security issue fixed
