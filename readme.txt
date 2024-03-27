@@ -9,7 +9,7 @@ Tested up to: 6.4.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.20.2
+Elementor tested up to: 3.20.3
 
 Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
