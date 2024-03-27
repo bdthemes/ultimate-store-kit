@@ -39,7 +39,7 @@ trait Global_Widget_Template {
         } ?>
         <?php if ($settings['show_wishlist'] == 'yes') : ?>
             <a href="javascript:void(0);" class="usk-action-btn ajax_add_to_wishlist usk-shoping-icon-wishlist usk-btn usk-wishlist<?php echo esc_attr($selected); ?>" data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
-                <i class="icon eicon-heart"></i>
+                <i class="icon usk-icon-heart-full"></i>
             </a>
         <?php endif; ?>
     <?php
@@ -78,7 +78,7 @@ trait Global_Widget_Template {
             <?php wp_nonce_field('ajax-usk-quick-view-nonce', 'usk-quick-view-modal-sc');
             ?>
             <a class="usk-action-btn usk-shoping-icon-quickview quick_view usk-view usk-btn" href="javascript:void(0)" data-id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html__('Quick View'); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
-                <i class="icon eicon-preview-medium"></i>
+                <i class="icon usk-icon-preview"></i>
             </a>
         <?php endif;
     }
@@ -117,7 +117,7 @@ trait Global_Widget_Template {
                 echo apply_filters(
                     'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
                     sprintf(
-                        '<a href="%s" data-quantity="%s" class="%s" %s><i class="icon eicon-cart-light"></i></a>',
+                        '<a href="%s" data-quantity="%s" class="%s" %s><i class="icon usk-icon-cart"></i></a>',
                         esc_url($product->add_to_cart_url()),
                         esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
                         esc_attr(isset($args['class']) ? $args['class'] : 'button'),

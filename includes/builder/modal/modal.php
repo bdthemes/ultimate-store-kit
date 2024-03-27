@@ -7,7 +7,7 @@
             </div>
             <div class="usk-modal-close-button">
                 <a href="javascript:void(0)">
-                    <i class="eicon-editor-close"></i>
+                    <i class="usk-icon-close"></i>
                 </a>
             </div>
         </div>

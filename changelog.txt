@@ -1,4 +1,4 @@
-## 1.5.3 [11th March 2024]
+## 1.5.3 [27th March 2024]
 
 ### Added
 
@@ -7,6 +7,7 @@
 
 ### Fixed
 
+- Icon not showing issue fixed
 - Tooltip issue fixed in florence grid widget
 - Dashboard pro features enable issue fixed
 - Security issue fixed

@@ -1086,7 +1086,7 @@ class Product_Accordion extends Module_Base {
                     echo apply_filters(
                         'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
                         sprintf(
-                            '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon eicon-arrow-right"></i></a>',
+                            '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
                             esc_url($product->add_to_cart_url()),
                             esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
                             esc_attr(isset($args['class']) ? $args['class'] : 'button'),
