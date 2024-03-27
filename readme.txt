@@ -9,7 +9,7 @@ Tested up to: 6.4.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.19.4
+Elementor tested up to: 3.20.2
 
 Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -141,12 +141,20 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 1.5.3 [11th March 2024] =
+= 1.5.3 [27th March 2024] =
 
 * Added: Categories space between option added in relevant widgets
+* Added: Image size option added in product list widget
+* Fixed: Icon not showing issue fixed
 * Fixed: Tooltip issue fixed in florence grid widget
 * Fixed: Dashboard pro features enable issue fixed
 * Fixed: Security issue fixed
+* Fixed: Pagination spacing issue fixed
+* Fixed: Action button icon size issue fixed [Note: all widgets need to check]
+* Fixed: Price margin issue fixed
+* Fixed: Image style controls not working issue fixed in product list widget
+* Fixed: Category margin issue fixed
+* Removed: Category controls removed in glossy widget
 
 = 1.5.2 [1st January 2024] =
 
