@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 1.5.3
+Stable tag: 1.6.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.4.3
@@ -141,7 +141,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 1.5.3 [27th March 2024] =
+= 1.6.0 [30th March 2024] =
 
 * Added: Categories space between option added in relevant widgets
 * Added: Image size option added in product list widget
