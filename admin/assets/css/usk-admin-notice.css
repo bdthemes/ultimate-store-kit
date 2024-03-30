@@ -3,8 +3,9 @@
  * todo: need to this move another file
  */
 .ultimate-store-kit-notice {
-  padding: 0;
-  border: 0; }
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important; }
   .ultimate-store-kit-notice .notice-dismiss {
     padding: 15px; }
   .ultimate-store-kit-notice .bdt-license-notice-global {
@@ -15,7 +16,6 @@
     padding: 25px;
     border-color: #e2e2e5;
     z-index: 99;
-    box-shadow: none;
     /**
       * Start Prime Slider
       */ }
@@ -46,14 +46,14 @@
       color: #fff; }
     .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-skip {
       border: 0;
-      color: #212225; }
+      color: #e62a3f; }
     .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-allow {
-      --primaryColor: #E62A3F;
-      --secondaryColor: #00216A;
+      --primaryColor: #e62a3f;
+      --secondaryColor: #00216a;
       background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%); }
     .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-allow:hover {
-      --primaryColor: #00216A;
-      --secondaryColor: #E62A3F; }
+      --primaryColor: #00216a;
+      --secondaryColor: #e62a3f; }
     .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-skip {
       background-color: rgba(180, 40, 76, 0.22); }
     .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-skip:hover {
