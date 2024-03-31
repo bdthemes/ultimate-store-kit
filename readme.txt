@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.4.3
@@ -140,6 +140,11 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 1.6.1 [31th March 2024] =
+
+* Fixed: Some minor issue fixed
+* Fixed: Icon issue fixed in product accordion widget
 
 = 1.6.0 [30th March 2024] =
 

@@ -767,6 +767,9 @@ div.pp_pic_holder {
   height: 1em;
   width: 1em; }
 
+[class*=" elementor-widget-usk-"] .usk-icon-compare {
+  font-weight: bold; }
+
 /*-------------------------------------
    usk Shiny Widget header scss
    --------------------------------------*/

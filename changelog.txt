@@ -1,3 +1,10 @@
+## 1.6.1 [31th March 2024]
+
+### Fixed
+
+- Some minor issue fixed
+- Icon issue fixed in product accordion widget
+
 ## 1.6.0 [30th March 2024]
 
 ### Added
