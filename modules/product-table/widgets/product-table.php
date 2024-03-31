@@ -24,6 +24,10 @@ class Product_Table extends Module_Base {
     use Group_Control_Query;
     // use Global_Widget_Template;
 
+    /**
+     * @var \WP_Query
+     */
+    private $_query = null;
     public function get_name() {
         return 'usk-product-table';
     }

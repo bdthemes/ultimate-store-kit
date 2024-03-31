@@ -53,7 +53,7 @@ class Product_Accordion extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['usk-product-accordion'];
+            return ['usk-product-accordion', 'ultimate-store-kit-font'];
         }
     }
 

@@ -62,7 +62,7 @@ trait Global_Widget_Template {
         } ?>
         <?php if ($settings['show_compare'] == 'yes') : ?>
             <a href="javascript:void(0)" class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>" data-product_id="<?php echo $product_id; ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
-                <i class="icon eicon-flow"></i>
+                <i class="icon usk-icon-compare"></i>
             </a>
             <?php
             ?>
