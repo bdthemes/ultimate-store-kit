@@ -2089,7 +2089,7 @@ class Product_Table extends Module_Base {
                                 <?php if ($settings['show_rating']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-rating'); ?>>
                                         <div class="usk-wc-rating">
-                                            <?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?>
+                                            <?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?>
                                         </div>
                                     </td>
                                 <?php endif; ?>

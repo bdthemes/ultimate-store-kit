@@ -984,7 +984,7 @@ class Featured_Box extends Module_Base
         );
 
         if (!empty($settings['title'])) {
-            printf('<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), $this->get_render_attribute_string('title-link'), wp_kses_post($settings['title']));
+            printf('<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), wp_kses_post($this->get_render_attribute_string('title-link')), wp_kses_post($settings['title']));
         }
     }
 
@@ -1102,7 +1102,7 @@ class Featured_Box extends Module_Base
             </div>
             <?php
             if ($settings['show_wrapper_link'] == 'yes' and !empty($settings['wrapper_link']['url'])) {
-                printf('<a %1$s class="usk-featured-box-wrapper-link"></a>', $this->get_render_attribute_string('link'));
+                printf('<a %1$s class="usk-featured-box-wrapper-link"></a>', wp_kses_post($this->get_render_attribute_string('link')));
             }?>
 
         </div>

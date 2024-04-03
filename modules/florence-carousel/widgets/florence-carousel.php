@@ -284,7 +284,7 @@ class Florence_Carousel extends Module_Base {
                 if (isset($args['attributes']['aria-label'])) {
                     $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
                 }
-                echo apply_filters(
+                echo wp_kses_post(apply_filters(
                     'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
                     sprintf(
                         '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
@@ -296,7 +296,7 @@ class Florence_Carousel extends Module_Base {
                     ),
                     $product,
                     $args
-                );
+                ));
             }; ?>
         <?php endif;
     }
@@ -351,7 +351,7 @@ class Florence_Carousel extends Module_Base {
                                     <?php endif; ?>
                                     <?php if ('yes' == $settings['show_rating']) : ?>
                                         <div class="usk-rating">
-                                            <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
+                                            <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
                                         </div>
                                     <?php endif; ?>
                                 </div>

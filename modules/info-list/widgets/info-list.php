@@ -742,7 +742,7 @@ class Info_List extends Module_Base
         );
 
         if (!empty($item['title'])) {
-            printf('<%1$s class="usk-info-list-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), $this->get_render_attribute_string('title-link'), wp_kses_post($item['title']));
+            printf('<%1$s class="usk-info-list-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), wp_kses_post($this->get_render_attribute_string('title-link')), wp_kses_post($item['title']));
         }
     }
 

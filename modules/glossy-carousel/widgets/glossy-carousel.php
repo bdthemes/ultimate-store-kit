@@ -366,7 +366,7 @@ class Glossy_Carousel extends Module_Base {
                             <?php endif; ?>
                             <?php if ('yes' == $settings['show_rating']) : ?>
                                 <div class="usk-rating">
-                                    <?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
+                                    <?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
                                 </div>
                             <?php endif; ?>
                         </div>
