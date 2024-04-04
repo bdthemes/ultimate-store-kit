@@ -434,7 +434,7 @@ class Product_Image_Accordion extends Module_Base {
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_rating']) : ?>
                                     <div class="usk-rating">
-                                        <span><?php echo $this->register_global_template_wc_rating($average, wp_kses_post($rating_count)); ?></span>
+                                        <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
                                     </div>
                                 <?php endif; ?>
                             </div>

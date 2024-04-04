@@ -402,7 +402,7 @@ class UltimateStoreKit_Admin_Settings {
     <div class="bdt-dashboard-panel" bdt-scrollspy="target: > div > div > .bdt-card; cls: bdt-animation-slide-bottom-small; delay: 300">
       <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
         <div class="bdt-width-1-2@m bdt-width-1-4@l">
-          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
+          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
 
             <?php
             $used_widgets    = count(self::get_used_widgets());
@@ -428,7 +428,7 @@ class UltimateStoreKit_Admin_Settings {
           </div>
         </div>
         <div class="bdt-width-1-2@m bdt-width-1-4@l">
-          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
+          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
 
             <?php
             $used_only_widgets   = count(self::get_used_only_widgets());
@@ -454,7 +454,7 @@ class UltimateStoreKit_Admin_Settings {
           </div>
         </div>
         <div class="bdt-width-1-2@m bdt-width-1-4@l">
-          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
+          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
 
             <?php
             $used_only_edd_widgets   = count(self::get_used_only_edd_widgets());
@@ -480,7 +480,7 @@ class UltimateStoreKit_Admin_Settings {
         </div>
 
         <div class="bdt-width-1-2@m bdt-width-1-4@l">
-          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo $track_nw_msg; ?>>
+          <div class="bdt-widget-status bdt-card bdt-card-body" <?php echo wp_kses_post($track_nw_msg); ?>>
 
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">

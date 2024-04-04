@@ -152,9 +152,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                     $data_type .= ' bdt-tooltip="Pro widget only works with Pro version."';
                 }
 
-                echo "<div class='usk-option-item {$class} {$widget_used_status}' {$data_type}>";
-
-                // printf('<div class="bdt-option-item %1$s" data-widget-type="%2$s" data-content-type="%3$s" data-widget-name="%4$s">', esc_attr($class), esc_attr($field['args']['widget_type']), esc_attr($field['args']['content_type']), esc_attr(strtolower($field['args']['name'])));
+                printf( '<div class="usk-option-item %1$s %2$s" %3$s>', esc_attr( $class ), esc_attr( $widget_used_status ), wp_kses_post( $data_type ) );
 
                 call_user_func($field['callback'], $field['args']);
 
@@ -180,7 +178,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                 if (isset($section['desc']) && !empty($section['desc'])) {
                     $section['desc'] = '<div class="inside">' . esc_html($section['desc']) . '</div>';
                     $callback = function () use ($section) {
-                        echo str_replace('"', '\"', esc_html($section['desc']));
+                        echo wp_kses_post(str_replace('"', '\"', esc_html($section['desc'])));
                     };
                 } elseif (isset($section['callback'])) {
                     $callback = $section['callback'];
@@ -765,7 +763,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             $html .= '</ul>';
             $html .= '</div>';
 
-            echo $this->get_control_output($html);
+            echo wp_kses_post($this->get_control_output($html));
         }
 
 
