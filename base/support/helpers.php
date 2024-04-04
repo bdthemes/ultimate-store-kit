@@ -12,7 +12,7 @@ if(!function_exists('dd')){
         if ( is_array( $x ) || is_object( $x ) ) {
             print_r( $x );
         } else {
-            echo $x;
+            echo wp_kses_post($x);
         }
         echo '</pre>';exit;
     }

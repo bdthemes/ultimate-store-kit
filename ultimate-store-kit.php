@@ -148,7 +148,7 @@ function bdthemes_ultimate_store_kit_fail_load() {
 		$admin_message .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__('Install Elementor Now', 'ultimate-store-kit')) . '</p>';
 	}
 
-	printf('<div class="error">%1$s</div>', $admin_message);
+	printf('<div class="error">%1$s</div>', wp_kses_post($admin_message));
 }
 
 /**
@@ -178,7 +178,7 @@ function bdthemes_ultimate_store_kit_dependencies_plugin_fail_load() {
 		$admin_message = '<p>' . esc_html__('Ops! Ultimate Store Kit not working because you need to install a eCommerce plugin like WooCommerce or Easy Digital Download first.', 'ultimate-store-kit') . '</p>';
 	}
 
-	printf('<div class="error">%1$s</div>', $admin_message);
+	printf('<div class="error">%1$s</div>', wp_kses_post($admin_message));
 }
 
 
@@ -209,7 +209,7 @@ function bdthemes_ultimate_store_kit_easy_digital_downloads_fail_load() {
 		$admin_message .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__('Install Easy Digital Downloads Now', 'ultimate-store-kit')) . '</p>';
 	}
 
-	printf('<div class="error">%1$s</div>', $admin_message);
+	printf('<div class="error">%1$s</div>', wp_kses_post($admin_message));
 }
 
 if (!function_exists('_is_dep_plugin_installed')) {

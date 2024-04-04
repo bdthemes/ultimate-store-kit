@@ -299,7 +299,7 @@ function ultimate_store_kit_post_pagination($wp_query) {
 	/** Previous Post Link */
 
 	if (get_previous_posts_link()) {
-		printf('<li>%s</li>' . "\n", get_previous_posts_link('<span class="usk-icon-arrow-left-5"></span>'));
+		printf('<li>%s</li>' . "\n", wp_kses_post(get_previous_posts_link('<span class="usk-icon-arrow-left-5"></span>')));
 	}
 
 	/** Link to first page, plus ellipses if necessary */
@@ -307,7 +307,7 @@ function ultimate_store_kit_post_pagination($wp_query) {
 	if (!in_array(1, $links)) {
 		$class = 1 == $paged ? ' class="current"' : '';
 
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link(1)), '1');
+		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", wp_kses_post($class), esc_url(get_pagenum_link(1)), '1');
 
 		if (!in_array(2, $links)) {
 			echo '<li class="usk-pagination-dot-dot"><span>...</span></li>';
@@ -319,7 +319,7 @@ function ultimate_store_kit_post_pagination($wp_query) {
 
 	foreach ((array) $links as $link) {
 		$class = $paged == $link ? ' class="usk-active"' : '';
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($link)), $link);
+		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", wp_kses_post($class), esc_url(get_pagenum_link($link)), esc_html($link));
 	}
 
 	/** Link to last page, plus ellipses if necessary */
@@ -331,13 +331,13 @@ function ultimate_store_kit_post_pagination($wp_query) {
 		}
 
 		$class = $paged == $max ? ' class="usk-active"' : '';
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($max)), $max);
+		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", wp_kses_post($class), esc_url(get_pagenum_link($max)), esc_html($max));
 	}
 
 	/** Next Post Link */
 
 	if (get_next_posts_link()) {
-		printf('<li>%s</li>' . "\n", get_next_posts_link('<span class="usk-icon-arrow-right-1"></span>'));
+		printf('<li>%s</li>' . "\n", wp_kses_post(get_next_posts_link('<span class="usk-icon-arrow-right-1"></span>')));
 	}
 
 	echo '</ul>' . "\n";
@@ -961,7 +961,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 			while (have_posts()) : the_post(); ?>
 
 				<script>
-					var url = '<?php echo plugins_url('assets/js/prettyPhoto/jquery.prettyPhoto.init.js', WC_PLUGIN_FILE); ?>';
+					var url = '<?php echo esc_url(plugins_url('assets/js/prettyPhoto/jquery.prettyPhoto.init.js', WC_PLUGIN_FILE)); ?>';
 					jQuery.getScript(url);
 					var wc_add_to_cart_variation_params = {
 						"ajax_url": "\/wp-admin\/admin-ajax.php"
@@ -977,7 +977,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 							</div>
 						</div>
 						<div class="usk-modal-content-box">
-							<a href="<?php echo get_permalink(); ?>" class="usk-product-title">
+							<a href="<?php echo esc_url(get_permalink()); ?>" class="usk-product-title">
 								<?php do_action('ultimate_store_kit_quick_view_product_title'); ?>
 							</a>
 							<div class="usk-rating">
@@ -1004,9 +1004,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 			<?php endwhile; ?>
 		</div>
 
-	<?php
-		echo ob_get_clean();
-		exit();
+	<?php echo ob_get_clean(); exit();
 	}
 }
 
@@ -1023,9 +1021,9 @@ function ultimate_store_kit_quick_view_product_images() {
 				'title' => $props['title'],
 				'alt'   => $props['alt'],
 			]);
-			echo apply_filters('woocommerce_single_product_image_html', sprintf('<a href="%s" itemprop="image" class="usk-product woocommerce-main-image zoom" title="%s" data-rel="prettyPhoto' . $gallery . '">%s</a>', $props['url'], $props['caption'], $image), $post->ID);
+			echo wp_kses_post(apply_filters('woocommerce_single_product_image_html', sprintf('<a href="%s" itemprop="image" class="usk-product woocommerce-main-image zoom" title="%s" data-rel="prettyPhoto' . $gallery . '">%s</a>', $props['url'], $props['caption'], $image), $post->ID));
 		} else {
-			echo apply_filters('woocommerce_single_product_image_html', sprintf('<img src="%s" alt="%s" />', wc_placeholder_img_src(), __('Placeholder', 'woocommerce')), $post->ID);
+			echo wp_kses_post(apply_filters('woocommerce_single_product_image_html', sprintf('<img src="%s" alt="%s" />', wc_placeholder_img_src(), esc_html__('Placeholder', 'ultimate-store-kit')), $post->ID));
 		}
 
 		$attachment_ids = $product->get_gallery_image_ids();
@@ -1061,7 +1059,7 @@ function ultimate_store_kit_quick_view_product_images() {
 						'alt'   => $image_title,
 					]);
 					$image_class = esc_attr(implode(' ', $classes));
-					echo apply_filters('woocommerce_single_product_image_thumbnail_html', sprintf('<a href="%s" class="%s" title="%s" >%s</a>', $image_link, $image_class, $image_caption, $image), $attachment_id, $post->ID, $image_class);
+					echo wp_kses_post(apply_filters('woocommerce_single_product_image_thumbnail_html', sprintf('<a href="%s" class="%s" title="%s" >%s</a>', $image_link, $image_class, $image_caption, $image), $attachment_id, $post->ID, $image_class));
 					$loop++;
 				}
 

@@ -42,24 +42,24 @@ function ultimate_store_kit_render_mini_cart_item($cart_item_key, $cart_item) {
 				do_action('woocommerce_after_cart_item_name', $cart_item, $cart_item_key);
 
 				// Meta data.
-				echo wc_get_formatted_cart_item_data($cart_item); // PHPCS: XSS ok.
+				echo wp_kses_post(wc_get_formatted_cart_item_data($cart_item)); // PHPCS: XSS ok.
 				?>
 			</div>
 
 			<div class="bdt-mini-cart-product-price" data-title="<?php esc_attr_e('Price', 'ultimate-store-kit'); ?>">
-				<?php echo apply_filters('woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf('%s &times; %s', $cart_item['quantity'], $product_price) . '</span>', $cart_item, $cart_item_key); ?>
+				<?php echo wp_kses_post(apply_filters('woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf('%s &times; %s', $cart_item['quantity'], $product_price) . '</span>', $cart_item, $cart_item_key)); ?>
 			</div>
 		</div>
 		<div class="bdt-mini-cart-product-remove">
 			<?php
-			echo apply_filters('woocommerce_cart_item_remove_link', sprintf(
+			echo wp_kses_post(apply_filters('woocommerce_cart_item_remove_link', sprintf(
 				'<a href="%s" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s"><span><i class="usk-icon-close"></i></span></a>',
 				esc_url(wc_get_cart_remove_url($cart_item_key)),
 				esc_html__('Remove this item', 'ultimate-store-kit'),
 				esc_attr($product_id),
 				esc_attr($cart_item_key),
 				esc_attr($_product->get_sku())
-			), $cart_item_key);
+			), $cart_item_key));
 			?>
 		</div>
 	</div>

@@ -61,7 +61,7 @@ trait Global_Widget_Template {
             $selected = '';
         } ?>
         <?php if ($settings['show_compare'] == 'yes') : ?>
-            <a href="javascript:void(0)" class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>" data-product_id="<?php echo $product_id; ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
+            <a href="javascript:void(0)" class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>" data-product_id="<?php echo esc_attr($product_id); ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
                 <i class="icon usk-icon-compare"></i>
             </a>
             <?php
@@ -114,7 +114,7 @@ trait Global_Widget_Template {
                 if (isset($args['attributes']['aria-label'])) {
                     $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
                 }
-                echo apply_filters(
+                echo wp_kses_post(apply_filters(
                     'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
                     sprintf(
                         '<a href="%s" data-quantity="%s" class="%s" %s><i class="icon usk-icon-cart"></i></a>',
@@ -125,7 +125,7 @@ trait Global_Widget_Template {
                     ),
                     $product,
                     $args
-                );
+                ));
             }; ?>
         <?php endif;
     }
@@ -145,7 +145,7 @@ trait Global_Widget_Template {
                 $stock_status = esc_html__('Out of Stock', 'ultimate-store-kit');
             }
 
-            printf('<div class="usk-badge-wrap usk-stock-status-badge"><span class="usk-badge">%1$s</span></div>', $stock_status);
+            printf('<div class="usk-badge-wrap usk-stock-status-badge"><span class="usk-badge">%1$s</span></div>', esc_html($stock_status));
         endif;
         if ($product->is_featured() && $settings['show_trending_badge']) :
             printf('<div class="usk-badge-wrap usk-trending-badge"><span class="usk-badge">%1$s</span></div>', esc_html__('Trending', 'ultimate-store-kit'));
@@ -379,7 +379,7 @@ trait Global_Widget_Template {
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('usk-carousel-wrapper'); ?>>
                 <div <?php $this->print_render_attribute_string('carousel'); ?>>
-                    <div <?php echo $this->get_render_attribute_string('swiper'); ?>>
+                    <div <?php echo wp_kses_post($this->get_render_attribute_string('swiper')); ?>>
                         <div class="swiper-wrapper">
                             <?php
                         }
@@ -404,7 +404,7 @@ trait Global_Widget_Template {
                                     $percentage = round((($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price()) * 100);
                                 }
                                 if ($percentage) {
-                                    printf('<div class="usk-badge-wrap usk-percantage-badge"><span class="usk-badge">%1$s%2$s</span></div>', $percentage, __('% off', 'ultimate-store-kit'));
+                                    printf('<div class="usk-badge-wrap usk-percantage-badge"><span class="usk-badge">%1$s%2$s</span></div>', esc_html($percentage), esc_html__('% off', 'ultimate-store-kit'));
                                 }
                             }
                         }

@@ -52,7 +52,7 @@
                                 $label = ucwords(str_replace(['-', '_'], [' '], $keys));
                                 if (is_array($items)) {
                                 ?>
-                                    <optgroup label="<?php echo $label ?>"><?php
+                                    <optgroup label="<?php echo esc_attr($label) ?>"><?php
                                                                             foreach ($items as $key => $item) :
                                                                                 $itemValue = "{$keys}{$separator}{$key}"
                                                                             ?>

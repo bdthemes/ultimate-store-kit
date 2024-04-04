@@ -169,8 +169,8 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 					$selectValue = "{$templateKey}_$key";
 			?>
 					<option value="<?php
-									echo $selectValue ?>"><?php
-											echo $item ?></option>
+									echo esc_attr($selectValue) ?>"><?php
+											echo wp_kses_post($item) ?></option>
 					<?php
 				endforeach;
 			}
@@ -185,14 +185,14 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 					if (is_array($items)) {
 					?>
 						<optgroup label="<?php
-											echo $label ?>"><?php
+											echo esc_attr($label) ?>"><?php
 										foreach ($items as $key => $item) :
 											$itemValue = "{$keys}_$key"
 										?>
 								<option value="<?php
-												echo $itemValue ?>" <?php
+												echo esc_attr($itemValue) ?>" <?php
 													selected($key, $selected); ?>><?php
-																echo $item ?></option>
+																echo wp_kses_post($item) ?></option>
 							<?php
 										endforeach;
 							?>
