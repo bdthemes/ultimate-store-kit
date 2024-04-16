@@ -7,9 +7,11 @@
     padding: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
+
     .notice-dismiss {
         padding: 15px;
     }
+
     .bdt-license-notice-global {
         border-left: 4px solid #de122c !important;
         display: flex;
@@ -30,6 +32,7 @@
                 margin: 0 0 10px;
                 font-size: 20px;
             }
+
             p {
                 margin: 0;
                 color: #5f6169;
@@ -52,17 +55,19 @@
             font-weight: 500;
             text-decoration: none;
         }
+
         .bdt-button-allow {
             color: #fff;
         }
+
         .bdt-button-skip {
             border: 0;
             color: #e62a3f;
         }
 
         /**
-      * Start Prime Slider
-      */
+         * Start Prime Slider
+         */
 
         .bdt-button-allow {
             --primaryColor: #e62a3f;
