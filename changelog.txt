@@ -1,3 +1,9 @@
+## 1.6.2 [16th April 2024]
+
+### Fixed
+
+- Security issue fixed
+
 ## 1.6.1 [31th March 2024]
 
 ### Fixed
