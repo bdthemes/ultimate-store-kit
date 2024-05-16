@@ -37,4 +37,4 @@ jobs:
                   allowUpdates: true
                   makeLatest: true
                   tag: ${{ github.ref_name }}
-                  generateReleaseNotes: true
+                  generateReleaseNotes: false
