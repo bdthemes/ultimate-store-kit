@@ -1,3 +1,9 @@
+## 1.6.3 [11th June 2024]
+
+### Updated
+
+- Version compatibility added
+
 ## 1.6.2 [16th April 2024]
 
 ### Fixed
