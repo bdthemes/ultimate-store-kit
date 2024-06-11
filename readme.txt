@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.5.2
+Tested up to: 6.5.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.21.0
+Elementor tested up to: 3.21.8
 
 Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -112,6 +112,8 @@ Feel free to [Contact us](https://bdthemes.com/support-new/) 💌 or check our w
 
 == Check out our other Addons 👑 ==
 
+* **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** 🆕☀️ - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering greater web design experience.
+
 * **[Element Pack](https://wordpress.org/plugins/bdthemes-element-pack-lite/)** - Element Pack Lite Build responsive website from scratch with an all-rounder package for Elementor
 
 * **[Prime Slider](https://wordpress.org/plugins/bdthemes-prime-slider-lite/)** - The revolutionary slider builder addon for Elementor with next-gen superb interface.
@@ -140,6 +142,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 1.6.3 [11th June 2024] =
+
+* Updated: Version compatibility added
 
 = 1.6.2 [16th April 2024] =
 
