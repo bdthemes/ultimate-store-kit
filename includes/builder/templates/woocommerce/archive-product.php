@@ -20,6 +20,9 @@ defined('ABSPATH') || exit;
 
 get_header('shop');
 
+// get shop page query
+$shop_page_query = Builder_Integration::instance()->get_shop_page_query();
+
 do_action('ultimate-store-kit-builder/woocommerce/before-main-content');
 
 $wc_data = new WC_Structured_Data;

@@ -381,6 +381,14 @@ class Florence_Grid extends Module_Base {
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     global $product;
+                    // var_dump($product);
+
+                    // var_dump ( $wp_query->have_posts());
+
+                    if(empty($product)) {
+                        continue;
+                    }
+
                     $rating_count = $product->get_rating_count();
                     $average = $product->get_average_rating();
                     if ($settings['show_rating'] == 'yes') {
