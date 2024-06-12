@@ -5,7 +5,7 @@ namespace UltimateStoreKit\Includes\Controls\GroupQuery;
 use Elementor\Controls_Manager;
 use UltimateStoreKit\Includes\Controls\SelectInput\Dynamic_Select;
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
@@ -15,17 +15,17 @@ trait Group_Control_Query {
 
 		$this->add_control(
 			'product_source',
-			[
-				'label'     => __('Source', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => $this->getGroupControlQueryPostTypes(),
-				'default'   => 'product',
+			[ 
+				'label'   => __( 'Source', 'ultimate-store-kit' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => $this->getGroupControlQueryPostTypes(),
+				'default' => 'product',
 			]
 		);
 		$this->add_control(
 			'product_limit',
-			[
-				'label'   => esc_html__('Product Limit', 'ultimate-store-kit'),
+			[ 
+				'label'   => esc_html__( 'Product Limit', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 9,
 			]
@@ -33,91 +33,91 @@ trait Group_Control_Query {
 
 		$this->add_control(
 			'product_selected_ids',
-			[
-				'label'       => __('Search & Select', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Search & Select', 'ultimate-store-kit' ),
 				'type'        => Dynamic_Select::TYPE,
 				'multiple'    => true,
 				'label_block' => true,
-				'query_args'  => [
+				'query_args'  => [ 
 					'query' => 'posts',
 				],
-				'condition'   => [
-					'product_source'                 => 'manual_selection',
+				'condition'   => [ 
+					'product_source' => 'manual_selection',
 				]
 			]
 		);
 
 		$this->start_controls_tabs(
 			'tabs_product_include_exclude',
-			[
-				'condition' => [
-					'product_source!'                => ['manual_selection', 'current_query'],
+			[ 
+				'condition' => [ 
+					'product_source!' => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->start_controls_tab(
 			'tab_product_include',
-			[
-				'label'     => __('Include', 'ultimate-store-kit'),
-				'condition' => [
-					'product_source!'                => ['manual_selection', 'current_query'],
+			[ 
+				'label'     => __( 'Include', 'ultimate-store-kit' ),
+				'condition' => [ 
+					'product_source!' => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->add_control(
 			'product_include_by',
-			[
-				'label'       => __('Include By', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Include By', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => true,
 				'label_block' => true,
-				'options'     => [
-					'authors' => __('Authors', 'ultimate-store-kit'),
-					'terms'   => __('Terms', 'ultimate-store-kit'),
+				'options'     => [ 
+					'authors' => __( 'Authors', 'ultimate-store-kit' ),
+					'terms'   => __( 'Terms', 'ultimate-store-kit' ),
 				],
-				'condition'   => [
-					'product_source!' => ['manual_selection', 'current_query'],
+				'condition'   => [ 
+					'product_source!' => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->add_control(
 			'product_include_author_ids',
-			[
-				'label'       => __('Authors', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Authors', 'ultimate-store-kit' ),
 				'type'        => Dynamic_Select::TYPE,
 				'multiple'    => true,
 				'label_block' => true,
-				'query_args'  => [
+				'query_args'  => [ 
 					'query' => 'authors',
 				],
-				'condition'   => [
+				'condition'   => [ 
 					'product_include_by' => 'authors',
-					'product_source!'    => ['manual_selection', 'current_query'],
+					'product_source!'    => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->add_control(
 			'product_include_term_ids',
-			[
-				'label'       => __('Terms', 'ultimate-store-kit'),
-				'description' => __('Terms are items in a taxonomy. The available taxonomies are: Categories, Tags, Formats and custom taxonomies.', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Terms', 'ultimate-store-kit' ),
+				'description' => __( 'Terms are items in a taxonomy. The available taxonomies are: Categories, Tags, Formats and custom taxonomies.', 'ultimate-store-kit' ),
 				'type'        => Dynamic_Select::TYPE,
 				'multiple'    => true,
 				'label_block' => true,
-				'placeholder' => __('Type and select terms', 'ultimate-store-kit'),
-				'query_args'  => [
+				'placeholder' => __( 'Type and select terms', 'ultimate-store-kit' ),
+				'query_args'  => [ 
 					'query'        => 'terms',
-					'widget_props' => [
+					'widget_props' => [ 
 						'post_type' => 'product_source'
 					]
 				],
-				'condition'   => [
+				'condition'   => [ 
 					'product_include_by' => 'terms',
-					'product_source!'    => ['manual_selection', 'current_query', '_related_post_type'],
+					'product_source!'    => [ 'manual_selection', 'current_query', '_related_post_type' ],
 				]
 			]
 		);
@@ -126,48 +126,48 @@ trait Group_Control_Query {
 
 		$this->start_controls_tab(
 			'tab_product_exclude',
-			[
-				'label'     => __('Exclude', 'ultimate-store-kit'),
-				'condition' => [
-					'product_source!' => ['manual_selection', 'current_query'],
+			[ 
+				'label'     => __( 'Exclude', 'ultimate-store-kit' ),
+				'condition' => [ 
+					'product_source!' => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->add_control(
 			'product_exclude_by',
-			[
-				'label'       => __('Exclude By', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Exclude By', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => true,
 				'label_block' => true,
-				'options'     => [
-					'authors'          => __('Authors', 'ultimate-store-kit'),
-					'current_post'     => __('Current Post', 'ultimate-store-kit'),
-					'manual_selection' => __('Manual Selection', 'ultimate-store-kit'),
-					'terms'            => __('Terms', 'ultimate-store-kit'),
+				'options'     => [ 
+					'authors'          => __( 'Authors', 'ultimate-store-kit' ),
+					'current_post'     => __( 'Current Post', 'ultimate-store-kit' ),
+					'manual_selection' => __( 'Manual Selection', 'ultimate-store-kit' ),
+					'terms'            => __( 'Terms', 'ultimate-store-kit' ),
 				],
-				'condition'   => [
-					'product_source!' => ['manual_selection', 'current_query'],
+				'condition'   => [ 
+					'product_source!' => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->add_control(
 			'posts_exclude_ids',
-			[
-				'label'       => __('Search & Select', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Search & Select', 'ultimate-store-kit' ),
 				'type'        => Dynamic_Select::TYPE,
 				'multiple'    => true,
 				'label_block' => true,
-				'query_args'  => [
+				'query_args'  => [ 
 					'query'        => 'posts',
-					'widget_props' => [
+					'widget_props' => [ 
 						'post_type' => 'product_source'
 					]
 				],
-				'condition'   => [
-					'product_source!'    => ['manual_selection', 'current_query'],
+				'condition'   => [ 
+					'product_source!'    => [ 'manual_selection', 'current_query' ],
 					'product_exclude_by' => 'manual_selection',
 				]
 			]
@@ -175,39 +175,39 @@ trait Group_Control_Query {
 
 		$this->add_control(
 			'product_exclude_author_ids',
-			[
-				'label'       => __('Authors', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Authors', 'ultimate-store-kit' ),
 				'type'        => Dynamic_Select::TYPE,
 				'multiple'    => true,
 				'label_block' => true,
-				'query_args'  => [
+				'query_args'  => [ 
 					'query' => 'authors',
 				],
-				'condition'   => [
+				'condition'   => [ 
 					'product_exclude_by' => 'authors',
-					'product_source!'    => ['manual_selection', 'current_query'],
+					'product_source!'    => [ 'manual_selection', 'current_query' ],
 				]
 			]
 		);
 
 		$this->add_control(
 			'product_exclude_term_ids',
-			[
-				'label'       => __('Terms', 'ultimate-store-kit'),
-				'description' => __('Terms are items in a taxonomy. The available taxonomies are: Categories, Tags, Formats and custom taxonomies.', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Terms', 'ultimate-store-kit' ),
+				'description' => __( 'Terms are items in a taxonomy. The available taxonomies are: Categories, Tags, Formats and custom taxonomies.', 'ultimate-store-kit' ),
 				'type'        => Dynamic_Select::TYPE,
 				'multiple'    => true,
 				'label_block' => true,
-				'placeholder' => __('Type and select terms', 'ultimate-store-kit'),
-				'query_args'  => [
+				'placeholder' => __( 'Type and select terms', 'ultimate-store-kit' ),
+				'query_args'  => [ 
 					'query'        => 'terms',
-					'widget_props' => [
+					'widget_props' => [ 
 						'post_type' => 'product_source'
 					]
 				],
-				'condition'   => [
+				'condition'   => [ 
 					'product_exclude_by' => 'terms',
-					'product_source!'    => ['manual_selection', 'current_query', '_related_post_type'],
+					'product_source!'    => [ 'manual_selection', 'current_query', '_related_post_type' ],
 				]
 			]
 		);
@@ -217,41 +217,41 @@ trait Group_Control_Query {
 
 		$this->add_control(
 			'product_divider',
-			[
+			[ 
 				'type'      => Controls_Manager::DIVIDER,
-				'condition' => [
-					'product_source!'                => 'current_query',
+				'condition' => [ 
+					'product_source!' => 'current_query',
 				]
 			]
 		);
 		$this->add_control(
 			'product_select_date',
-			[
-				'label'     => __('Date', 'ultimate-store-kit'),
+			[ 
+				'label'     => __( 'Date', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'anytime',
-				'options'   => [
-					'anytime' => __('All', 'ultimate-store-kit'),
-					'today'   => __('Past Day', 'ultimate-store-kit'),
-					'week'    => __('Past Week', 'ultimate-store-kit'),
-					'month'   => __('Past Month', 'ultimate-store-kit'),
-					'quarter' => __('Past Quarter', 'ultimate-store-kit'),
-					'year'    => __('Past Year', 'ultimate-store-kit'),
-					'exact'   => __('Custom', 'ultimate-store-kit'),
+				'options'   => [ 
+					'anytime' => __( 'All', 'ultimate-store-kit' ),
+					'today'   => __( 'Past Day', 'ultimate-store-kit' ),
+					'week'    => __( 'Past Week', 'ultimate-store-kit' ),
+					'month'   => __( 'Past Month', 'ultimate-store-kit' ),
+					'quarter' => __( 'Past Quarter', 'ultimate-store-kit' ),
+					'year'    => __( 'Past Year', 'ultimate-store-kit' ),
+					'exact'   => __( 'Custom', 'ultimate-store-kit' ),
 				],
-				'condition' => [
-					'product_source!'                => 'current_query',
+				'condition' => [ 
+					'product_source!' => 'current_query',
 				]
 			]
 		);
 
 		$this->add_control(
 			'product_date_before',
-			[
-				'label'       => __('Before', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Before', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::DATE_TIME,
-				'description' => __('Setting a ‘Before’ date will show all the posts published until the chosen date (inclusive).', 'ultimate-store-kit'),
-				'condition'   => [
+				'description' => __( 'Setting a ‘Before’ date will show all the posts published until the chosen date (inclusive).', 'ultimate-store-kit' ),
+				'condition'   => [ 
 					'product_select_date' => 'exact',
 					'product_source!'     => 'current_query',
 				]
@@ -260,11 +260,11 @@ trait Group_Control_Query {
 
 		$this->add_control(
 			'product_date_after',
-			[
-				'label'       => __('After', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'After', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::DATE_TIME,
-				'description' => __('Setting an ‘After’ date will show all the posts published since the chosen date (inclusive).', 'ultimate-store-kit'),
-				'condition'   => [
+				'description' => __( 'Setting an ‘After’ date will show all the posts published since the chosen date (inclusive).', 'ultimate-store-kit' ),
+				'condition'   => [ 
 					'product_select_date' => 'exact',
 					'product_source!'     => 'current_query',
 				]
@@ -273,35 +273,35 @@ trait Group_Control_Query {
 
 		$this->add_control(
 			'product_orderby',
-			[
-				'label'     => __('Order By', 'bdthemes-prime-slider'),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'date',
-				'options'   => [
-					'title'         => __('Title', 'bdthemes-prime-slider'),
-					'ID'            => __('ID', 'bdthemes-prime-slider'),
-					'date'          => __('Date', 'bdthemes-prime-slider'),
-					'author'        => __('Author', 'bdthemes-prime-slider'),
-					'comment_count' => __('Comment Count', 'bdthemes-prime-slider'),
-					'menu_order'    => __('Menu Order', 'bdthemes-prime-slider'),
-					'rand'          => __('Random', 'bdthemes-prime-slider'),
-					'price'          => __('Price', 'bdthemes-prime-slider'),
-					'sales'          => __('Sales', 'bdthemes-prime-slider'),
+			[ 
+				'label'   => __( 'Order By', 'bdthemes-prime-slider' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'date',
+				'options' => [ 
+					'title'         => __( 'Title', 'bdthemes-prime-slider' ),
+					'ID'            => __( 'ID', 'bdthemes-prime-slider' ),
+					'date'          => __( 'Date', 'bdthemes-prime-slider' ),
+					'author'        => __( 'Author', 'bdthemes-prime-slider' ),
+					'comment_count' => __( 'Comment Count', 'bdthemes-prime-slider' ),
+					'menu_order'    => __( 'Menu Order', 'bdthemes-prime-slider' ),
+					'rand'          => __( 'Random', 'bdthemes-prime-slider' ),
+					'price'         => __( 'Price', 'bdthemes-prime-slider' ),
+					'sales'         => __( 'Sales', 'bdthemes-prime-slider' ),
 				]
 			]
 		);
 		$this->add_control(
 			'product_order',
-			[
-				'label'     => __('Order', 'ultimate-store-kit'),
+			[ 
+				'label'     => __( 'Order', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'desc',
-				'options'   => [
-					'asc'  => __('ASC', 'ultimate-store-kit'),
-					'desc' => __('DESC', 'ultimate-store-kit'),
+				'options'   => [ 
+					'asc'  => __( 'ASC', 'ultimate-store-kit' ),
+					'desc' => __( 'DESC', 'ultimate-store-kit' ),
 				],
-				'condition' => [
-					'product_source!'                => 'current_query',
+				'condition' => [ 
+					'product_source!' => 'current_query',
 				]
 			]
 		);
@@ -311,49 +311,49 @@ trait Group_Control_Query {
 	public function register_controls_wc_additional() {
 		$this->add_control(
 			'product_show_only',
-			[
-				'label'   => esc_html__('Show Product', 'bdthemes-element-pack'),
+			[ 
+				'label'   => esc_html__( 'Show Product', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'all',
-				'options' => [
-					'all'      => esc_html__('All Products', 'bdthemes-element-pack'),
-					'onsale'   => esc_html__('On Sale', 'bdthemes-element-pack'),
-					'featured' => esc_html__('Featured', 'bdthemes-element-pack'),
+				'options' => [ 
+					'all'      => esc_html__( 'All Products', 'bdthemes-element-pack' ),
+					'onsale'   => esc_html__( 'On Sale', 'bdthemes-element-pack' ),
+					'featured' => esc_html__( 'Featured', 'bdthemes-element-pack' ),
 				]
 			]
 		);
 		$this->add_control(
 			'product_hide_free',
-			[
-				'label' => esc_html__('Hide Free Product', 'ultimate-store-kit'),
+			[ 
+				'label' => esc_html__( 'Hide Free Product', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::SWITCHER,
 
 			]
 		);
 		$this->add_control(
 			'product_hide_out_stock',
-			[
-				'label' => esc_html__('Hide Out of Stock', 'ultimate-store-kit'),
+			[ 
+				'label' => esc_html__( 'Hide Out of Stock', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
 		$this->add_control(
 			'product_only_with_featured_image',
-			[
-				'label'        => __('Only Featured Image Post', 'ultimate-store-kit'),
-				'description'  => __('Enable to display posts only when featured image is present.', 'ultimate-store-kit'),
+			[ 
+				'label'        => __( 'Only Featured Image Post', 'ultimate-store-kit' ),
+				'description'  => __( 'Enable to display posts only when featured image is present.', 'ultimate-store-kit' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
-				'condition'    => [
-					'product_source!'                => 'current_query',
+				'condition'    => [ 
+					'product_source!' => 'current_query',
 				]
 			]
 		);
 		$this->add_control(
 			'query_id',
-			[
-				'label'       => __('Query ID', 'ultimate-store-kit'),
-				'description' => __('Give your Query a custom unique id to allow server side filtering', 'ultimate-store-kit'),
+			[ 
+				'label'       => __( 'Query ID', 'ultimate-store-kit' ),
+				'description' => __( 'Give your Query a custom unique id to allow server side filtering', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::TEXT,
 				'separator'   => 'before',
 			]
@@ -364,18 +364,18 @@ trait Group_Control_Query {
 
 		$args = [];
 
-		if ('current_query' === $this->getGroupControlQueryPostType()) {
+		if ( 'current_query' === $this->getGroupControlQueryPostType() ) {
 			return [];
 		}
-		$args['paged']  = max(1, get_query_var('paged'), get_query_var('page'));
-		$args['posts_per_page']   = $this->get_settings('product_limit');
-		$args['order']   = $this->get_settings('product_order');
+		$args['paged']          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+		$args['posts_per_page'] = $this->get_settings( 'product_limit' );
+		$args['order']          = $this->get_settings( 'product_order' );
 		// $args['orderby'] = $this->get_settings('product_orderby');
 
-		if ('product' === $this->getGroupControlQueryPostType()) {
+		if ( 'product' === $this->getGroupControlQueryPostType() ) {
 			$product_visibility_term_ids = wc_get_product_visibility_term_ids();
-			if ('yes' == $this->get_settings('product_hide_free')) {
-				$args['meta_query'][] = [
+			if ( 'yes' == $this->get_settings( 'product_hide_free' ) ) {
+				$args['meta_query'][] = [ 
 					'key'     => '_price',
 					'value'   => 0,
 					'compare' => '>',
@@ -383,9 +383,9 @@ trait Group_Control_Query {
 				];
 			}
 
-			if ('yes' == $this->get_settings('product_hide_out_stock')) {
-				$args['tax_query'][] = [
-					[
+			if ( 'yes' == $this->get_settings( 'product_hide_out_stock' ) ) {
+				$args['tax_query'][] = [ 
+					[ 
 						'taxonomy' => 'product_visibility',
 						'field'    => 'term_taxonomy_id',
 						'terms'    => $product_visibility_term_ids['outofstock'],
@@ -393,31 +393,31 @@ trait Group_Control_Query {
 					],
 				]; // WPCS: slow query ok.
 			}
-			switch ($this->get_settings('product_show_only')) {
+			switch ( $this->get_settings( 'product_show_only' ) ) {
 				case 'featured':
-					$args['tax_query'][] = [
+					$args['tax_query'][] = [ 
 						'taxonomy' => 'product_visibility',
 						'field'    => 'term_taxonomy_id',
 						'terms'    => $product_visibility_term_ids['featured'],
 					];
 					break;
 				case 'onsale':
-					$product_ids_on_sale    = wc_get_product_ids_on_sale();
-					$product_ids_on_sale[]  = 0;
+					$product_ids_on_sale = wc_get_product_ids_on_sale();
+					$product_ids_on_sale[] = 0;
 					$args['post__in'] = $product_ids_on_sale;
 					break;
 			}
-			switch ($this->get_settings('product_orderby')) {
+			switch ( $this->get_settings( 'product_orderby' ) ) {
 				case 'price':
 					$args['meta_key'] = '_price'; // WPCS: slow query ok.
-					$args['orderby']  = 'meta_value_num';
+					$args['orderby'] = 'meta_value_num';
 					break;
 				case 'sales':
 					$args['meta_key'] = 'total_sales'; // WPCS: slow query ok.
-					$args['orderby']  = 'meta_value_num';
+					$args['orderby'] = 'meta_value_num';
 					break;
 				default:
-					$args['orderby'] = $this->get_settings('product_orderby');
+					$args['orderby'] = $this->get_settings( 'product_orderby' );
 			}
 		}
 
@@ -426,7 +426,7 @@ trait Group_Control_Query {
 		/**
 		 * Set Feature Images
 		 */
-		if ($this->get_settings('product_only_with_featured_image') === 'yes') {
+		if ( $this->get_settings( 'product_only_with_featured_image' ) === 'yes' ) {
 			$args['meta_key'] = '_thumbnail_id';
 		}
 
@@ -434,12 +434,12 @@ trait Group_Control_Query {
 		 * Set Date
 		 */
 
-		$selected_date = $this->get_settings('product_select_date');
+		$selected_date = $this->get_settings( 'product_select_date' );
 
-		if (!empty($selected_date)) {
+		if ( ! empty( $selected_date ) ) {
 			$date_query = [];
 
-			switch ($selected_date) {
+			switch ( $selected_date ) {
 				case 'today':
 					$date_query['after'] = '-1 day';
 					break;
@@ -461,13 +461,13 @@ trait Group_Control_Query {
 					break;
 
 				case 'exact':
-					$after_date = $this->get_settings('product_date_after');
-					if (!empty($after_date)) {
+					$after_date = $this->get_settings( 'product_date_after' );
+					if ( ! empty( $after_date ) ) {
 						$date_query['after'] = $after_date;
 					}
 
-					$before_date = $this->get_settings('product_date_before');
-					if (!empty($before_date)) {
+					$before_date = $this->get_settings( 'product_date_before' );
+					if ( ! empty( $before_date ) ) {
 						$date_query['before'] = $before_date;
 					}
 
@@ -475,7 +475,7 @@ trait Group_Control_Query {
 					break;
 			}
 
-			if (!empty($date_query)) {
+			if ( ! empty( $date_query ) ) {
 				$args['date_query'] = $date_query;
 			}
 		}
@@ -485,11 +485,11 @@ trait Group_Control_Query {
 
 	protected function getGroupControlQueryArgs() {
 
-		$settings = $this->get_settings();
-		$args     = $this->setMetaQueryArgs();
+		$settings                 = $this->get_settings();
+		$args                     = $this->setMetaQueryArgs();
 		$args['post_status']      = 'publish';
 		$args['suppress_filters'] = false;
-		$exclude_by               = $this->getGroupControlQueryParamBy('exclude');
+		$exclude_by               = $this->getGroupControlQueryParamBy( 'exclude' );
 
 		// /**
 		//  * Set Ignore Sticky
@@ -506,50 +506,58 @@ trait Group_Control_Query {
 		// }
 
 
-		if ($this->getGroupControlQueryPostType() === 'manual_selection') {
+		if ( $this->getGroupControlQueryPostType() === 'manual_selection' ) {
 			/**
 			 * Set Including Manually
 			 */
-			$selected_ids      = $this->get_settings('product_selected_ids');
-			$selected_ids      = wp_parse_id_list($selected_ids);
+			$selected_ids      = $this->get_settings( 'product_selected_ids' );
+			$selected_ids      = wp_parse_id_list( $selected_ids );
 			$args['post_type'] = 'product';
-			if (!empty($selected_ids)) {
+			if ( ! empty( $selected_ids ) ) {
 				$args['post__in'] = $selected_ids;
 			}
 			$args['ignore_sticky_posts'] = 1;
-		} elseif ('current_query' === $this->getGroupControlQueryPostType()) {
+		} elseif ( 'current_query' === $this->getGroupControlQueryPostType() ) {
 			/**
 			 * Make Current Query
 			 */
-			$args = $GLOBALS['wp_query']->query_vars;
-            $args['paged'] = 1;
-            $args = apply_filters('ultimate_store_kit/query/get_query_args/current_query', $args);
-		} elseif ('_related_post_type' === $this->getGroupControlQueryPostType()) {
+			$wp_query = $GLOBALS['wp_query']->query_vars;
+
+			if ( isset( $wp_query['usk-template-builder'] ) && 'shop-page' === $wp_query['usk-template-builder'] || isset($_GET['usk-template']) ) {
+				$args['post_type'] = 'product';
+			}else{
+				$args = $wp_query;
+			}
+
+			$args['paged'] = 1;
+			$args          = apply_filters( 'ultimate_store_kit/query/get_query_args/current_query', $args );
+
+		} elseif ( '_related_post_type' === $this->getGroupControlQueryPostType() ) {
 			/**
 			 * Set Related Query
 			 */
 			$post_id           = get_queried_object_id();
-			$related_post_id   = is_singular() && (0 !== $post_id) ? $post_id : null;
-			$args['post_type'] = get_post_type($related_post_id);
+			$related_post_id   = is_singular() && ( 0 !== $post_id ) ? $post_id : null;
+			$args['post_type'] = get_post_type( $related_post_id );
 
-			$include_by = $this->getGroupControlQueryParamBy('include');
-			if (in_array('authors', $include_by)) {
-				$args['author__in'] = wp_parse_id_list($settings['product_include_author_ids']);
+			$include_by = $this->getGroupControlQueryParamBy( 'include' );
+			if ( in_array( 'authors', $include_by ) ) {
+				$args['author__in'] = wp_parse_id_list( $settings['product_include_author_ids'] );
 			} else {
-				$args['author__in'] = get_post_field('post_author', $related_post_id);
+				$args['author__in'] = get_post_field( 'post_author', $related_post_id );
 			}
 
-			$exclude_by = $this->getGroupControlQueryParamBy('exclude');
-			if (in_array('authors', $exclude_by)) {
-				$args['author__not_in'] = wp_parse_id_list($settings['product_exclude_author_ids']);
+			$exclude_by = $this->getGroupControlQueryParamBy( 'exclude' );
+			if ( in_array( 'authors', $exclude_by ) ) {
+				$args['author__not_in'] = wp_parse_id_list( $settings['product_exclude_author_ids'] );
 			}
 
-			if (in_array('current_post', $exclude_by)) {
-				$args['post__not_in'] = [get_the_ID()];
+			if ( in_array( 'current_post', $exclude_by ) ) {
+				$args['post__not_in'] = [ get_the_ID() ];
 			}
 
 			$args['ignore_sticky_posts'] = 1;
-			$args                        = apply_filters('ultimate_store_kit/query/get_query_args/related_query', $args);
+			$args                        = apply_filters( 'ultimate_store_kit/query/get_query_args/related_query', $args );
 		} else {
 
 			/**
@@ -560,65 +568,66 @@ trait Group_Control_Query {
 			/**
 			 * Set Exclude Post
 			 */
-			$exclude_by   = $this->getGroupControlQueryParamBy('exclude');
+			$exclude_by   = $this->getGroupControlQueryParamBy( 'exclude' );
 			$current_post = [];
 
-			if (in_array('current_post', $exclude_by) && is_singular()) {
-				$current_post = [get_the_ID()];
+			if ( in_array( 'current_post', $exclude_by ) && is_singular() ) {
+				$current_post = [ get_the_ID() ];
 			}
 
-			if (in_array('manual_selection', $exclude_by)) {
+			if ( in_array( 'manual_selection', $exclude_by ) ) {
 				$exclude_ids          = $settings['posts_exclude_ids'];
-				$args['post__not_in'] = array_merge($current_post, wp_parse_id_list($exclude_ids));
+				$args['post__not_in'] = array_merge( $current_post, wp_parse_id_list( $exclude_ids ) );
 			}
 			/**
 			 * Set Authors
 			 */
-			$include_by    = $this->getGroupControlQueryParamBy('include');
-			$exclude_by    = $this->getGroupControlQueryParamBy('exclude');
+			$include_by    = $this->getGroupControlQueryParamBy( 'include' );
+			$exclude_by    = $this->getGroupControlQueryParamBy( 'exclude' );
 			$include_users = [];
 			$exclude_users = [];
 
-			if (in_array('authors', $include_by)) {
-				$include_users = wp_parse_id_list($settings['product_include_author_ids']);
+			if ( in_array( 'authors', $include_by ) ) {
+				$include_users = wp_parse_id_list( $settings['product_include_author_ids'] );
 			}
 
-			if (in_array('authors', $exclude_by)) {
-				$exclude_users = wp_parse_id_list($settings['product_exclude_author_ids']);
-				$include_users = array_diff($include_users, $exclude_users);
+			if ( in_array( 'authors', $exclude_by ) ) {
+				$exclude_users = wp_parse_id_list( $settings['product_exclude_author_ids'] );
+				$include_users = array_diff( $include_users, $exclude_users );
 			}
 
-			if (!empty($include_users)) {
+			if ( ! empty( $include_users ) ) {
 				$args['author__in'] = $include_users;
 			}
 
-			if (!empty($exclude_users)) {
-				$args['author__not_in'] = $exclude_users;;
+			if ( ! empty( $exclude_users ) ) {
+				$args['author__not_in'] = $exclude_users;
+				;
 			}
 
 			/**
 			 * Set Taxonomy
 			 */
-			$include_by    = $this->getGroupControlQueryParamBy('include');
-			$exclude_by    = $this->getGroupControlQueryParamBy('exclude');
+			$include_by    = $this->getGroupControlQueryParamBy( 'include' );
+			$exclude_by    = $this->getGroupControlQueryParamBy( 'exclude' );
 			$include_terms = [];
 			$exclude_terms = [];
 			$terms_query   = [];
 
-			if (in_array('terms', $include_by)) {
-				$include_terms = wp_parse_id_list($settings['product_include_term_ids']);
+			if ( in_array( 'terms', $include_by ) ) {
+				$include_terms = wp_parse_id_list( $settings['product_include_term_ids'] );
 			}
 
-			if (in_array('terms', $exclude_by)) {
-				$exclude_terms = wp_parse_id_list($settings['product_exclude_term_ids']);
-				$include_terms = array_diff($include_terms, $exclude_terms);
+			if ( in_array( 'terms', $exclude_by ) ) {
+				$exclude_terms = wp_parse_id_list( $settings['product_exclude_term_ids'] );
+				$include_terms = array_diff( $include_terms, $exclude_terms );
 			}
 
-			if (!empty($include_terms)) {
-				$tax_terms_map = $this->mapGroupControlQuery($include_terms);
+			if ( ! empty( $include_terms ) ) {
+				$tax_terms_map = $this->mapGroupControlQuery( $include_terms );
 
-				foreach ($tax_terms_map as $tax => $terms) {
-					$terms_query[] = [
+				foreach ( $tax_terms_map as $tax => $terms ) {
+					$terms_query[] = [ 
 						'taxonomy' => $tax,
 						'field'    => 'term_id',
 						'terms'    => $terms,
@@ -627,11 +636,11 @@ trait Group_Control_Query {
 				}
 			}
 
-			if (!empty($exclude_terms)) {
-				$tax_terms_map = $this->mapGroupControlQuery($exclude_terms);
+			if ( ! empty( $exclude_terms ) ) {
+				$tax_terms_map = $this->mapGroupControlQuery( $exclude_terms );
 
-				foreach ($tax_terms_map as $tax => $terms) {
-					$terms_query[] = [
+				foreach ( $tax_terms_map as $tax => $terms ) {
+					$terms_query[] = [ 
 						'taxonomy' => $tax,
 						'field'    => 'term_id',
 						'terms'    => $terms,
@@ -640,15 +649,15 @@ trait Group_Control_Query {
 				}
 			}
 
-			if (!empty($terms_query)) {
+			if ( ! empty( $terms_query ) ) {
 				$args['tax_query']             = $terms_query;
 				$args['tax_query']['relation'] = 'AND';
 			}
 		}
 
-		$query_id = $this->get_settings('query_id');
-		if (!empty($query_id)) {
-			add_action('pre_get_posts', [$this, 'pre_get_posts_query_filter']);
+		$query_id = $this->get_settings( 'query_id' );
+		if ( ! empty( $query_id ) ) {
+			add_action( 'pre_get_posts', [ $this, 'pre_get_posts_query_filter' ] );
 		}
 
 		return $args;
@@ -659,7 +668,7 @@ trait Group_Control_Query {
 	 * @return mixed
 	 */
 	private function getGroupControlQueryPostType() {
-		return $this->get_settings('product_source');
+		return $this->get_settings( 'product_source' );
 	}
 
 	/**
@@ -669,15 +678,15 @@ trait Group_Control_Query {
 	 *
 	 * @return array|mixed
 	 */
-	private function getGroupControlQueryParamBy($by = 'exclude') {
-		$mapBy = [
+	private function getGroupControlQueryParamBy( $by = 'exclude' ) {
+		$mapBy = [ 
 			'exclude' => 'product_exclude_by',
 			'include' => 'product_include_by',
 		];
 
-		$setting = $this->get_settings($mapBy[$by]);
+		$setting = $this->get_settings( $mapBy[ $by ] );
 
-		return (!empty($setting) ? $setting : []);
+		return ( ! empty( $setting ) ? $setting : [] );
 	}
 
 	/**
@@ -685,9 +694,9 @@ trait Group_Control_Query {
 	 *
 	 * @return array
 	 */
-	private function mapGroupControlQuery($term_ids = []) {
+	private function mapGroupControlQuery( $term_ids = [] ) {
 		$terms = get_terms(
-			[
+			[ 
 				'term_taxonomy_id' => $term_ids,
 				'hide_empty'       => false,
 			]
@@ -695,9 +704,9 @@ trait Group_Control_Query {
 
 		$tax_terms_map = [];
 
-		foreach ($terms as $term) {
+		foreach ( $terms as $term ) {
 			$taxonomy                     = $term->taxonomy;
-			$tax_terms_map[$taxonomy][] = $term->term_id;
+			$tax_terms_map[ $taxonomy ][] = $term->term_id;
 		}
 
 		return $tax_terms_map;
@@ -708,11 +717,11 @@ trait Group_Control_Query {
 	 */
 	private function getGroupControlQueryPostTypes() {
 
-		$post_types = [
-			'product'   		 => __('Product', 'ultimate-store-kit'),
-			'manual_selection'   => __('Manual Selection', 'ultimate-store-kit'),
-			'current_query'      => __('Current Query', 'ultimate-store-kit'),
-			'_related_post_type' => __('Related', 'ultimate-store-kit'),
+		$post_types = [ 
+			'product'            => __( 'Product', 'ultimate-store-kit' ),
+			'manual_selection'   => __( 'Manual Selection', 'ultimate-store-kit' ),
+			'current_query'      => __( 'Current Query', 'ultimate-store-kit' ),
+			'_related_post_type' => __( 'Related', 'ultimate-store-kit' ),
 		];
 
 		// $post_types = array_merge($post_types, $extra_types);
@@ -720,10 +729,10 @@ trait Group_Control_Query {
 		return $post_types;
 	}
 
-	public function pre_get_posts_query_filter($wp_query) {
-		if ($this) {
-			$query_id = $this->get_settings('query_id');
-			do_action("ultimate_store_kit/query/{$query_id}", $wp_query, $this);
+	public function pre_get_posts_query_filter( $wp_query ) {
+		if ( $this ) {
+			$query_id = $this->get_settings( 'query_id' );
+			do_action( "ultimate_store_kit/query/{$query_id}", $wp_query, $this );
 		}
 	}
 }
