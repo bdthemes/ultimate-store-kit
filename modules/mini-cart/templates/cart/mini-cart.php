@@ -4,8 +4,11 @@ namespace UltimateStoreKit\Modules\MiniCart\Templates\Cart;
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'ultimate_store_kit_render_mini_cart_item' ) ) {
-	function ultimate_store_kit_render_mini_cart_item( $cart_item_key, $cart_item ) {
+class Mini_Cart{
+	public function __contruct(){
+		add_action('init', [$this, 'mini_cart_render']);
+	}
+	public function ultimate_store_kit_render_mini_cart_item( $cart_item_key, $cart_item ) {
 		$_product           = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 		$is_product_visible = ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) );
 
@@ -68,42 +71,47 @@ if ( ! function_exists( 'ultimate_store_kit_render_mini_cart_item' ) ) {
 		<?php
 	}
 
-	$cart_items = WC()->cart->get_cart();
+	public function mini_cart_render(){
+		$cart_items = WC()->cart->get_cart();
 
-	if ( empty( $cart_items ) ) { ?>
-		<div class="woocommerce-mini-cart__empty-message"><?php esc_attr_e( 'No products in the cart.', 'ultimate-store-kit' ); ?>
-		</div>
+		if ( empty( $cart_items ) ) { ?>
+			<div class="woocommerce-mini-cart__empty-message"><?php esc_attr_e( 'No products in the cart.', 'ultimate-store-kit' ); ?>
+			</div>
 	<?php } else { ?>
-		<div class="bdt-mini-cart-products woocommerce-mini-cart cart woocommerce-cart-form__contents">
-			<?php
-			do_action( 'woocommerce_before_mini_cart_contents' );
-			foreach ( $cart_items as $cart_item_key => $cart_item ) {
-				ultimate_store_kit_render_mini_cart_item( $cart_item_key, $cart_item );
-			}
-			do_action( 'woocommerce_mini_cart_contents' );
-			?>
-		</div>
-		<div>
-			<div class="usk-mini-cart-content-footer">
-				<div class="bdt-mini-cart-subtotal">
-					<div>
-						<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
+			<div class="bdt-mini-cart-products woocommerce-mini-cart cart woocommerce-cart-form__contents">
+				<?php
+				do_action( 'woocommerce_before_mini_cart_contents' );
+				foreach ( $cart_items as $cart_item_key => $cart_item ) {
+					$this->ultimate_store_kit_render_mini_cart_item( $cart_item_key, $cart_item );
+				}
+				do_action( 'woocommerce_mini_cart_contents' );
+				?>
+			</div>
+			<div>
+				<div class="usk-mini-cart-content-footer">
+					<div class="bdt-mini-cart-subtotal">
+						<div>
+							<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
+						</div>
+						<div>
+							<?php echo WC()->cart->get_cart_subtotal(); ?>
+						</div>
 					</div>
-					<div>
-						<?php echo WC()->cart->get_cart_subtotal(); ?>
+					<div class="bdt-mini-cart-footer-buttons">
+						<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="bdt-button-view-cart ">
+							<span class="usk-button-text"><?php echo esc_html__( 'View cart', 'ultimate-store-kit' ); ?></span>
+						</a>
+						<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="bdt-button-checkout ">
+							<span class="usk-button-text"><?php echo esc_html__( 'Checkout', 'ultimate-store-kit' ); ?></span>
+						</a>
 					</div>
-				</div>
-				<div class="bdt-mini-cart-footer-buttons">
-					<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="bdt-button-view-cart ">
-						<span class="usk-button-text"><?php echo esc_html__( 'View cart', 'ultimate-store-kit' ); ?></span>
-					</a>
-					<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="bdt-button-checkout ">
-						<span class="usk-button-text"><?php echo esc_html__( 'Checkout', 'ultimate-store-kit' ); ?></span>
-					</a>
 				</div>
 			</div>
-		</div>
-
-		<?php
+			<?php
+		}
 	}
+}
+
+if( class_exists('Mini_Cart') ){
+	new Mini_Cart();
 }
