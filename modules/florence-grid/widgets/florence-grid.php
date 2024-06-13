@@ -369,7 +369,6 @@ class Florence_Grid extends Module_Base {
         }
         public function render_loop_item() {
             $settings = $this->get_settings_for_display();
-            // $wp_query = $this->register_global_template_query();
             $this->query_product();
             $wp_query = $this->get_query();
             if ($settings['layout_style'] === 'grid') {
@@ -381,9 +380,6 @@ class Florence_Grid extends Module_Base {
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     global $product;
-                    // var_dump($product);
-
-                    // var_dump ( $wp_query->have_posts());
 
                     if(empty($product)) {
                         continue;

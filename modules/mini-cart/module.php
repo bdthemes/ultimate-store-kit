@@ -66,6 +66,9 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             $template = $plugin_path . $template_name;
         }
 
+        // if(class_exists('UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart')) {
+        //     // unset($template['cart/mini-cart.php]);
+        // }
         return $template;
     }
 
