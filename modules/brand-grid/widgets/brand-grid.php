@@ -223,7 +223,7 @@ class Brand_Grid extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'item_border',
-                'label'          => esc_html__('Border', 'bdthemes-element-pack'),
+                'label'          => esc_html__('Border', 'ultimate-store-kit'),
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',

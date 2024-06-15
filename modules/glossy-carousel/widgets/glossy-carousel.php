@@ -98,7 +98,7 @@ class Glossy_Carousel extends Module_Base {
         $this->add_responsive_control(
             'items_gap',
             [
-                'label'   => esc_html__('Item Gap', 'bdthemes-prime-slider'),
+                'label'   => esc_html__('Item Gap', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 30,

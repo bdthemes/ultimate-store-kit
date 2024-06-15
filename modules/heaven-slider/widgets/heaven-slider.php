@@ -125,7 +125,7 @@ class Heaven_Slider extends Module_Base {
         $this->start_controls_section(
             'section_post_query_builder',
             [
-                'label' => __('Query', 'bdthemes-element-pack'),
+                'label' => __('Query', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );

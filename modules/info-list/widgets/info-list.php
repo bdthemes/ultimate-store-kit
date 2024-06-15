@@ -270,7 +270,7 @@ class Info_List extends Module_Base
         $repeater->add_control(
             'list_icon',
             [
-                'label' => __('Icon', 'bdthemes-element-pack'),
+                'label' => __('Icon', 'ultimate-store-kit'),
                 'type' => Controls_Manager::ICONS,
                 'label_block' => false,
                 'default' => [
@@ -308,11 +308,11 @@ class Info_List extends Module_Base
         $repeater->add_control(
             'text',
             [
-                'label'       => esc_html__('Text', 'bdthemes-prime-slider'),
+                'label'       => esc_html__('Text', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::WYSIWYG,
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
-                'default'     => esc_html__('Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'bdthemes-element-pack'),
+                'default'     => esc_html__('Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-store-kit'),
     
             ]
         );
@@ -334,13 +334,13 @@ class Info_List extends Module_Base
                 'fields'      => $repeater->get_controls(),
                 'default' => [
                     [
-                        'title' => __('List Item #1', 'bdthemes-element-pack'),
+                        'title' => __('List Item #1', 'ultimate-store-kit'),
                     ],
                     [
-                        'title' => __('List Item #2', 'bdthemes-element-pack'),
+                        'title' => __('List Item #2', 'ultimate-store-kit'),
                     ],
                     [
-                        'title' => __('List Item #3', 'bdthemes-element-pack'),
+                        'title' => __('List Item #3', 'ultimate-store-kit'),
                     ],
                 ],
                 'title_field' => '{{{ elementor.helpers.renderIcon( this, list_icon, {}, "i", "panel" ) || \'<i class="{{ icon }}" aria-hidden="true"></i>\' }}} {{{ title }}}',
@@ -379,7 +379,7 @@ class Info_List extends Module_Base
             Group_Control_Border::get_type(),
             [
                 'name'           => 'item_border',
-                'label'          => esc_html__('Border', 'bdthemes-element-pack'),
+                'label'          => esc_html__('Border', 'ultimate-store-kit'),
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',
@@ -484,7 +484,7 @@ class Info_List extends Module_Base
         $this->start_controls_section(
             'section_title_style',
             [
-                'label' => __('Title', 'bdthemes-element-pack'),
+                'label' => __('Title', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -492,7 +492,7 @@ class Info_List extends Module_Base
         $this->add_control(
             'title_color',
             [
-                'label' => __('Color', 'bdthemes-element-pack'),
+                'label' => __('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-info-list-title a' => 'color: {{VALUE}} ',
@@ -503,7 +503,7 @@ class Info_List extends Module_Base
         $this->add_control(
             'title_hover_color',
             [
-                'label' => __('Hover Color', 'bdthemes-element-pack'),
+                'label' => __('Hover Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-info-list-title a:hover' => 'color: {{VALUE}} ',
@@ -536,7 +536,7 @@ class Info_List extends Module_Base
         $this->start_controls_section(
             'section_style_text',
             [
-                'label' => __('Text', 'bdthemes-element-pack'),
+                'label' => __('Text', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -544,7 +544,7 @@ class Info_List extends Module_Base
         $this->add_control(
             'text_color',
             [
-                'label'     => __('Color', 'bdthemes-element-pack'),
+                'label'     => __('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-info-list-text' => 'color: {{VALUE}};',
