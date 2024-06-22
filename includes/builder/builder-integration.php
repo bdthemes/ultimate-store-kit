@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 use Elementor\Controls_Manager;
 use Elementor\Plugin;
 use UltimateStoreKit\Includes\Builder\Builder_Template_Helper;
-use  UltimateStoreKit\Base\Singleton;
+use UltimateStoreKit\Base\Singleton;
 use UltimateStoreKit\Includes\Builder\Meta;
 use UltimateStoreKit\Includes\Controls\SelectInput\Dynamic_Select;
 
@@ -140,7 +140,8 @@ class Builder_Integration {
 
     protected function setFrontendTemplate($template)
     {
-        if (get_post_type() == 'product') {
+
+		if (get_post_type() == 'product') {
             global $product;
             $product = wc_get_product();
         }
@@ -167,7 +168,7 @@ class Builder_Integration {
             }
         }
 
-        if (is_checkout()) {
+        if (is_checkout()) { // issue raise for order-received page
             if ($custom_template = $this->get_template_id('checkout', 'product')) {
                 $this->current_template_id = $custom_template;
                 return $this->getTemplatePath('woocommerce/checkout', $template);
@@ -234,6 +235,29 @@ class Builder_Integration {
 				}
 			}
         }
+
+        // if order received page
+        if (is_order_received_page()) {
+
+            // var_dump($custom_template);
+
+            if ($custom_template = $this->get_template_id('order-received', 'product')) {
+                $this->current_template_id = $custom_template;
+                // return $this->getTemplatePath('woocommerce/order-received', $template);
+                
+            }
+			// print current page name
+
+            // var_dump($this->current_template_id);
+
+			return $this->getTemplatePath( 'woocommerce/order-received', $template );
+
+			echo "Order Received Page";
+        }
+
+        // var_dump( $custom_template = $this->get_template_id( 'order-received', 'product' ) );
+
+		
 
         return $template;
     }
