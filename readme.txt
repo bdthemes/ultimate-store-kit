@@ -143,7 +143,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 1.X.X [XXth June 2024] =
+= 1.XX.X [Xth June 2024] =
 
 * Fixed: Text Domain issue fixed (Thanks to itapress)
 
