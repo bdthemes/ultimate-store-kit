@@ -941,7 +941,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
 
                                         <?php if (isset($this->settings_fields[$form['id']])) : ?>
 
-                                            <button class="bdt-button bdt-button-primary ultimate-store-kit-settings-save-btn" type="submit"><a href="#"><?php esc_html_e('Save Settings', 'ultimate-store-kit') ?></button>
+                                            <button class="bdt-button bdt-button-primary ultimate-store-kit-settings-save-btn" type="submit"><?php esc_html_e('Save Settings', 'ultimate-store-kit') ?></button>
 
                                         <?php endif; ?>
 
