@@ -45,7 +45,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'section_cart_layout',
 			[ 
-				'label' => __( 'Cart Layout', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Cart Layout', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -53,7 +53,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'show_image',
 			[ 
-				'label'   => __( 'Show Image', 'ultimate-store-kit-pro' ),
+				'label'   => __( 'Show Image', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -62,7 +62,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'show_title',
 			[ 
-				'label'   => __( 'Show Title', 'ultimate-store-kit-pro' ),
+				'label'   => __( 'Show Title', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -71,7 +71,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'show_price',
 			[ 
-				'label'   => __( 'Show Price', 'ultimate-store-kit-pro' ),
+				'label'   => __( 'Show Price', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -80,7 +80,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'show_quantity',
 			[ 
-				'label'   => __( 'Show Quantity', 'ultimate-store-kit-pro' ),
+				'label'   => __( 'Show Quantity', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -89,7 +89,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'show_subtotal',
 			[ 
-				'label'   => __( 'Show Subtotal', 'ultimate-store-kit-pro' ),
+				'label'   => __( 'Show Subtotal', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -100,7 +100,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'cart_heading_style_section',
 			[ 
-				'label' => __( 'Cart Heading', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Cart Heading', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -108,19 +108,19 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'cart_heading_align',
 			[ 
-				'label'     => __( 'Alignment', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Alignment', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => [ 
 					'left'   => [ 
-						'title' => __( 'Left', 'ultimate-store-kit-pro' ),
+						'title' => __( 'Left', 'ultimate-store-kit' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [ 
-						'title' => __( 'Center', 'ultimate-store-kit-pro' ),
+						'title' => __( 'Center', 'ultimate-store-kit' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right'  => [ 
-						'title' => __( 'Right', 'ultimate-store-kit-pro' ),
+						'title' => __( 'Right', 'ultimate-store-kit' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -137,7 +137,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_heading_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce thead th' => 'color: {{VALUE}};',
@@ -194,7 +194,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'product_item_style_section',
 			[ 
-				'label' => __( 'Cart Item', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Cart Item', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -202,7 +202,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_title_heading',
 			[ 
-				'label'     => esc_html__( 'Product Title', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Product Title', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_title' => 'yes',
@@ -213,7 +213,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_title_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce tbody .usk-product-title a' => 'color: {{VALUE}};',
@@ -239,7 +239,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_price_heading',
 			[ 
-				'label'     => esc_html__( 'Product Price', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Product Price', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_price' => 'yes',
@@ -250,7 +250,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_price_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce tbody .usk-product-price' => 'color: {{VALUE}};',
@@ -276,7 +276,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_quantity_heading',
 			[ 
-				'label'     => esc_html__( 'Product Quantity', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Product Quantity', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_quantity' => 'yes',
@@ -287,7 +287,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'product_quantity_width',
 			[ 
-				'label'     => __( 'Width', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Width', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [ 
 					'px' => [ 
@@ -307,7 +307,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_quantity_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .usk-product-quantity .input-text.qty' => 'color: {{VALUE}};',
@@ -321,19 +321,19 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'product_quantity_align',
 			[ 
-				'label'     => __( 'Alignment', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Alignment', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => [ 
 					'left'   => [ 
-						'title' => __( 'Left', 'ultimate-store-kit-pro' ),
+						'title' => __( 'Left', 'ultimate-store-kit' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [ 
-						'title' => __( 'Center', 'ultimate-store-kit-pro' ),
+						'title' => __( 'Center', 'ultimate-store-kit' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right'  => [ 
-						'title' => __( 'Right', 'ultimate-store-kit-pro' ),
+						'title' => __( 'Right', 'ultimate-store-kit' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -361,7 +361,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'product_quantity_padding',
 			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
@@ -387,7 +387,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'product_quantity_border_radius',
 			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [ 
@@ -403,7 +403,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_subtotal_heading',
 			[ 
-				'label'     => esc_html__( 'Product Sub Total', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Product Sub Total', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_subtotal' => 'yes',
@@ -414,7 +414,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'product_subtotal_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce tbody .usk-product-subtotal' => 'color: {{VALUE}};',
@@ -443,7 +443,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'product_coupon_style_section',
 			[ 
-				'label' => __( 'Coupon Style', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Coupon Style', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -452,7 +452,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'coupon_label_heading',
 			[ 
-				'label' => esc_html__( 'Coupon Label', 'ultimate-store-kit-pro' ) . BDTUSK_NC,
+				'label' => esc_html__( 'Coupon Label', 'ultimate-store-kit' ) . BDTUSK_NC,
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
@@ -461,7 +461,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'coupon_label_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .coupon label' => 'color: {{VALUE}};',
@@ -482,7 +482,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'coupon_field_heading',
 			[ 
-				'label'     => esc_html__( 'Coupon Field', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Coupon Field', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before'
 			]
@@ -491,7 +491,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'coupon_field_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .coupon #coupon_code::placeholder' => 'color: {{VALUE}};',
@@ -510,7 +510,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'coupon_field_padding',
 			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
@@ -530,7 +530,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'coupon_field_border_radius',
 			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [ 
@@ -544,7 +544,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'coupon_button_heading',
 			[ 
-				'label'     => esc_html__( 'Coupon Button', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Coupon Button', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -561,7 +561,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'coupon_button_padding',
 			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
@@ -581,7 +581,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'coupon_button_border_radius',
 			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [ 
@@ -595,14 +595,14 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_tab(
 			'coupon_button_normal',
 			[ 
-				'label' => __( 'Normal', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Normal', 'ultimate-store-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'coupon_button_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .coupon .button' => 'color: {{VALUE}};',
@@ -623,14 +623,14 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_tab(
 			'coupon_button_hover',
 			[ 
-				'label' => __( 'Hover', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Hover', 'ultimate-store-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'coupon_button_color_hover',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .coupon .button:hover' => 'color: {{VALUE}};',
@@ -649,7 +649,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'coupon_button_border_color_hover',
 			[ 
-				'label'     => __( 'Border Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Border Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .coupon .button:hover' => 'border-color: {{VALUE}};',
@@ -671,7 +671,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'update_cart_style_section',
 			[ 
-				'label' => __( 'Cart Update Button', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Cart Update Button', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -687,7 +687,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'update_cart_padding',
 			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
@@ -707,7 +707,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'update_cart_border_radius',
 			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [ 
@@ -721,14 +721,14 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_tab(
 			'update_cart_normal',
 			[ 
-				'label' => __( 'Normal', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Normal', 'ultimate-store-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'update_cart_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'color: {{VALUE}};',
@@ -749,14 +749,14 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_tab(
 			'update_cart_hover',
 			[ 
-				'label' => __( 'Hover', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Hover', 'ultimate-store-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'update_cart_color_hover',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .actions>.button:hover' => 'color: {{VALUE}};',
@@ -775,7 +775,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'update_cart_border_color_hover',
 			[ 
-				'label'     => __( 'Border Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Border Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .actions>.button:hover' => 'border-color: {{VALUE}};',
@@ -797,7 +797,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'cart_collaterals_style_section',
 			[ 
-				'label' => __( 'Cart Collaterals', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Cart Collaterals', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -805,7 +805,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_total_heading',
 			[ 
-				'label' => esc_html__( 'Heading', 'ultimate-store-kit-pro' ),
+				'label' => esc_html__( 'Heading', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
@@ -813,7 +813,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_total_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals h2' => 'color: {{VALUE}};',
@@ -832,7 +832,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_total_bottom_spacing',
 			[ 
-				'label'      => esc_html__( 'Bottom Spacing', 'ultimate-store-kit-pro' ),
+				'label'      => esc_html__( 'Bottom Spacing', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '' ],
 				'range'      => [ 
@@ -851,7 +851,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_sub_total_heading',
 			[ 
-				'label'     => esc_html__( 'Sub Total', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Sub Total', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -860,7 +860,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_sub_total_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .cart-collaterals .cart-subtotal th' => 'color: {{VALUE}};',
@@ -879,7 +879,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_sub_total_amount_heading',
 			[ 
-				'label'     => esc_html__( 'Sub Total Amount', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Sub Total Amount', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -888,7 +888,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_sub_total_amount_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .cart-collaterals .cart-subtotal .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
@@ -907,7 +907,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_final_total_heading',
 			[ 
-				'label'     => esc_html__( 'Total', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Total', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -916,7 +916,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_final_total_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .cart-collaterals .order-total th' => 'color: {{VALUE}};',
@@ -935,7 +935,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_final_total_amount_heading',
 			[ 
-				'label'     => esc_html__( 'Total Amount', 'ultimate-store-kit-pro' ),
+				'label'     => esc_html__( 'Total Amount', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -944,7 +944,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_final_total_amount_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .cart-collaterals .order-total .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
@@ -965,7 +965,7 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_section(
 			'checkout_button_style_section',
 			[ 
-				'label' => __( 'Checkout Button', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Checkout Button', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -981,7 +981,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'checkout_button_padding',
 			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
@@ -993,7 +993,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'checkout_button_margin',
 			[ 
-				'label'      => __( 'Margin', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Margin', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [ 
@@ -1013,7 +1013,7 @@ class Page_Cart extends Module_Base {
 		$this->add_responsive_control(
 			'checkout_button_border_radius',
 			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit-pro' ),
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [ 
@@ -1028,14 +1028,14 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_tab(
 			'checkout_button_normal',
 			[ 
-				'label' => __( 'Normal', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Normal', 'ultimate-store-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'checkout_button_color',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'color: {{VALUE}};',
@@ -1057,14 +1057,14 @@ class Page_Cart extends Module_Base {
 		$this->start_controls_tab(
 			'checkout_button_hover',
 			[ 
-				'label' => __( 'Hover', 'ultimate-store-kit-pro' ),
+				'label' => __( 'Hover', 'ultimate-store-kit' ),
 			]
 		);
 
 		$this->add_control(
 			'checkout_button_color_hover',
 			[ 
-				'label'     => __( 'Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a:hover' => 'color: {{VALUE}};',
@@ -1083,7 +1083,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'checkout_button_border_color_hover',
 			[ 
-				'label'     => __( 'Border Color', 'ultimate-store-kit-pro' ),
+				'label'     => __( 'Border Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a:hover' => 'border-color: {{VALUE}};',
@@ -1117,27 +1117,27 @@ class Page_Cart extends Module_Base {
 						<thead>
 							<tr>
 								<?php if ( $settings['show_image'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Close', 'ultimate-store-kit-pro' ); ?></th>
+									<th><?php esc_html_e( 'Close', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
 								<?php if ( $settings['show_image'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Image', 'ultimate-store-kit-pro' ); ?></th>
+									<th><?php esc_html_e( 'Image', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
 								<?php if ( $settings['show_title'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Product Title', 'ultimate-store-kit-pro' ); ?></th>
+									<th><?php esc_html_e( 'Product Title', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
 								<?php if ( $settings['show_price'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Price', 'ultimate-store-kit-pro' ); ?></th>
+									<th><?php esc_html_e( 'Price', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
 								<?php if ( $settings['show_quantity'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Quantity', 'ultimate-store-kit-pro' ); ?></th>
+									<th><?php esc_html_e( 'Quantity', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
 								<?php if ( $settings['show_subtotal'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Subtotal', 'ultimate-store-kit-pro' ); ?></th>
+									<th><?php esc_html_e( 'Subtotal', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 							</tr>
 						</thead>
@@ -1158,7 +1158,7 @@ class Page_Cart extends Module_Base {
 
 								<tr>
 									<td class="usk-product-remove"
-										data-title="<?php esc_html_e( 'Remove', 'ultimate-store-kit-pro' ); ?>">
+										data-title="<?php esc_html_e( 'Remove', 'ultimate-store-kit' ); ?>">
 										<a href="<?php echo esc_url( wc_get_cart_remove_url( $item ) ); ?>" class="remove"
 											aria-label="Remove this item"
 											data-product_id="<?php echo esc_html( $values['product_id'] ); ?>"
@@ -1168,7 +1168,7 @@ class Page_Cart extends Module_Base {
 									</td>
 									<?php if ( $settings['show_image'] == 'yes' ) : ?>
 										<td class="usk-product-image"
-											data-title="<?php esc_html_e( 'Image', 'ultimate-store-kit-pro' ); ?>">
+											data-title="<?php esc_html_e( 'Image', 'ultimate-store-kit' ); ?>">
 											<?php
 											$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $values, $item );
 
@@ -1183,7 +1183,7 @@ class Page_Cart extends Module_Base {
 
 									<?php if ( $settings['show_title'] == 'yes' ) : ?>
 										<td class="usk-product-title"
-											data-title="<?php esc_html_e( 'Product Title', 'ultimate-store-kit-pro' ); ?>">
+											data-title="<?php esc_html_e( 'Product Title', 'ultimate-store-kit' ); ?>">
 											<?php
 											// echo $_product->get_title();
 											if ( ! $product_permalink ) {
@@ -1215,7 +1215,7 @@ class Page_Cart extends Module_Base {
 
 									<?php if ( $settings['show_quantity'] == 'yes' ) : ?>
 										<td class="usk-product-quantity"
-											data-title="<?php esc_html_e( 'Quantity', 'ultimate-store-kit-pro' ); ?>">
+											data-title="<?php esc_html_e( 'Quantity', 'ultimate-store-kit' ); ?>">
 											<?php
 
 											if ( $_product->is_sold_individually() ) {
@@ -1242,7 +1242,7 @@ class Page_Cart extends Module_Base {
 
 									<?php if ( $settings['show_subtotal'] == 'yes' ) : ?>
 										<td class="usk-product-subtotal"
-											data-title="<?php esc_html_e( 'Subtotal', 'ultimate-store-kit-pro' ); ?>">
+											data-title="<?php esc_html_e( 'Subtotal', 'ultimate-store-kit' ); ?>">
 											<?php
 											echo wp_kses_post( apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $values['quantity'] ), $values, $item ) ); // PHPCS: XSS ok.
 											?>
