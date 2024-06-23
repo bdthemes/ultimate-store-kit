@@ -149,7 +149,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
 
 
                 if (!empty($field['args']['widget_type']) && 'pro' == $field['args']['widget_type'] && true !== _is_usk_pro_activated()) {
-                    $data_type .= ' bdt-tooltip="Pro widget only works with Pro version."';
+                    $data_type .= ' bdt-tooltip="'.esc_html__('Pro widget only works with Pro version.', 'ultimate-store-kit').'"';
                 }
 
                 printf( '<div class="usk-option-item %1$s %2$s" %3$s>', esc_attr( $class ), esc_attr( $widget_used_status ), wp_kses_post( $data_type ) );
@@ -404,7 +404,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                 }
             }
 
-            $widget_using_status = '</span> <br><span class="usk-widget-count-text">Total Used  - ' . esc_html($used_widgets_count) . ' </span>';
+            $widget_using_status = '</span> <br><span class="usk-widget-count-text">'.esc_html__('Total Used', 'ultimate-store-kit').'  - ' . esc_html($used_widgets_count) . ' </span>';
 
             // remove counts
             if (isset($args['id']) && $args['id'] == 'not') {
@@ -446,14 +446,14 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                     }
                     if (!is_plugin_active($plugin_path)) {
                         $active_link = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
-                        $html .= '<a href="' . $active_link . '" class="ultimate-store-kit-3pp-active" bdt-tooltip="Activate the plugin first then you can activate this widget."><span class="dashicons dashicons-admin-plugins"></span></a>';
+                        $html .= '<a href="' . $active_link . '" class="ultimate-store-kit-3pp-active" bdt-tooltip="'.esc_html__('Activate the plugin first then you can activate this widget.', 'ultimate-store-kit').'"><span class="dashicons dashicons-admin-plugins"></span></a>';
                     }
                 } else {
                     if ($paid) {
-                        $html .= '<a href="' . $paid . '" class="ultimate-store-kit-3pp-download" bdt-tooltip="Download and install plugin first then you can activate this widget."><span class="dashicons dashicons-download"></span></a>';
+                        $html .= '<a href="' . $paid . '" class="ultimate-store-kit-3pp-download" bdt-tooltip="'.esc_html__('Download and install plugin first then you can activate this widget.', 'ultimate-store-kit').'"><span class="dashicons dashicons-download"></span></a>';
                     } else {
                         $install_link = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
-                        $html .= '<a href="' . $install_link . '" class="ultimate-store-kit-3pp-install" bdt-tooltip="Install the plugin first then you can activate this widget."><span class="dashicons dashicons-download"></span></a>';
+                        $html .= '<a href="' . $install_link . '" class="ultimate-store-kit-3pp-install" bdt-tooltip="'.esc_html__('Install the plugin first then you can activate this widget.', 'ultimate-store-kit').'"><span class="dashicons dashicons-download"></span></a>';
                     }
                 }
 
@@ -740,7 +740,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             $html = '<div class="bdt-dashboard-navigation">';
             $html .= '<ul class="bdt-tab" bdt-tab="animation: bdt-animation-slide-bottom-small;connect: .bdt-tab-container;">';
 
-            $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="0">%2$s</a></li>', 'ultimate_store_kit_welcome', 'Dashboard');
+            $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="0">%2$s</a></li>', 'ultimate_store_kit_welcome', esc_html__('Dashboard', 'ultimate-store-kit'));
 
             $count = 1;
 
@@ -749,7 +749,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             }
 
             if (true !== _is_usk_pro_activated()) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'pixel_gallery_get_pro', 'Get Pro');
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'pixel_gallery_get_pro', esc_html__('Get Pro', 'ultimate-store-kit'));
             }
 
             // if ( !defined('BDTUSK_LO') ) {
@@ -757,7 +757,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             // }
 
             if ((true == _is_usk_pro_activated()) && !defined('BDTUSK_LO')) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'pixel_gallery_license_settings', 'License');
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'pixel_gallery_license_settings', esc_html__('License', 'ultimate-store-kit'));
             }
 
             $html .= '</ul>';
@@ -836,28 +836,28 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
 
                                         <div>
                                             <ul class="bdt-subnav bdt-subnav-pill bdt-widget-filter bdt-widget-type-content bdt-flex-inline">
-                                                <li class="bdt-widget-all bdt-active" bdt-filter-control="*"><a href="#">All</a></li>
-                                                <li class="bdt-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#">Free</a></li>
-                                                <li class="usk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#">Pro</a></li>
+                                                <li class="bdt-widget-all bdt-active" bdt-filter-control="*"><a href="#"><?php esc_html_e('All', 'ultimate-store-kit') ?></a></li>
+                                                <li class="bdt-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#"><a href="#"><?php esc_html_e('Free', 'ultimate-store-kit') ?></a></li>
+                                                <li class="usk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#"><a href="#"><?php esc_html_e('Pro', 'ultimate-store-kit') ?></a></li>
                                             </ul>
                                         </div>
 
                                         <?php if ($form['id'] == 'ultimate_store_kit_active_modules' || $form['id'] == 'ultimate_store_kit_edd_modules' || $form['id'] == 'ultimate_store_kit_general_modules') : ?>
 
                                             <div>
-                                                <button class="bdt-button bdt-button-default" type="button">Filter By Page</button>
+                                                <button class="bdt-button bdt-button-default" type="button"><a href="#"><?php esc_html_e('Filter By Page', 'ultimate-store-kit') ?></button>
                                                 <div bdt-dropdown="animation: bdt-animation-slide-top-small; duration: 300">
                                                     <ul class="bdt-nav bdt-subnav-pill bdt-dropdown-nav bdt-widget-filter bdt-widget-content-type">
-                                                        <li class="bdt-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#">New</a></li>
-                                                        <li class="bdt-widget-single" bdt-filter-control="filter: [data-content-type*='single']; group: data-widget-type"><a href="#">Single</a></li>
-                                                        <li class="bdt-widget-archive" bdt-filter-control="filter: [data-content-type*='archive']; group: data-widget-type"><a href="#">Archive</a></li>
-                                                        <li class="bdt-widget-cart" bdt-filter-control="filter: [data-content-type*='cart']; group: data-widget-type"><a href="#">Cart</a></li>
-                                                        <li class="bdt-widget-checkout" bdt-filter-control="filter: [data-content-type*='checkout']; group: data-widget-type"><a href="#">Checkout</a></li>
-                                                        <li class="bdt-widget-account" bdt-filter-control="filter: [data-content-type*='account']; group: data-widget-type"><a href="#">My Account</a></li>
-                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='order']; group: data-widget-type"><a href="#">Order/ThankYou</a></li>
-                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#">Others</a></li>
+                                                        <li class="bdt-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('New', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-single" bdt-filter-control="filter: [data-content-type*='single']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Single', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-archive" bdt-filter-control="filter: [data-content-type*='archive']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Archive', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-cart" bdt-filter-control="filter: [data-content-type*='cart']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Cart', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-checkout" bdt-filter-control="filter: [data-content-type*='checkout']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Checkout', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-account" bdt-filter-control="filter: [data-content-type*='account']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('My Account', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='order']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Order/ThankYou', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Others', 'ultimate-store-kit') ?></a></li>
                                                         <?php if ($form['id'] == 'ultimate_store_kit_edd_modules') : ?>
-                                                            <li class="bdt-widget-ecommerce" bdt-filter-control="filter: [data-content-type*='ecommerce']; group: data-widget-type"><a href="#">eCommerce</a></li>
+                                                            <li class="bdt-widget-ecommerce" bdt-filter-control="filter: [data-content-type*='ecommerce']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('eCommerce', 'ultimate-store-kit') ?></a></li>
                                                         <?php endif; ?>
 
                                                     </ul>
@@ -869,11 +869,11 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                                                 <div>
                                                     <ul class="bdt-subnav bdt-subnav-pill bdt-widget-filter usk-used-unused-widgets bdt-flex-inline">
                                                         <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-used']; group: data-content-type">
-                                                            <a href="#">Used
+                                                            <a href="#"><a href="#"><?php esc_html_e('Used', 'ultimate-store-kit') ?>
                                                                 <span class="bdt-badge usk-used-widget"></span>
                                                             </a>
                                                         </li>
-                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-unused']; group: data-content-type"><a href="#" bdt-tooltip="Don't need unused widget? Click on the Deactivate All button.">Unused
+                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-unused']; group: data-content-type"><a href="#" bdt-tooltip="<?php esc_html_e('Don\'t need unused widget? Click on the Deactivate All button.', 'ultimate-store-kit') ?>"><a href="#"><?php esc_html_e('Unused', 'ultimate-store-kit') ?>
                                                                 <span class="bdt-badge usk-unused-widget bdt-danger"></span>
                                                             </a>
                                                         </li>
@@ -941,7 +941,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
 
                                         <?php if (isset($this->settings_fields[$form['id']])) : ?>
 
-                                            <button class="bdt-button bdt-button-primary ultimate-store-kit-settings-save-btn" type="submit">Save Settings</button>
+                                            <button class="bdt-button bdt-button-primary ultimate-store-kit-settings-save-btn" type="submit"><a href="#"><?php esc_html_e('Save Settings', 'ultimate-store-kit') ?></button>
 
                                         <?php endif; ?>
 
