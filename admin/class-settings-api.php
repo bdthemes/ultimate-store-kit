@@ -837,27 +837,27 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                                         <div>
                                             <ul class="bdt-subnav bdt-subnav-pill bdt-widget-filter bdt-widget-type-content bdt-flex-inline">
                                                 <li class="bdt-widget-all bdt-active" bdt-filter-control="*"><a href="#"><?php esc_html_e('All', 'ultimate-store-kit') ?></a></li>
-                                                <li class="bdt-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#"><a href="#"><?php esc_html_e('Free', 'ultimate-store-kit') ?></a></li>
-                                                <li class="usk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#"><a href="#"><?php esc_html_e('Pro', 'ultimate-store-kit') ?></a></li>
+                                                <li class="bdt-widget-free" bdt-filter-control="filter: [data-widget-type='free']; group: data-content-type"><a href="#"><?php esc_html_e('Free', 'ultimate-store-kit') ?></a></li>
+                                                <li class="usk-widget-pro" bdt-filter-control="filter: [data-widget-type='pro']; group: data-content-type"><a href="#"><?php esc_html_e('Pro', 'ultimate-store-kit') ?></a></li>
                                             </ul>
                                         </div>
 
                                         <?php if ($form['id'] == 'ultimate_store_kit_active_modules' || $form['id'] == 'ultimate_store_kit_edd_modules' || $form['id'] == 'ultimate_store_kit_general_modules') : ?>
 
                                             <div>
-                                                <button class="bdt-button bdt-button-default" type="button"><a href="#"><?php esc_html_e('Filter By Page', 'ultimate-store-kit') ?></button>
+                                                <button class="bdt-button bdt-button-default" type="button"><?php esc_html_e('Filter By Page', 'ultimate-store-kit') ?></button>
                                                 <div bdt-dropdown="animation: bdt-animation-slide-top-small; duration: 300">
                                                     <ul class="bdt-nav bdt-subnav-pill bdt-dropdown-nav bdt-widget-filter bdt-widget-content-type">
-                                                        <li class="bdt-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('New', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-single" bdt-filter-control="filter: [data-content-type*='single']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Single', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-archive" bdt-filter-control="filter: [data-content-type*='archive']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Archive', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-cart" bdt-filter-control="filter: [data-content-type*='cart']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Cart', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-checkout" bdt-filter-control="filter: [data-content-type*='checkout']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Checkout', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-account" bdt-filter-control="filter: [data-content-type*='account']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('My Account', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='order']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Order/ThankYou', 'ultimate-store-kit') ?></a></li>
-                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('Others', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-new" bdt-filter-control="filter: [data-content-type*='new']; group: data-widget-type"><a href="#"><?php esc_html_e('New', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-single" bdt-filter-control="filter: [data-content-type*='single']; group: data-widget-type"><a href="#"><?php esc_html_e('Single', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-archive" bdt-filter-control="filter: [data-content-type*='archive']; group: data-widget-type"><a href="#"><?php esc_html_e('Archive', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-cart" bdt-filter-control="filter: [data-content-type*='cart']; group: data-widget-type"><a href="#"><?php esc_html_e('Cart', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-checkout" bdt-filter-control="filter: [data-content-type*='checkout']; group: data-widget-type"><a href="#"><?php esc_html_e('Checkout', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-account" bdt-filter-control="filter: [data-content-type*='account']; group: data-widget-type"><a href="#"><?php esc_html_e('My Account', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='order']; group: data-widget-type"><a href="#"><?php esc_html_e('Order/ThankYou', 'ultimate-store-kit') ?></a></li>
+                                                        <li class="bdt-widget-others" bdt-filter-control="filter: [data-content-type*='others']; group: data-widget-type"><a href="#"><?php esc_html_e('Others', 'ultimate-store-kit') ?></a></li>
                                                         <?php if ($form['id'] == 'ultimate_store_kit_edd_modules') : ?>
-                                                            <li class="bdt-widget-ecommerce" bdt-filter-control="filter: [data-content-type*='ecommerce']; group: data-widget-type"><a href="#"><a href="#"><?php esc_html_e('eCommerce', 'ultimate-store-kit') ?></a></li>
+                                                            <li class="bdt-widget-ecommerce" bdt-filter-control="filter: [data-content-type*='ecommerce']; group: data-widget-type"><a href="#"><?php esc_html_e('eCommerce', 'ultimate-store-kit') ?></a></li>
                                                         <?php endif; ?>
 
                                                     </ul>
@@ -869,11 +869,11 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                                                 <div>
                                                     <ul class="bdt-subnav bdt-subnav-pill bdt-widget-filter usk-used-unused-widgets bdt-flex-inline">
                                                         <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-used']; group: data-content-type">
-                                                            <a href="#"><a href="#"><?php esc_html_e('Used', 'ultimate-store-kit') ?>
+                                                            <a href="#"><?php esc_html_e('Used', 'ultimate-store-kit') ?>
                                                                 <span class="bdt-badge usk-used-widget"></span>
                                                             </a>
                                                         </li>
-                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-unused']; group: data-content-type"><a href="#" bdt-tooltip="<?php esc_html_e('Don\'t need unused widget? Click on the Deactivate All button.', 'ultimate-store-kit') ?>"><a href="#"><?php esc_html_e('Unused', 'ultimate-store-kit') ?>
+                                                        <li class="bdt-widget--" bdt-filter-control="filter: [data-content-type*='usk-unused']; group: data-content-type"><a href="#" bdt-tooltip="<?php esc_html_e('Don\'t need unused widget? Click on the Deactivate All button.', 'ultimate-store-kit') ?>"><?php esc_html_e('Unused', 'ultimate-store-kit') ?>
                                                                 <span class="bdt-badge usk-unused-widget bdt-danger"></span>
                                                             </a>
                                                         </li>
