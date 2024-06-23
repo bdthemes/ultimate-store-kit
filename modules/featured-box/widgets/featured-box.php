@@ -104,7 +104,7 @@ class Featured_Box extends Module_Base
         $this->add_control(
             'text',
             [
-                'label'       => esc_html__('Text', 'bdthemes-prime-slider'),
+                'label'       => esc_html__('Text', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::WYSIWYG,
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
@@ -120,7 +120,7 @@ class Featured_Box extends Module_Base
         $this->add_control(
             'meta',
             [
-                'label'       => esc_html__('Meta', 'bdthemes-prime-slider'),
+                'label'       => esc_html__('Meta', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
@@ -298,20 +298,20 @@ class Featured_Box extends Module_Base
         // $this->add_responsive_control(
         //     'background_image_position',
         //     [
-        //         'label'   => _x( 'Position', 'bdthemes-prime-slider' ),
+        //         'label'   => _x( 'Position', 'ultimate-store-kit' ),
         //         'type'    => Controls_Manager::SELECT,
         //         'default' => '',
         //         'options' => [
-        //             ''              => _x( 'Default', 'bdthemes-prime-slider' ),
-        //             'center center' => _x( 'Center Center', 'bdthemes-prime-slider' ),
-        //             'center left'   => _x( 'Center Left', 'bdthemes-prime-slider' ),
-        //             'center right'  => _x( 'Center Right', 'bdthemes-prime-slider' ),
-        //             'top center'    => _x( 'Top Center', 'bdthemes-prime-slider' ),
-        //             'top left'      => _x( 'Top Left', 'bdthemes-prime-slider' ),
-        //             'top right'     => _x( 'Top Right', 'bdthemes-prime-slider' ),
-        //             'bottom center' => _x( 'Bottom Center', 'bdthemes-prime-slider' ),
-        //             'bottom left'   => _x( 'Bottom Left', 'bdthemes-prime-slider' ),
-        //             'bottom right'  => _x( 'Bottom Right', 'bdthemes-prime-slider' ),
+        //             ''              => _x( 'Default', 'ultimate-store-kit' ),
+        //             'center center' => _x( 'Center Center', 'ultimate-store-kit' ),
+        //             'center left'   => _x( 'Center Left', 'ultimate-store-kit' ),
+        //             'center right'  => _x( 'Center Right', 'ultimate-store-kit' ),
+        //             'top center'    => _x( 'Top Center', 'ultimate-store-kit' ),
+        //             'top left'      => _x( 'Top Left', 'ultimate-store-kit' ),
+        //             'top right'     => _x( 'Top Right', 'ultimate-store-kit' ),
+        //             'bottom center' => _x( 'Bottom Center', 'ultimate-store-kit' ),
+        //             'bottom left'   => _x( 'Bottom Left', 'ultimate-store-kit' ),
+        //             'bottom right'  => _x( 'Bottom Right', 'ultimate-store-kit' ),
         //         ],
         //         'selectors' => [
         //             '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-position: {{VALUE}};',
@@ -326,13 +326,13 @@ class Featured_Box extends Module_Base
         // $this->add_responsive_control(
         //     'background_image_attachment',
         //     [
-        //         'label'   => _x( 'Attachment', 'bdthemes-prime-slider' ),
+        //         'label'   => _x( 'Attachment', 'ultimate-store-kit' ),
         //         'type'    => Controls_Manager::SELECT,
         //         'default' => '',
         //         'options' => [
-        //             ''       => _x( 'Default', 'bdthemes-prime-slider' ),
-        //             'scroll' => _x( 'Scroll', 'bdthemes-prime-slider' ),
-        //             'fixed'  => _x( 'Fixed', 'bdthemes-prime-slider' ),
+        //             ''       => _x( 'Default', 'ultimate-store-kit' ),
+        //             'scroll' => _x( 'Scroll', 'ultimate-store-kit' ),
+        //             'fixed'  => _x( 'Fixed', 'ultimate-store-kit' ),
         //         ],
         //         'selectors' => [
         //             '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-attachment: {{VALUE}};',
@@ -347,15 +347,15 @@ class Featured_Box extends Module_Base
         // $this->add_responsive_control(
         //     'background_image_repeat',
         //     [
-        //         'label'      => _x( 'Repeat', 'bdthemes-prime-slider' ),
+        //         'label'      => _x( 'Repeat', 'ultimate-store-kit' ),
         //         'type'       => Controls_Manager::SELECT,
         //         'default'    => '',
         //         'options'    => [
-        //             ''          => _x( 'Default', 'bdthemes-prime-slider' ),
-        //             'no-repeat' => _x( 'No-repeat', 'bdthemes-prime-slider' ),
-        //             'repeat'    => _x( 'Repeat', 'bdthemes-prime-slider' ),
-        //             'repeat-x'  => _x( 'Repeat-x', 'bdthemes-prime-slider' ),
-        //             'repeat-y'  => _x( 'Repeat-y', 'bdthemes-prime-slider' ),
+        //             ''          => _x( 'Default', 'ultimate-store-kit' ),
+        //             'no-repeat' => _x( 'No-repeat', 'ultimate-store-kit' ),
+        //             'repeat'    => _x( 'Repeat', 'ultimate-store-kit' ),
+        //             'repeat-x'  => _x( 'Repeat-x', 'ultimate-store-kit' ),
+        //             'repeat-y'  => _x( 'Repeat-y', 'ultimate-store-kit' ),
         //         ],
         //         'selectors' => [
         //             '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-repeat: {{VALUE}};',
@@ -370,15 +370,15 @@ class Featured_Box extends Module_Base
         // $this->add_responsive_control(
         //     'background_image_size',
         //     [
-        //         'label'      => _x( 'Size', 'bdthemes-prime-slider' ),
+        //         'label'      => _x( 'Size', 'ultimate-store-kit' ),
         //         'type'       => Controls_Manager::SELECT,
         //         'default'    => '',
         //         'options'    => [
-        //             ''        => _x( 'Default', 'bdthemes-prime-slider' ),
-        //             'auto'    => _x( 'Auto', 'bdthemes-prime-slider' ),
-        //             'cover'   => _x( 'Cover', 'bdthemes-prime-slider' ),
-        //             'contain' => _x( 'Contain', 'bdthemes-prime-slider' ),
-        //             'initial' => _x( 'Custom', 'bdthemes-prime-slider' ),
+        //             ''        => _x( 'Default', 'ultimate-store-kit' ),
+        //             'auto'    => _x( 'Auto', 'ultimate-store-kit' ),
+        //             'cover'   => _x( 'Cover', 'ultimate-store-kit' ),
+        //             'contain' => _x( 'Contain', 'ultimate-store-kit' ),
+        //             'initial' => _x( 'Custom', 'ultimate-store-kit' ),
         //         ],
         //         'selectors' => [
         //             '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-size: {{VALUE}};',
@@ -393,7 +393,7 @@ class Featured_Box extends Module_Base
         // $this->add_responsive_control(
         //     'background_image_width',
         //     [
-        //         'label' => _x( 'Width', 'bdthemes-prime-slider' ),
+        //         'label' => _x( 'Width', 'ultimate-store-kit' ),
         //         'type' => Controls_Manager::SLIDER,
         //         'size_units' => [ 'px', 'em', '%', 'vw' ],
         //         'range' => [

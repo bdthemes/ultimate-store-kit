@@ -141,7 +141,7 @@ class EDD_Classic_Grid extends Module_Base {
                                         <?php } ?>
                                     <?php } ?>
                                     <div class="usk-details-button">
-                                        <a href="<?php the_permalink(); ?>"><span><?php esc_html_e('View Details', 'bdthemes-element-pack'); ?></span></a>
+                                        <a href="<?php the_permalink(); ?>"><span><?php esc_html_e('View Details', 'ultimate-store-kit'); ?></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ class EDD_Classic_Grid extends Module_Base {
                             if ($settings['show_price']) : ?>
                                 <div class="usk-edd-price">
                                     <?php if (edd_has_variable_prices(get_the_ID())) {
-                                        esc_html_e('Starting at: ', 'bdthemes-element-pack');
+                                        esc_html_e('Starting at: ', 'ultimate-store-kit');
                                         edd_price(get_the_ID());
                                     } else {
                                         edd_price(get_the_ID());

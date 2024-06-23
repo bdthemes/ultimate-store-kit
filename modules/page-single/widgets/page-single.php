@@ -227,7 +227,7 @@ class Page_Single extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'add_to_cart_border',
-                'label'          => __('Border', 'ultimate-post-kit'),
+                'label'          => __('Border', 'ultimate-store-kit'),
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',
@@ -416,7 +416,7 @@ class Page_Single extends Module_Base {
                 'name'           => 'qty_fields_border',
                 'label'          => __(
                     'Border',
-                    'ultimate-post-kit'
+                    'ultimate-store-kit'
                 ),
                 'fields_options' => [
                     'border' => [

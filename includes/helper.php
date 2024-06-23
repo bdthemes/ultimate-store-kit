@@ -541,7 +541,7 @@ function ultimate_store_kit_get_category($taxonomy = 'product_cat') {
  */
 function ultimate_store_kit_get_only_parent_cats($taxonomy = 'category') {
 
-	$parent_categories = ['none' => __('None', 'bdthemes-element-pack')];
+	$parent_categories = ['none' => __('None', 'ultimate-store-kit')];
 	$args              = ['parent' => 0];
 	$parent_cats       = get_terms($taxonomy, $args);
 

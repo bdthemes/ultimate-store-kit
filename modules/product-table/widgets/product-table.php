@@ -350,14 +350,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'thumbs_hide_on',
             [
-                'label'       => __('Thumbs hide on', 'ultimate-post-kit'),
+                'label'       => __('Thumbs hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_thumb' => 'yes'
@@ -367,14 +367,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'title_hide_on',
             [
-                'label'       => __('Title hide on', 'ultimate-post-kit'),
+                'label'       => __('Title hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_title' => 'yes'
@@ -384,14 +384,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'description_hide_on',
             [
-                'label'       => __('Description hide on', 'ultimate-post-kit'),
+                'label'       => __('Description hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_description' => 'yes'
@@ -401,14 +401,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'categories_hide_on',
             [
-                'label'       => __('Categories hide on', 'ultimate-post-kit'),
+                'label'       => __('Categories hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_categories' => 'yes'
@@ -418,14 +418,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'tags_hide_on',
             [
-                'label'       => __('Tags hide on', 'ultimate-post-kit'),
+                'label'       => __('Tags hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_tags' => 'yes'
@@ -435,14 +435,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'rating_hide_on',
             [
-                'label'       => __('Rating hide on', 'ultimate-post-kit'),
+                'label'       => __('Rating hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_rating' => 'yes'
@@ -452,14 +452,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'price_hide_on',
             [
-                'label'       => __('Price hide on', 'ultimate-post-kit'),
+                'label'       => __('Price hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_categories' => 'yes'
@@ -469,14 +469,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'quick_view_hide_on',
             [
-                'label'       => __('Quick View hide on', 'ultimate-post-kit'),
+                'label'       => __('Quick View hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_quick_view' => 'yes'
@@ -486,14 +486,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'quantity_hide_on',
             [
-                'label'       => __('Quantity hide on', 'ultimate-post-kit'),
+                'label'       => __('Quantity hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_quantity' => 'yes'
@@ -503,14 +503,14 @@ class Product_Table extends Module_Base {
         $this->add_control(
             'cart_hide_on',
             [
-                'label'       => __('Add to Cart hide on', 'ultimate-post-kit'),
+                'label'       => __('Add to Cart hide on', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'label_block' => true,
                 'options'     => [
-                    'desktop' => __('Desktop', 'ultimate-post-kit'),
-                    'tablet'  => __('Tablet', 'ultimate-post-kit'),
-                    'mobile'  => __('Mobile', 'ultimate-post-kit'),
+                    'desktop' => __('Desktop', 'ultimate-store-kit'),
+                    'tablet'  => __('Tablet', 'ultimate-store-kit'),
+                    'mobile'  => __('Mobile', 'ultimate-store-kit'),
                 ],
                 'condition' => [
                     'show_cart' => 'yes'
