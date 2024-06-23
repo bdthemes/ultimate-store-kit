@@ -920,7 +920,7 @@ class UltimateStoreKit_Admin_Settings {
   function plugin_page() {
 
     echo '<div class="wrap ultimate-store-kit-dashboard">';
-    printf('<h1>%1$s Settings</h1>', esc_html(BDTUSK_TITLE));
+    printf('<h1>%1$s '.esc_html__('Settings', 'ultimate-store-kit').'</h1>', esc_html(BDTUSK_TITLE));
 
     $this->settings_api->show_navigation();
 

@@ -629,7 +629,7 @@ class Page_Checkout extends Module_Base {
         // $this->start_controls_section(
         //     'checkout_payment_content_section',
         //     [
-        //         'label' => esc_html__('Content', 'ultimate-store-kit-pro'),
+        //         'label' => esc_html__('Content', 'ultimate-store-kit'),
         //         'tab'   => Controls_Manager::TAB_STYLE,
         //     ]
         // );
@@ -640,7 +640,7 @@ class Page_Checkout extends Module_Base {
         $this->start_controls_section(
             'checkout_payment_methods',
             [
-                'label' => esc_html__('Payment Methods', 'ultimate-store-kit-pro'),
+                'label' => esc_html__('Payment Methods', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -656,7 +656,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_text_color',
             [
-                'label'     => esc_html__('Text Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment .payment_methods .payment_box'      => 'color: {{VALUE}};',
@@ -670,7 +670,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_link_color',
             [
-                'label'     => esc_html__('Link Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Link Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment a' => 'color: {{VALUE}};',
@@ -681,7 +681,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_link_hover_color',
             [
-                'label'     => esc_html__('Link hover Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Link hover Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment a:hover' => 'color: {{VALUE}};',
@@ -693,14 +693,14 @@ class Page_Checkout extends Module_Base {
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'checkout_payment_content_typography',
-                'label'    => esc_html__('Typography', 'ultimate-store-kit-pro'),
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '{{WRAPPER}} .usk-checkout-payment #payment :is(.payment_box, .woocommerce-terms-and-conditions-wrapper, .payment_method_paypal) :is(p, a)',
             ]
         );
         $this->add_control(
             'checkout_payment_method_radio_input_color',
             [
-                'label'     => esc_html__('Checked Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Checked Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment .wc_payment_method input[type="radio"]' => 'accent-color: {{VALUE}};',
@@ -710,7 +710,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_label_color',
             [
-                'label'     => esc_html__('Label Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Label Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment .wc_payment_method label' => 'color: {{VALUE}} !important;',
@@ -720,7 +720,7 @@ class Page_Checkout extends Module_Base {
         $this->add_responsive_control(
             'checkout_payment_methods_checkbox_padding',
             [
-                'label'     => esc_html__('Padding', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Padding', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'separator' => 'before',
                 'selectors' => [
@@ -732,7 +732,7 @@ class Page_Checkout extends Module_Base {
         $this->add_responsive_control(
             'checkout_payment_methods_checkbox_margin',
             [
-                'label'     => esc_html__('Margin', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Margin', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment .wc_payment_method input[type="radio"]' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -743,7 +743,7 @@ class Page_Checkout extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'      => 'checkout_payment_methods_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
                 'selector'  => '{{WRAPPER}} .usk-checkout-payment #payment .payment_methods li',
                 'separator' => 'before',
             ]
@@ -752,7 +752,7 @@ class Page_Checkout extends Module_Base {
         $this->add_responsive_control(
             'checkout_payment_methods_radius',
             [
-                'label'     => esc_html__('Border Radius', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment .payment_methods li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -763,7 +763,7 @@ class Page_Checkout extends Module_Base {
         $this->add_responsive_control(
             'checkout_payment_methods_checkbox_spacing',
             [
-                'label'     => __('Bottom Spacing', 'ultimate-store-kit-pro'),
+                'label'     => __('Bottom Spacing', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'separator' => 'before',
                 'selectors' => [
@@ -776,7 +776,7 @@ class Page_Checkout extends Module_Base {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'checkout_payment_label_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector'  => '{{WRAPPER}} .usk-checkout-payment .wc_payment_method label',
             ]
         );
@@ -790,7 +790,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_order_button_color',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment #place_order' => 'color: {{VALUE}}',
@@ -801,7 +801,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_order_button_background',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment #place_order' => 'background: {{VALUE}}',
@@ -812,7 +812,7 @@ class Page_Checkout extends Module_Base {
         $this->add_responsive_control(
             'checkout_payment_order_button_padding',
             [
-                'label'     => esc_html__('Padding', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Padding', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment #place_order' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
@@ -825,7 +825,7 @@ class Page_Checkout extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'      => 'checkout_payment_input_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
                 'selector'  => '{{WRAPPER}} .usk-checkout-payment #payment #place_order',
             ]
         );
@@ -834,7 +834,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_order_button_radius',
             [
-                'label'     => esc_html__('Border Radius', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment #place_order' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
@@ -845,10 +845,10 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_order_button_width',
             [
-                'label'        => __('Full Width', 'ultimate-store-kit-pro'),
+                'label'        => __('Full Width', 'ultimate-store-kit'),
                 'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => __('Yes', 'ultimate-store-kit-pro'),
-                'label_off'    => __('No', 'ultimate-store-kit-pro'),
+                'label_on'     => __('Yes', 'ultimate-store-kit'),
+                'label_off'    => __('No', 'ultimate-store-kit'),
                 'return_value' => 'yes',
                 'default'      => 'yes',
                 'separator'    => 'before',
@@ -862,7 +862,7 @@ class Page_Checkout extends Module_Base {
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'checkout_payment_order_button_typography',
-                'label'    => esc_html__('Typography', 'ultimate-store-kit-pro'),
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '{{WRAPPER}} .usk-checkout-payment #payment #place_order',
             ]
         );
@@ -877,7 +877,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_order_button_tabs_hover_clr',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment #place_order:hover' => 'color: {{VALUE}}',
@@ -888,7 +888,7 @@ class Page_Checkout extends Module_Base {
         $this->add_control(
             'checkout_payment_order_button_tabs_hover_bg',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit-pro'),
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-checkout-payment #payment #place_order:hover' => 'background: {{VALUE}}',

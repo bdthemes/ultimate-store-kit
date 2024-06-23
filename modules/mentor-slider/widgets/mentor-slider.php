@@ -137,7 +137,7 @@ class Mentor_Slider extends Module_Base {
         $this->start_controls_section(
             'section_post_query_builder',
             [
-                'label' => __('Query', 'bdthemes-element-pack'),
+                'label' => __('Query', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -473,7 +473,7 @@ class Mentor_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'slider_items_border',
-                'label'          => __( 'Border', 'ultimate-post-kit' ),
+                'label'          => __( 'Border', 'ultimate-store-kit' ),
                 // 'fields_options' => [
                 //     'border' => [
                 //         'default' => 'solid',
@@ -559,7 +559,7 @@ class Mentor_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'image_border',
-                'label'          => __( 'Border', 'ultimate-post-kit' ),
+                'label'          => __( 'Border', 'ultimate-store-kit' ),
                 'selector'       => '{{WRAPPER}} .usk-mentor-slider .usk-image-wrap',
             ]
         );

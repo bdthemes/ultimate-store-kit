@@ -274,19 +274,19 @@ trait Group_Control_Query {
 		$this->add_control(
 			'product_orderby',
 			[ 
-				'label'   => __( 'Order By', 'bdthemes-prime-slider' ),
+				'label'   => __( 'Order By', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'date',
 				'options' => [ 
-					'title'         => __( 'Title', 'bdthemes-prime-slider' ),
-					'ID'            => __( 'ID', 'bdthemes-prime-slider' ),
-					'date'          => __( 'Date', 'bdthemes-prime-slider' ),
-					'author'        => __( 'Author', 'bdthemes-prime-slider' ),
-					'comment_count' => __( 'Comment Count', 'bdthemes-prime-slider' ),
-					'menu_order'    => __( 'Menu Order', 'bdthemes-prime-slider' ),
-					'rand'          => __( 'Random', 'bdthemes-prime-slider' ),
-					'price'         => __( 'Price', 'bdthemes-prime-slider' ),
-					'sales'         => __( 'Sales', 'bdthemes-prime-slider' ),
+					'title'         => __( 'Title', 'ultimate-store-kit' ),
+					'ID'            => __( 'ID', 'ultimate-store-kit' ),
+					'date'          => __( 'Date', 'ultimate-store-kit' ),
+					'author'        => __( 'Author', 'ultimate-store-kit' ),
+					'comment_count' => __( 'Comment Count', 'ultimate-store-kit' ),
+					'menu_order'    => __( 'Menu Order', 'ultimate-store-kit' ),
+					'rand'          => __( 'Random', 'ultimate-store-kit' ),
+					'price'         => __( 'Price', 'ultimate-store-kit' ),
+					'sales'         => __( 'Sales', 'ultimate-store-kit' ),
 				]
 			]
 		);
@@ -312,13 +312,13 @@ trait Group_Control_Query {
 		$this->add_control(
 			'product_show_only',
 			[ 
-				'label'   => esc_html__( 'Show Product', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Show Product', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'all',
 				'options' => [ 
-					'all'      => esc_html__( 'All Products', 'bdthemes-element-pack' ),
-					'onsale'   => esc_html__( 'On Sale', 'bdthemes-element-pack' ),
-					'featured' => esc_html__( 'Featured', 'bdthemes-element-pack' ),
+					'all'      => esc_html__( 'All Products', 'ultimate-store-kit' ),
+					'onsale'   => esc_html__( 'On Sale', 'ultimate-store-kit' ),
+					'featured' => esc_html__( 'Featured', 'ultimate-store-kit' ),
 				]
 			]
 		);

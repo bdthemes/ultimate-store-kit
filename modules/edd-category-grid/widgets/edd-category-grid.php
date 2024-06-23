@@ -85,7 +85,7 @@ class EDD_Category_Grid extends Module_Base {
 		$this->add_responsive_control(
 			'columns',
 			[
-				'label'          => __('Columns', 'ultimate-store-kit-pro'),
+				'label'          => __('Columns', 'ultimate-store-kit'),
 				'type'           => Controls_Manager::SELECT,
 				'default'        => 3,
 				'tablet_default' => 2,
@@ -121,7 +121,7 @@ class EDD_Category_Grid extends Module_Base {
 		$this->add_responsive_control(
 			'item_height',
 			[
-				'label'   => esc_html__('Item Height(px)', 'ultimate-store-kit-pro'),
+				'label'   => esc_html__('Item Height(px)', 'ultimate-store-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -141,7 +141,7 @@ class EDD_Category_Grid extends Module_Base {
 		$this->add_responsive_control(
 			'item_height_skin_3',
 			[
-				'label'   => esc_html__('Item Height(px)', 'ultimate-store-kit-pro'),
+				'label'   => esc_html__('Item Height(px)', 'ultimate-store-kit'),
 				'type'    => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [

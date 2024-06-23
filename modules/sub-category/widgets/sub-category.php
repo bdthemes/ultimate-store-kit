@@ -71,7 +71,7 @@ class Sub_Category extends Module_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label'          => __('Columns', 'ultimate-store-kit-pro'),
+                'label'          => __('Columns', 'ultimate-store-kit'),
                 'type'           => Controls_Manager::SELECT,
                 'default'        => 3,
                 'tablet_default' => 2,

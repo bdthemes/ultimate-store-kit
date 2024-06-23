@@ -46,7 +46,7 @@ trait Global_EDD_Widget_Controls {
         $this->add_responsive_control(
             'items_gap',
             [
-                'label'   => esc_html__('Item Gap', 'bdthemes-prime-slider'),
+                'label'   => esc_html__('Item Gap', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 30,

@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 1.X.X [XXth June 2024] =
+
+* Fixed: Text Domain issue fixed (Thanks to itapress)
+
 = 1.6.3 [11th June 2024] =
 
 * Updated: Version compatibility added
