@@ -97,9 +97,9 @@ class Builder_Template_Helper {
 		$template        = strtolower( "{$postType}{$separator}{$slug}" );
 		$enabledTemplate = strtolower( Meta::TEMPLATE_ID . $template );
 
-        var_dump($slug);
-        var_dump($postType);
-        // var_dump($enabledTemplate);
+		/**
+		 * important area for debugging
+		 */
 
 		return get_option( $enabledTemplate );
 	}
