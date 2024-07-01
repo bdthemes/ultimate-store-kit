@@ -150,6 +150,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
 * Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
 * Updated: Theme Builder improved (Thanks to NexThemes)
+* Updated: Mini-Cart feature improved
 
 = 1.6.4 [24th June 2024] =
 
