@@ -143,6 +143,14 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= XXXXX [XXXX June 2024] =
+
+* Fixed: Product Not show issue fixed on Archive Page (Thanks to NexThemes)
+* Fixed: Pagination with Current Query issue fixed on Archive Page (Thanks to Gregor Kramberger)
+* Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
+* Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
+* Updated: Theme Builder improved (Thanks to NexThemes)
+
 = 1.6.4 [24th June 2024] =
 
 * Fixed: Text Domain issue fixed (Thanks to itapress)
