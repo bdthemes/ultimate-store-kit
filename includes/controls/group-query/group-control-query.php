@@ -530,6 +530,7 @@ trait Group_Control_Query {
 			}
 
 			$args['paged'] = 1;
+			$args['paged'] = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
 			$args          = apply_filters( 'ultimate_store_kit/query/get_query_args/current_query', $args );
 
 		} elseif ( '_related_post_type' === $this->getGroupControlQueryPostType() ) {
