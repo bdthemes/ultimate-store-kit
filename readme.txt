@@ -145,12 +145,15 @@ https://youtu.be/9J4zCaDcPnk
 
 = XXXXX [XXXX June 2024] =
 
+* Added: Order by Modified feature added in Query
 * Fixed: Product Not show issue fixed on Archive Page (Thanks to NexThemes)
 * Fixed: Pagination with Current Query issue fixed on Archive Page (Thanks to Gregor Kramberger)
 * Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
 * Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
+* Fixed: Product limit issue fixed in Current Query
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
+* Updated: Query improved in Current Query
 
 = 1.6.4 [24th June 2024] =
 

@@ -284,6 +284,7 @@ trait Group_Control_Query {
 					'author'        => __( 'Author', 'ultimate-store-kit' ),
 					'comment_count' => __( 'Comment Count', 'ultimate-store-kit' ),
 					'menu_order'    => __( 'Menu Order', 'ultimate-store-kit' ),
+					'modified'      => __( 'Modified', 'ultimate-store-kit' ),
 					'rand'          => __( 'Random', 'ultimate-store-kit' ),
 					'price'         => __( 'Price', 'ultimate-store-kit' ),
 					'sales'         => __( 'Sales', 'ultimate-store-kit' ),
@@ -365,8 +366,10 @@ trait Group_Control_Query {
 		$args = [];
 
 		if ( 'current_query' === $this->getGroupControlQueryPostType() ) {
-			return [];
+			$args['posts_per_page'] = $this->get_settings( 'product_limit' );
+			return $args;
 		}
+
 		$args['paged']          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
 		$args['posts_per_page'] = $this->get_settings( 'product_limit' );
 		$args['order']          = $this->get_settings( 'product_order' );
@@ -523,15 +526,16 @@ trait Group_Control_Query {
 			 */
 			$wp_query = $GLOBALS['wp_query']->query_vars;
 
-			if ( isset( $wp_query['usk-template-builder'] ) && 'shop-page' === $wp_query['usk-template-builder'] || isset($_GET['usk-template']) ) {
+			if ( isset( $wp_query['usk-template-builder'] ) && 'shop-page' === $wp_query['usk-template-builder'] || isset( $_GET['usk-template'] ) || \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 				$args['post_type'] = 'product';
-			}else{
-				$args = $wp_query;
+			} else {
+				$args['post_type'] = 'product';
 			}
 
-			$args['paged'] = 1;
-			$args['paged'] = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
-			$args          = apply_filters( 'ultimate_store_kit/query/get_query_args/current_query', $args );
+			$args['paged']          = 1;
+			$args['paged']          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+			$args['posts_per_page'] = $this->get_settings( 'product_limit' );
+			$args                   = apply_filters( 'ultimate_store_kit/query/get_query_args/current_query', $args );
 
 		} elseif ( '_related_post_type' === $this->getGroupControlQueryPostType() ) {
 			/**
