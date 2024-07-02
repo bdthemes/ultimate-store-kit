@@ -284,6 +284,7 @@ trait Group_Control_Query {
 					'author'        => __( 'Author', 'ultimate-store-kit' ),
 					'comment_count' => __( 'Comment Count', 'ultimate-store-kit' ),
 					'menu_order'    => __( 'Menu Order', 'ultimate-store-kit' ),
+					'modified'      => __( 'Modified', 'ultimate-store-kit' ),
 					'rand'          => __( 'Random', 'ultimate-store-kit' ),
 					'price'         => __( 'Price', 'ultimate-store-kit' ),
 					'sales'         => __( 'Sales', 'ultimate-store-kit' ),
