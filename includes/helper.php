@@ -1100,7 +1100,15 @@ function usk_get_compare_products($user_id = 0) {
 	if ($user_id != 0) {
 		$_compare_products = get_user_meta($user_id, $_compare_products_key, true) ?: [];
 	} elseif (isset($_COOKIE[$_compare_products_key])) {
-		$_compare_products = unserialize(stripslashes($_COOKIE[sanitize_text_field($_compare_products_key)]));
+		//$_compare_products = unserialize(stripslashes($_COOKIE[sanitize_text_field($_compare_products_key)]));
+
+		$cookie_value = sanitize_text_field($_COOKIE[$_compare_products_key]);
+        $_compare_products = json_decode(stripslashes($cookie_value), true);
+
+        // Check if JSON decoding failed
+        if (!is_array($_compare_products)) {
+            $_compare_products = [];
+        }
 	}
 
 	return apply_filters('ultimate_store_kit_compare_products', array_unique($_compare_products));

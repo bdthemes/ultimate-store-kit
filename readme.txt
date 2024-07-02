@@ -154,6 +154,7 @@ https://youtu.be/9J4zCaDcPnk
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query
+* Fixed: Security issue fixed (Thanks to Peter Thaleikis)
 
 = 1.6.4 [24th June 2024] =
 
