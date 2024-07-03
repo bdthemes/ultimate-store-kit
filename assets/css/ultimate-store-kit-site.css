@@ -522,75 +522,6 @@ div.pp_pic_holder {
 .ultimate-store-kit * ins {
   background: transparent; }
 
-.usk-wishlist-products .usk-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center; }
-  .usk-wishlist-products .usk-table th {
-    padding: 10px;
-    border-top: 1px solid #d0caca75;
-    border-bottom: 1px solid #d0caca75;
-    font-size: 14px;
-    font-weight: 700;
-    color: #4e4a4a; }
-  .usk-wishlist-products .usk-table tr {
-    border-bottom: 1px solid #d0caca75; }
-  .usk-wishlist-products .usk-table td {
-    padding: 10px; }
-  .usk-wishlist-products .usk-table .usk-remove-icon .remove-icon {
-    font-size: 12px;
-    color: #848181;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 100px;
-    transition: all 0.3s ease; }
-    .usk-wishlist-products .usk-table .usk-remove-icon .remove-icon:hover {
-      background: #000;
-      color: #fff; }
-  .usk-wishlist-products .usk-table .usk-product-image {
-    display: none; }
-    .usk-wishlist-products .usk-table .usk-product-image img {
-      width: 100px; }
-  .usk-wishlist-products .usk-table .usk-product-name {
-    font-size: 12px;
-    font-weight: 600; }
-    .usk-wishlist-products .usk-table .usk-product-name a {
-      color: #656262;
-      transition: all 0.3s ease;
-      text-decoration: none; }
-      .usk-wishlist-products .usk-table .usk-product-name a:hover {
-        color: #272525; }
-  .usk-wishlist-products .usk-table .usk-price {
-    font-size: 12px;
-    color: #656262;
-    font-weight: 600;
-    display: none; }
-    .usk-wishlist-products .usk-table .usk-price .old-price {
-      color: #bdb3b3;
-      font-weight: 500; }
-  .usk-wishlist-products .usk-table .usk-stock {
-    font-size: 12px;
-    font-weight: 600;
-    display: none; }
-    .usk-wishlist-products .usk-table .usk-stock a {
-      color: #656262;
-      text-decoration: none; }
-  .usk-wishlist-products .usk-table .usk-auction-button .addto-cart {
-    font-size: 7px;
-    padding: 8px 6px;
-    background: #3a3939;
-    color: #e8e5e5;
-    font-weight: 600;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-    text-decoration: none; }
-    .usk-wishlist-products .usk-table .usk-auction-button .addto-cart:hover {
-      background: #000; }
-  .usk-wishlist-products .usk-table .product-title,
-  .usk-wishlist-products .usk-table .price-title,
-  .usk-wishlist-products .usk-table .stock-title {
-    display: none; }
-
 [class*=" elementor-widget-usk-"] svg.e-font-icon-svg {
   height: 1em;
   width: 1em; }
@@ -748,34 +679,6 @@ div.pp_pic_holder {
 /*------------------------------------------
    usk Shiny Widget rating position scss
    -------------------------------------------*/
-@media (min-width: 576px) {
-  .usk-wishlist-products .usk-table .usk-product-image {
-    display: table-cell; }
-    .usk-wishlist-products .usk-table .usk-product-image img {
-      width: 120px; }
-  .usk-wishlist-products .usk-table .usk-table-title th {
-    padding: 15px;
-    font-size: 15px; }
-  .usk-wishlist-products .usk-table td {
-    padding: 15px; }
-  .usk-wishlist-products .usk-table .usk-remove-icon .remove-icon {
-    font-size: 14px; }
-  .usk-wishlist-products .usk-table .usk-product-name {
-    font-size: 14px; }
-  .usk-wishlist-products .usk-table .usk-price {
-    font-size: 14px;
-    display: table-cell; }
-  .usk-wishlist-products .usk-table .usk-stock {
-    font-size: 14px;
-    display: table-cell; }
-  .usk-wishlist-products .usk-table .usk-auction-button .addto-cart {
-    font-size: 12px;
-    padding: 8px 15px; }
-  .usk-wishlist-products .usk-table .product-title,
-  .usk-wishlist-products .usk-table .price-title,
-  .usk-wishlist-products .usk-table .stock-title {
-    display: table-cell; } }
-
 .ultimate-store-kit {
   /* Swiper */ }
   .ultimate-store-kit .swiper-coverflow,

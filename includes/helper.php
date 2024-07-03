@@ -1136,7 +1136,8 @@ if (!function_exists('ultimate_store_kit_compare_product_page')) {
 if (!function_exists('ultimate_store_kit_is_compare_product_page')) {
 	function ultimate_store_kit_is_compare_product_page() {
 		if ($page = ultimate_store_kit_compare_product_page() ) {
-			return is_page( $page->ID );
+			// return is_page( $page->ID );
+			return is_page( $page );
 		}
 	}
 }
