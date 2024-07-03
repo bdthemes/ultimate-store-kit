@@ -597,7 +597,7 @@ class Sub_Category_Carousel extends Module_Base {
                             </ul>
 
                             <div class="usk-link-btn">
-                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i>', esc_html('All ' . $category->name . ''), esc_url(get_term_link($category->term_id, 'product_cat'))); ?>
+                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i>', esc_html__('All ' . $category->name . ''), esc_url(get_term_link($category->term_id, 'product_cat'))); ?>
                                 </a>
                             </div>
                         </div>

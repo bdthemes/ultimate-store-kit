@@ -868,7 +868,7 @@ class Page_Order extends Module_Base {
             endif; ?>
             <p class="thankyou-order-desc">
                 <?php if ($order->has_status('failed')) :
-                    echo esc_html('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'ultimate-store-kit');
+                    echo esc_html__('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'ultimate-store-kit');
                 ?>
                 <?php else :
                     echo wp_kses_post(apply_filters('woocommerce_thankyou_order_received_text', esc_html__($order_received_text, 'ultimate-store-kit'), $order));
