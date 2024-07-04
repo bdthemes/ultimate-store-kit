@@ -145,6 +145,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = XXXXX [XXXX June 2024] =
 
+* Added: Compare option added in florence widget
 * Added: Order by Modified feature added in Query
 * Fixed: Product Not show issue fixed on Archive Page (Thanks to NexThemes)
 * Fixed: Pagination with Current Query issue fixed on Archive Page (Thanks to Gregor Kramberger)

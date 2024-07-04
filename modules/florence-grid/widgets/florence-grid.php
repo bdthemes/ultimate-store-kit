@@ -114,7 +114,7 @@ class Florence_Grid extends Module_Base {
         $this->add_responsive_control(
             'items_columns_gap',
             [
-                'label'     => esc_html__('Columns Gap', 'ultimate-store-kit'),
+                'label'     => esc_html__('Column Gap', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'default'   => [
                     'size' => 30,
@@ -224,7 +224,7 @@ class Florence_Grid extends Module_Base {
 
     public function render_header() {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('usk-florence-grid', 'class', ['usk-florence-grid', 'usk-content-position-' . $settings['alignment'] . ''], true);
+        $this->add_render_attribute('usk-florence-grid', 'class', ['usk-florence-grid'], true);
         $this->add_render_attribute('usk-florence-grid', 'data-filter', [$settings['show_tab']]);
 ?>
         <div class="ultimate-store-kit">
@@ -343,12 +343,13 @@ class Florence_Grid extends Module_Base {
             <div class="usk-shoping">
                 <?php
                 $this->register_global_template_add_to_wishlist($tooltip_position);
+                $this->register_global_template_add_to_compare($tooltip_position);
                 $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
                 $this->register_global_template_add_to_cart($tooltip_position);
                 ?>
             </div>
             <div class="usk-badge-label-wrapper">
-                <div class="usk-badge-label-content">
+                <div class="usk-badge-label-content usk-flex usk-flex-column">
                     <?php $this->register_global_template_badge_label(); ?>
                 </div>
             </div>
