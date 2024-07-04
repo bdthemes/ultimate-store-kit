@@ -175,6 +175,18 @@ class ModuleService {
                     'demo_url'     => 'https://storekit.pro/demo/breadcrumbs/',
                     'video_url'    => '',
                 ],
+				[ 
+					'name'         => 'call-for-price',
+					'label'        => esc_html__( 'Call for Price (Single)', 'ultimate-store-kit' ),
+					'type'         => 'checkbox',
+					'default'      => "off",
+					'plugin_name'  => 'woocommerce',
+					'plugin_path'  => 'woocommerce/woocommerce.php',
+					'widget_type'  => 'pro',
+					'content_type' => 'woocommerce single',
+					'demo_url'     => '#https://storekit.pro/demo/call-for-price/',
+					'video_url'    => '',
+				],
                 // CHECKOUT
                 [
                     'name'         => 'checkout-additional-info',
