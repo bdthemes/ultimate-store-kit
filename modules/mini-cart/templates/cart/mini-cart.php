@@ -4,11 +4,21 @@ namespace UltimateStoreKit\Modules\MiniCart\Templates\Cart;
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'Mini_Cart' ) ) {
+if ( ! class_exists( 'UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart' ) ) {
 	class Mini_Cart {
-		public function __contruct() {
+		private static $instance = null;
+
+		private function __construct() {
 			add_action( 'init', [ $this, 'mini_cart_render' ] );
 		}
+
+		public static function get_instance() {
+			if ( self::$instance === null ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
+		}
+
 		public function ultimate_store_kit_render_mini_cart_item( $cart_item_key, $cart_item ) {
 			$_product           = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 			$is_product_visible = ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) );
@@ -114,7 +124,5 @@ if ( ! class_exists( 'Mini_Cart' ) ) {
 		}
 	}
 
-	if ( class_exists( 'Mini_Cart' ) ) {
-		new Mini_Cart();
-	}
+	Mini_Cart::get_instance();
 }
