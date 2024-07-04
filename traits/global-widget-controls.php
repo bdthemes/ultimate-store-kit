@@ -364,15 +364,6 @@ trait Global_Widget_Controls {
             ]
         );
         $this->add_control(
-            'show_cart',
-            [
-                'label' => esc_html__('Add to Cart', 'ultimate-store-kit'),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
             'show_wishlist',
             [
                 'label' => esc_html__('Wishlist', 'ultimate-store-kit'),
@@ -383,7 +374,6 @@ trait Global_Widget_Controls {
                 'default' => 'yes',
             ]
         );
-
         $this->add_control(
             'show_compare',
             [
@@ -395,11 +385,18 @@ trait Global_Widget_Controls {
                 'default' => 'yes',
             ]
         );
-
         $this->add_control(
             'show_quick_view',
             [
                 'label' => esc_html__('Quick View', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+            ]
+        );
+        $this->add_control(
+            'show_cart',
+            [
+                'label' => esc_html__('Add to Cart', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -688,6 +685,9 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover' => 'border-color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'item_border_border!' => '',
+                ],
             ]
         );
 
@@ -727,7 +727,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'image_background',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-image',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-image',
             ]
         );
         $this->add_group_control(
@@ -735,7 +735,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'image_border',
                 'label'    => esc_html__('Image Border', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-image',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-image',
                 'separator' => 'before',
             ]
         );
@@ -747,7 +747,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -759,7 +759,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -771,7 +771,7 @@ trait Global_Widget_Controls {
                 'exclude'  => [
                     'shadow_position',
                 ],
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-image',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-image',
             ]
         );
         $this->end_controls_tab();
@@ -1289,6 +1289,97 @@ trait Global_Widget_Controls {
             [
                 'label' => esc_html__('Action Button', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'show_cart',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_wishlist',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_quick_view',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_compare',
+                            'value' => 'yes'
+                        ]
+                    ]
+                ]
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'action_btn_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a',
+                'separator' => 'before'
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_radius',
+            [
+                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_padding',
+            [
+                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_margin',
+            [
+                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_size',
+            [
+                'label'         => __('Icon Size', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'size_units'    => ['px'],
+                'range'         => [
+                    'px'        => [
+                        'min'   => 0,
+                        'max'   => 50,
+                        'step'  => 1,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'font_family',
+            [
+                'label'                 => esc_html__('Tooltip Font', 'font family'),
+                'type'                  => Controls_Manager::FONT,
+                'selectors'             => [
+                    '{{WRAPPER}} .usk-item .usk-item-box .usk-shoping a'    => 'font-family: {{VALUE}}',
+                ],
             ]
         );
         $this->start_controls_tabs(
@@ -1309,14 +1400,14 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'wishlist_icon_bg',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
@@ -1337,14 +1428,14 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'wishlist_icon_hover_bg',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
@@ -1365,17 +1456,75 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist.usk-active .icon::before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'wishlist_active_bg',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'compare_tab',
+            [
+                'label' => esc_html__('Compare', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_compare' => 'yes'
+                ]
+            ]
+        );
+        $this->add_control(
+            'compare_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare .icon:before' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg',
+            [
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'heading_compare_hover',
+            [
+                'label'     => esc_html__('Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'compare_color_hover',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare:hover .icon:before' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg_hover',
+            [
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1499,77 +1648,6 @@ trait Global_Widget_Controls {
         }
         $this->end_controls_tab();
         $this->end_controls_tabs();
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'action_btn_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a',
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_radius',
-            [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_padding',
-            [
-                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_margin',
-            [
-                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_size',
-            [
-                'label'         => __('Icon Size', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'size_units'    => ['px'],
-                'range'         => [
-                    'px'        => [
-                        'min'   => 0,
-                        'max'   => 50,
-                        'step'  => 1,
-                    ]
-                ],
-                'selectors' => [
-                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'font_family',
-            [
-                'label'                 => esc_html__('Tooltip Font', 'font family'),
-                'type'                  => Controls_Manager::FONT,
-                'default'               => "'Open Sans', sans-serif",
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-item .usk-item-box .usk-shoping a'    => 'font-family: {{VALUE}}',
-                ],
-            ]
-        );
         $this->end_controls_section();
     }
     protected function register_global_controls_grid_pagination() {
