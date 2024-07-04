@@ -2054,11 +2054,11 @@ class Product_Table extends Module_Base {
 
                                 <?php if ($settings['show_title']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-title'); ?>>
-                                        <<?php echo esc_html($settings['title_tags']); ?> <?php $this->print_render_attribute_string('usk-wc-product-title'); ?>>
+                                        <<?php echo esc_attr($settings['title_tags']); ?> <?php $this->print_render_attribute_string('usk-wc-product-title'); ?>>
                                             <a href="<?php the_permalink(); ?>" class="usk-link-reset">
                                                 <?php the_title(); ?>
                                             </a>
-                                        </<?php echo esc_html($settings['title_tags']); ?>>
+                                        </<?php echo esc_attr($settings['title_tags']); ?>>
                                     </td>
                                 <?php endif; ?>
 
