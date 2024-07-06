@@ -160,6 +160,7 @@ https://youtu.be/9J4zCaDcPnk
 = 1.6.X [XXth July 2024] =
 
 * Fixed: Translation support issue fixed (Thanks to itapress)
+* Fixed: Security issue fixed (Thanks to Darius Sveikauskas)
 
 = 1.6.4 [24th June 2024] =
 
