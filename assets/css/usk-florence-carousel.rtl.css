@@ -159,7 +159,8 @@
   padding: clamp(15px, 1vw, 30px); }
 
 .usk-florence-carousel .usk-content-inner {
-  width: 100%; }
+  width: 100%;
+  position: relative; }
 
 .usk-florence-carousel .usk-category {
   margin-bottom: clamp(12px, 1vw, 15px);
@@ -182,7 +183,8 @@
       border-color: #2b2d42; }
 
 .usk-florence-carousel .usk-title {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  display: block; }
   .usk-florence-carousel .usk-title .title {
     color: #2b2d42;
     text-transform: capitalize;
@@ -201,13 +203,16 @@
     text-decoration: none;
     padding-right: 7px; }
 
-.usk-florence-carousel .usk-rating {
-  margin-bottom: 0px; }
-  .usk-florence-carousel .usk-rating .woocommerce-product-rating {
+.usk-florence-carousel .usk-item .usk-rating {
+  margin-bottom: 0px;
+  position: absolute;
+  width: 100%;
+  display: flex; }
+  .usk-florence-carousel .usk-item .usk-rating .woocommerce-product-rating {
     display: flex;
     align-items: center;
     padding: 0; }
-    .usk-florence-carousel .usk-rating .woocommerce-product-rating .star-rating {
+    .usk-florence-carousel .usk-item .usk-rating .woocommerce-product-rating .star-rating {
       font-size: clamp(12px, 1vw, 14px);
       margin: 0; }
 
@@ -237,45 +242,6 @@
 .usk-florence-carousel .usk-carousel-layout .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0; }
-
-/*------------------------------------
-  Florence Carousel elementor-widget Css
---------------------------------------*/
-.elementor-widget-usk-florence-carousel .usk-arrows-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 40));
-  transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 40)); }
-
-.elementor-widget-usk-florence-carousel .usk-dots-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 30));
-  transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 30)); }
-
-.elementor-widget-usk-florence-carousel .usk-arrows-dots-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 40));
-  transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 40)); }
-
-.elementor-widget-usk-florence-carousel .usk-arrows-fraction-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 40));
-  transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 40)); }
-
-.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-arrows-container,
-.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-arrows-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 0)) rotate(-90deg);
-  transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 0)) rotate(-90deg); }
-
-.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-dots-container,
-.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-dots-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 0)) rotate(-90deg);
-  transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 0)) rotate(-90deg); }
-
-.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-arrows-dots-container,
-.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-arrows-dots-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 0)) rotate(-90deg);
-  transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 0)) rotate(-90deg); }
-
-.elementor-widget-usk-florence-carousel .usk-position-center-left .usk-arrows-fraction-container,
-.elementor-widget-usk-florence-carousel .usk-position-center-right .usk-arrows-fraction-container {
-  -webkit-transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 0)) rotate(-90deg);
-  transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 0)) rotate(-90deg); }
 
 @keyframes rotation {
   0% {

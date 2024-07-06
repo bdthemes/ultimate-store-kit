@@ -38,6 +38,7 @@ trait Global_Widget_Controls {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content' => 'text-align: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-rating' => 'justify-content: {{VALUE}}',
                 ],
                 'render_type' => 'template'
             ]
@@ -2836,7 +2837,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-ncx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-ncx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -2862,7 +2863,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-ncy: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-ncy: {{SIZE}}px;'
                 ],
                 'conditions'   => [
                     'terms' => [
@@ -2947,7 +2948,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-dots-nnx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-dots-nnx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -2986,7 +2987,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-dots-nny: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-dots-nny: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3025,7 +3026,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-both-ncx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-both-ncx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3064,7 +3065,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-both-ncy: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-both-ncy: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3168,7 +3169,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-fraction-ncx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-fraction-ncx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3207,7 +3208,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-fraction-ncy: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-fraction-ncy: {{SIZE}}px;'
                 ],
             ]
         );

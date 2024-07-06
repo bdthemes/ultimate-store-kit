@@ -243,6 +243,7 @@ $usk-color: #674399;
 
 	.usk-content-inner {
 		width: 100%;
+		position: relative;
 	}
 
 	.usk-category {
@@ -272,7 +273,7 @@ $usk-color: #674399;
 
 	.usk-title {
 		margin-bottom: 10px;
-
+		display: block;
 		.title {
 			color: #2b2d42;
 			text-transform: capitalize;
@@ -298,8 +299,11 @@ $usk-color: #674399;
 		}
 	}
  
-	.usk-rating {
+	.usk-item .usk-rating {
 		margin-bottom: 0px;
+		position: absolute;
+		width: 100%;
+		display: flex;
 		.woocommerce-product-rating {
 			display: flex;
 			align-items: center;

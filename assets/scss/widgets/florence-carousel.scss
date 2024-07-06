@@ -1,8 +1,6 @@
 .usk-florence-carousel {
 	.usk-carousel {
 		width: 100%;
-		// display: grid;
-		// grid-gap: 40px;
 	}
 
 	.usk-item {
@@ -244,6 +242,7 @@
 
 	.usk-content-inner {
 		width: 100%;
+		position: relative;
 	}
 
 	.usk-category {
@@ -273,7 +272,7 @@
 
 	.usk-title {
 		margin-bottom: 10px;
-
+		display: block;
 		.title {
 			color: #2b2d42;
 			text-transform: capitalize;
@@ -298,9 +297,12 @@
 			padding-left: 7px;
 		}
 	}
- 
-	.usk-rating {
+
+	.usk-item .usk-rating {
 		margin-bottom: 0px;
+		position: absolute;
+		width: 100%;
+		display: flex;
 		.woocommerce-product-rating {
 			display: flex;
 			align-items: center;
@@ -352,54 +354,6 @@
 					opacity: 0;
 				}
 			}
-		}
-	}
-}
-
-/*------------------------------------
-  Florence Carousel elementor-widget Css
---------------------------------------*/
-.elementor-widget-usk-florence-carousel {
-	.usk-arrows-container {
-		-webkit-transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 40));
-		transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 40));
-	}
-
-	.usk-dots-container {
-		-webkit-transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 30));
-		transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 30));
-	}
-
-	.usk-arrows-dots-container {
-		-webkit-transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 40));
-		transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 40));
-	}
-
-	.usk-arrows-fraction-container {
-		-webkit-transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 40));
-		transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 40));
-	}
-
-	.usk-position-center-left,
-	.usk-position-center-right {
-		.usk-arrows-container {
-			-webkit-transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 0)) rotate(90deg);
-			transform: translate(var(--usk-florence-carousel-arrows-ncx, 0), var(--usk-florence-carousel-arrows-ncy, 0)) rotate(90deg);
-		}
-
-		.usk-dots-container {
-			-webkit-transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 0)) rotate(90deg);
-			transform: translate(var(--usk-florence-carousel-dots-nnx, 0), var(--usk-florence-carousel-dots-nny, 0)) rotate(90deg);
-		}
-
-		.usk-arrows-dots-container {
-			-webkit-transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 0)) rotate(90deg);
-			transform: translate(var(--usk-florence-carousel-both-ncx, 0), var(--usk-florence-carousel-both-ncy, 0)) rotate(90deg);
-		}
-
-		.usk-arrows-fraction-container {
-			-webkit-transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
-			transform: translate(var(--usk-florence-carousel-arrows-fraction-ncx, 0), var(--usk-florence-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
 		}
 	}
 }
