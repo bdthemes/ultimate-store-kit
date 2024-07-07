@@ -15,7 +15,8 @@
     opacity: 1; }
 
 .usk-florence-carousel .usk-item-box {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .usk-florence-carousel .usk-image {
   position: relative;
@@ -117,8 +118,9 @@
 
 .usk-florence-carousel .usk-badge-label-wrapper {
   position: absolute;
-  left: clamp(10px, 1vw, 25px);
-  top: clamp(10px, 1vw, 25px); }
+  left: 0;
+  top: 0;
+  margin: clamp(10px, 1vw, 25px); }
 
 .usk-florence-carousel .usk-badge-label-content {
   gap: clamp(5px, 1vw, 10px); }
@@ -216,30 +218,21 @@
       font-size: clamp(12px, 1vw, 14px);
       margin: 0; }
 
-.usk-florence-carousel .usk-carousel-layout .usk-item-box {
-  overflow: hidden; }
-
-.usk-florence-carousel .usk-carousel-layout .usk-desc {
-  display: none; }
-
-.usk-florence-carousel .usk-carousel-layout .usk-price {
-  margin: 0; }
-
-.usk-florence-carousel .usk-carousel-layout .usk-have-rating .usk-price {
+.usk-florence-carousel .usk-have-rating .usk-price {
   opacity: 1;
   transition: all 0.3s ease;
   transform: translateY(0); }
 
-.usk-florence-carousel .usk-carousel-layout .usk-have-rating .usk-rating {
+.usk-florence-carousel .usk-have-rating .usk-rating {
   transform: translateY(0);
   opacity: 0;
   transition: all 0.3s ease; }
 
-.usk-florence-carousel .usk-carousel-layout .usk-have-rating:hover .usk-rating {
+.usk-florence-carousel .usk-have-rating:hover .usk-rating {
   transform: translateY(-20px);
   opacity: 1; }
 
-.usk-florence-carousel .usk-carousel-layout .usk-have-rating:hover .usk-price {
+.usk-florence-carousel .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0; }
 

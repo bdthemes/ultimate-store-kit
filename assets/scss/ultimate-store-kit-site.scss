@@ -82,60 +82,57 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
+    }
+    .woocommerce-result-count {
+        display: flex;
+        align-items: center;
+        color: #8d99ae;
+        font-size: 16px;
+        margin: 0;
+        text-transform: capitalize;
+    }
+    // Filter Tabs CSS
+    .usk-grid-header-tabs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-        .woocommerce-result-count {
-            display: flex;
-            align-items: center;
-            color: #8d99ae;
-            font-size: 16px;
-            margin: 0;
-            text-transform: capitalize;
-        }
-
-        // Filter Tabs CSS
-        .usk-grid-header-tabs {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-
-            .usk-grid-tabs-list {
-                &.usk-tabs-active {
-                    a {
-                        color: #E6EDEF;
-                        background: #2B2D42;
-                    }
-                }
-
-                a {
-                    padding: 4px 9px;
-                    color: #8D99AE;
-                    border: var(--usk-filter-border-width, 1px) solid #cad7ef;
-                    border-right: 0;
-                    transition: all 0.3s ease;
-                    font-size: 14px;
-                    display: inline-block;
-
-                    span {
-                        width: auto;
-                    }
-
-                    &:hover {
-                        color: #E6EDEF;
-                        background: #2B2D42;
-                    }
-                }
-
-                &:nth-last-child(1) {
-                    a {
-                        border-right: var(--usk-filter-border-width, 1px) solid #cad7ef
-                    }
-                }
+    }
+    .usk-grid-tabs-list {
+        &.usk-tabs-active {
+            a {
+                color: #E6EDEF;
+                background: #2B2D42;
             }
         }
 
+        a {
+            padding: 4px 9px;
+            color: #8D99AE;
+            border: var(--usk-filter-border-width, 1px) solid #cad7ef;
+            border-right: 0;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+
+            span {
+                width: auto;
+            }
+
+            &:hover {
+                color: #E6EDEF;
+                background: #2B2D42;
+            }
+        }
+
+        &:nth-last-child(1) {
+            a {
+                border-right: var(--usk-filter-border-width, 1px) solid #cad7ef
+            }
+        }
     }
 }
 
@@ -189,31 +186,48 @@
     }
 }
 
-// Ultimate Store Kit Florence Widget
+// CLS issue fix for Florence Grid
 .usk-florence-grid {
-    .usk-grid {
-        .usk-item {
-            .usk-item-box {
-                .usk-image {
-                    .usk-shoping {
-                        .usk-action-btn {
-                            opacity: 0;
-                            transition: all 0.3s ease;
-                        }
-                    }
-                }
-            }
+	.usk-grid {
+		display: grid;
+	}
+    .usk-grid-layout {
+		grid-template-columns: repeat(1, 1fr);
+    }
+    .usk-list-layout {
+		grid-template-columns: repeat(1, 1fr);
+    }
+    .image-hover {
+        position: absolute;
+        opacity: 0;
+    }
+    .usk-action-btn {
+		opacity: 0;
+    }
+}
+@media (min-width: 768px) {
+	.usk-florence-grid {
+		.usk-grid-layout {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+@media (min-width: 1024px) {
+	.usk-florence-grid {
+		.usk-grid-layout {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		.usk-list-layout {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
 
-            &:hover {
-                .usk-image {
-                    .usk-shoping {
-                        .usk-action-btn {
-                            opacity: 1;
-                        }
-                    }
-                }
-            }
-        }
+// Swiper CLS issue fix
+[class*=" elementor-widget-usk-"] {
+    .swiper:not(.swiper-initialized) {
+        opacity: 0;
+        visibility: hidden;
     }
 }
 

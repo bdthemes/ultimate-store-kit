@@ -28,6 +28,7 @@
 
 	.usk-item-box {
 		position: relative;
+		overflow: hidden;
 	}
 
 	.usk-image {
@@ -178,8 +179,9 @@
 
 	.usk-badge-label-wrapper {
 		position: absolute;
-		left: clamp(10px, 1vw, 25px);
-		top: clamp(10px, 1vw, 25px);
+		left: 0;
+		top: 0;
+		margin: clamp(10px, 1vw, 25px);
 	}
 
 	.usk-badge-label-content {
@@ -314,45 +316,29 @@
 			}
 		}
 	}
-
-	.usk-carousel-layout {
-		// grid-template-columns: repeat(1, 1fr);
-
-		.usk-item-box {
-			overflow: hidden;
-		}
-		.usk-desc {
-			display: none;
-		}
+	.usk-have-rating {
 
 		.usk-price {
-			margin: 0;
+			opacity: 1;
+			transition: all 0.3s ease;
+			transform: translateY(0);
 		}
 
-		.usk-have-rating {
+		.usk-rating {
+			transform: translateY(0);
+			opacity: 0;
+			transition: all 0.3s ease;
+		}
+
+		&:hover {
+			.usk-rating {
+				transform: translateY(-20px);
+				opacity: 1;
+			}
 
 			.usk-price {
-				opacity: 1;
-				transition: all 0.3s ease;
-				transform: translateY(0);
-			}
-
-			.usk-rating {
-				transform: translateY(0);
+				transform: translateY(-20px);
 				opacity: 0;
-				transition: all 0.3s ease;
-			}
-
-			&:hover {
-				.usk-rating {
-					transform: translateY(-20px);
-					opacity: 1;
-				}
-
-				.usk-price {
-					transform: translateY(-20px);
-					opacity: 0;
-				}
 			}
 		}
 	}

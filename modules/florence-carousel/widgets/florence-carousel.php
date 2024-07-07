@@ -4,13 +4,9 @@ namespace UltimateStoreKit\Modules\FlorenceCarousel\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Typography;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
-// use UltimateStoreKit\traits\Global_Swiper_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
 

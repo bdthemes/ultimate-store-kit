@@ -3,8 +3,6 @@ $usk-color: #674399;
 .usk-florence-grid {
 	.usk-grid {
 		width: 100%;
-		display: grid;
-		grid-gap: 40px;
 	}
 
 	.usk-item {
@@ -25,6 +23,7 @@ $usk-color: #674399;
 			}
 			.usk-action-btn {
 				transform: translateX(0px);
+				opacity: 1;
 			}
 		}
 	}
@@ -53,13 +52,11 @@ $usk-color: #674399;
 	}
 
 	.image-hover {
-		position: absolute;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		transition: all 0.5s ease;
-		opacity: 0;
 		transition:
 			transform 0.5s cubic-bezier(0, 0, 0.44, 1.18),
 			opacity 0.5s;
@@ -80,6 +77,7 @@ $usk-color: #674399;
 		transform: translateX(25px);
 		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 		padding: clamp(10px, 1vw, 12px);
+        transition: all 0.3s ease;
 		&:nth-last-child(1) {
 			margin-bottom: 0;
 		}
@@ -179,8 +177,9 @@ $usk-color: #674399;
 
 	.usk-badge-label-wrapper {
 		position: absolute;
-		left: clamp(10px, 1vw, 25px);
-		top: clamp(10px, 1vw, 25px);
+		left: 0;
+		top: 0;
+		margin: clamp(10px, 1vw, 25px);
 	}
 
 	.usk-badge-label-content {
@@ -274,8 +273,8 @@ $usk-color: #674399;
 	.usk-title {
 		margin-bottom: 10px;
 		display: block;
+		color: #2b2d42;
 		.title {
-			color: #2b2d42;
 			text-transform: capitalize;
 			font-weight: 700;
 			font-size: clamp(16px, 1vw, 18px);
@@ -301,9 +300,6 @@ $usk-color: #674399;
  
 	.usk-item .usk-rating {
 		margin-bottom: 0px;
-		position: absolute;
-		width: 100%;
-		display: flex;
 		.woocommerce-product-rating {
 			display: flex;
 			align-items: center;
@@ -317,8 +313,6 @@ $usk-color: #674399;
 	}
 
 	.usk-grid-layout {
-		grid-template-columns: repeat(1, 1fr);
-
 		.usk-item-box {
 			overflow: hidden;
 		}
@@ -356,10 +350,14 @@ $usk-color: #674399;
 				}
 			}
 		}
+		.usk-rating {
+			position: absolute;
+			width: 100%;
+			display: flex;
+		}
 	}
 
 	.usk-list-layout {
-		grid-template-columns: repeat(1, 1fr);
 		.usk-item-box {
 			display: flex;
 			align-items: center;
@@ -393,19 +391,7 @@ $usk-color: #674399;
 
 @media (min-width: 768px) {
 	.usk-florence-grid {
-		.usk-grid-layout {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-}
-
-@media (min-width: 1024px) {
-	.usk-florence-grid {
-		.usk-grid-layout {
-			grid-template-columns: repeat(3, 1fr);
-		}
 		.usk-list-layout {
-			grid-template-columns: repeat(2, 1fr);
 			.usk-desc {
 				display: inherit;
 			}
