@@ -1,10 +1,6 @@
 $usk-color: #674399;
 
 .usk-florence-grid {
-	.usk-grid {
-		width: 100%;
-	}
-
 	.usk-item {
 		box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
 		overflow: hidden;
@@ -78,6 +74,12 @@ $usk-color: #674399;
 		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 		padding: clamp(10px, 1vw, 12px);
         transition: all 0.3s ease;
+		color: #000;
+		background: #fff;
+		&:hover {
+			background: #2b2d42;
+			color: #fff;
+		}
 		&:nth-last-child(1) {
 			margin-bottom: 0;
 		}
@@ -91,49 +93,23 @@ $usk-color: #674399;
 	}
 
 	.usk-shoping-icon-wishlist {
-		color: #000;
-		background: #fff;
-
-		&:hover {
-			background-color: #2b2d42;
-			color: #fff;
-		}
-
 		transition: all 0.3s ease;
-
 		&.usk-active {
 			background-color: #d90429;
 			color: #fff;
-
-			&:hover {
-				background-color: #d90429;
-			}
 		}
 	}
 
 	.usk-compare {
-		transition: all 0.5s ease;
-		color: #000;
-		background: #fff;
-
-		&:hover {
-			background-color: #2b2d42;
-			color: #fff;
-		}
+		transition: all 0.4s ease;
 	}
 
 	.usk-shoping-icon-quickview {
-		transition: all 0.6s ease;
-		color: #000;
-		background: #fff;
-
-		&:hover {
-			background-color: #2b2d42;
-			color: #fff;
-		}
+		transition: all 0.5s ease;
 	}
 
 	.usk-cart {
+		transition: all 0.6s ease;
 		&.added {
 			i {
 				&::before {
@@ -164,15 +140,6 @@ $usk-color: #674399;
 				}
 			}
 		}
-
-		transition: all 0.7s ease;
-		color: #000;
-		background: #fff;
-
-		&:hover {
-			background-color: #2b2d42;
-			color: #fff;
-		}
 	}
 
 	.usk-badge-label-wrapper {
@@ -180,56 +147,6 @@ $usk-color: #674399;
 		left: 0;
 		top: 0;
 		margin: clamp(10px, 1vw, 25px);
-	}
-
-	.usk-badge-label-content {
-		gap: clamp(5px, 1vw, 10px);
-
-		>div {
-			display: inline-flex;
-
-			.usk-badge {
-				text-decoration: none;
-				padding: clamp(3px, 1vw, 4px) clamp(5px, 1vw, 8px);
-				font-size: clamp(10px, 1vw, 12px);
-				border-radius: 1px;
-				text-transform: capitalize;
-			}
-		}
-	}
-
-	.usk-sale-badge {
-		.usk-badge {
-			background: #2b2d42;
-			color: #fff;
-		}
-	}
-	.usk-percantage-badge {
-		.usk-badge {
-			background: #9fa8bc;
-			color: #fff;
-		}
-	}
-
-	.usk-stock-status-badge {
-		.usk-badge {
-			background: #ef233c;
-			color: #fff;
-		}
-	}
-
-	.usk-trending-badge {
-		.usk-badge {
-			background: #ff006e;
-			color: #fff;
-		}
-	}
-
-	.usk-new-badge {
-		.usk-badge {
-			background: #d90429;
-			color: #fff;
-		}
 	}
 
 	.usk-content {

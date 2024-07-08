@@ -670,37 +670,68 @@ div.pp_pic_holder {
   transform: translateY(0px);
   opacity: 1; }
 
-.usk-glossy-grid .usk-grid .usk-item .usk-item-box .usk-shoping .usk-action-btn {
-  transform: translateY(-70px);
-  opacity: 0; }
+[class*=" elementor-widget-usk-"] .usk-badge-label-content {
+  gap: clamp(5px, 1vw, 10px); }
+  [class*=" elementor-widget-usk-"] .usk-badge-label-content > div {
+    display: inline-flex; }
+    [class*=" elementor-widget-usk-"] .usk-badge-label-content > div .usk-badge {
+      text-decoration: none;
+      padding: clamp(3px, 1vw, 4px) clamp(5px, 1vw, 8px);
+      font-size: clamp(10px, 1vw, 12px);
+      border-radius: 1px;
+      text-transform: capitalize; }
 
-.usk-glossy-grid .usk-grid .usk-item:hover .usk-shoping .usk-action-btn {
-  transform: translateY(0px);
-  opacity: 1; }
+[class*=" elementor-widget-usk-"] .usk-sale-badge .usk-badge {
+  background: #2b2d42;
+  color: #fff; }
 
+[class*=" elementor-widget-usk-"] .usk-percantage-badge .usk-badge {
+  background: #9fa8bc;
+  color: #fff; }
+
+[class*=" elementor-widget-usk-"] .usk-stock-status-badge .usk-badge {
+  background: #ef233c;
+  color: #fff; }
+
+[class*=" elementor-widget-usk-"] .usk-trending-badge .usk-badge {
+  background: #ff006e;
+  color: #fff; }
+
+[class*=" elementor-widget-usk-"] .usk-new-badge .usk-badge {
+  background: #d90429;
+  color: #fff; }
+
+.usk-glossy-grid .usk-grid,
 .usk-florence-grid .usk-grid {
   display: grid; }
 
+.usk-glossy-grid .usk-grid-layout,
 .usk-florence-grid .usk-grid-layout {
   grid-template-columns: repeat(1, 1fr); }
 
+.usk-glossy-grid .usk-list-layout,
 .usk-florence-grid .usk-list-layout {
   grid-template-columns: repeat(1, 1fr); }
 
+.usk-glossy-grid .image-hover,
 .usk-florence-grid .image-hover {
   position: absolute;
   opacity: 0; }
 
+.usk-glossy-grid .usk-action-btn,
 .usk-florence-grid .usk-action-btn {
   opacity: 0; }
 
 @media (min-width: 768px) {
+  .usk-glossy-grid .usk-grid-layout,
   .usk-florence-grid .usk-grid-layout {
     grid-template-columns: repeat(2, 1fr); } }
 
 @media (min-width: 1024px) {
+  .usk-glossy-grid .usk-grid-layout,
   .usk-florence-grid .usk-grid-layout {
     grid-template-columns: repeat(3, 1fr); }
+  .usk-glossy-grid .usk-list-layout,
   .usk-florence-grid .usk-list-layout {
     grid-template-columns: repeat(2, 1fr); } }
 

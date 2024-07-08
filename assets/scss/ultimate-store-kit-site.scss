@@ -161,32 +161,61 @@
     }
 }
 
-// Ultimate Store Kit Glossy Widget
-.usk-glossy-grid {
-    .usk-grid {
-        .usk-item {
-            .usk-item-box {
-                .usk-shoping {
-                    .usk-action-btn {
-                        transform: translateY(-70px);
-                        opacity: 0;
-                    }
-                }
-            }
+// Common CSS for Florence Grid & Glossy Grid
+[class*=" elementor-widget-usk-"] {
+    .usk-badge-label-content {
+		gap: clamp(5px, 1vw, 10px);
 
-            &:hover {
-                .usk-shoping {
-                    .usk-action-btn {
-                        transform: translateY(0px);
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-    }
+		>div {
+			display: inline-flex;
+
+			.usk-badge {
+				text-decoration: none;
+				padding: clamp(3px, 1vw, 4px) clamp(5px, 1vw, 8px);
+				font-size: clamp(10px, 1vw, 12px);
+				border-radius: 1px;
+				text-transform: capitalize;
+			}
+		}
+	}
+
+	.usk-sale-badge {
+		.usk-badge {
+			background: #2b2d42;
+			color: #fff;
+		}
+	}
+	.usk-percantage-badge {
+		.usk-badge {
+			background: #9fa8bc;
+			color: #fff;
+		}
+	}
+
+	.usk-stock-status-badge {
+		.usk-badge {
+			background: #ef233c;
+			color: #fff;
+		}
+	}
+
+	.usk-trending-badge {
+		.usk-badge {
+			background: #ff006e;
+			color: #fff;
+		}
+	}
+
+	.usk-new-badge {
+		.usk-badge {
+			background: #d90429;
+			color: #fff;
+		}
+	}
 }
 
-// CLS issue fix for Florence Grid
+// CLS issue fix for Florence Grid & Glossy Grid
+.usk-glossy-grid,
 .usk-florence-grid {
 	.usk-grid {
 		display: grid;
@@ -206,6 +235,7 @@
     }
 }
 @media (min-width: 768px) {
+	.usk-glossy-grid,
 	.usk-florence-grid {
 		.usk-grid-layout {
 			grid-template-columns: repeat(2, 1fr);
@@ -213,6 +243,7 @@
 	}
 }
 @media (min-width: 1024px) {
+	.usk-glossy-grid,
 	.usk-florence-grid {
 		.usk-grid-layout {
 			grid-template-columns: repeat(3, 1fr);

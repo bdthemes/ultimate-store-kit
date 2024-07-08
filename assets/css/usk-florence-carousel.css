@@ -1,6 +1,3 @@
-.usk-florence-carousel .usk-carousel {
-  width: 100%; }
-
 .usk-florence-carousel .usk-item {
   box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
   overflow: hidden; }
@@ -56,7 +53,12 @@
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   padding: clamp(10px, 1vw, 12px);
   opacity: 0;
-  transition: all 0.3s ease; }
+  transition: all 0.3s ease;
+  color: #000;
+  background: #fff; }
+  .usk-florence-carousel .usk-action-btn:hover {
+    background: #2b2d42;
+    color: #fff; }
   .usk-florence-carousel .usk-action-btn:nth-last-child(1) {
     margin-bottom: 0; }
   .usk-florence-carousel .usk-action-btn.added_to_cart {
@@ -65,38 +67,19 @@
     font-size: clamp(12px, 1vw, 14px); }
 
 .usk-florence-carousel .usk-shoping-icon-wishlist {
-  color: #000;
-  background: #fff;
   transition: all 0.3s ease; }
-  .usk-florence-carousel .usk-shoping-icon-wishlist:hover {
-    background-color: #2b2d42;
-    color: #fff; }
   .usk-florence-carousel .usk-shoping-icon-wishlist.usk-active {
     background-color: #d90429;
     color: #fff; }
-    .usk-florence-carousel .usk-shoping-icon-wishlist.usk-active:hover {
-      background-color: #d90429; }
 
 .usk-florence-carousel .usk-compare {
-  transition: all 0.5s ease;
-  color: #000;
-  background: #fff; }
-  .usk-florence-carousel .usk-compare:hover {
-    background-color: #2b2d42;
-    color: #fff; }
+  transition: all 0.5s ease; }
 
 .usk-florence-carousel .usk-shoping-icon-quickview {
-  transition: all 0.6s ease;
-  color: #000;
-  background: #fff; }
-  .usk-florence-carousel .usk-shoping-icon-quickview:hover {
-    background-color: #2b2d42;
-    color: #fff; }
+  transition: all 0.6s ease; }
 
 .usk-florence-carousel .usk-cart {
-  transition: all 0.7s ease;
-  color: #000;
-  background: #fff; }
+  transition: all 0.7s ease; }
   .usk-florence-carousel .usk-cart.added i::before {
     display: none; }
   .usk-florence-carousel .usk-cart.added i::after {
@@ -112,46 +95,12 @@
     border-radius: 50%;
     display: inline-block;
     animation: rotation 2s linear infinite; }
-  .usk-florence-carousel .usk-cart:hover {
-    background-color: #2b2d42;
-    color: #fff; }
 
 .usk-florence-carousel .usk-badge-label-wrapper {
   position: absolute;
   left: 0;
   top: 0;
   margin: clamp(10px, 1vw, 25px); }
-
-.usk-florence-carousel .usk-badge-label-content {
-  gap: clamp(5px, 1vw, 10px); }
-  .usk-florence-carousel .usk-badge-label-content > div {
-    display: inline-flex; }
-    .usk-florence-carousel .usk-badge-label-content > div .usk-badge {
-      text-decoration: none;
-      padding: clamp(3px, 1vw, 4px) clamp(5px, 1vw, 8px);
-      font-size: clamp(10px, 1vw, 12px);
-      border-radius: 1px;
-      text-transform: capitalize; }
-
-.usk-florence-carousel .usk-sale-badge .usk-badge {
-  background: #2b2d42;
-  color: #fff; }
-
-.usk-florence-carousel .usk-percantage-badge .usk-badge {
-  background: #9fa8bc;
-  color: #fff; }
-
-.usk-florence-carousel .usk-stock-status-badge .usk-badge {
-  background: #ef233c;
-  color: #fff; }
-
-.usk-florence-carousel .usk-trending-badge .usk-badge {
-  background: #ff006e;
-  color: #fff; }
-
-.usk-florence-carousel .usk-new-badge .usk-badge {
-  background: #d90429;
-  color: #fff; }
 
 .usk-florence-carousel .usk-content {
   display: flex;
