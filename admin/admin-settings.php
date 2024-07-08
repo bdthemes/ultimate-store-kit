@@ -3,8 +3,6 @@
 use UltimateStoreKit\Classes\Utils;
 use UltimateStoreKit\Admin\ModuleService;
 use Elementor\Tracker;
-use UltimateStoreKit\Notices;
-use UltimateStoreKit\Base\Ultimate_Store_Kit_Module_Base;
 use Elementor\Modules\Usage\Module;
 
 
@@ -412,10 +410,10 @@ class UltimateStoreKit_Admin_Settings {
 
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
-                <h1 class="bdt-feature-title">All Widgets</h1>
-                <div class="bdt-widget-count">Used: <b><?php echo esc_html($used_widgets); ?></b></div>
-                <div class="bdt-widget-count">Unused: <b><?php echo esc_html($un_used_widgets); ?></b></div>
-                <div class="bdt-widget-count">Total:
+                <h1 class="bdt-feature-title"><?php esc_html_e('All Widgets', 'ultimate-store-kit'); ?></h1>
+                <div class="bdt-widget-count"><?php esc_html_e('Used: ', 'ultimate-store-kit'); ?> <b><?php echo esc_html($used_widgets); ?></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Unused: ', 'ultimate-store-kit'); ?> <b><?php echo esc_html($un_used_widgets); ?></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Total: ', 'ultimate-store-kit'); ?>
                   <b><?php echo esc_html($used_widgets) + esc_html($un_used_widgets); ?></b>
                 </div>
               </div>
@@ -438,10 +436,10 @@ class UltimateStoreKit_Admin_Settings {
 
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
-                <h1 class="bdt-feature-title">WooCommerce</h1>
-                <div class="bdt-widget-count">Used: <b><?php echo esc_html($used_only_widgets); ?></b></div>
-                <div class="bdt-widget-count">Unused: <b><?php echo esc_html($unused_only_widgets); ?></b></div>
-                <div class="bdt-widget-count">Total:
+                <h1 class="bdt-feature-title"><?php esc_html_e('WooCommerce', 'ultimate-store-kit'); ?></h1>
+                <div class="bdt-widget-count"><?php esc_html_e('Used: ', 'ultimate-store-kit'); ?><b><?php echo esc_html($used_only_widgets); ?></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Unused: ', 'ultimate-store-kit'); ?><b><?php echo esc_html($unused_only_widgets); ?></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Total: ', 'ultimate-store-kit'); ?>
                   <b><?php echo esc_html($used_only_widgets) + esc_html($unused_only_widgets); ?></b>
                 </div>
               </div>
@@ -464,10 +462,10 @@ class UltimateStoreKit_Admin_Settings {
 
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
-                <h1 class="bdt-feature-title">EDD</h1>
-                <div class="bdt-widget-count">Used: <b><?php echo esc_html($used_only_edd_widgets); ?></b></div>
-                <div class="bdt-widget-count">Unused: <b><?php echo esc_html($unused_only_edd_widgets); ?></b></div>
-                <div class="bdt-widget-count">Total: <b><?php echo esc_html($used_only_edd_widgets) + esc_html($unused_only_edd_widgets); ?></b>
+                <h1 class="bdt-feature-title"><?php esc_html_e('EDD', 'ultimate-store-kit'); ?></h1>
+                <div class="bdt-widget-count"><?php esc_html_e('Used: ', 'ultimate-store-kit'); ?><b><?php echo esc_html($used_only_edd_widgets); ?></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Unused: ', 'ultimate-store-kit'); ?><b><?php echo esc_html($unused_only_edd_widgets); ?></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Total: ', 'ultimate-store-kit'); ?><b><?php echo esc_html($used_only_edd_widgets) + esc_html($unused_only_edd_widgets); ?></b>
                 </div>
               </div>
 
@@ -484,10 +482,10 @@ class UltimateStoreKit_Admin_Settings {
 
             <div class="bdt-count-canvas-wrap bdt-flex bdt-flex-between">
               <div class="bdt-count-wrap">
-                <h1 class="bdt-feature-title">Active</h1>
-                <div class="bdt-widget-count">WooCommerce: <b id="bdt-total-widgets-status-core"></b></div>
-                <div class="bdt-widget-count">EDD: <b id="bdt-total-widgets-status-3rd"></b></div>
-                <div class="bdt-widget-count">Total: <b id="bdt-total-widgets-status-heading"></b></div>
+                <h1 class="bdt-feature-title"><?php esc_html_e('Active', 'ultimate-store-kit'); ?></h1>
+                <div class="bdt-widget-count"><?php esc_html_e('WooCommerce: ', 'ultimate-store-kit'); ?><b id="bdt-total-widgets-status-core"></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('EDD: ', 'ultimate-store-kit'); ?><b id="bdt-total-widgets-status-3rd"></b></div>
+                <div class="bdt-widget-count"><?php esc_html_e('Total: ', 'ultimate-store-kit'); ?><b id="bdt-total-widgets-status-heading"></b></div>
               </div>
 
               <div class="bdt-canvas-wrap">
@@ -502,21 +500,19 @@ class UltimateStoreKit_Admin_Settings {
       <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
         <div class="bdt-width-1-3@m bdt-support-section">
           <div class="bdt-support-content bdt-card bdt-card-body">
-            <h1 class="bdt-feature-title">Support And Feedback</h1>
-            <p>Feeling like to consult with an expert? Take live Chat support immediately from <a href="https://storekit.pro/" target="_blank" rel="">UltimteStoreKit</a>. We are always
-              ready to help
-              you 24/7.</p>
-            <p><strong>Or if you’re facing technical issues with our plugin, then please create a support
-                ticket</strong></p>
-            <a class="bdt-button bdt-btn-blue bdt-margin-small-top bdt-margin-small-right" target="_blank" rel="" href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/">Knowledge
-              Base</a>
-            <a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" href="https://bdthemes.com/support/">Get Support</a>
+            <?php 
+            echo '<h1 class="bdt-feature-title">' . esc_html__('Support And Feedback', 'ultimate-store-kit') . '</h1>';
+            echo '<p>' . esc_html__('Feeling like to consult with an expert? Take live Chat support immediately from', 'ultimate-store-kit') . ' <a href="https://storekit.pro/" target="_blank" rel="">UltimteStoreKit</a>. ' . esc_html__('We are always ready to help you 24/7.', 'ultimate-store-kit') . '</p>';
+            echo '<p><strong>' . esc_html__('Or if you’re facing technical issues with our plugin, then please create a support ticket', 'ultimate-store-kit') . '</strong></p>';
+            echo '<a class="bdt-button bdt-btn-blue bdt-margin-small-top bdt-margin-small-right" target="_blank" rel="" href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/">' . esc_html__('Knowledge Base', 'ultimate-store-kit') . '</a>';
+            echo '<a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" href="https://bdthemes.com/support/">' . esc_html__('Get Support', 'ultimate-store-kit') . '</a>';
+            ?>
           </div>
         </div>
 
         <div class="bdt-width-2-3@m">
           <div class="bdt-card bdt-card-body bdt-system-requirement">
-            <h1 class="bdt-feature-title bdt-margin-small-bottom">System Requirement</h1>
+            <h1 class="bdt-feature-title bdt-margin-small-bottom"><?php esc_html_e('System Requirement', 'ultimate-store-kit'); ?></h1>
             <?php $this->ultimate_store_kit_system_requirement(); ?>
           </div>
         </div>
@@ -524,26 +520,29 @@ class UltimateStoreKit_Admin_Settings {
       <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card">
         <div class="bdt-width-1-2@m bdt-support-section">
           <div class="bdt-card bdt-card-body bdt-feedback-bg">
-            <h1 class="bdt-feature-title">Missing Any Feature?</h1>
-            <p style="max-width: 520px;">Are you in need of a feature that’s not available in our plugin?
-              Feel free to do a feature request from here,</p>
-            <a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" rel="" href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests/">Request Feature</a>
+            <?php 
+            echo '<h1 class="bdt-feature-title">' . esc_html__('Feedback', 'ultimate-store-kit') . '</h1>'; 
+            echo '<p>' . esc_html__('We are always looking for feedback from our users. If you have any suggestions or feedback, please let us know.', 'ultimate-store-kit') . '</p>';
+            echo '<a class="bdt-button bdt-btn-grey bdt-margin-small-top" target="_blank" rel="" href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests/">' . esc_html__('Request Feature', 'ultimate-store-kit') . '</a>';
+            ?>
           </div>
         </div>
 
         <div class="bdt-width-1-2@m">
           <div class="bdt-card bdt-card-body bdt-tryaddon-bg">
-            <h1 class="bdt-feature-title">Try Our Others Addons</h1>
-            <p style="max-width: 520px;">
-              <b>Element Pack, Prime Slider, Ultimate Post Kit, Pixel Gallery & Live Copy Paste </b> addons for <b>Elementor</b> is the best slider, blogs and eCommerce plugin for WordPress.
-            </p>
-            <div class="bdt-others-plugins-link">
-              <a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">Element pack</a>
-              <a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="">Prime Slider</a>
-              <a class="bdt-button bdt-btn-upk bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/ultimate-post-kit/" bdt-tooltip="Best blogging addon for building quality blogging website with fine-tuned features and widgets. It's Free! Download it.">Ultimate Post Kit</a>
-              <a class="bdt-button bdt-btn-pg bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/pixel-gallery/" bdt-tooltip="Pixel Gallery provides more than 30+ essential elements for everyday applications to simplify the whole web building process. It's Free! Download it.">Pixel Gallery</a>
-              <a class="bdt-button bdt-btn-live-copy bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/live-copy-paste/" bdt-tooltip="Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience. It's Free! Download it.">Live Copy Paste</a>
-            </div>
+            <?php 
+            echo '<h1 class="bdt-feature-title">' . esc_html__('Try Our Others Plugins', 'ultimate-store-kit') . '</h1>';
+            echo '<p style="max-width: 520px;">' . esc_html__('Element Pack, Prime Slider, Ultimate Post Kit, Pixel Gallery & Live Copy Paste addons for Elementor is the best slider, blogs and eCommerce plugin for WordPress. Also, try our new plugin ZoloBlocks for Gutenberg.', 'ultimate-store-kit') . '</p>';
+            echo '<div class="bdt-others-plugins-link">';
+            echo '<a class="bdt-button bdt-btn-ep bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/bdthemes-element-pack-lite/" bdt-tooltip="'. esc_html__('Element Pack Lite provides more than 50+ essential elements for everyday applications to simplify the whole web building process. It\'s Free! Download it.', 'ultimate-store-kit') .'">'. esc_html__('Element pack', 'ultimate-store-kit') .'</a>';
+            echo '<a class="bdt-button bdt-btn-ps bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/bdthemes-prime-slider-lite/" bdt-tooltip="'. esc_html__('The revolutionary slider builder addon for Elementor with next-gen superb interface. It\'s Free! Download it.', 'ultimate-store-kit') .'">'. esc_html__('Prime Slider', 'ultimate-store-kit') .'</a>';
+            echo '<a class="bdt-button bdt-btn-zb bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/zoloblocks/" bdt-tooltip="'. esc_html__('ZoloBlocks is a collection of creative Gutenberg blocks for WordPress. It\'s Free! Download it.', 'ultimate-store-kit') .'">'. esc_html__('ZoloBlocks', 'ultimate-store-kit') .'</a>';
+            echo '<br>';
+            echo '<a class="bdt-button bdt-btn-upk bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/ultimate-post-kit/" bdt-tooltip="'. esc_html__('Best blogging addon for building quality blogging website with fine-tuned features and widgets. It\'s Free! Download it.', 'ultimate-store-kit') .'">'. esc_html__('Ultimate Post Kit', 'ultimate-store-kit') .'</a>';
+            echo '<a class="bdt-button bdt-btn-pg bdt-margin-small-right" target="_blank" href="https://wordpress.org/plugins/pixel-gallery/" bdt-tooltip="'. esc_html__('Pixel Gallery provides more than 30+ essential elements for everyday applications to simplify the whole web building process. It\'s Free! Download it.', 'ultimate-store-kit') .'">'. esc_html__('Pixel Gallery', 'ultimate-store-kit') .'</a>';
+            echo '<a class="bdt-button bdt-btn-live-copy bdt-margin-small-right" target="_blank" rel="" href="https://wordpress.org/plugins/live-copy-paste/" bdt-tooltip="'. esc_html__('Superfast cross-domain copy-paste mechanism for WordPress websites with true UI copy experience. It\'s Free! Download it.', 'ultimate-store-kit') .'">'. esc_html__('Live Copy Paste', 'ultimate-store-kit') .'</a>';
+            echo '</div>';
+            ?>
           </div>
         </div>
       </div>
@@ -566,10 +565,10 @@ class UltimateStoreKit_Admin_Settings {
 
       <div class="bdt-grid" bdt-grid bdt-height-match="target: > div > .bdt-card" style="max-width: 800px; margin-left: auto; margin-right: auto;">
         <div class="bdt-width-1-1@m bdt-comparision bdt-text-center">
-          <h1 class="bdt-text-bold">WHY GO WITH PRO?</h1>
-          <h2>Just Compare With Ultimate Store Kit Free Vs Pro</h2>
-
-
+          <?php 
+          echo '<h1 class="bdt-text-bold">' . esc_html__('WHY GO WITH PRO?', 'ultimate-store-kit') . '</h1>';
+          echo '<h2>' . esc_html__('Just Compare With Ultimate Store Kit Free Vs Pro', 'ultimate-store-kit') . '</h2>';
+          ?>
           <div>
 
             <ul class="bdt-list bdt-list-divider bdt-text-left bdt-text-normal" style="font-size: 16px;">
@@ -577,110 +576,76 @@ class UltimateStoreKit_Admin_Settings {
 
               <li class="bdt-text-bold">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Features</div>
-                  <div class="bdt-width-auto@m">Free</div>
-                  <div class="bdt-width-auto@m">Pro</div>
+                  <?php 
+                  echo '<div class="bdt-width-expand@m">' . esc_html__('Features', 'ultimate-store-kit') . '</div>';
+                  echo '<div class="bdt-width-auto@m">' . esc_html__('Free', 'ultimate-store-kit') . '</div>';
+                  echo '<div class="bdt-width-auto@m">' . esc_html__('Pro', 'ultimate-store-kit') . '</div>';
+                  ?>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m"><span bdt-tooltip="pos: top-left; title: Lite have 35+ Widgets but Pro have 100+ core widgets">Core Widgets</span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                </div>
-              </li>
-              <li class="">
-                <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Theme Compatibility</div>
+                  <div class="bdt-width-expand@m"><span bdt-tooltip="pos: top-left; title: Lite have 35+ Widgets but Pro have 100+ core widgets"><?php esc_html_e('Core Widgets', 'ultimate-store-kit'); ?></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Dynamic Content & Custom Fields Capabilities</div>
+                  <?php echo '<div class="bdt-width-expand@m">' . esc_html__('Theme Compatibility', 'ultimate-store-kit') . '</div>'; ?>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Proper Documentation</div>
+                  <?php echo '<div class="bdt-width-expand@m">' . esc_html__('Dynamic Content & Custom Fields Capabilities', 'ultimate-store-kit') . '</div>'; ?>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Updates & Support</div>
+                  <?php echo '<div class="bdt-width-expand@m">' . esc_html__('Proper Documentation', 'ultimate-store-kit') . '</div>'; ?>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Rooten Theme Pro Features</div>
+                  <?php echo '<div class="bdt-width-expand@m">' . esc_html__('Updates & Support', 'ultimate-store-kit') . '</div>'; ?>
+                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
+                </div>
+              </li>
+              <li class="">
+                <div class="bdt-grid">
+                  <?php echo '<div class="bdt-width-expand@m">' . esc_html__('Rooten Theme Pro Features', 'ultimate-store-kit') . '</div>'; ?>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Priority Support</div>
+                  <div class="bdt-width-expand@m"><?php echo esc_html__('Priority Support', 'ultimate-store-kit'); ?></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-no"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Ready Made Pages</div>
+                  <div class="bdt-width-expand@m"><?php echo esc_html__('Ready Made Blocks', 'ultimate-store-kit'); ?></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
               <li class="">
                 <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Ready Made Blocks</div>
+                  <div class="bdt-width-expand@m"><?php echo esc_html__('Ready Made Pages', 'ultimate-store-kit'); ?></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                   <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
                 </div>
               </li>
-              <!-- <li class="">
-                <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Elementor Extended Widgets</div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                </div>
-              </li>
-              <li class="">
-                <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Live Copy or Paste</div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                </div>
-              </li>
-              <li class="">
-                <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Duplicator</div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                </div>
-              </li>
-              <li class="">
-                <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Video Link Meta</div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                </div>
-              </li>
-              <li class="">
-                <div class="bdt-grid">
-                  <div class="bdt-width-expand@m">Category Image</div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                  <div class="bdt-width-auto@m"><span class="dashicons dashicons-yes"></span></div>
-                </div>
-              </li> -->
-
             </ul>
 
 
@@ -692,27 +657,13 @@ class UltimateStoreKit_Admin_Settings {
                 <li>
                   <div class="bdt-grid">
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Incredibly Advanced
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Incredibly Advanced', 'ultimate-store-kit'); ?>
                     </div>
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Refund or Cancel Anytime
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Refund or Cancel Anytime', 'ultimate-store-kit'); ?>
                     </div>
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Dynamic Content
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="bdt-grid">
-                    <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Super-Flexible Widgets
-                    </div>
-                    <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> 24/7 Premium Support
-                    </div>
-                    <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Third Party Plugins
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Dynamic Content', 'ultimate-store-kit'); ?>
                     </div>
                   </div>
                 </li>
@@ -720,13 +671,13 @@ class UltimateStoreKit_Admin_Settings {
                 <li>
                   <div class="bdt-grid">
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Special Discount!
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Super-Flexible Widgets', 'ultimate-store-kit'); ?>
                     </div>
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Custom Field Integration
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' 24/7 Premium Support', 'ultimate-store-kit'); ?>
                     </div>
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> With Live Chat Support
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Third Party Plugins', 'ultimate-store-kit'); ?>
                     </div>
                   </div>
                 </li>
@@ -734,13 +685,27 @@ class UltimateStoreKit_Admin_Settings {
                 <li>
                   <div class="bdt-grid">
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Trusted Payment Methods
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Special Discount!', 'ultimate-store-kit'); ?>
                     </div>
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Interactive Effects
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Custom Field Integration', 'ultimate-store-kit'); ?>
                     </div>
                     <div class="bdt-width-1-3@m">
-                      <span class="dashicons dashicons-heart"></span> Video Tutorial
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' With Live Chat Support', 'ultimate-store-kit'); ?>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="bdt-grid">
+                    <div class="bdt-width-1-3@m">
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Trusted Payment Methods', 'ultimate-store-kit'); ?>
+                    </div>
+                    <div class="bdt-width-1-3@m">
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Interactive Effects', 'ultimate-store-kit'); ?>
+                    </div>
+                    <div class="bdt-width-1-3@m">
+                      <span class="dashicons dashicons-heart"></span><?php esc_html_e(' Video Tutorial', 'ultimate-store-kit'); ?>
                     </div>
                   </div>
                 </li>
@@ -750,7 +715,7 @@ class UltimateStoreKit_Admin_Settings {
 
               <?php if (true !== _is_usk_pro_activated()) : ?>
                 <div class="bdt-purchase-button">
-                  <a href="https://storekit.pro/pricing" target="_blank">Purchase Now</a>
+                  <a href="https://storekit.pro/pricing" target="_blank"><?php esc_html_e('Purchase Now', 'ultimate-store-kit'); ?></a>
                 </div>
               <?php endif; ?>
 
