@@ -993,6 +993,165 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
+    public function register_global_controls_add_to_cart() {
+        $this->start_controls_section(
+            'section_style_button',
+            [
+                'label'     => esc_html__('Add to Cart', 'ultimate-store-kit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_cart' => 'yes',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('tabs_button_style');
+
+        $this->start_controls_tab(
+            'tab_button_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'button_text_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '',
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button.loading::after' => 'border-color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'btn_background_color',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'btn_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'btn_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_width',
+            [
+                'label'         => esc_html__('Width(%)', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'range'         => [
+                    'px'        => [
+                        'min'   => 10,
+                        'max'   => 100,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . '' => '--btn-width: {{SIZE}}%;',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'button_height',
+            [
+                'label'         => esc_html__('Height(px)', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'range'         => [
+                    'px'        => [
+                        'min'   => 10,
+                        'max'   => 100,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'height: {{SIZE}}px; line-height: {{SIZE}}px;',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'button_typography',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart',
+            ]
+        );
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_button_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'hover_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'btn_hover_bg',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button:hover, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart:hover',
+            ]
+        );
+
+        $this->add_control(
+            'button_hover_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'condition' => [
+                    'btn_border_border!' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+    }
+
     protected function register_global_controls_category() {
         $this->start_controls_section(
             'section_style_category',
@@ -1602,6 +1761,8 @@ trait Global_Widget_Controls {
             ]
         );
         $this->end_controls_tab();
+
+        if ($this->get_name() !== 'usk-shiny-grid' && $this->get_name() !== 'usk-shiny-carousel') :
         $this->start_controls_tab(
             'add_to_cart_tab',
             [
@@ -1660,6 +1821,7 @@ trait Global_Widget_Controls {
             ]
         );
         $this->end_controls_tab();
+        endif;
         $this->end_controls_tabs();
         $this->end_controls_section();
     }

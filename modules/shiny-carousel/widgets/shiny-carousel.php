@@ -134,288 +134,15 @@ class Shiny_Carousel extends Module_Base {
         $this->register_global_controls_additional();
         $this->register_global_controls_carousel_navigation();
         $this->register_global_controls_carousel_settings();
-        $this->start_controls_section(
-            'section_style_item',
-            [
-                'label' => esc_html__('Items', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->start_controls_tabs('item_tabs');
-
-        $this->start_controls_tab(
-            'item_tab_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'item_border',
-                'selector'  => '{{WRAPPER}} .usk-shiny-carousel .usk-item',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'item_border_radius',
-            [
-                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'item_padding',
-            [
-                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        // $this->add_group_control(
-        //     Group_Control_Box_Shadow::get_type(),
-        //     [
-        //         'name'     => 'item_shadow',
-        //         'selector' => '{{WRAPPER}} .usk-shiny-carousel .usk-item',
-        //     ]
-        // );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'item_tab_hover',
-            [
-                'label' => esc_html__('Hover', 'ultimate-store-kit'),
-            ]
-        );
-
-        $this->add_control(
-            'item_hover_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item:hover' => 'border-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        // $this->add_group_control(
-        //     Group_Control_Box_Shadow::get_type(),
-        //     [
-        //         'name'     => 'item_hover_shadow',
-        //         'selector' => '{{WRAPPER}} .usk-shiny-carousel .usk-item:hover',
-        //     ]
-        // );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->end_controls_section();
+        $this->register_global_controls_grid_items();
         $this->register_global_controls_grid_image();
         $this->register_global_controls_content();
         $this->register_global_controls_title();
         $this->register_global_controls_category();
         $this->register_global_controls_price();
         $this->register_global_controls_rating();
-
-        $this->start_controls_section(
-            'section_style_button',
-            [
-                'label'     => esc_html__('Button', 'ultimate-store-kit'),
-                'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'show_cart' => 'yes',
-                ],
-            ]
-        );
-
-
-        $this->start_controls_tabs('tabs_button_style');
-
-        $this->start_controls_tab(
-            'tab_button_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-            ]
-        );
-
-        $this->add_control(
-            'button_text_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '',
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .usk-button' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .added_to_cart' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-button.loading::after' => 'border-color: {{VALUE}}'
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'btn_background_color',
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .added_to_cart',
-            ]
-        );
-        $this->add_responsive_control(
-            'button_width',
-            [
-                'label'         => esc_html__('Width', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'range'         => [
-                    'px'        => [
-                        'min'   => 0,
-                        'max'   => 100,
-                    ]
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel' => '--btn-width: {{SIZE}}%;',
-                ],
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'button_height',
-            [
-                'label'         => esc_html__('Height', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'range'         => [
-                    'px'        => [
-                        'min'   => 20,
-                        'max'   => 200,
-                        'step'  => 1,
-                    ]
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .added_to_cart' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'button_margin_spacing',
-            [
-                'label'         => esc_html__('Bottom Spacing', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'range'         => [
-                    'px'        => [
-                        'min'   => 0,
-                        'max'   => 200,
-                        'step'  => 1,
-                    ]
-                ],
-                'default'       => [
-                    'unit'      => 'px',
-                    'size'      => 0,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item:hover .usk-item-box .usk-image .added_to_cart' => 'transform: translateY(-{{SIZE}}{{UNIT}});',
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item:hover .usk-item-box .usk-image .usk-button' => 'transform: translateY(-{{SIZE}}{{UNIT}});',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'btn_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  =>
-                '{{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .added_to_cart',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'btn_border_radius',
-            [
-                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .added_to_cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'button_shadow',
-                'selector' => '{{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .added_to_cart',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'button_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-carousel .usk-item-box .usk-image .added_to_cart',
-                'exclude' => ['line_height', 'letter_spacing'],
-                'separator' => 'before',
-            ]
-        );
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'tab_button_hover',
-            [
-                'label' => esc_html__('Hover', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'hover_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .usk-button:hover, {{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .added_to_cart:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'btn_hover_bg',
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .usk-button:hover, {{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .added_to_cart:hover'
-            ]
-        );
-
-        $this->add_control(
-            'button_hover_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'condition' => [
-                    'btn_border_border!' => '',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .usk-button:hover, {{WRAPPER}} .usk-shiny-carousel .usk-carousel .usk-item .usk-item-box .usk-image .added_to_cart:hover' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
-        $this->end_controls_section();
         $this->register_global_controls_badge();
+        $this->register_global_controls_add_to_cart();
         $this->register_global_controls_action_btn();
         $this->register_global_controls_navigation_style();
     }
@@ -444,11 +171,12 @@ class Shiny_Carousel extends Module_Base {
             <?php $this->render_add_to_cart(); ?>
             <div class="usk-shoping">
                 <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
+                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
                 <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
             </div>
 
             <div class="usk-badge-label-wrapper">
-                <div class="usk-badge-label-content">
+                <div class="usk-badge-label-content usk-flex usk-flex-column">
                     <?php $this->register_global_template_badge_label(); ?>
                 </div>
             </div>
@@ -527,11 +255,11 @@ class Shiny_Carousel extends Module_Base {
                 $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
 
             ?>
-                <div class="swiper-slide">
-                    <div class="usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
-                        <div class="usk-item-box">
-                            <?php $this->render_image(); ?>
-                            <div class="usk-content">
+                <div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
+                    <div class="usk-item-box">
+                        <?php $this->render_image(); ?>
+                        <div class="usk-content">
+                            <div class="usk-inner-content">
                                 <?php if ('yes' == $settings['show_category']) : ?>
                                     <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
                                 <?php endif; ?>
@@ -552,7 +280,7 @@ class Shiny_Carousel extends Module_Base {
                         </div>
                     </div>
                 </div>
-<?php endwhile;
+            <?php endwhile;
             wp_reset_postdata();
         } else {
             echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
