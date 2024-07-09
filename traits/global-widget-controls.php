@@ -661,13 +661,15 @@ trait Global_Widget_Controls {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'item_shadow',
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
-            ]
-        );
+        if ($this->get_name() !== 'usk-glossy-grid') {
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name'     => 'item_shadow',
+                    'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
+                ]
+            );
+        }
 
         $this->end_controls_tab();
 
@@ -692,18 +694,30 @@ trait Global_Widget_Controls {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'item_hover_shadow',
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
-            ]
-        );
+        if ($this->get_name() !== 'usk-glossy-grid') {
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name'     => 'item_hover_shadow',
+                    'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
+                ]
+            );
+        }
+        if ($this->get_name() === 'usk-glossy-grid') {
+            $this->add_control(
+                'item_box_shadow_color',
+                [
+                    'label'     => esc_html__('Shadow Color', 'ultimate-store-kit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .usk-glossy-grid .usk-product-hover:before' => 'box-shadow: 0 8px 55px {{VALUE}}',
+                    ],
+                ]
+            );
+        }
 
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
-
         $this->end_controls_section();
     }
 

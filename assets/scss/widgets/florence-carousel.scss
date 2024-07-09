@@ -2,237 +2,34 @@
 	.usk-item {
 		box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
 		overflow: hidden;
-
 		&:hover {
-			.usk-image {
-				.image-default {
-					opacity: 0;
-					transform: scale(1);
-				}
-
-				.image-hover {
-					opacity: 1;
-					transform: scale(1.1);
-				}
-			}
 			.usk-action-btn {
 				transform: translateX(0px);
-				opacity: 1;
 			}
 		}
-	}
-
-	.usk-item-box {
-		position: relative;
-		overflow: hidden;
-	}
-
-	.usk-image {
-		position: relative;
-		overflow: hidden;
-		background: #fff;
-		transition: all 0.3s ease;
-		.img {
-			width: 100%;
-			overflow: hidden;
-		}
-
-		.image-default {
-			opacity: 1;
-			transform: scale(1.1);
-			transition:
-				transform 0.5s cubic-bezier(0, 0, 0.44, 1.18),
-				opacity 0.5s;
-		}
-	}
-
-	.image-hover {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		transition: all 0.5s ease;
-		opacity: 0;
-		transition:
-			transform 0.5s cubic-bezier(0, 0, 0.44, 1.18),
-			opacity 0.5s;
 	}
 
 	.usk-shoping {
-		position: absolute;
 		bottom: clamp(10px, 1vw, 25px);
 		right: clamp(10px, 1vw, 25px);
 	}
 
 	.usk-action-btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-decoration: none;
-		margin-bottom: 5px;
 		transform: translateX(25px);
-		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-		padding: clamp(10px, 1vw, 12px);
-		opacity: 0;
-		transition: all 0.3s ease;
-		color: #000;
-		background: #fff;
-
-		&:hover {
-			background: #2b2d42;
-			color: #fff;
-		}
-		&:nth-last-child(1) {
-			margin-bottom: 0;
-		}
-
-		&.added_to_cart {
-			display: none;
-		}
-		.icon {
-			font-size: clamp(12px, 1vw, 14px);
-		}
-	}
-
-	.usk-shoping-icon-wishlist {
-		transition: all 0.3s ease;
-		&.usk-active {
-			background-color: #d90429;
-			color: #fff;
-		}
-	}
-
-	.usk-compare {
-		transition: all 0.5s ease;
-	}
-
-	.usk-shoping-icon-quickview {
-		transition: all 0.6s ease;
-	}
-
-	.usk-cart {
-		transition: all 0.7s ease;
-		&.added {
-			i {
-				&::before {
-					display: none;
-				}
-
-				&::after {
-					content: "\2713";
-					font-size: 16px;
-				}
-			}
-		}
-
-		&.loading {
-			.icon {
-				&::before {
-					display: none;
-				}
-
-				&::after {
-					content: "";
-					width: 16px;
-					height: 16px;
-					border: 2px dotted #fff;
-					border-radius: 50%;
-					display: inline-block;
-					animation: rotation 2s linear infinite;
-				}
-			}
-		}
 	}
 
 	.usk-badge-label-wrapper {
-		position: absolute;
 		left: 0;
 		top: 0;
-		margin: clamp(10px, 1vw, 25px);
 	}
 
 	.usk-content {
-		display: flex;
-		align-items: center;
 		height: 100%;
 		background: #fff;
-		padding: clamp(15px, 1vw, 30px);
 	}
-
 	.usk-content-inner {
 		width: 100%;
 		position: relative;
-	}
-
-	.usk-category {
-		margin-bottom: clamp(12px, 1vw, 15px);
-		display: inline-flex;
-		flex-wrap: wrap;
-		gap: 5px;
-
-		a {
-			font-size: clamp(10px, 1vw, 12px);
-			color: #9fa8bc;
-			border: 1px solid #c0c9dd;
-			text-transform: uppercase;
-			font-weight: 500;
-			display: inline-block;
-			padding: 4px 6px;
-			transition: all 0.3s ease;
-			line-height: 1;
-
-			&:hover {
-				color: #e6edef;
-				background: #2b2d42;
-				border-color: #2b2d42;
-			}
-		}
-	}
-
-	.usk-title {
-		margin-bottom: 10px;
-		display: block;
-		.title {
-			color: #2b2d42;
-			text-transform: capitalize;
-			font-weight: 700;
-			font-size: clamp(16px, 1vw, 18px);
-			margin: 0;
-		}
-	}
-
-	.usk-price {
-		font-size: clamp(12px, 1vw, 14px);
-		font-weight: 700;
-		color: #9fa8bc;
-		margin-bottom: 14px;
-
-		del {
-			font-weight: 500;
-		}
-
-		ins {
-			text-decoration: none;
-			padding-left: 7px;
-		}
-	}
-
-	.usk-item .usk-rating {
-		margin-bottom: 0px;
-		position: absolute;
-		width: 100%;
-		display: flex;
-		.woocommerce-product-rating {
-			display: flex;
-			align-items: center;
-			padding: 0;
-
-			.star-rating {
-				font-size: clamp(12px, 1vw, 14px);
-				margin: 0;
-			}
-		}
 	}
 	.usk-have-rating {
 
@@ -240,6 +37,7 @@
 			opacity: 1;
 			transition: all 0.3s ease;
 			transform: translateY(0);
+			margin-bottom: 0;
 		}
 
 		.usk-rating {
@@ -260,14 +58,9 @@
 			}
 		}
 	}
-}
-
-@keyframes rotation {
-	0% {
-		transform: rotate(0deg);
-	}
-
-	100% {
-		transform: rotate(360deg);
+	.usk-rating {
+		position: absolute;
+		width: 100%;
+		display: flex;
 	}
 }

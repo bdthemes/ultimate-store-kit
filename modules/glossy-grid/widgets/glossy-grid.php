@@ -228,6 +228,8 @@ class Glossy_Grid extends Module_Base {
             [
                 'class' => [
                     'usk-glossy-grid',
+                    'usk-css-grid',
+                    'usk-grid-carousel',
                     'usk-content-position-' . $settings['alignment'] . ''
                 ],
                 'data-filter' => [
