@@ -4,13 +4,9 @@ namespace UltimateStoreKit\Modules\FlorenceCarousel\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Typography;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
-// use UltimateStoreKit\traits\Global_Swiper_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
 
@@ -326,41 +322,39 @@ class Florence_Carousel extends Module_Base {
                 $rating_count = $product->get_rating_count();
                 $average = $product->get_average_rating();
                 if ('yes' === $settings['show_rating']) {
-                    $this->add_render_attribute('usk-item', 'class', ['usk-item', 'usk-have-rating'], true);
+                    $this->add_render_attribute('usk-item', 'class', ['swiper-slide', 'usk-item', 'usk-have-rating'], true);
                 } else {
-                    $this->add_render_attribute('usk-item', 'class', ['usk-item'], true);
+                    $this->add_render_attribute('usk-item', 'class', ['swiper-slide', 'usk-item'], true);
                 }
 
                 $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
             ?>
-                <div class="swiper-slide">
-                    <div <?php $this->print_render_attribute_string('usk-item'); ?>>
-                        <div class="usk-item-box">
-                            <?php $this->render_image(); ?>
-                            <div class="usk-content">
-                                <div class="usk-content-inner">
-                                    <?php if ('yes' == $settings['show_category']) : ?>
-                                        <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
-                                    <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_title']) :
-                                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                                    endif; ?>
-                                    <?php if ('yes' == $settings['show_price']) : ?>
-                                        <div class="usk-price">
-                                            <?php $this->print_price_output($product->get_price_html()); ?>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_rating']) : ?>
-                                        <div class="usk-rating">
-                                            <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
-                                        </div>
-                                    <?php endif; ?>
+            <div <?php $this->print_render_attribute_string('usk-item'); ?>>
+                <div class="usk-item-box">
+                    <?php $this->render_image(); ?>
+                    <div class="usk-content">
+                        <div class="usk-content-inner">
+                            <?php if ('yes' == $settings['show_category']) : ?>
+                                <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
+                            <?php endif; ?>
+                            <?php if ('yes' == $settings['show_title']) :
+                                printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                            endif; ?>
+                            <?php if ('yes' == $settings['show_price']) : ?>
+                                <div class="usk-price">
+                                    <?php $this->print_price_output($product->get_price_html()); ?>
                                 </div>
-                            </div>
+                            <?php endif; ?>
+                            <?php if ('yes' == $settings['show_rating']) : ?>
+                                <div class="usk-rating">
+                                    <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
-<?php endwhile;
+            </div>
+            <?php endwhile;
             wp_reset_postdata();
         } else {
             echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';

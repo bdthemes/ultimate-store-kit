@@ -38,6 +38,7 @@ trait Global_Widget_Controls {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content' => 'text-align: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-rating' => 'justify-content: {{VALUE}}',
                 ],
                 'render_type' => 'template'
             ]
@@ -431,7 +432,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -441,7 +442,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'columns_filter_background',
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list a',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a',
             ]
         );
 
@@ -472,7 +473,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list a' => 'border-color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a' => 'border-color: {{VALUE}}',
                 ],
             ]
         );
@@ -484,7 +485,7 @@ trait Global_Widget_Controls {
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -516,7 +517,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -526,7 +527,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'columns_filter_hover_background',
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list a:hover',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a:hover',
             ]
         );
 
@@ -545,7 +546,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list.usk-tabs-active a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list.usk-tabs-active a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -555,7 +556,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'columns_filter_active_background',
                 'exclude'  => ['image'],
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-header .usk-grid-header-tabs .usk-grid-tabs-list.usk-tabs-active a',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list.usk-tabs-active a',
             ]
         );
 
@@ -660,13 +661,15 @@ trait Global_Widget_Controls {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'item_shadow',
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
-            ]
-        );
+        if ($this->get_name() !== 'usk-glossy-grid') {
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name'     => 'item_shadow',
+                    'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
+                ]
+            );
+        }
 
         $this->end_controls_tab();
 
@@ -691,18 +694,30 @@ trait Global_Widget_Controls {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'item_hover_shadow',
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
-            ]
-        );
+        if ($this->get_name() !== 'usk-glossy-grid') {
+            $this->add_group_control(
+                Group_Control_Box_Shadow::get_type(),
+                [
+                    'name'     => 'item_hover_shadow',
+                    'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
+                ]
+            );
+        }
+        if ($this->get_name() === 'usk-glossy-grid') {
+            $this->add_control(
+                'item_box_shadow_color',
+                [
+                    'label'     => esc_html__('Shadow Color', 'ultimate-store-kit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .usk-glossy-grid .usk-product-hover:before' => 'box-shadow: 0 8px 55px {{VALUE}}',
+                    ],
+                ]
+            );
+        }
 
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
-
         $this->end_controls_section();
     }
 
@@ -785,7 +800,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'image_hover_background',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-item-box .usk-image',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image',
             ]
         );
         $this->add_group_control(
@@ -793,7 +808,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'image_hover_border',
                 'label'    => esc_html__('Image Border', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-item-box .usk-image',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image',
                 'separator'      => 'before',
             ]
         );
@@ -805,7 +820,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-item-box .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -817,7 +832,7 @@ trait Global_Widget_Controls {
                 'exclude'  => [
                     'shadow_position',
                 ],
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-item-box .usk-image',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image',
             ]
         );
         $this->end_controls_tab();
@@ -909,7 +924,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'condition' => [
-                    'item_border_border!' => '',
+                    'content_border_border!' => '',
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-content:hover' => 'border-color: {{VALUE}};',
@@ -938,7 +953,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -949,7 +964,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .title:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-title:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -961,7 +976,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -971,7 +986,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'title_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .title',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-title .title',
             ]
         );
 
@@ -1004,7 +1019,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1012,7 +1027,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'category_bg_color',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
             ]
         );
         $this->add_group_control(
@@ -1020,7 +1035,7 @@ trait Global_Widget_Controls {
             [
                 'name'           => 'category_border',
                 'label'          => __('Border', 'elementor'),
-                'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a',
+                'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
                 'separator' => 'before'
             ]
         );
@@ -1031,7 +1046,7 @@ trait Global_Widget_Controls {
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1042,7 +1057,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1053,7 +1068,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1065,7 +1080,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1074,14 +1089,14 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'category_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
             ]
         );
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'category_shadow',
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
             ]
         );
         $this->end_controls_tab();
@@ -1097,7 +1112,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1105,7 +1120,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'hover_category_bg_color',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a:hover',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a:hover',
             ]
         );
         $this->add_control(
@@ -1114,7 +1129,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content .usk-category a:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'category_border_border!' => ''
@@ -1146,7 +1161,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-list-layout .usk-item .usk-item-box .usk-content .usk-desc' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-list-layout .usk-desc' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1154,11 +1169,11 @@ trait Global_Widget_Controls {
         $this->add_responsive_control(
             'excerpt_padding',
             [
-                'label'      => esc_html__('padding', 'ultimate-store-kit'),
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-list-layout .usk-item .usk-item-box .usk-content .usk-desc' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-list-layout .usk-desc' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1170,7 +1185,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-list-layout .usk-item .usk-item-box .usk-content .usk-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-list-layout .usk-desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1179,7 +1194,7 @@ trait Global_Widget_Controls {
             [
                 'name'     => 'excerpt_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-list-layout .usk-item .usk-item-box .usk-content .usk-desc',
+                'selector' => '{{WRAPPER}} .usk-list-layout .usk-desc',
             ]
         );
 
@@ -1203,7 +1218,7 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-price del .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-price del' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price del' => 'color: {{VALUE}};',
                 ],
 
             ]
@@ -1229,7 +1244,7 @@ trait Global_Widget_Controls {
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1240,7 +1255,7 @@ trait Global_Widget_Controls {
                 'name'     => 'sale_price_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '
-                {{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-price',
+                {{WRAPPER}} .' . $this->get_name() . ' .usk-price',
             ]
         );
 
@@ -1317,18 +1332,18 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'action_btn_border',
                 'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a',
                 'separator' => 'before'
             ]
         );
         $this->add_responsive_control(
             'action_btn_radius',
             [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1339,7 +1354,7 @@ trait Global_Widget_Controls {
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1350,7 +1365,7 @@ trait Global_Widget_Controls {
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1368,7 +1383,7 @@ trait Global_Widget_Controls {
                     ]
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1378,7 +1393,7 @@ trait Global_Widget_Controls {
                 'label'                 => esc_html__('Tooltip Font', 'font family'),
                 'type'                  => Controls_Manager::FONT,
                 'selectors'             => [
-                    '{{WRAPPER}} .usk-item .usk-item-box .usk-shoping a'    => 'font-family: {{VALUE}}',
+                    '{{WRAPPER}} .usk-shoping a'    => 'font-family: {{VALUE}}',
                 ],
             ]
         );
@@ -1400,7 +1415,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1410,7 +1425,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1428,7 +1443,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1438,7 +1453,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1456,7 +1471,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1466,7 +1481,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1486,17 +1501,17 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare .icon:before' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'compare_icon_bg',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1514,17 +1529,17 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare:hover .icon:before' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'compare_icon_bg_hover',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-compare:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1544,17 +1559,17 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-quickview .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview .icon:before' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'quickview_icon_bg',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-quickview' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1572,80 +1587,78 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-quickview:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover .icon:before' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'quickview_icon_bg_hover',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
         $this->end_controls_tab();
-        if (($this->get_name() !== 'usk-shiny-grid') && ($this->get_name() !== 'usk-shiny-carousel')) {
-            $this->start_controls_tab(
-                'add_to_cart_tab',
-                [
-                    'label' => esc_html__('Cart', 'ultimate-store-kit'),
-                    'condition' => [
-                        'show_cart' => 'yes'
-                    ]
+        $this->start_controls_tab(
+            'add_to_cart_tab',
+            [
+                'label' => esc_html__('Cart', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_cart' => 'yes'
                 ]
-            );
-            $this->add_control(
-                'cart_color',
-                [
-                    'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-cart' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'cart_icon_bg',
-                [
-                    'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-cart' => 'background: {{VALUE}}',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'heading_cart_hover',
-                [
-                    'label'     => esc_html__('Hover', 'ultimate-store-kit'),
-                    'type'      => Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
-            );
-            $this->add_control(
-                'cart_color_hover',
-                [
-                    'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-cart:hover' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'cart_icon_bg_hover',
-                [
-                    'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-shoping .usk-cart:hover' => 'background: {{VALUE}}',
-                    ],
-                ]
-            );
-        }
+            ]
+        );
+        $this->add_control(
+            'cart_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'cart_icon_bg',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'heading_cart_hover',
+            [
+                'label'     => esc_html__('Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'cart_color_hover',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'cart_icon_bg_hover',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -1871,6 +1884,69 @@ trait Global_Widget_Controls {
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'badge_border',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge',
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_radius',
+            [
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_margin',
+            [
+                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'badge_spacing',
+            [
+                'label'         => esc_html__('Space Between', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'default'       => [
+                    'unit'      => 'px',
+                    'size'      => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'badge_typography',
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge',
+            ]
+        );
         $this->start_controls_tabs(
             'label_badge_tabs'
         );
@@ -1889,7 +1965,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-sale-badge .usk-badge' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'show_sale_badge' => 'yes',
@@ -1901,7 +1977,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'sale_badge_bg',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-sale-badge .usk-badge',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge',
             ]
         );
         $this->end_controls_tab();
@@ -1920,7 +1996,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-percantage-badge .usk-badge' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'show_discount_badge' => 'yes',
@@ -1932,7 +2008,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'discount_badge_bg',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-percantage-badge .usk-badge',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge',
             ]
         );
         $this->end_controls_tab();
@@ -1951,7 +2027,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-stock-status-badge .usk-badge' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'show_stock_status' => 'yes',
@@ -1962,7 +2038,7 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'stock_badge_bg',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-stock-status-badge .usk-badge',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge',
             ]
         );
         $this->end_controls_tab();
@@ -1981,7 +2057,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-trending-badge .usk-badge' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1989,14 +2065,14 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'trending_badge_bg',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-trending-badge .usk-badge',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge',
             ]
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
             'new_badge_tab',
             [
-                'label'     => esc_html__('new', 'ultimate-store-kit'),
+                'label'     => esc_html__('New', 'ultimate-store-kit'),
                 'condition' => [
                     'show_new_badge' => 'yes',
                 ],
@@ -2008,7 +2084,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-new-badge .usk-badge' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -2017,61 +2093,11 @@ trait Global_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'new_badge_bg',
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-new-badge .usk-badge',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge',
             ]
         );
         $this->end_controls_tab();
         $this->end_controls_tabs();
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'badge_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-badge',
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_radius',
-            [
-                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-badge'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_padding',
-            [
-                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_margin',
-            [
-                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'badge_typography',
-                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-badge-label-wrapper .usk-badge',
-            ]
-        );
         $this->end_controls_section();
     }
     protected function register_global_controls_carousel_navigation() {
@@ -2836,7 +2862,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-ncx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-ncx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -2862,7 +2888,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-ncy: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-ncy: {{SIZE}}px;'
                 ],
                 'conditions'   => [
                     'terms' => [
@@ -2947,7 +2973,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-dots-nnx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-dots-nnx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -2986,7 +3012,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-dots-nny: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-dots-nny: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3025,7 +3051,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-both-ncx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-both-ncx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3064,7 +3090,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-both-ncy: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-both-ncy: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3168,7 +3194,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-fraction-ncx: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-fraction-ncx: {{SIZE}}px;'
                 ],
             ]
         );
@@ -3207,7 +3233,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => '--' . $this->get_name() . '-arrows-fraction-ncy: {{SIZE}}px;'
+                    '{{WRAPPER}}' => '--usk-swiper-carousel-arrows-fraction-ncy: {{SIZE}}px;'
                 ],
             ]
         );
