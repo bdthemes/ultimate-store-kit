@@ -1,316 +1,103 @@
 .usk-shiny-carousel {
   --btn-width: 100%; }
-  .usk-shiny-carousel .swiper,
-  .usk-shiny-carousel .swiper-container {
-    margin: 0 !important;
-    padding: 0 !important; }
-  .usk-shiny-carousel .usk-carousel .usk-item {
-    background: #fff;
-    border: 1px solid #e0e9ec;
+  .usk-shiny-carousel .usk-item {
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
     overflow: hidden; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-image {
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid #e0e9ec; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-image .img {
-        width: 100%;
-        overflow: hidden; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-image .image-default {
-        opacity: 1;
-        transform: scale(1.1);
-        transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-image .image-hover {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        opacity: 0;
-        transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-button.added {
-      display: none; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-button.loading::after {
-      content: "";
-      width: 20px;
-      height: 20px;
-      border: 2px dotted #fff;
-      border-radius: 50%;
-      margin-right: -15px;
-      display: inline-block;
-      position: relative;
-      position: absolute;
-      top: 31%;
-      text-align: center;
-      animation: rotation 2s linear infinite; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-button.loading i {
-      transition: all .3s ease-in-out;
-      transform: translate(-70px);
-      opacity: .02; }
-    .usk-shiny-carousel .usk-carousel .usk-item .added_to_cart::after {
-      content: "\2713";
-      margin-right: 5px;
-      font-size: 20px; }
-    .usk-shiny-carousel .usk-carousel .usk-item .added_to_cart i {
-      display: none; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-button,
-    .usk-shiny-carousel .usk-carousel .usk-item .added_to_cart {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: var(--btn-width);
-      margin: 0 calc(calc(100% - var(--btn-width)) / 2);
-      height: 42px;
-      line-height: 42px;
-      background: #2b2d42;
-      text-decoration: none;
-      color: #fff;
-      text-align: center;
-      text-transform: capitalize;
-      font-size: 12px;
-      transform: translateY(50px);
-      opacity: 0;
-      transition: all 0.3s ease; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-button .button-icon:before,
-      .usk-shiny-carousel .usk-carousel .usk-item .added_to_cart .button-icon:before {
-        margin: -5px;
-        transition: all 0.3s ease;
-        opacity: 0;
-        visibility: hidden; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-button:hover .button-icon:before,
-      .usk-shiny-carousel .usk-carousel .usk-item .added_to_cart:hover .button-icon:before {
-        margin-right: 10px;
-        opacity: 1;
-        visibility: visible; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      right: auto;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping a {
-        position: relative;
-        display: block;
-        text-decoration: none;
-        margin-bottom: 6px;
-        text-align: center; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping a .icon {
-          width: 30px;
-          height: 25px;
-          font-size: 12px;
-          line-height: 25px; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-wishlist {
-        background: #2b2d42;
-        color: #fff;
-        transition: all 0.3s ease; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover {
-          background: #000; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping .usk-compare {
-        background: #2b2d42;
-        color: #fff;
-        transition: all 0.3s ease; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping .usk-compare:hover {
-          background: #000; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-quickview {
-        background: #2b2d42;
-        color: #fff;
-        transition: all 0.3s ease; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping .usk-shoping-icon-quickview:hover {
-          background: #000; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper {
-      display: block;
-      position: absolute;
-      text-align: right;
-      top: 0;
-      right: 0;
-      padding: 15px; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content {
-        display: block; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content div .usk-badge {
-          text-decoration: none;
-          padding: 6px 6px;
-          font-size: 10px;
-          text-transform: capitalize;
-          text-align: center; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-sale-badge .usk-badge {
-          background: #2b2d42;
-          color: #fff; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-sale-badge,
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-percantage-badge,
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-stock-status-badge,
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-trending-badge,
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-new-badge {
-          margin-bottom: 6px;
-          display: flex; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-percantage-badge .usk-badge {
-          background: #8d99ae;
-          color: #fff; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-stock-status-badge .usk-badge {
-          background: #fb5607;
-          color: #fff; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-trending-badge .usk-badge {
-          background: #edf2f4;
-          color: #fff; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content .usk-new-badge .usk-badge {
-          background: #ef233c;
-          color: #fff; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-content {
-      padding: 15px; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-category {
-        margin-bottom: 15px;
-        display: inline-block; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-category a {
-          text-decoration: none;
-          color: #90a3aa;
-          border: 1px solid #e0e9ec;
-          text-transform: uppercase;
-          font-weight: 600;
-          font-size: 10px;
-          padding: 4px 10px;
-          transition: all 0.3s ease; }
-          .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-category a:hover {
-            color: #edf2f4;
-            border: 1px solid #2b2d42;
-            background: #2b2d42; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-title {
-        text-decoration: none;
-        margin-bottom: 10px;
-        display: inherit;
-        z-index: 1;
-        position: relative; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-title .title {
-          color: #2b2d42;
-          text-transform: capitalize;
-          font-weight: 700;
-          font-size: 16px;
-          transition: all 0.3s ease;
-          margin: 0; }
-          .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-title .title:hover {
-            color: #d90429; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-price {
-        font-weight: 700;
-        color: #8d99ae;
-        font-size: 12px; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-price del {
-          font-weight: 500; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-price ins {
-          text-decoration: none;
-          padding-right: 6px; }
-      .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-rating .woocommerce-product-rating {
-        display: flex;
-        align-items: center; }
-        .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-rating .woocommerce-product-rating .star-rating {
-          font-size: 12px; }
-    .usk-shiny-carousel .usk-carousel .usk-item:hover .usk-image .image-default {
-      opacity: 0;
-      transform: scale(1); }
-    .usk-shiny-carousel .usk-carousel .usk-item:hover .usk-image .image-hover {
-      opacity: 1;
-      transform: scale(1.1); }
-    .usk-shiny-carousel .usk-carousel .usk-item:hover .usk-button,
-    .usk-shiny-carousel .usk-carousel .usk-item:hover .added_to_cart {
-      transform: translateY(0);
-      opacity: 1; }
-    .usk-shiny-carousel .usk-carousel .usk-item:hover .usk-shoping {
+    .usk-shiny-carousel .usk-item:hover .usk-action-btn {
+      transform: translateX(0px); }
+    .usk-shiny-carousel .usk-item:hover .usk-button,
+    .usk-shiny-carousel .usk-item:hover .added_to_cart {
+      transform: translateY(0px);
       opacity: 1;
       visibility: visible; }
-  .usk-shiny-carousel .usk-carousel .usk-have-rating .usk-content .usk-price {
-    opacity: 1;
-    transform: translateY(0);
-    transition: transform 0.3s cubic-bezier(0.17, 0.73, 0.66, 0.99) 0s, z-index 0.3s step-end, opacity 0.3s ease; }
-  .usk-shiny-carousel .usk-carousel .usk-have-rating .usk-content .usk-rating {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    width: 100%;
+  .usk-shiny-carousel .usk-action-btn {
+    transform: translateX(-25px); }
+  .usk-shiny-carousel .usk-shoping {
+    top: clamp(10px, 1vw, 25px);
+    left: clamp(10px, 1vw, 25px); }
+  .usk-shiny-carousel .usk-badge-label-wrapper {
     right: 0;
-    padding: 0 20px;
+    top: 0; }
+  .usk-shiny-carousel .usk-button.added {
+    display: none;
+    transition: all 3s ease-in-out; }
+  .usk-shiny-carousel .usk-button.loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px dotted #fff;
+    border-radius: 50%;
+    margin-right: -15px;
+    display: inline-block;
+    position: relative;
+    position: absolute;
+    top: 31%;
+    text-align: center;
+    animation: rotation 2s linear infinite; }
+  .usk-shiny-carousel .usk-button.loading i {
+    transition: all .3s ease-in-out;
+    transform: translate(-70px);
+    opacity: .02; }
+  .usk-shiny-carousel .added_to_cart {
+    transition: all 3s ease; }
+    .usk-shiny-carousel .added_to_cart::after {
+      content: '\2713';
+      margin-right: 5px;
+      font-size: 20px; }
+    .usk-shiny-carousel .added_to_cart i {
+      display: none; }
+  .usk-shiny-carousel .usk-button,
+  .usk-shiny-carousel .added_to_cart {
+    position: absolute;
+    font-weight: 600;
+    text-align: center;
+    right: 0;
+    bottom: 0;
+    width: var(--btn-width);
+    margin: 0 calc(calc(100% - var(--btn-width)) / 2);
+    background: #2b2d42;
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    transform: translateY(100%);
     opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease; }
+    .usk-shiny-carousel .usk-button a,
+    .usk-shiny-carousel .added_to_cart a {
+      color: #fff; }
+    .usk-shiny-carousel .usk-button .button-icon:before,
+    .usk-shiny-carousel .added_to_cart .button-icon:before {
+      margin: -5px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden; }
+    .usk-shiny-carousel .usk-button:hover .button-icon:before,
+    .usk-shiny-carousel .added_to_cart:hover .button-icon:before {
+      margin-right: 10px;
+      opacity: 1;
+      visibility: visible; }
+  .usk-shiny-carousel .usk-have-rating .usk-price {
+    margin: 0;
+    opacity: 1;
+    transition: all 0.3s ease;
+    transform: translateY(0); }
+  .usk-shiny-carousel .usk-have-rating .usk-rating {
     transform: translateY(0);
-    transition: transform 0.3s cubic-bezier(0.17, 0.73, 0.66, 0.99) 0s, z-index 0.3s step-end, opacity 0.3s ease; }
-  .usk-shiny-carousel .usk-carousel .usk-have-rating:hover .usk-content .usk-rating {
-    transform: translateY(-25px);
-    opacity: 1; }
-  .usk-shiny-carousel .usk-carousel .usk-have-rating:hover .usk-content .usk-price {
     opacity: 0;
-    transform: translateY(-25px); }
-  .usk-shiny-carousel .usk-carousel .usk-swiper-slider-navigation {
-    display: none; }
-
-/*------------------------------------
-  Shiny Carousel elementor-widget Css
---------------------------------------*/
-.elementor-widget-usk-shiny-carousel .usk-arrows-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-arrows-ncx, 0), var(--usk-shiny-carousel-arrows-ncy, 40));
-  transform: translate(var(--usk-shiny-carousel-arrows-ncx, 0), var(--usk-shiny-carousel-arrows-ncy, 40)); }
-
-.elementor-widget-usk-shiny-carousel .usk-dots-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-dots-nnx, 0), var(--usk-shiny-carousel-dots-nny, 30));
-  transform: translate(var(--usk-shiny-carousel-dots-nnx, 0), var(--usk-shiny-carousel-dots-nny, 30)); }
-
-.elementor-widget-usk-shiny-carousel .usk-arrows-dots-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-both-ncx, 0), var(--usk-shiny-carousel-both-ncy, 40));
-  transform: translate(var(--usk-shiny-carousel-both-ncx, 0), var(--usk-shiny-carousel-both-ncy, 40)); }
-
-.elementor-widget-usk-shiny-carousel .usk-arrows-fraction-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-arrows-fraction-ncx, 0), var(--usk-shiny-carousel-arrows-fraction-ncy, 40));
-  transform: translate(var(--usk-shiny-carousel-arrows-fraction-ncx, 0), var(--usk-shiny-carousel-arrows-fraction-ncy, 40)); }
-
-.elementor-widget-usk-shiny-carousel .usk-position-center-left .usk-arrows-container,
-.elementor-widget-usk-shiny-carousel .usk-position-center-right .usk-arrows-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-arrows-ncx, 0), var(--usk-shiny-carousel-arrows-ncy, 0)) rotate(-90deg);
-  transform: translate(var(--usk-shiny-carousel-arrows-ncx, 0), var(--usk-shiny-carousel-arrows-ncy, 0)) rotate(-90deg); }
-
-.elementor-widget-usk-shiny-carousel .usk-position-center-left .usk-dots-container,
-.elementor-widget-usk-shiny-carousel .usk-position-center-right .usk-dots-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-dots-nnx, 0), var(--usk-shiny-carousel-dots-nny, 0)) rotate(-90deg);
-  transform: translate(var(--usk-shiny-carousel-dots-nnx, 0), var(--usk-shiny-carousel-dots-nny, 0)) rotate(-90deg); }
-
-.elementor-widget-usk-shiny-carousel .usk-position-center-left .usk-arrows-dots-container,
-.elementor-widget-usk-shiny-carousel .usk-position-center-right .usk-arrows-dots-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-both-ncx, 0), var(--usk-shiny-carousel-both-ncy, 0)) rotate(-90deg);
-  transform: translate(var(--usk-shiny-carousel-both-ncx, 0), var(--usk-shiny-carousel-both-ncy, 0)) rotate(-90deg); }
-
-.elementor-widget-usk-shiny-carousel .usk-position-center-left .usk-arrows-fraction-container,
-.elementor-widget-usk-shiny-carousel .usk-position-center-right .usk-arrows-fraction-container {
-  -webkit-transform: translate(var(--usk-shiny-carousel-arrows-fraction-ncx, 0), var(--usk-shiny-carousel-arrows-fraction-ncy, 0)) rotate(-90deg);
-  transform: translate(var(--usk-shiny-carousel-arrows-fraction-ncx, 0), var(--usk-shiny-carousel-arrows-fraction-ncy, 0)) rotate(-90deg); }
-
-/*------------------------------------
-  Shiny Carousel Responsive Css
---------------------------------------*/
-@media (min-width: 1024px) {
-  .usk-shiny-carousel .usk-carousel .usk-item .usk-button,
-  .usk-shiny-carousel .usk-carousel .usk-item .added_to_cart {
-    height: 50px;
-    line-height: 50px;
+    transition: all 0.3s ease; }
+  .usk-shiny-carousel .usk-have-rating:hover .usk-rating {
+    transform: translateY(-20px);
+    opacity: 1; }
+  .usk-shiny-carousel .usk-have-rating:hover .usk-price {
+    transform: translateY(-20px);
+    opacity: 0; }
+  .usk-shiny-carousel .usk-item .usk-rating {
+    position: absolute;
+    width: 100%;
+    display: flex; }
+  .usk-shiny-carousel .usk-button,
+  .usk-shiny-carousel .added_to_cart {
+    height: clamp(40px, 3vw, 50px);
+    line-height: clamp(40px, 3vw, 50px);
     font-size: 14px; }
-  .usk-shiny-carousel .usk-carousel .usk-item .usk-shoping a .icon {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
-    line-height: 32px; }
-  .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper {
-    padding: 20px; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-badge-label-wrapper .usk-badge-label-content div .usk-badge {
-      padding: 5px 8px;
-      font-size: 10px; }
-  .usk-shiny-carousel .usk-carousel .usk-item .usk-content {
-    padding: 20px; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-title .title {
-      font-size: 18px; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-price {
-      font-size: 14px; }
-    .usk-shiny-carousel .usk-carousel .usk-item .usk-content .usk-rating .woocommerce-product-rating .star-rating {
-      font-size: 14px; }
-  .usk-shiny-carousel .usk-carousel .usk-swiper-slider-navigation {
-    display: block; }
-  .usk-shiny-carousel .swiper-pagination-bullet {
-    width: 36px; } }
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(-360deg); } }

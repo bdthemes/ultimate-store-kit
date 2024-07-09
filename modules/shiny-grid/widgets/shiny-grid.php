@@ -223,188 +223,14 @@ class Shiny_Grid extends Module_Base {
         $this->register_global_controls_excerpt();
         $this->register_global_controls_price();
         $this->register_global_controls_rating();
-        $this->start_controls_section(
-            'section_style_button',
-            [
-                'label'     => esc_html__('Button', 'ultimate-store-kit'),
-                'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'show_cart' => 'yes',
-                ],
-            ]
-        );
-
-
-        $this->start_controls_tabs('tabs_button_style');
-
-        $this->start_controls_tab(
-            'tab_button_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-            ]
-        );
-
-        $this->add_control(
-            'button_text_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'default'   => '',
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-button.loading::after' => 'border-color: {{VALUE}}'
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'btn_background_color',
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-shiny-grid .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart',
-            ]
-        );
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'tab_button_hover',
-            [
-                'label' => esc_html__('Hover', 'ultimate-store-kit'),
-            ]
-        );
-
-        $this->add_control(
-            'hover_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button:hover' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'btn_hover_bg',
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-shiny-grid .usk-item-box .usk-image .usk-button:hover, {{WRAPPER}} .usk-shiny-grid .usk-item-box .usk-image .added_to_cart:hover',
-            ]
-        );
-
-        $this->add_control(
-            'button_hover_border_color',
-            [
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'condition' => [
-                    'btn_border_border!' => '',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button:hover' => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart:hover' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
-        $this->add_responsive_control(
-            'button_width',
-            [
-                'label'         => esc_html__('Width', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'range'         => [
-                    'px'        => [
-                        'min'   => 0,
-                        'max'   => 100,
-                    ]
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-grid' => '--btn-width: {{SIZE}}%;',
-                ],
-                'separator' => 'before'
-            ]
-        );
-
-        $this->add_responsive_control(
-            'button_margin_spacing',
-            [
-                'label'         => esc_html__('Bottom Spacing', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'range'         => [
-                    'px'        => [
-                        'min'   => 0,
-                        'max'   => 200,
-                        'step'  => 1,
-                    ]
-                ],
-                'default'       => [
-                    'unit'      => 'px',
-                    'size'      => 0,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item:hover .usk-item-box .usk-image .usk-button' => 'transform: translateY(-{{SIZE}}{{UNIT}});',
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item:hover .usk-item-box .usk-image .added_to_cart' => 'transform: translateY(-{{SIZE}}{{UNIT}});',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'btn_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  =>
-                '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'border_radius',
-            [
-                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'button_shadow',
-                'selector' =>
-                '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'button_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .usk-button, {{WRAPPER}} .usk-shiny-grid .usk-grid .usk-item .usk-item-box .usk-image .added_to_cart',
-                'exclude' => ['line_height', 'letter_spacing'],
-                'separator' => 'before',
-            ]
-        );
-
-        $this->end_controls_section();
         $this->register_global_controls_badge();
+        $this->register_global_controls_add_to_cart();
         $this->register_global_controls_action_btn();
         $this->register_global_controls_grid_pagination();
     }
     public function render_header() {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('usk-shiny-grid', 'class', ['usk-shiny-grid', 'usk-content-position-' . $settings['alignment'] . ''], true);
+        $this->add_render_attribute('usk-shiny-grid', 'class', 'usk-shiny-grid usk-grid-carousel usk-css-grid', true);
         $this->add_render_attribute('usk-shiny-grid', 'data-filter', [$settings['show_tab']]);
 
 ?>
@@ -491,7 +317,7 @@ class Shiny_Grid extends Module_Base {
                 <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
             </div>
             <div class="usk-badge-label-wrapper">
-                <div class="usk-badge-label-content">
+                <div class="usk-badge-label-content usk-flex usk-flex-column">
                     <?php $this->register_global_template_badge_label(); ?>
                 </div>
             </div>

@@ -42,7 +42,7 @@
   transform: translateY(-20px);
   opacity: 0; }
 
-.usk-florence-carousel .usk-rating {
+.usk-florence-carousel .usk-item .usk-rating {
   position: absolute;
   width: 100%;
   display: flex; }
