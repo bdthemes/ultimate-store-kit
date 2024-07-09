@@ -157,6 +157,10 @@
   margin: 0;
 }
 
+.usk-account-navigation .woocommerce-MyAccount-navigation {
+  width: 100% !important;
+}
+
 #elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon, #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title {
   color: #EF233C;
 }
@@ -211,6 +215,10 @@
 
 .theme-astra .edd_download_purchase_form .edd_purchase_submit_wrapper {
   margin: 0;
+}
+
+.usk-account-navigation .woocommerce-MyAccount-navigation {
+  width: 100% !important;
 }
 
 /* -------------------------------------------------------------------
