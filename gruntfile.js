@@ -1,12 +1,10 @@
 module.exports = function (grunt) {
-    const jit_grunt = require('jit-grunt');
-    const sass = require('node-sass');
-
     grunt.initConfig({
         sass: {
             dist: {
                 options: {
-                    implementation: sass
+                    implementation: require("sass"),
+                    sourceMap: false,
                 },
                 files: {
                     'assets/css/ultimate-store-kit-site.css': 'assets/scss/ultimate-store-kit-site.scss',

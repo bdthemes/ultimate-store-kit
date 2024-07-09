@@ -25,7 +25,11 @@ class Builder_Template_Helper {
 			'single'    => 'Single Page',
 			'cart'      => 'Cart Page',
 			'checkout'  => 'Checkout',
-			'myaccount' => 'My Account',
+			'myaccount' => 'My AccountX',
+			'myaccount-orders' => 'My Account Orders',
+			'myaccount-address' => 'My Account Address',
+
+			
             'order-received' => 'Order Received',
 			// 'wishlist'     => 'Wishlist',
 		];
