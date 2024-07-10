@@ -763,7 +763,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             $html .= '</ul>';
             $html .= '</div>';
 
-            echo wp_kses_post($this->get_control_output($html));
+           $this->get_control_output($html);
         }
 
 

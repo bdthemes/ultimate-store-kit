@@ -32,9 +32,9 @@ class Notices {
 	 */
 	public function dismiss() {
 
-		$id   = (isset($_POST['id'])) ? sanitize_text_field($_POST['id']) : '';
-		$time = (isset($_POST['time'])) ? sanitize_text_field($_POST['time']) : '';
-		$meta = (isset($_POST['meta'])) ? sanitize_text_field($_POST['meta']) : '';
+		$id   = isset($_POST['id']) ? sanitize_text_field($_POST['id']) : '';
+		$time = isset($_POST['time']) ? sanitize_text_field($_POST['time']) : '';
+		$meta = isset($_POST['meta']) ? sanitize_text_field($_POST['meta']) : '';
 
 		// Valid inputs?
 		if (!empty($id)) {
