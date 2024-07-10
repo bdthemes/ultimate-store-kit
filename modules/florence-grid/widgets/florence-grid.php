@@ -40,7 +40,7 @@ class Florence_Grid extends Module_Base {
     }
 
     public function get_keywords() {
-        return ['product', 'product grid', 'table', 'wc', 'grid', 'list'];
+        return ['product', 'product grid', 'table', 'wc', 'grid', 'list', 'florence grid'];
     }
 
     // public function get_script_depends() {
