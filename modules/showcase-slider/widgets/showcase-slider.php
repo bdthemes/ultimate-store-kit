@@ -21,8 +21,7 @@ if (!defined('ABSPATH')) {
 
 // Exit if accessed directly
 
-class Showcase_Slider extends Module_Base
-{
+class Showcase_Slider extends Module_Base {
     use Global_Widget_Controls;
     use Global_Widget_Template;
     use Group_Control_Query;
@@ -31,38 +30,31 @@ class Showcase_Slider extends Module_Base
      * @var \WP_Query
      */
     private $_query = null;
-    public function get_name()
-    {
+    public function get_name() {
         return 'usk-showcase-slider';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return esc_html__('Showcase Slider', 'ultimate-store-kit');
     }
 
-    public function get_icon()
-    {
+    public function get_icon() {
         return 'usk-widget-icon usk-icon-showcase-slider';
     }
 
-    public function get_categories()
-    {
+    public function get_categories() {
         return ['ultimate-store-kit'];
     }
 
-    public function get_keywords()
-    {
-        return ['product', 'product-grid', 'table', 'wc'];
+    public function get_keywords() {
+        return ['product', 'product slider', 'showcase slider', 'wc', 'carousel'];
     }
 
-    public function get_script_depends()
-    {
+    public function get_script_depends() {
         return ['micromodal'];
     }
 
-    public function get_style_depends()
-    {
+    public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
@@ -73,10 +65,10 @@ class Showcase_Slider extends Module_Base
     // public function get_custom_help_url() {
     //     return 'https://youtu.be/3VkvEpVaNAM';
     // }
-    public function get_query()
-    {
+    public function get_query() {
         return $this->_query;
     }
+
     protected function register_controls() {
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -566,7 +558,7 @@ class Showcase_Slider extends Module_Base
                 'name' => 'content_background',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-item-box',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item',
             ]
         );
 
@@ -574,19 +566,19 @@ class Showcase_Slider extends Module_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'content_border',
-                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item',
+                'separator' => 'before',
             ]
         );
 
         $this->add_responsive_control(
             'content_radius',
             [
-                'label' => esc_html__('Radius', 'ultimate-store-kit'),
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
                 ],
             ]
         );
@@ -600,7 +592,20 @@ class Showcase_Slider extends Module_Base
                     'px', 'em', '%',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'content_box_padding',
+            [
+                'label' => esc_html__('Content Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [
+                    'px', 'em', '%',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-item-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -608,7 +613,7 @@ class Showcase_Slider extends Module_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'content_shadow',
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item',
 
             ]
         );
@@ -626,7 +631,7 @@ class Showcase_Slider extends Module_Base
                 'name' => 'content_hover_background',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item-box:hover',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item:hover',
             ]
         );
         $this->add_control(
@@ -635,70 +640,32 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'condition' => [
-                    'item_border_border!' => '',
+                    'content_border_border!' => '',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item-box:hover' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->end_controls_section();
-        $this->register_global_controls_title();
-        $this->register_global_controls_category();
-        $this->start_controls_section(
-            'section_style_price',
-            [
-                'label' => esc_html__('Price', 'ultimate-store-kit'),
-                'tab' => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'show_price' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
-            'regular_price_color',
-            [
-                'label' => esc_html__('Regular Color', 'ultimate-store-kit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price del .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-price del' => 'color: {{VALUE}};',
-                ],
-
-            ]
-        );
-        $this->add_control(
-            'sale_price_color',
-            [
-                'label' => esc_html__('Sale Color', 'ultimate-store-kit'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price ins span' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price .woocommerce-Price-amount.amount' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price > .woocommerce-Price-amount.amount bdi' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-item:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
         $this->add_group_control(
-            Group_Control_Typography::get_type(),
+            Group_Control_Box_Shadow::get_type(),
             [
-                'name' => 'sale_price_typography',
-                'label' => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '
-                {{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-price',
+                'name' => 'content_hover_shadow',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item:hover',
             ]
         );
-
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
         $this->end_controls_section();
+        
+        $this->register_global_controls_title();
+        $this->register_global_controls_category();
+        $this->register_global_controls_price();
+        
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => esc_html__('Button', 'ultimate-store-kit'),
+                'label' => esc_html__('Add to Cart', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'show_cart' => 'yes',
@@ -722,7 +689,7 @@ class Showcase_Slider extends Module_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -732,37 +699,15 @@ class Showcase_Slider extends Module_Base
                 'name' => 'btn_background_color',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a',
-            ]
-        );
-        $this->add_responsive_control(
-            'btn_padding',
-            [
-                'label' => esc_html__('Padding', 'ultimate-store-kit'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'btn_margin',
-            [
-                'label' => esc_html__('Margin', 'ultimate-store-kit'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart',
             ]
         );
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
                 'name' => 'btn_border',
-                'label' => esc_html__('Border', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart',
+                'separator' => 'before',
             ]
         );
 
@@ -773,15 +718,39 @@ class Showcase_Slider extends Module_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
+        $this->add_responsive_control(
+            'btn_padding',
+            [
+                'label' => esc_html__('Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_spacing',
+            [
+                'label' => esc_html__('Spacing', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'right: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'button_shadow',
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart',
             ]
         );
 
@@ -790,9 +759,7 @@ class Showcase_Slider extends Module_Base
             [
                 'name' => 'button_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a',
-                'exclude' => ['line_height', 'letter_spacing'],
-                'separator' => 'before',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart',
             ]
         );
         $this->end_controls_tab();
@@ -809,7 +776,7 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button:hover, {{WRAPPER}} .usk-showcase-slider .added_to_cart:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -820,7 +787,7 @@ class Showcase_Slider extends Module_Base
                 'name' => 'btn_hover_bg',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a:hover',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-button:hover, {{WRAPPER}} .usk-showcase-slider .added_to_cart:hover',
             ]
         );
 
@@ -833,8 +800,15 @@ class Showcase_Slider extends Module_Base
                     'btn_border_border!' => '',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-button a:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button:hover, {{WRAPPER}} .usk-showcase-slider .added_to_cart:hover' => 'border-color: {{VALUE}};',
                 ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'button_hover_shadow',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-button:hover, {{WRAPPER}} .usk-showcase-slider .added_to_cart:hover',
             ]
         );
 
@@ -855,17 +829,17 @@ class Showcase_Slider extends Module_Base
             [
                 'name' => 'action_btn_border',
                 'label' => esc_html__('Border', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping a',
+                'selector' => '{{WRAPPER}} .usk-showcase-slider .usk-action-btn',
             ]
         );
         $this->add_responsive_control(
             'action_btn_radius',
             [
-                'label' => esc_html__('Radius', 'ultimate-store-kit'),
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-action-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -876,18 +850,31 @@ class Showcase_Slider extends Module_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-action-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
+
         $this->add_responsive_control(
-            'action_btn_margin',
+            'action_btn_gap',
             [
-                'label' => esc_html__('Margin', 'ultimate-store-kit'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
+                'label' => esc_html__('Gap', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'action_btn_icon_size',
+            [
+                'label' => esc_html__('Icon Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-action-btn' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -897,23 +884,12 @@ class Showcase_Slider extends Module_Base
             [
                 'label' => esc_html__('Tooltip Font', 'font family'),
                 'type' => Controls_Manager::FONT,
-                'default' => "'Open Sans', sans-serif",
                 'selectors' => [
-                    '{{WRAPPER}} .usk-item .usk-shoping a' => 'font-family: {{VALUE}}',
+                    '{{WRAPPER}} .usk-shoping a' => 'font-family: {{VALUE}}',
                 ],
             ]
         );
 
-        $this->add_control(
-            'action_btn_separator',
-            [
-                'label' => esc_html__('Button Separator', 'ultimate-store-kit'),
-                'show_label' => false,
-                'label_block' => false,
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
         $this->start_controls_tabs(
             'action_btn_tabs'
         );
@@ -932,17 +908,17 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-wishlist .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-wishlist' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'wishlist_icon_bg',
             [
-                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -960,17 +936,17 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-wishlist:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'wishlist_icon_hover_bg',
             [
-                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -988,17 +964,76 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active .icon::before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-wishlist.usk-active' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'wishlist_active_bg',
             [
-                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        // Compare
+        $this->start_controls_tab(
+            'compare_tab',
+            [
+                'label' => esc_html__('Compare', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_compare' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_normal_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-compare' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg',
+            [
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-compare' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'heading_compare_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'compare_hover_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-compare:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_hover_bg',
+            [
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-compare:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1018,17 +1053,17 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-quickview .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-quickview' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'quickview_icon_bg',
             [
-                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-quickview' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-quickview' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1046,80 +1081,20 @@ class Showcase_Slider extends Module_Base
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-quickview:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-quickview:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
         $this->add_control(
             'quickview_icon_bg_hover',
             [
-                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .usk-showcase-slider .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );
-        $this->end_controls_tab();
-        if (($this->get_name() !== 'usk-shiny-grid') && ($this->get_name() !== 'usk-shiny-carousel')) {
-            $this->start_controls_tab(
-                'add_to_cart_tab',
-                [
-                    'label' => esc_html__('Cart', 'ultimate-store-kit'),
-                    'condition' => [
-                        'show_cart' => 'yes',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'cart_color',
-                [
-                    'label' => esc_html__('Color', 'ultimate-store-kit'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-cart' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'cart_icon_bg',
-                [
-                    'label' => esc_html__('Background', 'ultimate-store-kit'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-cart' => 'background: {{VALUE}}',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'heading_cart_hover',
-                [
-                    'label' => esc_html__('Hover', 'ultimate-store-kit'),
-                    'type' => Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
-            );
-            $this->add_control(
-                'cart_color_hover',
-                [
-                    'label' => esc_html__('Color', 'ultimate-store-kit'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-cart:hover' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-            $this->add_control(
-                'cart_icon_bg_hover',
-                [
-                    'label' => esc_html__('Background', 'ultimate-store-kit'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .usk-showcase-slider .usk-item .usk-shoping .usk-cart:hover' => 'background: {{VALUE}}',
-                    ],
-                ]
-            );
-        }
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -1348,38 +1323,38 @@ class Showcase_Slider extends Module_Base
                 $have_rating = ('yes' === $settings['show_rating']) ? 'usk-have-rating' : '';
 
                 ?>
-	                    <div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit');?>">
-	                        <?php $this->render_image();?>
-	                        <div class="usk-badge-label-wrapper">
-	                            <div class="usk-badge-label-content usk-flex usk-flex-column">
-	                                <?php $this->register_global_template_badge_label();?>
-	                            </div>
-	                        </div>
-	                        <div class="usk-item-box">
-	                            <div class="usk-content">
-	                                <?php if ('yes' == $settings['show_category']): ?>
-	                                    <?php printf('<div class="usk-category">%1$s</div>', wp_kses_post(wc_get_product_category_list($product->get_id(), ' ')));?>
-	                                <?php endif;?>
-                                    <?php if ('yes' == $settings['show_title']):
-                                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                                    endif;?>
-                            </div>
-                            <?php $this->render_add_to_cart();?>
-                            <div class="usk-price-button-wrap">
-                                <?php if (('yes' == $settings['show_price'])): ?>
-                                    <div class="usk-price">
-                                        <?php $this->print_price_output($product->get_price_html()); ?>
-                                    </div>
-                                <?php endif;?>
-                                <?php if (('yes' == $settings['show_rating'])): ?>
-                                    <div class="usk-rating">
-                                        <?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?>
-                                    </div>
-                                <?php endif;?>
-                            </div>
+                <div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit');?>">
+                    <?php $this->render_image();?>
+                    <div class="usk-badge-label-wrapper">
+                        <div class="usk-badge-label-content usk-flex usk-flex-column">
+                            <?php $this->register_global_template_badge_label();?>
                         </div>
                     </div>
-                    <?php endwhile;
+                    <div class="usk-item-box">
+                        <div class="usk-content">
+                            <?php if ('yes' == $settings['show_category']): ?>
+                                <?php printf('<div class="usk-category">%1$s</div>', wp_kses_post(wc_get_product_category_list($product->get_id(), ' ')));?>
+                            <?php endif;?>
+                            <?php if ('yes' == $settings['show_title']):
+                                printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                            endif;?>
+                        </div>
+                        <?php $this->render_add_to_cart();?>
+                        <div class="usk-price-button-wrap">
+                            <?php if (('yes' == $settings['show_price'])): ?>
+                                <div class="usk-price">
+                                    <?php $this->print_price_output($product->get_price_html()); ?>
+                                </div>
+                            <?php endif;?>
+                            <?php if (('yes' == $settings['show_rating'])): ?>
+                                <div class="usk-rating">
+                                    <?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?>
+                                </div>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile;
             wp_reset_postdata();} else {
             echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
         }
