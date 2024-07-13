@@ -254,7 +254,7 @@ trait Global_Widget_Controls {
                 ]
             );
         endif;
-        if ($this->get_name() !==  'usk-product-image-accordion') :
+        if ($this->get_name() !==  'usk-product-image-accordion' && $this->get_name() !==  'usk-heaven-slider') :
             $this->add_control(
                 'show_excerpt',
                 [
@@ -276,6 +276,29 @@ trait Global_Widget_Controls {
                     'condition' => [
                         'show_excerpt' => 'yes',
                         'layout_style' => 'list'
+                    ],
+                ]
+            );
+        endif;
+        //enable this option for heaven slider
+        if ($this->get_name() ===  'usk-heaven-slider') :
+            $this->add_control(
+                'show_excerpt',
+                [
+                    'label' => esc_html__('Text', 'ultimate-store-kit'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'default' => 'yes',
+                    'separator' => 'before',
+                ]
+            );
+            $this->add_control(
+                'excerpt_limit',
+                [
+                    'label'     => esc_html__('Text Limit', 'ultimate-store-kit'),
+                    'type'      => Controls_Manager::NUMBER,
+                    'default'   => 25,
+                    'condition' => [
+                        'show_excerpt' => 'yes',
                     ],
                 ]
             );
