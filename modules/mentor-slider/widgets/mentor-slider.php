@@ -64,9 +64,6 @@ class Mentor_Slider extends Module_Base {
         }
     }
 
-    // public function get_custom_help_url() {
-    //     return 'https://youtu.be/3VkvEpVaNAM';
-    // }
     public function get_query() {
         return $this->_query;
     }
@@ -413,7 +410,7 @@ class Mentor_Slider extends Module_Base {
             [
                 'label'   => __('Mousewheel', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::SWITCHER,
-                'default' => 'yes',
+                // 'default' => 'yes',
 
             ]
         );
@@ -1678,7 +1675,7 @@ class Mentor_Slider extends Module_Base {
         if ($wp_query->have_posts()) { ?>
         <?php while ($wp_query->have_posts()) : $wp_query->the_post();
         global $product;
-        $tooltip_position = 'top';
+        $tooltip_position = 'right';
 
         $rating_count = $product->get_rating_count();
         $average = $product->get_average_rating();
@@ -1693,7 +1690,7 @@ class Mentor_Slider extends Module_Base {
             <?php $this->render_image(); ?>
 
             <div class="usk-badge-label-wrapper">
-                <div class="usk-badge-label-content">
+                <div class="usk-badge-label-content usk-flex">
                     <?php $this->register_global_template_badge_label(); ?>
                 </div>
             </div>
@@ -1732,11 +1729,15 @@ class Mentor_Slider extends Module_Base {
                 </div>
             </div>
             <div class="usk-action-btn-wrap">
-                <?php
-                $this->register_global_template_add_to_cart($tooltip_position);
-                $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                $this->register_global_template_add_to_wishlist($tooltip_position);
-                ?>
+                <div>
+                    <?php $this->register_global_template_add_to_cart($tooltip_position); ?>
+                </div>
+                <div>
+                    <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
+                </div>
+                <div>
+                    <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
+                </div>
             </div>
         </div>
 
