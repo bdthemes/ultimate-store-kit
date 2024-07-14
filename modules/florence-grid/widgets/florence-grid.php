@@ -40,7 +40,7 @@ class Florence_Grid extends Module_Base {
     }
 
     public function get_keywords() {
-        return ['product', 'product grid', 'table', 'wc', 'grid', 'list'];
+        return ['product', 'product grid', 'table', 'wc', 'grid', 'list', 'florence grid'];
     }
 
     // public function get_script_depends() {
@@ -224,7 +224,7 @@ class Florence_Grid extends Module_Base {
 
     public function render_header() {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('usk-florence-grid', 'class', ['usk-florence-grid'], true);
+        $this->add_render_attribute('usk-florence-grid', 'class', 'usk-florence-grid usk-grid-carousel usk-css-grid', true);
         $this->add_render_attribute('usk-florence-grid', 'data-filter', [$settings['show_tab']]);
 ?>
         <div class="ultimate-store-kit">

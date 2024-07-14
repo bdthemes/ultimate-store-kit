@@ -556,10 +556,15 @@
 }
 .bdt-dashboard-panel .bdt-card .bdt-button.bdt-btn-pg {
   background-color: transparent;
-  background-image: linear-gradient(145deg, rgba(13, 59, 84, 0.8) 0%, #0D3B54 100%);
+  background-image: linear-gradient(313deg, #086698 0%, #0D3B54 100%);
+}
+.bdt-dashboard-panel .bdt-card .bdt-button.bdt-btn-zb {
+  background-color: transparent;
+  background-image: linear-gradient(145deg, #2667ff 0%, #3b28cc 100%);
 }
 .bdt-dashboard-panel .bdt-card .bdt-button.bdt-btn-upk {
-  background-color: #E62A3F;
+  background-color: transparent;
+  background-image: linear-gradient(45deg, #08C972 0%, #60DF54 100%);
 }
 .bdt-dashboard-panel .bdt-card .bdt-button.bdt-btn-usk {
   background-color: #e21530;
