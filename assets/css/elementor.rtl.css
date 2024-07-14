@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
 }
-
 .usk-slider .swiper-pagination .swiper-pagination-bullet,
 .usk-dots-container .swiper-pagination .swiper-pagination-bullet,
 .usk-arrows-dots-container .swiper-pagination .swiper-pagination-bullet {
@@ -13,14 +12,12 @@
   height: 10px;
   outline: none;
 }
-
-.usk-slider .swiper-pagination .swiper-pagination-bullet+.swiper-pagination-bullet,
-.usk-dots-container .swiper-pagination .swiper-pagination-bullet+.swiper-pagination-bullet,
-.usk-arrows-dots-container .swiper-pagination .swiper-pagination-bullet+.swiper-pagination-bullet {
+.usk-slider .swiper-pagination .swiper-pagination-bullet + .swiper-pagination-bullet,
+.usk-dots-container .swiper-pagination .swiper-pagination-bullet + .swiper-pagination-bullet,
+.usk-arrows-dots-container .swiper-pagination .swiper-pagination-bullet + .swiper-pagination-bullet {
   margin-right: 5px;
   outline: none;
 }
-
 .usk-slider .swiper-pagination.swiper-pagination-fraction,
 .usk-dots-container .swiper-pagination.swiper-pagination-fraction,
 .usk-arrows-dots-container .swiper-pagination.swiper-pagination-fraction {
@@ -37,71 +34,64 @@
   right: 0 !important;
   transform: translateX(0) !important;
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
   transform: scale(0.33);
   position: relative;
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active {
   transform: scale(1);
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
   transform: scale(1);
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
   transform: scale(0.66);
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
   transform: scale(0.33);
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
   transform: scale(0.66);
 }
-
 .usk-arrows-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next,
 .usk-slider .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next,
 .usk-dots-container .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
   transform: scale(0.33);
 }
 
-[class*='usk-arrows-align-top'] .usk-arrows-container {
+[class*=usk-arrows-align-top] .usk-arrows-container {
   transform: translateY(-40px);
 }
 
-[class*='usk-arrows-align-bottom'] .usk-arrows-container {
+[class*=usk-arrows-align-bottom] .usk-arrows-container {
   transform: translateY(40px);
 }
 
-[class*='usk-dots-align-top'] .usk-dots-container {
+[class*=usk-dots-align-top] .usk-dots-container {
   transform: translateY(-30px);
 }
 
-[class*='usk-dots-align-bottom'] .usk-dots-container {
+[class*=usk-dots-align-bottom] .usk-dots-container {
   transform: translateY(30px);
 }
 
-[class*='usk-arrows-dots-align-top'] .usk-arrows-dots-container {
+[class*=usk-arrows-dots-align-top] .usk-arrows-dots-container {
   transform: translateY(-40px);
 }
 
-[class*='usk-arrows-dots-align-bottom'] .usk-arrows-dots-container {
+[class*=usk-arrows-dots-align-bottom] .usk-arrows-dots-container {
   transform: translateY(40px);
 }
 
@@ -109,14 +99,12 @@
 .usk-arrows-dots-align-center .usk-position-center {
   width: 100%;
 }
-
 .usk-arrows-align-center .usk-navigation-prev,
 .usk-arrows-dots-align-center .usk-navigation-prev {
   right: 0;
   position: absolute;
   transform: translateY(-50%);
 }
-
 .usk-arrows-align-center .usk-navigation-next,
 .usk-arrows-dots-align-center .usk-navigation-next {
   left: 0;
@@ -129,7 +117,6 @@
   left: 0;
   right: inherit;
 }
-
 .rtl .usk-arrows-align-center .usk-navigation-next,
 .rtl .usk-arrows-dots-align-center .usk-navigation-next {
   right: 0;
@@ -148,7 +135,7 @@
   width: 100%;
 }
 
-[class*=" elementor-widget-usk-"] .swiper-pagination-fraction, [class*=" elementor-widget-usk-"] .swiper-pagination-custom, [class*=" elementor-widget-usk-"] .swiper-horizontal>.swiper-pagination-bullets, [class*=" elementor-widget-usk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
+[class*=" elementor-widget-usk-"] .swiper-pagination-fraction, [class*=" elementor-widget-usk-"] .swiper-pagination-custom, [class*=" elementor-widget-usk-"] .swiper-horizontal > .swiper-pagination-bullets, [class*=" elementor-widget-usk-"] .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: auto;
 }
 
@@ -156,40 +143,33 @@
   -webkit-transform: translate(var(--usk-swiper-carousel-arrows-ncx, 0), var(--usk-swiper-carousel-arrows-ncy, 40));
   transform: translate(var(--usk-swiper-carousel-arrows-ncx, 0), var(--usk-swiper-carousel-arrows-ncy, 40));
 }
-
 [class*=" elementor-widget-usk-"] .usk-dots-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-dots-nnx, 0), var(--usk-swiper-carousel-dots-nny, 30));
   transform: translate(var(--usk-swiper-carousel-dots-nnx, 0), var(--usk-swiper-carousel-dots-nny, 30));
 }
-
 [class*=" elementor-widget-usk-"] .usk-arrows-dots-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-both-ncx, 0), var(--usk-swiper-carousel-both-ncy, 40));
   transform: translate(var(--usk-swiper-carousel-both-ncx, 0), var(--usk-swiper-carousel-both-ncy, 40));
 }
-
 [class*=" elementor-widget-usk-"] .usk-arrows-fraction-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-arrows-fraction-ncx, 0), var(--usk-swiper-carousel-arrows-fraction-ncy, 40));
   transform: translate(var(--usk-swiper-carousel-arrows-fraction-ncx, 0), var(--usk-swiper-carousel-arrows-fraction-ncy, 40));
 }
-
 [class*=" elementor-widget-usk-"] .usk-position-center-left .usk-arrows-container,
 [class*=" elementor-widget-usk-"] .usk-position-center-right .usk-arrows-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-arrows-ncx, 0), var(--usk-swiper-carousel-arrows-ncy, 0)) rotate(-90deg);
   transform: translate(var(--usk-swiper-carousel-arrows-ncx, 0), var(--usk-swiper-carousel-arrows-ncy, 0)) rotate(-90deg);
 }
-
 [class*=" elementor-widget-usk-"] .usk-position-center-left .usk-dots-container,
 [class*=" elementor-widget-usk-"] .usk-position-center-right .usk-dots-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-dots-nnx, 0), var(--usk-swiper-carousel-dots-nny, 0)) rotate(-90deg);
   transform: translate(var(--usk-swiper-carousel-dots-nnx, 0), var(--usk-swiper-carousel-dots-nny, 0)) rotate(-90deg);
 }
-
 [class*=" elementor-widget-usk-"] .usk-position-center-left .usk-arrows-dots-container,
 [class*=" elementor-widget-usk-"] .usk-position-center-right .usk-arrows-dots-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-both-ncx, 0), var(--usk-swiper-carousel-both-ncy, 0)) rotate(-90deg);
   transform: translate(var(--usk-swiper-carousel-both-ncx, 0), var(--usk-swiper-carousel-both-ncy, 0)) rotate(-90deg);
 }
-
 [class*=" elementor-widget-usk-"] .usk-position-center-left .usk-arrows-fraction-container,
 [class*=" elementor-widget-usk-"] .usk-position-center-right .usk-arrows-fraction-container {
   -webkit-transform: translate(var(--usk-swiper-carousel-arrows-fraction-ncx, 0), var(--usk-swiper-carousel-arrows-fraction-ncy, 0)) rotate(-90deg);

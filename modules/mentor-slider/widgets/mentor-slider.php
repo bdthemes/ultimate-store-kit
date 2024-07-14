@@ -1613,7 +1613,7 @@ class Mentor_Slider extends Module_Base {
 
             <!-- thumbsslider -->
             <div class="usk-thumbs-slider-wrap">
-                <div thumbsSlider="" class="usk-thumbs-slider">
+                <div thumbsSlider="" class="usk-thumbs-slider swiper">
                     <div class="swiper-wrapper">
                     <?php $this->render_thumbs_item(); ?>
                     </div>
