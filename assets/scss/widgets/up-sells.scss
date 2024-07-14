@@ -1,42 +1,48 @@
-.elementor-widget-usk-up-sells{
-    &.usk-up-sells-show-heading-yes{
-        section.up-sells.upsells.products{
-            h2{
+.elementor-widget-usk-up-sells {
+    &.usk-up-sells-show-heading-yes {
+        section.up-sells.upsells.products {
+            h2 {
                 display: block;
             }
-                
+
 
         }
     }
-    .usk-upsells section.products{
+
+    .usk-upsells section.products {
         display: inline-block;
+
         // display: grid;
         // grid-template-columns: repeat(3, 1fr);
         // grid-gap: 30px;
-       li.product {
+        li.product {
             border: 1px solid #eee;
             padding: 30px !important;
             display: inline-block;
             border-radius: 5px;
         }
-        h2{
+
+        h2 {
             font-size: 18px;
             margin-bottom: 10px;
             font-weight: 600;
-            a{
+            display: none;
+
+            a {
                 color: #000;
             }
-            display: none;
         }
     }
-    section.up-sells.upsells.products{
-        h2{
+
+    section.up-sells.upsells.products {
+        h2 {
             display: none;
         }
     }
 
 
-    ul.products li.product, .woocommerce-page ul.products li.product{
+    ul.products li.product,
+    .woocommerce-page ul.products li.product {
         border: 1px solid #eee;
         padding: 30px !important;
         display: inline-block;
