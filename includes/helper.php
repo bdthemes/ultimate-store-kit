@@ -888,14 +888,27 @@ function usk_get_order_options() {
 }
 
 //wishlist
-
 function ultimate_store_kit_get_wishlist($user_id = 0) {
-	$_wishlist_key = '_ultimate_store_kit_wishlist';
-	$_wishlist     = [];
-	if (isset($_COOKIE[$_wishlist_key])) {
-		$_wishlist = unserialize(stripslashes($_COOKIE[sanitize_text_field($_wishlist_key)]));
-	}
-	return apply_filters('ultimate_store_kit_wishlist', array_unique($_wishlist));
+    $_wishlist_key = '_ultimate_store_kit_wishlist';
+    $_wishlist     = [];
+
+    if (isset($_COOKIE[$_wishlist_key])) {
+        // Sanitize the cookie data
+        $cookie_data = stripslashes($_COOKIE[$_wishlist_key]);
+        
+        // Decode the JSON data
+        $decoded_data = json_decode($cookie_data, true);
+
+        // Check if the JSON decoding was successful and the result is an array
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded_data)) {
+            $_wishlist = $decoded_data;
+        } else {
+            // Handle JSON decoding error if necessary
+            $_wishlist = [];
+        }
+    }
+
+    return apply_filters('ultimate_store_kit_wishlist', array_unique($_wishlist));
 }
 
 function usk_get_taxonomies() {

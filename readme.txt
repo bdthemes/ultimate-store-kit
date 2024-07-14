@@ -155,7 +155,7 @@ https://youtu.be/9J4zCaDcPnk
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query
-* Fixed: Security issue fixed (Thanks to Peter Thaleikis)
+* Fixed: Security issue fixed (Thanks to Peter Thaleikis and Ray Wilson)
 
 = 1.6.X [XXth July 2024] =
 
