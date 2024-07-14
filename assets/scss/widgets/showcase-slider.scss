@@ -271,57 +271,15 @@
 
 @media (min-width: 1024px) {
     .usk-showcase-slider {
-        .usk-showcase-slider-wrapper {
-            .usk-item {
-                // .usk-image-wrap {
-                //     height: 280px;
-                // }
-
-                // .usk-item-box {
-                //     padding: 30px;
-                // }
-
-                // .usk-title .title {
-                //     font-size: 30px;
-                // }
-
-                // .usk-price {
-                //     font-size: 25px;
-                // }
-
-                // .usk-badge-label-wrapper {
-                //     top: 30px;
-                //     left: 30px;
-                // }
-
-                // .usk-action-btn {
-                //     padding: 16px 20px;
-                //     font-size: 22px;
-                // }
-            }
-
-            .usk-nav {
-                i {
-                    background: #ef233c;
-                    width: 50px;
-                    height: 50px;
-                    line-height: 50px;
-                    text-align: center;
-                    font-size: 16px;
-                }
+        .usk-nav {
+            i {
+                background: #ef233c;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                font-size: 16px;
             }
         }
     }
 }
-
-// @media (min-width: 1440px) {
-//     .usk-showcase-slider {
-//         .usk-showcase-slider-wrapper {
-//             .usk-item {
-//                 .usk-image-wrap {
-//                     height: 500px;
-//                 }
-//             }
-//         }
-//     }
-// }
