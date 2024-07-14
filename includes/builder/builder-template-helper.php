@@ -19,25 +19,34 @@ class Builder_Template_Helper {
 	}
 
 	public static function templates( $single = false ) {
-		$shopItem = [ 
-			'shop'      => 'Shop Page',
-			'archive'   => 'Archive Page',
-			'single'    => 'Single Page',
-			'cart'      => 'Cart Page',
-			'checkout'  => 'Checkout',
-			'myaccount' => 'My Account',
-            'order-received' => 'Order Received',
-			// 'wishlist'     => 'Wishlist',
+		$shop_item = [ 
+			'shop'           => 'Shop Page',
+			'archive'        => 'Archive Page',
+			'single'         => 'Single Page',
+			'cart'           => 'Cart Page',
+			'checkout'       => 'Checkout',
+			'order-received' => 'Order Received',
+		];
+
+		$my_account = [ 
+			'myaccount'           => 'Dashboard',
+			'myaccount-orders'    => 'Orders',
+			'myaccount-downloads' => 'Downloads',
+			'myaccount-address'   => 'Address',
+			'myaccount-edit'      => 'Account Details',
+			'wishlist'            => 'Wishlist',
+			'logout'              => 'Customer Logout',
 		];
 
 		if ( $wcItems = WC()->query->get_query_vars() ) {
-			array_walk( $wcItems, function ($item, $key) use (&$shopItem) {
-				$shopItem[ $key ] = ucwords( str_replace( '-', ' ', $key ) );
+			array_walk( $wcItems, function ($item, $key) use (&$shop_item) {
+				$shop_item[ $key ] = ucwords( str_replace( '-', ' ', $key ) );
 			} );
 		}
 
 		$product = [ 
-			'product' => $shopItem,
+			'product' => $shop_item,
+			'account'  => $my_account,
 		];
 
 		$templates = apply_filters(

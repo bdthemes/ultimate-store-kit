@@ -190,7 +190,7 @@ class Builder_Integration {
 			if ( $endpoint = array_intersect_key( $wp->query_vars, $query_vars ) ) {
 				$endpoint = array_key_first( $endpoint );
 
-				if ( $endpoint && $custom_template = $this->get_template_id( $endpoint, 'product' ) ) {
+				if ( $endpoint && $custom_template = $this->get_template_id( $endpoint, 'account' ) ) {
 					$this->current_template_id = $custom_template;
 
 					if ( $newTemplate = $this->getTemplatePath( "woocommerce/{$endpoint}" ) ) {
@@ -200,7 +200,7 @@ class Builder_Integration {
 					return $this->getTemplatePath( "woocommerce/my-account", '' );
 				}
 			} else {
-				if ( $custom_template = $this->get_template_id( 'myaccount', 'product' ) ) {
+				if ( $custom_template = $this->get_template_id( 'myaccount', 'account' ) ) {
 					$this->current_template_id = $custom_template;
 					return $this->getTemplatePath( 'woocommerce/my-account', $template );
 				}
