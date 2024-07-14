@@ -12,7 +12,6 @@ class Admin {
 
 	public function __construct() {
 
-		// Embed the Script on our Plugin's Option Page Only
 		if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 			add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
 		}
@@ -29,7 +28,6 @@ class Admin {
 	}
 
 	/**
-	 * @return [type] [description]
 	 * Add some meta link in plugin page with the plugin
 	 */
 	public function plugin_meta() {

@@ -8,7 +8,7 @@
 			</div>
 			<div class="usk-modal-close-button">
 				<a href="javascript:void(0)">
-					<i class="usk-icon-close"></i>
+					<span class="dashicons dashicons-no-alt"></span>
 				</a>
 			</div>
 		</div>

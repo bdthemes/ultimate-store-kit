@@ -1,12 +1,12 @@
 module.exports = function (grunt) {
-    const jit_grunt = require('jit-grunt');
-    const sass = require('node-sass');
-
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        
         sass: {
             dist: {
                 options: {
-                    implementation: sass
+                    implementation: require("sass"),
+                    sourceMap: false,
                 },
                 files: {
                     'assets/css/ultimate-store-kit-site.css': 'assets/scss/ultimate-store-kit-site.scss',
@@ -160,12 +160,45 @@ module.exports = function (grunt) {
                     spawn: false,
                 },
             }
-        }
+        },
+        // make a zipfile
+        compress: {
+            main: {
+                options: {
+                    archive: 'ultimate-store-kit.zip'
+                },
+                files: [{
+                    src: [
+                        'admin/**',
+                        'assets/css/**',
+                        'assets/fonts/**',
+                        'assets/images/**',
+                        'assets/js/**',
+                        'assets/vendor/**',
+                        'base/**',
+                        'includes/**',
+                        'languages/**',
+                        'modules/**',
+                        'traits/**',
+                        'loader.php',
+                        'readme.txt',
+                        'ultimate-store-kit.php',
+                    ],
+                    dest: 'ultimate-store-kit/'
+                },]
+            }
+        },
     });
 
     grunt.loadNpmTasks('grunt-rtlcss');
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks('grunt-terser');
     grunt.loadNpmTasks("grunt-sass");
-    grunt.registerTask('default', ['sass', 'terser', 'watch']);
+    grunt.loadNpmTasks('grunt-contrib-compress');
+
+    if (process.env.NODE_ENV === 'development') {
+        grunt.registerTask('default', ['sass', 'terser', 'watch']);
+    } else {
+        grunt.registerTask('default', ['sass', 'terser', 'compress']);
+    }
 };
