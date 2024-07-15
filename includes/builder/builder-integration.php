@@ -187,6 +187,7 @@ class Builder_Integration {
 		if ( is_account_page() ) {
 			global $wp;
 			$query_vars = WC()->query->get_query_vars();
+
 			if ( $endpoint = array_intersect_key( $wp->query_vars, $query_vars ) ) {
 				$endpoint = array_key_first( $endpoint );
 
@@ -201,7 +202,19 @@ class Builder_Integration {
 				}
 			} else {
 				if ( $custom_template = $this->get_template_id( 'myaccount', 'account' ) ) {
+					var_dump( '$templateX' );
 					$this->current_template_id = $custom_template;
+					return $this->getTemplatePath( 'woocommerce/my-account', $template );
+				}
+
+				var_dump( $this->get_template_id( 'orders', 'account' ) );
+				
+				if ( $custom_template = $this->get_template_id( 'orders', 'account' ) ) {
+					$this->current_template_id = $custom_template;
+
+					var_dump( $this->current_template_id );
+					var_dump( '$templateZZ' );
+
 					return $this->getTemplatePath( 'woocommerce/my-account', $template );
 				}
 			}
@@ -272,6 +285,8 @@ class Builder_Integration {
 		if ( null !== $this->current_template_id ) {
 			return $this->current_template_id;
 		}
+
+		var_dump( $slug, $postType );
 
 		$templateId                = Builder_Template_Helper::getTemplate( $slug, $postType );
 		$this->current_template_id = apply_filters( 'ultimate-store-kit-builder/custom-shop-template', $templateId );
