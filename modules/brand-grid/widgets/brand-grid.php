@@ -53,66 +53,6 @@ class Brand_Grid extends Module_Base {
     protected function register_controls() {
 
         $this->start_controls_section(
-            'section_layout',
-            [
-                'label' => __('Layout', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'columns',
-            [
-                'label'           => __('Columns', 'ultimate-store-kit'),
-                'type'            => Controls_Manager::SELECT,
-                'default'         => 4,
-                'tablet_default'  => 2,
-                'mobile_default'  => 1,
-                'options'         => [
-                    1 => '1',
-                    2 => '2',
-                    3 => '3',
-                    4 => '4',
-                    5 => '5',
-                    6 => '6',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-brand-grid' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'column_gap',
-            [
-                'label'     => esc_html__('Column Gap', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 20,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-brand-grid' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'row_gap',
-            [
-                'label'     => esc_html__('Row Gap', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 20,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-brand-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
             'usk_section_brands',
             [
                 'label' => __('Brand Items', 'ultimate-store-kit'),
@@ -178,6 +118,66 @@ class Brand_Grid extends Module_Base {
                     ['image' => ['url' => Utils::get_placeholder_image_src()]],
                     ['image' => ['url' => Utils::get_placeholder_image_src()]],
                 ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_layout',
+            [
+                'label' => __('Additional Options', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'columns',
+            [
+                'label'           => __('Columns', 'ultimate-store-kit'),
+                'type'            => Controls_Manager::SELECT,
+                'default'         => 4,
+                'tablet_default'  => 2,
+                'mobile_default'  => 1,
+                'options'         => [
+                    1 => '1',
+                    2 => '2',
+                    3 => '3',
+                    4 => '4',
+                    5 => '5',
+                    6 => '6',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-brand-grid' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'column_gap',
+            [
+                'label'     => esc_html__('Column Gap', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-brand-grid' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'row_gap',
+            [
+                'label'     => esc_html__('Row Gap', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-brand-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -278,13 +278,97 @@ class Brand_Grid extends Module_Base {
             ]
         );
 
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_item_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_hover_background',
+                'selector'  => '{{WRAPPER}} .usk-brand-grid-item:hover',
+            ]
+        );
 
         $this->add_control(
-            'image_heading',
+            'item_hover_border_color',
             [
-                'label'     => __('IMAGE', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::HEADING,
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '#2B2D42',
+                'condition' => [
+                    'item_border_border!' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-brand-grid-item:hover' => 'border-color: {{VALUE}};',
+                ],
                 'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'item_hover_box_shadow',
+                'selector' => '{{WRAPPER}} .usk-brand-grid-item:hover',
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_image',
+            [
+                'label' => __('Image', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+        $this->start_controls_tabs('tabs_image_style');
+        
+        $this->start_controls_tab(
+            'tab_image_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'image_border',
+                'selector'       => '{{WRAPPER}} .usk-brand-grid-img',
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'image_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-brand-grid-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'image_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-brand-grid-img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -354,50 +438,23 @@ class Brand_Grid extends Module_Base {
         $this->end_controls_tab();
 
         $this->start_controls_tab(
-            'tab_item_hover',
+            'tab_image_hover',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
             ]
         );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'item_hover_background',
-                'selector'  => '{{WRAPPER}} .usk-brand-grid-item:hover',
-            ]
-        );
-
+        
         $this->add_control(
-            'item_hover_border_color',
+            'image_hover_border_color',
             [
                 'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
-                'default'   => '#2B2D42',
                 'condition' => [
-                    'item_border_border!' => '',
+                    'image_border_border!' => '',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-brand-grid-item:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-brand-grid-item:hover .usk-brand-grid-img' => 'border-color: {{VALUE}};',
                 ],
-                'separator' => 'before'
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'item_hover_box_shadow',
-                'selector' => '{{WRAPPER}} .usk-brand-grid-item:hover',
-            ]
-        );
-
-        $this->add_control(
-            'image_heading_hover',
-            [
-                'label'     => __('IMAGE', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before'
             ]
         );
 
@@ -429,12 +486,11 @@ class Brand_Grid extends Module_Base {
                 'selector' => '{{WRAPPER}} .usk-brand-grid-item:hover .usk-brand-grid-img',
             ]
         );
-
+        
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
-
         $this->end_controls_section();
+
     }
 
     protected function render() {
@@ -466,7 +522,7 @@ class Brand_Grid extends Module_Base {
                     true
                 );
 
-                $this->add_render_attribute('item-wrap', 'class', 'usk-brand-grid-item', true);
+                $this->add_render_attribute('item-wrap', 'class', 'usk-brand-grid-item usk-flex usk-flex-middle usk-flex-center', true);
 
             ?>
                 <div <?php $this->print_render_attribute_string('item-wrap'); ?>>

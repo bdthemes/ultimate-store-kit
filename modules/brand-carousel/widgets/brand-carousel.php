@@ -60,84 +60,6 @@
 		protected function register_controls() {
 			
 			$this->start_controls_section(
-				'section_layout',
-				[
-					'label' => __( 'Layout', 'ultimate-store-kit' ),
-					'tab'   => Controls_Manager::TAB_CONTENT,
-				]
-			);
-			
-			$this->add_responsive_control(
-				'columns',
-				[
-					'label' => esc_html__('Columns', 'ultimate-store-kit'),
-					'type' => Controls_Manager::SELECT,
-					'default' => 3,
-					'tablet_default' => 2,
-					'mobile_default' => 1,
-					'options' => [
-						1 => '1',
-						2 => '2',
-						3 => '3',
-						4 => '4',
-						5 => '5',
-						6 => '6',
-					],
-				]
-			);
-
-			$this->add_responsive_control(
-				'items_gap',
-				[
-					'label' => esc_html__('Item Gap', 'ultimate-store-kit'),
-					'type' => Controls_Manager::SLIDER,
-					'default' => [
-						'size' => 30,
-					],
-					'range' => [
-						'px' => [
-							'min' => 0,
-							'max' => 100,
-						],
-					],
-					'tablet_default' => [
-						'size' => 20,
-					],
-					'mobile_default' => [
-						'size' => 20,
-					],
-				]
-			);
-
-			$this->add_responsive_control(
-				'alignment',
-				[
-					'label'     => esc_html__('Alignment', 'ultimate-store-kit'),
-					'type'      => Controls_Manager::CHOOSE,
-					'options'   => [
-						'left'   => [
-							'title' => esc_html__('Left', 'ultimate-store-kit'),
-							'icon'  => 'eicon-h-align-left',
-						],
-						'center' => [
-							'title' => esc_html__('Center', 'ultimate-store-kit'),
-							'icon'  => 'eicon-h-align-center',
-						],
-						'right'  => [
-							'title' => esc_html__('Right', 'ultimate-store-kit'),
-							'icon'  => 'eicon-h-align-right',
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content' => 'text-align: {{VALUE}}',
-					],
-					'render_type' => 'template'
-				]
-			);
-		
-			$this->end_controls_section();
-
-			$this->start_controls_section(
 				'usk_section_brands',
 				[
 					'label' => __( 'Brand Items', 'ultimate-store-kit' ),
@@ -206,6 +128,58 @@
 				]
 			);
 
+			$this->end_controls_section();
+
+			$this->start_controls_section(
+				'section_layout',
+				[
+					'label' => __( 'Additional Options', 'ultimate-store-kit' ),
+					'tab'   => Controls_Manager::TAB_CONTENT,
+				]
+			);
+			
+			$this->add_responsive_control(
+				'columns',
+				[
+					'label' => esc_html__('Columns', 'ultimate-store-kit'),
+					'type' => Controls_Manager::SELECT,
+					'default' => 3,
+					'tablet_default' => 2,
+					'mobile_default' => 1,
+					'options' => [
+						1 => '1',
+						2 => '2',
+						3 => '3',
+						4 => '4',
+						5 => '5',
+						6 => '6',
+					],
+				]
+			);
+
+			$this->add_responsive_control(
+				'items_gap',
+				[
+					'label' => esc_html__('Item Gap', 'ultimate-store-kit'),
+					'type' => Controls_Manager::SLIDER,
+					'default' => [
+						'size' => 30,
+					],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 100,
+						],
+					],
+					'tablet_default' => [
+						'size' => 20,
+					],
+					'mobile_default' => [
+						'size' => 20,
+					],
+				]
+			);
+
 			$this->add_group_control(
 				Group_Control_Image_Size::get_type(),
 				[
@@ -215,7 +189,7 @@
 					'exclude'   => ['custom']
 				]
 			);
-			
+		
 			$this->end_controls_section();
 
 			$this->register_global_controls_carousel_navigation();
@@ -332,100 +306,6 @@
                 ]
             );
 
-			$this->add_responsive_control(
-                'item_match_padding',
-                [
-                    'label'       => __( 'Match Padding', 'ultimate-store-kit' ),
-                    'description' => __( 'You have to add padding for matching overlaping normal/hover box shadow when you used Box Shadow option.', 'ultimate-store-kit' ),
-                    'type'        => Controls_Manager::SLIDER,
-                    'range'       => [
-                        'px' => [
-                            'min'  => 0,
-                            'step' => 1,
-                            'max'  => 50,
-                        ]
-                    ],
-                    'default'     => [
-                        'size' => 10
-                    ],
-                    'selectors'   => [
-                        '{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
-                    ],
-                ]
-            );
-			
-			$this->add_control(
-				'image_heading',
-				[
-					'label'     => __('IMAGE', 'ultimate-store-kit'),
-					'type'      => Controls_Manager::HEADING,
-					'separator' => 'before'
-				]
-			);
-
-			$this->add_responsive_control(
-				'brand_image_height',
-				[
-					'label' => __('Height', 'ultimate-store-kit'),
-					'type'  => Controls_Manager::SLIDER,
-					'range' => [
-						'px' => [
-							'min' => 10,
-							'max' => 500,
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .usk-brand-carousel-img' => 'height: {{SIZE}}{{UNIT}};',
-					],
-				]
-			);
-
-			$this->add_responsive_control(
-				'brand_image_width',
-				[
-					'label' => __('Width', 'ultimate-store-kit'),
-					'type'  => Controls_Manager::SLIDER,
-					'range' => [
-						'px' => [
-							'min' => 10,
-							'max' => 500,
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .usk-brand-carousel-img' => 'width: {{SIZE}}{{UNIT}};',
-					],
-				]
-			);
-
-			$this->add_control(
-				'brand_image_opaciry',
-				[
-					'label' => __('Opaciry', 'ultimate-store-kit'),
-					'type'  => Controls_Manager::SLIDER,
-					'default' => [
-                        'size' => 0.3,
-                    ],
-					'range' => [
-						'px' => [
-							'min' => 0,
-							'max' => 1,
-							'step' => 0.1,
-						],
-					],
-					'selectors' => [
-						'{{WRAPPER}} .usk-brand-carousel-img' => 'opacity: {{SIZE}};',
-					],
-				]
-			);
-
-			$this->add_group_control(
-				Group_Control_Css_Filter::get_type(),
-				[
-					'name'     => 'css_filters',
-					'selector' => '{{WRAPPER}} .usk-brand-carousel-img',
-				]
-			);
-
 			$this->end_controls_tab();
 
 			$this->start_controls_tab(
@@ -467,23 +347,154 @@
 				]
 			);
 
-			$this->add_control(
-				'image_heading_hover',
+			$this->end_controls_tab();
+
+			$this->end_controls_tabs();
+
+			$this->end_controls_section();
+			$this->start_controls_section(
+				'section_style_image',
 				[
-					'label'     => __('I M A G E', 'ultimate-store-kit'),
-					'type'      => Controls_Manager::HEADING,
-					'separator' => 'before'
+					'label' => __('Image', 'ultimate-store-kit'),
+					'tab'   => Controls_Manager::TAB_STYLE,
 				]
 			);
-
+			
+			$this->start_controls_tabs('tabs_image_style');
+			
+			$this->start_controls_tab(
+				'tab_image_normal',
+				[
+					'label' => esc_html__('Normal', 'ultimate-store-kit'),
+				]
+			);
+	
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
+				[
+					'name'           => 'image_border',
+					'selector'       => '{{WRAPPER}} .usk-brand-carousel-img',
+				]
+			);
+			
+			$this->add_responsive_control(
+				'image_border_radius',
+				[
+					'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => ['px', 'em', '%'],
+					'selectors'  => [
+						'{{WRAPPER}} .usk-brand-carousel-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+			
+			$this->add_responsive_control(
+				'image_padding',
+				[
+					'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => ['px', 'em', '%'],
+					'selectors'  => [
+						'{{WRAPPER}} .usk-brand-carousel-img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+	
+			$this->add_responsive_control(
+				'brand_image_height',
+				[
+					'label' => __('Height', 'ultimate-store-kit'),
+					'type'  => Controls_Manager::SLIDER,
+					'range' => [
+						'px' => [
+							'min' => 10,
+							'max' => 500,
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .usk-brand-carousel-img' => 'height: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+	
+			$this->add_responsive_control(
+				'brand_image_width',
+				[
+					'label' => __('Width', 'ultimate-store-kit'),
+					'type'  => Controls_Manager::SLIDER,
+					'range' => [
+						'px' => [
+							'min' => 10,
+							'max' => 500,
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .usk-brand-carousel-img' => 'width: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+	
+			$this->add_control(
+				'brand_image_opaciry',
+				[
+					'label' => __('Opaciry', 'ultimate-store-kit'),
+					'type'  => Controls_Manager::SLIDER,
+					'default' => [
+						'size' => 0.3,
+					],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 1,
+							'step' => 0.1,
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .usk-brand-carousel-img' => 'opacity: {{SIZE}};',
+					],
+				]
+			);
+	
+			$this->add_group_control(
+				Group_Control_Css_Filter::get_type(),
+				[
+					'name'     => 'css_filters',
+					'selector' => '{{WRAPPER}} .usk-brand-carousel-img',
+				]
+			);
+	
+			$this->end_controls_tab();
+	
+			$this->start_controls_tab(
+				'tab_image_hover',
+				[
+					'label' => esc_html__('Hover', 'ultimate-store-kit'),
+				]
+			);
+			
+			$this->add_control(
+				'image_hover_border_color',
+				[
+					'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+					'type'      => Controls_Manager::COLOR,
+					'condition' => [
+						'image_border_border!' => '',
+					],
+					'selectors' => [
+						'{{WRAPPER}} .usk-brand-carousel-item:hover .usk-brand-carousel-img' => 'border-color: {{VALUE}};',
+					],
+				]
+			);
+	
 			$this->add_control(
 				'brand_image_opaciry_hover',
 				[
 					'label' => __('Opaciry', 'ultimate-store-kit'),
 					'type'  => Controls_Manager::SLIDER,
 					'default' => [
-                        'size' => 1,
-                    ],
+						'size' => 1,
+					],
 					'range' => [
 						'px' => [
 							'min' => 0,
@@ -496,7 +507,7 @@
 					],
 				]
 			);
-
+	
 			$this->add_group_control(
 				Group_Control_Css_Filter::get_type(),
 				[
@@ -504,11 +515,9 @@
 					'selector' => '{{WRAPPER}} .usk-brand-carousel-item:hover .usk-brand-carousel-img',
 				]
 			);
-
+			
 			$this->end_controls_tab();
-
 			$this->end_controls_tabs();
-
 			$this->end_controls_section();
 
 			$this->register_global_controls_navigation_style();
@@ -539,7 +548,7 @@
 					], '', '', true
 				);
 
-				$this->add_render_attribute('item-wrap', 'class', 'usk-brand-carousel-item', true);
+				$this->add_render_attribute('item-wrap', 'class', 'usk-brand-carousel-item usk-flex usk-flex-middle usk-flex-center', true);
 		
 				?>
 				<div class="swiper-slide">

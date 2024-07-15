@@ -12,10 +12,6 @@
 }
 
 .ultimate-store-kit * {
-
-    // margin: 0;
-    // padding: 0;
-    // box-sizing: border-box;
     ins {
         background: transparent;
     }
@@ -36,11 +32,9 @@
 }
 
 /*-------------------------------------
-   usk Shiny Widget header scss
+   usk grid Widget header scss
    --------------------------------------*/
-.usk-glossy-grid,
-.usk-florence-grid,
-.usk-shiny-grid {
+.usk-css-grid {
     @media screen and (min-width: 768px) {
         .usk-grid {
             &.usk-grid-3 {
@@ -195,7 +189,12 @@
     }
 }
 
-// CLS issue fix & Common CSS for Florence Grid & Glossy Grid
+// CLS issue fix & Common CSS
+.usk-brand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .usk-css-grid {
     .usk-grid {
         display: grid;
@@ -212,8 +211,6 @@
 
 .usk-grid-carousel {
     .usk-item {
-        // box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
-        // overflow: hidden;
         position: relative;
 
         &:hover {
@@ -230,7 +227,6 @@
             }
 
             .usk-action-btn {
-                // transform: translateX(0px);
                 opacity: 1;
             }
         }
@@ -238,6 +234,9 @@
 
     .usk-item-box {
         position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
     .usk-image {
@@ -245,9 +244,12 @@
         overflow: hidden;
         background: #fff;
         transition: all 0.3s ease;
+        height: 100%;
 
         .img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             overflow: hidden;
         }
 
@@ -275,8 +277,6 @@
 
     .usk-shoping {
         position: absolute;
-        // bottom: clamp(10px, 1vw, 25px);
-        // right: clamp(10px, 1vw, 25px);
     }
 
     .usk-action-btn {
@@ -285,7 +285,6 @@
         justify-content: center;
         text-decoration: none;
         margin-bottom: 5px;
-        // transform: translateX(25px);
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         padding: clamp(10px, 1vw, 12px);
         transition: all 0.3s ease;
@@ -365,16 +364,10 @@
 
     .usk-badge-label-wrapper {
         position: absolute;
-        // left: 0;
-        // top: 0;
         margin: clamp(10px, 1vw, 25px);
     }
 
     .usk-content {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        // background: #fff;
         padding: clamp(15px, 1vw, 30px);
     }
 
