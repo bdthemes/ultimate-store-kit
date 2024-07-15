@@ -145,7 +145,8 @@ https://youtu.be/9J4zCaDcPnk
 
 = XXXXX [XXXX June 2024] =
 
-* Added: Compare option added in florence widget
+* Added: Call for price widget added
+* Added: Product Compare feature added in all products grid, carousel & slider type widgets
 * Added: Order by Modified feature added in Query
 * Fixed: Product Not show issue fixed on Archive Page (Thanks to NexThemes)
 * Fixed: Pagination with Current Query issue fixed on Archive Page (Thanks to Gregor Kramberger)
@@ -156,11 +157,8 @@ https://youtu.be/9J4zCaDcPnk
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query
 * Fixed: Security issue fixed (Thanks to Peter Thaleikis and Ray Wilson)
-
-= 1.6.X [XXth July 2024] =
-
 * Fixed: Translation support issue fixed (Thanks to itapress)
-* Fixed: Security issue fixed (Thanks to Darius Sveikauskas)
+* Updated: Compare button, compare products, florence grid, florence carousel, glossy grid, glossy carousel, heaven slider, mentor slider, shiny grid, shiny carousel, showcase slider, wishlist button, wishlist products, brand grid, brand carousel widgets improved
 
 = 1.6.4 [24th June 2024] =
 
