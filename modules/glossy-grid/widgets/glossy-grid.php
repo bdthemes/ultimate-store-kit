@@ -306,7 +306,7 @@ class Glossy_Grid extends Module_Base {
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     global $product;
                     $tooltip_position = 'right';
-                    $rating_count = $product->get_rating_count();
+                    $rating_count = $product->get_rating_count() ? $product->get_rating_count() : 0;
                     $average      = $product->get_average_rating();
 
                     if ($settings['show_rating'] == 'yes') {

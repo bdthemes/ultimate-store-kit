@@ -53,7 +53,7 @@ class Builder_Integration {
 			return;
 		}
 
-		if ( \Elementor\Plugin::instance()->preview->is_preview_mode() )
+		if ( Plugin::instance()->preview->is_preview_mode() )
 			return;
 
 		if ( ! Builder_Template_Helper::isTemplateEditMode() ) {
@@ -83,7 +83,7 @@ class Builder_Integration {
 			'usk_page_setting_preview',
 			[ 
 				'label' => esc_html__( 'Builder Settings', 'ultimate-store-kit' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_SETTINGS,
+				'tab'   => Controls_Manager::TAB_SETTINGS,
 			]
 		);
 
@@ -187,6 +187,12 @@ class Builder_Integration {
 		if ( is_account_page() ) {
 			global $wp;
 			$query_vars = WC()->query->get_query_vars();
+
+			/**
+			 * Add wishlist endpoint
+			 */
+			$query_vars['wishlist'] = 'wishlist';
+
 			if ( $endpoint = array_intersect_key( $wp->query_vars, $query_vars ) ) {
 				$endpoint = array_key_first( $endpoint );
 
@@ -199,6 +205,12 @@ class Builder_Integration {
 
 					return $this->getTemplatePath( "woocommerce/my-account", '' );
 				}
+
+				if ( $custom_template = $this->get_template_id( 'myaccount-orders', 'account' ) ) {
+					$this->current_template_id = $custom_template;
+					return $this->getTemplatePath( 'woocommerce/my-account', $template );
+				}
+
 			} else {
 				if ( $custom_template = $this->get_template_id( 'myaccount', 'account' ) ) {
 					$this->current_template_id = $custom_template;

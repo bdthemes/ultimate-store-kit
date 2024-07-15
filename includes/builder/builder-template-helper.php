@@ -29,13 +29,13 @@ class Builder_Template_Helper {
 		];
 
 		$my_account = [ 
-			'myaccount'           => 'Dashboard',
-			'myaccount-orders'    => 'Orders',
-			'myaccount-downloads' => 'Downloads',
-			'myaccount-address'   => 'Address',
-			'myaccount-edit'      => 'Account Details',
-			'wishlist'            => 'Wishlist',
-			'logout'              => 'Customer Logout',
+			'myaccount'    => 'Dashboard',
+			'orders'       => 'Orders',
+			'downloads'    => 'Downloads',
+			'edit-address' => 'Address',
+			'edit-account' => 'Account Details',
+			'wishlist'     => 'Wishlist',
+			'logout'       => 'Customer Logout',
 		];
 
 		if ( $wcItems = WC()->query->get_query_vars() ) {
@@ -46,7 +46,7 @@ class Builder_Template_Helper {
 
 		$product = [ 
 			'product' => $shop_item,
-			'account'  => $my_account,
+			'account' => $my_account,
 		];
 
 		$templates = apply_filters(
@@ -102,6 +102,7 @@ class Builder_Template_Helper {
 		if ( ! $postType ) {
 			$postType = get_post_type();
 		}
+
 		$separator       = static::separator();
 		$template        = strtolower( "{$postType}{$separator}{$slug}" );
 		$enabledTemplate = strtolower( Meta::TEMPLATE_ID . $template );
