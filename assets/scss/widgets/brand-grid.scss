@@ -1,12 +1,7 @@
-.usk-brand-grid {
-    display: grid;
-}
-
 .usk-brand-grid-item {
     position: relative;
     padding: 30px;
     border-radius: 5px;
-    text-align: center;
     transition: all .3s ease;
 
     a {
@@ -19,5 +14,6 @@
 }
 
 .usk-brand-grid-img {
+    object-fit: cover;
     transition: all .3s ease;
 }
