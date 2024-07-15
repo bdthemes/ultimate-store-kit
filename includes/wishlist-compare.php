@@ -47,7 +47,6 @@ final class WishlistCompare {
         $wishlist = ultimate_store_kit_get_wishlist($user_id);
 
         $wishlistCounter =  count($wishlist);
-        // print_r(count($wishlist));
 
         if (($key = array_search($product_id, $wishlist)) !== false) {
             $response['action'] = 'removed';
@@ -78,12 +77,12 @@ final class WishlistCompare {
 
     public function ultimate_store_kit_set_wishlist($wishlist, $user_id = 0) {
         $_wishlist_key = '_ultimate_store_kit_wishlist';
-        $_wishlist     = [];
-        // if ($user_id != 0) {
-        //     update_user_meta($user_id, $_wishlist_key, $wishlist);
-        // } else {
+		$user_id           = get_current_user_id();
+		$existing_wishlist          = ultimate_store_kit_get_wishlist( $user_id );
+
+        $wishlist = array_unique(array_merge($existing_wishlist, $wishlist));
+
         setcookie($_wishlist_key, serialize($wishlist), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
-        // }
     }
 
 	public function get_compare_product_page_id() {
