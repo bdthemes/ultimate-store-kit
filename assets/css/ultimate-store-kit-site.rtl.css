@@ -675,6 +675,10 @@ div.pp_pic_holder {
   font-weight: bold;
 }
 
+[class*=" elementor-widget-usk-"] .elementor-button-content-wrapper {
+  align-items: center;
+}
+
 /*-------------------------------------
    usk grid Widget header scss
    --------------------------------------*/
@@ -1714,15 +1718,21 @@ div.pp_pic_holder {
   order: 99;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .usk-flex-first\@s {
     order: -1;
   }
   .usk-flex-last\@s {
     order: 99;
   }
+  .usk-flex-row\@s {
+    flex-direction: row;
+  }
+  .usk-flex-column\@s {
+    flex-direction: column;
+  }
 }
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .usk-flex-first\@m {
     order: -1;
   }

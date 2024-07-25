@@ -23,7 +23,6 @@ if (!defined('ABSPATH')) {
 class Product_Accordion extends Module_Base {
     use Global_Widget_Controls;
     use Global_Widget_Template;
-    // use Global_Swiper_Template;
     use Group_Control_Query;
 
     /**
@@ -79,7 +78,7 @@ class Product_Accordion extends Module_Base {
         $this->add_responsive_control(
             'item_spacing',
             [
-                'label'         => __('Spacing', 'ultimate-store-kit'),
+                'label'         => __('Item Gap', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SLIDER,
                 'range'         => [
                     'px'        => [
@@ -186,7 +185,7 @@ class Product_Accordion extends Module_Base {
         $this->start_controls_section(
             'section_woocommerce_additional',
             [
-                'label' => esc_html__('Additional', 'ultimate-store-kit'),
+                'label' => esc_html__('Additional Options', 'ultimate-store-kit'),
             ]
         );
         $this->start_controls_tabs(
@@ -290,83 +289,11 @@ class Product_Accordion extends Module_Base {
         $this->start_controls_section(
             'section_style_item',
             [
-                'label' => esc_html__('Items', 'ultimate-store-kit'),
+                'label' => esc_html__('Item', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'item_background',
-                'label'     => __('Background', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-accordion .usk-single-item',
-            ]
-        );
-        $this->add_control(
-            'item_margin',
-            [
-                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-product-accordion .usk-accordion'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
 
-        $this->add_responsive_control(
-            'item_radius',
-            [
-                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-accordion .usk-accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'           => 'item_border',
-                'label'          => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'       => '{{WRAPPER}} .usk-product-accordion .usk-accordion',
-                'fields_options' => [
-                    'border' => [
-                        'default' => 'solid',
-                    ],
-                    'width'  => [
-                        'default' => [
-                            'top'      => '0',
-                            'right'    => '0',
-                            'bottom'   => '0',
-                            'left'     => '0',
-                            'isLinked' => false,
-                        ],
-                    ],
-                    'color'  => [
-                        'default' => '#eee',
-                    ],
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'border_shadow',
-                'selector' => '{{WRAPPER}} .usk-product-accordion .usk-accordion',
-            ]
-        );
-        $this->end_controls_section();
-        $this->start_controls_section(
-            'section_style_title',
-            [
-                'label' => esc_html__('Title', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
         $this->start_controls_tabs(
             'title_tabs'
         );
@@ -392,8 +319,28 @@ class Product_Accordion extends Module_Base {
                 'name'      => 'title_background_normal',
                 'label'     => esc_html__('Background', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
-                'default' => ['red'],
                 'selector'  => '{{WRAPPER}} .usk-product-accordion .usk-accordion-header',
+            ]
+        );
+        
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'item_border',
+                'selector'       => '{{WRAPPER}} .usk-product-accordion .usk-accordion',
+                'separator'      => 'before'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'item_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-product-accordion .usk-accordion' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
         $this->add_responsive_control(
@@ -407,15 +354,11 @@ class Product_Accordion extends Module_Base {
                 ],
             ]
         );
-        $this->add_responsive_control(
-            'heading_radius',
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
             [
-                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-accordion .usk-accordion .usk-accordion-header' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
-                ],
+                'name'     => 'border_shadow',
+                'selector' => '{{WRAPPER}} .usk-product-accordion .usk-accordion',
             ]
         );
         $this->add_group_control(
@@ -447,20 +390,33 @@ class Product_Accordion extends Module_Base {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'title_background_hover',
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
-                'default' => ['red'],
                 'selector'  => '{{WRAPPER}} .usk-product-accordion .usk-accordion-header:hover',
+            ]
+        );
+        $this->add_control(
+            'item_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-product-accordion .usk-accordion:hover' => 'border-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'item_border_border!' => ''
+                ]
             ]
         );
 
         $this->end_controls_tab();
         $this->end_controls_tabs();
+        
+        
         $this->end_controls_section();
         $this->start_controls_section(
             'section_style_icon',
             [
-                'label' => esc_html__('Icon', 'ultimate-store-kit'),
+                'label' => esc_html__('Open & Close Icon', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -486,24 +442,24 @@ class Product_Accordion extends Module_Base {
         $this->add_control(
             'icon_background',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-product-accordion .usk-accordion .usk-accordion-trigger:after' => 'background: {{VALUE}}',
                 ],
             ]
         );
-        $this->add_responsive_control(
-            'icon_padding',
-            [
-                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-product-accordion .usk-accordion .usk-accordion-trigger:after'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+        // $this->add_responsive_control(
+        //     'icon_padding',
+        //     [
+        //         'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
+        //         'type'                  => Controls_Manager::DIMENSIONS,
+        //         'size_units'            => ['px', '%', 'em'],
+        //         'selectors'             => [
+        //             '{{WRAPPER}} .usk-product-accordion .usk-accordion .usk-accordion-trigger:after'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+        //         ],
+        //     ]
+        // );
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
@@ -515,7 +471,7 @@ class Product_Accordion extends Module_Base {
         $this->add_responsive_control(
             'icon_radius',
             [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
@@ -544,6 +500,43 @@ class Product_Accordion extends Module_Base {
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label'         => esc_html__('Size', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'range'         => [
+                    'px'        => [
+                        'min'   => 20,
+                        'max'   => 100,
+                        'step'  => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-product-accordion .usk-accordion .usk-accordion-trigger:after' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_font_size',
+            [
+                'label'         => esc_html__('Font Size', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'range'         => [
+                    'px'        => [
+                        'min'   => 10,
+                        'max'   => 50,
+                        'step'  => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-product-accordion .usk-accordion .usk-accordion-trigger:after' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_tab();
         $this->start_controls_tab(
             'icon_tab_hover',
@@ -579,6 +572,15 @@ class Product_Accordion extends Module_Base {
             [
                 'label' => esc_html__('Content', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_background',
+                'label'     => __('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-product-accordion .usk-single-item',
             ]
         );
         $this->add_responsive_control(
@@ -1135,7 +1137,7 @@ class Product_Accordion extends Module_Base {
                     </div>
                     <div class="usk-item-box">
                         <div class="usk-single-item usk-content">
-                            <div class="usk-single-item-box">
+                            <div class="usk-single-item-box usk-flex usk-flex-row@s usk-flex-column usk-flex-middle">
                                 <div class="usk-image">
                                     <a href="<?php echo esc_url($product->get_permalink()); ?>">
                                         <img src="<?php echo esc_url($image); ?>" />
@@ -1150,8 +1152,7 @@ class Product_Accordion extends Module_Base {
                                             <?php $this->print_price_output($product->get_price_html()); ?>
                                         </div>
                                     <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_description']) :
-                                    ?>
+                                    <?php if ('yes' == $settings['show_description']) : ?>
                                         <div class="usk-desc">
                                             <p class="desc"><?php echo esc_html($product->get_short_description()); ?></p>
                                         </div>
@@ -1169,7 +1170,9 @@ class Product_Accordion extends Module_Base {
                                     </div>
                                 </div>
                                 <div class="usk-badge-label-wrapper">
-                                    <?php $this->register_global_template_badge_label(); ?>
+                                    <div class="usk-badge-label-content usk-flex">
+                                        <?php $this->register_global_template_badge_label(); ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

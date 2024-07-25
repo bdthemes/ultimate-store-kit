@@ -49,7 +49,7 @@ class Product_List extends Module_Base {
     }
 
     public function get_keywords() {
-        return ['product', 'product-grid', 'table', 'wc'];
+        return ['product', 'product list', 'table', 'wc', 'list'];
     }
 
     public function get_script_depends() {
@@ -84,9 +84,6 @@ class Product_List extends Module_Base {
             [
                 'label'     => esc_html__('Items Gap', 'ultimate-wook'),
                 'type'      => Controls_Manager::SLIDER,
-                'default'   => [
-                    'size' => 20,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap' => 'grid-gap: {{SIZE}}px;',
                 ],
@@ -309,7 +306,7 @@ class Product_List extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -385,333 +382,104 @@ class Product_List extends Module_Base {
         $this->register_global_controls_title();
         $this->register_global_controls_price();
         $this->register_global_controls_rating();
-        $this->start_controls_section(
-            'badge',
-            [
-                'label' => esc_html__('Badge', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->start_controls_tabs(
-            'label_badge_tabs'
-        );
-        $this->start_controls_tab(
-            'sale_badge_tab',
-            [
-                'label'     => esc_html__('Sale', 'ultimate-store-kit'),
-                'condition' => [
-                    'show_sale_badge' => 'yes',
-                ]
-            ]
-        );
-        $this->add_control(
-            'sale_badge_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-sale-badge .usk-badge' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'sale_badge_bg',
-            [
-                'label'     => esc_html__('Background', 'ultimae-woo-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-sale-badge .usk-badge' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->start_controls_tab(
-            'discount_badge_tab',
-            [
-                'label'     => esc_html__('Discount', 'ultimate-store-kit'),
-                'condition' => [
-                    'show_discount_badge' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
-            'discount_badge_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-percantage-badge .usk-badge' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'discount_badge_bg',
-            [
-                'label'     => esc_html__('Background', 'ultimae-woo-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-percantage-badge .usk-badge' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->start_controls_tab(
-            'stock_badge_tab',
-            [
-                'label'     => esc_html__('Stock', 'ultimate-store-kit'),
-                'condition' => [
-                    'show_stock_status' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
-            'stock_badge_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-stock-status-badge .usk-badge' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'stock_badge_bg',
-            [
-                'label'     => esc_html__('Background', 'ultimae-woo-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-stock-status-badge .usk-badge' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->start_controls_tab(
-            'trending_badge_tab',
-            [
-                'label'     => esc_html__('Trending', 'ultimate-store-kit'),
-                'condition' => [
-                    'show_trending_badge' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
-            'trending_badge_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-trending-badge .usk-badge' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'trending_badge_bg',
-            [
-                'label'     => esc_html__('Background', 'ultimae-woo-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-trending-badge .usk-badge' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->start_controls_tab(
-            'new_badge_tab',
-            [
-                'label'     => esc_html__('new', 'ultimate-store-kit'),
-                'condition' => [
-                    'show_new_badge' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
-            'new_badge_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-new-badge .usk-badge' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'new_badge_bg',
-            [
-                'label'     => esc_html__('Background', 'ultimae-woo-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper .usk-new-badge .usk-badge' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
-        $this->add_responsive_control(
-            'badge_padding',
-            [
-                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper div .usk-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_margin',
-            [
-                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper div .usk-badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_radius',
-            [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper div .usk-badge'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'badge_typography',
-                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper div .usk-badge',
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_top_spacing',
-            [
-                'label'         => esc_html__('Top Spacing', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'default'       => [
-                    'unit'      => 'px',
-                    'size'      => 10,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper' => 'top: {{SIZE}}{{UNIT}};',
-                ],
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'badge_right_spacing',
-            [
-                'label'         => esc_html__('Right Spacing', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SLIDER,
-                'default'       => [
-                    'unit'      => 'px',
-                    'size'      => 10,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-product-list .usk-item .usk-badge-label-wrapper' => 'right: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->end_controls_section();
+        $this->register_global_controls_badge();
     }
 
-    public function render_header() { ?>
+    public function render_header() { 
+        ?>
         <div class="ultimate-store-kit">
             <div class="usk-product-list">
-                <div class="usk-list-wrap">
-                <?php
-            }
-            public function render_footer() {
-                ?>
+                <div class="usk-list-wrap usk-flex usk-flex-column">
+        <?php
+    }
+    public function render_footer() {
+        ?>
                 </div>
             </div>
         </div>
-    <?php
-            }
-            public function render_image() {
-                $settings = $this->get_settings_for_display();
-                global $product;
-    ?>
-        <div class="usk-image-wrap">
+        <?php
+    }
+    public function render_image() {
+        $settings = $this->get_settings_for_display();
+        global $product;
+        ?>
+        <div class="usk-image-wrap usk-flex">
             <a href="<?php echo esc_url($product->get_permalink()); ?>">
                 <img class="img image-default" src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
             </a>
         </div>
         <?php
-            }
-            public function print_price_output($output) {
-                $tags = [
-                    'del' => ['aria-hidden' => []],
-                    'span'  => ['class' => []],
-                    'bdi' => [],
-                    'ins' => [],
-                ];
+    }
+    public function print_price_output($output) {
+        $tags = [
+            'del' => ['aria-hidden' => []],
+            'span'  => ['class' => []],
+            'bdi' => [],
+            'ins' => [],
+        ];
 
-                if (isset($output)) {
-                    echo wp_kses($output, $tags);
-                }
-            }
-            public function render_loop_item() {
-                $settings = $this->get_settings_for_display();
-                $this->query_product();
-                $wp_query = $this->get_query();
-                if ($wp_query) {
-                    while ($wp_query->have_posts()) : $wp_query->the_post();
-                        global $product;
-                        $average = $product->get_average_rating();
-                        $rating_count = $product->get_rating_count();
+        if (isset($output)) {
+            echo wp_kses($output, $tags);
+        }
+    }
+    public function render_loop_item() {
+        $settings = $this->get_settings_for_display();
+        $this->query_product();
+        $wp_query = $this->get_query();
+        if ($wp_query) {
+            while ($wp_query->have_posts()) : $wp_query->the_post();
+                global $product;
+                $average = $product->get_average_rating();
+                $rating_count = $product->get_rating_count();
         ?>
-                <div class="usk-item">
-                    <div class="usk-item-box">
-                        <?php
-                        if ($settings['show_image']) :
-                            $this->render_image();
-                        endif;
-                        ?>
-                        <div class="usk-content">
-                            <?php
-                            if ($settings['show_title']) :
-                                printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                            endif; ?>
-                            <?php if ($settings['show_rating']) : ?>
-                                <div class="usk-rating">
-                                    <?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ('yes' == $settings['show_price']) : ?>
-                                <div class="usk-price">
-                                    <?php $this->print_price_output($product->get_price_html()); ?>
-                                </div>
-                            <?php endif; ?>
+        <div class="usk-item">
+            <div class="usk-item-box usk-flex usk-flex-middle">
+                <?php
+                if ($settings['show_image']) :
+                    $this->render_image();
+                endif;
+                ?>
+                <div class="usk-content usk-flex usk-flex-column usk-flex-center">
+                    <?php
+                    if ($settings['show_title']) :
+                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                    endif; ?>
+                    <?php if ($settings['show_rating']) : ?>
+                        <div class="usk-rating">
+                            <?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?>
                         </div>
-                        <div class="usk-badge-label-wrapper">
-                            <?php $this->register_global_template_badge_label(); ?>
+                    <?php endif; ?>
+                    <?php if ('yes' == $settings['show_price']) : ?>
+                        <div class="usk-price usk-flex usk-flex-middle">
+                            <?php $this->print_price_output($product->get_price_html()); ?>
                         </div>
+                    <?php endif; ?>
+                </div>
+                <div class="usk-badge-label-wrapper">
+                    <div class="usk-badge-label-content usk-flex">
+                        <?php $this->register_global_template_badge_label(); ?>
                     </div>
                 </div>
-            <?php endwhile; ?>
-<?php
-                    wp_reset_postdata();
-                } else {
-                    echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
-                }
-            }
-
-            public function render() {
-                $this->render_header();
-                $this->render_loop_item();
-                $this->render_footer();
-            }
-            public function query_product() {
-                $default = $this->getGroupControlQueryArgs();
-                $default['post_type'] = 'product';
-                unset($default['p']);
-                $this->_query = new WP_Query($default);
-            }
+            </div>
+        </div>
+        <?php endwhile; ?>
+        <?php
+            wp_reset_postdata();
+        } else {
+            echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
         }
+    }
+
+    public function render() {
+        $this->render_header();
+        $this->render_loop_item();
+        $this->render_footer();
+    }
+
+    public function query_product() {
+        $default = $this->getGroupControlQueryArgs();
+        $default['post_type'] = 'product';
+        unset($default['p']);
+        $this->_query = new WP_Query($default);
+    }
+}
