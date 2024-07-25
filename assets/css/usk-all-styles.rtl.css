@@ -3946,6 +3946,9 @@ div.pp_pic_holder {
 .usk-product-accordion .usk-accordion.js-enabled .usk-item-box {
   visibility: hidden;
 }
+.usk-product-accordion .usk-accordion:not(.js-enabled) .usk-item-box {
+  height: 0;
+}
 .usk-product-accordion .usk-accordion.usk-active .usk-item-box {
   visibility: visible;
 }
@@ -3966,6 +3969,7 @@ div.pp_pic_holder {
 .usk-product-accordion .usk-image {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .usk-product-accordion .usk-image a img {
   width: 100%;
