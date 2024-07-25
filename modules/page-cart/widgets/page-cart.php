@@ -1110,10 +1110,6 @@ class Page_Cart extends Module_Base {
 
 		$items = $woocommerce->cart->get_cart();
 
-		if( ! $items ){
-			return;
-		}
-
 		?>
 
 		<div class="usk-page-cart">
