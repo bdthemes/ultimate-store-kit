@@ -153,13 +153,11 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
 * Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
 * Fixed: Product limit issue fixed in Current Query
-
 * Fixed: Update Cart error fixed in Cart Page
-
 * Fixed: Cart Page issue fixed
 * Fixed: Security issue fixed (Thanks to Peter Thaleikis and Ray Wilson)
 * Fixed: Translation support issue fixed (Thanks to itapress)
-
+* Fixed: Cart Page Notice position fixed
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query
