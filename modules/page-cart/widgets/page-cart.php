@@ -1118,6 +1118,7 @@ class Page_Cart extends Module_Base {
 
 		<div class="usk-page-cart">
 			<div class="woocommerce">
+				<div class="woocommerce-notices-wrapper"></div>
 				<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 					<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
 						<thead>
