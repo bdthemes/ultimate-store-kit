@@ -153,6 +153,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
 * Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
 * Fixed: Product limit issue fixed in Current Query
+* Fixed: Update Cart error fixed in Cart Page
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query

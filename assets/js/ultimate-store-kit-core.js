@@ -1,5 +1,5 @@
 (function ($, elementor) {
-  "use strict";
+  ("use strict");
   $(document).on("click", ".quick_view", function () {
     var product_id = $(this).data("id");
     get_product_details(product_id);
@@ -231,4 +231,14 @@
       },
     });
   });
+
+  // Each time quantity in the cart changes, trigger update
+  // cart option
+  jQuery("div.woocommerce").on("change", ".qty", function () {
+    // Make sure the button is enabled before triggering the event
+    // otherwise this won't work.
+    jQuery("[name='update_cart']").prop("disabled", false);
+    jQuery("[name='update_cart']").trigger("click");
+  });
+  
 })(jQuery, window.elementorFrontend);
