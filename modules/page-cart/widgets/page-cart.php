@@ -1102,11 +1102,17 @@ class Page_Cart extends Module_Base {
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		$cart_url = wc_get_cart_url();
-
-		//echo do_shortcode('[woocommerce_cart]');
 		global $woocommerce;
+
+		if ( is_null( WC()->cart ) ) {
+			wc_load_cart();
+		}
+
 		$items = $woocommerce->cart->get_cart();
+
+		if( ! $items ){
+			return;
+		}
 
 		?>
 

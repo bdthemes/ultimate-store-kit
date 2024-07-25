@@ -153,12 +153,16 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
 * Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
 * Fixed: Product limit issue fixed in Current Query
+
 * Fixed: Update Cart error fixed in Cart Page
+
+* Fixed: Cart Page issue fixed
+* Fixed: Security issue fixed (Thanks to Peter Thaleikis and Ray Wilson)
+* Fixed: Translation support issue fixed (Thanks to itapress)
+
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query
-* Fixed: Security issue fixed (Thanks to Peter Thaleikis and Ray Wilson)
-* Fixed: Translation support issue fixed (Thanks to itapress)
 * Updated: Compare button, compare products, florence grid, florence carousel, glossy grid, glossy carousel, heaven slider, mentor slider, shiny grid, shiny carousel, showcase slider, wishlist button, wishlist products, brand grid, brand carousel widgets improved
 
 = 1.6.4 [24th June 2024] =
