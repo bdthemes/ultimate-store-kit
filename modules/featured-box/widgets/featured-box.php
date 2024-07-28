@@ -424,7 +424,7 @@ class Featured_Box extends Module_Base {
         );
 
         $this->add_control(
-            'position',
+            'content_position',
             [
                 'label' => esc_html__('Content Position', 'ultimate-store-kit'),
                 'type' => Controls_Manager::CHOOSE,

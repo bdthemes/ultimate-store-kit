@@ -48,7 +48,7 @@ class Product_Category extends Module_Base {
 		if ($this->usk_is_edit_mode()) {
 			return ['usk-all-styles'];
 		} else {
-			return ['usk-product-category'];
+			return ['ultimate-store-kit-font', 'usk-product-category'];
 		}
 	}
 
@@ -89,32 +89,31 @@ class Product_Category extends Module_Base {
 				'type'       => Controls_Manager::SELECT,
 				'default'    => 'style-1',
 				'options'    => [
-					'style-1'  	=> esc_html__('Style-1', 'ultimate-store-kit'),
-					'style-2' 	=> esc_html__('Style-2', 'ultimate-store-kit'),
-					'style-3' 	=> esc_html__('Style-3', 'ultimate-store-kit'),
-					'style-4' 	=> esc_html__('Style-4', 'ultimate-store-kit'),
-					'style-5'   => esc_html__('Style-5', 'ultimate-store-kit'),
-					'style-6'   => esc_html__('Style-6', 'ultimate-store-kit'),
-					// 'style-6'   => esc_html__('Temporary', 'ultimate-store-kit'),
+					'style-1'  	=> esc_html__('Style 1', 'ultimate-store-kit'),
+					'style-2' 	=> esc_html__('Style 2', 'ultimate-store-kit'),
+					'style-3' 	=> esc_html__('Style 3', 'ultimate-store-kit'),
+					'style-4' 	=> esc_html__('Style 4', 'ultimate-store-kit'),
+					'style-5'   => esc_html__('Style 5', 'ultimate-store-kit'),
+					'style-6'   => esc_html__('Style 6', 'ultimate-store-kit'),
 				],
 			]
 		);
 		$this->add_control(
-			'item_limit',
-			[
-				'label' => esc_html__('Item Limit', 'ultimate-store-kit'),
-				'type'  => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 1,
-						'max' => 50,
-					],
-				],
-				'default' => [
-					'size' => 6,
-				],
-			]
-		);
+        	'item_limit',
+        	[
+        		'label' => esc_html__('Item Limit', 'ultimate-store-kit'),
+        		'type'  => Controls_Manager::SLIDER,
+        		'range' => [
+        			'px' => [
+        				'min' => 1,
+        				'max' => 20,
+        			],
+        		],
+        		'default' => [
+        			'size' => 6,
+        		],
+        	]
+        );
 		$this->add_responsive_control(
 			'columns',
 			[
@@ -162,10 +161,10 @@ class Product_Category extends Module_Base {
 						'max' => 350,
 					],
 				],
-				'default' => [
-					'unit' => 'px',
-					'size' => 250
-				],
+				// 'default' => [
+				// 	'unit' => 'px',
+				// 	'size' => 250
+				// ],
 				'selectors' => [
 					'{{WRAPPER}} .usk-product-category .usk-grid .usk-item' => 'height: {{SIZE}}{{UNIT}};',
 				]
@@ -199,6 +198,34 @@ class Product_Category extends Module_Base {
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 				// 'separator' => 'before'
+			]
+		);
+		
+		$this->add_control(
+			'alignment',
+			[
+				'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'   => [
+						'title' => esc_html__('Left', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category' => 'text-align: {{VALUE}};',
+				],
+				'condition' => [
+					'layout_style' => ['style-3']
+				]
 			]
 		);
 		$this->end_controls_section();
@@ -338,7 +365,7 @@ class Product_Category extends Module_Base {
 					'size' => 10
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image:before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
+					'{{WRAPPER}} .usk-product-category.style-6 .usk-image:before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
 				],
 				'condition' => [
 					'item_overlay_blur_effect' => 'yes',
@@ -353,7 +380,7 @@ class Product_Category extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_background',
-				'selector' => '{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image:before',
+				'selector' => '{{WRAPPER}} .usk-product-category.style-6 .usk-image:before',
 				'condition' => [
 					'layout_style' => [
 						'style-6'
@@ -368,7 +395,7 @@ class Product_Category extends Module_Base {
 				'label'     => __('Overlay Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-5 .usk-product-category-image:before' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .usk-product-category.style-5 .usk-image:before' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'layout_style' => [
@@ -480,7 +507,7 @@ class Product_Category extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category.style-6 .usk-image img' => 'width: {{SIZE}}{{UNIT}};',
 				]
 			]
 		);
@@ -497,7 +524,7 @@ class Product_Category extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category.style-6 .usk-image img' => 'height: {{SIZE}}{{UNIT}};',
 				]
 			]
 		);
@@ -508,7 +535,7 @@ class Product_Category extends Module_Base {
 			[
 				'name'      => 'image_border',
 				'label'     => esc_html__('Border', 'ultimate-store-kit'),
-				'selector'  => '{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image img',
+				'selector'  => '{{WRAPPER}} .usk-product-category.style-6 .usk-image img',
 			]
 		);
 
@@ -519,7 +546,7 @@ class Product_Category extends Module_Base {
 				'type'                  => Controls_Manager::DIMENSIONS,
 				'size_units'            => ['px', '%', 'em'],
 				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image img'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category.style-6 .usk-image img'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -531,7 +558,7 @@ class Product_Category extends Module_Base {
 				'type'                  => Controls_Manager::DIMENSIONS,
 				'size_units'            => ['px', '%', 'em'],
 				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image img'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category.style-6 .usk-image img'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -540,7 +567,7 @@ class Product_Category extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'image_shadow',
-				'selector' => '{{WRAPPER}} .usk-product-category.style-6 .usk-product-category-image img',
+				'selector' => '{{WRAPPER}} .usk-product-category.style-6 .usk-image img',
 			]
 		);
 
@@ -875,26 +902,26 @@ class Product_Category extends Module_Base {
 				]
 			]
 		);
-		$this->add_responsive_control(
-			'count_number_size',
-			[
-				'label'         => esc_html__('Size', 'ultimate-store-kit'),
-				'type'          => Controls_Manager::SLIDER,
-				'size_units'    => ['px'],
-				'default'       => [
-					'unit'      => 'px',
-					'size'      => 30,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category .usk-item .usk-content .usk-category-count > *' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'layout_style' => [
-						'style-2'
-					]
-				]
-			]
-		);
+		// $this->add_responsive_control(
+		// 	'count_number_size',
+		// 	[
+		// 		'label'         => esc_html__('Size', 'ultimate-store-kit'),
+		// 		'type'          => Controls_Manager::SLIDER,
+		// 		'size_units'    => ['px'],
+		// 		'default'       => [
+		// 			'unit'      => 'px',
+		// 			'size'      => 30,
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .usk-product-category .usk-item .usk-content .usk-category-count > *' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 		'condition' => [
+		// 			'layout_style' => [
+		// 				'style-2'
+		// 			]
+		// 		]
+		// 	]
+		// );
 
 		$this->add_responsive_control(
 			'count_margin',
@@ -1030,7 +1057,7 @@ class Product_Category extends Module_Base {
 		?>
 			<a class="usk-item category-link" href="<?php echo esc_url($term_link); ?>">
 				<?php if ($settings['show_image']) : ?>
-					<div class="usk-product-category-image">
+					<div class="usk-image">
 						<img src="<?php echo esc_url($category_image); ?>" alt="">
 					</div>
 				<?php endif; ?>
@@ -1038,7 +1065,7 @@ class Product_Category extends Module_Base {
 					<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
 					<?php
 					if ($settings['show_count']) :
-						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span><span class="usk-count-text">products</span></p>', esc_html($category->count));
+						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span> <span class="usk-count-text"> %s</span><i class="usk-icon-arrow-right-8"></i></p>', esc_html($category->count), esc_html__('Products', 'ultimate-store-kit'));
 					endif;
 					?>
 				</div>
