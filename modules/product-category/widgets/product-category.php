@@ -95,7 +95,6 @@ class Product_Category extends Module_Base {
 					'style-4' 	=> esc_html__('Style 4', 'ultimate-store-kit'),
 					'style-5'   => esc_html__('Style 5', 'ultimate-store-kit'),
 					'style-6'   => esc_html__('Style 6', 'ultimate-store-kit'),
-					'style-7'   => esc_html__('Style 7', 'ultimate-store-kit'),
 				],
 			]
 		);
@@ -199,6 +198,34 @@ class Product_Category extends Module_Base {
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 				// 'separator' => 'before'
+			]
+		);
+		
+		$this->add_control(
+			'alignment',
+			[
+				'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'   => [
+						'title' => esc_html__('Left', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category' => 'text-align: {{VALUE}};',
+				],
+				'condition' => [
+					'layout_style' => ['style-3']
+				]
 			]
 		);
 		$this->end_controls_section();
@@ -875,26 +902,26 @@ class Product_Category extends Module_Base {
 				]
 			]
 		);
-		$this->add_responsive_control(
-			'count_number_size',
-			[
-				'label'         => esc_html__('Size', 'ultimate-store-kit'),
-				'type'          => Controls_Manager::SLIDER,
-				'size_units'    => ['px'],
-				'default'       => [
-					'unit'      => 'px',
-					'size'      => 30,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category .usk-item .usk-content .usk-category-count > *' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'layout_style' => [
-						'style-2'
-					]
-				]
-			]
-		);
+		// $this->add_responsive_control(
+		// 	'count_number_size',
+		// 	[
+		// 		'label'         => esc_html__('Size', 'ultimate-store-kit'),
+		// 		'type'          => Controls_Manager::SLIDER,
+		// 		'size_units'    => ['px'],
+		// 		'default'       => [
+		// 			'unit'      => 'px',
+		// 			'size'      => 30,
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .usk-product-category .usk-item .usk-content .usk-category-count > *' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 		'condition' => [
+		// 			'layout_style' => [
+		// 				'style-2'
+		// 			]
+		// 		]
+		// 	]
+		// );
 
 		$this->add_responsive_control(
 			'count_margin',
@@ -1038,7 +1065,7 @@ class Product_Category extends Module_Base {
 					<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
 					<?php
 					if ($settings['show_count']) :
-						printf('<p class="usk-category-count"><span class="usk-count-text">%s %s</span><i class="usk-icon-arrow-right-8"></i></p>', esc_html($category->count), esc_html__('Products', 'ultimate-store-kit'));
+						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span> <span class="usk-count-text"> %s</span><i class="usk-icon-arrow-right-8"></i></p>', esc_html($category->count), esc_html__('Products', 'ultimate-store-kit'));
 					endif;
 					?>
 				</div>
