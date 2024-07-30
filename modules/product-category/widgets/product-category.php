@@ -53,10 +53,6 @@ class Product_Category extends Module_Base {
 		}
 	}
 
-	// public function get_custom_help_url() {
-	// 	return 'https://youtu.be/criKI7Mm-5g';
-	// }
-
 	public function on_import($element) {
 		if (!get_post_type_object($element['settings']['posts_post_type'])) {
 			$element['settings']['posts_post_type'] = 'post';
@@ -64,12 +60,6 @@ class Product_Category extends Module_Base {
 
 		return $element;
 	}
-
-	// public function on_export($element) {
-	// 	$element = Group_Control_Posts::on_export_remove_setting_from_element($element, 'posts');
-
-	// 	return $element;
-	// }
 
 	public function get_query() {
 		return $this->_query;
@@ -248,85 +238,12 @@ class Product_Category extends Module_Base {
 				'label' => esc_html__('Normal', 'ultimate-store-kit'),
 			]
 		);
-		$this->add_control(
-			'item_overlay_blur_effect',
-			[
-				'label'       => esc_html__('Glassmorphism', 'ultimate-store-kit'),
-				'type'        => Controls_Manager::SWITCHER,
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-store-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
-				'default'     => 'yes',
-				'condition' => [
-					'layout_style' => [
-						'style-6',
-						// 'style-1'
-					]
-				]
-			]
-		);
-
-		$this->add_control(
-			'item_overlay_blur_level',
-			[
-				'label'     => __('Blur Level', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => [
-					'px' => [
-						'min'  => 0,
-						'step' => 1,
-						'max'  => 50,
-					]
-				],
-				'default'   => [
-					'size' => 10
-				],
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-image:before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
-				],
-				'condition' => [
-					'item_overlay_blur_effect' => 'yes',
-					'layout_style' => [
-						'style-6'
-					]
-				]
-			]
-		);
 
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_background',
-				'selector' => '{{WRAPPER}} .usk-product-category.style-6 .usk-image:before',
-				'condition' => [
-					'layout_style' => [
-						'style-6'
-					]
-				]
-			]
-		);
-
-		$this-> add_control(
-			'style_5_category_bg',
-			[
-				'label'     => __('Overlay Color', 'ultimate-store-kit' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-5 .usk-image:before' => 'background-color: {{VALUE}}',
-				],
-				'condition' => [
-					'layout_style' => [
-						'style-5'
-					]
-				]
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'     => 'item_background_color',
 				'selector' => '{{WRAPPER}} .usk-product-category .usk-item',
-				'condition' => [
-					'layout_style' => [ 'style-1', 'style-2', 'style-3', 'style-4' ]
-				]
 			]
 		);
 		$this->add_group_control(
@@ -380,9 +297,6 @@ class Product_Category extends Module_Base {
 			[
 				'name'     => 'item_hover_background',
 				'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
-				'condition' => [
-					'layout_style' => [ 'style-1', 'style-2', 'style-3', 'style-4' ]
-				]
 			]
 		);
 		$this->add_control(
@@ -447,7 +361,7 @@ class Product_Category extends Module_Base {
 				'type'                  => Controls_Manager::DIMENSIONS,
 				'size_units'            => ['px', '%', 'em'],
 				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category .usk-image'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category .usk-image, {{WRAPPER}} .usk-product-category .usk-image img'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -479,7 +393,7 @@ class Product_Category extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-image img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category .usk-image' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'layout_style' => [ 'style-6' ]
@@ -499,7 +413,7 @@ class Product_Category extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category.style-6 .usk-image img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category .usk-image' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'layout_style' => [ 'style-6' ]
@@ -761,6 +675,33 @@ class Product_Category extends Module_Base {
 				]
 			]
 		);
+		
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'category_border',
+				'selector'  => '{{WRAPPER}} .usk-product-category .title',
+				'separator' => 'before',
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
+				]
+			]
+		);
+		
+		$this->add_responsive_control(
+			'category_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .usk-product-category .title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
+				]
+			]
+		);
 
 		$this->add_responsive_control(
 			'category_padding',
@@ -772,9 +713,7 @@ class Product_Category extends Module_Base {
 					'{{WRAPPER}} .usk-product-category .title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
-					'layout_style' => [
-						'style-4'
-					]
+					'layout_style' => [ 'style-4' ]
 				]
 			]
 		);
@@ -822,6 +761,10 @@ class Product_Category extends Module_Base {
 			[
 				'label' => esc_html__('Count / Icon', 'ultimate-store-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'show_count' => 'yes',
+					'layout_style!' => [ 'style-6' ]
+				]
 			]
 		);
 		$this->start_controls_tabs(
@@ -831,11 +774,6 @@ class Product_Category extends Module_Base {
 			'count_tab_normal',
 			[
 				'label' => esc_html__('Normal', 'ultimate-store-kit'),
-				'condition' => [
-					'layout_style!' => [
-						'style-5'
-					]
-				]
 			]
 		);
 		$this->add_control(
@@ -869,6 +807,33 @@ class Product_Category extends Module_Base {
 				'selector'  => '{{WRAPPER}} .usk-product-category .usk-category-count',
 				'condition' => [
 					'layout_style' => [ 'style-2', 'style-4' ]
+				]
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'count_border',
+				'label'     => esc_html__('Border', 'ultimate-store-kit'),
+				'selector'  => '{{WRAPPER}} .usk-product-category .usk-category-count',
+				'separator' => 'before',
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
+				]
+			]
+		);
+		$this->add_responsive_control(
+			'count_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .usk-product-category .usk-category-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
 				]
 			]
 		);

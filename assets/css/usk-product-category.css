@@ -262,7 +262,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #e2e2e2;
-  backdrop-filter: blur(15px);
   background: rgba(255, 255, 255, 0.22);
 }
 .usk-product-category.style-5 .usk-category-count {
