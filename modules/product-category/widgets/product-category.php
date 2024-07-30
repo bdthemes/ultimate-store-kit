@@ -152,10 +152,6 @@ class Product_Category extends Module_Base {
 						'max' => 350,
 					],
 				],
-				// 'default' => [
-				// 	'unit' => 'px',
-				// 	'size' => 250
-				// ],
 				'selectors' => [
 					'{{WRAPPER}} .usk-product-category .usk-grid .usk-item' => 'height: {{SIZE}}{{UNIT}};',
 				]
@@ -513,7 +509,6 @@ class Product_Category extends Module_Base {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-store-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-store-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
-				'default'     => 'no',
 			]
 		);
 
@@ -954,7 +949,7 @@ class Product_Category extends Module_Base {
 	public function render_header() {
 		$settings = $this->get_settings_for_display();
 		$this->add_render_attribute('usk-product-category', 'class', ['usk-product-category', $settings['layout_style']]);
-?>
+		?>
 		<div <?php $this->print_render_attribute_string('usk-product-category'); ?>>
 			<div class="usk-grid ">
 			<?php
@@ -962,75 +957,73 @@ class Product_Category extends Module_Base {
 		public function render_footer() { ?>
 			</div>
 		</div>
-	<?php
+		<?php
+	}
+	public function render_query() {
+		$settings = $this->get_settings_for_display();
+		$args = [
+			'orderby'    => isset($settings['orderby']) ? $settings['orderby'] : 'name',
+			'order'      => isset($settings['order']) ? $settings['order'] : 'ASC',
+			'hide_empty' => isset($settings['hide_empty']) && ($settings['hide_empty'] == 'yes') ? 1 : 0,
+		];
+
+
+		switch ($settings['display_category']) {
+			case 'all':
+				if (isset($settings['cats_include_by_id']) && !empty($settings['cats_include_by_id'])) {
+					$args['include'] = $settings['cats_include_by_id'];
+				}
+				if (isset($settings['cats_exclude_by_id']) && !empty($settings['cats_exclude_by_id'])) {
+					$args['exclude'] = $settings['cats_exclude_by_id'];
+				}
+				break;
+			case 'child':
+				if ($settings['parent_cats'] != 'none' &&  !empty($settings['parent_cats'])) {
+					$args['child_of'] = $settings['parent_cats'];
+				}
+				break;
+			case 'parents':
+				$args['parent'] = 0;
+				break;
 		}
-		public function render_query() {
-			$settings = $this->get_settings_for_display();
-			$args = [
-				'orderby'    => isset($settings['orderby']) ? $settings['orderby'] : 'name',
-				'order'      => isset($settings['order']) ? $settings['order'] : 'ASC',
-				'hide_empty' => isset($settings['hide_empty']) && ($settings['hide_empty'] == 'yes') ? 1 : 0,
-			];
-
-
-			switch ($settings['display_category']) {
-				case 'all':
-					if (isset($settings['cats_include_by_id']) && !empty($settings['cats_include_by_id'])) {
-						$args['include'] = $settings['cats_include_by_id'];
-					}
-					if (isset($settings['cats_exclude_by_id']) && !empty($settings['cats_exclude_by_id'])) {
-						$args['exclude'] = $settings['cats_exclude_by_id'];
-					}
-					break;
-				case 'child':
-					if ($settings['parent_cats'] != 'none' &&  !empty($settings['parent_cats'])) {
-						$args['child_of'] = $settings['parent_cats'];
-					}
-					break;
-				case 'parents':
-					$args['parent'] = 0;
-					break;
-			}
-			$categories = get_terms('product_cat', $args);
-			return $categories;
-		}
-		public function render_loop_item() {
-			$settings = $this->get_settings_for_display();
-			$categories = $this->render_query();
-
-	?>
-		<?php foreach ($categories as $index => $category) :
-				$category_thumb_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-				$img_url     = wp_get_attachment_image_url($category_thumb_id, $settings['image_thumbnail_size']);
-				$category_image = $img_url ? $img_url : Utils::get_placeholder_image_src();
-				$term_link = get_term_link($category->slug, 'product_cat');
+		$categories = get_terms('product_cat', $args);
+		return $categories;
+	}
+	public function render_loop_item() {
+		$settings = $this->get_settings_for_display();
+		$categories = $this->render_query();
 
 		?>
-			<a class="usk-item category-link" href="<?php echo esc_url($term_link); ?>">
-				<?php if ($settings['show_image']) : ?>
-					<div class="usk-image">
-						<img src="<?php echo esc_url($category_image); ?>" alt="">
-					</div>
-				<?php endif; ?>
-				<div class="usk-content">
-					<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
-					<?php
-					if ($settings['show_count']) :
-						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span> <span class="usk-count-text"> %s</span><i class="usk-icon-arrow-right-8"></i></p>', esc_html($category->count), esc_html__('Products', 'ultimate-store-kit'));
-					endif;
-					?>
-				</div>
-			</a>
-<?php
-				if (!empty($settings['item_limit']['size'])) {
-					if ($index == ($settings['item_limit']['size'] - 1)) break;
-				}
-			endforeach;
-		}
+		<?php foreach ($categories as $index => $category) :
+			$category_thumb_id = get_term_meta($category->term_id, 'thumbnail_id', true);
+			$img_url     = wp_get_attachment_image_url($category_thumb_id, $settings['image_thumbnail_size']);
+			$category_image = $img_url ? $img_url : Utils::get_placeholder_image_src();
+			$term_link = get_term_link($category->slug, 'product_cat');
 
-		public function render() {
-			$this->render_header();
-			$this->render_loop_item();
-			$this->render_footer();
-		}
+		?>
+		<a class="usk-item category-link" href="<?php echo esc_url($term_link); ?>">
+			<?php if ($settings['show_image']) : ?>
+				<div class="usk-image">
+					<img src="<?php echo esc_url($category_image); ?>" alt="">
+				</div>
+			<?php endif; ?>
+			<div class="usk-content">
+				<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
+				<?php if ($settings['show_count']) :
+					printf('<p class="usk-category-count"><span class="usk-count-number">%s</span> <span class="usk-count-text"> %s</span><i class="usk-icon-arrow-right-8"></i></p>', esc_html($category->count), esc_html__('Products', 'ultimate-store-kit'));
+				endif; ?>
+			</div>
+		</a>
+		<?php
+			if (!empty($settings['item_limit']['size'])) {
+				if ($index == ($settings['item_limit']['size'] - 1)) break;
+			}
+		endforeach;
 	}
+
+	public function render() {
+		$this->render_header();
+		$this->render_loop_item();
+		$this->render_footer();
+	}
+}

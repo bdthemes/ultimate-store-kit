@@ -9,6 +9,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Css_Filter;
 use Elementor\Utils;
 use UltimateStoreKit\Traits\Global_Widget_Controls;
 use UltimateStoreKit\Traits\Global_Terms_Query_Controls;
@@ -91,6 +92,22 @@ class Product_Category_Carousel extends Module_Base {
 				],
 			]
 		);
+		$this->add_control(
+			'item_limit',
+			[
+				'label' => esc_html__('Item Limit', 'ultimate-store-kit'),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 50,
+					],
+				],
+				'default' => [
+					'size' => 6,
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'columns',
 			[
@@ -133,63 +150,6 @@ class Product_Category_Carousel extends Module_Base {
 				],
 			]
 		);
-		$this->add_responsive_control(
-			'alignment',
-			[
-				'label'     => esc_html__('Alignment', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::HIDDEN,
-			]
-		);
-
-		$this->add_control(
-			'title_tags',
-			[
-				'label'   => esc_html__('Title HTML Tag', 'ultimate-store-kit'),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'h3',
-				'options' => ultimate_store_kit_title_tags(),
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Image_Size::get_type(),
-			[
-				'name'    => 'image',
-				'label'   => esc_html__('Image Size', 'ultimate-store-kit'),
-				'exclude' => ['custom'],
-				'default' => 'medium',
-			]
-		);
-
-		$this->add_control(
-			'item_limit',
-			[
-				'label' => esc_html__('Item Limit', 'ultimate-store-kit'),
-				'type'  => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 1,
-						'max' => 50,
-					],
-				],
-				'default' => [
-					'size' => 6,
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'column_gap',
-			[
-				'label'     => esc_html__('Column Gap', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::SLIDER,
-				'default'   => [
-					'size' => 20,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-grid' => 'grid-gap: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
 
 		$this->add_responsive_control(
 			'item_height',
@@ -202,12 +162,8 @@ class Product_Category_Carousel extends Module_Base {
 						'max' => 350,
 					],
 				],
-				'default' => [
-					'unit' => 'px',
-					'size' => 250
-				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-grid .usk-item' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-item' => 'height: {{SIZE}}{{UNIT}};',
 				]
 			]
 		);
@@ -238,7 +194,33 @@ class Product_Category_Carousel extends Module_Base {
 				'label'     => esc_html__('Show Count', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
-				// 'separator' => 'before'
+			]
+		);
+		$this->add_control(
+			'alignment',
+			[
+				'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'   => [
+						'title' => esc_html__('Left', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category' => 'text-align: {{VALUE}};',
+				],
+				'condition' => [
+					'layout_style' => ['style-3']
+				]
 			]
 		);
 		$this->end_controls_section();
@@ -262,19 +244,31 @@ class Product_Category_Carousel extends Module_Base {
 			]
 		);
 
-		$this->add_control(
-			'style_5_category_bg',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			[
-				'label'     => __('Overlay Color', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel.style-5 .usk-category-image:before' => 'background-color: {{VALUE}}',
+				'name'     => 'item_background',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'item_border',
+				'label'     => esc_html__('Border', 'ultimate-store-kit'),
+				'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'item_radius',
+			[
+				'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+				'type'                  => Controls_Manager::DIMENSIONS,
+				'size_units'            => ['px', '%', 'em'],
+				'selectors'             => [
+					'{{WRAPPER}} .' . $this->get_name() . ' .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-				'condition' => [
-					'layout_style' => [
-						'style-5'
-					]
-				]
 			]
 		);
 		$this->add_responsive_control(
@@ -285,36 +279,6 @@ class Product_Category_Carousel extends Module_Base {
 				'size_units'            => ['px', '%', 'em'],
 				'selectors'             => [
 					'{{WRAPPER}} .' . $this->get_name() . ' .usk-item'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'item_margin',
-			[
-				'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%', 'em'],
-				'selectors'             => [
-					'{{WRAPPER}} .' . $this->get_name() . ' .usk-item'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name'      => 'item_border',
-				'label'     => esc_html__('Border', 'ultimate-store-kit'),
-				'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
-			]
-		);
-		$this->add_responsive_control(
-			'item_radius',
-			[
-				'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%', 'em'],
-				'selectors'             => [
-					'{{WRAPPER}} .' . $this->get_name() . ' .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -333,6 +297,13 @@ class Product_Category_Carousel extends Module_Base {
 				'label' => esc_html__('Hover', 'ultimate-store-kit'),
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'     => 'item_hover_background',
+				'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
+			]
+		);
 		$this->add_control(
 			'item_hover_border_color',
 			[
@@ -341,8 +312,12 @@ class Product_Category_Carousel extends Module_Base {
 				'selectors' => [
 					'{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover' => 'border-color: {{VALUE}}',
 				],
+				'condition' => [
+					'item_border_border!' => ''
+				]
 			]
 		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -354,15 +329,59 @@ class Product_Category_Carousel extends Module_Base {
 		$this->end_controls_tabs();
 		$this->end_controls_section();
 
+
 		$this->start_controls_section(
 			'section_style_image',
 			[
 				'label' => esc_html__('Image', 'ultimate-store-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout_style' => [
-						'style-6'
-					]
+					'show_image' => 'yes'
+				]
+			]
+		);
+		$this->start_controls_tabs(
+			'image_tabs'
+		);
+		$this->start_controls_tab(
+			'image_tab_normal',
+			[
+				'label' => esc_html__('Normal', 'ultimate-store-kit'),
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'image_border',
+				'label'     => esc_html__('Border', 'ultimate-store-kit'),
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-image',
+			]
+		);
+		
+		$this->add_responsive_control(
+			'image_border_radius',
+			[
+				'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+				'type'                  => Controls_Manager::DIMENSIONS,
+				'size_units'            => ['px', '%', 'em'],
+				'selectors'             => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-image, {{WRAPPER}} .usk-product-category-carousel .usk-image img'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'image_padding',
+			[
+				'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
+				'type'                  => Controls_Manager::DIMENSIONS,
+				'size_units'            => ['px', '%', 'em'],
+				'selectors'             => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-image img'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-6' ]
 				]
 			]
 		);
@@ -379,7 +398,10 @@ class Product_Category_Carousel extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-category-image img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-image' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-6' ]
 				]
 			]
 		);
@@ -396,42 +418,19 @@ class Product_Category_Carousel extends Module_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-category-image img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-image' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-6' ]
 				]
 			]
 		);
 
-
 		$this->add_group_control(
-			Group_Control_Border::get_type(),
+			Group_Control_Css_Filter::get_type(),
 			[
-				'name'      => 'image_border',
-				'label'     => esc_html__('Border', 'ultimate-store-kit'),
-				'selector'  => '{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-category-image img',
-			]
-		);
-
-		$this->add_responsive_control(
-			'image_radius',
-			[
-				'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%', 'em'],
-				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-category-image img'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'image_padding',
-			[
-				'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%', 'em'],
-				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-category-image img'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
+				'name' => 'custom_css_filters',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-image img',
 			]
 		);
 
@@ -439,13 +438,56 @@ class Product_Category_Carousel extends Module_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'image_shadow',
-				'selector' => '{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-category-image img',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-image img',
+				'condition' => [
+					'layout_style' => [ 'style-6' ]
+				]
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'image_tab_hover',
+			[
+				'label' => esc_html__('Hover', 'ultimate-store-kit'),
+			]
+		);
+		
+		$this->add_control(
+			'image_hover_border_color',
+			[
+				'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-image' => 'border-color: {{VALUE}}',
+				],
+				'condition' => [
+					'image_border_border!' => ''
+				]
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'custom_css_filters_hover',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-image img',
+			]
+		);
 
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'image_hover_shadow',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-image img',
+				'condition' => [
+					'layout_style' => [ 'style-6' ]
+				]
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
 		$this->end_controls_section();
-
 
 		$this->start_controls_section(
 			'section_style_content',
@@ -461,8 +503,6 @@ class Product_Category_Carousel extends Module_Base {
 				]
 			]
 		);
-
-
 		$this->start_controls_tabs(
 			'content_tabs'
 		);
@@ -478,7 +518,6 @@ class Product_Category_Carousel extends Module_Base {
 				'label'       => esc_html__('Glassmorphism', 'ultimate-store-kit'),
 				'type'        => Controls_Manager::SWITCHER,
 				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-store-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
-				'default'     => 'no',
 			]
 		);
 
@@ -498,7 +537,7 @@ class Product_Category_Carousel extends Module_Base {
 					'size' => 10
 				],
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
+					'{{WRAPPER}} .usk-product-category-carousel .usk-content' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
 				],
 				'condition' => [
 					'category_overlay_blur_effect' => 'yes'
@@ -510,10 +549,27 @@ class Product_Category_Carousel extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'     => 'content_background',
-				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content',
-				'condition' => [
-					'category_overlay_blur_effect!' => 'yes'
-				]
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-content',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => 'content_border',
+				'label'     => esc_html__('Border', 'ultimate-store-kit'),
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-content',
+				'separator' => 'before',
+			]
+		);
+		$this->add_responsive_control(
+			'content_radius',
+			[
+				'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+				'type'                  => Controls_Manager::DIMENSIONS,
+				'size_units'            => ['px', '%', 'em'],
+				'selectors'             => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-content'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
 
@@ -524,7 +580,7 @@ class Product_Category_Carousel extends Module_Base {
 				'type'                  => Controls_Manager::DIMENSIONS,
 				'size_units'            => ['px', '%', 'em'],
 				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-content'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -535,35 +591,17 @@ class Product_Category_Carousel extends Module_Base {
 				'type'                  => Controls_Manager::DIMENSIONS,
 				'size_units'            => ['px', '%', 'em'],
 				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-content'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name'      => 'content_border',
-				'label'     => esc_html__('Border', 'ultimate-store-kit'),
-				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content',
-			]
-		);
-		$this->add_responsive_control(
-			'content_radius',
-			[
-				'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%', 'em'],
-				'selectors'             => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+		
 
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'content_shadow',
-				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-content',
 			]
 		);
 		$this->end_controls_tab();
@@ -578,9 +616,6 @@ class Product_Category_Carousel extends Module_Base {
 			[
 				'name'     => 'content_hover_background',
 				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-content',
-				'condition' => [
-					'category_overlay_blur_effect!' => 'yes'
-				]
 			]
 		);
 		$this->add_control(
@@ -591,6 +626,9 @@ class Product_Category_Carousel extends Module_Base {
 				'selectors' => [
 					'{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-content' => 'border-color: {{VALUE}}',
 				],
+				'condition' => [
+					'content_border_border!' => ''
+				]
 			]
 		);
 		$this->add_group_control(
@@ -606,7 +644,7 @@ class Product_Category_Carousel extends Module_Base {
 		$this->start_controls_section(
 			'section_style_category',
 			[
-				'label' => esc_html__('Category', 'ultimate-store-kit'),
+				'label' => esc_html__('Title', 'ultimate-store-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -625,7 +663,7 @@ class Product_Category_Carousel extends Module_Base {
 				'label'     => esc_html__('Color', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .usk-product-category-carousel .title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -633,9 +671,7 @@ class Product_Category_Carousel extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'style_4_category_bg',
-				'label'     => esc_html__('Backgorund', 'ultimate-store-kit'),
-				'types'     => ['classic', 'gradient'],
-				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .title',
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .title',
 				'condition' => [
 					'layout_style' => [
 						'style-4'
@@ -643,18 +679,34 @@ class Product_Category_Carousel extends Module_Base {
 				]
 			]
 		);
-
-		$this->add_responsive_control(
-			'category_margin',
+		
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+				'name'      => 'category_border',
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .title',
+				'separator' => 'before',
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
+				]
+			]
+		);
+		
+		$this->add_responsive_control(
+			'category_radius',
+			[
+				'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
+				]
 			]
 		);
+
 		$this->add_responsive_control(
 			'category_padding',
 			[
@@ -662,13 +714,22 @@ class Product_Category_Carousel extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
-					'layout_style' => [
-						'style-4'
-					]
+					'layout_style' => [ 'style-4' ]
 				]
+			]
+		);
+		$this->add_responsive_control(
+			'category_margin',
+			[
+				'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .usk-product-category-carousel .title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
 
@@ -676,9 +737,7 @@ class Product_Category_Carousel extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'category_typography',
-				'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-				'exclude' => ['line_height'],
-				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .title',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .title',
 			]
 		);
 		$this->end_controls_tab();
@@ -691,10 +750,10 @@ class Product_Category_Carousel extends Module_Base {
 		$this->add_control(
 			'hover_category_color',
 			[
-				'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
+				'label'     => esc_html__('Color', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-content .title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -704,8 +763,12 @@ class Product_Category_Carousel extends Module_Base {
 		$this->start_controls_section(
 			'section_style_count',
 			[
-				'label' => esc_html__('Count', 'ultimate-store-kit'),
+				'label' => esc_html__('Count / Icon', 'ultimate-store-kit'),
 				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'show_count' => 'yes',
+					'layout_style!' => [ 'style-6' ]
+				]
 			]
 		);
 		$this->start_controls_tabs(
@@ -715,20 +778,29 @@ class Product_Category_Carousel extends Module_Base {
 			'count_tab_normal',
 			[
 				'label' => esc_html__('Normal', 'ultimate-store-kit'),
-				'condition' => [
-					'layout_style!' => [
-						'style-5'
-					]
-				]
 			]
 		);
 		$this->add_control(
 			'count_color',
 			[
-				'label'     => esc_html__('Color', 'ultimate-store-kit'),
+				'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .usk-category-count > *' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		
+		$this->add_control(
+			'icon_color',
+			[
+				'label'     => esc_html__('Icon Color', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count i' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-1', 'style-2' ]
 				]
 			]
 		);
@@ -736,62 +808,36 @@ class Product_Category_Carousel extends Module_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'count_background',
-				'label'     => esc_html__('Background', 'ultimate-store-kit'),
-				'types'     => ['classic', 'gradient'],
-				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .usk-category-count > *',
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-category-count',
 				'condition' => [
-					'layout_style' => [
-						'style-2'
-					]
+					'layout_style' => [ 'style-2', 'style-4' ]
 				]
 			]
 		);
+		
 		$this->add_group_control(
-			Group_Control_Background::get_type(),
+			Group_Control_Border::get_type(),
 			[
-				'name'      => 'style4_count_background',
-				'label'     => esc_html__('Background', 'ultimate-store-kit'),
-				'types'     => ['classic', 'gradient'],
-				'selector'  => '{{WRAPPER}} .usk-product-category-carousel.style-4 .usk-category-count',
+				'name'      => 'count_border',
+				'label'     => esc_html__('Border', 'ultimate-store-kit'),
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-category-count',
+				'separator' => 'before',
 				'condition' => [
-					'layout_style' => [
-						'style-4',
-					]
+					'layout_style' => [ 'style-4' ]
 				]
 			]
 		);
 		$this->add_responsive_control(
-			'count_number_size',
+			'count_radius',
 			[
-				'label'         => esc_html__('Size', 'ultimate-store-kit'),
-				'type'          => Controls_Manager::SLIDER,
-				'size_units'    => ['px'],
-				'default'       => [
-					'unit'      => 'px',
-					'size'      => 30,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .usk-category-count > *' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'layout_style' => [
-						'style-2'
-					]
-				]
-			]
-		);
-
-		$this->add_responsive_control(
-			'count_margin',
-			[
-				'label'      => __('Margin', 'ultimate-store-kit'),
+				'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em', '%'],
+				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .usk-category-count' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-				'layout_style!' => [
-					'style-4'
+				'condition' => [
+					'layout_style' => [ 'style-4' ]
 				]
 			]
 		);
@@ -803,10 +849,62 @@ class Product_Category_Carousel extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .usk-category-count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'count_margin',
+			[
+				'label'      => __('Margin', 'ultimate-store-kit'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors'  => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'layout_style!' => [
 					'style-4'
+				]
+			]
+		);
+		$this->add_responsive_control(
+			'count_number_size',
+			[
+				'label'         => esc_html__('Size', 'ultimate-store-kit'),
+				'type'          => Controls_Manager::SLIDER,
+				'size_units'    => ['px'],
+				'range'         => [
+					'px' => [
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [
+						'style-2'
+					]
+				]
+			]
+		);
+		
+		$this->add_responsive_control(
+			'icon_size',
+			[
+				'label'         => esc_html__('Icon Size', 'ultimate-store-kit'),
+				'type'          => Controls_Manager::SLIDER,
+				'size_units'    => ['px'],
+				'default'       => [
+					'unit'      => 'px',
+					'size'      => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-category-count i' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'layout_style' => [ 'style-1', 'style-2' ]
 				]
 			]
 		);
@@ -815,7 +913,7 @@ class Product_Category_Carousel extends Module_Base {
 			[
 				'name'     => 'count_typography',
 				'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-item .usk-content .usk-category-count > *',
+				'selector' => '{{WRAPPER}} .usk-product-category-carousel .usk-category-count',
 			]
 		);
 		$this->end_controls_tab();
@@ -833,20 +931,19 @@ class Product_Category_Carousel extends Module_Base {
 		$this->add_control(
 			'count_color_hover',
 			[
-				'label'     => esc_html__('Color', 'ultimate-store-kit'),
+				'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-content .usk-category-count > *' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-category-count' => 'color: {{VALUE}};',
 				],
 			]
 		);
+		
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'count_hover_background',
-				'label'     => esc_html__('Background', 'ultimate-store-kit'),
-				'types'     => ['classic', 'gradient'],
-				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-content .usk-category-count > *',
+				'selector'  => '{{WRAPPER}} .usk-product-category-carousel .usk-item:hover .usk-category-count',
 				'condition' => [
 					'layout_style' => [
 						'style-2',
@@ -894,30 +991,27 @@ class Product_Category_Carousel extends Module_Base {
 		$settings = $this->get_settings_for_display();
 		$categories = $this->render_query();
 
-?>
-		<?php foreach ($categories as $index => $category) :
-			$category_thumb_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-			$img_url     = wp_get_attachment_image_url($category_thumb_id, $settings['image_thumbnail_size']);
-			$category_image = $img_url ? $img_url : Utils::get_placeholder_image_src();
-			$term_link = get_term_link($category->slug, 'product_cat');
+		foreach ($categories as $index => $category) :
+		$category_thumb_id = get_term_meta($category->term_id, 'thumbnail_id', true);
+		$img_url     = wp_get_attachment_image_url($category_thumb_id, $settings['image_thumbnail_size']);
+		$category_image = $img_url ? $img_url : Utils::get_placeholder_image_src();
+		$term_link = get_term_link($category->slug, 'product_cat');
 
 		?>
-			<a class="usk-item category-link swiper-slide" href="<?php echo esc_url($term_link); ?>">
-				<?php if ($settings['show_image']) : ?>
-					<div class="usk-category-image">
-						<img src="<?php echo esc_url($category_image); ?>" alt="">
-					</div>
-				<?php endif; ?>
-				<div class="usk-content">
-					<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
-					<?php
-					if ($settings['show_count']) :
-						printf('<p class="usk-category-count"><span class="usk-count-number">%s</span><span class="usk-count-text">%s</span></p>', esc_html($category->count), esc_html__('products', 'ultimate-store-kit'));
-					endif;
-					?>
+		<a class="usk-item category-link swiper-slide" href="<?php echo esc_url($term_link); ?>">
+			<?php if ($settings['show_image']) : ?>
+				<div class="usk-image">
+					<img src="<?php echo esc_url($category_image); ?>" alt="">
 				</div>
-			</a>
-<?php
+			<?php endif; ?>
+			<div class="usk-content">
+				<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
+				<?php if ($settings['show_count']) :
+					printf('<p class="usk-category-count"><span class="usk-count-number">%s</span> <span class="usk-count-text"> %s</span><i class="usk-icon-arrow-right-8"></i></p>', esc_html($category->count), esc_html__('Products', 'ultimate-store-kit'));
+				endif; ?>
+			</div>
+		</a>
+		<?php
 			if (!empty($settings['item_limit']['size'])) {
 				if ($index == ($settings['item_limit']['size'] - 1)) break;
 			}

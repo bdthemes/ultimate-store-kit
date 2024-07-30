@@ -994,6 +994,7 @@ div.pp_pic_holder {
   display: flex;
   align-items: center;
   height: 100%;
+  flex-direction: row;
 }
 .usk-grid-carousel .usk-list-layout .usk-image {
   width: 100%;
