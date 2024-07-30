@@ -247,7 +247,7 @@ if ( ! function_exists( 'dci_plugin_ultimate_store_kit' ) ) {
 			'api_endpoint'        => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
 			'slug'                => 'ultimate-store-kit', // write 'no-need' if you don't want to use
 			'menu'                => array(
-				'slug' => 'ultimate-store-kit',
+				'slug' => 'ultimate_store_kit_options',
 			),
 			'public_key'          => 'pk_IMF43HfTlEdsaQjoE8atAWlb6xTMjX3w',
 			'is_premium'          => false,
