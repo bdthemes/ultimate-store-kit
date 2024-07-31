@@ -176,6 +176,7 @@ module.exports = function (grunt) {
                         'assets/js/**',
                         'assets/vendor/**',
                         'base/**',
+                        'dci/**',
                         'includes/**',
                         'languages/**',
                         'modules/**',

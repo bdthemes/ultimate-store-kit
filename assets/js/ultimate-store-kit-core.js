@@ -92,8 +92,8 @@
 
   $(".ajax_add_to_wishlist").on("click", function (e) {
     e.preventDefault();
-    var $this = $(this);
-    var $product_id = $this.data("product_id");
+    var $this = $(this),
+        $product_id = $this.data("product_id");
     $.ajax({
       url: ultimate_store_kit_ajax_config.ajaxurl,
       data: {
@@ -122,12 +122,12 @@
   });
   $(".ajax_remove_from_wishlist").on("click", function (e) {
     e.preventDefault();
-    var $this = $(this);
-    var $product_id = $this.data("product_id");
+    var $this = $(this),
+        $product_id = $this.data("product_id");
     $.ajax({
       url: ultimate_store_kit_ajax_config.ajaxurl,
       data: {
-        action: "usk_add_to_wishlist",
+        action: "usk_remove_wishlist",
         product_id: $product_id,
       },
       type: "POST",
