@@ -272,7 +272,7 @@ trait Global_Widget_Controls {
                 [
                     'label'     => esc_html__('Text Limit', 'ultimate-store-kit'),
                     'type'      => Controls_Manager::NUMBER,
-                    'default'   => 25,
+                    'default'   => 15,
                     'condition' => [
                         'show_excerpt' => 'yes',
                         'layout_style' => 'list'
@@ -1683,7 +1683,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1693,7 +1693,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1711,7 +1711,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1721,7 +1721,35 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-compare:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'heading_compare_active',
+            [
+                'label'     => esc_html__('Active', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'compare_color_active',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg_active',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1741,7 +1769,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1769,7 +1797,7 @@ trait Global_Widget_Controls {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover .icon:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1802,6 +1830,7 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1812,6 +1841,7 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -1830,6 +1860,7 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1840,6 +1871,7 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );

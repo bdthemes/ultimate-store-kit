@@ -1,18 +1,18 @@
 .usk-glossy-carousel .usk-item {
   overflow: inherit;
 }
-.usk-glossy-carousel .usk-item:hover .usk-action-btn {
+.usk-glossy-carousel .usk-item:hover .usk-shoping a {
   transform: translateY(0px);
 }
 .usk-glossy-carousel .usk-item-box {
   z-index: 1;
 }
-.usk-glossy-carousel .usk-action-btn {
-  transform: translateY(-10px);
-}
 .usk-glossy-carousel .usk-shoping {
   top: clamp(10px, 1vw, 25px);
   left: clamp(10px, 1vw, 25px);
+}
+.usk-glossy-carousel .usk-shoping a {
+  transform: translateY(-10px);
 }
 .usk-glossy-carousel .usk-badge-label-wrapper {
   right: 0;

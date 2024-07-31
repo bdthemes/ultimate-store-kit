@@ -1,10 +1,3 @@
-.ultimate-store-kit * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  vertical-align: middle;
-}
-
 .usk-product-image-accordion .usk-grid-wrap {
   display: block;
 }
@@ -48,9 +41,6 @@
   top: 0;
   left: 0;
   padding: 20px;
-}
-.usk-product-image-accordion .usk-item .usk-item-box .usk-badge-label-wrapper .usk-badge-wrap {
-  margin-bottom: 10px;
 }
 .usk-product-image-accordion .usk-item .usk-item-box .usk-badge-label-wrapper .usk-badge-wrap .usk-badge {
   padding: 4px 8px;

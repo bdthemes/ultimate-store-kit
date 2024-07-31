@@ -19,8 +19,7 @@ if (! defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
     
-class Info_List extends Module_Base
-{
+class Info_List extends Module_Base {
         
     public function get_name()
     {
@@ -60,13 +59,104 @@ class Info_List extends Module_Base
      return 'https://youtu.be/vVCYUAPuqcg?si=ld1BjZ6KIy3OU62Y';
     }
         
-    protected function register_controls()
-    {
+    protected function register_controls() {
+
+        $this->start_controls_section(
+            'usk_section_list',
+            [
+                'label' => __('Items', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+            
+        $repeater = new Repeater();
+
+        $repeater->add_control(
+            'list_icon',
+            [
+                'label' => __('Icon', 'ultimate-store-kit'),
+                'type' => Controls_Manager::ICONS,
+                'label_block' => false,
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],
+                'skin' => 'inline',
+            ]
+        );
+            
+        $repeater->add_control(
+            'title',
+            [
+                'label'       => __('Title', 'ultimate-store-kit'),
+                'type'        => Controls_Manager::TEXT,
+                'dynamic'     => [
+                    'active' => true,
+                ],
+                'default'     => esc_html__('This is a title', 'ultimate-store-kit'),
+                'placeholder' => __('Enter your title', 'ultimate-store-kit'),
+                'label_block' => true,
+            ]
+        );
+    
+        $repeater->add_control(
+            'title_link',
+            [
+                'label'       => esc_html__('Title Link', 'ultimate-store-kit'),
+                'type'        => Controls_Manager::URL,
+                'dynamic'     => [ 'active' => true ],
+                'placeholder' => 'http://your-link.com',
+            ]
+        );
+
+        $repeater->add_control(
+            'text',
+            [
+                'label'       => esc_html__('Text', 'ultimate-store-kit'),
+                'type'        => Controls_Manager::WYSIWYG,
+                'label_block' => true,
+                'dynamic'     => ['active' => true],
+                'default'     => esc_html__('Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-store-kit'),
+    
+            ]
+        );
+
+        $repeater->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_repeater_background',
+                'selector'  => '{{WRAPPER}} {{CURRENT_ITEM}}.usk-info-list-item',
+                'separator' => 'before'
+            ]
+        );
+            
+        $this->add_control(
+            'info_items',
+            [
+                'show_label'  => false,
+                'type'        => Controls_Manager::REPEATER,
+                'fields'      => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'title' => __('List Item #1', 'ultimate-store-kit'),
+                    ],
+                    [
+                        'title' => __('List Item #2', 'ultimate-store-kit'),
+                    ],
+                    [
+                        'title' => __('List Item #3', 'ultimate-store-kit'),
+                    ],
+                ],
+                'title_field' => '{{{ elementor.helpers.renderIcon( this, list_icon, {}, "i", "panel" ) || \'<i class="{{ icon }}" aria-hidden="true"></i>\' }}} {{{ title }}}',
+            ]
+        );
+
+        $this->end_controls_section();
             
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __('Layout', 'ultimate-store-kit'),
+                'label' => __('Additional Options', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -245,111 +335,8 @@ class Info_List extends Module_Base
             ]
         );
         
-        $this->add_group_control(
-            Group_Control_Image_Size::get_type(),
-            [
-                'name'      => 'thumbnail',
-                'default'   => 'medium',
-                'separator' => 'before',
-                'exclude'   => ['custom']
-            ]
-        );
-
         $this->end_controls_section();
 
-        $this->start_controls_section(
-            'usk_section_list',
-            [
-                'label' => __('Items', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-            
-        $repeater = new Repeater();
-
-        $repeater->add_control(
-            'list_icon',
-            [
-                'label' => __('Icon', 'ultimate-store-kit'),
-                'type' => Controls_Manager::ICONS,
-                'label_block' => false,
-                'default' => [
-                    'value' => 'fas fa-star',
-                    'library' => 'fa-solid',
-                ],
-                'skin' => 'inline',
-            ]
-        );
-            
-        $repeater->add_control(
-            'title',
-            [
-                'label'       => __('Title', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::TEXT,
-                'dynamic'     => [
-                    'active' => true,
-                ],
-                'default'     => esc_html__('This is a title', 'ultimate-store-kit'),
-                'placeholder' => __('Enter your title', 'ultimate-store-kit'),
-                'label_block' => true,
-            ]
-        );
-    
-        $repeater->add_control(
-            'title_link',
-            [
-                'label'       => esc_html__('Title Link', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::URL,
-                'dynamic'     => [ 'active' => true ],
-                'placeholder' => 'http://your-link.com',
-            ]
-        );
-
-        $repeater->add_control(
-            'text',
-            [
-                'label'       => esc_html__('Text', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::WYSIWYG,
-                'label_block' => true,
-                'dynamic'     => ['active' => true],
-                'default'     => esc_html__('Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-store-kit'),
-    
-            ]
-        );
-
-        $repeater->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'item_repeater_background',
-                'selector'  => '{{WRAPPER}} {{CURRENT_ITEM}}.usk-info-list-item',
-                'separator' => 'before'
-            ]
-        );
-            
-        $this->add_control(
-            'info_items',
-            [
-                'show_label'  => false,
-                'type'        => Controls_Manager::REPEATER,
-                'fields'      => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'title' => __('List Item #1', 'ultimate-store-kit'),
-                    ],
-                    [
-                        'title' => __('List Item #2', 'ultimate-store-kit'),
-                    ],
-                    [
-                        'title' => __('List Item #3', 'ultimate-store-kit'),
-                    ],
-                ],
-                'title_field' => '{{{ elementor.helpers.renderIcon( this, list_icon, {}, "i", "panel" ) || \'<i class="{{ icon }}" aria-hidden="true"></i>\' }}} {{{ title }}}',
-            ]
-        );
-
-        $this->end_controls_section();
-            
-        //Style
         $this->start_controls_section(
             'section_style_items',
             [
@@ -598,6 +585,7 @@ class Info_List extends Module_Base
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-info-list-icon span' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-info-list-icon svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );

@@ -1,28 +1,29 @@
 .usk-glossy-grid {
-	.usk-item {
-		&:hover {
-			.usk-action-btn {
-				transform: translateY(0px);
-			}
-		}
-	}
-	.usk-item-box {
-		z-index: 1;
-	}
+    .usk-item {
+        &:hover {
+            .usk-shoping a {
+                transform: translateY(0px);
+            }
+        }
+    }
 
-	.usk-action-btn {
-		transform: translateY(-10px);
-	}
+    .usk-item-box {
+        z-index: 1;
+    }
 
-	.usk-shoping {
-		top: clamp(10px, 1vw, 25px);
-		left: clamp(10px, 1vw, 25px);
-	}
+    .usk-shoping {
+        top: clamp(10px, 1vw, 25px);
+        left: clamp(10px, 1vw, 25px);
 
-	.usk-badge-label-wrapper {
-		right: 0;
-		top: 0;
-	}
+        a {
+            transform: translateY(-10px);
+        }
+    }
+
+    .usk-badge-label-wrapper {
+        right: 0;
+        top: 0;
+    }
 
     // shadow design
     .usk-product-hover {
@@ -35,6 +36,7 @@
         z-index: 0;
         top: -12px;
         left: -12px;
+
         &:before {
             content: "";
             position: absolute;
@@ -49,10 +51,12 @@
             box-shadow: 0 8px 55px rgba(0, 0, 0, 0.15);
         }
     }
+
     .usk-item {
         &:hover {
             .usk-product-hover {
                 transform: scale(1) translateY(0) translateZ(0);
+
                 &:before {
                     opacity: 1;
                     pointer-events: all;
