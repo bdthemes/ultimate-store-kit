@@ -2,7 +2,7 @@
 	.usk-item {
 		overflow: inherit;
 		&:hover {
-			.usk-action-btn {
+			.usk-shoping a {
 				transform: translateY(0px);
 			}
 		}
@@ -11,13 +11,13 @@
 		z-index: 1;
 	}
 
-	.usk-action-btn {
-		transform: translateY(-10px);
-	}
-
+    
 	.usk-shoping {
-		top: clamp(10px, 1vw, 25px);
+        top: clamp(10px, 1vw, 25px);
 		left: clamp(10px, 1vw, 25px);
+        a {
+            transform: translateY(-10px);
+        }
 	}
 
 	.usk-badge-label-wrapper {

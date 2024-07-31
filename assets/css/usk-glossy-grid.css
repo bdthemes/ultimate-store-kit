@@ -1,15 +1,15 @@
-.usk-glossy-grid .usk-item:hover .usk-action-btn {
+.usk-glossy-grid .usk-item:hover .usk-shoping a {
   transform: translateY(0px);
 }
 .usk-glossy-grid .usk-item-box {
   z-index: 1;
 }
-.usk-glossy-grid .usk-action-btn {
-  transform: translateY(-10px);
-}
 .usk-glossy-grid .usk-shoping {
   top: clamp(10px, 1vw, 25px);
   left: clamp(10px, 1vw, 25px);
+}
+.usk-glossy-grid .usk-shoping a {
+  transform: translateY(-10px);
 }
 .usk-glossy-grid .usk-badge-label-wrapper {
   right: 0;

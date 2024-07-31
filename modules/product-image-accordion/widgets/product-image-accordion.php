@@ -18,7 +18,6 @@ if (!defined('ABSPATH')) exit;
 class Product_Image_Accordion extends Module_Base {
     use Global_Widget_Controls;
     use Global_Widget_Template;
-    // use Global_Swiper_Template;
     use Group_Control_Query;
 
     /**
@@ -49,7 +48,7 @@ class Product_Image_Accordion extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['usk-product-image-accordion'];
+            return ['ultimate-store-kit-font', 'usk-product-image-accordion'];
         }
     }
 
@@ -400,6 +399,7 @@ class Product_Image_Accordion extends Module_Base {
                 if ($wp_query->have_posts()) { ?>
             <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                         global $product;
+                        $tooltip_position = 'top';
                         $average = $product->get_average_rating();
                         $rating_count = $product->get_rating_count();
                         $product_id = $product->get_id(); ?>
@@ -413,7 +413,7 @@ class Product_Image_Accordion extends Module_Base {
                             </div>
                         </div>
                         <div class="usk-badge-label-wrapper">
-                            <div class="usk-badge-label-content">
+                            <div class="usk-badge-label-content usk-flex usk-flex-column">
                                 <?php $this->register_global_template_badge_label(); ?>
                             </div>
                         </div>
@@ -439,9 +439,10 @@ class Product_Image_Accordion extends Module_Base {
                                 <?php endif; ?>
                             </div>
                             <div class="usk-shoping">
-                                <?php $this->register_global_template_add_to_wishlist('top-right'); ?>
-                                <?php $this->register_global_template_quick_view($product_id, 'top') ?>
-                                <?php $this->register_global_template_add_to_cart('top-left'); ?>
+                                <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
+                                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
+                                <?php $this->register_global_template_quick_view($product_id, $tooltip_position) ?>
+                                <?php $this->register_global_template_add_to_cart($tooltip_position); ?>
                             </div>
 
                         </div>

@@ -2,15 +2,15 @@
   box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
   overflow: hidden;
 }
-.usk-florence-grid .usk-item:hover .usk-action-btn {
+.usk-florence-grid .usk-item:hover .usk-shoping a {
   transform: translateX(0px);
-}
-.usk-florence-grid .usk-action-btn {
-  transform: translateX(25px);
 }
 .usk-florence-grid .usk-shoping {
   bottom: clamp(10px, 1vw, 25px);
   right: clamp(10px, 1vw, 25px);
+}
+.usk-florence-grid .usk-shoping a {
+  transform: translateX(25px);
 }
 .usk-florence-grid .usk-badge-label-wrapper {
   left: 0;
