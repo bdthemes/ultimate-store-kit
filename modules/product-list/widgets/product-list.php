@@ -60,7 +60,7 @@ class Product_List extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-product-list'];
+            return ['usk-font', 'usk-product-list'];
         }
     }
 

@@ -43,7 +43,7 @@ class Mini_Cart extends Module_Base {
 		if ($this->usk_is_edit_mode()) {
 			return ['usk-all-styles'];
 		} else {
-			return ['ultimate-store-kit-font', 'usk-mini-cart', 'toolslide-css'];
+			return ['usk-font', 'usk-mini-cart', 'toolslide-css'];
 		}
 	}
 

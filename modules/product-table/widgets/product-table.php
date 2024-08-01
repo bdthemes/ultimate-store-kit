@@ -56,7 +56,7 @@ class Product_Table extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'datatables', 'usk-product-table'];
+            return ['usk-font', 'datatables', 'usk-product-table'];
         }
     }
     public function get_query() {

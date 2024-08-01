@@ -1,29 +1,40 @@
 {
-  "name": "ultimate-store-kit",
-  "version": "1.0.0",
-  "description": "=== Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Product Table, Woocommerce Slider === Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik Donate link: http://bdthemes.com/ Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor, store kit, pagebuilder addon, addons, edd, bdthemes Stable tag: 1.5.1 Requires PHP: 7.0.0 Requires at least: 5.0.0 Tested up to: 6.4.1 License: GPL3 License URI: http://www.gnu.org/licenses/gpl-3.0.html Elementor requires at least: 3.0.0 Elementor tested up to: 3.17.3",
-  "main": "index.php",
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development grunt watch",
-    "build": "cross-env NODE_ENV=production grunt",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "bdthemes",
-  "license": "ISC",
-  "devDependencies": {
-    "cross-env": "^7.0.3",
-    "grunt": "^1.6.1",
-    "grunt-contrib-compress": "^2.0.0",
-    "grunt-contrib-less": "^3.0.0",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-uglify": "^5.2.2",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-rtlcss": "^2.0.2",
-    "grunt-sass": "^3.1.0",
-    "grunt-terser": "^2.0.0",
-    "jit-grunt": "^0.10.0"
-  },
-  "dependencies": {
-    "sass": "^1.72.0"
-  }
+	"name": "ultimate-store-kit",
+	"version": "2.0.0",
+	"main": "index.php",
+	"scripts": {
+		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
+		"clean": "rimraf ./assets",
+		"dev": "cross-env NODE_ENV=development grunt watch",
+		"lint:fix": "eslint \"src/js/**/*.js\" --fix"
+	},
+	"keywords": [
+		"ultimate-store-kit",
+		"theme"
+	],
+	"author": "bdthemes",
+	"license": "ISC",
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"eslint": "^9.0.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-jquery": "^1.5.1",
+		"eslint-plugin-prettier": "^5.0.0",
+		"goodshare.js": "^6.3.0",
+		"grunt": "^1.6.1",
+		"grunt-contrib-concat": "^2.1.0",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-rtlcss": "^2.0.2",
+		"grunt-sass": "^3.1.0",
+		"grunt-terser": "^2.0.0",
+		"jquery": "^3.7.0",
+		"prettier": "^3.0.2",
+		"rimraf": "^5.0.1",
+		"terser": "^5.30.3",
+		"uikit": "3.16.24"
+	},
+	"dependencies": {
+		"sass": "^1.72.0"
+	}
 }

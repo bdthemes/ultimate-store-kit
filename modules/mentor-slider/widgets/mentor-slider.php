@@ -60,7 +60,7 @@ class Mentor_Slider extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-mentor-slider'];
+            return ['usk-font', 'usk-mentor-slider'];
         }
     }
 

@@ -18,21 +18,14 @@ final class Manager {
             $edd_widgets       = $settings['settings_fields']['ultimate_store_kit_edd_modules'];
             $general_widgets   = $settings['settings_fields']['ultimate_store_kit_general_modules'];
 
-
-
-
             /**
              * Our Widget
              */
             foreach ($general_widgets as $widget) {
                 if (ultimate_store_kit_is_general_widget_enabled($widget['name'])) {
-                    // print_r($widget);
-                    // die;
-
                     $this->load_module_instance($widget);
                 }
             }
-
 
             foreach ($wc_widgets as $widget) {
                 if (ultimate_store_kit_is_widget_enabled($widget['name'])) {
@@ -41,7 +34,6 @@ final class Manager {
                     }
                 }
             }
-
 
             /**
              * EDD Widget
@@ -62,7 +54,6 @@ final class Manager {
 
 
         $direction = is_rtl() ? '.rtl' : '';
-        $suffix    = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
         $module_id  = $module['name'];
         $class_name = str_replace('-', ' ', $module_id);
@@ -77,7 +68,7 @@ final class Manager {
             }
             // register widget JS
             if (ModuleService::has_module_script($module_id)) {
-                wp_register_script('usk-' . $module_id, BDTUSK_URL . 'assets/js/widgets/usk-' . $module_id . '.js', ['jquery', 'bdt-uikit', 'elementor-frontend'], BDTUSK_VER, true);
+                wp_register_script('usk-' . $module_id, BDTUSK_URL . 'assets/js/widgets/usk-' . $module_id . '.min.js', ['jquery', 'bdt-uikit', 'elementor-frontend'], BDTUSK_VER, true);
             }
         }
 

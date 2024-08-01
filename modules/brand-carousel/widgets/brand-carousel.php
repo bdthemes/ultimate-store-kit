@@ -49,7 +49,7 @@
 			if ( $this->usk_is_edit_mode() ) {
 				return [ 'usk-styles' ];
 			} else {
-				return [ 'ultimate-store-kit-font', 'usk-brand-carousel' ];
+				return [ 'usk-font', 'usk-brand-carousel' ];
 			}
 		}
 		
