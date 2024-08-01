@@ -32,13 +32,15 @@ trait Global_Widget_Template {
         $is_wishlisted = in_array($product_id, $wishlist);
         if (!empty($is_wishlisted)) {
             $selected = ' usk-active';
-            $tooltip  = esc_html__('Wishlist item Added!', 'ultimate-store-kit');
+            $tooltip  = __('View Wishlist', 'ultimate-store-kit');
+            $redirect_url = wc_get_account_endpoint_url('wishlist');
         } else {
             $selected = '';
-            $tooltip  = esc_html__('Add to Wishlist', 'ultimate-store-kit');
+            $tooltip  = __('Add to Wishlist', 'ultimate-store-kit');
+            // $redirect_url = "javascript:void(0);";
         } ?>
         <?php if ($settings['show_wishlist'] == 'yes') : ?>
-            <a href="javascript:void(0);" class="usk-action-btn ajax_add_to_wishlist usk-shoping-icon-wishlist usk-btn usk-wishlist<?php echo esc_attr($selected); ?>" data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
+            <a href="<?php echo esc_url($redirect_url); ?>" class="usk-action-btn ajax_add_to_wishlist usk-shoping-icon-wishlist usk-btn usk-wishlist<?php echo esc_attr($selected); ?>" data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html($tooltip); ?>" data-aria_label="<?php echo esc_html__('View Wishlist', 'ultimate-store-kit'); ?>" data-redirect_url="<?php echo esc_url(wc_get_account_endpoint_url('wishlist')); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
                 <i class="icon usk-icon-heart-full"></i>
             </a>
         <?php endif; ?>
@@ -53,15 +55,30 @@ trait Global_Widget_Template {
         $compare_products = usk_get_compare_products($user_id);
         $is_compared      = in_array($product_id, $compare_products);
 
+        $compare_page_id   = '';
+        if(function_exists('ultimate_store_kit_compare_product_page') && $comparePage = ultimate_store_kit_compare_product_page()){
+            $compare_page_id = $comparePage;
+        }
+
+	    $compare_redirect_link = home_url();
+        if($compare_page_id){
+	        $compare_redirect_link = get_page_link($compare_page_id);
+        }
+
         if (!empty($is_compared)) {
-            $tooltip  = esc_html__('Added', 'ultimate-store-kit');
+            $tooltip  = __('View Compare', 'ultimate-store-kit');
             $selected = 'usk-active';
+            $compare_page_link = home_url();
+            if($compare_page_id){
+                $compare_page_link = get_page_link($compare_page_id);
+            }
         } else {
-            $tooltip  = esc_html__('Compare', 'ultimate-store-kit');
+            $tooltip  = __('Add to Compare', 'ultimate-store-kit');
             $selected = '';
+            // $compare_page_link = "javascript:void(0);";
         } ?>
         <?php if ($settings['show_compare'] == 'yes') : ?>
-            <a href="javascript:void(0)" class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>" data-product_id="<?php echo esc_attr($product_id); ?>" aria-label="<?php echo esc_html__($tooltip); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
+            <a href="<?php echo esc_url($compare_page_link); ?>" class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>" data-product_id="<?php echo esc_attr($product_id); ?>" data-redirect_url="<?php echo esc_url($compare_redirect_link); ?>" aria-label="<?php echo esc_html($tooltip); ?>" data-aria_label="<?php echo esc_html__('View Compare', 'ultimate-store-kit'); ?>" data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
                 <i class="icon usk-icon-compare"></i>
             </a>
             <?php
