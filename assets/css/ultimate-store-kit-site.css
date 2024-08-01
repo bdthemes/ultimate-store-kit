@@ -973,6 +973,7 @@ div.pp_pic_holder {
   margin-bottom: 10px;
   display: block;
   color: #2b2d42;
+  transition: all 0.3s ease;
 }
 .usk-grid-carousel .usk-title .title {
   text-transform: capitalize;

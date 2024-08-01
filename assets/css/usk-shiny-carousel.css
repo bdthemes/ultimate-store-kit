@@ -113,6 +113,7 @@
 .usk-shiny-carousel .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
+  visibility: hidden;
 }
 .usk-shiny-carousel .usk-item .usk-rating {
   position: absolute;

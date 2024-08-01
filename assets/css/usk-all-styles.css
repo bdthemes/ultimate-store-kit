@@ -1211,6 +1211,7 @@ div.pp_pic_holder {
   margin-bottom: 10px;
   display: block;
   color: #2b2d42;
+  transition: all 0.3s ease;
 }
 .usk-grid-carousel .usk-title .title {
   text-transform: capitalize;
@@ -5648,6 +5649,7 @@ table.dataTable.display tbody tr.odd {
 .usk-shiny-grid .usk-grid-layout .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
+  visibility: hidden;
 }
 .usk-shiny-grid .usk-grid-layout .usk-rating {
   position: absolute;
@@ -5781,6 +5783,7 @@ table.dataTable.display tbody tr.odd {
 .usk-shiny-carousel .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
+  visibility: hidden;
 }
 .usk-shiny-carousel .usk-item .usk-rating {
   position: absolute;

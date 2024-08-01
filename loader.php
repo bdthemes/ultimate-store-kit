@@ -319,27 +319,7 @@ class Ultimate_Store_Kit_Loader {
         $elementor->elements_manager->add_category('ultimate-store-kit-single', ['title' => 'Ultimate Store Kit (Single)', 'icon' => 'font']);
         $elementor->elements_manager->add_category(BDTUSK_SLUG, ['title' => BDTUSK_TITLE, 'icon' => 'font']);
     }
-    // /**
-    //  * initialize the category
-    //  * @return [type] [description]
-    //  */
-    // public function ultimate_store_kit_init() {
-    //     $this->_modules_manager = new Manager();
-    //     $this->ultimate_store_kit_modal_settings_init();
-    //     do_action('bdthemes_ultimate_store_kit/init');
-    // }
 
-    // /**
-    //  * initialize the category
-    //  * @return [type] [description]
-    //  */
-    // public function ultimate_store_kit_category_register() {
-
-    //     $elementor = Plugin::$instance;
-
-    //     // Add element category in panel
-    //     $elementor->elements_manager->add_category(BDTUSK_SLUG, ['title' => BDTUSK_TITLE, 'icon' => 'font']);
-    // }
     private function setup_hooks() {
         add_action('elementor/elements/categories_registered', [$this, 'ultimate_store_kit_category_register']);
         add_action('elementor/init', [$this, 'ultimate_store_kit_init']);
