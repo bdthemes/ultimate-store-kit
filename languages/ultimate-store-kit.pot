@@ -530,12 +530,12 @@ msgstr ""
 msgid "QR Code"
 msgstr ""
 
-#: assets/js/ultimate-store-kit-editor.js:113
+#: assets/js/usk-editor.js:113
 #, javascript-format
 msgid "%s"
 msgstr ""
 
-#: assets/js/ultimate-store-kit-editor.js:114
+#: assets/js/usk-editor.js:114
 #, javascript-format
 msgid ""
 "Use %s widget and dozens more pro features to extend your toolbox and build "

@@ -37,7 +37,7 @@ class Page_Checkout extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['wc-checkout', 'ultimate-store-kit-font', 'usk-page-checkout'];
+            return ['wc-checkout', 'usk-font', 'usk-page-checkout'];
         }
     }
 

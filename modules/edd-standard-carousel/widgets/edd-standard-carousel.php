@@ -48,7 +48,7 @@ class EDD_Standard_Carousel extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-edd-standard-carousel'];
+            return ['usk-font', 'usk-edd-standard-carousel'];
         }
     }
 

@@ -45,7 +45,7 @@ class Page_Order extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-add-to-cart'];
+            return ['usk-font', 'usk-add-to-cart'];
         }
     }
     protected function register_controls() {

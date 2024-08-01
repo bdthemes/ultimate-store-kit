@@ -49,7 +49,7 @@ class EDD_Beauty_Carousel extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-edd-beauty-carousel'];
+            return ['usk-font', 'usk-edd-beauty-carousel'];
         }
     }
 

@@ -41,7 +41,7 @@ class Page_My_Account extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-page-my-account'];
+            return ['usk-font', 'usk-page-my-account'];
         }
     }
     protected function register_controls() {

@@ -47,7 +47,7 @@ class Product_Review_Carousel extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-product-review-carousel'];
+            return ['usk-font', 'usk-product-review-carousel'];
         }
     }
     public function get_script_depends() {

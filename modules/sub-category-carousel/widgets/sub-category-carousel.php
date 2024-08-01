@@ -49,7 +49,7 @@ class Sub_Category_Carousel extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-sub-category-carousel'];
+            return ['usk-font', 'usk-sub-category-carousel'];
         }
     }
 

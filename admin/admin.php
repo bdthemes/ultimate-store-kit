@@ -44,7 +44,7 @@ class Admin {
 		wp_enqueue_script('bdt-uikit', BDTUSK_ADM_ASSETS_URL . 'js/bdt-uikit' . $suffix . '.js', ['jquery'], BDTUSK_VER);
 		wp_enqueue_style('ultimate-store-kit-font', BDTUSK_ASSETS_URL . 'css/ultimate-store-kit-font' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_enqueue_style('ultimate-store-kit-editor', BDTUSK_ASSETS_URL . 'css/ultimate-store-kit-editor' . $direction_suffix . '.css', [], BDTUSK_VER);
-		wp_enqueue_style('ultimate-store-kit-admin', BDTUSK_ADM_ASSETS_URL . 'css/usk-admin' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_enqueue_style('usk-admin', BDTUSK_ADM_ASSETS_URL . 'css/usk-admin' . $direction_suffix . '.css', [], BDTUSK_VER);
 	}
 
 

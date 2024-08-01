@@ -45,7 +45,7 @@ class Page_Single extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-page-single'];
+            return ['usk-font', 'usk-page-single'];
         }
     }
 

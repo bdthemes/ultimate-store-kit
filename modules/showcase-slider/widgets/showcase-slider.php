@@ -58,7 +58,7 @@ class Showcase_Slider extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-showcase-slider'];
+            return ['usk-font', 'usk-showcase-slider'];
         }
     }
 

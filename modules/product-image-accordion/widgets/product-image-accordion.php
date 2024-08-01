@@ -48,7 +48,7 @@ class Product_Image_Accordion extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-product-image-accordion'];
+            return ['usk-font', 'usk-product-image-accordion'];
         }
     }
 

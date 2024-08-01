@@ -58,7 +58,7 @@ class Shiny_Grid extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-shiny-grid', 'slick-modal'];
+            return ['usk-font', 'usk-shiny-grid', 'slick-modal'];
         }
     }
 

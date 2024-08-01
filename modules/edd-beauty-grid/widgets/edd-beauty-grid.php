@@ -47,7 +47,7 @@ class EDD_Beauty_Grid extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['ultimate-store-kit-font', 'usk-edd-beauty-grid'];
+            return ['usk-font', 'usk-edd-beauty-grid'];
         }
     }
 
