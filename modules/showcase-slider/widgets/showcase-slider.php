@@ -723,21 +723,9 @@ class Showcase_Slider extends Module_Base {
             ]
         );
         $this->add_responsive_control(
-            'btn_padding',
-            [
-                'label' => esc_html__('Padding', 'ultimate-store-kit'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
             'button_spacing',
             [
-                'label' => esc_html__('Spacing', 'ultimate-store-kit'),
+                'label' => esc_html__('Right Spacing', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'selectors' => [
@@ -745,7 +733,44 @@ class Showcase_Slider extends Module_Base {
                 ],
             ]
         );
-        
+        $this->add_control(
+            'btn_size_toggle',
+            [
+                'label' => esc_html__('Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::POPOVER_TOGGLE,
+            ]
+        );
+        $this->start_popover();
+        $this->add_responsive_control(
+            'btn_height',
+            [
+                'label' => esc_html__('Height', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'btn_size_toggle' => 'yes',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'btn_width',
+            [
+                'label' => esc_html__('Width', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'btn_size_toggle' => 'yes',
+                ],
+            ]
+        );
+        $this->end_popover();
+
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -1009,6 +1034,7 @@ class Showcase_Slider extends Module_Base {
                 ],
             ]
         );
+        
         $this->add_control(
             'heading_compare_hover',
             [
@@ -1034,6 +1060,34 @@ class Showcase_Slider extends Module_Base {
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-showcase-slider .usk-compare:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'heading_compare_active',
+            [
+                'label' => esc_html__('Active', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'compare_active_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-compare.usk-active' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_active_bg',
+            [
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-compare.usk-active' => 'background: {{VALUE}}',
                 ],
             ]
         );

@@ -78,6 +78,7 @@
 }
 .usk-showcase-slider .usk-title {
   color: #2b2d42;
+  display: block;
 }
 .usk-showcase-slider .usk-title .title {
   font-size: clamp(18px, 2vw, 30px);
@@ -158,13 +159,15 @@
   width: 33%;
   min-width: 125px;
   height: clamp(40px, 5vw, 50px);
-  line-height: clamp(40px, 5vw, 50px);
   position: absolute;
   left: clamp(20px, 2vw, 30px);
   top: 0;
   transform: translateY(-50%);
   border-radius: 4px;
   font-size: clamp(13px, 1.5vw, 16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .usk-showcase-slider .usk-button a,
 .usk-showcase-slider .added_to_cart a {
