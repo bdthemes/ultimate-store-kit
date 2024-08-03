@@ -1199,7 +1199,7 @@ class Mini_Cart extends Module_Base {
 										do_action( 'woocommerce_mini_cart_contents' );
 										?>
 									</div>
-									<div>
+									<div class="usk-mini-cart-content-footer">
 										<div class="bdt-mini-cart-subtotal bdt-flex bdt-flex-between">
 											<div>
 												<strong><?php echo esc_html__( 'Subtotal', 'bdthemes-element-pack' ); ?>:</strong>
@@ -1245,8 +1245,7 @@ class Mini_Cart extends Module_Base {
 		$product_price  = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 		$item_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 		?>
-		<div
-			class="bdt-mini-cart-product-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
+		<div class="bdt-mini-cart-product-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 
 			<div class="bdt-mini-cart-product-thumbnail">
 				<?php

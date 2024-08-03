@@ -31,6 +31,11 @@
         height: 90px;
         z-index: 1;
     }
+    .bdt-button-text {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+    }
     .usk-widget-title {
         border-bottom: 1px solid #e0e7f2;
         font-size: 18px;
@@ -127,11 +132,11 @@
     .bdt-mini-cart-products {
         max-width: 100%;
         overflow: auto;
-        position: absolute;
-        top: var(--usk-mini-cart-header-height);
-        left: 0;
-        right: 0;
-        bottom: var(--usk-mini-cart-footer-height);
+        // position: absolute;
+        // top: var(--usk-mini-cart-header-height);
+        // left: 0;
+        // right: 0;
+        // bottom: var(--usk-mini-cart-footer-height);
         &::-webkit-scrollbar {
             width: 3px;
         }
@@ -195,11 +200,11 @@
         }
     }
     .usk-mini-cart-content-footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: var(--usk-mini-cart-footer-height);
+        // position: absolute;
+        // bottom: 0;
+        // left: 0;
+        // right: 0;
+        // height: var(--usk-mini-cart-footer-height);
         background: #fff;
         z-index: 1;
         box-shadow: 0 0 5px rgba(210, 217, 228, 0.459);
@@ -209,7 +214,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
-        height: 100%;
+        height: calc(100% - var(--usk-mini-cart-header-height));
     }
 }
 
