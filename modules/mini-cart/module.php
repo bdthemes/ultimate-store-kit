@@ -3,8 +3,6 @@
 namespace UltimateStoreKit\Modules\MiniCart;
 
 use UltimateStoreKit\Base\Ultimate_Store_Kit_Module_Base;
-use UltimateStoreKit\Modules\MiniCart\Templates\Cart;
-
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -14,18 +12,14 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     const TEMPLATE_MINI_CART = 'cart/mini-cart.php';
     const OPTION_NAME_USE_MINI_CART = 'use_mini_cart_template';
 
-
     public function __construct() {
 
         parent::__construct();
 
-        //        if ( ! empty( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] && is_admin() ) {
-        //            add_action( 'init', [ $this, 'register_wc_hooks' ], 5 );
-        //        }
+		wp_enqueue_script( 'wc-cart-fragments' );
 
-        add_filter('woocommerce_add_to_cart_fragments', [$this, 'ultimate_store_kit_mini_cart_fragment']);
-        add_filter('woocommerce_locate_template', [$this, 'woocommerce_locate_template'], 12, 3);
-        // add_action('wp_footer', [$this, 'render_markup']);
+        // add_filter('woocommerce_add_to_cart_fragments', [$this, 'ultimate_store_kit_mini_cart_fragment']);
+        // add_filter('woocommerce_locate_template', [$this, 'woocommerce_locate_template'], 12, 3);
     }
 
     public function render_markup() {
@@ -66,9 +60,10 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             $template = $plugin_path . $template_name;
         }
 
-        // if(class_exists('UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart')) {
-        //     // unset($template['cart/mini-cart.php]);
+        // if(class_exists('\UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart')) {
+        //     unset($template['cart/mini-cart.php']);
         // }
+
         return $template;
     }
 

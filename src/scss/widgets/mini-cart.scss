@@ -1,11 +1,10 @@
-
 :root {
     --usk-mini-cart-header-height: 80px;
     --usk-mini-cart-footer-height: 208px;
 }
 .usk-mini-cart {
     z-index: 99999;
-	min-height: 1px;
+    min-height: 1px;
     position: fixed !important;
     &.toolslide {
         .ts-content-container {
@@ -68,7 +67,7 @@
         display: flex;
         align-items: center;
         border-bottom: 1px solid #e0e7f2;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         &:hover {
             background-color: #e0e7f2;
         }
@@ -86,15 +85,15 @@
             color: #25262d;
             padding: 4px 7px;
             border-radius: 50%;
-            transition: all .3s ease;
+            transition: all 0.3s ease;
             i {
-                transition: all .3s ease;
+                transition: all 0.3s ease;
             }
             &:hover {
                 background-color: #fff;
                 color: rgba(239, 2, 2, 0.955);
                 i {
-                  transform: rotate(180deg);
+                    transform: rotate(180deg);
                 }
             }
         }
@@ -111,7 +110,7 @@
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
-            transition: all .3s ease;
+            transition: all 0.3s ease;
             &:hover {
                 color: rgba(239, 2, 2, 0.955);
             }
@@ -156,20 +155,20 @@
             font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
             position: relative;
             &:nth-last-child(1) {
                 margin-bottom: 0;
             }
             &::before {
                 position: absolute;
-                content: '';
+                content: "";
                 top: 0;
                 left: 0;
                 width: 0;
                 height: 100%;
                 opacity: 0;
-                transition: all .3s ease-in-out;
+                transition: all 0.3s ease-in-out;
             }
             &:hover {
                 &::before {
@@ -205,6 +204,13 @@
         z-index: 1;
         box-shadow: 0 0 5px rgba(210, 217, 228, 0.459);
     }
+    .__widget_shopping_cart_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .usk-mini-cart-opened {
@@ -214,28 +220,28 @@
     left: 0;
     width: 100%;
     height: 100%;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
 .bdt-mini-cart-inner {
-	display: inline-flex;
-	align-items: center;
-	grid-column-gap: 10px;
+    display: inline-flex;
+    align-items: center;
+    grid-column-gap: 10px;
     cursor: pointer;
     line-height: 1;
-	.woocommerce-Price-amount.amount {
-		font-size: 16px;
-		color: #25262d;
-		font-weight: 600;
-	}
-	.bdt-mini-cart-button-icon {
-		position: relative;
-	}
-	.usk-cart-icon {
-		font-size: 22px;
-		color: #25262d;
-	}
-	.usk-cart-badge {
+    .woocommerce-Price-amount.amount {
+        font-size: 16px;
+        color: #25262d;
+        font-weight: 600;
+    }
+    .bdt-mini-cart-button-icon {
+        position: relative;
+    }
+    .usk-cart-icon {
+        font-size: 22px;
+        color: #25262d;
+    }
+    .usk-cart-badge {
         position: absolute;
         right: -10px;
         top: -6px;
@@ -248,5 +254,5 @@
         border-radius: 50%;
         font-weight: 700;
         color: #fff;
-	}
+    }
 }
