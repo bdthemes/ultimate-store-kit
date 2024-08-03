@@ -3,8 +3,6 @@
 namespace UltimateStoreKit\Modules\MiniCart;
 
 use UltimateStoreKit\Base\Ultimate_Store_Kit_Module_Base;
-use UltimateStoreKit\Modules\MiniCart\Templates\Cart;
-
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -18,8 +16,10 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
         parent::__construct();
 
-        add_filter('woocommerce_add_to_cart_fragments', [$this, 'ultimate_store_kit_mini_cart_fragment']);
-        add_filter('woocommerce_locate_template', [$this, 'woocommerce_locate_template'], 20, 3);
+		wp_enqueue_script( 'wc-cart-fragments' );
+
+        // add_filter('woocommerce_add_to_cart_fragments', [$this, 'ultimate_store_kit_mini_cart_fragment']);
+        // add_filter('woocommerce_locate_template', [$this, 'woocommerce_locate_template'], 12, 3);
     }
 
     public function render_markup() {
@@ -50,13 +50,9 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
     public function woocommerce_locate_template($template, $template_name, $template_path) {
 
-        error_log('template_name: ' . $template_name);
-
         if (self::TEMPLATE_MINI_CART !== $template_name) {
             return $template;
         }
-
-		error_log( 'Module Mini Cart loaded' );
 
         $plugin_path = BDTUSK_MODULES_PATH . 'mini-cart/templates/';
 
@@ -64,11 +60,9 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             $template = $plugin_path . $template_name;
         }
 
-        // if(class_exists('UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart')) {
-        //     // unset($template['cart/mini-cart.php]);
+        // if(class_exists('\UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart')) {
+        //     unset($template['cart/mini-cart.php']);
         // }
-
-        error_log('template: ' . $template);
 
         return $template;
     }
