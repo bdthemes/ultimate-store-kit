@@ -9,7 +9,6 @@ use Elementor\Controls_Manager;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
-// use UltimateStoreKit\traits\Global_Swiper_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use WP_Query;
 
@@ -88,7 +87,7 @@ class Product_Image_Accordion extends Module_Base {
                     'size'      => 600,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-item' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -107,19 +106,10 @@ class Product_Image_Accordion extends Module_Base {
                     'size'      => 20,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item:hover' => 'flex-basis: {{SIZE}}em;',
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-item:hover' => 'flex-basis: {{SIZE}}em;',
                 ],
             ]
         );
-        // $this->add_control(
-        //     'title_tags',
-        //     [
-        //         'label'   => esc_html__('Title HTML Tag', 'ultimate-store-kit'),
-        //         'type'    => Controls_Manager::SELECT,
-        //         'default' => 'h3',
-        //         'options' => ultimate_store_kit_title_tags(),
-        //     ]
-        // );
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
             [
@@ -173,9 +163,9 @@ class Product_Image_Accordion extends Module_Base {
                     'size' => 350,
                 ],
                 'selectors'   => [
-                    '(desktop){{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box .usk-content-box' => 'width: {{SIZE}}px;',
-                    '(tablet){{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box .usk-content-box' => 'width: 100%;',
-                    '(mobile){{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box .usk-content-box' => 'width: 100%;'
+                    '(desktop){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: {{SIZE}}px;',
+                    '(tablet){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: 100%;',
+                    '(mobile){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: 100%;'
                 ],
             ]
         );
@@ -187,14 +177,14 @@ class Product_Image_Accordion extends Module_Base {
                 'type'          => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box .usk-content-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
         $this->add_control(
             'content_overlay_heading',
             [
-                'label'     => __('O V E R L A Y', 'ultimate-store-kit'),
+                'label'     => __('OVERLAY', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -214,7 +204,7 @@ class Product_Image_Accordion extends Module_Base {
                 'name'      => 'overlay_background',
                 'label'     => __('Overlay Color', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-item-box .usk-image-wrap .usk-image::before',
+                'selector'  => '{{WRAPPER}} .usk-product-image-accordion .usk-image::before',
             ]
         );
         $this->add_control(
@@ -242,7 +232,7 @@ class Product_Image_Accordion extends Module_Base {
                     'size' => 5
                 ],
                 'selectors'   => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-item-box .usk-image-wrap .usk-image::before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-image::before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
                 ],
                 'condition' => [
                     'overlay_blur_effect' => 'yes'
@@ -316,9 +306,7 @@ class Product_Image_Accordion extends Module_Base {
         );
 
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
-
         $this->end_controls_section();
         $this->start_controls_section(
             'section_style_title',
