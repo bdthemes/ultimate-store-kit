@@ -392,9 +392,6 @@ trait Global_Widget_Controls {
             [
                 'label' => esc_html__('Wishlist', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Show', 'ultimate-store-kit'),
-                'label_off' => esc_html__('Hide', 'ultimate-store-kit'),
-                'return_value' => 'yes',
                 'default' => 'yes',
             ]
         );
@@ -403,10 +400,6 @@ trait Global_Widget_Controls {
             [
                 'label' => esc_html__('Compare', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Show', 'ultimate-store-kit'),
-                'label_off' => esc_html__('Hide', 'ultimate-store-kit'),
-                'return_value' => 'yes',
-                'default' => 'yes',
             ]
         );
         $this->add_control(

@@ -135,7 +135,7 @@ class Product_Image_Accordion extends Module_Base {
             [
                 'label'   => esc_html__('Product Limit', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::NUMBER,
-                'default' => 4,
+                'default' => 3,
             ]
         );
         $this->end_controls_section();
@@ -164,7 +164,7 @@ class Product_Image_Accordion extends Module_Base {
                 ],
                 'selectors'   => [
                     '(desktop){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: {{SIZE}}px;',
-                    '(tablet){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: 100%;',
+                    '(tablet){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: {{SIZE}}px;',
                     '(mobile){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: 100%;'
                 ],
             ]
@@ -181,132 +181,18 @@ class Product_Image_Accordion extends Module_Base {
                 ],
             ]
         );
+        
         $this->add_control(
-            'content_overlay_heading',
+            'overlay_color',
             [
-                'label'     => __('OVERLAY', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->start_controls_tabs('tabs_item_style');
-
-        $this->start_controls_tab(
-            'tab_item_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'overlay_background',
-                'label'     => __('Overlay Color', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-image-accordion .usk-image::before',
-            ]
-        );
-        $this->add_control(
-            'overlay_blur_effect',
-            [
-                'label' => esc_html__('Glassmorphism', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::SWITCHER,
-                'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-store-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
-            ]
-        );
-
-        $this->add_control(
-            'overlay_blur_level',
-            [
-                'label'       => __('Blur Level', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::SLIDER,
-                'range'       => [
-                    'px' => [
-                        'min'  => 0,
-                        'step' => 1,
-                        'max'  => 50,
-                    ]
+                'label'     => esc_html__('Overlay Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-image-wrap .usk-image::before' => 'background-image: linear-gradient(24deg, {{VALUE}}, transparent, rgba(255, 0, 0, 0));',
                 ],
-                'default'     => [
-                    'size' => 5
-                ],
-                'selectors'   => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-image::before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
-                ],
-                'condition' => [
-                    'overlay_blur_effect' => 'yes'
-                ]
             ]
         );
 
-        // $this->add_control(
-        //     'overlay_color',
-        //     [
-        //         'label'     => esc_html__('Overlay Color', 'ultimate-store-kit'),
-        //         'type'      => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box::before' => 'background: {{VALUE}};',
-        //         ],
-        //     ]
-        // );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'tab_item_hover',
-            [
-                'label' => esc_html__('Hover', 'ultimate-store-kit'),
-            ]
-        );
-
-        // $this->add_control(
-        //     'overlay_color_hover',
-        //     [
-        //         'label'     => esc_html__('Overlay Color', 'ultimate-store-kit'),
-        //         'type'      => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box:hover::before' => 'background: {{VALUE}};',
-        //         ],
-        //     ]
-        // );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name'      => 'overlay_hover_background',
-                'label'     => __('Overlay Color', 'ultimate-store-kit'),
-                'types'     => ['classic', 'gradient'],
-                'selector'  => '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box:hover::before',
-            ]
-        );
-
-        $this->add_control(
-            'overlay_blur_level_hover',
-            [
-                'label'       => __('Blur Level', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::SLIDER,
-                'range'       => [
-                    'px' => [
-                        'min'  => 0,
-                        'step' => 1,
-                        'max'  => 50,
-                    ]
-                ],
-                'default'     => [
-                    'size' => 0
-                ],
-                'selectors'   => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-grid-wrap .usk-item .usk-item-box:hover::before' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
-                ],
-                'condition' => [
-                    'overlay_blur_effect' => 'yes'
-                ]
-            ]
-        );
-
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
         $this->end_controls_section();
         $this->start_controls_section(
             'section_style_title',
@@ -322,7 +208,7 @@ class Product_Image_Accordion extends Module_Base {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-content .title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-content .usk-title' => 'color: {{VALUE}}',
                 ],
             ]
         );

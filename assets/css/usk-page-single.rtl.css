@@ -19,3 +19,7 @@
   display: inline-block;
   border-radius: 5px;
 }
+.usk-page-single .product_meta {
+  display: flex;
+  flex-direction: column;
+}
