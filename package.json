@@ -6,7 +6,8 @@
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
 		"clean": "rimraf ./assets",
 		"dev": "cross-env NODE_ENV=development grunt watch",
-		"lint:fix": "eslint \"src/js/**/*.js\" --fix"
+		"lint:fix": "eslint \"src/js/**/*.js\" --fix",
+		"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-store-kit && zip -r ultimate-store-kit-v.$npm_package_version.zip ultimate-store-kit/*"
 	},
 	"keywords": [
 		"ultimate-store-kit",
@@ -29,6 +30,7 @@
 		"grunt-sass": "^3.1.0",
 		"grunt-terser": "^2.0.0",
 		"jquery": "^3.7.0",
+		"npm-build-zip": "^1.0.3",
 		"prettier": "^3.0.2",
 		"rimraf": "^5.0.1",
 		"terser": "^5.30.3",
