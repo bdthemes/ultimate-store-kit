@@ -4,7 +4,7 @@
 	"main": "index.php",
 	"scripts": {
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",
-		"clean": "rimraf ./assets",
+		"clean": "rimraf ./assets && rimraf ultimate-store-kit",
 		"dev": "cross-env NODE_ENV=development grunt watch",
 		"lint:fix": "eslint \"src/js/**/*.js\" --fix",
 		"zip": "npm run && npm run clean && cross-env NODE_ENV=production grunt && rsync -av --exclude-from=.buildignore . ultimate-store-kit && zip -r ultimate-store-kit-v.$npm_package_version.zip ultimate-store-kit/*"

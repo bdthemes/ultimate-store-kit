@@ -12,3 +12,4 @@ package-lock.json
 gruntfile.js
 node_modules
 .git
+*zip
