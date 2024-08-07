@@ -13,19 +13,16 @@
   }
 }
 
-
 // THEME COMPATIBILITY
 
 // theme css start
 
-
 .theme-storefront {
-	.edd_download_purchase_form  {
-		margin: 0;
-	}
+  .edd_download_purchase_form {
+    margin: 0;
+  }
 }
 .theme-astra {
-
   .edd_download_purchase_form .edd_purchase_submit_wrapper {
     margin: 0;
   }
@@ -61,8 +58,26 @@
 //   overflow: hidden;
 //   position: relative;
 // }
-.usk-account-navigation{
-  .woocommerce-MyAccount-navigation{
+.usk-account-navigation {
+  .woocommerce-MyAccount-navigation {
     width: 100% !important;
   }
+}
+[class*="elementor-widget-usk-"] {
+  .star-rating {
+    font-family: "star" !important;
+    margin: 0;
+  }
+}
+
+.woocommerce-js 
+[class*="elementor-widget-usk-"] {
+   .star-rating::before {
+    content: '\73\73\73\73\73';
+    color: #d3ced2;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
 }
