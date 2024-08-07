@@ -534,6 +534,8 @@ trait Group_Control_Query {
 
 			$args['paged']          = 1;
 			$args['paged']          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+			
+
 			$args['posts_per_page'] = $this->get_settings( 'product_limit' );
 			$args                   = apply_filters( 'ultimate_store_kit/query/get_query_args/current_query', $args );
 
@@ -659,7 +661,9 @@ trait Group_Control_Query {
 				$args['tax_query']['relation'] = 'AND';
 			}
 
-			error_log( print_r( $args['paged'], true ) );
+			$page          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+			$page          = absint( empty( $_GET['product-page'] ) ? $page : $_GET['product-page'] );
+			$args['paged'] = $page;
 		}
 
 		$query_id = $this->get_settings( 'query_id' );

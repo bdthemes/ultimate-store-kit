@@ -434,7 +434,7 @@ class Florence_Grid extends Module_Base {
 				<?php endwhile; ?>
 			</div>
 			<?php if ( $settings['show_pagination'] ) :
-				ultimate_store_kit_post_pagination( $wp_query );
+				ultimate_store_kit_post_pagination__new( $wp_query );
 			endif;
 			wp_reset_postdata();
 		} else {
