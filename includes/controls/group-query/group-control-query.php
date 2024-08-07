@@ -658,6 +658,8 @@ trait Group_Control_Query {
 				$args['tax_query']             = $terms_query;
 				$args['tax_query']['relation'] = 'AND';
 			}
+
+			error_log( print_r( $args['paged'], true ) );
 		}
 
 		$query_id = $this->get_settings( 'query_id' );
