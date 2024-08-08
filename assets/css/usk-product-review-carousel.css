@@ -1,73 +1,65 @@
-.usk-product-review-carousel .swiper,
-.usk-product-review-carousel .swiper-container {
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
-}
-.usk-product-review-carousel .usk-carousel .usk-review-item {
-  padding: 40px;
-  background: #f9f9f9;
-  border-radius: 10px;
+.usk-product-review-carousel .usk-item {
+  padding: clamp(20px, 2vw, 30px);
+  background: #f9fafa;
+  border-radius: 6px;
   position: relative;
   overflow: visible;
   height: auto;
+  margin-top: 20px;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
+.usk-product-review-carousel .usk-avatar-wrap {
+  gap: clamp(10px, 1vw, 15px);
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper {
-  display: flex;
-  align-items: center;
+.usk-product-review-carousel .usk-avatar-img {
+  border-radius: 4px;
+  overflow: hidden;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-avatar-image {
-  width: 80px;
-}
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-avatar-image img {
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
+.usk-product-review-carousel .usk-avatar-img img {
   object-fit: cover;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content {
-  width: 100%;
-}
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-author-name {
+.usk-product-review-carousel .usk-author-name {
   font-size: 14px;
   text-transform: capitalize;
-  font-weight: 500;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-author-name span {
+.usk-product-review-carousel .usk-author-name span {
   color: #6f6f6f;
   font-weight: 400;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-author-name a {
-  text-decoration: none;
-  color: #252323;
+.usk-product-review-carousel .usk-author-name a {
+  color: #666;
+  font-weight: 600;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-title {
-  margin: 0;
-  font-size: 16px;
+.usk-product-review-carousel .usk-author-name a:hover {
+  color: #D90429;
+}
+.usk-product-review-carousel .usk-title {
+  font-size: clamp(16px, 1.5vw, 18px);
   font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-title a {
-  text-decoration: none;
-  color: #3e3e3e;
+.usk-product-review-carousel .usk-title a {
+  color: #0c0d0e;
   transition: all 0.3s ease;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-info-wrap .usk-review-avatar-wrapper .usk-review-content .usk-review-title a:hover {
-  color: #f00;
+.usk-product-review-carousel .usk-title a:hover {
+  color: #D90429;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-rating {
+.usk-product-review-carousel .usk-text {
+  font-size: clamp(14px, 1vw, 15px);
+  color: #6f6f6f;
+  margin-top: clamp(15px, 2vw, 20px);
+}
+.usk-product-review-carousel .usk-rating {
   position: absolute;
   top: -22px;
   right: 25px;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-rating span .usk-rating-icon {
+.usk-product-review-carousel .usk-rating span .usk-rating-icon {
   color: #ffc107;
   font-size: 46px;
 }
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-rating .usk-rating-text {
+.usk-product-review-carousel .usk-rating-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -76,48 +68,4 @@
   font-size: 18px;
   margin-top: 2px;
   font-weight: 700;
-}
-.usk-product-review-carousel .usk-carousel .usk-review-item .usk-review-text {
-  font-size: 14px;
-  color: #6f6f6f;
-  text-transform: capitalize;
-  line-height: 1.6;
-  margin-top: 30px;
-}
-
-.elementor-widget-usk-product-review-carousel .usk-arrows-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-arrows-ncx, 0), var(--usk-product-review-carousel-arrows-ncy, 0));
-  transform: translate(var(--usk-product-review-carousel-arrows-ncx, 0), var(--usk-product-review-carousel-arrows-ncy, 0));
-}
-.elementor-widget-usk-product-review-carousel .usk-dots-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-dots-nnx, 0), var(--usk-product-review-carousel-dots-nny, 30));
-  transform: translate(var(--usk-product-review-carousel-dots-nnx, 0), var(--usk-product-review-carousel-dots-nny, 30));
-}
-.elementor-widget-usk-product-review-carousel .usk-arrows-dots-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-both-ncx, 0), var(--usk-product-review-carousel-both-ncy, 40));
-  transform: translate(var(--usk-product-review-carousel-both-ncx, 0), var(--usk-product-review-carousel-both-ncy, 40));
-}
-.elementor-widget-usk-product-review-carousel .usk-arrows-fraction-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-arrows-fraction-ncx, 0), var(--usk-product-review-carousel-arrows-fraction-ncy, 40));
-  transform: translate(var(--usk-product-review-carousel-arrows-fraction-ncx, 0), var(--usk-product-review-carousel-arrows-fraction-ncy, 40));
-}
-.elementor-widget-usk-product-review-carousel .usk-position-center-left .usk-arrows-container,
-.elementor-widget-usk-product-review-carousel .usk-position-center-right .usk-arrows-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-arrows-ncx, 0), var(--usk-product-review-carousel-arrows-ncy, 0)) rotate(90deg);
-  transform: translate(var(--usk-product-review-carousel-arrows-ncx, 0), var(--usk-product-review-carousel-arrows-ncy, 0)) rotate(90deg);
-}
-.elementor-widget-usk-product-review-carousel .usk-position-center-left .usk-dots-container,
-.elementor-widget-usk-product-review-carousel .usk-position-center-right .usk-dots-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-dots-nnx, 0), var(--usk-product-review-carousel-dots-nny, 0)) rotate(90deg);
-  transform: translate(var(--usk-product-review-carousel-dots-nnx, 0), var(--usk-product-review-carousel-dots-nny, 0)) rotate(90deg);
-}
-.elementor-widget-usk-product-review-carousel .usk-position-center-left .usk-arrows-dots-container,
-.elementor-widget-usk-product-review-carousel .usk-position-center-right .usk-arrows-dots-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-both-ncx, 0), var(--usk-product-review-carousel-both-ncy, 0)) rotate(90deg);
-  transform: translate(var(--usk-product-review-carousel-both-ncx, 0), var(--usk-product-review-carousel-both-ncy, 0)) rotate(90deg);
-}
-.elementor-widget-usk-product-review-carousel .usk-position-center-left .usk-arrows-fraction-container,
-.elementor-widget-usk-product-review-carousel .usk-position-center-right .usk-arrows-fraction-container {
-  -webkit-transform: translate(var(--usk-product-review-carousel-arrows-fraction-ncx, 0), var(--usk-product-review-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
-  transform: translate(var(--usk-product-review-carousel-arrows-fraction-ncx, 0), var(--usk-product-review-carousel-arrows-fraction-ncy, 0)) rotate(90deg);
 }
