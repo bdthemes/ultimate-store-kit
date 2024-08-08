@@ -533,7 +533,10 @@ trait Group_Control_Query {
 			}
 
 			$args['paged']          = 1;
-			$args['paged']          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+
+			$page          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+			$page          = absint( empty( $_GET['product-page'] ) ? $page : $_GET['product-page'] );
+			$args['paged'] = $page;
 			
 
 			$args['posts_per_page'] = $this->get_settings( 'product_limit' );
