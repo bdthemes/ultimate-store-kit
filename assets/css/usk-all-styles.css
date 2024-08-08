@@ -198,6 +198,20 @@
   width: 100% !important;
 }
 
+[class*=elementor-widget-usk-] .star-rating {
+  font-family: "star" !important;
+  margin: 0;
+}
+
+.woocommerce-js [class*=elementor-widget-usk-] .star-rating::before {
+  content: "sssss";
+  color: #d3ced2;
+  float: left;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
 #elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon, #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title {
   color: #EF233C;
 }
@@ -256,6 +270,20 @@
 
 .usk-account-navigation .woocommerce-MyAccount-navigation {
   width: 100% !important;
+}
+
+[class*=elementor-widget-usk-] .star-rating {
+  font-family: "star" !important;
+  margin: 0;
+}
+
+.woocommerce-js [class*=elementor-widget-usk-] .star-rating::before {
+  content: "sssss";
+  color: #d3ced2;
+  float: left;
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 
 /* -------------------------------------------------------------------
