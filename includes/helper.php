@@ -381,7 +381,20 @@ function ultimate_store_kit_post_pagination__new( $wp_query ) {
 	/** Previous Post Link */
 
 	if ( get_previous_posts_link() ) {
-		printf( '<li>%s</li>' . "\n", wp_kses_post( get_previous_posts_link( '<span class="usk-icon-arrow-left-5"></span>' ) ) );
+		$prev_page = $paged - 1;
+
+		if( $prev_page < 1 ) {
+			return;
+		}
+
+		$class = $paged == $prev_page ? ' class="current"' : '';
+
+		printf(
+			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+			wp_kses_post( $class ),
+			esc_url( add_query_arg( 'product-page', $prev_page, $current_page_url ) ),
+			'<span class="usk-icon-arrow-left-5"></span>'
+		);
 	}
 
 	/** Link to first page, plus ellipses if necessary */
@@ -392,7 +405,8 @@ function ultimate_store_kit_post_pagination__new( $wp_query ) {
 		printf( 
 			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n", 
 			wp_kses_post( $class ),
-			esc_url( get_pagenum_link( 1 ) ), '1'
+			esc_url( add_query_arg( 'product-page', '1', $current_page_url ) ),
+			'1'
 		);
 
 		if ( ! in_array( 2, $links ) ) {
@@ -430,7 +444,18 @@ function ultimate_store_kit_post_pagination__new( $wp_query ) {
 	/** Next Post Link */
 
 	if ( get_next_posts_link() ) {
-		printf( '<li>%s</li>' . "\n", wp_kses_post( get_next_posts_link( '<span class="usk-icon-arrow-right-1"></span>' ) ) );
+		$next_page = $paged + 1;
+
+		if( $next_page > $max ) {
+			return;
+		}
+
+		printf(
+			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+			wp_kses_post( $class ),
+			esc_url( add_query_arg( 'product-page', $next_page, $current_page_url ) ),
+			'<span class="usk-icon-arrow-right-1"></span>'
+		);
 	}
 
 	echo '</ul>' . "\n";
