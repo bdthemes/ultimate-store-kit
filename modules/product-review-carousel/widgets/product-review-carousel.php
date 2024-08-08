@@ -746,7 +746,7 @@ class Product_Review_Carousel extends Module_Base {
                                 <?php echo get_avatar($comment->comment_author_email, $settings['avatar_size']); ?>
                             </div>
                         <?php endif;?>
-                        <div class="usk-content">
+                        <div class="usk-content-wrap">
                             <?php if ($settings['show_title']) :
                                 printf('<%1$s class="usk-title"><a href="%3$s">%2$s</a></%1$s>', esc_attr($settings['title_tags']), esc_html($product->get_name()), esc_url($product->get_permalink()));
                             endif;?>
