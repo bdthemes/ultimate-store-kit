@@ -104,7 +104,7 @@ class Florence_Grid extends Module_Base {
                     'layout_style' => 'grid'
                 ],
                 'selectors' => [
-                    ' .usk-florence-grid .usk-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .usk-florence-grid .usk-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
 
                 ],
                 'render_type' => 'template'

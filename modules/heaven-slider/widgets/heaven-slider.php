@@ -332,15 +332,6 @@ class Heaven_Slider extends Module_Base {
         );
 
         $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'box_shadow',
-                'label' => esc_html__('Box Shadow', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-heaven-slider .usk-main-slider .usk-image-wrap .usk-img',
-            ]
-        );
-
-        $this->add_group_control(
             Group_Control_Css_Filter::get_type(),
             [
                 'name' => 'image_css_filters',
