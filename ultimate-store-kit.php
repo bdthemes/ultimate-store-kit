@@ -239,7 +239,7 @@ if ( ! function_exists( 'dci_plugin_ultimate_store_kit' ) ) {
 		wp_enqueue_style( 'dci-sdk-usk', plugins_url( 'dci/assets/css/dci.css', __FILE__ ), array(), '1.2.0', 'all' );
 
 		dci_dynamic_init( array(
-			'sdk_version'         => '1.2.0',
+			'sdk_version'         => '1.2.1',
 			'product_id'          => 6,
 			'plugin_name'         => 'Ultimate Store Kit', // make simple, must not empty
 			'plugin_title'        => 'Love using Ultimate Store Kit? Congrats 🎉  ( Never miss an Important Update )', // You can describe your plugin title here
@@ -250,8 +250,8 @@ if ( ! function_exists( 'dci_plugin_ultimate_store_kit' ) ) {
 				'slug' => 'ultimate_store_kit_options',
 			),
 			'public_key'          => 'pk_IMF43HfTlEdsaQjoE8atAWlb6xTMjX3w',
-			'is_premium'          => false,
-			'popup_notice'        => true,
+			'is_premium'          => true,
+			'popup_notice'        => false,
 			'deactivate_feedback' => true,
 			'plugin_msg'          => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
 		) );
