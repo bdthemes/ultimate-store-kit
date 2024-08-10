@@ -48,7 +48,7 @@
 }
 .usk-sub-category .usk-list {
   margin: 0 0 13px;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   gap: 8px;
 }
