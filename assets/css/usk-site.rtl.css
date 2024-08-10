@@ -807,9 +807,10 @@ div.pp_pic_holder {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.usk-sub-category,
 .usk-product-reviews {
-  grid-template-columns: repeat(1, 1fr);
   display: grid;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .usk-css-grid .usk-grid {
@@ -1070,10 +1071,9 @@ div.pp_pic_holder {
   .usk-grid-carousel .usk-list-layout .usk-desc {
     display: inherit;
   }
+  .usk-sub-category,
+  .usk-product-reviews,
   .usk-css-grid .usk-grid-layout {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .usk-product-reviews {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1084,6 +1084,7 @@ div.pp_pic_holder {
   .usk-css-grid .usk-list-layout {
     grid-template-columns: repeat(2, 1fr);
   }
+  .usk-sub-category,
   .usk-product-reviews {
     grid-template-columns: repeat(3, 1fr);
   }
