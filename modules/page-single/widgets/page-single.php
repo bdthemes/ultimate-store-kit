@@ -851,7 +851,7 @@ class Page_Single extends Module_Base {
         $this->add_control(
             'related_heading_color',
             [
-                'label'     => __('Color', 'ultimate-store-kit'),
+                'label'     => __( 'Color', 'ultimate-store-kit' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-single .related.products > h2' => 'color: {{VALUE}};',
@@ -960,7 +960,7 @@ class Page_Single extends Module_Base {
         $this->add_responsive_control(
             'related_cart_padding',
             [
-                'label'                 => __('Padding', 'ultimate-store-kit'),
+                'label'                 => __( 'Padding', 'ultimate-store-kit' ),
                 'type'                  => Controls_Manager::DIMENSIONS,
                 'size_units'            => ['px', '%', 'em'],
                 'selectors'             => [
@@ -972,7 +972,7 @@ class Page_Single extends Module_Base {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'related_cart_typography',
-                'label'     => __('Typography', 'ultimate-store-kit'),
+                'label'     => __( 'Typography', 'ultimate-store-kit' ),
                 'selector'  => '{{WRAPPER}} .woocommerce ul.products li.product a.button',
             ]
         );
@@ -982,9 +982,16 @@ class Page_Single extends Module_Base {
         $this->end_controls_section();
     }
 
-    public function render() { ?>
+    public function render() { 
+        $product_id = '';
+        $product = wc_get_product(get_the_ID());
+        if ($product) {
+            $product_id = $product->get_id();
+        }        
+        ?>
         <div class="usk-page-single">
-            <?php echo do_shortcode('[product_page id="' . get_the_ID() . '"]'); ?>
+            <?php echo do_shortcode('[product_page id="' . $product_id . '"]'); ?>
         </div>
-<?php }
+        <?php
+    }
 }
