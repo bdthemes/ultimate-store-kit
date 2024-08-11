@@ -25,7 +25,7 @@ abstract class Builder_Widget_Base extends Widget_Base {
 		$result = false;
 
 		if ( wp_doing_ajax() ) {
-			$result = $this->is_elementor_ajax;
+			$result = isset($this->is_elementor_ajax);
 		} elseif (
 			\Elementor\Plugin::instance()->editor->is_edit_mode()
 			|| \Elementor\Plugin::instance()->preview->is_preview_mode()
