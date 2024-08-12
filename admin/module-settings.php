@@ -505,7 +505,7 @@ class ModuleService {
                 ],
                 [
                     'name'         => 'product-description',
-                    'label'        => esc_html__('Product Description (Single)', 'ultimate-store-kit'),
+                    'label'        => esc_html__('Short Description (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
                     'default'      => "on",
                     'widget_type'  => 'free',
