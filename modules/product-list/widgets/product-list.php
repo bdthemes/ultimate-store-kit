@@ -82,7 +82,7 @@ class Product_List extends Module_Base {
         $this->add_responsive_control(
             'items_gap',
             [
-                'label'     => esc_html__('Items Gap', 'ultimate-wook'),
+                'label'     => esc_html__('Items Gap', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'selectors' => [
                     '{{WRAPPER}} .ultimate-store-kit .usk-list-wrap' => 'grid-gap: {{SIZE}}px;',
