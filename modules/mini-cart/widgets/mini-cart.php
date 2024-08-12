@@ -396,14 +396,25 @@ class Mini_Cart extends Module_Base {
 				],
 			]
 		);
+		// $this->add_responsive_control(
+		// 	'mini_cart_badge_padding',
+		// 	[ 
+		// 		'label'      => esc_html__( 'Padding', 'ultimate-store-kit' ),
+		// 		'type'       => Controls_Manager::DIMENSIONS,
+		// 		'size_units' => [ 'px', '%', 'em' ],
+		// 		'selectors'  => [ 
+		// 			'{{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .usk-cart-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		// 		],
+		// 	]
+		// );
 		$this->add_responsive_control(
-			'mini_cart_badge_padding',
+			'mini_cart_badge_size',
 			[ 
-				'label'      => esc_html__( 'Padding', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'label'      => esc_html__( 'Size', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', 'rem' ],
 				'selectors'  => [ 
-					'{{WRAPPER}} .usk-mini-cart-toggle-btn .bdt-mini-cart-inner .usk-cart-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .bdt-mini-cart-inner .usk-cart-badge' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

@@ -7203,6 +7203,7 @@ table.dataTable.display tbody tr.odd {
   text-decoration: none;
   border-radius: 4px;
   background-color: #5bb300;
+  line-height: 1.2;
 }
 .usk-heaven-slider .usk-action-btn a:hover {
   background-color: #1f2027;
