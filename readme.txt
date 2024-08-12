@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 1.6.4
+Stable tag: 2.0.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.5.4
+Tested up to: 6.6.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.22.1
+Elementor tested up to: 3.23.4
 
 Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -143,11 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= XXXXX [XXXX June 2024] =
+= 2.0.0 [12th August 2024] =
 
-* Added: Call for price widget added
-* Added: Product Compare feature added in all products grid, carousel & slider type widgets
 * Added: Order by Modified feature added in Query
+* Added: Product Compare feature added in all products grid, carousel & slider type widgets
 * Fixed: Product Not show issue fixed on Archive Page (Thanks to NexThemes)
 * Fixed: Pagination with Current Query issue fixed on Archive Page (Thanks to Gregor Kramberger)
 * Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
@@ -161,7 +160,7 @@ https://youtu.be/9J4zCaDcPnk
 * Updated: Theme Builder improved (Thanks to NexThemes)
 * Updated: Mini-Cart feature improved
 * Updated: Query improved in Current Query
-* Updated: Compare button, compare products, florence grid, florence carousel, glossy grid, glossy carousel, heaven slider, mentor slider, shiny grid, shiny carousel, showcase slider, wishlist button, wishlist products, brand grid, brand carousel widgets improved
+* Updated: Brand grid, brand carousel, featured box, florence grid, florence carousel, glossy grid, glossy carousel, heaven slider, info list, mentor slider, mini cart, page single, product accordion, product category, product category carousel, product image accordion, product list, product reviews, product review carousel, qr code, shiny grid, shiny carousel, showcase slider, sub category, sub category carousel widgets improved
 
 = 1.6.4 [24th June 2024] =
 
