@@ -135,7 +135,7 @@ trait Global_EDD_Widget_Controls {
         $this->add_responsive_control(
             'items_columns_gap',
             [
-                'label'     => esc_html__('Columns Gap', 'ultimate-wook'),
+                'label'     => esc_html__('Columns Gap', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'default'   => [
                     'size' => 30,
@@ -149,7 +149,7 @@ trait Global_EDD_Widget_Controls {
         $this->add_responsive_control(
             'items_row_gap',
             [
-                'label'     => esc_html__('Row Gap', 'ultimate-wook'),
+                'label'     => esc_html__('Row Gap', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'default'   => [
                     'size' => 30,

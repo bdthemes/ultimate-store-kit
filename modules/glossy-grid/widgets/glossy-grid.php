@@ -105,7 +105,7 @@ class Glossy_Grid extends Module_Base {
                     'layout_style' => 'grid'
                 ],
                 'selectors' => [
-                    ' .usk-glossy-grid .usk-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .usk-glossy-grid .usk-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
 
                 ],
                 'render_type' => 'template'
@@ -115,7 +115,7 @@ class Glossy_Grid extends Module_Base {
         $this->add_responsive_control(
             'items_columns_gap',
             [
-                'label'     => esc_html__('Columns Gap', 'ultimate-wook'),
+                'label'     => esc_html__('Columns Gap', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'default'   => [
                     'size' => 30,
@@ -129,7 +129,7 @@ class Glossy_Grid extends Module_Base {
         $this->add_responsive_control(
             'items_row_gap',
             [
-                'label'     => esc_html__('Row Gap', 'ultimate-wook'),
+                'label'     => esc_html__('Row Gap', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
                 'default'   => [
                     'size' => 30,
