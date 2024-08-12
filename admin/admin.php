@@ -41,9 +41,9 @@ class Admin {
 		$suffix           = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
 		wp_enqueue_style('bdt-uikit', BDTUSK_ADM_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], BDTUSK_VER);
-		wp_enqueue_script('bdt-uikit', BDTUSK_ADM_ASSETS_URL . 'js/bdt-uikit' . $suffix . '.js', ['jquery'], BDTUSK_VER);
-		wp_enqueue_style('ultimate-store-kit-font', BDTUSK_ASSETS_URL . 'css/ultimate-store-kit-font' . $direction_suffix . '.css', [], BDTUSK_VER);
-		wp_enqueue_style('ultimate-store-kit-editor', BDTUSK_ASSETS_URL . 'css/ultimate-store-kit-editor' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_enqueue_script('bdt-uikit', BDTUSK_ADM_ASSETS_URL . 'js/bdt-uikit.min.js', ['jquery'], BDTUSK_VER);
+		wp_enqueue_style('usk-font', BDTUSK_ASSETS_URL . 'css/usk-font' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_enqueue_style('usk-editor', BDTUSK_ASSETS_URL . 'css/usk-editor' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_enqueue_style('usk-admin', BDTUSK_ADM_ASSETS_URL . 'css/usk-admin' . $direction_suffix . '.css', [], BDTUSK_VER);
 	}
 
@@ -81,9 +81,9 @@ class Admin {
 
 			if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 				wp_enqueue_script('chart', BDTUSK_ADMIN_URL . 'assets/js/chart.min.js', ['jquery'], '3.9.3', true);
-				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.js', ['jquery', 'chart'], BDTUSK_VER, true);
+				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.min.js', ['jquery', 'chart'], BDTUSK_VER, true);
 			} else {
-				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.js', ['jquery'], BDTUSK_VER, true);
+				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.min.js', ['jquery'], BDTUSK_VER, true);
 			}
 		}
 	}
