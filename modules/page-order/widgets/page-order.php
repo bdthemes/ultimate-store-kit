@@ -1045,6 +1045,11 @@ class Page_Order extends Module_Base {
     public function render() {
         global $wp;
         $order_id =  isset($wp->query_vars['order-received']) ? $wp->query_vars['order-received'] : $this->get_last_order_id();
+
+        if ( ! $order_id ) {
+            return;
+        }
+        
         $order = wc_get_order($order_id);
         ?>
         <div class="usk-page-order">
