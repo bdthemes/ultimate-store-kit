@@ -216,6 +216,17 @@ class Glossy_Carousel extends Module_Base {
                 ],
             ]
         );
+        
+        $this->add_control(
+            'item_shape_color',
+            [
+                'label'     => esc_html__('Shape Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-glossy-carousel .usk-product-hover:before' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
 
         $this->end_controls_tab();
         $this->end_controls_tabs();

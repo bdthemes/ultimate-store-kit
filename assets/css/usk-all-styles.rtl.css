@@ -1252,6 +1252,7 @@ div.pp_pic_holder {
   font-weight: 700;
   font-size: clamp(16px, 1vw, 18px);
   margin: 0;
+  color: inherit;
 }
 .usk-grid-carousel .usk-price {
   font-size: clamp(12px, 1vw, 14px);
@@ -1501,9 +1502,10 @@ div.pp_pic_holder {
 }
 
 .usk-position-bottom {
-  bottom: 0;
+  bottom: 0 !important;
   right: 0;
   left: 0;
+  top: auto !important;
 }
 
 .usk-position-left {
@@ -2190,6 +2192,10 @@ div.pp_pic_holder {
   flex-wrap: wrap;
 }
 
+.usk-product-image .woocommerce-product-gallery {
+  width: 100% !important;
+}
+
 .elementor-widget-usk-product-stock .usk-progress-bar-wrap {
   display: flex;
   align-items: center;
@@ -2235,6 +2241,14 @@ div.pp_pic_holder {
 .elementor-widget-usk-product-stock .usk-order-count {
   font-weight: 700;
   color: #000;
+}
+
+.usk-additional-information h2 {
+  display: none;
+}
+
+.usk-show-heading-yes .usk-additional-information h2 {
+  display: block;
 }
 
 @font-face {
@@ -3854,6 +3868,7 @@ div.pp_pic_holder {
 .usk-florence-grid .usk-grid-layout .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
+  visibility: hidden;
 }
 .usk-florence-grid .usk-grid-layout .usk-rating {
   position: absolute;
@@ -3905,6 +3920,7 @@ div.pp_pic_holder {
 .usk-florence-carousel .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
+  visibility: hidden;
 }
 .usk-florence-carousel .usk-item .usk-rating {
   position: absolute;
@@ -5026,6 +5042,7 @@ div.pp_pic_holder {
   font-size: 18px;
   line-height: 1.4;
   font-weight: 600;
+  color: inherit;
 }
 .usk-product-image-accordion .usk-title:hover {
   color: #ef233c;
@@ -5099,6 +5116,7 @@ div.pp_pic_holder {
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: clamp(10px, 1vw, 15px);
+  color: inherit;
 }
 .usk-product-list .usk-item .usk-rating {
   display: inline-flex;
@@ -5823,12 +5841,14 @@ table.dataTable.display tbody tr.odd {
 .usk-showcase-slider .usk-title {
   color: #2b2d42;
   display: block;
+  transition: all 0.3s ease;
 }
 .usk-showcase-slider .usk-title .title {
   font-size: clamp(18px, 2vw, 30px);
   letter-spacing: 1px;
   font-weight: bold;
   margin: 0;
+  color: inherit;
 }
 .usk-showcase-slider .usk-category {
   margin-bottom: 20px;
@@ -7248,12 +7268,12 @@ table.dataTable.display tbody tr.odd {
   color: #5bb300;
   text-decoration: none;
 }
-.usk-heaven-slider .usk-action-btn {
+.usk-heaven-slider .usk-shoping {
   display: flex;
   align-items: center;
   grid-column-gap: 10px;
 }
-.usk-heaven-slider .usk-action-btn a {
+.usk-heaven-slider .usk-shoping a {
   display: inline-flex;
   position: relative;
   color: #fff;
@@ -7264,17 +7284,17 @@ table.dataTable.display tbody tr.odd {
   background-color: #5bb300;
   line-height: 1.2;
 }
-.usk-heaven-slider .usk-action-btn a:hover {
+.usk-heaven-slider .usk-shoping a:hover {
   background-color: #1f2027;
 }
-.usk-heaven-slider .usk-action-btn a i {
+.usk-heaven-slider .usk-shoping a i {
   height: 1.2em;
   width: 1.2em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.usk-heaven-slider .usk-action-btn .usk-wishlist.usk-active {
+.usk-heaven-slider .usk-shoping .usk-wishlist.usk-active {
   background-color: #1f2027;
 }
 .usk-heaven-slider .usk-item .usk-rating {

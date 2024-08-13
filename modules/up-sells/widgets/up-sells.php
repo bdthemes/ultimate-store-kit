@@ -444,7 +444,7 @@ class Up_Sells extends Module_Base
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3' => 'color: {{VALUE}}',
+                    '.woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-category__title, .woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-product__title, .woocommerce {{WRAPPER}} ul.products li.product h3' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -455,7 +455,7 @@ class Up_Sells extends Module_Base
                 'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3:hover' => 'color: {{VALUE}};',
+                    '.woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-category__title, .woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-product__title, .woocommerce {{WRAPPER}} ul.products li.product h3:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -467,7 +467,7 @@ class Up_Sells extends Module_Base
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-content .usk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-category__title, .woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-product__title, .woocommerce {{WRAPPER}} ul.products li.product h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -477,7 +477,7 @@ class Up_Sells extends Module_Base
             [
                 'name'     => 'title_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3',
+                'selector' => '.woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-category__title, .woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-product__title, .woocommerce {{WRAPPER}} ul.products li.product h3',
             ]
         );
 

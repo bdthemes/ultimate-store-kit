@@ -1000,6 +1000,7 @@ div.pp_pic_holder {
   font-weight: 700;
   font-size: clamp(16px, 1vw, 18px);
   margin: 0;
+  color: inherit;
 }
 .usk-grid-carousel .usk-price {
   font-size: clamp(12px, 1vw, 14px);
@@ -1249,9 +1250,10 @@ div.pp_pic_holder {
 }
 
 .usk-position-bottom {
-  bottom: 0;
+  bottom: 0 !important;
   right: 0;
   left: 0;
+  top: auto !important;
 }
 
 .usk-position-left {
@@ -1938,6 +1940,10 @@ div.pp_pic_holder {
   flex-wrap: wrap;
 }
 
+.usk-product-image .woocommerce-product-gallery {
+  width: 100% !important;
+}
+
 .elementor-widget-usk-product-stock .usk-progress-bar-wrap {
   display: flex;
   align-items: center;
@@ -1983,4 +1989,12 @@ div.pp_pic_holder {
 .elementor-widget-usk-product-stock .usk-order-count {
   font-weight: 700;
   color: #000;
+}
+
+.usk-additional-information h2 {
+  display: none;
+}
+
+.usk-show-heading-yes .usk-additional-information h2 {
+  display: block;
 }

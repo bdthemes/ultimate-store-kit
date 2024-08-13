@@ -89,7 +89,7 @@ class Product_Reviews extends Module_Base {
         $this->add_responsive_control(
             'items_gap',
             [
-                'label' => esc_html__('Column Gap', 'ultimate-store-kit'),
+                'label' => esc_html__('Gap', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'selectors' => [
                     '{{WRAPPER}} .usk-product-reviews' => 'grid-gap: {{SIZE}}px;',

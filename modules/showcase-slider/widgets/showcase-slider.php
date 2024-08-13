@@ -534,6 +534,28 @@ class Showcase_Slider extends Module_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'item_shadow_padding',
+            [
+                'label'       => __('Match Padding', 'ultimate-store-kit'),
+                'description' => __('You have to add padding for matching overlaping normal/hover box shadow when you used Box Shadow option.', 'ultimate-store-kit'),
+                'type'        => Controls_Manager::SLIDER,
+                'range'       => [
+                    'px' => [
+                        'min'  => 0,
+                        'step' => 1,
+                        'max'  => 50,
+                    ]
+                ],
+                'default'     => [
+                    'size' => 10
+                ],
+                'selectors'   => [
+                    '{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -747,6 +769,17 @@ class Showcase_Slider extends Module_Base {
                 'label' => esc_html__('Height', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                    'em' => [
+                        'min' => 0,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'height: {{SIZE}}{{UNIT}};',
                 ],
@@ -761,6 +794,20 @@ class Showcase_Slider extends Module_Base {
                 'label' => esc_html__('Width', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 500,
+                    ],
+                    'em' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'width: {{SIZE}}{{UNIT}};',
                 ],
