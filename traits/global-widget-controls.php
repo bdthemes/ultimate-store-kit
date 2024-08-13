@@ -231,7 +231,7 @@ trait Global_Widget_Controls {
                 ]
             ]
         );
-        if ($this->get_name() !==  'usk-glossy-grid') :
+        if ($this->get_name() !==  'usk-glossy-grid' && $this->get_name() !==  'usk-glossy-carousel') :
             $this->add_control(
                 'show_category',
                 [
@@ -727,6 +727,16 @@ trait Global_Widget_Controls {
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .usk-glossy-grid .usk-product-hover:before' => 'box-shadow: 0 8px 55px {{VALUE}}',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'item_shape_color',
+                [
+                    'label'     => esc_html__('Shape Color', 'ultimate-store-kit'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .usk-glossy-grid .usk-product-hover:before' => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1604,6 +1614,20 @@ trait Global_Widget_Controls {
                 ],
             ]
         );
+        
+        $this->add_control(
+            'wishlist_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
         $this->add_control(
             'heading_wishlist_hover',
             [
@@ -1632,6 +1656,21 @@ trait Global_Widget_Controls {
                 ],
             ]
         );
+        
+        $this->add_control(
+            'wishlist_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+
         $this->add_control(
             'heading_wishlist_active',
             [
@@ -1658,6 +1697,19 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_control(
+            'wishlist_active_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
             ]
         );
         $this->end_controls_tab();
@@ -1691,6 +1743,19 @@ trait Global_Widget_Controls {
             ]
         );
         $this->add_control(
+            'compare_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
             'heading_compare_hover',
             [
                 'label'     => esc_html__('Hover', 'ultimate-store-kit'),
@@ -1719,6 +1784,19 @@ trait Global_Widget_Controls {
             ]
         );
         $this->add_control(
+            'compare_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
             'heading_compare_active',
             [
                 'label'     => esc_html__('Active', 'ultimate-store-kit'),
@@ -1744,6 +1822,19 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'background: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_control(
+            'compare_border_active_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
             ]
         );
         $this->end_controls_tab();
@@ -1777,6 +1868,19 @@ trait Global_Widget_Controls {
             ]
         );
         $this->add_control(
+            'quickview_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
             'heading_quickview_hover',
             [
                 'label'     => esc_html__('Hover', 'ultimate-store-kit'),
@@ -1802,6 +1906,19 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_control(
+            'quickview_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
             ]
         );
         $this->end_controls_tab();
@@ -1839,6 +1956,20 @@ trait Global_Widget_Controls {
             ]
         );
         $this->add_control(
+            'cart_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart' => 'border-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
             'heading_cart_hover',
             [
                 'label'     => esc_html__('Hover', 'ultimate-store-kit'),
@@ -1866,6 +1997,20 @@ trait Global_Widget_Controls {
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart:hover' => 'background: {{VALUE}}',
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart:hover' => 'background: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_control(
+            'cart_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-cart:hover' => 'border-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .added_to_cart:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
             ]
         );
         $this->end_controls_tab();
@@ -1944,7 +2089,7 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'pagination_border',
                 'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li:not(.usk-active) a',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a',
                 'separator' => 'before'
             ]
         );
@@ -2039,7 +2184,10 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a:hover' => 'border-color:{{VALUE}};',
-                ]
+                ],
+                'condition' => [
+                    'pagination_border_border!' => ''
+                ],
             ]
         );
 
@@ -2077,6 +2225,9 @@ trait Global_Widget_Controls {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li.usk-active a' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'pagination_border_border!' => ''
                 ]
             ]
         );
@@ -2188,6 +2339,24 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'sale_badge_bg',
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge',
+                'condition' => [
+                    'show_sale_badge' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'sale_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_sale_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ]
             ]
         );
         $this->end_controls_tab();
@@ -2219,6 +2388,24 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'discount_badge_bg',
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge',
+                'condition' => [
+                    'show_discount_badge' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'discount_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_discount_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ],
             ]
         );
         $this->end_controls_tab();
@@ -2249,6 +2436,24 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'stock_badge_bg',
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge',
+                'condition' => [
+                    'show_stock_status' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'stock_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_stock_status' => 'yes',
+                    'badge_border_border!' => '',
+                ],
             ]
         );
         $this->end_controls_tab();
@@ -2269,6 +2474,9 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                ],
             ]
         );
         $this->add_group_control(
@@ -2276,6 +2484,24 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'trending_badge_bg',
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge',
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'trending_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ],
             ]
         );
         $this->end_controls_tab();
@@ -2296,6 +2522,9 @@ trait Global_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                ],
             ]
         );
 
@@ -2304,6 +2533,24 @@ trait Global_Widget_Controls {
             [
                 'name'      => 'new_badge_bg',
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge',
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'new_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ],
             ]
         );
         $this->end_controls_tab();

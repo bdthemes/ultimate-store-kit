@@ -1145,7 +1145,7 @@ class Heaven_Slider extends Module_Base {
                                 <?php endif;?>
 
                                 <?php if ('yes' == $settings['show_cart'] or 'yes' == $settings['show_wishlist'] or 'yes' == $settings['show_quick_view']): ?>
-                                    <div class="usk-action-btn">
+                                    <div class="usk-shoping">
                                         <?php 
                                         $this->register_global_template_add_to_wishlist($tooltip_position);
                                         $this->register_global_template_add_to_compare($tooltip_position);

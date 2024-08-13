@@ -39,6 +39,7 @@
 .usk-florence-grid .usk-grid-layout .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
+  visibility: hidden;
 }
 .usk-florence-grid .usk-grid-layout .usk-rating {
   position: absolute;
