@@ -64,10 +64,10 @@
   color: #d90429;
 }
 .usk-sub-category-carousel .usk-link-btn {
-  display: inline-flex;
+  display: block;
 }
 .usk-sub-category-carousel .usk-link-btn a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-size: 14px;
   color: #d90429;
