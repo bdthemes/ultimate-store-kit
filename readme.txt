@@ -143,7 +143,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.0.0 [12th August 2024] =
+= 2.0.0 [14th August 2024] =
 
 * Added: Order by Modified feature added in Query
 * Added: Product Compare feature added in all products grid, carousel & slider type widgets
@@ -194,110 +194,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Category margin issue fixed
 * Removed: Category controls removed in glossy widget
 
-= 1.5.2 [1st January 2024] =
-
-* Fixed: Single page editor php error issue fixed
-
-= 1.5.1 [22nd November 2023] =
-
-* Fixed: Compatibility issue fixed
-
-= 1.5.0 [16th August 2023] =
-
-* Added: Up sells widget added
-* Fixed: Single page widget fixed
-* Fixed: Product Tabs widget issue fixed
-* Fixed: Compatibility issue fixed
-
-= 1.4.1 [1st August 2023] =
-
-* Added: Background, border, padding & Coupon Label style options added cart page widget
-* Fixed: Store Kit Admin Search Issue fixed
-* Fixed: Navigation issue fixed in showcase slider widget
-* Fixed: Coupon field color issue fixed in cart page widget
-* Fixed: Coupon issue fixed in Checkout Page (Thanks to Andre)
-* Fixed: Tabs title active color, padding issue fixed in product tabs widget
-
-= 1.4.0 [16th July 2023] =
-
-* Added: Compare Products widget added (pro)
-* Added: Compare Button widget added (pro)
-* Added: Wishlist Products widget added (pro)
-* Added: Wishlist button widget added (pro)
-* Updated: System improved
-* Fixed: Elementor pro version 3.14.0 (swiper carousel) compatibility issue fixed
-
-= 1.3.1 [12th February 2023] =
-
-* Added: Swiper Library v8.4.5 compatibility added
-* Fixed: minified js issue
-* Fixed: some minor issue
-
-= 1.3.0 [30th January 2023] =
-
-* Added: Template Builder Added
-* Added: Additional Information (Single) widget added
-* Added: Account Address widget added
-* Added: Account Dashboard widget added
-* Added: Account Details widget added
-* Added: Account Download widget added
-* Added: Account Login Form widget added
-* Added: Account Logout widget added
-* Added: Account Navigation widget added
-* Added: Account Order Details widget added
-* Added: Account Orders widget added
-* Added: Account Registration Form widget added
-* Added: Breadcrumbs (Single) widget added
-* Added: Checkout Additional Info widget added
-* Added: Checkout Billing Address widget added
-* Added: Checkout Coupon Form widget added
-* Added: Checkout Login Form widget added
-* Added: Checkout Order Review widget added
-* Added: Checkout Payment widget added
-* Added: Checkout Shipping Methods widget added
-* Added: Checkout Shipping Form widget added
-* Added: Cart (Page) widget added
-* Added: Checkout (Page) widget added
-* Added: My Account (Page) widget added
-* Added: Order (Page) widget added
-* Added: Single Product (Page) widget added
-* Added: Product Category Carousel widget added
-* Added: Product Description (Single) widget added
-* Added: Product Image (Single) widget added
-* Added: Product Meta (Single) widget added
-* Added: Product Price (Single) widget added
-* Added: Product Rating (Single) widget added
-* Added: Product Related (Single) widget added
-* Added: Product Stock (Single) widget added
-* Added: Product Tabs (Single) widget added
-* Added: Product Title (Single) widget added
-* Added: Thank You Order widget added
-* Added: Thank You Order Details widget added
-* Added: Thank You Order Customer Address widget added
-* Added: Thank You Order Confirmation widget added
-* Added: EDD Product Review widget added
-* Added: EDD Product Review Carousel widget added
-* Added: QR Code widget added
-
-= 1.2.0 [22th August 2022] =
-
-* Added: Mentor slider widget added
-
-= 1.1.0 [11th August 2022] =
-
-* Added: Heaven slider widget added
-
-= 1.0.2 [26th June 2022] =
-
-* Updated: Query Builder Assets improvement
-* Fixed: Mini Cart issue fixed.
-
-= 1.0.1 [05th June 2022] =
-
-* Fixed: Wishlist issue Fixed.
-* Fixed: Mini Cart widget styling issue fixed.
-
-= 1.0.0 [Initial Release] =
+Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_yqkne1pq)
 
 
 == Upgrade Notice ==
