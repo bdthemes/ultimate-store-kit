@@ -365,7 +365,7 @@ class Shiny_Grid extends Module_Base {
                         <div class="usk-item-box">
                             <?php $this->render_image(); ?>
                             <div class="usk-content">
-                                <div class="usk-inner-content">
+                                <div class="usk-content-inner">
                                     <?php if ('yes' == $settings['show_category']) : ?>
                                         <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
                                     <?php endif; ?>

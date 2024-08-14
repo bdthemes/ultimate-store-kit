@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.0.X [XX August 2024] =
+
+* Fixed: Rating align issue fixed in shiny grid & carousel widget
+
 = 2.0.0 [14th August 2024] =
 
 * Added: Order by Modified feature added in Query
