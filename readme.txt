@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.1
@@ -143,7 +143,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.0.X [XX August 2024] =
+= 2.0.1 [15th August 2024] =
 
 * Added: Content position, thumbs show/hide & text decoration color option added in heaven slider widget
 * Fixed: Rating align issue fixed in shiny grid & shiny carousel widget
