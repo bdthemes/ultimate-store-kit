@@ -108,11 +108,44 @@ class Heaven_Slider extends Module_Base {
                 'default' => 'full',
             ]
         );
+        
+        $this->add_control(
+            'content_position',
+            [
+                'label' => esc_html__('Content Position', 'ultimate-store-kit'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'row-reverse' => [
+                        'title' => esc_html__('Left', 'ultimate-store-kit'),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'row' => [
+                        'title' => esc_html__('Right', 'ultimate-store-kit'),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '(desktop){{WRAPPER}} .usk-heaven-slider .usk-item-box' => 'flex-direction: {{VALUE}};',
+                    '(tablet){{WRAPPER}} .usk-heaven-slider .usk-item-box' => 'flex-direction: {{VALUE}};',
+                    '(mobile){{WRAPPER}} .usk-heaven-slider .usk-item-box' => 'flex-direction: column;',
+                ],
+            ]
+        );
+
 
         $this->add_control(
             'show_arrows',
             [
                 'label' => esc_html__('Show Navigation', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_thumbs',
+            [
+                'label' => esc_html__('Show Thumbs', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -510,7 +543,9 @@ class Heaven_Slider extends Module_Base {
 
         $this->end_controls_section();
 
-        //Badge Global
+        /**
+         * Global Controls Badge & Action Button
+         */
         $this->register_global_controls_badge();
         $this->register_global_controls_action_btn();
 
@@ -543,6 +578,20 @@ class Heaven_Slider extends Module_Base {
                 ],
             ]
         );
+        
+        $this->add_control(
+            'category_text_decoration_color',
+            [
+                'label' => esc_html__('Text Decoration Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-heaven-slider .usk-category a' => 'text-decoration-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'category_typography_text_decoration!' => 'none',
+                ],
+            ]
+        );
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
@@ -554,7 +603,6 @@ class Heaven_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name' => 'category_border',
-                'label' => __('Border', 'elementor'),
                 'selector' => '{{WRAPPER}} .usk-heaven-slider .usk-category a',
                 'separator' => 'before',
             ]
@@ -868,6 +916,9 @@ class Heaven_Slider extends Module_Base {
             [
                 'label' => esc_html__('Thumbs', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_thumbs' => 'yes',
+                ],
             ]
         );
 
@@ -1059,11 +1110,13 @@ class Heaven_Slider extends Module_Base {
                 <?php endif;?>
 
                 <!-- thumbsslider -->
+                <?php if ($settings['show_thumbs']): ?>
                 <div thumbsSlider="" class="usk-thumbs-slider swiper">
                     <div class="swiper-wrapper">
                         <?php $this->render_thumbs_item();?>
                     </div>
                 </div>
+                <?php endif;?>
                 <!-- thumbsslider -->
             </div>
         </div>

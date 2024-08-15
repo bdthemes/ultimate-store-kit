@@ -145,7 +145,8 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.0.X [XX August 2024] =
 
-* Fixed: Rating align issue fixed in shiny grid & carousel widget
+* Added: Content position, thumbs show/hide & text decoration color option added in heaven slider widget
+* Fixed: Rating align issue fixed in shiny grid & shiny carousel widget
 
 = 2.0.0 [14th August 2024] =
 
