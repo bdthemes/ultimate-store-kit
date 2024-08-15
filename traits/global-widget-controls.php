@@ -2236,13 +2236,40 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    //Badge Controls
+    /**
+     * Register global controls for badge
+     */
     protected function register_global_controls_badge() {
         $this->start_controls_section(
             'badge',
             [
                 'label' => esc_html__('Badge', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'show_sale_badge',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_discount_badge',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_stock_status',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_trending_badge',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_new_badge',
+                            'value' => 'yes'
+                        ]
+                    ]
+                ]
             ]
         );
         $this->add_group_control(

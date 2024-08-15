@@ -5388,9 +5388,6 @@ table.dataTable.display tbody tr.odd {
   .usk-heaven-slider .usk-thumbs-slider {
     display: block;
   }
-  .usk-heaven-slider .usk-main-slider {
-    width: calc(100% - 130px);
-  }
   .usk-heaven-slider .usk-item-box {
     flex-direction: row;
   }
