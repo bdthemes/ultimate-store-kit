@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.0.X [XX August 2024] =
+
+* Updated: Product table improved
+
 = 2.0.2 [19th August 2024] =
 
 * Updated: Language file updated
