@@ -3366,14 +3366,12 @@
   clear: both;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid rgba(193, 193, 193, 0.5490196078);
   border-collapse: collapse;
   text-align: right;
 }
 .usk-wc-products-table .usk-wc-product th,
 .usk-wc-products-table .usk-wc-product td {
   padding: 10px 18px;
-  border: 1px solid rgba(193, 193, 193, 0.5490196078);
   border-collapse: collapse;
 }
 .usk-wc-products-table .usk-wc-product thead {
@@ -3469,13 +3467,15 @@
   font-weight: 600;
   border-radius: 3px;
   display: inline-block;
+  padding: 0;
 }
-
-table td,
-table th,
-.wp-block-table td,
-.wp-block-table th {
-  border: transparent;
+.usk-wc-products-table table:not(.cell-border) th,
+.usk-wc-products-table table:not(.cell-border) td {
+  border: none;
+  border-block-start: none !important;
+}
+.usk-wc-products-table .cell-border th {
+  border: 1px solid #ddd !important;
 }
 
 table.dataTable.stripe tbody tr.odd,

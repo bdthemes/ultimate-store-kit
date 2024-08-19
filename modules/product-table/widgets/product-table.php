@@ -527,12 +527,32 @@ class Product_Table extends Module_Base {
             ]
         );
 
-        $this->start_controls_tabs('tabs_table_style');
-
-        $this->start_controls_tab(
-            'tab_table_normal',
+        $this->add_control(
+            'table_header_heading',
             [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+                'label'     => esc_html__('Header', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+            ]
+        );
+        $this->add_control(
+            'table_heading_color',
+            [
+                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-wc-products table th' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'table_heading_background',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-wc-products table th' => 'background-color: {{VALUE}};',
+                ],
             ]
         );
 
@@ -540,40 +560,40 @@ class Product_Table extends Module_Base {
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'table_header_typography',
-                'label'    => esc_html__('Header Typography', 'ultimate-store-kit'),
-                //'scheme'   => Schemes\Typography::TYPOGRAPHY_4,
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '{{WRAPPER}} .usk-wc-products table th',
-                // 'condition' => [
-                //     'hide_header!' => 'yes'
-                // ],
             ]
         );
 
         $this->add_control(
-            'table_heading_background',
+            'cell_border',
             [
-                'label'     => esc_html__('Heading Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-wc-products table th' => 'background-color: {{VALUE}};',
-                ],
-                // 'condition' => [
-                //     'hide_header!' => 'yes'
-                // ],
+                'label'     => esc_html__('Cell Border', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SWITCHER,
+                'label_on'  => esc_html__('Show', 'ultimate-store-kit'),
+                'label_off' => esc_html__('Hide', 'ultimate-store-kit'),
+                'separator' => 'before',
             ]
         );
 
-        $this->add_control(
-            'table_heading_color',
+        $this->add_responsive_control(
+            'cell_border_width',
             [
-                'label'     => esc_html__('Heading Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-wc-products table th' => 'color: {{VALUE}};',
+                'label'   => __('Border Width', 'ultimate-store-kit'),
+                'type'    => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 20,
+                    ],
                 ],
-                // 'condition' => [
-                //     'hide_header!' => 'yes'
-                // ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-wc-products table th' => 'border-width: {{SIZE}}px !important;',
+                    '{{WRAPPER}} .usk-wc-products table td' => 'border-width: {{SIZE}}px;',
+                ],
+                'condition' => [
+                    'cell_border' => 'yes',
+                ],
             ]
         );
 
@@ -584,11 +604,51 @@ class Product_Table extends Module_Base {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-wc-products table td'                  => 'border-color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-wc-products table th'                  => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-wc-products table th'                  => 'border-color: {{VALUE}} !important;',
                     '{{WRAPPER}} .usk-wc-products table.dataTable.no-footer' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'cell_border' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'table_cell_padding',
+            [
+                'label'      => esc_html__('Cell Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-wc-products table.usk-wc-product td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_effect',
+            [
+                'label'     => esc_html__('Hover Effect', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SWITCHER,
+            ]
+        );
+
+        $this->add_control(
+            'stripe',
+            [
+                'label'     => esc_html__('stripe', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+            ]
+        );
+        
+        $this->start_controls_tabs('tabs_table_style');
+        $this->start_controls_tab(
+            'tab_table_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+                'condition' => [
+                    'stripe' => 'yes',
                 ],
             ]
         );
@@ -621,77 +681,22 @@ class Product_Table extends Module_Base {
             ]
         );
 
-        $this->add_control(
-            'cell_border',
-            [
-                'label'     => esc_html__('Cell Border', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SWITCHER,
-            ]
-        );
-
-        $this->add_control(
-            'stripe',
-            [
-                'label'     => esc_html__('stripe', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SWITCHER,
-                'default'   => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'hover_effect',
-            [
-                'label'     => esc_html__('Hover Effect', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SWITCHER,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'table_cell_padding',
-            [
-                'label'      => esc_html__('Cell Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-wc-products table.usk-wc-product td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
-            ]
-        );
-
-        // $this->add_control(
-        //     'sorting_style',
-        //     [
-        //         'label'     => esc_html__('Sorting Style', 'ultimate-store-kit'),
-        //         'type'      => Controls_Manager::HEADING,
-        //         'separator' => 'before',
-        //     ]
-        // );
-
-        // $this->add_control(
-        //     'sorting_color',
-        //     [
-        //         'label'     => esc_html__('Color', 'ultimate-store-kit'),
-        //         'type'      => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} .usk-wc-products.usk-wc-products-table table.dataTable thead th:before, {{WRAPPER}} .usk-wc-products.usk-wc-products-table table.dataTable thead th:after' => 'color: {{VALUE}};',
-        //         ],
-        //     ]
-        // );
-
         $this->end_controls_tab();
 
         $this->start_controls_tab(
             'tab_table_hover',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
+                'condition' => [
+                    'stripe' => 'yes',
+                ],
             ]
         );
 
         $this->add_control(
             'table_odd_row_hover_background',
             [
-                'label'     => esc_html__('Odd Row Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Row Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-wc-products table.dataTable.stripe tbody tr:hover' => 'background-color: {{VALUE}};',
@@ -703,9 +708,7 @@ class Product_Table extends Module_Base {
         );
 
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -719,8 +722,47 @@ class Product_Table extends Module_Base {
             ]
         );
 
-        $this->start_controls_tabs('tabs_search_field_style');
+        //Label heading
+        $this->add_control(
+            'search_text_color_heading',
+            [
+                'label'     => esc_html__('Label', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+            ]
+        );
 
+        $this->add_control(
+            'search_text_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-wc-products .dataTables_filter label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'search_text_typography',
+                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .usk-wc-products .dataTables_filter label',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'search_spacing',
+            [
+                'label'     => esc_html__('Bottom Spacing', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SLIDER,
+                'selectors' => [
+                    '{{WRAPPER}} .dataTables_filter' => 'margin-bottom: {{SIZE}}px;',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('tabs_search_field_style');
         $this->start_controls_tab(
             'tab_search_field_normal',
             [
@@ -786,35 +828,11 @@ class Product_Table extends Module_Base {
             ]
         );
 
-        $this->add_control(
-            'search_text_color',
-            [
-                'label'     => esc_html__('Label Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-wc-products .dataTables_filter label' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'search_spacing',
-            [
-                'label'     => esc_html__('Bottom Spacing', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'selectors' => [
-                    '{{WRAPPER}} .dataTables_filter' => 'margin-bottom: {{SIZE}}px;',
-                ],
-            ]
-        );
-
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'search_text_typography',
-                'label'     => esc_html__('Label Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-wc-products .dataTables_filter label',
-                'separator' => 'before',
+                'name'     => 'search_field_typography',
+                'selector' => '{{WRAPPER}} .usk-wc-products input[type*="search"]',
             ]
         );
 
