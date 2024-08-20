@@ -33,11 +33,11 @@ class Page_Cart extends Module_Base {
 		if ( $this->usk_is_edit_mode() ) {
 			return [ 'usk-all-styles' ];
 		} else {
-			return [ 'usk-page-cart' ];
+			return [ 'usk-font', 'usk-page-cart' ];
 		}
 	}
 	public function get_keywords() {
-		return [ 'post', 'cart' ];
+		return [ 'page', 'cart' ];
 	}
 
 	protected function register_controls() {
@@ -124,9 +124,6 @@ class Page_Cart extends Module_Base {
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
-				// 'desktop_default' => 'left',
-				// 'tablet_default' => 'left',
-				// 'mobile_default' => 'left',
 				'toggle'    => true,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce thead th' => 'text-align: {{VALUE}};',
@@ -157,16 +154,17 @@ class Page_Cart extends Module_Base {
 				]
 			]
 		);
-		//border
+		
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[ 
 				'name'     => 'cart_heading_border',
 				'label'    => esc_html__( 'Border', 'ultimate-store-kit' ),
 				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table th',
+				'separator' => 'before',
 			]
 		);
-		//padding
+		
 		$this->add_responsive_control(
 			'cart_heading_padding',
 			[ 
@@ -179,7 +177,6 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[ 
@@ -190,12 +187,140 @@ class Page_Cart extends Module_Base {
 
 		$this->end_controls_section();
 
-
 		$this->start_controls_section(
 			'product_item_style_section',
 			[ 
 				'label' => __( 'Cart Item', 'ultimate-store-kit' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'product_item_border',
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table td',
+			]
+		);
+		$this->add_responsive_control(
+			'product_item_padding',
+			[ 
+				'label'      => esc_html__( 'Cell Padding', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_control(
+			'product_item_even_bg_color',
+			[ 
+				'label'     => esc_html__( 'Even Row Background Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table tr:nth-child(even)' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+			'product_item_odd_bg_color',
+			[ 
+				'label'     => esc_html__( 'Odd Row Background Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table tr:nth-child(odd)' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'product_item_align',
+			[ 
+				'label'     => __( 'Alignment', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [ 
+					'left'   => [ 
+						'title' => __( 'Left', 'ultimate-store-kit' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [ 
+						'title' => __( 'Center', 'ultimate-store-kit' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'right'  => [ 
+						'title' => __( 'Right', 'ultimate-store-kit' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'toggle'    => true,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table td' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'product_image_heading',
+			[ 
+				'label'     => esc_html__( 'Product Image', 'ultimate-store-kit' ) . BDTUSK_NC,
+				'type'      => Controls_Manager::HEADING,
+				'condition' => [ 
+					'show_image' => 'yes',
+				],
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_responsive_control(
+			'product_image_size',
+			[ 
+				'label'     => __( 'Image Size', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'     => [ 
+					'px' => [ 
+						'min' => 50,
+						'max' => 200,
+					],
+					'%'  => [ 
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-image a img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [ 
+					'show_image' => 'yes',
+				]
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'product_image_border',
+				'label'    => esc_html__( 'Border', 'ultimate-store-kit' ),
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-image a img',
+				'condition' => [ 
+					'show_image' => 'yes',
+				]
+			]
+		);
+		
+		$this->add_responsive_control(
+			'product_image_border_radius',
+			[ 
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-image a img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [ 
+					'show_image' => 'yes',
+				]
 			]
 		);
 
@@ -206,7 +331,8 @@ class Page_Cart extends Module_Base {
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_title' => 'yes',
-				]
+				],
+				'separator' => 'before'
 			]
 		);
 
@@ -217,6 +343,20 @@ class Page_Cart extends Module_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce tbody .usk-product-title a' => 'color: {{VALUE}};',
+				],
+				'condition' => [ 
+					'show_title' => 'yes',
+				]
+			]
+		);
+
+		$this->add_control(
+			'product_title_hover_color',
+			[ 
+				'label'     => __( 'Hover Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce tbody .usk-product-title a:hover' => 'color: {{VALUE}};',
 				],
 				'condition' => [ 
 					'show_title' => 'yes',
@@ -235,7 +375,6 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		// price
 		$this->add_control(
 			'product_price_heading',
 			[ 
@@ -243,7 +382,8 @@ class Page_Cart extends Module_Base {
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_price' => 'yes',
-				]
+				],
+				'separator' => 'before'
 			]
 		);
 
@@ -272,7 +412,6 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		// quantity
 		$this->add_control(
 			'product_quantity_heading',
 			[ 
@@ -280,7 +419,8 @@ class Page_Cart extends Module_Base {
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_quantity' => 'yes',
-				]
+				],
+				'separator' => 'before'
 			]
 		);
 
@@ -291,8 +431,8 @@ class Page_Cart extends Module_Base {
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [ 
 					'px' => [ 
-						'min' => 0,
-						'max' => 100,
+						'min' => 50,
+						'max' => 200,
 					],
 				],
 				'selectors' => [ 
@@ -399,7 +539,6 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		// sub total
 		$this->add_control(
 			'product_subtotal_heading',
 			[ 
@@ -407,7 +546,8 @@ class Page_Cart extends Module_Base {
 				'type'      => Controls_Manager::HEADING,
 				'condition' => [ 
 					'show_subtotal' => 'yes',
-				]
+				],
+				'separator' => 'before'
 			]
 		);
 
@@ -436,9 +576,154 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'cart_actions_style_section',
+			[ 
+				'label' => __( 'Close Button', 'ultimate-store-kit' ) . BDTUSK_NC,
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+		
+		$this->start_controls_tabs( 'remove_button_tabs' );
+		$this->start_controls_tab(
+			'remove_button_normal',
+			[ 
+				'label' => __( 'Normal', 'ultimate-store-kit' ),
+			]
+		);
+		
+		$this->add_control(
+			'remove_button_color',
+			[ 
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove' => 'color: {{VALUE}} !important;',
+				],
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[ 
+				'name'     => 'remove_button_bg',
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove'
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'remove_button_border',
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove',
+				'separator' => 'before',
+			]
+		);
+		
+		$this->add_responsive_control(
+			'remove_button_border_radius',
+			[ 
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'remove_button_size',
+			[ 
+				'label'     => __( 'Padding', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range'     => [ 
+					'px' => [ 
+						'min' => 10,
+						'max' => 50,
+					],
+					'em' => [ 
+						'min' => 0.1,
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'remove_button_icon_size',
+			[ 
+				'label'     => __( 'Icon Size', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range'     => [ 
+					'px' => [ 
+						'min' => 10,
+						'max' => 50,
+					],
+					'em' => [ 
+						'min' => 0.1,
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'remove_button_hover',
+			[ 
+				'label' => __( 'Hover', 'ultimate-store-kit' ),
+			]
+		);
+		
+		$this->add_control(
+			'remove_button_color_hover',
+			[ 
+				'label'     => __( 'Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove:hover' => 'color: {{VALUE}} !important;',
+				],
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[ 
+				'name'     => 'remove_button_bg_hover',
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove:hover'
+			]
+		);
+		
+		$this->add_control(
+			'remove_button_border_color_hover',
+			[ 
+				'label'     => __( 'Border Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove:hover' => 'border-color: {{VALUE}};',
+				],
+				'condition' => [ 
+					'remove_button_border_border!' => '',
+				]
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'product_coupon_style_section',
@@ -448,16 +733,14 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		//label color
 		$this->add_control(
 			'coupon_label_heading',
 			[ 
-				'label' => esc_html__( 'Coupon Label', 'ultimate-store-kit' ) . BDTUSK_NC,
+				'label' => esc_html__( 'Coupon Label', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::HEADING,
 			]
 		);
 
-		//color 
 		$this->add_control(
 			'coupon_label_color',
 			[ 
@@ -469,7 +752,6 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		//typography
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[ 
@@ -478,7 +760,6 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		// coupon field
 		$this->add_control(
 			'coupon_field_heading',
 			[ 
@@ -538,9 +819,29 @@ class Page_Cart extends Module_Base {
 				],
 			]
 		);
+		
+		$this->add_responsive_control(
+			'coupon_field_width',
+			[ 
+				'label'     => __( 'Width', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'     => [ 
+					'px' => [ 
+						'min' => 50,
+						'max' => 500,
+					],
+					'%'  => [ 
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .coupon #coupon_code' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
-
-		// coupon button
 		$this->add_control(
 			'coupon_button_heading',
 			[ 
@@ -550,48 +851,7 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[ 
-				'name'     => 'coupon_button_typo',
-				'selector' => '{{WRAPPER}} .usk-page-cart .coupon .button',
-			]
-		);
-
-		$this->add_responsive_control(
-			'coupon_button_padding',
-			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .coupon .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[ 
-				'name'     => 'coupon_button_border',
-				'selector' => '{{WRAPPER}} .usk-page-cart .coupon .button',
-			]
-		);
-
-		$this->add_responsive_control(
-			'coupon_button_border_radius',
-			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .coupon .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
-				],
-			]
-		);
-
 		$this->start_controls_tabs( 'coupon_button_tabs' );
-
 		$this->start_controls_tab(
 			'coupon_button_normal',
 			[ 
@@ -617,9 +877,68 @@ class Page_Cart extends Module_Base {
 				'selector' => '{{WRAPPER}} .usk-page-cart .coupon .button'
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'coupon_button_border',
+				'selector' => '{{WRAPPER}} .usk-page-cart .coupon .button',
+			]
+		);
+
+		$this->add_responsive_control(
+			'coupon_button_border_radius',
+			[ 
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .coupon .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'coupon_button_padding',
+			[ 
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .coupon .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'coupon_button_width',
+			[ 
+				'label'     => __( 'Width', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'     => [ 
+					'px' => [ 
+						'min' => 50,
+						'max' => 500,
+					],
+					'%'  => [ 
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .coupon .button' => 'width: {{SIZE}}{{UNIT}} !important;',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[ 
+				'name'     => 'coupon_button_typo',
+				'selector' => '{{WRAPPER}} .usk-page-cart .coupon .button',
+			]
+		);
 
 		$this->end_controls_tab();
-
 		$this->start_controls_tab(
 			'coupon_button_hover',
 			[ 
@@ -661,12 +980,8 @@ class Page_Cart extends Module_Base {
 		);
 
 		$this->end_controls_tab();
-
 		$this->end_controls_tabs();
-
-
 		$this->end_controls_section();
-
 
 		$this->start_controls_section(
 			'update_cart_style_section',
@@ -676,48 +991,7 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[ 
-				'name'     => 'update_cart_typo',
-				'selector' => '{{WRAPPER}} .usk-page-cart .actions>.button',
-			]
-		);
-
-		$this->add_responsive_control(
-			'update_cart_padding',
-			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[ 
-				'name'     => 'update_cart_border',
-				'selector' => '{{WRAPPER}} .usk-page-cart .actions>.button',
-			]
-		);
-
-		$this->add_responsive_control(
-			'update_cart_border_radius',
-			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
-				],
-			]
-		);
-
 		$this->start_controls_tabs( 'update_cart_tabs' );
-
 		$this->start_controls_tab(
 			'update_cart_normal',
 			[ 
@@ -744,8 +1018,82 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		$this->end_controls_tab();
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'update_cart_border',
+				'selector' => '{{WRAPPER}} .usk-page-cart .actions>.button',
+				'separator' => 'before',
+			]
+		);
 
+		$this->add_responsive_control(
+			'update_cart_border_radius',
+			[ 
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'update_cart_padding',
+			[ 
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'update_cart_margin',
+			[ 
+				'label'      => __( 'Margin', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'update_cart_width',
+			[ 
+				'label'     => __( 'Width', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'     => [ 
+					'px' => [ 
+						'min' => 50,
+						'max' => 500,
+					],
+					'%'  => [ 
+						'min' => 10,
+						'max' => 100,
+					],
+				],
+				'selectors' => [ 
+					'{{WRAPPER}} .usk-page-cart .actions>.button' => 'width: {{SIZE}}{{UNIT}} !important;',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[ 
+				'name'     => 'update_cart_typo',
+				'selector' => '{{WRAPPER}} .usk-page-cart .actions>.button',
+			]
+		);
+
+		$this->end_controls_tab();
 		$this->start_controls_tab(
 			'update_cart_hover',
 			[ 
@@ -787,12 +1135,8 @@ class Page_Cart extends Module_Base {
 		);
 
 		$this->end_controls_tab();
-
 		$this->end_controls_tabs();
-
 		$this->end_controls_section();
-
-
 
 		$this->start_controls_section(
 			'cart_collaterals_style_section',
@@ -847,13 +1191,64 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
+		$this->add_control(
+			'cart_total_table_heading',
+			[ 
+				'label' => esc_html__( 'Table Body', 'ultimate-store-kit' ),
+				'type'  => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[ 
+				'name'     => 'cart_total_table_bg',
+				'selector' => '{{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table th, {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table td',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'cart_total_table_border',
+				'selector' => '.woocommerce {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table th, .woocommerce {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table td, .woocommerce {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table',
+			]
+		);
+		$this->add_responsive_control(
+			'cart_total_table_padding',
+			[ 
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table th, {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'cart_total_table_margin',
+			[ 
+				'label'      => __( 'Margin', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals table' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( 'cart_total_tabs' );
+		$this->start_controls_tab(
+			'cart_subtotal_tab',
+			[ 
+				'label' => __( 'Subtotal', 'ultimate-store-kit' ),
+			]
+		);
 
 		$this->add_control(
 			'cart_sub_total_heading',
 			[ 
-				'label'     => esc_html__( 'Sub Total', 'ultimate-store-kit' ),
+				'label'     => esc_html__( 'Title', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
 			]
 		);
 
@@ -879,7 +1274,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_sub_total_amount_heading',
 			[ 
-				'label'     => esc_html__( 'Sub Total Amount', 'ultimate-store-kit' ),
+				'label'     => esc_html__( 'Amount', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -904,12 +1299,19 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'cart_total_tab',
+			[ 
+				'label' => __( 'Total', 'ultimate-store-kit' ),
+			]
+		);
+
 		$this->add_control(
 			'cart_final_total_heading',
 			[ 
-				'label'     => esc_html__( 'Total', 'ultimate-store-kit' ),
+				'label'     => esc_html__( 'Title', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
 			]
 		);
 
@@ -935,7 +1337,7 @@ class Page_Cart extends Module_Base {
 		$this->add_control(
 			'cart_final_total_amount_heading',
 			[ 
-				'label'     => esc_html__( 'Total Amount', 'ultimate-store-kit' ),
+				'label'     => esc_html__( 'Amount', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -960,6 +1362,8 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -970,61 +1374,7 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[ 
-				'name'     => 'checkout_button_typo',
-				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a',
-			]
-		);
-
-		$this->add_responsive_control(
-			'checkout_button_padding',
-			[ 
-				'label'      => __( 'Padding', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'checkout_button_margin',
-			[ 
-				'label'      => __( 'Margin', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[ 
-				'name'     => 'checkout_button_border',
-				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a',
-			]
-		);
-
-		$this->add_responsive_control(
-			'checkout_button_border_radius',
-			[ 
-				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors'  => [ 
-					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
-				],
-			]
-		);
-
-
 		$this->start_controls_tabs( 'checkout_button_tabs' );
-
 		$this->start_controls_tab(
 			'checkout_button_normal',
 			[ 
@@ -1051,6 +1401,58 @@ class Page_Cart extends Module_Base {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[ 
+				'name'     => 'checkout_button_border',
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'checkout_button_border_radius',
+			[ 
+				'label'      => __( 'Border Radius', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'checkout_button_padding',
+			[ 
+				'label'      => __( 'Padding', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'checkout_button_margin',
+			[ 
+				'label'      => __( 'Margin', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [ 
+					'{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[ 
+				'name'     => 'checkout_button_typo',
+				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce .wc-proceed-to-checkout a',
+			]
+		);
 
 		$this->end_controls_tab();
 
@@ -1119,9 +1521,7 @@ class Page_Cart extends Module_Base {
 					<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
 						<thead>
 							<tr>
-								<?php if ( $settings['show_image'] == 'yes' ) : ?>
-									<th><?php esc_html_e( 'Close', 'ultimate-store-kit' ); ?></th>
-								<?php endif; ?>
+								<th><?php esc_html_e( 'Close', 'ultimate-store-kit' ); ?></th>
 
 								<?php if ( $settings['show_image'] == 'yes' ) : ?>
 									<th><?php esc_html_e( 'Image', 'ultimate-store-kit' ); ?></th>
@@ -1166,7 +1566,7 @@ class Page_Cart extends Module_Base {
 											aria-label="Remove this item"
 											data-product_id="<?php echo esc_html( $values['product_id'] ); ?>"
 											data-product_sku="<?php echo esc_html( $product_names['sku'] ); ?>">
-											×
+											<i class="usk-icon-close"></i>
 										</a>
 									</td>
 									<?php if ( $settings['show_image'] == 'yes' ) : ?>

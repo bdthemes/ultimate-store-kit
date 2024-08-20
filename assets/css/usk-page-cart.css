@@ -6,7 +6,8 @@
   width: 100%;
   border-radius: 5px;
 }
-.usk-page-cart .woocommerce-cart-form .shop_table th, .usk-page-cart .woocommerce-cart-form .shop_table td {
+.usk-page-cart .woocommerce-cart-form .shop_table th,
+.usk-page-cart .woocommerce-cart-form .shop_table td {
   padding: 10px 12px;
   line-height: 1.5em;
   background: transparent;
@@ -19,9 +20,6 @@
   font-weight: 700;
   background: #e62a3f;
 }
-.usk-page-cart .woocommerce-cart-form .shop_table th:nth-child(3) {
-  text-align: left;
-}
 .usk-page-cart .woocommerce-cart-form .shop_table td {
   border-top: none;
   border: 1px solid rgba(222, 220, 220, 0.5803921569);
@@ -33,12 +31,12 @@
   color: #929292;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-remove .remove {
-  display: block;
+  display: inline-block;
   font-size: 17px;
   height: 25px;
   width: 25px;
+  line-height: 25px;
   text-align: center;
-  line-height: 22px;
   border-radius: 100%;
   color: #e62a3f !important;
   text-decoration: none;
@@ -53,8 +51,8 @@
   color: #fff !important;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-image a img {
-  width: 80px !important;
-  height: 80px !important;
+  width: 80px;
+  height: 80px;
   outline: none;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-title {
@@ -82,16 +80,18 @@
   border: 1px solid #b3aaaa;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .actions {
-  text-align: right;
+  text-align: right !important;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon {
   float: none;
   margin: 0;
   padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
-  height: 40px;
-  line-height: 40px;
   width: 135px;
   border: 1px solid #ded3d3;
   outline: none;
@@ -99,8 +99,10 @@
   text-align: center;
   font-weight: 500;
   border-radius: 2px;
-  margin-bottom: 10px;
   background: transparent;
+  padding: 6px 6px 5px;
+  float: initial;
+  line-height: 1.5;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text::placeholder {
   color: #c1aeae;
@@ -109,17 +111,19 @@
   border: 1px solid #7b7373;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .actions .button {
-  width: 100%;
+  width: 100% !important;
   background: transparent;
   border: 1px solid #e62a3f;
   color: #e62a3f;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   transition: all 0.3s ease;
   border-radius: 2px;
   outline: none;
   opacity: 1;
   cursor: pointer;
+  line-height: 1.5;
+  padding: 6px 6px 5px;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .actions .button:hover {
   background-color: #e62a3f;
@@ -152,7 +156,8 @@
   margin-bottom: 20px;
   text-align: center;
 }
-.usk-page-cart .cart-collaterals .cart_totals .shop_table th, .usk-page-cart .cart-collaterals .cart_totals .shop_table td {
+.usk-page-cart .cart-collaterals .cart_totals .shop_table th,
+.usk-page-cart .cart-collaterals .cart_totals .shop_table td {
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 10px 12px;
@@ -192,25 +197,23 @@
   background: #c50847;
 }
 
-@media (min-width: 768px) {
-  .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
-    width: 50%;
-  }
-}
 @media (min-width: 1024px) {
   .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon {
     float: left;
   }
   .usk-page-cart .woocommerce-cart-form .shop_table .actions .button {
-    width: 130px;
+    width: 130px !important;
     font-size: 14px;
+  }
+  .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon {
+    margin-bottom: 0;
   }
   .usk-page-cart .woocommerce-cart-form .shop_table .actions .coupon .input-text {
     width: 140px;
     font-size: 14px;
-    margin-bottom: 0;
   }
-  .usk-page-cart .cart-collaterals .cart_totals .shop_table th, .usk-page-cart .cart-collaterals .cart_totals .shop_table td {
+  .usk-page-cart .cart-collaterals .cart_totals .shop_table th,
+  .usk-page-cart .cart-collaterals .cart_totals .shop_table td {
     width: 50%;
   }
   .usk-page-cart .cart-collaterals .cart_totals .wc-proceed-to-checkout .button {
