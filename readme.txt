@@ -145,7 +145,8 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.0.X [XX August 2024] =
 
-* Updated: Product table improved
+* Added: Close button, image & table style controls added in cart page widget
+* Updated: Product table, Cart page widgets improved
 
 = 2.0.2 [19th August 2024] =
 
