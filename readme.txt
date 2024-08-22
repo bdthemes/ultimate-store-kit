@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.0.X [XXth August 2024] =
+
+* Fixed: Security issue fixed ( Thanks to Francesco Carlucci )
+
 = 2.0.3 [21th August 2024] =
 
 * Added: Close button, image & table style controls added in cart page widget
