@@ -675,6 +675,7 @@ class Info_List extends Module_Base {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-info-list-icon span:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-info-list-icon span:hover svg' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -702,9 +703,7 @@ class Info_List extends Module_Base {
         );
             
         $this->end_controls_tab();
-            
         $this->end_controls_tabs();
-            
         $this->end_controls_section();
     }
 

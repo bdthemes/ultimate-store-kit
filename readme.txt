@@ -149,6 +149,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Columns filter issue fixed in shiny, florence & glossy grid widget
 * Fixed: Price color issue fixed in single product (page) widget
 * Fixed: Security issue fixed ( Thanks to Francesco Carlucci )
+* Fixed: Icon hover color issue fixed in info list widget
 
 = 2.0.3 [21th August 2024] =
 
