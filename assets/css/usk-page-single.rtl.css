@@ -23,3 +23,6 @@
   display: flex;
   flex-direction: column;
 }
+.usk-page-single .woocommerce .quantity .qty {
+  width: 5.631em;
+}

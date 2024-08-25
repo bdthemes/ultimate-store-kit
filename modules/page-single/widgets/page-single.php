@@ -130,6 +130,7 @@ class Page_Single extends Module_Base {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .woocommerce div.product p.price,{{WRAPPER}} .woocommerce div.product span.price' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .woocommerce div.product p.price ins, {{WRAPPER}} .woocommerce div.product span.price ins' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -250,7 +251,7 @@ class Page_Single extends Module_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'add_to_cart_border_radius',
             [
                 'label' => __('Border Radius', 'ultimate-store-kit'),
@@ -346,9 +347,7 @@ class Page_Single extends Module_Base {
         );
 
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -356,9 +355,6 @@ class Page_Single extends Module_Base {
             [
                 'label'     => __('Quantity Field', 'ultimate-store-kit'),
                 'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'show_quantity' => 'yes'
-                ]
             ]
         );
 
@@ -367,7 +363,7 @@ class Page_Single extends Module_Base {
             [
                 'label' => esc_html__('Width', 'ultimate-store-kit'),
                 'type'  => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
+                'size_units' => ['px', 'em', '%'],
                 'range' => [
                     'px' => [
                         'min' => 0,
@@ -377,13 +373,13 @@ class Page_Single extends Module_Base {
                         'min' => 0,
                         'max' => 100,
                     ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 11
+                    'em' => [
+                        'min' => 0,
+                        'max' => 20,
+                    ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .cart .quantity'  => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-page-single .woocommerce .quantity .qty'  => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

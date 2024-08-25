@@ -39,46 +39,8 @@
 /*-------------------------------------
    usk grid Widget header scss
    --------------------------------------*/
+
 .usk-css-grid {
-    @media screen and (min-width: 768px) {
-        .usk-grid {
-            &.usk-grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    }
-
-    @media screen and (min-width: 1024px) {
-        .usk-grid {
-            &.usk-list-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            &.usk-grid-1 {
-                grid-template-columns: repeat(1, 1fr);
-            }
-
-            &.usk-grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            &.usk-grid-3 {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            &.usk-grid-4 {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            &.usk-grid-5 {
-                grid-template-columns: repeat(5, 1fr);
-            }
-
-            &.usk-grid-6 {
-                grid-template-columns: repeat(6, 1fr);
-            }
-        }
-    }
 
     .usk-grid-header {
         display: flex;
@@ -139,7 +101,49 @@
         }
     }
 }
+@media screen and (min-width: 768px) {
+    .usk-css-grid {
+        .usk-grid {
+            &.usk-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
 
+@media screen and (min-width: 1024px) {
+    .usk-css-grid {
+        .usk-grid {
+            &.usk-list-2 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            &.usk-grid-1 {
+                grid-template-columns: repeat(1, 1fr) !important;
+            }
+
+            &.usk-grid-2 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            &.usk-grid-3 {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+
+            &.usk-grid-4 {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+
+            &.usk-grid-5 {
+                grid-template-columns: repeat(5, 1fr) !important;
+            }
+
+            &.usk-grid-6 {
+                grid-template-columns: repeat(6, 1fr) !important;
+            }
+        }
+    }
+}
 // Common CSS for Florence Grid & Glossy Grid
 [class*=" elementor-widget-usk-"] {
     .usk-badge-label-content {
