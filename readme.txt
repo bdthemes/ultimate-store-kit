@@ -145,6 +145,9 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.0.X [XXth August 2024] =
 
+* Added: Quantity Field style controls added in single product (page) widget
+* Fixed: Columns filter issue fixed in shiny, florence & glossy grid widget
+* Fixed: Price color issue fixed in single product (page) widget
 * Fixed: Security issue fixed ( Thanks to Francesco Carlucci )
 
 = 2.0.3 [21th August 2024] =

@@ -696,34 +696,6 @@ div.pp_pic_holder {
 /*-------------------------------------
    usk grid Widget header scss
    --------------------------------------*/
-@media screen and (min-width: 768px) {
-  .usk-css-grid .usk-grid.usk-grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media screen and (min-width: 1024px) {
-  .usk-css-grid .usk-grid.usk-list-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .usk-css-grid .usk-grid.usk-grid-1 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .usk-css-grid .usk-grid.usk-grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .usk-css-grid .usk-grid.usk-grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .usk-css-grid .usk-grid.usk-grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .usk-css-grid .usk-grid.usk-grid-5 {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  .usk-css-grid .usk-grid.usk-grid-6 {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
 .usk-css-grid .usk-grid-header {
   display: flex;
   justify-content: space-between;
@@ -769,6 +741,34 @@ div.pp_pic_holder {
   border-left: var(--usk-filter-border-width, 1px) solid #cad7ef;
 }
 
+@media screen and (min-width: 768px) {
+  .usk-css-grid .usk-grid.usk-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .usk-css-grid .usk-grid.usk-list-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .usk-css-grid .usk-grid.usk-grid-1 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .usk-css-grid .usk-grid.usk-grid-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .usk-css-grid .usk-grid.usk-grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .usk-css-grid .usk-grid.usk-grid-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .usk-css-grid .usk-grid.usk-grid-5 {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  .usk-css-grid .usk-grid.usk-grid-6 {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+}
 [class*=" elementor-widget-usk-"] .usk-badge-label-content {
   gap: clamp(5px, 1vw, 10px);
 }
