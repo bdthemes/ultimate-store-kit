@@ -537,8 +537,11 @@ trait Group_Control_Query {
 			$page          = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
 			$page          = absint( empty( $_GET['product-page'] ) ? $page : $_GET['product-page'] );
 			$args['paged'] = $page;
-			
 
+			if ( isset( $wp_query['product_cat'] ) ) {
+				$args['product_cat'] = $wp_query['product_cat'];
+			}
+			
 			$args['posts_per_page'] = $this->get_settings( 'product_limit' );
 			$args                   = apply_filters( 'ultimate_store_kit/query/get_query_args/current_query', $args );
 
