@@ -1106,7 +1106,7 @@ class Featured_Box extends Module_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
-        $this->add_render_attribute('featured-box', 'class', 'usk-featured-box usk-fb-content-position-' . $settings['position']);
+        $this->add_render_attribute('featured-box', 'class', 'usk-featured-box usk-fb-content-position-' . $settings['content_position']);
 
         $this->add_render_attribute(
             [
