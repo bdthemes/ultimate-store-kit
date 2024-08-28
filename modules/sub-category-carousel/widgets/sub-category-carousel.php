@@ -706,6 +706,7 @@ class Sub_Category_Carousel extends Module_Base {
                                 "autoplay"              => ("yes" == $settings["thumbs_autoplay"]) ? ["delay" => $settings["thumbs_autoplay_speed"] + $index += rand(500, 1500)] : false,
                                 "loop"                  => ($settings["thumbs_loop"] == "yes") ? true : false,
                                 "speed"                 => $settings["thumbs_slide_speed"]["size"],
+                                "fadeEffect"          => [ 'crossFade' => true ],
                                 "effect"                => $settings["thumbs_effect"],
                                 "creativeEffect" => isset($settings["creative_effect"]) ? $settings["creative_effect"] : false,
                             ]))
