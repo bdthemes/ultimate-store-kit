@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.0.X [XX August 2024] =
+
+* Fixed: Thumbs fade issue fixed in sub category & sub category carousel widgets
+
 = 2.0.5 [27th August 2024] =
 
 * Fixed: Content position fixed in featured box widget
