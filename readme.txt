@@ -146,6 +146,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.0.X [XXth August 2024] =
 
 * Fixed: Security issue fixed ( Thanks to João Pedro Soares de Alcântara )
+* Fixed: Thumbs fade issue fixed in sub category & sub category carousel widgets
 
 = 2.0.5 [27th August 2024] =
 
