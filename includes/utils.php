@@ -78,4 +78,35 @@ class Utils {
 			'mbstring_enabled'          => extension_loaded('mbstring'),
 		);
 	}
+
+	/**
+	 * A list of safe tage for `get_valid_html_tag` method.
+	 */
+	const ALLOWED_HTML_WRAPPER_TAGS = [
+		'article',
+		'aside',
+		'div',
+		'footer',
+		'h1',
+		'h2',
+		'h3',
+		'h4',
+		'h5',
+		'h6',
+		'header',
+		'main',
+		'nav',
+		'p',
+		'section',
+		'span',
+	];
+
+	/**
+	 * Validate an HTML tag against a safe allowed list.
+	 * @param string $tag
+	 * @return string
+	 */
+	public static function get_valid_html_tag( $tag ) { 
+		return in_array( strtolower( $tag ), self::ALLOWED_HTML_WRAPPER_TAGS ) ? $tag : 'div';
+	}
 }

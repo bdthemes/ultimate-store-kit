@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.0.X [XXth August 2024] =
+
+* Fixed: Security issue fixed ( Thanks to João Pedro Soares de Alcântara )
+
 = 2.0.5 [27th August 2024] =
 
 * Fixed: Content position fixed in featured box widget
