@@ -10,6 +10,7 @@ use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\Traits\Global_Widget_Controls;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -2072,11 +2073,11 @@ class Product_Table extends Module_Base {
 
                                 <?php if ($settings['show_title']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-title'); ?>>
-                                        <<?php echo esc_attr($settings['title_tags']); ?> <?php $this->print_render_attribute_string('usk-wc-product-title'); ?>>
+                                        <<?php echo esc_attr(Utils::get_valid_html_tag( $settings['title_tags'] )); ?> <?php $this->print_render_attribute_string('usk-wc-product-title'); ?>>
                                             <a href="<?php the_permalink(); ?>" class="usk-link-reset">
                                                 <?php the_title(); ?>
                                             </a>
-                                        </<?php echo esc_attr($settings['title_tags']); ?>>
+                                        </<?php echo esc_attr(Utils::get_valid_html_tag( $settings['title_tags'] )); ?>>
                                     </td>
                                 <?php endif; ?>
 
