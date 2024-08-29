@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.1
@@ -143,7 +143,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.0.X [XXth August 2024] =
+= 2.0.6 [29th August 2024] =
 
 * Fixed: Security issue fixed ( Thanks to João Pedro Soares de Alcântara )
 * Fixed: Thumbs fade issue fixed in sub category & sub category carousel widgets
