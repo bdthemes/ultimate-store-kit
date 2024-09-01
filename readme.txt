@@ -145,6 +145,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.0.X [XX August 2024] =
 
+* Added: Badge added in featured box widget
 * Added: Image height option added in sub category & sub category carousel widget
 * Fixed: Undefined error fixed in brand carousel widget
 * Updated: Swiper library old support completely removed

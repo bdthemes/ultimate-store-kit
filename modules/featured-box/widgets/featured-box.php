@@ -371,6 +371,22 @@ class Featured_Box extends Module_Base {
             ]
         );
 
+        $this->add_control(
+            'badge_text',
+            [
+                'label' => esc_html__('Badge Text', 'ultimate-store-kit'),
+                'type' => Controls_Manager::TEXT,
+                'dynamic' => ['active' => true],
+                'default' => esc_html__('New', 'ultimate-store-kit'),
+                'condition' => [
+                    'badge' => 'yes',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        
+
+
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -520,6 +536,13 @@ class Featured_Box extends Module_Base {
                 'label' => esc_html__('Show Button', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
+            ]
+        );
+        $this->add_control(
+            'badge',
+            [
+                'label' => esc_html__('Badge', 'ultimate-store-kit') . BDTUSK_NC,
+                'type' => Controls_Manager::SWITCHER,
             ]
         );
 
@@ -999,9 +1022,265 @@ class Featured_Box extends Module_Base {
         );
 
         $this->end_controls_tab();
-
         $this->end_controls_tabs();
+        $this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_style_badge',
+            [
+                'label' => esc_html__('Badge', 'ultimate-store-kit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'badge' => 'yes',
+                    'badge_text!' => '',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_position',
+            [
+                'label' => esc_html__('Position', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'top-right',
+                'options' => [
+                    'top-left' => esc_html__('Top Left', 'ultimate-store-kit'),
+                    'top-right' => esc_html__('Top Right', 'ultimate-store-kit'),
+                    'bottom-left' => esc_html__('Bottom Left', 'ultimate-store-kit'),
+                    'bottom-right' => esc_html__('Bottom Right', 'ultimate-store-kit'),
+                ],
+                'selectors_dictionary' => [
+                    'top-left' => 'top: 0; left: 0;',
+                    'top-right' => 'top: 0; right: 0;',
+                    'bottom-left' => 'bottom: 0; left: 0;',
+                    'bottom-right' => 'bottom: 0; right: 0;',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge' => '{{VALUE}};',
+                ],
+            ]
+        );
+        $this->start_controls_tabs('tabs_badge_style');
+        $this->start_controls_tab(
+            'tab_badge_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'badge_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'badge_background',
+                'exclude' => ['image'],
+                'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'badge_border',
+                'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge',
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_padding',
+            [
+                'label' => esc_html__('Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_margin',
+            [
+                'label' => esc_html__('Margin', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'badge_typography',
+                'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'badge_box_shadow',
+                'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge',
+            ]
+        );
+        $this->add_control(
+			'badge_offset_toggle',
+			[
+				'label' => __('Offset', 'bdthemes-element-pack'),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'label_off' => __('None', 'bdthemes-element-pack'),
+				'label_on' => __('Custom', 'bdthemes-element-pack'),
+				'return_value' => 'yes',
+			]
+		);
+		$this->start_popover();
+		$this->add_responsive_control(
+			'badge_x_position',
+			[
+				'label'   => __( 'X', 'bdthemes-element-pack' ),
+				'type'    => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
+					'size' => 0,
+				],
+				'range' => [
+					'px' => [
+						'min' => -800,
+						'max' => 800,
+					],
+				],
+				'condition' => [
+					'badge_offset_toggle' => 'yes'
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}}' => '--usk-badge-x-offset: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'badge_y_position',
+			[
+				'label'   => __( 'Y', 'bdthemes-element-pack' ),
+				'type'    => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
+					'size' => 0,
+				],
+				'range' => [
+					'px' => [
+						'min' => -800,
+						'max' => 800,
+					],
+				],
+				'condition' => [
+					'badge_offset_toggle' => 'yes'
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}}' => '--usk-badge-y-offset: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'badge_rotate',
+			[
+				'label'   => __( 'Rotate', 'bdthemes-element-pack' ),
+				'type'    => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
+					'size' => 0,
+				],
+				'range' => [
+					'px' => [
+						'min'  => -180,
+						'max'  => 180,
+						'step' => 5,
+					],
+				],
+				'condition' => [
+					'badge_offset_toggle' => 'yes'
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}}' => '--usk-badge-rotate: {{SIZE}}deg;'
+				],
+			]
+		);
+		$this->end_popover();
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'tab_badge_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'badge_hover_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'badge_hover_background',
+                'exclude' => ['image'],
+                'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge:hover',
+            ]
+        );
+        $this->add_control(
+            'badge_hover_border_color',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'badge_border_border!' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-featured-box .usk-badge:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
         $this->end_controls_section();
     }
 
@@ -1133,6 +1412,9 @@ class Featured_Box extends Module_Base {
                 </div>
             </div>
             <?php
+            if ($settings['badge'] == 'yes' and !empty($settings['badge_text'])) {
+                printf('<div class="usk-badge">%1$s</div>', esc_html($settings['badge_text']));
+            }
             if ($settings['show_wrapper_link'] == 'yes' and !empty($settings['wrapper_link']['url'])) {
                 printf('<a %1$s class="usk-featured-box-wrapper-link"></a>', wp_kses_post($this->get_render_attribute_string('link')));
             }?>
