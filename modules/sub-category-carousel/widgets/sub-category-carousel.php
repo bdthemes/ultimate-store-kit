@@ -514,6 +514,30 @@ class Sub_Category_Carousel extends Module_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'image_height',
+            [
+                'label'      => esc_html__('Height', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 50,
+                        'max'  => 500,
+                        'step' => 1,
+                    ],
+                    '%'  => [
+                        'min'  => 10,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-sub-category-carousel .usk-image-slider .swiper-slide' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [

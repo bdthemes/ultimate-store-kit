@@ -1353,8 +1353,7 @@ class Showcase_Slider extends Module_Base {
             ]
         );
 
-        $swiper_class = Plugin::$instance->experiments->is_feature_active('e_swiper_latest') ? 'swiper' : 'swiper-container';
-        $this->add_render_attribute('swiper', 'class', 'usk-showcase-slider-wrapper swiper-carousel ' . $swiper_class);
+        $this->add_render_attribute('swiper', 'class', 'usk-showcase-slider-wrapper swiper-carousel swiper');
         ?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('slider');?>>
