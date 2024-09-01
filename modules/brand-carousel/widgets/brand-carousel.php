@@ -189,6 +189,14 @@
 					'exclude'   => ['custom']
 				]
 			);
+
+			$this->add_responsive_control(
+				'alignment',
+				[
+					'label' => esc_html__('Alignment', 'ultimate-store-kit'),
+					'type' => Controls_Manager::HIDDEN,
+				]
+			);
 		
 			$this->end_controls_section();
 

@@ -639,8 +639,7 @@
 //Swiper css
 .ultimate-store-kit {
 
-    .swiper-coverflow,
-    .swiper-container-coverflow {
+    .swiper-coverflow {
         padding-top: 15px;
 
         .swiper-slide {
@@ -648,8 +647,7 @@
         }
     }
 
-    .swiper-horizontal>.swiper-pagination-progress,
-    .swiper-container-horizontal>.swiper-pagination-progress {
+    .swiper-horizontal>.swiper-pagination-progress {
         top: auto;
         bottom: 0;
     }
@@ -657,9 +655,7 @@
     .swiper-pagination-fraction,
     .swiper-pagination-custom,
     .swiper-horizontal .swiper-pagination-bullets,
-    .swiper-horizontal+.swiper-pagination-bullets,
-    .swiper-container-horizontal .swiper-pagination-bullets,
-    .swiper-container-horizontal+.swiper-pagination-bullets {
+    .swiper-horizontal+.swiper-pagination-bullets {
         bottom: -50px;
         width: 100%;
 
@@ -677,8 +673,7 @@
     }
 
     /* Swiper */
-    .swiper,
-    .swiper-container {
+    .swiper {
         .elementor-lightbox-content-source {
             display: none;
         }
@@ -691,9 +686,7 @@
     }
 
     .swiper-horizontal+.swiper-pagination-progressbar,
-    .swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
-    .swiper-container-horizontal+.swiper-pagination-progressbar,
-    .swiper-container-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+    .swiper-vertical+.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
         width: 100%;
         height: 4px;
     }
@@ -717,21 +710,19 @@
     .elementor-pagination-position-inside {
 
         .swiper-pagination-fraction,
-        .swiper-container-horizontal>.swiper-pagination-bullets {
+        .swiper-horizontal>.swiper-pagination-bullets {
             bottom: 10px;
         }
     }
 
     .elementor-pagination-position-outside {
 
-        .swiper,
-        .swiper-container {
+        .swiper {
             padding-bottom: 40px;
         }
 
         .swiper-pagination-fraction,
-        .swiper-horizontal>.swiper-pagination-bullets,
-        .swiper-container-horizontal>.swiper-pagination-bullets {
+        .swiper-horizontal>.swiper-pagination-bullets {
             bottom: 0;
         }
     }
@@ -1470,19 +1461,10 @@
     }
 }
 
-// .usk-florence-grid,
-// .usk-florence-carousel,
-// .usk-glossy-grid,
-// .usk-glossy-carousel {
-//     .added_to_cart.wc-forward {
-//         display: none !important;
-//     }
-// }
-
 /* Shado Mode */
 .usk-shadow-mode-yes {
     .usk-brand-carousel {
-        .swiper-container {
+        .swiper {
             padding: 10px;
             margin: 0 -10px;
         }

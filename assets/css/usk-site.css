@@ -1138,34 +1138,27 @@ div.pp_pic_holder {
 .ultimate-store-kit {
   /* Swiper */
 }
-.ultimate-store-kit .swiper-coverflow,
-.ultimate-store-kit .swiper-container-coverflow {
+.ultimate-store-kit .swiper-coverflow {
   padding-top: 15px;
 }
-.ultimate-store-kit .swiper-coverflow .swiper-slide,
-.ultimate-store-kit .swiper-container-coverflow .swiper-slide {
+.ultimate-store-kit .swiper-coverflow .swiper-slide {
   transition-property: transform, border, background;
 }
-.ultimate-store-kit .swiper-horizontal > .swiper-pagination-progress,
-.ultimate-store-kit .swiper-container-horizontal > .swiper-pagination-progress {
+.ultimate-store-kit .swiper-horizontal > .swiper-pagination-progress {
   top: auto;
   bottom: 0;
 }
 .ultimate-store-kit .swiper-pagination-fraction,
 .ultimate-store-kit .swiper-pagination-custom,
 .ultimate-store-kit .swiper-horizontal .swiper-pagination-bullets,
-.ultimate-store-kit .swiper-horizontal + .swiper-pagination-bullets,
-.ultimate-store-kit .swiper-container-horizontal .swiper-pagination-bullets,
-.ultimate-store-kit .swiper-container-horizontal + .swiper-pagination-bullets {
+.ultimate-store-kit .swiper-horizontal + .swiper-pagination-bullets {
   bottom: -50px;
   width: 100%;
 }
 .ultimate-store-kit .swiper-pagination-fraction .swiper-pagination-bullet,
 .ultimate-store-kit .swiper-pagination-custom .swiper-pagination-bullet,
 .ultimate-store-kit .swiper-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
-.ultimate-store-kit .swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet,
-.ultimate-store-kit .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet,
-.ultimate-store-kit .swiper-container-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
+.ultimate-store-kit .swiper-horizontal + .swiper-pagination-bullets .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   margin: 0 5px;
@@ -1173,8 +1166,7 @@ div.pp_pic_holder {
 .ultimate-store-kit .usk-navigation-type-arrows-fraction .swiper-pagination {
   position: initial;
 }
-.ultimate-store-kit .swiper .elementor-lightbox-content-source,
-.ultimate-store-kit .swiper-container .elementor-lightbox-content-source {
+.ultimate-store-kit .swiper .elementor-lightbox-content-source {
   display: none;
 }
 .ultimate-store-kit .swiper-slide {
@@ -1183,9 +1175,7 @@ div.pp_pic_holder {
   overflow: hidden;
 }
 .ultimate-store-kit .swiper-horizontal + .swiper-pagination-progressbar,
-.ultimate-store-kit .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
-.ultimate-store-kit .swiper-container-horizontal + .swiper-pagination-progressbar,
-.ultimate-store-kit .swiper-container-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+.ultimate-store-kit .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
   width: 100%;
   height: 4px;
 }
@@ -1204,16 +1194,14 @@ div.pp_pic_holder {
   transform-origin: left top;
 }
 .ultimate-store-kit .elementor-pagination-position-inside .swiper-pagination-fraction,
-.ultimate-store-kit .elementor-pagination-position-inside .swiper-container-horizontal > .swiper-pagination-bullets {
+.ultimate-store-kit .elementor-pagination-position-inside .swiper-horizontal > .swiper-pagination-bullets {
   bottom: 10px;
 }
-.ultimate-store-kit .elementor-pagination-position-outside .swiper,
-.ultimate-store-kit .elementor-pagination-position-outside .swiper-container {
+.ultimate-store-kit .elementor-pagination-position-outside .swiper {
   padding-bottom: 40px;
 }
 .ultimate-store-kit .elementor-pagination-position-outside .swiper-pagination-fraction,
-.ultimate-store-kit .elementor-pagination-position-outside .swiper-horizontal > .swiper-pagination-bullets,
-.ultimate-store-kit .elementor-pagination-position-outside .swiper-container-horizontal > .swiper-pagination-bullets {
+.ultimate-store-kit .elementor-pagination-position-outside .swiper-horizontal > .swiper-pagination-bullets {
   bottom: 0;
 }
 
@@ -1884,7 +1872,7 @@ div.pp_pic_holder {
 }
 
 /* Shado Mode */
-.usk-shadow-mode-yes .usk-brand-carousel .swiper-container {
+.usk-shadow-mode-yes .usk-brand-carousel .swiper {
   padding: 10px;
   margin: 0 -10px;
 }

@@ -143,6 +143,12 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.0.X [XX August 2024] =
+
+* Added: Image height option added in sub category & sub category carousel widget
+* Fixed: Undefined error fixed in brand carousel widget
+* Updated: Swiper library old support completely removed
+
 = 2.0.6 [29th August 2024] =
 
 * Fixed: Security issue fixed ( Thanks to João Pedro Soares de Alcântara )
