@@ -203,38 +203,6 @@ https://youtu.be/9J4zCaDcPnk
 * Updated: Query improved in Current Query
 * Updated: Brand grid, brand carousel, featured box, florence grid, florence carousel, glossy grid, glossy carousel, heaven slider, info list, mentor slider, mini cart, page single, product accordion, product category, product category carousel, product image accordion, product list, product reviews, product review carousel, qr code, shiny grid, shiny carousel, showcase slider, sub category, sub category carousel widgets improved
 
-= 1.6.4 [24th June 2024] =
-
-* Fixed: Text Domain issue fixed (Thanks to itapress)
-
-= 1.6.3 [11th June 2024] =
-
-* Updated: Version compatibility added
-
-= 1.6.2 [16th April 2024] =
-
-* Fixed: Security issue fixed
-
-= 1.6.1 [31th March 2024] =
-
-* Fixed: Some minor issue fixed
-* Fixed: Icon issue fixed in product accordion widget
-
-= 1.6.0 [30th March 2024] =
-
-* Added: Categories space between option added in relevant widgets
-* Added: Image size option added in product list widget
-* Fixed: Icon not showing issue fixed
-* Fixed: Tooltip issue fixed in florence grid widget
-* Fixed: Dashboard pro features enable issue fixed
-* Fixed: Security issue fixed
-* Fixed: Pagination spacing issue fixed
-* Fixed: Action button icon size issue fixed [Note: all widgets need to check]
-* Fixed: Price margin issue fixed
-* Fixed: Image style controls not working issue fixed in product list widget
-* Fixed: Category margin issue fixed
-* Removed: Category controls removed in glossy widget
-
 Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_yqkne1pq)
 
 
