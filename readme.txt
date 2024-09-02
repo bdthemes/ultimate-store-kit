@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [Xnd September 2024] =
+
+* Fixed: Error fixed in Shiny Grid widget
+
 = 2.1.0 [2nd September 2024] =
 
 * Added: Badge added in featured box widget
