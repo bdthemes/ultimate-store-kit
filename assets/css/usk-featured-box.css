@@ -95,6 +95,16 @@
 .usk-featured-box.usk-fb-content-position-bottom .usk-content {
   bottom: 0;
 }
+.usk-featured-box .usk-badge {
+  position: absolute;
+  background-color: #D90429;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  transform: translate(var(--usk-badge-x-offset, 0), var(--usk-badge-y-offset, 0)) rotate(var(--usk-badge-rotate, 0));
+}
 
 .usk-featured-box-wrapper-link {
   position: absolute;

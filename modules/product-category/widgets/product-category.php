@@ -10,6 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Css_Filter;
+use Elementor\Group_Control_Flex_Container;
 use Elementor\Utils;
 use UltimateStoreKit\Traits\Global_Widget_Controls;
 use UltimateStoreKit\Traits\Global_Terms_Query_Controls;
@@ -89,6 +90,7 @@ class Product_Category extends Module_Base {
 				],
 			]
 		);
+		
 		$this->add_control(
         	'item_limit',
         	[
@@ -158,37 +160,69 @@ class Product_Category extends Module_Base {
 			]
 		);
 
-		$this->add_control(
-			'show_image',
+		$this->add_responsive_control(
+			'direction',
 			[
-				'label'     => esc_html__('Show Image', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::SWITCHER,
-				'default'   => 'yes',
-				'separator' => 'before'
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Image_Size::get_type(),
-			[
-				'name'      => 'image_thumbnail',
-				'exclude'   => ['custom',],
-				'default'   => 'large',
+				'label'     => esc_html__('Item Direction', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'row'    => [
+						'title' => esc_html__('Row', 'ultimate-store-kit'),
+						'icon'  => 'eicon-h-align-left',
+					],
+					'column' => [
+						'title' => esc_html__('Column', 'ultimate-store-kit'),
+						'icon'  => 'eicon-v-align-top',
+					],
+				],
+				'selectors_dictionary' => [
+					'row'    => 'flex-direction: row; align-items: center;',
+					'column' => 'flex-direction: column;',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category .usk-item' => '{{VALUE}}',
+				],
 				'condition' => [
-					'show_image' => 'yes'
-				]
-			]
-		);
-		$this->add_control(
-			'show_count',
-			[
-				'label'     => esc_html__('Show Count', 'ultimate-store-kit'),
-				'type'      => Controls_Manager::SWITCHER,
-				'default'   => 'yes',
-				// 'separator' => 'before'
+					'layout_style' => ['style-6']
+				],
 			]
 		);
 		
-		$this->add_control(
+		$this->add_responsive_control(
+			'content_alignment',
+			[
+				'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start'   => [
+						'title' => esc_html__('Left', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'flex-end'  => [
+						'title' => esc_html__('Right', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'selectors_dictionary' => [
+					'flex-start' => 'align-items: flex-start; text-align: left;',
+					'center'     => 'align-items: center; text-align: center;',
+					'flex-end'   => 'align-items: flex-end; text-align: right;',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category.style-6 .usk-item' => '{{VALUE}}',
+				],
+				'condition' => [
+					'layout_style' => 'style-6',
+					'direction'    => 'column'
+				]
+			]
+		);
+
+		$this->add_responsive_control(
 			'alignment',
 			[
 				'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
@@ -215,6 +249,36 @@ class Product_Category extends Module_Base {
 				]
 			]
 		);
+
+		$this->add_control(
+			'show_image',
+			[
+				'label'     => esc_html__('Show Image', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'separator' => 'before'
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name'      => 'image_thumbnail',
+				'exclude'   => ['custom',],
+				'default'   => 'large',
+				'condition' => [
+					'show_image' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'show_count',
+			[
+				'label'     => esc_html__('Show Count', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+			]
+		);
+		
 		$this->end_controls_section();
 		
 		$this->render_terms_query_controls('product_cat');
