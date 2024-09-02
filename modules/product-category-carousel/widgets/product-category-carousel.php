@@ -168,6 +168,68 @@ class Product_Category_Carousel extends Module_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'direction',
+			[
+				'label'     => esc_html__('Item Direction', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'row'    => [
+						'title' => esc_html__('Row', 'ultimate-store-kit'),
+						'icon'  => 'eicon-h-align-left',
+					],
+					'column' => [
+						'title' => esc_html__('Column', 'ultimate-store-kit'),
+						'icon'  => 'eicon-v-align-top',
+					],
+				],
+				'selectors_dictionary' => [
+					'row'    => 'flex-direction: row; align-items: center;',
+					'column' => 'flex-direction: column;',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category-carousel .usk-item' => '{{VALUE}}',
+				],
+				'condition' => [
+					'layout_style' => ['style-6']
+				],
+			]
+		);
+		
+		$this->add_responsive_control(
+			'content_alignment',
+			[
+				'label'   => esc_html__('Alignment', 'ultimate-store-kit'),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start'   => [
+						'title' => esc_html__('Left', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'flex-end'  => [
+						'title' => esc_html__('Right', 'ultimate-store-kit'),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'selectors_dictionary' => [
+					'flex-start' => 'align-items: flex-start; text-align: left;',
+					'center'     => 'align-items: center; text-align: center;',
+					'flex-end'   => 'align-items: flex-end; text-align: right;',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .usk-product-category-carousel.style-6 .usk-item' => '{{VALUE}}',
+				],
+				'condition' => [
+					'layout_style' => 'style-6',
+					'direction'    => 'column'
+				]
+			]
+		);
+
 		$this->add_control(
 			'show_image',
 			[
@@ -747,7 +809,6 @@ class Product_Category_Carousel extends Module_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_count' => 'yes',
-					'layout_style!' => [ 'style-6' ]
 				]
 			]
 		);
