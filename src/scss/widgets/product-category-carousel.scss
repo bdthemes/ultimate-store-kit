@@ -377,7 +377,7 @@
         .usk-item {
             display: flex;
             align-items: center;
-            grid-gap: 15px;
+            gap: 15px;
             border: 0;
         }
 
@@ -398,7 +398,7 @@
             }
         }
 
-        .usk-category-count {
+        .usk-category-count i {
             display: none;
         }
 

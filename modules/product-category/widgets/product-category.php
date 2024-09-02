@@ -132,7 +132,7 @@ class Product_Category extends Module_Base {
 		$this->add_responsive_control(
 			'column_gap',
 			[
-				'label'     => esc_html__('Column Gap', 'ultimate-store-kit'),
+				'label'     => esc_html__('Gap', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 20,
@@ -822,7 +822,6 @@ class Product_Category extends Module_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_count' => 'yes',
-					'layout_style!' => [ 'style-6' ]
 				]
 			]
 		);

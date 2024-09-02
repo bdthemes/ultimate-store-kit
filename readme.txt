@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.0.7
+Stable tag: 2.1.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.1
@@ -143,10 +143,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.0.7 [2nd September 2024] =
+= 2.1.0 [2nd September 2024] =
 
 * Added: Badge added in featured box widget
-* Added: Style 6 item direction & align added in product category widget 
+* Added: Item direction & align added in product category widget
+* Added: Item direction & align added in product category carousel widget
 * Added: Image height option added in sub category & sub category carousel widget
 * Fixed: Undefined error fixed in brand carousel widget
 * Updated: Swiper library old support completely removed
