@@ -352,6 +352,9 @@ class Shiny_Grid extends Module_Base {
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>">
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     global $product;
+                    if (empty($product)) {
+                        continue;
+                    }
                     $rating_count = $product->get_rating_count();
                     $average      = $product->get_average_rating();
                     if ($settings['show_rating'] == 'yes') {
