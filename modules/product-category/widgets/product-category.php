@@ -822,7 +822,6 @@ class Product_Category extends Module_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'show_count' => 'yes',
-					'layout_style!' => [ 'style-6' ]
 				]
 			]
 		);
