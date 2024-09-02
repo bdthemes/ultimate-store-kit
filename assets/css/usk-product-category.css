@@ -273,8 +273,7 @@
 }
 .usk-product-category.style-6 .usk-item {
   display: flex;
-  align-items: center;
-  grid-gap: 15px;
+  gap: 15px;
   border: 0;
 }
 .usk-product-category.style-6 .usk-content {
@@ -291,7 +290,7 @@
 .usk-product-category.style-6 .usk-image img {
   border-radius: 60px;
 }
-.usk-product-category.style-6 .usk-category-count {
+.usk-product-category.style-6 .usk-category-count i {
   display: none;
 }
 .usk-product-category.style-6 .title {
