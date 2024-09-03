@@ -145,6 +145,8 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.1.X [Xnd September 2024] =
 
+* Added: Image width & align option added in sub category & sub category carousel widget
+* Fixed: Hide empty issue in sub category & sub category carousel widget
 * Fixed: Error fixed in Shiny Grid widget
 
 = 2.1.0 [2nd September 2024] =

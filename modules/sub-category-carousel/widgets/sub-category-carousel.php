@@ -537,6 +537,83 @@ class Sub_Category_Carousel extends Module_Base {
                 ],
             ]
         );
+        $this->add_responsive_control(
+            'image_width',
+            [
+                'label'      => esc_html__('Width', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 50,
+                        'max'  => 500,
+                        'step' => 1,
+                    ],
+                    '%'  => [
+                        'min'  => 10,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-sub-category-carousel .usk-image-slider' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'image_alignment',
+            [
+                'label' => esc_html__( 'Alignment', 'ultimate-store-kit' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__( 'Left', 'ultimate-store-kit' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'ultimate-store-kit' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__( 'Right', 'ultimate-store-kit' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'margin-left: inherit;',
+                    'center' => 'margin-left: auto; margin-right: auto;',
+                    'right' => 'margin-right: inherit;',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-sub-category-carousel .usk-image-slider' => '{{VALUE}}',
+                ],
+                'conditions' => [
+                    'relation' => 'and',
+                    'terms' => [
+                        [
+                            'name' => 'image_width[size]',
+                            'operator' => '>',
+                            'value' => 0,
+                        ],
+                        [
+                            'relation' => 'or',
+                            'terms' => [
+                                [
+                                    'name' => 'item_flex_direction',
+                                    'operator' => '==',
+                                    'value' => 'column',
+                                ],
+                                [
+                                    'name' => 'item_flex_direction',
+                                    'operator' => '==',
+                                    'value' => 'column-reverse',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ]
+        );
 
         $this->add_group_control(
             Group_Control_Border::get_type(),
@@ -544,6 +621,7 @@ class Sub_Category_Carousel extends Module_Base {
                 'name'     => 'image_border',
                 'label'    => esc_html__('Image Border', 'ultimate-store-kit'),
                 'selector' => '{{WRAPPER}} .usk-sub-category-carousel .usk-image-slider .swiper-slide',
+                'separator' => 'before',
             ]
         );
 
@@ -707,7 +785,7 @@ class Sub_Category_Carousel extends Module_Base {
             'taxonomy' => 'product_cat',
             'orderby'    => isset($settings['orderby']) ? $settings['orderby'] : 'name',
             'order'      => isset($settings['order']) ? $settings['order'] : 'ASC',
-            'hide_empty' => isset($settings['hide_empty']) && ($settings['hide_empty'] == 'yes') ? 0 : 1,
+            'hide_empty' => isset($settings['hide_empty']) && ($settings['hide_empty'] == 'yes') ? 1 : 0,
         ];
         if (isset($settings['cats_include_by_id']) && !empty($settings['cats_include_by_id'])) {
             $args['include'] = $settings['cats_include_by_id'];
