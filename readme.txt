@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [Xrd September 2024] =
+
+* Fixed: Child category not showing issue fixed in Sub Category widget
+
 = 2.1.1 [3rd September 2024] =
 
 * Added: Image width & align option added in sub category & sub category carousel widget
