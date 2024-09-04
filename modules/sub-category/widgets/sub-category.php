@@ -782,10 +782,8 @@ class Sub_Category extends Module_Base {
         $taxonomies = get_terms($args);
         if (!(empty($taxonomies))) :
             $index  = 50;
-            foreach ($taxonomies as $category) :
-                
+            foreach ($taxonomies as $category) :                
                 if ($category->parent == 0 && get_term_children($category->term_id, 'product_cat')) :
-
                     $this->add_render_attribute('sub-category-item', [
                         'class' => [
                             'usk-item'
@@ -809,7 +807,18 @@ class Sub_Category extends Module_Base {
                                 $parentcategory_thumb_id = get_term_meta($category->term_id, 'thumbnail_id', true);
                                 $images = [$parentcategory_thumb_id];
 
-                                foreach ($taxonomies as $subcategory) :
+                                // Get subcategories for the specified parent category
+                                $args = array(
+                                    'taxonomy'   => 'product_cat',
+                                    'orderby'    => isset($settings['orderby']) ? $settings['orderby'] : 'name',
+                                    'order'      => isset($settings['order']) ? $settings['order'] : 'ASC',
+                                    'hide_empty' => isset($settings['hide_empty']) && ($settings['hide_empty'] == 'yes') ? 1 : 0,
+                                    'parent'     => $category->term_id,
+                                );
+
+                                $subcategories = get_terms($args);
+
+                                foreach ($subcategories as $subcategory) :
                                     if ($subcategory->parent == $category->term_id) {
                                         $subcategory_thumb_id = get_term_meta($subcategory->term_id, 'thumbnail_id', true);
                                         $images[] = $subcategory_thumb_id;
@@ -835,8 +844,8 @@ class Sub_Category extends Module_Base {
                             <?php printf('<%1$s class="usk-name">%2$s</%1$s>', esc_attr($settings['title_tags']), esc_html($category->name)); ?>
                             <div class="usk-list">
                                 <?php
-                                foreach ($taxonomies as $key => $subcategory) :
-                                    if (($subcategory->parent == $category->term_id) && ($subcategory->count > 0)) {
+                                foreach ($subcategories as $key => $subcategory) :
+                                    if ($subcategory->parent == $category->term_id) {
                                         printf('<a href="%1$s">%2$s</a>', esc_url(get_term_link($subcategory->term_id, 'product_cat')), esc_html($subcategory->name));
                                     }
                                 endforeach;
@@ -849,7 +858,7 @@ class Sub_Category extends Module_Base {
                             </div>
                         </div>
                     </div>
-        <?php
+                <?php
                 endif;
                 $index++;
             endforeach;
@@ -860,6 +869,6 @@ class Sub_Category extends Module_Base {
         <div class="usk-sub-category">
             <?php $this->render_items(); ?>
         </div>
-<?php
+        <?php
     }
 }
