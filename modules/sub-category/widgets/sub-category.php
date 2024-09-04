@@ -782,10 +782,8 @@ class Sub_Category extends Module_Base {
         $taxonomies = get_terms($args);
         if (!(empty($taxonomies))) :
             $index  = 50;
-            foreach ($taxonomies as $category) :
-                
+            foreach ($taxonomies as $category) :                
                 if ($category->parent == 0 && get_term_children($category->term_id, 'product_cat')) :
-
                     $this->add_render_attribute('sub-category-item', [
                         'class' => [
                             'usk-item'
@@ -860,7 +858,7 @@ class Sub_Category extends Module_Base {
                             </div>
                         </div>
                     </div>
-        <?php
+                <?php
                 endif;
                 $index++;
             endforeach;
@@ -871,6 +869,6 @@ class Sub_Category extends Module_Base {
         <div class="usk-sub-category">
             <?php $this->render_items(); ?>
         </div>
-<?php
+        <?php
     }
 }
