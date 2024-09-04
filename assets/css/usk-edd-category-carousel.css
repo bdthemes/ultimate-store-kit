@@ -11,6 +11,9 @@
 .usk-edd-category-carousel .edd-content {
   position: absolute;
 }
+.usk-edd-category-carousel .usk-edd-category-carousel-image {
+  display: flex;
+}
 .usk-edd-category-carousel .usk-edd-category-carousel-image img {
   width: 100%;
   height: 100%;

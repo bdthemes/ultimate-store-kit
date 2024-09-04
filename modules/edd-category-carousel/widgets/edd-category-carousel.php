@@ -799,12 +799,20 @@ class EDD_Category_Carousel extends Module_Base {
 		<?php
 				if (!empty($categories)) {
 					foreach ($categories as $index => $category) :
-						// print_r($category->cat_ID);
-						// die;
+						$category_thumb_id = get_term_meta($category->term_id, 'download_term_image', true);
+                $img_url = wp_get_attachment_image_url($category_thumb_id, $settings['category_thumbnail_size']);
+                $category_image = $img_url ? $img_url : Utils::get_placeholder_image_src();
+
 						$this->add_render_attribute('edd-category-item', 'class', ['edd-item swiper-slide', 'category-link'], true);
 						$this->add_render_attribute('edd-category-item', 'href',  get_term_link($category->term_id, 'download_category'), true); ?>
 				<a <?php $this->print_render_attribute_string('edd-category-item'); ?>>
-					<?php $this->render_image(); ?>
+					<?php if (!$category_thumb_id) {
+							$this->render_image();
+						} else { ?>
+							<div class="usk-edd-category-carousel-image">
+								<img src="<?php echo esc_url($category_image); ?>" alt="">
+							</div>
+						<?php } ?>
 					<div class="edd-content">
 						<?php printf('<h3 class="title">%s</h3>', esc_html($category->name)); ?>
 						<?php if ($settings['show_count']) :

@@ -55,14 +55,14 @@ class EDD_Trendy_Grid extends Module_Base {
     }
     protected function register_controls() {
         /**
-         * ! render controls layout
+         * render controls layout
          */
         $this->register_global_edd_controls_grid_layout();
         $this->register_global_edd_controls_query();
         $this->register_global_edd_controls_additional();
 
         /**
-         * ! render style controls
+         * render style controls
          */
         $this->register_global_edd_style_controls_items();
         // $this->register_global_edd_controls_grid_image();
@@ -74,7 +74,7 @@ class EDD_Trendy_Grid extends Module_Base {
     }
     public function render_header() {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('usk-edd-trendy-grid', 'class', ['usk-edd-trendy-grid', 'usk-content-position-' . $settings['alignment'] . ''], true);
+        $this->add_render_attribute('usk-edd-trendy-grid', 'class', ['usk-edd-trendy-grid'], true);
         $this->add_render_attribute('usk-edd-trendy-grid', 'data-filter', [$settings['show_tab']]);
 ?>
         <div class="ultimate-store-kit">

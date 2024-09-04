@@ -143,6 +143,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [XX September 2024] =
+
+* Fixed: Alignment undefined error fixed in edd widgets
+* Fixed: Thumbs image issue fixed in EDD Category Grid & EDD Category Carousel widget
+
 = 2.1.1 [3rd September 2024] =
 
 * Added: Image width & align option added in sub category & sub category carousel widget
