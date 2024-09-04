@@ -321,7 +321,7 @@ trait Global_Widget_Template {
 	}
 	protected function register_global_template_carousel_header() {
 		$settings = $this->get_settings_for_display();
-		$this->add_render_attribute( 'usk-carousel-wrapper', 'class', [ '' . $this->get_name() . '', 'usk-grid-carousel', 'usk-content-position-' . $settings['alignment'] . '' ] );
+		$this->add_render_attribute( 'usk-carousel-wrapper', 'class', [ '' . $this->get_name() . '', 'usk-grid-carousel' ] );
 		$id              = 'ultimate-store-kit-' . $this->get_id();
 		$elementor_vp_lg = get_option( 'elementor_viewport_lg' );
 		$elementor_vp_md = get_option( 'elementor_viewport_md' );

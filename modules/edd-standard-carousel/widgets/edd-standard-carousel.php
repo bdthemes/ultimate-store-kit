@@ -58,7 +58,7 @@ class EDD_Standard_Carousel extends Module_Base {
     }
     protected function register_controls() {
         /**
-         * ! render controls layout
+         * render controls layout
          */
         $this->register_global_edd_controls_carousel_layout();
         $this->register_global_edd_controls_query();
@@ -69,7 +69,7 @@ class EDD_Standard_Carousel extends Module_Base {
         $this->register_global_controls_carousel_settings();
 
         /**
-         * ! render style controls
+         * render style controls
          */
         $this->register_global_edd_style_controls_items();
         $this->register_global_edd_style_controls_title();
@@ -81,7 +81,7 @@ class EDD_Standard_Carousel extends Module_Base {
 
     public function render_header() {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('usk-edd-standard-carousel', 'class', ['usk-edd-standard-carousel', 'usk-content-position-' . $settings['alignment'] . ''], true);
+        $this->add_render_attribute('usk-edd-standard-carousel', 'class', ['usk-edd-standard-carousel'], true);
         $this->add_render_attribute('usk-edd-standard-carousel', 'data-filter', [$settings['show_tab']]);
 ?>
         <div class="ultimate-store-kit">

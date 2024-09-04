@@ -61,14 +61,14 @@ class EDD_Classic_Grid extends Module_Base {
     }
     protected function register_controls() {
         /**
-         * ! render controls layout
+         * render controls layout
          */
         $this->register_global_edd_controls_grid_layout();
         $this->register_global_edd_controls_query();
         $this->register_global_edd_controls_additional();
 
         /**
-         * ! render style controls
+         * render style controls
          */
         $this->register_global_edd_style_controls_items();
         // $this->register_global_edd_controls_grid_image();
@@ -79,13 +79,11 @@ class EDD_Classic_Grid extends Module_Base {
         $this->register_global_edd_controls_grid_pagination();
     }
 
-
-
     public function render_header() {
         $settings = $this->get_settings_for_display();
-        $this->add_render_attribute('usk-edd-classic-grid', 'class', ['usk-edd-classic-grid', 'usk-content-position-' . $settings['alignment'] . ''], true);
+        $this->add_render_attribute('usk-edd-classic-grid', 'class', ['usk-edd-classic-grid'], true);
         $this->add_render_attribute('usk-edd-classic-grid', 'data-filter', [$settings['show_tab']]);
-?>
+        ?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('usk-edd-classic-grid'); ?>>
             <?php
