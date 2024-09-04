@@ -147,6 +147,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Fixed: Alignment undefined error fixed in edd widgets
 * Fixed: Thumbs image issue fixed in EDD Category Grid & EDD Category Carousel widget
+* Fixed: Child category not showing issue fixed in Sub Category widget
 
 = 2.1.1 [3rd September 2024] =
 
