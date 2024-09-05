@@ -23,6 +23,10 @@
 }
 .usk-edd-standard-grid .usk-edd-standard-grid-image {
   position: relative;
+  z-index: 1;
+}
+.usk-edd-standard-grid .usk-edd-standard-grid-image a {
+  display: flex;
 }
 .usk-edd-standard-grid .usk-edd-standard-grid-image img {
   width: 100%;
@@ -41,6 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 .usk-edd-standard-grid .usk-action-button input[type=submit] {
   display: none;
@@ -75,6 +80,10 @@
 }
 .usk-edd-standard-grid .usk-action-button .usk-details-button a:hover {
   background-color: #000;
+}
+.usk-edd-standard-grid .usk-action-button span.edd-cart-ajax-alert,
+.usk-edd-standard-grid .usk-action-button .button:not(.edd-add-to-cart) {
+  display: none;
 }
 .usk-edd-standard-grid .usk-edd-content {
   text-align: center;

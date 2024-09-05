@@ -24,6 +24,10 @@
 }
 .usk-edd-standard-carousel .usk-edd-standard-carousel-image {
   position: relative;
+  z-index: 1;
+}
+.usk-edd-standard-carousel .usk-edd-standard-carousel-image a {
+  display: flex;
 }
 .usk-edd-standard-carousel .usk-edd-standard-carousel-image img {
   width: 100%;
@@ -43,6 +47,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+  gap: 5px;
 }
 .usk-edd-standard-carousel .usk-action-button input[type=submit] {
   display: none;
@@ -79,6 +84,10 @@
 }
 .usk-edd-standard-carousel .usk-action-button .usk-details-button a:hover {
   background-color: #000;
+}
+.usk-edd-standard-carousel .usk-action-button span.edd-cart-ajax-alert,
+.usk-edd-standard-carousel .usk-action-button .button:not(.edd-add-to-cart) {
+  display: none;
 }
 .usk-edd-standard-carousel .usk-edd-content {
   text-align: center;

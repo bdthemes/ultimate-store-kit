@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.1
@@ -143,11 +143,12 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.1.X [XX September 2024] =
+= 2.1.2 [5th September 2024] =
 
 * Fixed: Alignment undefined error fixed in edd widgets
 * Fixed: Thumbs image issue fixed in EDD Category Grid & EDD Category Carousel widgets
 * Fixed: Child category not showing issue fixed in Sub Category and Sub Category Carousel widgets
+* Fixed: Button issue fixed in EDD Standard grid & EDD Standard Carousel widget
 
 = 2.1.1 [3rd September 2024] =
 
