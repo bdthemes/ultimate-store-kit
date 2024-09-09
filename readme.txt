@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1. [XX September 2024] =
+
+* Fixed: Categories margin issue fixed in sub category & sub category carousel widget
+
 = 2.1.2 [5th September 2024] =
 
 * Fixed: Alignment undefined error fixed in edd widgets
