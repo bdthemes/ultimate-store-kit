@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.1
@@ -143,7 +143,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.1. [XX September 2024] =
+= 2.1.3 [10th September 2024] =
 
 * Fixed: Item background issue fixed in product category carousel
 * Fixed: Categories margin issue fixed in sub category & sub category carousel widget
