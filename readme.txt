@@ -145,6 +145,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.1. [XX September 2024] =
 
+* Fixed: Item background issue fixed in product category carousel
 * Fixed: Categories margin issue fixed in sub category & sub category carousel widget
 
 = 2.1.2 [5th September 2024] =
