@@ -6,7 +6,6 @@ use Elementor\Plugin;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Responsive\Responsive;
 use Elementor\Core\Kits\Documents\Tabs\Tab_Base;
 use UltimateStoreKit\Base\Ultimate_Store_Kit_Module_Base;
 use Elementor\Core\Kits\Documents\Kit;
