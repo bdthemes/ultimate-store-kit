@@ -693,6 +693,10 @@ div.pp_pic_holder {
   align-items: center;
 }
 
+.usk-item-match-height--yes .swiper-carousel .swiper-slide {
+  height: initial;
+}
+
 /*-------------------------------------
    usk grid Widget header scss
    --------------------------------------*/
