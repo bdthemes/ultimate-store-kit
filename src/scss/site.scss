@@ -36,6 +36,15 @@
     }
 }
 
+//swiper match height css
+.usk-item-match-height--yes {
+	.swiper-carousel {
+		.swiper-slide {
+			height: initial;
+		}
+	}
+}
+
 /*-------------------------------------
    usk grid Widget header scss
    --------------------------------------*/
