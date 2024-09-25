@@ -4092,7 +4092,7 @@ trait Global_Widget_Controls {
         $this->add_control(
 			'item_match_height',
 			[
-				'label'        => __('Item Match Height', 'ultimate-store-kit') . BDTUPK_NC,
+				'label'        => __('Item Match Height', 'ultimate-store-kit') . BDTUSK_NC,
 				'type'         => Controls_Manager::SWITCHER,
 				'prefix_class' => 'usk-item-match-height--',
 				'render_type' => 'template'

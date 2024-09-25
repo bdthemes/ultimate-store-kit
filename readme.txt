@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [XXth September 2024] =
+
+* Fixed: Fatal error fixed ( Thanks to Julio Guzmán )
+
 = 2.1.5 [23th September 2024] =
 
 * Added: Item match height option added in florence carousel, glossy carousel & shiny carousel widgets
