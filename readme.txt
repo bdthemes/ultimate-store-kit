@@ -146,6 +146,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.1.6 [25th September 2024] =
 
 * Fixed: Fatal error fixed (Thanks to Julio Guzmán)
+* Removed: Extra closing div removed from builder
 
 = 2.1.5 [23th September 2024] =
 
