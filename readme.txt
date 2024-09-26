@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.2
@@ -142,6 +142,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.1.7 [26th September 2024] =
+
+* Fixed: JS scripts error fixed
 
 = 2.1.6 [25th September 2024] =
 
