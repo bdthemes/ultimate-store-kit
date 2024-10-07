@@ -434,7 +434,7 @@ class Featured_Box extends Module_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-featured-box .usk-content' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-featured-box .usk-content' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1291,17 +1291,9 @@ class Featured_Box extends Module_Base {
             return;
         }
 
-        $this->add_render_attribute(
-            [
-                'title-link' => [
-                    'href' => isset($settings['title_link']['url']) && !empty($settings['title_link']['url']) ? esc_url($settings['title_link']['url']) : 'javascript:void(0);',
-                    'target' => $settings['title_link']['is_external'] ? '_blank' : '_self',
-                ],
-            ],
-            '',
-            '',
-            true
-        );
+        if ( ! empty($settings['title_link']['url']) && ! empty($settings['title']) ) {
+            $this->add_link_attributes('title-link', $settings['title_link'], true);
+        }
 
         if (!empty($settings['title'])) {
             printf('<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), wp_kses_post($this->get_render_attribute_string('title-link')), wp_kses_post($settings['title']));
@@ -1359,17 +1351,9 @@ class Featured_Box extends Module_Base {
             return;
         }
 
-        $this->add_render_attribute(
-            [
-                'readmore-link' => [
-                    'href' => isset($settings['readmore_link']['url']) ? esc_url($settings['readmore_link']['url']) : '#',
-                    'target' => $settings['readmore_link']['is_external'] ? '_blank' : '_self',
-                ],
-            ],
-            '',
-            '',
-            true
-        );
+        if (!empty($settings['readmore_link']['url'])) {
+            $this->add_link_attributes('readmore-link', $settings['readmore_link'], true);
+        }
 
         ?>
         <?php if ((!empty($settings['readmore_link']['url'])) && ($settings['show_readmore'])): ?>
@@ -1387,17 +1371,10 @@ class Featured_Box extends Module_Base {
 
         $this->add_render_attribute('featured-box', 'class', 'usk-featured-box usk-fb-content-position-' . $settings['content_position']);
 
-        $this->add_render_attribute(
-            [
-                'link' => [
-                    'href' => isset($settings['wrapper_link']['url']) && !empty($settings['wrapper_link']['url']) ? esc_url($settings['wrapper_link']['url']) : 'javascript:void(0);',
-                    'target' => $settings['show_wrapper_link'] == 'yes' and $settings['wrapper_link']['is_external'] ? '_blank' : '_self',
-                ],
-            ],
-            '',
-            '',
-            true
-        );
+        if (!empty($settings['wrapper_link']['url'])) {
+            $this->add_link_attributes('link', $settings['wrapper_link'], true);
+        }
+        $this->add_render_attribute('link', 'class', 'usk-featured-box-wrapper-link', true);
 
         ?>
         <div <?php $this->print_render_attribute_string('featured-box');?>>
@@ -1415,9 +1392,9 @@ class Featured_Box extends Module_Base {
             if ($settings['badge'] == 'yes' and !empty($settings['badge_text'])) {
                 printf('<div class="usk-badge">%1$s</div>', esc_html($settings['badge_text']));
             }
-            if ($settings['show_wrapper_link'] == 'yes' and !empty($settings['wrapper_link']['url'])) {
-                printf('<a %1$s class="usk-featured-box-wrapper-link"></a>', wp_kses_post($this->get_render_attribute_string('link')));
-            }?>
+            if ($settings['show_wrapper_link'] == 'yes' and !empty($settings['wrapper_link']['url'])) { ?>
+                <a <?php $this->print_render_attribute_string('link'); ?>></a>
+            <?php } ?>
 
         </div>
         <?php
