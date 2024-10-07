@@ -510,17 +510,9 @@ class Brand_Grid extends Module_Base {
                     $thumb_url = $item['image']['url'];
                 }
 
-                $this->add_render_attribute(
-                    [
-                        'link' => [
-                            'href'   => isset($item['link']['url']) && !empty($item['link']['url']) ? esc_url($item['link']['url']) : 'javascript:void(0);',
-                            'target' => $item['link']['is_external'] ? '_blank' : '_self'
-                        ]
-                    ],
-                    '',
-                    '',
-                    true
-                );
+                if (!empty($item['link']['url'])) {
+                    $this->add_link_attributes('link', $item['link'], true);
+                }
 
                 $this->add_render_attribute('item-wrap', 'class', 'usk-brand-grid-item usk-flex usk-flex-middle usk-flex-center', true);
 

@@ -716,17 +716,9 @@ class Info_List extends Module_Base {
             return;
         }
 
-        $this->add_render_attribute(
-            [
-                'title-link' => [
-                    'href'   => isset($item['title_link']['url']) && !empty($item['title_link']['url']) ? esc_url($item['title_link']['url']) : 'javascript:void(0);',
-                    'target' => $item['title_link']['is_external'] ? '_blank' : '_self'
-                ]
-            ],
-            '',
-            '',
-            true
-        );
+        if ( !empty($item['title']) && !empty($item['title_link']['url']) ) {
+            $this->add_link_attributes('title-link', $item['title_link'], true);
+        }
 
         if (!empty($item['title'])) {
             printf('<%1$s class="usk-info-list-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), wp_kses_post($this->get_render_attribute_string('title-link')), wp_kses_post($item['title']));
