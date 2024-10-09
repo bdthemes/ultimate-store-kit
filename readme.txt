@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [XX October 2024] =
+
+* Fixed: Rating crop issue fixed in product review carousel widget
+
 = 2.1.8 [7th October 2024] =
 
 * Fixed: Security improved
