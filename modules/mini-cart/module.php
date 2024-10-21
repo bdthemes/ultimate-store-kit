@@ -18,8 +18,8 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
 		wp_enqueue_script( 'wc-cart-fragments' );
 
-        // add_filter('woocommerce_add_to_cart_fragments', [$this, 'ultimate_store_kit_mini_cart_fragment']);
-        // add_filter('woocommerce_locate_template', [$this, 'woocommerce_locate_template'], 12, 3);
+        add_filter('woocommerce_add_to_cart_fragments', [$this, 'ultimate_store_kit_mini_cart_fragment']);
+        add_filter('woocommerce_locate_template', [$this, 'woocommerce_locate_template'], 12, 3);
     }
 
     public function render_markup() {
@@ -60,10 +60,6 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             $template = $plugin_path . $template_name;
         }
 
-        // if(class_exists('\UltimateStoreKit\Modules\MiniCart\Templates\Cart\Mini_Cart')) {
-        //     unset($template['cart/mini-cart.php']);
-        // }
-
         return $template;
     }
 
@@ -74,23 +70,15 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
     ?>
         <span class="bdt-mini-cart-inner">
-            <span class="bdt-cart-button-text">
-                <span class="bdt-mini-cart-price-amount">
-                    <?php echo WC()->cart->get_cart_subtotal(); ?>
-                </span>
-            </span>
             <span class="bdt-mini-cart-button-icon">
-                <span class="bdt-cart-badge">
+                <span class="usk-cart-badge">
                     <?php echo WC()->cart->get_cart_contents_count(); ?>
-                </span>
-                <span class="bdt-cart-icon">
-                    <i class="eicon" aria-hidden="true"></i>
                 </span>
             </span>
         </span>
 
 <?php
-        $fragments['a.bdt-mini-cart-button .bdt-mini-cart-inner'] = ob_get_clean();
+        $fragments['div.usk-mini-cart-toggle-btn .bdt-mini-cart-inner'] = ob_get_clean();
 
         return $fragments;
     }
