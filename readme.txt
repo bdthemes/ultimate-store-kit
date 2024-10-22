@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [XXth October 2024] =
+
+* Fixed: Cart update issue fixed in Mini Cart widget
+
 = 2.1.9 [10th October 2024] =
 
 * Fixed: Rating crop issue fixed in product review carousel widget
