@@ -80,6 +80,7 @@
 .usk-product-accordion .usk-image a img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .usk-product-accordion .usk-content-wrapper {
   width: 100%;

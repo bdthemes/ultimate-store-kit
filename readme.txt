@@ -145,6 +145,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.1.X [XXth October 2024] =
 
+* Added: Style controls added in product accordion widget
 * Fixed: Cart update issue fixed in Mini Cart widget
 
 = 2.1.9 [10th October 2024] =
