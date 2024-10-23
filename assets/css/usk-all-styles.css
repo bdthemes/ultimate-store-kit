@@ -4264,6 +4264,22 @@ table.dataTable.display tbody tr.odd {
   color: #fff;
 }
 
+.elementor-widget-usk-mini-cart .usk-cart-button-text .usk-mini-cart-price-amount {
+  display: none;
+}
+
+.elementor-widget-usk-mini-cart .usk-cart-button-text .usk-mini-cart-price-amount .tax_label {
+  display: none;
+}
+
+.elementor-widget-usk-mini-cart.wc-cart-price--yes .usk-cart-button-text .usk-mini-cart-price-amount {
+  display: inherit;
+}
+
+.elementor-widget-usk-mini-cart.wc-cart-badge--yes .usk-mini-cart-button-icon .usk-cart-badge {
+  display: inherit;
+}
+
 .usk-edd-category-carousel .category-link {
   text-decoration: none;
 }

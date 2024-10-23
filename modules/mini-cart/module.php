@@ -71,7 +71,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
 		?>
 		<span class="usk-mini-cart-inner">
-			<span class="bdt-cart-button-text">
+			<span class="usk-cart-button-text">
 				<span class="usk-mini-cart-price-amount">
 					<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?>
 				</span>

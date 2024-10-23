@@ -223,6 +223,7 @@ class Mini_Cart extends Module_Base {
 				'label'   => esc_html__( 'Show Price Amount', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+				'prefix_class' => 'wc-cart-price--',
 			]
 		);
 
@@ -1166,7 +1167,7 @@ class Mini_Cart extends Module_Base {
 			<div <?php $this->print_render_attribute_string( 'mini-cart' ); ?>>
 				<span class="usk-mini-cart-inner">
 					<?php if ( $settings['show_price_amount'] === 'yes' ) : ?>
-						<span class="bdt-cart-button-text">
+						<span class="usk-cart-button-text">
 							<span class="usk-mini-cart-price-amount">
 								<?php echo WC()->cart->get_cart_subtotal(); ?>
 							</span>
