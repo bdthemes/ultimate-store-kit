@@ -1640,3 +1640,67 @@
         }
     }
 }
+
+
+
+
+
+/*------------------------------------------
+    Ultimate Store Kit Product Swatches
+  -------------------------------------------*/
+// .woocommerce-variation-add-to-cart {
+//     display: flex;
+//     gap: 8px;
+// }
+
+.usk-variation-swatches {
+    gap: 20px;
+    .custom-swatches {
+        display: flex;
+        gap: 6px;
+    }
+    
+    .swatch-option {
+        color: #69727D;
+        border: 1px solid #a4afb7;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 4px 8px;
+        font-size: 14px;
+        text-transform: capitalize;
+        background-color: transparent;
+        &:nth-child(1) {
+            border: none;
+            pointer-events: none;
+            padding: 0;
+            color: #2b2d42;
+            opacity: 1;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: capitalize;
+    
+        }
+        &:hover {
+            border-color: #1e87f0;
+            background-color: transparent;
+        }
+        &.active {
+            color: #fff;
+            background-color: #1e87f0;
+            border-color: #1e87f0;
+        }
+    }
+    
+    .size-swatches .swatch-option {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        padding: 0 15px;
+        background-color: #f8f8f8;
+        border-radius: 4px;
+    }
+}
+// .woocommerce div.product form.cart table {
+//     display: none;
+// }

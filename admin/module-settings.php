@@ -20,6 +20,18 @@ class ModuleService {
         $settings_fields = [
             'ultimate_store_kit_active_modules' => [
                 [
+                    'name'         => 'variation-swatches',
+                    'label'        => esc_html__('Variation Swatches', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'widget_type'  => 'pro',
+                    'content_type' => 'woocommerce single new',
+                    'demo_url'     => 'https://storekit.pro/demo/variation-swatches/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'add-to-cart',
                     'label'        => esc_html__('Add to Cart (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
