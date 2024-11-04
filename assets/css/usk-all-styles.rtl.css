@@ -5772,6 +5772,53 @@ table.dataTable.display tbody tr.odd {
   border-radius: 5px;
 }
 
+.usk-image-hotspot {
+  display: flex;
+  gap: 40px;
+  background: #ddd;
+  align-items: center;
+  justify-content: center;
+  padding-left: 40px;
+  flex-direction: row-reverse;
+}
+.usk-image-hotspot .usk-main-slider {
+  width: 40%;
+}
+.usk-image-hotspot .usk-thumbs-slider {
+  width: 100%;
+  height: 680px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.usk-image-hotspot .usk-thumbs-slider .swiper-slide {
+  position: absolute;
+  height: 48px;
+  width: 48px !important;
+  border-radius: 100%;
+  background-color: #fff;
+  border: 2px solid #ff0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.usk-image-hotspot .usk-thumbs-slider .swiper-slide:nth-child(1) {
+  right: 20%;
+  top: 30%;
+}
+.usk-image-hotspot .usk-thumbs-slider .swiper-slide:nth-child(3) {
+  right: 65%;
+  top: 20%;
+}
+.usk-image-hotspot .usk-thumbs-slider .swiper-slide:nth-child(2) {
+  right: 40%;
+  top: 80%;
+}
+.usk-image-hotspot .usk-thumbs-slider .swiper-slide.swiper-slide-thumb-active {
+  background-color: #1a96d8;
+}
+
 .usk-edd-beauty-grid .usk-edd-beauty-grid-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
