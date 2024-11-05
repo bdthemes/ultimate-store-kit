@@ -11,13 +11,13 @@
             return;
         }
 
-        var $imageHotspotContainer = $imageHotspot.find('.usk-main-slider');
+        var $imageHotspotContainer = $imageHotspot.find('.usk-image-hotspot-main');
 
         const Swiper = elementorFrontend.utils.swiper;
         initSwiper();
         async function initSwiper() {
 
-            var $thumbs = $imageHotspot.find('.usk-thumbs-slider');
+            var $thumbs = $imageHotspot.find('.usk-image-hotspot-thumbs');
 
             var sliderThumbs = await new Swiper($thumbs, $settings);
 
@@ -29,6 +29,18 @@
             });
 
         };
+
+        var $tooltip = $imageHotspot.find('.bdt-tippy-tooltip');
+		
+		$tooltip.each( function( index ) {
+			tippy( this, {
+				allowHTML: true,
+				interactive: true,
+				theme: 'bdt-tippy-' + $settings.id,
+                appendTo: document.body,
+			});				
+		});
+
     };
 
     jQuery(window).on('elementor/frontend/init', function () {

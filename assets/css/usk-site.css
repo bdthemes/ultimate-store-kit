@@ -773,34 +773,42 @@ div.pp_pic_holder {
     grid-template-columns: repeat(6, 1fr) !important;
   }
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-badge-label-content,
 [class*=" elementor-widget-usk-"] .usk-badge-label-content {
   gap: clamp(5px, 1vw, 10px);
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-badge-label-content > div,
 [class*=" elementor-widget-usk-"] .usk-badge-label-content > div {
   display: inline-flex;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-badge-label-content > div .usk-badge,
 [class*=" elementor-widget-usk-"] .usk-badge-label-content > div .usk-badge {
   text-decoration: none;
   padding: clamp(3px, 1vw, 4px) clamp(5px, 1vw, 8px);
   font-size: clamp(10px, 1vw, 12px);
   text-transform: capitalize;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-sale-badge .usk-badge,
 [class*=" elementor-widget-usk-"] .usk-sale-badge .usk-badge {
   background: #2b2d42;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-percantage-badge .usk-badge,
 [class*=" elementor-widget-usk-"] .usk-percantage-badge .usk-badge {
   background: #9fa8bc;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-stock-status-badge .usk-badge,
 [class*=" elementor-widget-usk-"] .usk-stock-status-badge .usk-badge {
   background: #ef233c;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-trending-badge .usk-badge,
 [class*=" elementor-widget-usk-"] .usk-trending-badge .usk-badge {
   background: #ff006e;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-new-badge .usk-badge,
 [class*=" elementor-widget-usk-"] .usk-new-badge .usk-badge {
   background: #d90429;
   color: #fff;
@@ -827,26 +835,32 @@ div.pp_pic_holder {
   grid-template-columns: repeat(1, 1fr);
 }
 
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item,
 .usk-grid-carousel .usk-item {
   position: relative;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-image .image-default,
 .usk-grid-carousel .usk-item:hover .usk-image .image-default {
   opacity: 0;
   transform: scale(1);
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-image .image-hover,
 .usk-grid-carousel .usk-item:hover .usk-image .image-hover {
   opacity: 1;
   transform: scale(1.1);
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-shoping a,
 .usk-grid-carousel .usk-item:hover .usk-shoping a {
   opacity: 1;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item-box,
 .usk-grid-carousel .usk-item-box {
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-image,
 .usk-grid-carousel .usk-image {
   position: relative;
   overflow: hidden;
@@ -854,17 +868,20 @@ div.pp_pic_holder {
   transition: all 0.3s ease;
   height: 100%;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-image .img,
 .usk-grid-carousel .usk-image .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   overflow: hidden;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-image .image-default,
 .usk-grid-carousel .usk-image .image-default {
   opacity: 1;
   transform: scale(1.1);
   transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .image-hover,
 .usk-grid-carousel .image-hover {
   position: absolute;
   opacity: 0;
@@ -875,9 +892,11 @@ div.pp_pic_holder {
   transition: all 0.5s ease;
   transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping,
 .usk-grid-carousel .usk-shoping {
   position: absolute;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping a,
 .usk-grid-carousel .usk-shoping a {
   display: flex;
   align-items: center;
@@ -892,42 +911,54 @@ div.pp_pic_holder {
   line-height: 1;
   font-size: clamp(12px, 1vw, 14px);
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping a:hover,
 .usk-grid-carousel .usk-shoping a:hover {
   background: #2b2d42;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping a:nth-last-child(1),
 .usk-grid-carousel .usk-shoping a:nth-last-child(1) {
   margin-bottom: 0;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping-icon-wishlist,
 .usk-grid-carousel .usk-shoping-icon-wishlist {
   transition: all 0.3s ease;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping-icon-wishlist.usk-active,
 .usk-grid-carousel .usk-shoping-icon-wishlist.usk-active {
   background-color: #d90429;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-compare,
 .usk-grid-carousel .usk-compare {
   transition: all 0.4s ease;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-compare.usk-active,
 .usk-grid-carousel .usk-compare.usk-active {
   background-color: #d90429;
   color: #fff;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping-icon-quickview,
 .usk-grid-carousel .usk-shoping-icon-quickview {
   transition: all 0.5s ease;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-cart,
 .usk-grid-carousel .usk-cart {
   transition: all 0.6s ease;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-cart.added,
 .usk-grid-carousel .usk-cart.added {
   display: none;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-cart.added i::before,
 .usk-grid-carousel .usk-cart.added i::before {
   display: none;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-cart.loading .icon::before,
 .usk-grid-carousel .usk-cart.loading .icon::before {
   display: none;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-cart.loading .icon::after,
 .usk-grid-carousel .usk-cart.loading .icon::after {
   content: "";
   width: 16px;
@@ -937,12 +968,14 @@ div.pp_pic_holder {
   display: inline-block;
   animation: rotation 2s linear infinite;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping .added_to_cart,
 .usk-grid-carousel .usk-shoping .added_to_cart {
   transition: all 0.6s ease;
   -webkit-text-indent: -999999px;
   text-indent: -999999px;
   margin-bottom: 0;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping .added_to_cart::before,
 .usk-grid-carousel .usk-shoping .added_to_cart::before {
   content: "✓";
   text-indent: 0px;
@@ -960,23 +993,28 @@ div.pp_pic_holder {
   justify-content: center;
   align-items: center;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-badge-label-wrapper,
 .usk-grid-carousel .usk-badge-label-wrapper {
   position: absolute;
   margin: clamp(10px, 1vw, 25px);
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-content,
 .usk-grid-carousel .usk-content {
   padding: clamp(15px, 1vw, 30px);
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-content-inner,
 .usk-grid-carousel .usk-content-inner {
   width: 100%;
   position: relative;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-category,
 .usk-grid-carousel .usk-category {
   margin-bottom: clamp(12px, 1vw, 15px);
   display: inline-flex;
   flex-wrap: wrap;
   gap: 5px;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-category a,
 .usk-grid-carousel .usk-category a {
   font-size: clamp(10px, 1vw, 12px);
   color: #9fa8bc;
@@ -988,17 +1026,20 @@ div.pp_pic_holder {
   transition: all 0.3s ease;
   line-height: 1;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-category a:hover,
 .usk-grid-carousel .usk-category a:hover {
   color: #e6edef;
   background: #2b2d42;
   border-color: #2b2d42;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-title,
 .usk-grid-carousel .usk-title {
   margin-bottom: 10px;
   display: block;
   color: #2b2d42;
   transition: all 0.3s ease;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-title .title,
 .usk-grid-carousel .usk-title .title {
   text-transform: capitalize;
   font-weight: 700;
@@ -1006,56 +1047,69 @@ div.pp_pic_holder {
   margin: 0;
   color: inherit;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-price,
 .usk-grid-carousel .usk-price {
   font-size: clamp(12px, 1vw, 14px);
   font-weight: 700;
   color: #9fa8bc;
   margin-bottom: 10px;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-price del,
 .usk-grid-carousel .usk-price del {
   font-weight: 500;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-price ins,
 .usk-grid-carousel .usk-price ins {
   text-decoration: none;
   padding-left: 7px;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item .usk-rating,
 .usk-grid-carousel .usk-item .usk-rating {
   margin-bottom: 0px;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item .usk-rating .woocommerce-product-rating,
 .usk-grid-carousel .usk-item .usk-rating .woocommerce-product-rating {
   display: flex;
   align-items: center;
   padding: 0;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item .usk-rating .star-rating,
 .usk-grid-carousel .usk-item .usk-rating .star-rating {
   font-size: clamp(12px, 1vw, 14px);
   margin: 0;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-grid-layout .usk-item-box,
 .usk-grid-carousel .usk-grid-layout .usk-item-box {
   overflow: hidden;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-grid-layout .usk-desc,
 .usk-grid-carousel .usk-grid-layout .usk-desc {
   display: none;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-item-box,
 .usk-grid-carousel .usk-list-layout .usk-item-box {
   display: flex;
   align-items: center;
   height: 100%;
   flex-direction: row;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image,
 .usk-grid-carousel .usk-list-layout .usk-image {
   width: 100%;
   height: 100%;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image .img,
 .usk-grid-carousel .usk-list-layout .usk-image .img {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-content,
 .usk-grid-carousel .usk-list-layout .usk-content {
   width: 100%;
   height: 100%;
 }
+.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-desc,
 .usk-grid-carousel .usk-list-layout .usk-desc {
   font-size: 14px;
   line-height: 1.6;
