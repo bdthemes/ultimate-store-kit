@@ -88,6 +88,15 @@ class UltimateStoreKit_Admin_Settings {
       [$this, 'display_page'],
     );
 
+    add_submenu_page(
+      self::PAGE_ID,
+      BDTUSK_TITLE,
+      esc_html__('Other Settings', 'ultimate-store-kit'),
+      'manage_options',
+      self::PAGE_ID . '#ultimate_store_kit_other_settings',
+      [$this, 'display_page']
+    );
+
     if (true !== _is_usk_pro_activated()) {
       add_submenu_page(
         self::PAGE_ID,
@@ -117,6 +126,10 @@ class UltimateStoreKit_Admin_Settings {
       [
         'id'    => 'ultimate_store_kit_general_modules',
         'title' => esc_html__('Other Widgets', 'ultimate-store-kit'),
+      ],
+      [
+        'id'    => 'ultimate_store_kit_other_settings',
+        'title' => esc_html__('Other Settings', 'ultimate-store-kit'),
       ],
     ];
     return $sections;
@@ -1133,6 +1146,10 @@ class UltimateStoreKit_Admin_Settings {
           jQuery(this).attr("disabled", true);
         });
         jQuery('#ultimate_store_kit_general_modules_page .usk-pro-inactive .checkbox').each(function() {
+          jQuery(this).removeAttr('checked');
+          jQuery(this).attr("disabled", true);
+        });
+        jQuery('#ultimate_store_kit_other_settings_page .usk-pro-inactive .checkbox').each(function() {
           jQuery(this).removeAttr('checked');
           jQuery(this).attr("disabled", true);
         });
