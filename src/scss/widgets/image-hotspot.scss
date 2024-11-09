@@ -1,10 +1,10 @@
 .usk-image-hotspot {
     display: flex;
-    background: #f2f2f2;
+    // background: #f2f2f2;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 0;
+    gap: 20px;
 }
 
 .usk-image-hotspot-thumbs {
@@ -82,14 +82,12 @@
 	.tippy-content {
 		padding: 0;
         border-radius: 0;
+        background-color: transparent;
 	}
 	.tippy-arrow {
 		color: #fff;
 		z-index: 1;
 	}
-    .usk-item {
-        background-color: #fff;
-    }
     a {
         text-decoration: none;
     }
@@ -99,7 +97,7 @@
     --btn-width: 100%;
     .usk-item {
         overflow: hidden;
-
+        background-color: #fff;
         &:hover {
             .usk-action-btn {
                 transform: translateX(0px);

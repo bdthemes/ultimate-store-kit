@@ -383,6 +383,13 @@ class Image_Hotspot extends Module_Base {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->start_controls_tabs('tabs_image_hotspot_style');
+        $this->start_controls_tab(
+            'tab_image_hotspot_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
         $this->add_control(
             'hotspot_icon_color',
             [
@@ -425,7 +432,7 @@ class Image_Hotspot extends Module_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-box, {{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item:after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -469,10 +476,1771 @@ class Image_Hotspot extends Module_Base {
                 'selectors' => [
                     '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item:after' => 'background-color: {{VALUE}};',
                 ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'hotspot_pulse_size',
+            [
+                'label' => esc_html__('Shadow Pulse Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item:after' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'tab_image_hotspot_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'hotspot_icon_color_hover',
+            [
+                'label' => esc_html__('Icon Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-box:hover i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-box:hover svg' => 'fill: {{VALUE}};',
+                ],
+                'condition' => [
+                    'hotspot_type' => 'icon',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'hotspot_background_hover',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'exclude' => [
+                    'image',
+                ],
+                'selector' => '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-box:hover',
+            ]
+        );
+        $this->add_control(
+            'hotspot_border_color_hover',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-box:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'hotspot_border_border!' => '',
+                ],
+            ]
+        );
+        $this->add_control(
+            'hotspot_pulse_color_hover',
+            [
+                'label' => esc_html__('Shadow Pulse Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item:hover:after' => 'background-color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'tab_image_hotspot_active',
+            [
+                'label' => esc_html__('Active', 'ultimate-store-kit'),
+                'condition' => [
+                    'image_hotspot_layout' => 'slider',
+                ],
+            ]
+        );
+        $this->add_control(
+            'hotspot_icon_color_active',
+            [
+                'label' => esc_html__('Icon Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box svg' => 'fill: {{VALUE}};',
+                ],
+                'condition' => [
+                    'hotspot_type' => 'icon',
+                    'image_hotspot_layout' => 'slider',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'hotspot_background_active',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'exclude' => [
+                    'image',
+                ],
+                'selector' => '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box',
+                'condition' => [
+                    'image_hotspot_layout' => 'slider',
+                ],
+            ]
+        );
+        $this->add_control(
+            'hotspot_border_color_active',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'hotspot_border_border!' => '',
+                    'image_hotspot_layout' => 'slider',
+                ],
+            ]
+        );
+        $this->add_control(
+            'hotspot_pulse_color_active',
+            [
+                'label' => esc_html__('Shadow Pulse Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active:after' => 'background-color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+                'condition' => [
+                    'image_hotspot_layout' => 'slider',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        /**
+         * Layout Slider Style Start
+         */
+        $this->start_controls_section(
+            'section_style_item',
+            [
+                'label' => esc_html__('Product Items', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'hotspot_gap',
+            [
+                'label' => esc_html__('Gap', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-image-hotspot' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-image-hotspot-main' => 'margin-right: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'image_hotspot_layout' => 'slider',
+                ],
+            ]
+        );
+        $this->start_controls_tabs('item_tabs');
+        $this->start_controls_tab(
+            'item_tab_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_background',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .tippy-content .usk-item',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'item_border',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .tippy-content .usk-item',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'item_border_radius',
+            [
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .tippy-content .usk-item'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'item_padding',
+            [
+                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .tippy-content .usk-item'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'item_width',
+            [
+                'label'     => esc_html__('Width(%)', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SLIDER,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image-hotspot-main' => 'width: {{SIZE}}%;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'item_tab_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_hover_background',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .tippy-content .usk-item:hover',
+            ]
+        );
+
+        $this->add_control(
+            'item_hover_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover' => 'border-color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .tippy-content .usk-item:hover' => 'border-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'item_border_border!' => '',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_image',
+            [
+                'label' => esc_html__('Image', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->start_controls_tabs(
+            'style_tabs_image'
+        );
+        $this->start_controls_tab(
+            'image_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'image_background',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-image, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-image',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'image_border',
+                'label'    => esc_html__('Image Border', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-image, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-image',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'image_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'image_hover_background',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-item:hover .usk-image',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'image_hover_border',
+                'label'    => esc_html__('Image Border', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-item:hover .usk-image',
+                'separator'      => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'image_hover_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-item:hover .usk-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_content',
+            [
+                'label' => esc_html__('Content', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->start_controls_tabs('tabs_content_style');
+        $this->start_controls_tab(
+            'tab_content_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'content_background',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-content, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-content',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'content_border',
+                'label'          => esc_html__('Border Color', 'ultimate-store-kit'),
+                'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-content, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-content',
+                'separator'      => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'content_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'content_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'tab_content_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'content_hover_background',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-content, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item:hover .usk-content',
+            ]
+        );
+        $this->add_control(
+            'content_hover_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'condition' => [
+                    'content_border_border!' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover .usk-content' => 'border-color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item:hover .usk-content' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_title',
+            [
+                'label' => esc_html__('Title', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-title' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_title_color',
+            [
+                'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-title:hover' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-title:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title_margin',
+            [
+                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'title_typography',
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-title .title, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-title .title',
             ]
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_category',
+            [
+                'label'     => esc_html__('Category', 'ultimate-store-kit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_category' => 'yes',
+                ],
+            ]
+        );
+        $this->start_controls_tabs(
+            'category_tabs'
+        );
+        $this->start_controls_tab(
+            'category_tab_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'category_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'category_bg_color',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'category_border',
+                'label'          => __('Border', 'elementor'),
+                'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a',
+                'separator' => 'before'
+            ]
+        );
+        $this->add_responsive_control(
+            'category_radius',
+            [
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'category_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'category_margin',
+            [
+                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'category_space_between',
+            [
+                'label'      => esc_html__('Space Between', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category' => 'gap: {{SIZE}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'category_typography',
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'category_shadow',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'category_tab_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'hover_category_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a:hover' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'hover_category_bg_color',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a:hover, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a:hover',
+            ]
+        );
+        $this->add_control(
+            'hover_category_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a:hover' => 'border-color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'category_border_border!' => ''
+                ],
+                'separator' => 'before'
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_price',
+            [
+                'label'     => esc_html__('Price', 'ultimate-store-kit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_price' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'regular_price_color',
+            [
+                'label'     => esc_html__('Regular Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price del .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price del' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price del .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price del' => 'color: {{VALUE}};',
+                ],
+
+            ]
+        );
+        $this->add_control(
+            'sale_price_color',
+            [
+                'label'     => esc_html__('Sale Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price'                                        => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price ins span'                               => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price .woocommerce-Price-amount.amount'       => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price > .woocommerce-Price-amount.amount bdi' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price'                                        => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price ins span'                               => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price .woocommerce-Price-amount.amount'       => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price > .woocommerce-Price-amount.amount bdi' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'price_margin',
+            [
+                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'sale_price_typography',
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-price, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-price',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_rating',
+            [
+                'label' => esc_html__('Rating', 'ultimate-store-kit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_rating' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'rating_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#e7e7e7',
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-rating .star-rating::before' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-rating .star-rating::before' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'active_rating_color',
+            [
+                'label' => esc_html__('Active Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#FFCC00',
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-rating .star-rating span::before' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-rating .star-rating span::before' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'badge',
+            [
+                'label' => esc_html__('Badge', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'show_sale_badge',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_discount_badge',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_stock_status',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_trending_badge',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_new_badge',
+                            'value' => 'yes'
+                        ]
+                    ]
+                ]
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'badge_border',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-badge-label-content > div .usk-badge',
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_radius',
+            [
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-badge-label-content > div .usk-badge'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-badge-label-content > div .usk-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'badge_margin',
+            [
+                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-badge-label-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'badge_spacing',
+            [
+                'label'         => esc_html__('Space Between', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'default'       => [
+                    'unit'      => 'px',
+                    'size'      => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content' => 'gap: {{SIZE}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-badge-label-content' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'badge_typography',
+                'label'    => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-badge-label-content > div .usk-badge',
+            ]
+        );
+        $this->start_controls_tabs(
+            'label_badge_tabs'
+        );
+        $this->start_controls_tab(
+            'sale_badge_tab',
+            [
+                'label'     => esc_html__('Sale', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_sale_badge' => 'yes',
+                ]
+            ]
+        );
+        $this->add_control(
+            'sale_badge_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-sale-badge .usk-badge' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_sale_badge' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'sale_badge_bg',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-sale-badge .usk-badge',
+                'condition' => [
+                    'show_sale_badge' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'sale_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-sale-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-sale-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_sale_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ]
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'discount_badge_tab',
+            [
+                'label'     => esc_html__('Discount', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_discount_badge' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'discount_badge_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-percantage-badge .usk-badge' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_discount_badge' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'discount_badge_bg',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-percantage-badge .usk-badge',
+                'condition' => [
+                    'show_discount_badge' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'discount_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-percantage-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-percantage-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_discount_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'stock_badge_tab',
+            [
+                'label'     => esc_html__('Stock', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_stock_status' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'stock_badge_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-stock-status-badge .usk-badge' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_stock_status' => 'yes',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'stock_badge_bg',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-stock-status-badge .usk-badge',
+                'condition' => [
+                    'show_stock_status' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'stock_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-stock-status-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-stock-status-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_stock_status' => 'yes',
+                    'badge_border_border!' => '',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'trending_badge_tab',
+            [
+                'label'     => esc_html__('Trending', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'trending_badge_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-trending-badge .usk-badge' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'trending_badge_bg',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-trending-badge .usk-badge',
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'trending_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-trending-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-trending-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_trending_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'new_badge_tab',
+            [
+                'label'     => esc_html__('New', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'new_badge_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-new-badge .usk-badge' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'new_badge_bg',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-new-badge .usk-badge',
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'new_badge_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-new-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-new-badge .usk-badge' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_new_badge' => 'yes',
+                    'badge_border_border!' => '',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_button',
+            [
+                'label'     => esc_html__('Add to Cart', 'ultimate-store-kit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_cart' => 'yes',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('tabs_button_style');
+
+        $this->start_controls_tab(
+            'tab_button_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'button_text_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => '',
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button.loading::after' => 'border-color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button.loading::after' => 'border-color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'btn_background_color',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'btn_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'btn_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_width',
+            [
+                'label'         => esc_html__('Width(%)', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'range'         => [
+                    'px'        => [
+                        'min'   => 10,
+                        'max'   => 100,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . '' => '--btn-width: {{SIZE}}%;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"]' => '--btn-width: {{SIZE}}% !important;',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'button_height',
+            [
+                'label'         => esc_html__('Height(px)', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'range'         => [
+                    'px'        => [
+                        'min'   => 10,
+                        'max'   => 100,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'height: {{SIZE}}px; line-height: {{SIZE}}px;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart' => 'height: {{SIZE}}px; line-height: {{SIZE}}px;',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'button_typography',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart',
+            ]
+        );
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'tab_button_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'hover_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart:hover' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button:hover' => 'color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'btn_hover_bg',
+                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-button:hover, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart:hover, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button:hover, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart:hover',
+            ]
+        );
+
+        $this->add_control(
+            'button_hover_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'condition' => [
+                    'btn_border_border!' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .added_to_cart:hover' => 'border-color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-button:hover' => 'border-color: {{VALUE}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .added_to_cart:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'style_action_btn',
+            [
+                'label' => esc_html__('Action Button', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'show_cart',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_wishlist',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_quick_view',
+                            'value' => 'yes'
+                        ],
+                        [
+                            'name' => 'show_compare',
+                            'value' => 'yes'
+                        ]
+                    ]
+                ]
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'action_btn_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping a',
+                'separator' => 'before'
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_radius',
+            [
+                'label'                 => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_padding',
+            [
+                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_margin',
+            [
+                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_size',
+            [
+                'label'         => __('Icon Size', 'ultimate-store-kit'),
+                'type'          => Controls_Manager::SLIDER,
+                'size_units'    => ['px'],
+                'range'         => [
+                    'px'        => [
+                        'min'   => 0,
+                        'max'   => 50,
+                        'step'  => 1,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping a .icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'font_family',
+            [
+                'label'                 => esc_html__('Tooltip Font', 'font family'),
+                'type'                  => Controls_Manager::FONT,
+                'selectors'             => [
+                    '{{WRAPPER}}  .' . $this->get_name() . ' .usk-shoping a'    => 'font-family: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping a'    => 'font-family: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->start_controls_tabs(
+            'action_btn_tabs'
+        );
+        $this->start_controls_tab(
+            'wishlist_tab',
+            [
+                'label' => esc_html__('Wishlist', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_wishlist' => 'yes'
+                ]
+            ]
+        );
+        $this->add_control(
+            'wishlist_normal_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'wishlist_icon_bg',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'wishlist_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
+            'heading_wishlist_hover',
+            [
+                'label'     => esc_html__('Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'wishlist_hover_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist:hover' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'wishlist_icon_hover_bg',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'wishlist_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist:hover' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'heading_wishlist_active',
+            [
+                'label'     => esc_html__('Active', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'wishlist_active_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'wishlist_active_bg',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'wishlist_active_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-wishlist.usk-active' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'compare_tab',
+            [
+                'label' => esc_html__('Compare', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_compare' => 'yes'
+                ]
+            ]
+        );
+        $this->add_control(
+            'compare_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
+            'heading_compare_hover',
+            [
+                'label'     => esc_html__('Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'compare_color_hover',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare:hover' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg_hover',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare:hover' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare:hover' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
+            'heading_compare_active',
+            [
+                'label'     => esc_html__('Active', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'compare_color_active',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare.usk-active' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_icon_bg_active',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare.usk-active' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'compare_border_active_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-compare.usk-active' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-compare.usk-active' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'quickview_tab',
+            [
+                'label' => esc_html__('Quickview', 'ultimate-store-kit'),
+                'condition' => [
+                    'show_quick_view' => 'yes'
+                ]
+            ]
+        );
+        $this->add_control(
+            'quickview_color',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-quickview' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'quickview_icon_bg',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-quickview' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'quickview_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-quickview' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->add_control(
+            'heading_quickview_hover',
+            [
+                'label'     => esc_html__('Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'quickview_color_hover',
+            [
+                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'color: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-quickview:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'quickview_icon_bg_hover',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-quickview:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'quickview_border_hover_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping .usk-shoping-icon-quickview:hover' => 'border-color: {{VALUE}} !important;',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-shoping .usk-shoping-icon-quickview:hover' => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ]
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
     }
 
     public function render_add_to_cart() {

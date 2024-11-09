@@ -1,11 +1,10 @@
 @charset "UTF-8";
 .usk-image-hotspot {
   display: flex;
-  background: #f2f2f2;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0;
+  gap: 20px;
 }
 
 .usk-image-hotspot-thumbs {
@@ -82,13 +81,11 @@
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .tippy-content {
   padding: 0;
   border-radius: 0;
+  background-color: transparent;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .tippy-arrow {
   color: #fff;
   z-index: 1;
-}
-.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item {
-  background-color: #fff;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] a {
   text-decoration: none;
@@ -101,6 +98,7 @@
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item,
 .usk-image-hotspot-main .usk-item {
   overflow: hidden;
+  background-color: #fff;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-action-btn,
 .usk-image-hotspot-main .usk-item:hover .usk-action-btn {
