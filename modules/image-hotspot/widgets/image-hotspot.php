@@ -177,6 +177,9 @@ class Image_Hotspot extends Module_Base {
 					'cube'  => esc_html__( 'Cube', 'ultimate-store-kit' ),
 					'flip'  => esc_html__( 'Flip', 'ultimate-store-kit' ),
 				],
+                'condition' => [
+                    'image_hotspot_layout' => 'slider',
+                ],
 			]
 		);
         
