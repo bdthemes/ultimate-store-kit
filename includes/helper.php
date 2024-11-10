@@ -39,6 +39,18 @@ if ( ! defined( 'BDTUSK_NAME' ) ) {
 	define( 'BDTUSK_NAME', 'Ultimate Store Kit' );
 }
 
+if ( _is_usk_pro_activated() ) {
+	if ( ! defined( 'BDTUSK_PC' ) ) {
+		define( 'BDTUSK_PC', '' );
+	} // pro control badge
+	define( 'BDTUSK_IS_PC', '' );
+} else {
+	if ( ! defined( 'BDTUSK_PC' ) ) {
+		define( 'BDTUSK_PC', '<span class="usk-pro-control"></span>' );
+	} // pro control badge
+	define( 'BDTUSK_IS_PC', 'usk-disabled-control' );
+}
+
 /**
  * Show any alert by this function
  *

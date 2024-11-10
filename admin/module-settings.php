@@ -19,6 +19,7 @@ class ModuleService {
     public static function get_widget_settings($callable) {
         $settings_fields = [
             'ultimate_store_kit_active_modules' => [
+                
                 [
                     'name'         => 'add-to-cart',
                     'label'        => esc_html__('Add to Cart (Single)', 'ultimate-store-kit'),
@@ -367,6 +368,18 @@ class ModuleService {
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce slider',
                     'demo_url'     => 'https://storekit.pro/demo/heaven-slider/',
+                    'video_url'    => '',
+                ],
+                [
+                    'name'         => 'image-hotspot',
+                    'label'        => esc_html__('Image Hotspot', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'widget_type'  => 'free',
+                    'content_type' => 'woocommerce new',
+                    'demo_url'     => 'https://storekit.pro/demo/image-hotspot/',
                     'video_url'    => '',
                 ],
                 [

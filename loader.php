@@ -202,12 +202,21 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_script( 'datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.min.js', [], '1.0.0', true );
 		wp_register_script( 'micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.min.js', [], '1.0.0', true );
 		wp_register_script( 'usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/usk-accordion.min.js', [], '1.0.0', true );
+
+		if ( ultimate_store_kit_is_widget_enabled( 'image-hotspot' ) ) {
+			wp_register_script( 'popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', [ 'jquery' ], null, true );
+			wp_register_script( 'tippyjs', BDTUSK_ASSETS_URL . 'vendor/js/tippy.all.min.js', [ 'jquery' ], null, true );
+		}
 	}
 
 	public function register_site_styles() {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 		wp_register_style( 'usk-all-styles', BDTUSK_URL . 'assets/css/usk-all-styles' . $direction_suffix . '.css', [], BDTUSK_VER );
 		wp_register_style( 'usk-font', BDTUSK_URL . 'assets/css/usk-font' . $direction_suffix . '.css', [], BDTUSK_VER );
+
+		if ( ultimate_store_kit_is_widget_enabled( 'image-hotspot' ) ) {
+			wp_register_style( 'tippy', BDTUSK_URL . 'assets/css/tippy' . $direction_suffix . '.css', [], BDTPS_PRO_VER );
+		}
 	}
 
 	/**

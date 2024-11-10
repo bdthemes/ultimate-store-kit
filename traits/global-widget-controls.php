@@ -199,7 +199,7 @@ trait Global_Widget_Controls {
         $this->start_controls_section(
             'section_woocommerce_additional',
             [
-                'label' => esc_html__('Additional', 'ultimate-store-kit'),
+                'label' => esc_html__('Additional Options', 'ultimate-store-kit'),
             ]
         );
         $this->start_controls_tabs(
@@ -321,6 +321,17 @@ trait Global_Widget_Controls {
                 'default' => 'yes',
             ]
         );
+        if ($this->get_name() ===  'usk-image-hotspot') :
+            $this->add_group_control(
+                Group_Control_Image_Size::get_type(),
+                [ 
+                    'name'    => 'thumbnail',
+                    'label'   => __( 'Image Size', 'bdthemes-prime-slider' ),
+                    'default' => 'full',
+                    'separator' => 'before',
+                ]
+            );
+        endif;
 
         $this->end_controls_tab();
         $this->start_controls_tab(
