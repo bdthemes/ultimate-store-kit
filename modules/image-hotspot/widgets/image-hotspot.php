@@ -531,6 +531,13 @@ class Image_Hotspot extends Module_Base {
             [
                 'label' => esc_html__('Shadow Pulse Size', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 30,
+                        'max' => 100,
+                    ],
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-image-hotspot-thumbs .usk-thumbs-item:after' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
                 ],

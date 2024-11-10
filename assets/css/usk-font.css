@@ -1,6 +1,6 @@
 @font-face {
   font-family: "ultimate-store-kit";
-  src: url("../fonts/ultimate-store-kit.woff2?b30b0x") format("woff2"), url("../fonts/ultimate-store-kit.ttf?b30b0x") format("truetype"), url("../fonts/ultimate-store-kit.woff?b30b0x") format("woff"), url("../fonts/ultimate-store-kit.svg?b30b0x#ultimate-store-kit") format("svg");
+  src: url("../fonts/ultimate-store-kit.woff2?sl443t") format("woff2"), url("../fonts/ultimate-store-kit.ttf?sl443t") format("truetype"), url("../fonts/ultimate-store-kit.woff?sl443t") format("woff"), url("../fonts/ultimate-store-kit.svg?sl443t#ultimate-store-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,14 @@
 
 .usk-icon-twitter:before {
   content: "\e9b6";
+}
+
+.usk-icon-call-for-price:before {
+  content: "\e9ba";
+}
+
+.usk-icon-image-hotspot:before {
+  content: "\e9b9";
 }
 
 .usk-icon-compare-products:before {

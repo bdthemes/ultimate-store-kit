@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?b30b0x') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?b30b0x') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?b30b0x') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?b30b0x##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?sl443t') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?sl443t') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?sl443t') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?sl443t##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -35,6 +35,16 @@
 .usk-icon-twitter {
   &:before {
     content: $usk-icon-twitter; 
+  }
+}
+.usk-icon-call-for-price {
+  &:before {
+    content: $usk-icon-call-for-price; 
+  }
+}
+.usk-icon-image-hotspot {
+  &:before {
+    content: $usk-icon-image-hotspot; 
   }
 }
 .usk-icon-compare-products {
