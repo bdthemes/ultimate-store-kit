@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.1.X [XX November 2024] =
+
+* Added: Image hotspot widget added
+
 = 2.1.10 [23th October 2024] =
 
 * Added: Style controls added in product accordion widget

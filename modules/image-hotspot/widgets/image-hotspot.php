@@ -84,13 +84,14 @@ class Image_Hotspot extends Module_Base {
         $this->add_control(
             'image_hotspot_layout',
             [
-                'label' => esc_html__('Layout', 'ultimate-store-kit'),
+                'label' => esc_html__('Layout', 'ultimate-store-kit') . BDTUSK_PC,
                 'type' => Controls_Manager::SELECT,
-                'default' => 'slider',
+                'default' => 'tooltip',
                 'options' => [
                     'slider' => esc_html__('Slider', 'ultimate-store-kit'),
                     'tooltip' => esc_html__('Tooltip', 'ultimate-store-kit'),
                 ],
+                'classes' => BDTUSK_IS_PC,
             ]
         );
 
@@ -135,6 +136,49 @@ class Image_Hotspot extends Module_Base {
                 'label_block' => false,
             ]
         );
+
+        $this->add_control(
+            'slider_position',
+            [
+                'label' => esc_html__('Slider Position', 'ultimate-store-kit'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'ultimate-store-kit'),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'ultimate-store-kit'),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'default' => 'right',
+                'toggle' => false,
+                'condition' => [
+                    'image_hotspot_layout' => 'slider',
+                ],
+                'prefix_class' => 'usk-image-hotspot-slider-',
+                'render_type' => 'template',
+            ]
+        );
+
+        /**
+		 * Swiper Effects
+		 */
+		$this->add_control(
+			'swiper_effect',
+			[
+				'label'   => esc_html__( 'Slider Effect', 'ultimate-store-kit' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'slide',
+				'options' => [
+					'slide' => esc_html__( 'Slide', 'ultimate-store-kit' ),
+					'fade'  => esc_html__( 'Fade', 'ultimate-store-kit' ),
+					'cube'  => esc_html__( 'Cube', 'ultimate-store-kit' ),
+					'flip'  => esc_html__( 'Flip', 'ultimate-store-kit' ),
+				],
+			]
+		);
         
         $this->end_controls_section();
 
@@ -160,7 +204,7 @@ class Image_Hotspot extends Module_Base {
         $this->start_controls_section(
 			'section_marker_image',
 			[ 
-				'label' => __( 'Hotspot Settings', 'bdthemes-prime-slider' ),
+				'label' => __( 'Hotspot Settings', 'ultimate-store-kit' ),
 			]
 		);
 
@@ -169,7 +213,7 @@ class Image_Hotspot extends Module_Base {
 		$repeater->add_responsive_control(
 			'marker_x_position',
 			[ 
-				'label'     => esc_html__( 'X Postion', 'bdthemes-prime-slider' ),
+				'label'     => esc_html__( 'X Postion', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [ 
 					'%' => [ 
@@ -186,7 +230,7 @@ class Image_Hotspot extends Module_Base {
 		$repeater->add_responsive_control(
 			'marker_y_position',
 			[ 
-				'label'     => esc_html__( 'Y Postion', 'bdthemes-prime-slider' ),
+				'label'     => esc_html__( 'Y Postion', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [ 
 					'%' => [ 
@@ -203,10 +247,10 @@ class Image_Hotspot extends Module_Base {
 		$repeater->add_control(
 			'advanced_option_toggle',
 			[ 
-				'label'        => __( 'Hotspot Style', 'bdthemes-prime-slider' ),
+				'label'        => __( 'Hotspot Style', 'ultimate-store-kit' ),
 				'type'         => Controls_Manager::POPOVER_TOGGLE,
-				'label_off'    => __( 'None', 'bdthemes-prime-slider' ),
-				'label_on'     => __( 'Custom', 'bdthemes-prime-slider' ),
+				'label_off'    => __( 'None', 'ultimate-store-kit' ),
+				'label_on'     => __( 'Custom', 'ultimate-store-kit' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -216,7 +260,7 @@ class Image_Hotspot extends Module_Base {
 		$repeater->add_control(
 			'repeater_marker_color',
 			[ 
-				'label'       => esc_html__( 'Color', 'bdthemes-prime-slider' ),
+				'label'       => esc_html__( 'Color', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::COLOR,
 				'selectors'   => [ 
 					'{{WRAPPER}} .usk-image-hotspot-thumbs {{CURRENT_ITEM}} .usk-thumbs-box i' => 'color: {{VALUE}};',
@@ -246,7 +290,7 @@ class Image_Hotspot extends Module_Base {
 		$this->add_control(
 			'markers',
 			[ 
-				'label'       => esc_html__( 'Hotspot Items', 'bdthemes-prime-slider' ),
+				'label'       => esc_html__( 'Hotspot Items', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'default'     => [ 
@@ -289,7 +333,7 @@ class Image_Hotspot extends Module_Base {
         $this->start_controls_section(
 			'section_tooltip_settings',
 			[ 
-				'label' => __( 'Tooltip Settings', 'bdthemes-prime-slider' ),
+				'label' => __( 'Tooltip Settings', 'ultimate-store-kit' ),
                 'condition' => [ 
                     'image_hotspot_layout' => 'tooltip',
                 ],
@@ -299,15 +343,15 @@ class Image_Hotspot extends Module_Base {
 		$this->add_control(
 			'marker_tooltip_animation',
 			[ 
-				'label'       => esc_html__( 'Animation', 'bdthemes-prime-slider' ),
+				'label'       => esc_html__( 'Animation', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'shift-toward',
 				'options'     => [ 
-					'shift-away'   => esc_html__( 'Shift-Away', 'bdthemes-prime-slider' ),
-					'shift-toward' => esc_html__( 'Shift-Toward', 'bdthemes-prime-slider' ),
-					'fade'         => esc_html__( 'Fade', 'bdthemes-prime-slider' ),
-					'scale'        => esc_html__( 'Scale', 'bdthemes-prime-slider' ),
-					'perspective'  => esc_html__( 'Perspective', 'bdthemes-prime-slider' ),
+					'shift-away'   => esc_html__( 'Shift-Away', 'ultimate-store-kit' ),
+					'shift-toward' => esc_html__( 'Shift-Toward', 'ultimate-store-kit' ),
+					'fade'         => esc_html__( 'Fade', 'ultimate-store-kit' ),
+					'scale'        => esc_html__( 'Scale', 'ultimate-store-kit' ),
+					'perspective'  => esc_html__( 'Perspective', 'ultimate-store-kit' ),
 				],
 				'render_type' => 'template',
 			]
@@ -315,18 +359,18 @@ class Image_Hotspot extends Module_Base {
         $this->add_control(
 			'marker_tooltip_placement',
 			[ 
-				'label'       => esc_html__( 'Placement', 'bdthemes-prime-slider' ),
+				'label'       => esc_html__( 'Placement', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'top',
 				'options'     => [ 
-					'top-start'    => esc_html__( 'Top Left', 'bdthemes-prime-slider' ),
-					'top'          => esc_html__( 'Top', 'bdthemes-prime-slider' ),
-					'top-end'      => esc_html__( 'Top Right', 'bdthemes-prime-slider' ),
-					'bottom-start' => esc_html__( 'Bottom Left', 'bdthemes-prime-slider' ),
-					'bottom'       => esc_html__( 'Bottom', 'bdthemes-prime-slider' ),
-					'bottom-end'   => esc_html__( 'Bottom Right', 'bdthemes-prime-slider' ),
-					'left'         => esc_html__( 'Left', 'bdthemes-prime-slider' ),
-					'right'        => esc_html__( 'Right', 'bdthemes-prime-slider' ),
+					'top-start'    => esc_html__( 'Top Left', 'ultimate-store-kit' ),
+					'top'          => esc_html__( 'Top', 'ultimate-store-kit' ),
+					'top-end'      => esc_html__( 'Top Right', 'ultimate-store-kit' ),
+					'bottom-start' => esc_html__( 'Bottom Left', 'ultimate-store-kit' ),
+					'bottom'       => esc_html__( 'Bottom', 'ultimate-store-kit' ),
+					'bottom-end'   => esc_html__( 'Bottom Right', 'ultimate-store-kit' ),
+					'left'         => esc_html__( 'Left', 'ultimate-store-kit' ),
+					'right'        => esc_html__( 'Right', 'ultimate-store-kit' ),
 				],
 				'render_type' => 'template',
 			]
@@ -335,7 +379,7 @@ class Image_Hotspot extends Module_Base {
 		$this->add_control(
 			'marker_tooltip_x_offset',
 			[ 
-				'label'   => esc_html__( 'Offset', 'bdthemes-prime-slider' ),
+				'label'   => esc_html__( 'Offset', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [ 
 					'size' => 0,
@@ -346,7 +390,7 @@ class Image_Hotspot extends Module_Base {
 		$this->add_control(
 			'marker_tooltip_y_offset',
 			[ 
-				'label'   => esc_html__( 'Distance', 'bdthemes-prime-slider' ),
+				'label'   => esc_html__( 'Distance', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [ 
 					'size' => 0,
@@ -357,7 +401,7 @@ class Image_Hotspot extends Module_Base {
 		$this->add_control(
 			'marker_tooltip_arrow',
 			[ 
-				'label' => esc_html__( 'Arrow', 'bdthemes-prime-slider' ),
+				'label' => esc_html__( 'Arrow', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
@@ -365,8 +409,8 @@ class Image_Hotspot extends Module_Base {
 		$this->add_control(
 			'marker_tooltip_trigger',
 			[ 
-				'label'       => __( 'Trigger on Click', 'bdthemes-prime-slider' ),
-				'description' => __( 'Don\'t set yes when you set lightbox image with marker.', 'bdthemes-prime-slider' ),
+				'label'       => __( 'Trigger on Click', 'ultimate-store-kit' ),
+				'description' => __( 'Don\'t set yes when you set lightbox image with marker.', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SWITCHER,
 			]
 		);
@@ -636,7 +680,10 @@ class Image_Hotspot extends Module_Base {
                 'type' => Controls_Manager::SLIDER,
                 'selectors' => [
                     '{{WRAPPER}} .usk-image-hotspot' => 'gap: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .usk-image-hotspot-main' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '(desktop){{WRAPPER}}.usk-image-hotspot-slider-left .usk-image-hotspot-main' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '(desktop){{WRAPPER}}.usk-image-hotspot-slider-right .usk-image-hotspot-main' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '(mobile){{WRAPPER}}.usk-image-hotspot-slider-left .usk-image-hotspot-main' => 'margin-left: auto;',
+                    '(mobile){{WRAPPER}}.usk-image-hotspot-slider-right .usk-image-hotspot-main' => 'margin-right: auto;',
                 ],
                 'condition' => [
                     'image_hotspot_layout' => 'slider',
@@ -696,10 +743,21 @@ class Image_Hotspot extends Module_Base {
         $this->add_responsive_control(
             'item_width',
             [
-                'label'     => esc_html__('Width(%)', 'ultimate-store-kit'),
+                'label'     => esc_html__('Width', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'     => [
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                    'px' => [
+                        'min' => 100,
+                        'max' => 500,
+                    ],
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image-hotspot-main' => 'width: {{SIZE}}%;',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image-hotspot-main' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -2340,6 +2398,7 @@ class Image_Hotspot extends Module_Base {
                             'id' => $id,
                             "slidesPerView" => isset($settings['product_limit']) ? $settings['product_limit'] : 3,
                             "watchSlidesProgress" => true,
+                            "sliderEffect"        => isset($settings["swiper_effect"]) ? $settings["swiper_effect"] : 'slide',
                         ])),
                     ],
                 ],

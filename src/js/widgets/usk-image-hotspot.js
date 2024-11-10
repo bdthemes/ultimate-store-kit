@@ -23,6 +23,10 @@
 
             var mainSlider = await new Swiper($imageHotspotContainer, {
                 slidesPerView: 1,
+                effect: $settings.sliderEffect,
+                fadeEffect: {
+                    crossFade: true
+                },
                 thumbs: {
                     swiper: sliderThumbs,
                 },

@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 return [
     'title'              => esc_html__('Image Hotspot', 'ultimate-store-kit'),
     'required'           => true,
-    'default_activation' => true,
+    'default_activation' => false,
     'has_style'          => true,
     'has_script'         => true,
 ];

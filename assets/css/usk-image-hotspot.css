@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(15px, 3vw, 30px);
 }
 
 .usk-image-hotspot-thumbs {
@@ -18,8 +18,8 @@
 }
 .usk-image-hotspot-thumbs .usk-thumbs-item {
   position: absolute !important;
-  height: 40px;
-  width: 40px !important;
+  height: clamp(32px, 3vw, 40px);
+  width: clamp(32px, 3vw, 40px) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +32,9 @@
 .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box i {
   color: #fff;
 }
+.usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box svg {
+  fill: #fff;
+}
 .usk-image-hotspot-thumbs .usk-thumbs-box {
   background-color: #ffffff;
   display: flex;
@@ -41,6 +44,16 @@
   align-items: center;
   border-radius: 100px;
   overflow: hidden;
+}
+.usk-image-hotspot-thumbs .usk-thumbs-box i {
+  color: #2b2d42;
+}
+.usk-image-hotspot-thumbs .usk-thumbs-box svg {
+  fill: #2b2d42;
+}
+.usk-image-hotspot-thumbs .usk-thumbs-box i, .usk-image-hotspot-thumbs .usk-thumbs-box svg {
+  width: 1em;
+  height: 1em;
 }
 .usk-image-hotspot-thumbs .usk-image-wrap {
   height: 100%;
@@ -72,11 +85,12 @@
 }
 
 .usk-image-hotspot-main {
-  width: 70%;
+  width: 80%;
 }
 
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] {
   background-color: transparent !important;
+  max-width: 300px !important;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .tippy-content {
   padding: 0;
@@ -279,12 +293,20 @@
   }
 }
 @media (min-width: 768px) {
-  .usk-image-hotspot {
-    gap: 40px;
+  .usk-image-hotspot-main {
+    width: 27%;
+    min-width: 27%;
+  }
+  .usk-image-hotspot-slider-left .usk-image-hotspot {
+    flex-direction: row;
+  }
+  .usk-image-hotspot-slider-left .usk-image-hotspot-main {
+    margin-left: clamp(15px, 3vw, 30px);
+  }
+  .usk-image-hotspot-slider-right .usk-image-hotspot {
     flex-direction: row-reverse;
   }
-  .usk-image-hotspot-main {
-    width: 40%;
-    margin-right: 40px;
+  .usk-image-hotspot-slider-right .usk-image-hotspot-main {
+    margin-right: clamp(15px, 3vw, 30px);
   }
 }

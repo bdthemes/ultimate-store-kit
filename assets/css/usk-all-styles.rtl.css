@@ -239,9 +239,8 @@
   opacity: 1;
 }
 
+.usk-pro-control:after,
 .usk-new-control:after {
-  content: "NEW";
-  background-color: orangered;
   color: #fff;
   font-size: 7px;
   font-weight: 700;
@@ -249,6 +248,61 @@
   padding: 3px 4px;
   margin-right: 5px;
   vertical-align: middle;
+}
+
+.usk-new-control:after {
+  content: "NEW";
+  background-color: orangered;
+}
+
+.usk-pro-control:after {
+  content: "PRO";
+  background-color: #e62a3f;
+}
+
+#elementor-panel #elementor-controls .usk-disabled-control .elementor-control-input-wrapper {
+  pointer-events: none !important;
+  opacity: 0.4;
+}
+
+#elementor-panel #elementor-controls .usk-disabled-control .elementor-control-field {
+  pointer-events: none !important;
+}
+
+#elementor-panel #elementor-controls .usk-disabled-control .elementor-control-field:before {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba%2817,%2017,%2017,%200.9%29%22%20transform%3D%22rotate%280%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E") no-repeat;
+  height: 6px;
+  width: 18px;
+  margin-bottom: 6px;
+  background-size: 100% auto !important;
+  content: "";
+  display: none;
+  position: absolute;
+  left: 35px;
+  top: 0;
+}
+
+#elementor-panel #elementor-controls .usk-disabled-control .elementor-control-field:after {
+  content: "This is a pro control, available with Ultimate Post Kit Pro version.";
+  padding: 10px;
+  display: none;
+  position: absolute;
+  top: -52px;
+  left: 20px;
+  width: 220px;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  color: #fff;
+  z-index: 10;
+  line-height: 16px;
+  pointer-events: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+#elementor-panel #elementor-controls .usk-disabled-control:hover .elementor-control-field:after,
+#elementor-panel #elementor-controls .usk-disabled-control:hover .elementor-control-field:before {
+  display: block;
 }
 
 @font-face {
@@ -5777,7 +5831,7 @@ table.dataTable.display tbody tr.odd {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(15px, 3vw, 30px);
 }
 
 .usk-image-hotspot-thumbs {
@@ -5791,8 +5845,8 @@ table.dataTable.display tbody tr.odd {
 }
 .usk-image-hotspot-thumbs .usk-thumbs-item {
   position: absolute !important;
-  height: 40px;
-  width: 40px !important;
+  height: clamp(32px, 3vw, 40px);
+  width: clamp(32px, 3vw, 40px) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -5805,6 +5859,9 @@ table.dataTable.display tbody tr.odd {
 .usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box i {
   color: #fff;
 }
+.usk-image-hotspot-thumbs .usk-thumbs-item.swiper-slide-thumb-active .usk-thumbs-box svg {
+  fill: #fff;
+}
 .usk-image-hotspot-thumbs .usk-thumbs-box {
   background-color: #ffffff;
   display: flex;
@@ -5814,6 +5871,16 @@ table.dataTable.display tbody tr.odd {
   align-items: center;
   border-radius: 100px;
   overflow: hidden;
+}
+.usk-image-hotspot-thumbs .usk-thumbs-box i {
+  color: #2b2d42;
+}
+.usk-image-hotspot-thumbs .usk-thumbs-box svg {
+  fill: #2b2d42;
+}
+.usk-image-hotspot-thumbs .usk-thumbs-box i, .usk-image-hotspot-thumbs .usk-thumbs-box svg {
+  width: 1em;
+  height: 1em;
 }
 .usk-image-hotspot-thumbs .usk-image-wrap {
   height: 100%;
@@ -5845,11 +5912,12 @@ table.dataTable.display tbody tr.odd {
 }
 
 .usk-image-hotspot-main {
-  width: 70%;
+  width: 80%;
 }
 
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] {
   background-color: transparent !important;
+  max-width: 300px !important;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .tippy-content {
   padding: 0;
@@ -6052,13 +6120,21 @@ table.dataTable.display tbody tr.odd {
   }
 }
 @media (min-width: 768px) {
-  .usk-image-hotspot {
-    gap: 40px;
+  .usk-image-hotspot-main {
+    width: 27%;
+    min-width: 27%;
+  }
+  .usk-image-hotspot-slider-left .usk-image-hotspot {
+    flex-direction: row;
+  }
+  .usk-image-hotspot-slider-left .usk-image-hotspot-main {
+    margin-right: clamp(15px, 3vw, 30px);
+  }
+  .usk-image-hotspot-slider-right .usk-image-hotspot {
     flex-direction: row-reverse;
   }
-  .usk-image-hotspot-main {
-    width: 40%;
-    margin-left: 40px;
+  .usk-image-hotspot-slider-right .usk-image-hotspot-main {
+    margin-left: clamp(15px, 3vw, 30px);
   }
 }
 .usk-edd-beauty-grid .usk-edd-beauty-grid-wrapper {
