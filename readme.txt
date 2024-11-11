@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.2.X [XX November 2024] =
+
+* Fixed: Image bottom spacing issue fixed in image hotspot widget
+
 = 2.2.0 [11th November 2024] =
 
 * Added: Image hotspot widget added

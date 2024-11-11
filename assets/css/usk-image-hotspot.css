@@ -10,6 +10,7 @@
 .usk-image-hotspot-thumbs {
   position: relative;
   width: 100%;
+  display: flex;
 }
 .usk-image-hotspot-thumbs .swiper-wrapper {
   position: absolute !important;
