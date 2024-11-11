@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.1.10
+Stable tag: 2.2.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.24.7
+Elementor tested up to: 3.25.4
 
 Best addon for elementor WordPress plugin with 80+ most popular eCommerce, EDD & Static elements that need your everyday website page building.
 
@@ -143,7 +143,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.1.X [XX November 2024] =
+= 2.2.0 [11th November 2024] =
 
 * Added: Image hotspot widget added
 
