@@ -215,7 +215,7 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_style( 'usk-font', BDTUSK_URL . 'assets/css/usk-font' . $direction_suffix . '.css', [], BDTUSK_VER );
 
 		if ( ultimate_store_kit_is_widget_enabled( 'image-hotspot' ) ) {
-			wp_register_style( 'tippy', BDTUSK_URL . 'assets/css/tippy' . $direction_suffix . '.css', [], BDTUSK_VER );
+			wp_register_style( 'tippy', BDTUSK_URL . 'assets/css/usk-tippy' . $direction_suffix . '.css', [], BDTUSK_VER );
 		}
 	}
 

@@ -11,15 +11,15 @@
             return;
         }
 
-        var $imageHotspotContainer = $imageHotspot.find('.usk-image-hotspot-main');
-
+        var $thumbs = $imageHotspot.find('.usk-image-hotspot-thumbs');
+        
         const Swiper = elementorFrontend.utils.swiper;
         initSwiper();
         async function initSwiper() {
-
-            var $thumbs = $imageHotspot.find('.usk-image-hotspot-thumbs');
-
+            
             var sliderThumbs = await new Swiper($thumbs, $settings);
+            
+            var $imageHotspotContainer = $imageHotspot.find('.usk-image-hotspot-main');
 
             var mainSlider = await new Swiper($imageHotspotContainer, {
                 slidesPerView: 1,
