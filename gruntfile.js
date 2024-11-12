@@ -178,6 +178,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: "src/vendor/js/",
+                        src: "tippy.all.min.js",
+                        dest: "assets/vendor/js/",
+                        ext: ".all.min.js",
+                    },
+                    {
+                        expand: true,
                         cwd: "src/js/",
                         src: ["usk-editor.js", "usk-core.js", "usk-admin.js"],
                         dest: "assets/js/",

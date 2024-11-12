@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.6.2
@@ -143,9 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.2.X [XX November 2024] =
+= 2.2.1 [12th November 2024] =
 
 * Fixed: Image bottom spacing issue fixed in image hotspot widget
+* Fixed: Script file loading issue fixed in image hotspot widget
 
 = 2.2.0 [11th November 2024] =
 
