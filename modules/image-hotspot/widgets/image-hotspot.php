@@ -2409,6 +2409,7 @@ class Image_Hotspot extends Module_Base {
                             "slidesPerView" => isset($settings['product_limit']) ? $settings['product_limit'] : 3,
                             "watchSlidesProgress" => true,
                             "sliderEffect"        => isset($settings["swiper_effect"]) ? $settings["swiper_effect"] : 'slide',
+                            "image_hotspot_layout" => isset($settings['image_hotspot_layout']) ? $settings['image_hotspot_layout'] : 'slider',
                         ])),
                     ],
                 ],
@@ -2426,6 +2427,12 @@ class Image_Hotspot extends Module_Base {
     public function render_slider_footer() {
         $settings = $this->get_settings_for_display();
 
+        if ($settings['image_hotspot_layout'] == 'slider') {
+            $this->add_render_attribute('thumbs', 'class', 'usk-image-hotspot-thumbs swiper');
+        } else {
+            $this->add_render_attribute('thumbs', 'class', 'usk-image-hotspot-thumbs');
+        }
+
         ?>
                 <?php if ($settings['image_hotspot_layout'] == 'slider') : ?>
                     </div>
@@ -2433,7 +2440,7 @@ class Image_Hotspot extends Module_Base {
                 <?php endif; ?>
 
                 <!-- thumbsslider -->
-                <div thumbsSlider="" class="usk-image-hotspot-thumbs swiper">
+                <div thumbsSlider="" <?php $this->print_render_attribute_string('thumbs'); ?>>
                     <?php 
                     $placeholder_image_src = Utils::get_placeholder_image_src();
                     $image_src             = wp_get_attachment_image_src( $settings['hotspot_image']['id'], 'full' );
