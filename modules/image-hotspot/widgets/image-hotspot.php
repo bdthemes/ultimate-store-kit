@@ -768,6 +768,7 @@ class Image_Hotspot extends Module_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-image-hotspot-main' => 'width: {{SIZE}}{{UNIT}}; min-width: {{SIZE}}{{UNIT}};',
+                    '.tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"]' => 'max-width: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
