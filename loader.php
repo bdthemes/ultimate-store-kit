@@ -137,21 +137,6 @@ class Ultimate_Store_Kit_Loader {
 		if ( class_exists( 'woocommerce' ) ) {
 			require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
 		}
-
-		if ( is_admin() ) {
-			if ( ! defined( 'BDTUSK_CH' ) ) {
-
-				// Admin settings controller
-				require( BDTUSK_ADM_PATH . 'class-settings-api.php' );
-
-				require( BDTUSK_ADM_PATH . 'admin.php' );
-				// element pack admin settings here
-				require( BDTUSK_ADM_PATH . 'admin-settings.php' );
-
-				// Load admin class for admin related content process
-				new Admin();
-			}
-		}
 	}
 
 	/**
@@ -340,7 +325,14 @@ class Ultimate_Store_Kit_Loader {
 		}, 1, 40 );
 	}
 
-
+	public function init(){
+		if ( ! defined( 'BDTUSK_CH' ) && is_admin() ) {
+			require( BDTUSK_ADM_PATH . 'class-settings-api.php' );
+			require( BDTUSK_ADM_PATH . 'admin.php' );
+			require( BDTUSK_ADM_PATH . 'admin-settings.php' );
+			new Admin();
+		}
+	}
 
 	/**
 	 * Ultimate_Store_Kit_Loader constructor.
@@ -353,6 +345,8 @@ class Ultimate_Store_Kit_Loader {
 
 		// Finally hooked up all things here
 		$this->setup_hooks();
+
+		add_action('init', [$this, 'init']);
 	}
 }
 
