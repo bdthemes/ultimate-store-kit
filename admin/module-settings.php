@@ -1031,6 +1031,20 @@ class ModuleService {
                     'video_url'    => '',
                 ],
             ],
+            'ultimate_store_kit_other_settings' => [
+                [
+                    'name'         => 'variation-swatches',
+                    'label'        => esc_html__('Variation Swatches', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce product',
+                    'demo_url'     => 'https://storekit.pro/demo/edd-category-grid/',
+                    'video_url'    => '',
+                ],
+            ]
         ];
 
         $settings                    = [];

@@ -190,6 +190,13 @@ module.exports = function (grunt) {
                         dest: "assets/js/",
                         ext: ".min.js",
                     },
+                    {
+                        expand: true,
+                        cwd: "src/vendor/js/",
+                        src: "wp-color-picker-alpha.min.js",
+                        dest: "assets/vendor/js/",
+                        ext: ".min.js",
+                    },
                 ],
             },
         },
