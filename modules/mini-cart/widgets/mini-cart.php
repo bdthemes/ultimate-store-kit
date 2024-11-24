@@ -1198,7 +1198,7 @@ class Mini_Cart extends Module_Base {
 							<div class="usk-widget-title">
 								<?php echo wp_kses_post( $settings['custom_widget_cart_title'] ); ?>
 							</div>
-							<div class="__widget_shopping_cart_content">
+							<div class="widget_shopping_cart_content">
 								<?php
 								$cart_items = WC()->cart->get_cart();
 								if ( empty( $cart_items ) ) { ?>

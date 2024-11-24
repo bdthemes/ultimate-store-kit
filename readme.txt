@@ -143,6 +143,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.2.X [XXth November 2024] =
+
+* Fixed: Ajax cart content update issue fixed in Mini Cart widget ( Thanks to Nancy )
+
 = 2.2.3 [23th November 2024] =
 
 * Fixed: Translation issue fixed
