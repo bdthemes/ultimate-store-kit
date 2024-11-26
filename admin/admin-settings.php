@@ -35,6 +35,7 @@ class UltimateStoreKit_Admin_Settings
         if (!defined('BDTUSK_HIDE')) {
             add_action('admin_init', [$this, 'admin_init']);
             add_action('admin_menu', [$this, 'admin_menu'], 201);
+            add_action('admin_menu', [$this, 'admin_get_pro_menu'], 202);
         }
     }
 
@@ -52,7 +53,16 @@ class UltimateStoreKit_Admin_Settings
 
         //initialize settings
         $this->settings_api->admin_init();
+        $this->usk_redirect_to_get_pro();
     }
+
+    // Redirect to Ultimate Store Kit Pro pricing page
+	public function usk_redirect_to_get_pro() {
+		if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
+			wp_redirect('https://storekit.pro/pricing/');
+			exit;
+		}
+	}
 
     function admin_menu()
     {
@@ -92,14 +102,16 @@ class UltimateStoreKit_Admin_Settings
             self::PAGE_ID . '#ultimate_store_kit_general_modules',
             [$this, 'display_page'],
         );
+    }
 
+    function admin_get_pro_menu() {
         if (true !== _is_usk_pro_activated()) {
             add_submenu_page(
                 self::PAGE_ID,
                 BDTUSK_TITLE,
                 esc_html__('Get Pro', 'ultimate-store-kit'),
                 'manage_options',
-                self::PAGE_ID . '#ultimate_store_kit_get_pro',
+                self::PAGE_ID . '_get_pro',
                 [$this, 'display_page']
             );
         }
