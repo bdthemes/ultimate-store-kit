@@ -223,6 +223,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.2.X [XX November 2024] =
 
 * Updated: Dashboard system improved
+* Fixed: Ajax cart content update issue fixed in Mini Cart widget ( Thanks to Nancy )
 
 = 2.2.3 [23th November 2024] =
 

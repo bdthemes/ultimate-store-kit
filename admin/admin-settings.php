@@ -57,12 +57,13 @@ class UltimateStoreKit_Admin_Settings
     }
 
     // Redirect to Ultimate Store Kit Pro pricing page
-	public function usk_redirect_to_get_pro() {
-		if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
-			wp_redirect('https://storekit.pro/pricing/');
-			exit;
-		}
-	}
+    public function usk_redirect_to_get_pro()
+    {
+        if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
+            wp_redirect('https://storekit.pro/pricing/');
+            exit;
+        }
+    }
 
     function admin_menu()
     {
@@ -97,14 +98,24 @@ class UltimateStoreKit_Admin_Settings
         add_submenu_page(
             self::PAGE_ID,
             BDTUSK_TITLE,
-            esc_html__('Others Widgets', 'ultimate-store-kit'),
+            esc_html__('Other Widgets', 'ultimate-store-kit'),
             'manage_options',
             self::PAGE_ID . '#ultimate_store_kit_general_modules',
             [$this, 'display_page'],
         );
+
+        add_submenu_page(
+            self::PAGE_ID,
+            BDTUSK_TITLE,
+            esc_html__('Other Settings', 'ultimate-store-kit'),
+            'manage_options',
+            self::PAGE_ID . '#ultimate_store_kit_other_settings',
+            [$this, 'display_page']
+        );
     }
 
-    function admin_get_pro_menu() {
+    function admin_get_pro_menu()
+    {
         if (true !== _is_usk_pro_activated()) {
             add_submenu_page(
                 self::PAGE_ID,
@@ -136,6 +147,10 @@ class UltimateStoreKit_Admin_Settings
             [
                 'id'    => 'ultimate_store_kit_general_modules',
                 'title' => esc_html__('Other Widgets', 'ultimate-store-kit'),
+            ],
+            [
+                'id'    => 'ultimate_store_kit_other_settings',
+                'title' => esc_html__('Other Settings', 'ultimate-store-kit'),
             ],
         ];
         return $sections;
@@ -617,7 +632,7 @@ class UltimateStoreKit_Admin_Settings
                             </div>
                         <?php endif; ?>
                     </div>
-                    
+
                     <div>
 
                         <ul class="bdt-list bdt-list-divider bdt-text-left bdt-text-normal" style="font-size: 15px;">
@@ -1121,16 +1136,6 @@ class UltimateStoreKit_Admin_Settings
                 /**
                  * Others Widget
                  */
-                jQuery('#ultimate_store_kit_general_modules_page a.bdt-active-all-widget').click(function() {
-
-                    jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
-                        jQuery(this).attr('checked', 'checked').prop("checked", true);
-                    });
-
-                    jQuery(this).addClass('bdt-active');
-                    jQuery('a.bdt-deactive-all-widget').removeClass('bdt-active');
-                });
-
                 jQuery('#ultimate_store_kit_general_modules_page a.bdt-deactive-all-widget').click(function() {
 
                     jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
@@ -1179,6 +1184,10 @@ class UltimateStoreKit_Admin_Settings
                     jQuery(this).attr("disabled", true);
                 });
                 jQuery('#ultimate_store_kit_general_modules_page .usk-pro-inactive .checkbox').each(function() {
+                    jQuery(this).removeAttr('checked');
+                    jQuery(this).attr("disabled", true);
+                });
+                jQuery('#ultimate_store_kit_other_settings_page .usk-pro-inactive .checkbox').each(function() {
                     jQuery(this).removeAttr('checked');
                     jQuery(this).attr("disabled", true);
                 });
