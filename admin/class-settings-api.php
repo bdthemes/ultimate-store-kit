@@ -749,15 +749,11 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             }
 
             if (true !== _is_usk_pro_activated()) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'pixel_gallery_get_pro', esc_html__('Get Pro', 'ultimate-store-kit'));
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5"><span></span><span></span><span></span><span></span>%2$s</a></li>', 'ultimate_store_kit_get_pro', esc_html__('Get Pro', 'ultimate-store-kit'));
             }
 
-            // if ( !defined('BDTUSK_LO') ) {
-            //     $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="%2$s">%3$s</a></li>', 'pixel_gallery_license_settings', $count, 'License');
-            // }
-
             if ((true == _is_usk_pro_activated()) && !defined('BDTUSK_LO')) {
-                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'pixel_gallery_license_settings', esc_html__('License', 'ultimate-store-kit'));
+                $html .= sprintf('<li><a href="#%1$s" class="bdt-tab-item" id="bdt-%1$s" data-tab-index="5">%2$s</a></li>', 'ultimate_store_kit_license_settings', esc_html__('License', 'ultimate-store-kit'));
             }
 
             $html .= '</ul>';
