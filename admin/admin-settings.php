@@ -1194,6 +1194,14 @@ class UltimateStoreKit_Admin_Settings
 
 
             });
+
+            jQuery(document).ready(function ($) {
+                const getProLink = $('a[href="admin.php?page=ultimate_store_kit_options_get_pro"]');
+                if (getProLink.length) {
+                    getProLink.attr('target', '_blank');
+                }
+            });
+
         </script>
     <?php
     }
