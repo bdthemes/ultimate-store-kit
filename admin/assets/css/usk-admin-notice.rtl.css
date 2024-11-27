@@ -85,13 +85,12 @@
   text-align: center;
   border-radius: 3px;
   transition: background-image 0.3s ease, color 0.3s ease;
-  /* Transition for background and color */
 }
-
 #adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"]:hover {
   box-shadow: none;
   background-image: linear-gradient(-45deg, #00216A 0%, #E62A3F 100%);
-  /* Change the gradient on hover */
   color: #ffffff;
-  /* Ensure text color stays consistent */
+}
+#adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"]:focus {
+  box-shadow: none;
 }
