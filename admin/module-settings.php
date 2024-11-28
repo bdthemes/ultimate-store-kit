@@ -1054,7 +1054,7 @@ class ModuleService {
                 ],
                 [
 					'name'              => 'usk_variation_swatches_shape',
-					'label'             => esc_html__('Swatches Shape', 'ultimate-store-kit'),
+					'label'             => esc_html__('Shape', 'ultimate-store-kit'),
 					'type'              => 'select',
                     'default'           => '',
                     'options'           => [
@@ -1067,7 +1067,7 @@ class ModuleService {
 
                 [
 					'name'              => 'usk_variation_swatches_tooltip',
-					'label'             => esc_html__('Swatches Tooltip', 'ultimate-store-kit'),
+					'label'             => esc_html__('Tooltip', 'ultimate-store-kit'),
 					'type'              => 'select',
                     'default'           => '',
                     'options'           => [
@@ -1079,7 +1079,7 @@ class ModuleService {
 
                 [
 					'name'              => 'usk_variation_swatches_size',
-					'label'             => esc_html__('Swatches Size', 'ultimate-store-kit'),
+					'label'             => esc_html__('Size', 'ultimate-store-kit'),
 					'type'              => 'number',
                     'default'           => '26',
 				],
