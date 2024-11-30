@@ -507,6 +507,11 @@
     content: $usk-icon-product-price; 
   }
 }
+.usk-icon-variation-swatches {
+  &:before {
+    content: $usk-icon-variation-swatches;
+  }
+}
 .usk-icon-arrow-left-0 {
   &:before {
     content: $usk-icon-arrow-left-0; 
