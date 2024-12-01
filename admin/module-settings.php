@@ -1051,6 +1051,7 @@ class ModuleService {
                     'content_type' => 'woocommerce product',
                     'demo_url'     => 'https://storekit.pro/demo/variation-swatches/',
                     'video_url'    => '',
+                    'parent'       => true,
                 ],
                 [
 					'name'              => 'usk_variation_swatches_shape',
