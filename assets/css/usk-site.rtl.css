@@ -2044,3 +2044,89 @@ div.pp_pic_holder {
 .usk-show-heading-yes .usk-additional-information h2 {
   display: block;
 }
+
+.elementor-widget-usk-page-single .swatches-support table.variations,
+.elementor-widget-usk-add-to-cart .swatches-support table.variations {
+  display: flex;
+}
+.elementor-widget-usk-page-single table.variations,
+.elementor-widget-usk-add-to-cart table.variations {
+  border-collapse: separate;
+  border-spacing: 0 1em;
+}
+.elementor-widget-usk-page-single form.cart tr,
+.elementor-widget-usk-add-to-cart form.cart tr {
+  position: relative;
+}
+.elementor-widget-usk-page-single form.cart *,
+.elementor-widget-usk-add-to-cart form.cart * {
+  text-align: right;
+}
+.elementor-widget-usk-page-single .usk-variation-swatches--image,
+.elementor-widget-usk-add-to-cart .usk-variation-swatches--image {
+  display: flex;
+}
+.elementor-widget-usk-page-single div.product form.cart .variations td,
+.elementor-widget-usk-page-single div.product form.cart .variations th,
+.elementor-widget-usk-add-to-cart div.product form.cart .variations td,
+.elementor-widget-usk-add-to-cart div.product form.cart .variations th {
+  vertical-align: middle;
+}
+.elementor-widget-usk-page-single .usk-variation-swatches--image img,
+.elementor-widget-usk-add-to-cart .usk-variation-swatches--image img {
+  height: 100%;
+}
+.elementor-widget-usk-page-single .quantity button,
+.elementor-widget-usk-add-to-cart .quantity button {
+  padding: 15px;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #a4afb7;
+  border-radius: 3px 3px 3px 3px;
+  color: #444;
+  line-height: 1;
+  cursor: pointer;
+}
+.elementor-widget-usk-page-single .quantity button:hover,
+.elementor-widget-usk-add-to-cart .quantity button:hover {
+  background: #f9f9f9;
+}
+.elementor-widget-usk-page-single form.cart div.quantity,
+.elementor-widget-usk-add-to-cart form.cart div.quantity {
+  display: flex;
+  gap: 5px;
+}
+.elementor-widget-usk-page-single .woocommerce-variation-add-to-cart,
+.elementor-widget-usk-add-to-cart .woocommerce-variation-add-to-cart {
+  display: flex;
+}
+.elementor-widget-usk-page-single table th, .elementor-widget-usk-page-single table td,
+.elementor-widget-usk-add-to-cart table th,
+.elementor-widget-usk-add-to-cart table td {
+  padding: 0;
+}
+.elementor-widget-usk-page-single form.cart table td,
+.elementor-widget-usk-page-single div.product form.cart table td,
+.elementor-widget-usk-add-to-cart form.cart table td,
+.elementor-widget-usk-add-to-cart div.product form.cart table td {
+  padding-right: 20px !important;
+}
+.elementor-widget-usk-page-single table tbody tr:hover > td, .elementor-widget-usk-page-single table tbody tr:hover > th,
+.elementor-widget-usk-page-single table tbody > tr:nth-child(odd) > td, .elementor-widget-usk-page-single table tbody > tr:nth-child(odd) > th,
+.elementor-widget-usk-add-to-cart table tbody tr:hover > td,
+.elementor-widget-usk-add-to-cart table tbody tr:hover > th,
+.elementor-widget-usk-add-to-cart table tbody > tr:nth-child(odd) > td,
+.elementor-widget-usk-add-to-cart table tbody > tr:nth-child(odd) > th {
+  background-color: transparent;
+}
+.elementor-widget-usk-page-single .woocommerce-variation-price,
+.elementor-widget-usk-add-to-cart .woocommerce-variation-price {
+  margin-bottom: 15px;
+}
+.elementor-widget-usk-page-single .woocommerce div.product form.cart .reset_variations,
+.elementor-widget-usk-add-to-cart .woocommerce div.product form.cart .reset_variations {
+  position: absolute;
+  left: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+}

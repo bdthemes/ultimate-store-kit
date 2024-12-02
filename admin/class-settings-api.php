@@ -86,10 +86,10 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             }
 
             foreach ((array) $wp_settings_sections[$page] as $section) {
-                if ($section['id'] == 'ultimate_store_kit_api_settings') {
-                    $section_class = ' bdt-child-width-1-3@xl';
+                if ($section['id'] == 'ultimate_store_kit_other_settings') {
+                    $section_class = ' bdt-grid-small bdt-child-width-2-3@l bdt-child-width-1-3@xl';
                 } else {
-                    $section_class = ' bdt-grid-small bdt-child-width-1-4@xl';
+                    $section_class = ' bdt-grid-small bdt-child-width-1-3@l bdt-child-width-1-4@xl';
                 }
 
                 if ($section['callback']) {
@@ -99,7 +99,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                 if (!isset($wp_settings_fields) || !isset($wp_settings_fields[$page]) || !isset($wp_settings_fields[$page][$section['id']])) {
                     continue;
                 }
-                echo '<div class="bdt-options bdt-grid bdt-child-width-1-1 bdt-child-width-1-2@m bdt-child-width-1-3@l' . esc_attr($section_class) . '" role="presentation" bdt-grid="masonry: true">';
+                echo '<div class="bdt-options bdt-grid bdt-child-width-1-1 bdt-child-width-1-2@m' . esc_attr($section_class) . '" role="presentation" bdt-grid="masonry: true">';
                 $this->do_settings_fields($page, $section['id']);
                 echo '</div>';
             }
