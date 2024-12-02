@@ -1880,10 +1880,13 @@
   line-height: 1.2;
 }
 .usk-page-single form.cart * {
-  text-align: center;
+  text-align: left;
 }
 .usk-page-single .woocommerce ul.products {
-  display: inline-block !important;
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 .usk-page-single .woocommerce ul.products li {
   border: 1px solid #eee;
@@ -1897,6 +1900,61 @@
 }
 .usk-page-single .woocommerce .quantity .qty {
   width: 5.631em;
+}
+.usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs {
+  padding: 0;
+}
+.usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs li {
+  padding: 0;
+  margin: 0 15px 0 0;
+  border: 0;
+  background-color: transparent;
+}
+.usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs li:after, .usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs li:before {
+  display: none;
+}
+.usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs li a {
+  padding: 15px 0;
+}
+.usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs li a:after {
+  content: "";
+  position: absolute;
+  background: #3287f0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+.usk-page-single .woocommerce div.product .woocommerce-tabs ul.tabs li.active a:after {
+  width: 100%;
+}
+.usk-page-single .woocommerce table.shop_attributes {
+  border: 1px solid #eee;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.usk-page-single .woocommerce table.shop_attributes tr {
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
+.usk-page-single .woocommerce table.shop_attributes tr:last-child {
+  border-bottom: 0;
+}
+.usk-page-single .woocommerce table.shop_attributes th {
+  border: 0;
+  background-color: #f8f8f8;
+  padding: 10px 15px;
+}
+.usk-page-single .woocommerce table.shop_attributes td {
+  border: 0;
+  font-style: normal;
+  background-color: transparent !important;
+}
+.usk-page-single .woocommerce table.shop_attributes td p {
+  padding: 10px 15px;
 }
 
 .usk-florence-grid .usk-item {
