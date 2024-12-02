@@ -220,6 +220,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                         'content_type'      => !empty($option['content_type']) ? $option['content_type'] : null,
                         'demo_url'          => !empty($option['demo_url']) ? $option['demo_url'] : null,
                         'video_url'         => !empty($option['video_url']) ? $option['video_url'] : null,
+                        'parent'         => !empty($option['parent']) ? $option['parent'] : null,
                     );
 
                     add_settings_field("{$section}[{$name}]", $label, $callback, $section, $section, $args);
@@ -402,6 +403,8 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
             $plugin_path = isset($args['plugin_path']) ? $args['plugin_path'] : '';
             $paid        = isset($args['paid']) ? $args['paid'] : '';
 
+            $parent_class        = isset($args['parent']) ? ' bdt-feature-option-parent' : '';
+
 
             $used_widgets = self::get_used_widgets_obj();
             $widget_name = 'usk-' . $args['id'];
@@ -473,7 +476,7 @@ if (!class_exists('UltimateStoreKit_Settings_API')) :
                     $html  .= '<fieldset>';
                     $html  .= sprintf('<label for="bdt_%1$s[%2$s]">', $args['section'], $args['id']);
                     $html  .= sprintf('<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id']);
-                    $html  .= sprintf('<input type="checkbox" class="checkbox" id="bdt_%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked($value, 'on', false));
+                    $html  .= sprintf('<input type="checkbox" class="checkbox'. $parent_class .'" id="bdt_%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked($value, 'on', false));
                     $html    .= '<span class="switch"></span>';
                     $html  .= '</label>';
                     $html  .= '</fieldset>';
