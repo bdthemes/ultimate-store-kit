@@ -1669,9 +1669,9 @@
     div.product form.cart .variations th {
         vertical-align: middle;
     }
-    .usk-variation-swatches--image img {
-        height: 100%;
-    }
+    // .usk-variation-swatches--image img {
+    //     height: 100%;
+    // }
     .quantity button {
         padding: 15px;
         border-style: solid;
@@ -1708,7 +1708,7 @@
     .woocommerce-variation-price {
         margin-bottom: 15px;
     }
-    .woocommerce div.product form.cart .reset_variations {
+    .variations .reset_variations {
         position: absolute;
         right: -45px;
         top: 50%;

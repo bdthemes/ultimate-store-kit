@@ -976,6 +976,410 @@ class Page_Single extends Module_Base {
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
+
+        /**
+         * Variation Swatches
+         */
+        $this->start_controls_section(
+            'section_variation_swatches',
+            [
+                'label' => __('Variation Swatches', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'variation_label_color',
+            [
+                'label'     => __('Label Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'variation_label_spacing',
+            [
+                'label'      => __('Right Spacing', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single form.cart  table.variations td' => 'padding-left: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'variation_label_typography',
+                'label'    => __('Label Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-single .variations label',
+            ]
+        );
+        $this->start_controls_tabs('variation_tabs');
+        $this->start_controls_tab(
+            'variation_tab_normal',
+            [
+                'label' => __('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'variation_color',
+            [
+                'label'     => __('Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations select' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'variation_background',
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-page-single .variations select, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item',
+                'exclude'   => ['image'],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'variation_border',
+                'selector' => '{{WRAPPER}} .usk-page-single .variations select, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item',
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'variation_border_radius',
+            [
+                'label'      => __('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .variations select' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'variation_padding',
+            [
+                'label'      => __('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .variations select' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'variation_gap',
+            [
+                'label'      => __('Gap', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__wrapper' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'variation_box_shadow',
+                'selector' => '{{WRAPPER}} .usk-page-single .variations select, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'variation_typography',
+                'selector' => '{{WRAPPER}} .usk-page-single .variations select, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item',
+            ]
+        );
+
+        $this->add_control(
+            'variation_reset_color',
+            [
+                'label'     => __('Reset Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations .reset_variations' => 'color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'variation_reset_gap',
+            [
+                'label'      => __('Left Spacing', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 40,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .variations .reset_variations' => 'right: -{{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'variation_reset_typography',
+                'label'    => __('Reset Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-single .variations .reset_variations',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'variation_tab_hover',
+            [
+                'label' => __('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'variation_color_hover',
+            [
+                'label'     => __('Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations select:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'variation_background_hover',
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-page-single .variations select:hover, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item:hover',
+                'exclude'   => ['image'],
+            ]
+        );
+        $this->add_control(
+            'variation_border_color_hover',
+            [
+                'label'     => __('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations select:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'variation_border_border!' => '',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'variation_box_shadow_hover',
+                'selector' => '{{WRAPPER}} .usk-page-single .variations select:hover, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item:hover',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'variation_tab_active',
+            [
+                'label' => __('Active', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'variation_color_active',
+            [
+                'label'     => __('Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations select:focus' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item.selected' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'variation_background_active',
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-page-single .variations select:focus, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item.selected',
+                'exclude'   => ['image'],
+            ]
+        );
+        $this->add_control(
+            'variation_border_color_active',
+            [
+                'label'     => __('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .variations select:focus' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item.selected' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'variation_border_border!' => '',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'variation_box_shadow_active',
+                'selector' => '{{WRAPPER}} .usk-page-single .variations select:focus, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item.selected',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
+
+        /**
+         * Quantity Plus Minus
+         */ 
+        $this->start_controls_section(
+            'section_quantity_plus_minus',
+            [
+                'label' => __('Quantity Plus Minus', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->start_controls_tabs('quantity_plus_minus_tabs');
+        $this->start_controls_tab(
+            'quantity_plus_minus_normal_tab',
+            [
+                'label' => __('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'quantity_plus_minus_color',
+            [
+                'label'     => __('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .quantity button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'quantity_plus_minus_background',
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-page-single .quantity button',
+                'exclude'   => ['image'],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'quantity_plus_minus_border',
+                'selector' => '{{WRAPPER}} .usk-page-single .quantity button',
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'quantity_plus_minus_border_radius',
+            [
+                'label'      => __('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .quantity button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'quantity_plus_minus_padding',
+            [
+                'label'      => __('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .quantity button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'quantity_plus_minus_box_shadow',
+                'selector' => '{{WRAPPER}} .usk-page-single .quantity button',
+            ]
+        );
+        $this->add_responsive_control(
+            'quantity_plus_minus_icon_size',
+            [
+                'label'      => __('Icon Size', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single .quantity button' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'quantity_plus_minus_hover_tab',
+            [
+                'label' => __('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'quantity_plus_minus_hover_color',
+            [
+                'label'     => __('Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .quantity button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'quantity_plus_minus_hover_background',
+                'types'     => ['classic', 'gradient'],
+                'selector'  => '{{WRAPPER}} .usk-page-single .quantity button:hover',
+                'exclude'   => ['image'],
+            ]
+        );
+        $this->add_control(
+            'quantity_plus_minus_hover_border_color',
+            [
+                'label'     => __('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-single .quantity button:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'quantity_plus_minus_border_border!' => '',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'quantity_plus_minus_hover_box_shadow',
+                'selector' => '{{WRAPPER}} .usk-page-single .quantity button:hover',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
     }
 
     public function render() { 
