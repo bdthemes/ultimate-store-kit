@@ -2072,10 +2072,6 @@ div.pp_pic_holder {
 .elementor-widget-usk-add-to-cart div.product form.cart .variations th {
   vertical-align: middle;
 }
-.elementor-widget-usk-page-single .usk-variation-swatches--image img,
-.elementor-widget-usk-add-to-cart .usk-variation-swatches--image img {
-  height: 100%;
-}
 .elementor-widget-usk-page-single .quantity button,
 .elementor-widget-usk-add-to-cart .quantity button {
   padding: 15px;
@@ -2123,8 +2119,8 @@ div.pp_pic_holder {
 .elementor-widget-usk-add-to-cart .woocommerce-variation-price {
   margin-bottom: 15px;
 }
-.elementor-widget-usk-page-single .woocommerce div.product form.cart .reset_variations,
-.elementor-widget-usk-add-to-cart .woocommerce div.product form.cart .reset_variations {
+.elementor-widget-usk-page-single .variations .reset_variations,
+.elementor-widget-usk-add-to-cart .variations .reset_variations {
   position: absolute;
   left: -45px;
   top: 50%;
