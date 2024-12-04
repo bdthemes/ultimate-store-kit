@@ -92,6 +92,8 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 * [Page Order](https://storekit.pro/demo/page-order/) - Simplify and enhance the order tracking experience.  
 * [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.  
 * [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.  
+* [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
+* **Variation Swatches** - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
