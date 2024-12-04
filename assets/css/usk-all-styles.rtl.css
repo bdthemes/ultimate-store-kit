@@ -1913,7 +1913,7 @@
 .usk-page-single .woocommerce ul.products {
   display: grid;
   margin: 0;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
 }
 .usk-page-single .woocommerce ul.products li {
@@ -1985,6 +1985,16 @@
   padding: 10px 15px;
 }
 
+@media (min-width: 768px) {
+  .usk-page-single .woocommerce ul.products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .usk-page-single .woocommerce ul.products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 .usk-florence-grid .usk-item {
   box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
   overflow: hidden;
