@@ -1,8 +1,8 @@
-=== Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Table and Woocommerce Slider ===
-Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
+=== Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Product Table, Woocommerce Slider ===
+Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik, suzauddowla
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.2.4
+Stable tag: 2.3.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.7.1
@@ -92,7 +92,6 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 * [Page Order](https://storekit.pro/demo/page-order/) - Simplify and enhance the order tracking experience.  
 * [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.  
 * [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.  
-* [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display. 
 
 = Easy Digital Downloads 💲 =
 
@@ -189,6 +188,8 @@ Feel free to [Contact us](https://bdthemes.com/support-new/) 💌 or check our w
 
 == Check out our other Addons 👑 ==
 
+Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
+
 * **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** 🆕☀️ - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering greater web design experience.
 
 * **[Element Pack](https://wordpress.org/plugins/bdthemes-element-pack-lite/)** - Element Pack Lite Build responsive website from scratch with an all-rounder package for Elementor.
@@ -220,10 +221,13 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.2.X [XX November 2024] =
+= 2.3.0 [4th December 2024] =
 
+* Added: Variation Swatches feature added
+* Added: Quantity field plus & minus feature added
+* Fixed: Ajax cart content update issue fixed in Mini Cart widget (Thanks to Nancy)
+* Updated: Single Product Page widget improved
 * Updated: Dashboard system improved
-* Fixed: Ajax cart content update issue fixed in Mini Cart widget ( Thanks to Nancy )
 
 = 2.2.3 [23th November 2024] =
 
