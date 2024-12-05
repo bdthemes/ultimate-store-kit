@@ -226,7 +226,16 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 
 
 	public function create_builder_template() {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( [ 'success' => false, 'errors_arr' => [ 'permission' => 'Permission denied' ] ], 403 );
+		}
+
 		parse_str( $_POST['data'], $data );
+
+		if ( ! wp_verify_nonce( $data['nonce'], 'usk-builder' ) ) {
+			wp_send_json_error( [ 'success' => false, 'errors_arr' => [ 'nonce' => 'Invalid nonce' ] ], 403 );
+		}
 
 		$templateId = isset( $data['template_id'] ) ? trim( $data['template_id'] ) : '';
 		$name       = isset( $data['template_name'] ) ? trim( $data['template_name'] ) : '';
