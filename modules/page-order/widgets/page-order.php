@@ -48,7 +48,10 @@ class Page_Order extends Module_Base {
             return ['usk-font', 'usk-add-to-cart'];
         }
     }
-    protected function register_controls() {
+    public function has_widget_inner_wrapper(): bool {
+			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+		}
+		protected function register_controls() {
         $this->start_controls_section(
             'section_layout_thankyou_orders',
             [

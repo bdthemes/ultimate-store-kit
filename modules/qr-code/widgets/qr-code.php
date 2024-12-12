@@ -53,7 +53,10 @@ class QR_Code extends Module_Base {
     // public function get_custom_help_url() {
     //     return 'https://youtu.be/3VkvuskVaNAM';
     // }
-    protected function register_controls() {
+    public function has_widget_inner_wrapper(): bool {
+			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+		}
+		protected function register_controls() {
         $this->start_controls_section(
             'section_content_qrcode',
             [

@@ -53,10 +53,9 @@
 			}
 		}
 		
-		// public function get_custom_help_url() {
-		// 	return 'https://youtu.be/a_wJL950Kz4';
-		// }
-		
+		public function has_widget_inner_wrapper(): bool {
+			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+		}
 		protected function register_controls() {
 			
 			$this->start_controls_section(
@@ -308,8 +307,8 @@
                         'carousel_shadow_mode' => 'yes',
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .elementor-widget-container:before' => is_rtl() ? 'background: linear-gradient(to left, {{VALUE}} 5%,rgba(255,255,255,0) 100%);' : 'background: linear-gradient(to right, {{VALUE}} 5%,rgba(255,255,255,0) 100%);',
-                        '{{WRAPPER}} .elementor-widget-container:after'  => is_rtl() ? 'background: linear-gradient(to left, rgba(255,255,255,0) 0%, {{VALUE}} 95%);' : 'background: linear-gradient(to right, rgba(255,255,255,0) 0%, {{VALUE}} 95%);',
+                        '{{WRAPPER}}.usk-shadow-mode-yes:before' => is_rtl() ? 'background: linear-gradient(to left, {{VALUE}} 5%,rgba(255,255,255,0) 100%);' : 'background: linear-gradient(to right, {{VALUE}} 5%,rgba(255,255,255,0) 100%);',
+                        '{{WRAPPER}}.usk-shadow-mode-yes:after'  => is_rtl() ? 'background: linear-gradient(to left, rgba(255,255,255,0) 0%, {{VALUE}} 95%);' : 'background: linear-gradient(to right, rgba(255,255,255,0) 0%, {{VALUE}} 95%);',
                     ],
                 ]
             );

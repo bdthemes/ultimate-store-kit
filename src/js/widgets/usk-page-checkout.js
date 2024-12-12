@@ -7,7 +7,7 @@
                 this.run()
             },
             run: function (key) {
-                var element = this.findElement('.elementor-widget-container').get(0);
+                var element = this.findElement('.elementor-widget').get(0);
                 if (jQuery(this.$element).hasClass('elementor-section')) {
                     element = this.$element.get(0)
                 }

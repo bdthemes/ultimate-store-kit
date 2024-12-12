@@ -59,7 +59,10 @@ class Info_List extends Module_Base {
      return 'https://youtu.be/vVCYUAPuqcg?si=ld1BjZ6KIy3OU62Y';
     }
         
-    protected function register_controls() {
+    public function has_widget_inner_wrapper(): bool {
+			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+		}
+		protected function register_controls() {
 
         $this->start_controls_section(
             'usk_section_list',
