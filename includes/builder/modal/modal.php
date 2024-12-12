@@ -24,6 +24,7 @@
 			<div class="usk-modal-form-wrap">
 				<form class="usk-modal-form" method="post">
 					<input type="hidden" name="template_id" value="" class="template_id" />
+					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('usk-builder'); ?>" />
 					<div class="usk-form-title">Choose Template Type</div>
 					<label for="template_type">Select the type of template you want to work on</label>
 					<select name="template_type" id="template_type">
