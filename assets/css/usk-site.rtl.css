@@ -1935,7 +1935,7 @@ div.pp_pic_holder {
   margin: 0 -10px;
 }
 
-.usk-shadow-mode-yes .elementor-widget-container:before, .usk-shadow-mode-yes .elementor-widget-container:after {
+.usk-shadow-mode-yes:before, .usk-shadow-mode-yes:after {
   content: "";
   position: absolute;
   width: 20%;
@@ -1944,17 +1944,17 @@ div.pp_pic_holder {
   z-index: 2;
   pointer-events: none;
 }
-.usk-shadow-mode-yes .elementor-widget-container:before {
+.usk-shadow-mode-yes:before {
   background: linear-gradient(to left, rgb(255, 255, 255) 5%, rgba(255, 255, 255, 0) 100%);
   right: -10px;
 }
-.usk-shadow-mode-yes .elementor-widget-container:after {
+.usk-shadow-mode-yes:after {
   background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 95%);
   left: -10px;
 }
 
 @media (max-width: 767px) {
-  .usk-shadow-mode-yes .elementor-widget-container:before, .usk-shadow-mode-yes .elementor-widget-container:after {
+  .usk-shadow-mode-yes:before, .usk-shadow-mode-yes:after {
     content: none;
   }
 }

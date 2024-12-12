@@ -60,7 +60,10 @@ class EDD_Beauty_Carousel extends Module_Base {
     public function get_query() {
         return $this->_query;
     }
-    protected function register_controls() {
+    public function has_widget_inner_wrapper(): bool {
+			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+		}
+		protected function register_controls() {
         /**
          * render controls layout
          */

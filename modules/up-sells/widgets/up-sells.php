@@ -48,13 +48,10 @@ class Up_Sells extends Module_Base
         }
     }
 
-    // public function get_custom_help_url() {
-    //     return 'https://youtu.be/ksy2uZ5Hg3M';
-    // } 
-
-    protected function register_controls()
-    {
-
+    public function has_widget_inner_wrapper(): bool {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+    }
+    protected function register_controls() {
         $this->register_controls_upsell_content();
         $this->register_style_controls_heading();
         $this->register_controls_items();
