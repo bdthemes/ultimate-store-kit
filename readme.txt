@@ -223,9 +223,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.3.1 [XX December 2024] =
+= 2.3.1 [17th December 2024] =
 
 * Added: Optimized Markup feature compatibility added
+* Added: Upgrade Swiper Library compatibility added
 
 = 2.3.0 [4th December 2024] =
 
