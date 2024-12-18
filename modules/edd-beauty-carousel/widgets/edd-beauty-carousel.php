@@ -47,10 +47,14 @@ class EDD_Beauty_Carousel extends Module_Base {
 
     public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['usk-all-styles'];
+            return ['swiper', 'usk-all-styles'];
         } else {
-            return ['usk-font', 'usk-edd-beauty-carousel'];
+            return ['swiper', 'usk-font', 'usk-edd-beauty-carousel'];
         }
+    }
+
+    public function get_script_depends() {
+        return ['swiper'];
     }
 
     public function get_custom_help_url() {

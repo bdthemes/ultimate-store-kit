@@ -50,17 +50,17 @@ class Product_Category_Carousel extends Module_Base {
 
 	public function get_style_depends() {
 		if ($this->usk_is_edit_mode()) {
-			return ['usk-all-styles'];
+			return ['swiper', 'usk-all-styles'];
 		} else {
-			return ['usk-font', 'usk-product-category-carousel'];
+			return ['swiper', 'usk-font', 'usk-product-category-carousel'];
 		}
 	}
 
 	public function get_script_depends() {
 		if ($this->usk_is_edit_mode()) {
-			return ['usk-all-styles'];
+			return ['swiper', 'usk-all-styles'];
 		} else {
-			return ['usk-product-category-carousel'];
+			return ['swiper', 'usk-product-category-carousel'];
 		}
 	}
 

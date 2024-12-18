@@ -57,14 +57,14 @@ class Image_Hotspot extends Module_Base {
 
     public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['usk-all-styles'];
+            return ['swiper', 'usk-all-styles'];
         } else {
-            return ['usk-font', 'usk-image-hotspot', 'tippy'];
+            return ['swiper', 'usk-font', 'usk-image-hotspot', 'tippy'];
         }
     }
 
     public function get_script_depends() {
-        return ['micromodal', 'popper', 'tippyjs',];
+        return ['swiper', 'micromodal', 'popper', 'tippyjs',];
     }
 
     // public function get_custom_help_url() {
