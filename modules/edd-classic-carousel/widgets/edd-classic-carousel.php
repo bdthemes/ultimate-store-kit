@@ -47,10 +47,14 @@ class EDD_Classic_Carousel extends Module_Base {
 
     public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['usk-all-styles'];
+            return ['swiper', 'usk-all-styles'];
         } else {
-            return ['usk-font', 'usk-edd-classic-carousel'];
+            return ['swiper', 'usk-font', 'usk-edd-classic-carousel'];
         }
+    }
+
+    public function get_script_depends() {
+        return ['swiper'];
     }
 
 

@@ -51,14 +51,14 @@ class Showcase_Slider extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['micromodal'];
+        return ['swiper', 'micromodal'];
     }
 
     public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['usk-all-styles'];
+            return ['swiper', 'usk-all-styles'];
         } else {
-            return ['usk-font', 'usk-showcase-slider'];
+            return ['swiper', 'usk-font', 'usk-showcase-slider'];
         }
     }
 

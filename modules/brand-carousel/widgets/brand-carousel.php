@@ -47,10 +47,15 @@
 		
 		public function get_style_depends() {
 			if ( $this->usk_is_edit_mode() ) {
-				return [ 'usk-styles' ];
+				return [ 'swiper', 'usk-styles' ];
 			} else {
-				return [ 'usk-font', 'usk-brand-carousel' ];
+				return [ 'swiper', 'usk-font', 'usk-brand-carousel' ];
 			}
+		}
+
+		public function get_script_depends()
+		{
+			return ['swiper'];
 		}
 		
 		public function has_widget_inner_wrapper(): bool {

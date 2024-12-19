@@ -223,6 +223,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.3.X [XXth December 2024] =
+
+* Fixed: Swiper loading issue fixed
+
 = 2.3.1 [17th December 2024] =
 
 * Added: Optimized Markup feature compatibility added
