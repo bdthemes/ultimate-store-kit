@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik, suzauddowla
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.7.1
@@ -223,7 +223,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.3.X [XXth December 2024] =
+= 2.3.2 [19th December 2024] =
 
 * Fixed: Swiper loading issue fixed
 
