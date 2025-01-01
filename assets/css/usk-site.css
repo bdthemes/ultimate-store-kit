@@ -2119,10 +2119,3 @@ div.pp_pic_holder {
 .elementor-widget-usk-add-to-cart .woocommerce-variation-price {
   margin-bottom: 15px;
 }
-.elementor-widget-usk-page-single .variations .reset_variations,
-.elementor-widget-usk-add-to-cart .variations .reset_variations {
-  position: absolute;
-  right: -45px;
-  top: 50%;
-  transform: translateY(-50%);
-}
