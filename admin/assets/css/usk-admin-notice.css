@@ -78,19 +78,17 @@
 */
 #adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"] {
   font-weight: 600;
-  background-image: linear-gradient(45deg, #E62A3F 0%, #00216A 100%);
-  color: #ffffff;
-  margin: 3px 10px 0;
-  display: block;
-  text-align: center;
-  border-radius: 3px;
-  transition: background-image 0.3s ease, color 0.3s ease;
+  color: #E62A3F;
 }
 #adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"]:hover {
-  box-shadow: none;
-  background-image: linear-gradient(45deg, #00216A 0%, #E62A3F 100%);
-  color: #ffffff;
+  color: #fd2c3f;
 }
-#adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"]:focus {
-  box-shadow: none;
+
+a.usk-go-pro {
+  color: #E62A3F;
+  font-weight: bold;
+}
+
+a.usk-go-pro:hover, a.usk-go-pro:focus {
+  color: #fd2c3f;
 }
