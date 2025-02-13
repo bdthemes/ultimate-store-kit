@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, bdkoder, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
@@ -222,6 +222,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.3.4 [13th February 2025] =
+
+* Fixed: Dashboard notice dismiss icon conflict issue fixed
 
 = 2.3.3 [6th February 2025] =
 
