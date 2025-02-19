@@ -3243,7 +3243,7 @@
     display: flex;
   }
   .usk-product-image-accordion .usk-content-box {
-    width: 300px;
+    max-width: 300px;
   }
 }
 .usk-product-list .usk-list-wrap {
