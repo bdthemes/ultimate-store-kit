@@ -154,7 +154,7 @@ class Product_Image_Accordion extends Module_Base {
         $this->add_control(
             'content_width',
             [
-                'label'       => __('Width', 'ultimate-store-kit'),
+                'label'       => __('Max Width', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -166,8 +166,8 @@ class Product_Image_Accordion extends Module_Base {
                     'size' => 350,
                 ],
                 'selectors'   => [
-                    '(desktop){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: {{SIZE}}px;',
-                    '(tablet){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: {{SIZE}}px;',
+                    '(desktop){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'max-width: {{SIZE}}px;',
+                    '(tablet){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'max-width: {{SIZE}}px;',
                     '(mobile){{WRAPPER}} .usk-product-image-accordion .usk-content-box' => 'width: 100%;'
                 ],
             ]
