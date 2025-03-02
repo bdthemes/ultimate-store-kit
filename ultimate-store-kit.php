@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Store Kit
  * Plugin URI: https://bdthemes.com/ultimate-store-kit/
  * Description: Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.
- * Version: 2.3.5
+ * Version: 2.3.6
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-store-kit
@@ -15,7 +15,7 @@
  */
 
 // Some pre define value for easy use
-define( 'BDTUSK_VER', '2.3.5' );
+define( 'BDTUSK_VER', '2.3.6' );
 define( 'BDTUSK__FILE__', __FILE__ );
 define( 'BDTUSK_PNAME', basename( dirname( BDTUSK__FILE__ ) ) );
 define( 'BDTUSK_PBNAME', plugin_basename( BDTUSK__FILE__ ) );
@@ -163,51 +163,21 @@ function bdthemes_ultimate_store_kit_dependencies_plugin_fail_load() {
 
 	$plugin = 'woocommerce/woocommerce.php';
 
-
-
-
-
-	if ( _is_dep_plugin_installed( $plugin ) ) {
-		if ( ! current_user_can( 'activate_plugins' ) ) {
-			return;
-		}
-		$admin_message = '<p>' . esc_html__( 'Ops! Ultimate Store Kit not working because you need to activate a eCommerce plugin like WooCommerce or Easy Digital Downloads first.', 'ultimate-store-kit' ) . '</p>';
-	} else {
-		if ( ! current_user_can( 'install_plugins' ) ) {
-			return;
-		}
-		$admin_message = '<p>' . esc_html__( 'Ops! Ultimate Store Kit not working because you need to install a eCommerce plugin like WooCommerce or Easy Digital Download first.', 'ultimate-store-kit' ) . '</p>';
-	}
-
-	printf( '<div class="error">%1$s</div>', wp_kses_post( $admin_message ) );
-}
-
-
-/**
- * Check Woocommerce installed and activated correctly
- */
-function bdthemes_ultimate_store_kit_easy_digital_downloads_fail_load() {
-	$screen = get_current_screen();
-	if ( isset( $screen->parent_file ) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id ) {
-		return;
-	}
-
-	$plugin = 'easy-digital-downloads/easy-digital-downloads.php';
-
 	if ( _is_dep_plugin_installed( $plugin ) ) {
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
 		$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
-		$admin_message  = '<p>' . esc_html__( 'Ops! Ultimate Store Kit not working because you need to activate the Easy Digital Donwlaods plugin first.', 'ultimate-store-kit' ) . '</p>';
-		$admin_message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, esc_html__( 'Activate Easy Digital Donwlaods Now', 'ultimate-store-kit' ) ) . '</p>';
+		$admin_message = '<p>' . esc_html__( 'Ops! Ultimate Store Kit not working because you need to activate a eCommerce plugin like WooCommerce or Easy Digital Downloads first.', 'ultimate-store-kit' ) . '</p>';
+		$admin_message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, esc_html__( 'Activate WooCommerce Now', 'ultimate-store-kit' ) ) . '</p>';
 	} else {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
-		$install_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=easy-digital-downloads' ), 'install-plugin_easy_digital_downloads' );
-		$admin_message = '<p>' . esc_html__( 'Ops! Ultimate Store Kit not working because you need to install the Easy Digital Downloads plugin', 'ultimate-store-kit' ) . '</p>';
-		$admin_message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__( 'Install Easy Digital Downloads Now', 'ultimate-store-kit' ) ) . '</p>';
+		$install_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
+		$admin_message = '<p>' . esc_html__( 'Ops! Ultimate Store Kit not working because you need to install a eCommerce plugin like WooCommerce or Easy Digital Download first.', 'ultimate-store-kit' ) . '</p>';
+		$admin_message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__( 'Install WooCommerce Now', 'ultimate-store-kit' ) ) . '</p>';
+
 	}
 
 	printf( '<div class="error">%1$s</div>', wp_kses_post( $admin_message ) );

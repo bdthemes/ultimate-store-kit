@@ -1,8 +1,8 @@
 === Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Product Table, Woocommerce Slider ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
-Tags: elementor, woocommerce, easy digital download, elementor addon, download monitor
-Stable tag: 2.3.5
+Tags: elementor, woocommerce, easy digital download, elementor addon, woocommerce elementor
+Stable tag: 2.3.6
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.7.2
@@ -16,51 +16,27 @@ Best addon for Elementor WordPress plugin with 80+ most popular eCommerce, EDD a
 
 == Description ==
 
-Tired of your slow eCommerce website with an unexpectedly large number of plugins? NOT ANYMORE!
+**Ultimate Store Kit for Elementor – The best WooCommerce Page Builder**
 
-Grab the Ultimate Store Kit plugin for eCommerce [Elementor](https://wordpress.org/plugins/elementor/) and build unique online shop websites in minutes. Using this plugin, you can create personalized store product pages, landing pages, featured product pages and several other features, including tags, badges, wishlists, buttons and so forth.
+Build stunning and professional WooCommerce websites effortlessly with [Ultimate Store Kit](https://storekit.pro/) for Elementor. With over 69 versatile widgets—including **Product Grids, Carousels, Sliders and Review Grids**—this plugin streamlines the design process, allowing you to create a modern online store with a distinctive aesthetic.
 
-[Ultimate Store Kit](https://storekit.pro/) for Elementor plugin has been developed to give web developers and designers an effortless way of creating amazing eCommerce websites. With the Ultimate Store Kit for Elementor, there is no need to have a long list of plugins slowing your website down.
+It enables web designers and developers to craft custom product pages, checkout pages and dynamic featured sections that enhance both site functionality and user engagement. With intuitive design features and flexible customization options, Ultimate Store Kit ensures your WooCommerce store delivers a tailored and efficient shopping experience.
 
-The plugin comes with all the necessary elements that you may require while building an eCommerce website on WordPress - Product Grid/List, Product Carousel, Product Category Grid, Product Accordion, Product Image Accordion, Product Table, Product Slider, Product Review Grid and so on. The Ultimate Store Kit for Elementor also allows you to change colors and font sizes as per your needs!
+== What Makes Ultimate Store Kit Unique? 💫 ==
 
-https://youtu.be/uX7TaFJgs9w
+* Fully integrates with WordPress, Elementor and WooCommerce.
 
-== Get Ultimate Store Kit Plugin to 💫 ==
+* Product grids, carousels, sliders, accordions, review grids and tables are all in one place.
 
-* Build efficient and faster eCommerce websites with no extra loads on the site
-* Flexible, responsive and creative web interfaces to display products with engaging product layouts
-* Save up to 80% of web development time
-* Built with green codes to boost your site performance further
-* Smartly combines Elementor and WooCommerce plugin features to power up the next-gen eCommerce business
+* Includes hover effects, mini carts, attractive badges, stock status indicators and customizable fonts and colors.
 
-With the Ultimate Store Kit plugin, you can create and customize eCommerce websites with product grids, carousels, sliders, accordions, lists and tables. The widgets will deliver your product info with swiftness and style while packed with cool animations, mirror images on hover, attractive product badges, stock status and a mini cart.
+* Saves data and improves speed with an all-in-one solution.
 
-== What makes Ultimate Store Kit ahead of its competitors 💡 ==
-
-* Super fast and super responsive layout
-* Lots of grid, carousel and slider widgets
-* NEW product badge equipped automatically
-* Double image per product on display
-* Smooth transitions unlike any other
-* 24/7 expert support team baking the plugin
-
-Make your online business go higher using just one tool, the Ultimate Store Kit for Elementor.
-
-== Who should benefit from Ultimate Store Kit addons plugin 🎇 ==
-
-All eCommerce web developers can use the Ultimate Store Kit addon to bring more mobility to your business. Especially, web designers and developers can harvest the full potential of the plugin for creating eCommerce websites, business websites, product portfolio websites, startups, large-scale business sites and more.
-
-== Why pick the Ultimate Store Kit? 💎 ==
-
-The tool is highly compatible with WordPress Elementor and WooCommerce, having no adverse impact. It does not collide with any core and optional functionalities of WordPress, Elementor and WooCommerce instead combines with them to produce maximum efficiency.
-
-Ultimate Store Kit is the perfect tool for web designers who want customized storefronts instead of plain-looking online shops. There are more than a million and one reasons to choose Ultimate Store Kit for your website, including the dynamic features, faster loading speed, minimal data consumption and ultra responsiveness.
-
-There is no reason to install multiple WooCommerce plugins, just Ultimate Store Kit is enough.
 
 ###USEFUL LINKS 👇###
 **[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
+
+https://youtu.be/EI21j-CU9t4?si=1eFri9BweVmQfnbN
 
 == Free Widgets for Lifetime: 🔥 ==
 
@@ -93,7 +69,7 @@ There is no reason to install multiple WooCommerce plugins, just Ultimate Store 
 * [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.  
 * [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.  
 * [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
-* **Variation Swatches** - Enhance WooCommerce product variations with customizable color, image and label swatches.
+* [Variation Swatches](https://www.elementpack.pro/demo/element/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
@@ -222,6 +198,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.3.6 [2nd March 2025] =
+
+* Updated: Dashboard system improved
 
 = 2.3.5 [19th February 2025] =
 
