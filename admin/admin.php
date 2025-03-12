@@ -105,5 +105,9 @@ class Admin {
 				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.min.js', ['jquery'], BDTUSK_VER, true);
 			}
 		}
+
+		wp_localize_script('usk-admin', 'usk_admin_config', [
+			'nonce'   => wp_create_nonce('usk_admin_nonce'),
+		]);
 	}
 }

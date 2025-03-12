@@ -13,6 +13,7 @@ jQuery(document).ready(function ($) {
         type: "POST",
         data: {
           action: "ultimate-store-kit-notices",
+          nonce: usk_admin_config.nonce,
           id: $id,
           meta: $meta,
           time: $time,
