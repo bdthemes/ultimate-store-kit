@@ -199,6 +199,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.3.X [Xnd March 2025] =
+
+* Fixed: Security issue ( Thanks to Peter Thaleikis )
+
 = 2.3.6 [2nd March 2025] =
 
 * Updated: Dashboard system improved
