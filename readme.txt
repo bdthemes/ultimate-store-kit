@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, woocommerce elementor
-Stable tag: 2.3.6
+Stable tag: 2.3.7
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.7.2
@@ -199,9 +199,9 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.3.X [Xnd March 2025] =
+= 2.3.7 [13th March 2025] =
 
-* Fixed: Security issue ( Thanks to Peter Thaleikis )
+* Fixed: Security issue fixed ( Thanks to Peter Thaleikis )
 
 = 2.3.6 [2nd March 2025] =
 
