@@ -58,10 +58,16 @@ class Admin {
 
 	 public function plugin_action_links( $plugin_meta ) {
 
-        $row_meta = [
-            'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
-            'gopro' => '<a href="https://storekit.pro/pricing/?utm_source=UltimateStoreKit&utm_medium=PluginPage&utm_campaign=30%OffOnUSK&coupon=FREETOPRO" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-store-kit')) . '" target="_blank" title="When you purchase through this link you will get 30% discount!" class="usk-go-pro">' . __('Upgrade For 30% Off!', 'ultimate-store-kit') . '</a>',
-        ];
+		if (true !== _is_usk_pro_activated()) {
+			$row_meta = [
+				'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
+				'gopro' => '<a href="https://storekit.pro/pricing/?utm_source=UltimateStoreKit&utm_medium=PluginPage&utm_campaign=30%OffOnUSK&coupon=FREETOPRO" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-store-kit')) . '" target="_blank" title="When you purchase through this link you will get 30% discount!" class="usk-go-pro">' . __('Upgrade For 30% Off!', 'ultimate-store-kit') . '</a>',
+			];
+		} else {
+			$row_meta = [
+				'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
+			];
+		}
 
         $plugin_meta = array_merge($plugin_meta, $row_meta);
 
