@@ -407,15 +407,56 @@ class Page_My_Account extends Module_Base {
         $this->end_controls_section();
     }
 
-
     protected function render() {
+
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+        $screen = isset($wp->query_vars['edit-address']) ? $wp->query_vars['edit-address'] : '';
+
         if (!is_user_logged_in()) {
             esc_html_e('You need logged in first', 'ultimate-store-kit');
         } else { ?>
             <div class="usk-page-my-account">
-                <?php echo do_shortcode('[woocommerce_my_account]'); ?>
+
+                <?php if ($this->usk_is_edit_mode()) : ?>
+                    
+                    <div class="woocommerce usk-myaccount-edit-mode">
+
+                        <!-- WooCommerce My Account Navigation -->
+                        <?php woocommerce_account_navigation(); ?>
+
+                        <!-- WooCommerce My Account Content -->
+                        <div class="woocommerce-MyAccount-content">
+                            <div class="usk-myaccount-dashboard">
+                                <?php woocommerce_account_content(); ?>
+                            </div>
+                            <div class="usk-myaccount-orders" style="display: none;">
+                                <?php woocommerce_account_orders($paged); ?>
+                            </div>
+                            <div class="usk-myaccount-downloads" style="display: none;">
+                                <?php echo woocommerce_account_downloads(); ?>
+                            </div>
+                            <div class="usk-myaccount-address" style="display: none;">
+                                <?php woocommerce_account_edit_address($screen); ?>
+                            </div>
+                            <div class="usk-myaccount-payment-methods" style="display: none;">
+                                <?php woocommerce_account_payment_methods(); ?>
+                            </div>
+                            <div class="usk-myaccount-details" style="display: none;">
+                                <?php woocommerce_account_edit_account(); ?>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php else : ?>
+
+                    <?php echo do_shortcode('[woocommerce_my_account]'); ?>
+
+                <?php endif; ?>
+            
             </div>
-<?php
+        <?php
         }
     }
 }
