@@ -1275,7 +1275,7 @@ if ( ! function_exists( 'ultimate_store_kit_compare_product_page' ) ) {
 	function ultimate_store_kit_compare_product_page() {
 		if ( $postId = intval( get_option( 'bdt_usk_compare_products_page_id' ) ) ) {
 			$post = get_post( $postId );
-			if ( $post->post_status == 'publish' ) {
+			if ( $post && $post->post_status == 'publish' ) {
 				return $post->ID;
 			}
 		}
