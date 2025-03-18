@@ -1,5 +1,5 @@
 === Ultimate Store Kit Elementor Addons, Woocommerce Builder, EDD Builder, Elementor Store Builder, Product Grid, Product Table, Woocommerce Slider ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, easy digital download, elementor addon, woocommerce elementor
 Stable tag: 2.3.7
@@ -69,7 +69,7 @@ https://youtu.be/EI21j-CU9t4?si=1eFri9BweVmQfnbN
 * [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.  
 * [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.  
 * [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
-* [Variation Swatches](https://www.elementpack.pro/demo/element/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
+* [Variation Swatches](https://storekit.pro/demo/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
