@@ -1146,6 +1146,15 @@ class UltimateStoreKit_Admin_Settings
                 /**
                  * Others Widget
                  */
+                jQuery('#ultimate_store_kit_general_modules_page a.bdt-active-all-widget').click(function() {
+
+                    jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
+                        jQuery(this).attr('checked', 'checked').prop("checked", true);
+                    });
+
+                    jQuery(this).addClass('bdt-active');
+                    jQuery('a.bdt-deactive-all-widget').removeClass('bdt-active');
+                });
                 jQuery('#ultimate_store_kit_general_modules_page a.bdt-deactive-all-widget').click(function() {
 
                     jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
@@ -1201,8 +1210,6 @@ class UltimateStoreKit_Admin_Settings
                     jQuery(this).removeAttr('checked');
                     jQuery(this).attr("disabled", true);
                 });
-
-
             });
 
             jQuery(document).ready(function ($) {
