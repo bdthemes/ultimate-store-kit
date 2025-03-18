@@ -13,6 +13,9 @@
             padding: 0;
             list-style: none;
             border: none;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
 
             li {
                 a {
@@ -50,6 +53,7 @@
     .woocommerce-MyAccount-content {
         border: none;
         padding: 0;
+        overflow: hidden;
         p {
             margin: 0 0 20px;
             color: #797d85;
@@ -140,16 +144,29 @@
 
 }
 
-// Responsive CSS Here
-@media (min-width: 768px) {
-    .usk-page-my-account {
-        .woocommerce {
+// Account Navigation Tabs Layout
+.usk-my-account-tabs-layout-horizontal {
+    .woocommerce {
+        flex-direction: column;
+    }
+    .woocommerce-MyAccount-navigation {
+        width: 100%;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
             flex-direction: row;
         }
+    }
+    .woocommerce-MyAccount-content {
+        width: 100%;
+    }
+}
 
-        .woocommerce-MyAccount-navigation {
-            padding-right: 30px;
-            border-right: 1px solid #ddd;
+// Responsive CSS Here
+@media (min-width: 768px) {
+    .usk-my-account-tabs-layout-vertical {
+        .woocommerce {
+            flex-direction: row;
         }
     }
 }
