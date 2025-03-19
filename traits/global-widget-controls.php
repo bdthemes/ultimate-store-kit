@@ -657,6 +657,14 @@ trait Global_Widget_Controls {
         );
 
         $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_background',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item',
+            ]
+        );
+
+        $this->add_group_control(
             Group_Control_Border::get_type(),
             [
                 'name'      => 'item_border',
@@ -704,6 +712,14 @@ trait Global_Widget_Controls {
             'item_tab_hover',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'item_hover_background',
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-item:hover',
             ]
         );
 
