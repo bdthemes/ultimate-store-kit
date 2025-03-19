@@ -378,7 +378,7 @@ class Florence_Grid extends Module_Base {
             if ($settings['layout_style'] === 'grid') {
                 $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-grid-layout']);
             } else {
-                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout', 'usk-grid-2']);
+                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout', 'usk-grid-1']);
             }
             if ($wp_query->have_posts()) { ?>
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
