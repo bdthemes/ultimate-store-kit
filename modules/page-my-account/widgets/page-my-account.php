@@ -781,6 +781,380 @@ class Page_My_Account extends Module_Base {
         $this->end_controls_tabs();
         $this->end_controls_section();
 
+        /**
+         * Account Address
+         */
+        $this->start_controls_section(
+            'section_page_my_account_address_style',
+            [
+                'label' => esc_html__('Address', 'ultimate-store-kit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'address_heading',
+            [
+                'label' => esc_html__('Address Info', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+        $this->add_control(
+            'address_title_color',
+            [
+                'label' => esc_html__('Title Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address h2' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'address_title_typography',
+                'selector' => '{{WRAPPER}} .usk-page-my-account .woocommerce-Address h2',
+            ]
+        );
+        $this->add_control(
+            'address_link_color',
+            [
+                'label' => esc_html__('Edit Link Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address a' => 'color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'address_link_hover_color',
+            [
+                'label' => esc_html__('Edit Link Hover Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'address_link_typography',
+                'selector' => '{{WRAPPER}} .usk-page-my-account .woocommerce-Address a',
+            ]
+        );
+        
+        $this->add_control(
+            'address_info_color',
+            [
+                'label' => esc_html__('Address Info Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address address' => 'color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'address_info_typography',
+                'selector' => '{{WRAPPER}} .usk-page-my-account .woocommerce-Address address',
+            ]
+        );
+        $this->add_control(
+            'address_divider_color',
+            [
+                'label' => esc_html__('Divider Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address .woocommerce-Address-title' => 'border-color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'address_background',
+                'selector' => '{{WRAPPER}} .usk-page-my-account .woocommerce-Address',
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'address_border',
+                'selector' => '{{WRAPPER}} .usk-page-my-account .woocommerce-Address',
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'address_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'address_padding',
+            [
+                'label' => esc_html__('Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-my-account .woocommerce-Address' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->end_controls_section();
+
+        /**
+         * Form Fields
+         */
+        $this->start_controls_section(
+            'section_page_my_account_form_fields_style',
+            [
+                'label' => esc_html__('Form Fields', 'ultimate-store-kit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        // Title
+        $this->add_control(
+            'form_fields_title_heading',
+            [
+                'label' => esc_html__('Title', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+        $this->add_control(
+            'form_fields_title_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form h2' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_fields_title_typography',
+                'selector' => '{{WRAPPER}} .woocommerce-MyAccount-content form h2',
+            ]
+        );
+
+        // Fields
+        $this->add_control(
+            'form_fields_heading',
+            [
+                'label' => esc_html__('Fields', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'form_fields_label_color',
+            [
+                'label' => esc_html__('Label Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_fields_label_typography',
+                'label' => esc_html__('Label Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .woocommerce-MyAccount-content form label',
+            ]
+        );
+        $this->add_control(
+            'form_fields_input_color',
+            [
+                'label' => esc_html__('Input Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form input, {{WRAPPER}} .woocommerce-MyAccount-content form select, {{WRAPPER}} .woocommerce-MyAccount-content form textarea' => 'color: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'form_fields_input_background_color',
+            [
+                'label' => esc_html__('Input Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form input, {{WRAPPER}} .woocommerce-MyAccount-content form select, {{WRAPPER}} .woocommerce-MyAccount-content form textarea' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'form_fields_input_border_color',
+            [
+                'label' => esc_html__('Input Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form input, {{WRAPPER}} .woocommerce-MyAccount-content form select, {{WRAPPER}} .woocommerce-MyAccount-content form textarea' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'form_fields_input_border_radius',
+            [
+                'label' => esc_html__('Input Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form input, {{WRAPPER}} .woocommerce-MyAccount-content form select, {{WRAPPER}} .woocommerce-MyAccount-content form textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'form_fields_input_padding',
+            [
+                'label' => esc_html__('Input Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form input, {{WRAPPER}} .woocommerce-MyAccount-content form select, {{WRAPPER}} .woocommerce-MyAccount-content form textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_fields_input_typography',
+                'label' => esc_html__('Input Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .woocommerce-MyAccount-content form input, {{WRAPPER}} .woocommerce-MyAccount-content form select, {{WRAPPER}} .woocommerce-MyAccount-content form textarea',
+            ]
+        );
+
+        // Submit Button
+        $this->add_control(
+            'form_fields_submit_heading',
+            [
+                'label' => esc_html__('Submit Button', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->start_controls_tabs('tabs_form_fields_submit');
+        $this->start_controls_tab(
+            'tab_form_fields_submit_normal',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'form_fields_submit_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'form_fields_submit_background_color',
+            [
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'form_fields_submit_border',
+                'selector' => '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]',
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'form_fields_submit_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'form_fields_submit_padding',
+            [
+                'label' => esc_html__('Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'form_fields_submit_typography',
+                'selector' => '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]',
+            ]
+        );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'tab_form_fields_submit_hover',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_control(
+            'form_fields_submit_hover_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'form_fields_submit_hover_background_color',
+            [
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'form_fields_submit_hover_border_color',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-MyAccount-content form button[type="submit"]:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'form_fields_submit_border_border!' => '',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
 
     }
 
