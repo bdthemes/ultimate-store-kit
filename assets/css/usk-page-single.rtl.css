@@ -21,6 +21,10 @@
   padding: 30px !important;
   display: inline-block;
   border-radius: 5px;
+  width: auto;
+}
+.usk-page-single .woocommerce ul.products::before, .usk-page-single .woocommerce ul.products::after {
+  display: none;
 }
 .usk-page-single .product_meta {
   display: flex;

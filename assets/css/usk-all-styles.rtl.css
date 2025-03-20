@@ -1423,6 +1423,10 @@
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 40px;
 }
+.usk-page-checkout form .form-row-first,
+.usk-page-checkout form .form-row-last {
+  width: 100% !important;
+}
 .usk-page-checkout .usk-checkout-billing-address .usk-checkout-billing-address-header {
   font-size: 25px;
   margin: 0 0 20px;
@@ -1881,6 +1885,10 @@
   padding: 30px !important;
   display: inline-block;
   border-radius: 5px;
+  width: auto;
+}
+.usk-page-single .woocommerce ul.products::before, .usk-page-single .woocommerce ul.products::after {
+  display: none;
 }
 .usk-page-single .product_meta {
   display: flex;

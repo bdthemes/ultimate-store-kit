@@ -254,7 +254,7 @@
         jQuery("[name='update_cart']").prop("disabled", false);
         jQuery("[name='update_cart']").trigger("click");
     });
-    $(document).ready(function () {
-        $(".woocommerce-notices-wrapper").not(".usk-page-cart .woocommerce-notices-wrapper").remove();
-    });
+    // $(document).ready(function () {
+    //     $(".woocommerce-notices-wrapper").not(".usk-page-cart .woocommerce-notices-wrapper").remove();
+    // });
 })(jQuery, window.elementorFrontend);

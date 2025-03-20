@@ -3,6 +3,11 @@
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 40px;
 
+  form .form-row-first, 
+  form .form-row-last {
+    width: 100% !important;
+  }
+
   .usk-checkout-billing-address {
     .usk-checkout-billing-address-header {
       font-size: 25px;
