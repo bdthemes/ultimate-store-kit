@@ -1423,8 +1423,8 @@
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 40px;
 }
-.usk-page-checkout form .form-row-first,
-.usk-page-checkout form .form-row-last {
+.usk-page-checkout .form-row-first,
+.usk-page-checkout .form-row-last {
   width: 100% !important;
 }
 .usk-page-checkout .usk-checkout-billing-address .usk-checkout-billing-address-header {
