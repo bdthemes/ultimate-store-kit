@@ -300,12 +300,13 @@ class Ultimate_Store_Kit_Loader {
 		$elementor = Plugin::$instance;
 
 		// Add element category in panel
-		$elementor->elements_manager->add_category( 'ultimate-store-kit-single', [ 'title' => 'Ultimate Store Kit (Single)', 'icon' => 'font' ] );
+		$elementor->elements_manager->add_category( 'ultimate-store-kit-my-account', [ 'title' => 'Ultimate Store Kit (My Account)', 'icon' => 'font' ] );
+		$elementor->elements_manager->add_category( 'ultimate-store-kit-single', [ 'title' => 'Ultimate Store Kit (Product Single)', 'icon' => 'font' ] );
 		$elementor->elements_manager->add_category( BDTUSK_SLUG, [ 'title' => BDTUSK_TITLE, 'icon' => 'font' ] );
 	}
 
 	private function setup_hooks() {
-		add_action( 'elementor/elements/categories_registered', [ $this, 'ultimate_store_kit_category_register' ] );
+		add_action( 'elementor/elements/categories_registered', [ $this, 'ultimate_store_kit_category_register' ], 1, 1 );
 		add_action( 'elementor/init', [ $this, 'ultimate_store_kit_init' ] );
 		add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'enqueue_editor_styles' ] );
 
