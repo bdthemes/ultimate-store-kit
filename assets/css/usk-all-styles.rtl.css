@@ -1874,6 +1874,13 @@
 .usk-page-single form.cart * {
   text-align: right;
 }
+.usk-page-single .variations td.value {
+  position: relative;
+}
+.usk-page-single a.reset_variations {
+  position: absolute;
+  right: 0;
+}
 .usk-page-single .woocommerce ul.products {
   display: grid;
   margin: 0;

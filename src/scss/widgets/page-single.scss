@@ -12,6 +12,14 @@
         text-align:left;
     }
 
+    .variations td.value {
+        position: relative;
+    }
+    a.reset_variations {
+        position: absolute;
+        left: 0;
+    }
+
     .woocommerce ul.products{
         display: grid;
         margin: 0;
