@@ -391,6 +391,7 @@ class Glossy_Grid extends Module_Base {
                 'total'    => $wp_query->found_posts,
                 'per_page' => $settings['product_limit'],
                 'current'  => $paged,
+                'orderedby' => $wp_query->get('orderby'),
             );
             if ($settings['show_tab'] == 'yes') : ?>
             <div class="usk-grid-header usk-visible@l">

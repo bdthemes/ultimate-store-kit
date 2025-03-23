@@ -430,10 +430,12 @@ class Shiny_Grid extends Module_Base {
             } else {
                 $paged = 1;
             }
+
             $args = array(
                 'total'    => $wp_query->found_posts,
                 'per_page' => $settings['product_limit'],
                 'current'  => $paged,
+                'orderedby' => $wp_query->get('orderby'),
             );
             if ($settings['show_tab'] == 'yes') : ?>
             <div class="usk-grid-header usk-visible@l">
