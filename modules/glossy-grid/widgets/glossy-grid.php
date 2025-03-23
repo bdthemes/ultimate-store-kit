@@ -302,7 +302,7 @@ class Glossy_Grid extends Module_Base {
             if ($settings['layout_style'] === 'grid') {
                 $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-grid-layout']);
             } else {
-                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout', 'usk-grid-2']);
+                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout', 'usk-grid-1']);
             }
             if ($wp_query->have_posts()) { ?>
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
@@ -391,6 +391,7 @@ class Glossy_Grid extends Module_Base {
                 'total'    => $wp_query->found_posts,
                 'per_page' => $settings['product_limit'],
                 'current'  => $paged,
+                'orderedby' => $wp_query->get('orderby'),
             );
             if ($settings['show_tab'] == 'yes') : ?>
             <div class="usk-grid-header usk-visible@l">
@@ -401,7 +402,7 @@ class Glossy_Grid extends Module_Base {
                 <ul class="usk-grid-header-tabs">
                     <?php if (in_array("list-2", $settings['filter_column_lists'])) : ?>
                         <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-list-2">
+                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-1">
                                 <span class="usk-icon-grid-list"></span>
                             </a>
                         </li>

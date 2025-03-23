@@ -255,6 +255,7 @@ class Florence_Grid extends Module_Base {
                 'total'    => $wp_query->found_posts,
                 'per_page' => $settings['product_limit'],
                 'current'  => $paged,
+                'orderedby' => $wp_query->get('orderby'),
             );
             if ($settings['show_tab'] == 'yes') : ?>
             <div class="usk-grid-header usk-visible@l">
@@ -265,7 +266,7 @@ class Florence_Grid extends Module_Base {
                 <ul class="usk-grid-header-tabs">
                     <?php if (in_array("list-2", $settings['filter_column_lists'])) : ?>
                         <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-list-2">
+                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-1">
                                 <span class="usk-icon-grid-list"></span>
                             </a>
                         </li>
