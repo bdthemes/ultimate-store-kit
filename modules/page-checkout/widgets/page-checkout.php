@@ -249,8 +249,8 @@ class Page_Checkout extends Module_Base {
                 'label'     => esc_html__('Required Indicator Color:', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-checkout-billing-address .woocommerce-billing-fields__field-wrapper .form-row label abbr,
-                    {{WRAPPER}} .usk-checkout-shipping-form .woocommerce-shipping-fields__field-wrapper .form-row label abbr' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-checkout-billing-address .woocommerce-billing-fields__field-wrapper .form-row label .required,
+                    {{WRAPPER}} .usk-checkout-shipping-form .woocommerce-shipping-fields__field-wrapper .form-row label .required' => 'color: {{VALUE}}',
                 ],
             ]
         );
