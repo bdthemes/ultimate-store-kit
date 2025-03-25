@@ -218,7 +218,8 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Variation swatches issue fixed
 * Fixed: Warning error for result count issue fixed
 * Fixed: Page checkout & page cart controls fixed
-* Fixed: color issue fixed in mini cart widget
+* Fixed: Color issue fixed in mini cart widget
+* Fixed: Remove button color issue fixed in mini cart widget
 * Updated: System improved
 
 = 2.3.7 [13th March 2025] =
