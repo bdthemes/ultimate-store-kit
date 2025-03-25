@@ -26,11 +26,14 @@ class Page_Checkout extends Module_Base {
     }
 
     public function get_categories() {
-        return ['ultimate-store-kit'];
+        return ['ultimate-store-kit-checkout'];
     }
+    public function show_in_panel() {
+        return get_post_type() === 'usk-template-builder' || get_post_type() === 'elementor_library' || get_post_type() === 'product';
+	}
 
     public function get_keywords() {
-        return ['cart', 'order', 'wc', 'checkout'];
+        return ['cart', 'order', 'wc', 'checkout', 'page'];
     }
 
     public function get_style_depends() {
@@ -46,9 +49,9 @@ class Page_Checkout extends Module_Base {
     }
 
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_style_heading',
