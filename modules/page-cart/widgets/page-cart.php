@@ -222,7 +222,7 @@ class Page_Cart extends Module_Base {
 				'label'     => esc_html__( 'Even Row Background Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
-					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table tr:nth-child(even)' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table_responsive tr:nth-child(2n) td' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
