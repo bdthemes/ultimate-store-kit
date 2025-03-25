@@ -642,7 +642,7 @@ class Mini_Cart extends Module_Base {
 			Group_Control_Typography::get_type(),
 			[ 
 				'name'     => 'product_cart_subtotal_typography',
-				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-subtotal',
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-subtotal *',
 			]
 		);
 
