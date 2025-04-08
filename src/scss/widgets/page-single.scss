@@ -16,8 +16,8 @@
         position: relative;
     }
     a.reset_variations {
-        position: absolute;
-        left: 0;
+        position: absolute !important;
+        left: 20px;
     }
 
     .woocommerce ul.products{
