@@ -1,8 +1,10 @@
-#elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon, #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title {
+#elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon,
+#elementor-panel-category-ultimate-store-kit .elementor-element:hover .title {
   color: #EF233C;
 }
 
-#elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon .usk-widget-icon:after, #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title .usk-widget-icon:after {
+#elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon .usk-widget-icon:after,
+#elementor-panel-category-ultimate-store-kit .elementor-element:hover .title .usk-widget-icon:after {
   opacity: 1;
 }
 
@@ -89,4 +91,65 @@
 #elementor-panel #elementor-controls .usk-disabled-control:hover .elementor-control-field:after,
 #elementor-panel #elementor-controls .usk-disabled-control:hover .elementor-control-field:before {
   display: block;
+}
+
+.woocommerce .usk-product-image .woocommerce-product-gallery__trigger {
+  background: #fff;
+  border: none;
+  box-sizing: content-box;
+  border-radius: 100%;
+  cursor: pointer;
+  font-size: 2em;
+  height: 36px;
+  padding: 0;
+  position: absolute;
+  left: 0.5em;
+  text-indent: -9999px;
+  top: 0.5em;
+  width: 36px;
+  z-index: 99;
+}
+.woocommerce .usk-product-image .woocommerce-product-gallery__trigger::before {
+  border: 2px solid #000;
+  border-radius: 100%;
+  box-sizing: content-box;
+  content: "";
+  display: block;
+  height: 10px;
+  right: 9px;
+  top: 9px;
+  position: absolute;
+  width: 10px;
+}
+.woocommerce .usk-product-image .woocommerce-product-gallery__trigger::after {
+  background: #000;
+  border-radius: 6px;
+  box-sizing: content-box;
+  content: "";
+  display: block;
+  height: 8px;
+  right: 22px;
+  position: absolute;
+  top: 19px;
+  transform: rotate(45deg);
+  width: 2px;
+}
+.woocommerce .usk-product-image div.images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: none;
+}
+.woocommerce .usk-product-image div.images .flex-control-thumbs li {
+  width: 25%;
+  float: right;
+  margin: 0;
+  list-style: none;
+  cursor: pointer;
+}
+.woocommerce .usk-product-image div.images .flex-control-thumbs {
+  overflow: hidden;
+  zoom: 1;
+  margin: 0;
+  padding: 0;
 }
