@@ -14,8 +14,8 @@
   position: relative;
 }
 .usk-page-single a.reset_variations {
-  position: absolute;
-  left: 0;
+  position: absolute !important;
+  left: 20px;
 }
 .usk-page-single .woocommerce ul.products {
   display: grid;

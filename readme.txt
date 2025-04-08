@@ -206,6 +206,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.4.X [XX April 2025] =
+
+* Added: Image Resolution option added in image hotspot widget
+
 = 2.4.0 [25th March 2025] =
 
 * Added: [My Account Page](https://storekit.pro/demo/page-my-account/) widget added (Pro)
