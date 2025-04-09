@@ -209,6 +209,8 @@ https://youtu.be/9J4zCaDcPnk
 = 2.4.X [XX April 2025] =
 
 * Added: Image Resolution option added in image hotspot widget
+* Fixed: Thumbs background issue fixed in heaven slider widget
+* Fixed: Top spacing issue fixed in product description widget
 
 = 2.4.0 [25th March 2025] =
 
