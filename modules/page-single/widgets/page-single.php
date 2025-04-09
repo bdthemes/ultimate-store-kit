@@ -83,6 +83,46 @@ class Page_Single extends Module_Base {
                 'selector'  => '{{WRAPPER}} .usk-page-single span.onsale',
             ]
         );
+        $this->add_responsive_control(
+            'sale_badge_padding',
+            [
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single span.onsale' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'sale_badge_margin',
+            [
+                'label'      => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single span.onsale' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'sale_badge_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-page-single span.onsale' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'sale_badge_typography',
+                'selector' => '{{WRAPPER}} .usk-page-single span.onsale',
+            ]
+        );
         $this->end_controls_section();
     }
     protected function register_controls_title() {
