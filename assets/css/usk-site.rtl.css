@@ -2119,3 +2119,8 @@ div.pp_pic_holder {
 .usk-product-description .woocommerce-product-details__short-description {
   margin-top: 0 !important;
 }
+
+.usk-product-rating .woocommerce-review-link {
+  line-height: 1;
+  display: flex;
+}
