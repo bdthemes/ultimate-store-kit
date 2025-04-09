@@ -1977,10 +1977,6 @@ div.pp_pic_holder {
 /**
  * Ultimate Store Kit single product css
  */
-.usk-product-rating .star-rating span {
-  display: none;
-}
-
 .usk-product-meta .product_meta {
   display: flex;
   flex-wrap: wrap;
@@ -2118,4 +2114,8 @@ div.pp_pic_holder {
 .elementor-widget-usk-page-single .woocommerce-variation-price,
 .elementor-widget-usk-add-to-cart .woocommerce-variation-price {
   margin-bottom: 15px;
+}
+
+.usk-product-description .woocommerce-product-details__short-description {
+  margin-top: 0 !important;
 }

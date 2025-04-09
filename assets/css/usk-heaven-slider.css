@@ -199,6 +199,7 @@
   left: 0;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
+  z-index: -1;
 }
 .usk-heaven-slider .usk-navigation-wrap {
   position: absolute;

@@ -1546,13 +1546,13 @@
 /**
  * Ultimate Store Kit single product css
  */
-.usk-product-rating {
-    .star-rating {
-        span {
-            display: none;
-        }
-    }
-}
+// .usk-product-rating {
+//     .star-rating {
+//         span {
+//             display: none;
+//         }
+//     }
+// }
 
 .usk-product-meta {
     .product_meta {
@@ -1702,10 +1702,9 @@
     .woocommerce-variation-price {
         margin-bottom: 15px;
     }
-    // .variations .reset_variations {
-    //     position: absolute;
-    //     right: -45px;
-    //     top: 50%;
-    //     transform: translateY(-50%);
-    // }
+}
+.usk-product-description {
+    .woocommerce-product-details__short-description {
+        margin-top: 0 !important;
+    }
 }
