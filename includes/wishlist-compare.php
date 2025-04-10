@@ -82,7 +82,7 @@ final class WishlistCompare {
 
 		$wishlist = array_unique( array_merge( $existing_wishlist, $wishlist ) );
 
-		setcookie( $_wishlist_key, serialize( $wishlist ), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+		setcookie( $_wishlist_key, json_encode( $wishlist ), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 	}
 
 	public function get_compare_product_page_id() {
@@ -172,7 +172,7 @@ final class WishlistCompare {
 		if ( $user_id != 0 ) {
 			update_user_meta( $user_id, $_compare_products_key, $compare_products );
 		} else {
-			setcookie( $_compare_products_key, serialize( $compare_products ), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+			setcookie( $_compare_products_key, json_encode( $compare_products ), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 		}
 	}
 }

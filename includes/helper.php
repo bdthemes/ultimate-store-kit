@@ -1024,13 +1024,10 @@ function ultimate_store_kit_get_wishlist( $user_id = 0 ) {
 
 	if ( isset( $_COOKIE[ $_wishlist_key ] ) ) {
 		$cookie_data  = stripslashes( $_COOKIE[ $_wishlist_key ] );
-		$decoded_data = unserialize( $cookie_data );
+		$decoded_data = json_decode( $cookie_data, true );
 
 		if ( json_last_error() === JSON_ERROR_NONE && is_array( $decoded_data ) ) {
 			$_wishlist = $decoded_data;
-		} else {
-			// Handle JSON decoding error if necessary
-			$_wishlist = [];
 		}
 	}
 
