@@ -1646,7 +1646,8 @@
     }
     table.variations {
         border-collapse: separate;
-        border-spacing: 0 1em;
+        border-spacing: 0 10px;
+        margin-bottom: 0 !important;
     }
     form.cart {
         tr {
@@ -1680,8 +1681,12 @@
         }
     }
     form.cart div.quantity {
-        display: flex;
+        display: flex !important;
         gap: 5px;
+        .qty {
+            margin-right: 0 !important;
+            padding: 14px;
+        }
     }
 
     .woocommerce-variation-add-to-cart {

@@ -2048,7 +2048,8 @@ div.pp_pic_holder {
 .elementor-widget-usk-page-single table.variations,
 .elementor-widget-usk-add-to-cart table.variations {
   border-collapse: separate;
-  border-spacing: 0 1em;
+  border-spacing: 0 10px;
+  margin-bottom: 0 !important;
 }
 .elementor-widget-usk-page-single form.cart tr,
 .elementor-widget-usk-add-to-cart form.cart tr {
@@ -2085,8 +2086,13 @@ div.pp_pic_holder {
 }
 .elementor-widget-usk-page-single form.cart div.quantity,
 .elementor-widget-usk-add-to-cart form.cart div.quantity {
-  display: flex;
+  display: flex !important;
   gap: 5px;
+}
+.elementor-widget-usk-page-single form.cart div.quantity .qty,
+.elementor-widget-usk-add-to-cart form.cart div.quantity .qty {
+  margin-left: 0 !important;
+  padding: 14px;
 }
 .elementor-widget-usk-page-single .woocommerce-variation-add-to-cart,
 .elementor-widget-usk-add-to-cart .woocommerce-variation-add-to-cart {
