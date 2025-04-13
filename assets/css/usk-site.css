@@ -2041,6 +2041,10 @@ div.pp_pic_holder {
   display: block;
 }
 
+.elementor-widget-usk-page-single .single_variation_wrap,
+.elementor-widget-usk-add-to-cart .single_variation_wrap {
+  display: flex;
+}
 .elementor-widget-usk-page-single .swatches-support table.variations,
 .elementor-widget-usk-add-to-cart .swatches-support table.variations {
   display: flex;
@@ -2048,7 +2052,8 @@ div.pp_pic_holder {
 .elementor-widget-usk-page-single table.variations,
 .elementor-widget-usk-add-to-cart table.variations {
   border-collapse: separate;
-  border-spacing: 0 1em;
+  border-spacing: 0 10px;
+  margin-bottom: 0 !important;
 }
 .elementor-widget-usk-page-single form.cart tr,
 .elementor-widget-usk-add-to-cart form.cart tr {
@@ -2085,8 +2090,13 @@ div.pp_pic_holder {
 }
 .elementor-widget-usk-page-single form.cart div.quantity,
 .elementor-widget-usk-add-to-cart form.cart div.quantity {
-  display: flex;
+  display: flex !important;
   gap: 5px;
+}
+.elementor-widget-usk-page-single form.cart div.quantity .qty,
+.elementor-widget-usk-add-to-cart form.cart div.quantity .qty {
+  margin-right: 0 !important;
+  padding: 14px;
 }
 .elementor-widget-usk-page-single .woocommerce-variation-add-to-cart,
 .elementor-widget-usk-add-to-cart .woocommerce-variation-add-to-cart {
@@ -2118,4 +2128,14 @@ div.pp_pic_holder {
 
 .usk-product-description .woocommerce-product-details__short-description {
   margin-top: 0 !important;
+}
+
+.usk-product-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.usk-product-rating .woocommerce-review-link {
+  line-height: 1;
+  display: flex;
 }

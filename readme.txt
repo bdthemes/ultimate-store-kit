@@ -212,6 +212,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Thumbs background issue fixed in heaven slider widget
 * Fixed: Top spacing issue fixed in product description widget
 * Fixed: Security issue fixed ( Thanks to domiee13 )
+* Added: [Image Hotspot](https://youtu.be/7vrY1aY5mMw) video tutorial added
 
 = 2.4.0 [25th March 2025] =
 
