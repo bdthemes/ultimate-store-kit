@@ -1639,6 +1639,9 @@
 
 .elementor-widget-usk-page-single, 
 .elementor-widget-usk-add-to-cart {
+    .single_variation_wrap {
+        display: flex;
+    }
     .swatches-support {
         table.variations {
             display: flex;
@@ -1713,7 +1716,12 @@
         margin-top: 0 !important;
     }
 }
-.usk-product-rating .woocommerce-review-link {
-    line-height: 1;
+.usk-product-rating {
     display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    .woocommerce-review-link {
+        line-height: 1;
+        display: flex;
+    }
 }
