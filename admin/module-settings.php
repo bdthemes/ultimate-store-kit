@@ -380,7 +380,7 @@ class ModuleService {
                     'widget_type'  => 'free',
                     'content_type' => 'woocommerce new',
                     'demo_url'     => 'https://storekit.pro/demo/image-hotspot/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/7vrY1aY5mMw',
                 ],
                 [
                     'name'         => 'info-list',

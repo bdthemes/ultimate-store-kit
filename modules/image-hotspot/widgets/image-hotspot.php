@@ -67,9 +67,10 @@ class Image_Hotspot extends Module_Base {
         return ['swiper', 'micromodal', 'popper', 'tippyjs',];
     }
 
-    // public function get_custom_help_url() {
-    //     return 'https://youtu.be/3VkvEpVaNAM';
-    // }
+    public function get_custom_help_url() {
+        return 'https://youtu.be/7vrY1aY5mMw';
+    }
+    
     public function get_query() {
         return $this->_query;
     }

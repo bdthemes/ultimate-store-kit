@@ -2044,6 +2044,11 @@ div.pp_pic_holder {
 .elementor-widget-usk-page-single .single_variation_wrap,
 .elementor-widget-usk-add-to-cart .single_variation_wrap {
   display: flex;
+  flex-direction: column;
+}
+.elementor-widget-usk-page-single .usk-variation-swatches,
+.elementor-widget-usk-add-to-cart .usk-variation-swatches {
+  display: flex;
 }
 .elementor-widget-usk-page-single .swatches-support table.variations,
 .elementor-widget-usk-add-to-cart .swatches-support table.variations {
@@ -2066,12 +2071,6 @@ div.pp_pic_holder {
 .elementor-widget-usk-page-single .usk-variation-swatches--image,
 .elementor-widget-usk-add-to-cart .usk-variation-swatches--image {
   display: flex;
-}
-.elementor-widget-usk-page-single div.product form.cart .variations td,
-.elementor-widget-usk-page-single div.product form.cart .variations th,
-.elementor-widget-usk-add-to-cart div.product form.cart .variations td,
-.elementor-widget-usk-add-to-cart div.product form.cart .variations th {
-  vertical-align: middle;
 }
 .elementor-widget-usk-page-single .quantity button,
 .elementor-widget-usk-add-to-cart .quantity button {

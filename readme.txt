@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, easy digital downloads
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.7.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.28.1
+Elementor tested up to: 3.28.3
 
 Best addon for Elementor WordPress plugin with 80+ most popular eCommerce, EDD and Static elements that need your everyday website page building.
 
@@ -206,9 +206,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.4.X [XX April 2025] =
+= 2.4.1 [15th April 2025] =
 
 * Added: Image Resolution option added in image hotspot widget
+* Added: Tabs active line color added in product single page widget
 * Fixed: Thumbs background issue fixed in heaven slider widget
 * Fixed: Top spacing issue fixed in product description widget
 * Fixed: Security issue fixed ( Thanks to domiee13 )
