@@ -1641,6 +1641,10 @@
 .elementor-widget-usk-add-to-cart {
     .single_variation_wrap {
         display: flex;
+        flex-direction: column;
+    }
+    .usk-variation-swatches {
+        display: flex;
     }
     .swatches-support {
         table.variations {
@@ -1663,13 +1667,7 @@
     .usk-variation-swatches--image {
         display: flex;
     }
-    div.product form.cart .variations td, 
-    div.product form.cart .variations th {
-        vertical-align: middle;
-    }
-    // .usk-variation-swatches--image img {
-    //     height: 100%;
-    // }
+
     .quantity button {
         padding: 15px;
         border-style: solid;

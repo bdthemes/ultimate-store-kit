@@ -540,82 +540,6 @@ class Page_Single extends Module_Base {
 
     protected function register_controls_tabs() {
 
-        // $this->start_controls_section(
-        //     'tabs_nav_style_section',
-        //     [
-        //         'label' => __('Tabs', 'ultimate-store-kit'),
-        //         'tab'   => Controls_Manager::TAB_STYLE,
-        //     ]
-        // );
-
-        // $this->add_responsive_control(
-        //     'tabs_nav_align',
-        //     [
-        //         'label'     => __('Alignment', 'ultimate-store-kit'),
-        //         'type'      => Controls_Manager::CHOOSE,
-        //         'options'   => [
-        //             'left'   => [
-        //                 'title' => __('Left', 'ultimate-store-kit'),
-        //                 'icon'  => 'eicon-text-align-left',
-        //             ],
-        //             'center' => [
-        //                 'title' => __(
-        //                     'Center',
-        //                     'ultimate-store-kit'
-        //                 ),
-        //                 'icon'  => 'eicon-text-align-center',
-        //             ],
-        //             'right'  => [
-        //                 'title' => __(
-        //                     'Right',
-        //                     'ultimate-store-kit'
-        //                 ),
-        //                 'icon'  => 'eicon-text-align-right',
-        //             ],
-        //         ],
-        //         'desktop_default' => 'left',
-        //         'tablet_default' => 'left',
-        //         'mobile_default' => 'left',
-        //         'toggle' => false,
-        //         'selectors' => [
-        //             '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs' => 'justify-content: {{VALUE}};',
-        //         ],
-        //     ]
-        // );
-
-        // $this->add_responsive_control(
-        //     'tabs_nav_padding',
-        //     [
-        //         'label'      => esc_html__('Padding', 'ultimate-store-kit'),
-        //         'type'       => Controls_Manager::DIMENSIONS,
-        //         'size_units' => ['px', 'em', '%'],
-        //         'selectors'  => [
-        //             '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        //         ],
-        //     ]
-        // );
-
-        // $this->add_responsive_control(
-        //     'tabs_nav_item_radius',
-        //     [
-        //         'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
-        //         'type'       => Controls_Manager::DIMENSIONS,
-        //         'size_units' => ['px', 'em', '%'],
-        //         'selectors'  => [
-        //             '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        //         ],
-        //     ]
-        // );
-        // $this->add_group_control(
-        //     Group_Control_Border::get_type(),
-        //     [
-        //         'name'        => 'tabs_nav_border',
-        //         'selector'    => '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs',
-        //     ]
-        // );
-
-        // $this->end_controls_section();
-
         $this->start_controls_section(
             'tabs_nav_item_style_section',
             [
@@ -796,6 +720,17 @@ class Page_Single extends Module_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs li.active a' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tabs_nav_active_line_color',
+            [
+                'label' => __('Active Line Color', 'ultimate-store-kit-pro') . BDTUSK_NC,
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs li a::after' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
