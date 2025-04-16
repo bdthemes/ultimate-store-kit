@@ -206,6 +206,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.4.X [XXth April 2025] =
+
+* Updated: Only one plugin DCI notice will show at a time
+
 = 2.4.1 [15th April 2025] =
 
 * Added: Image Resolution option added in image hotspot widget
