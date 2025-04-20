@@ -54,7 +54,10 @@ class UltimateStoreKit_Admin_Settings
         //initialize settings
         $this->settings_api->admin_init();
         $this->usk_redirect_to_get_pro();
-        $this->bdt_redirect_to_renew_link();
+
+        if ( _is_usk_pro_activated() ) {
+            $this->bdt_redirect_to_renew_link();
+        }
     }
 
     // Redirect to Ultimate Store Kit Pro pricing page
