@@ -54,6 +54,7 @@ class UltimateStoreKit_Admin_Settings
         //initialize settings
         $this->settings_api->admin_init();
         $this->usk_redirect_to_get_pro();
+        $this->bdt_redirect_to_renew_link();
     }
 
     // Redirect to Ultimate Store Kit Pro pricing page
@@ -61,6 +62,19 @@ class UltimateStoreKit_Admin_Settings
     {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
             wp_redirect('https://storekit.pro/pricing/?utm_source=UltimateStoreKit&utm_medium=PluginPage&utm_campaign=30%OffOnUSK&coupon=FREETOPRO');
+            exit;
+        }
+    }
+
+    /**
+     * Redirect to license renewal page
+     *
+     * @access public
+     *
+     */
+    public function bdt_redirect_to_renew_link() {
+        if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_license_renew') {
+            wp_redirect('https://account.bdthemes.com/');
             exit;
         }
     }
@@ -1216,6 +1230,13 @@ class UltimateStoreKit_Admin_Settings
                 const getProLink = $('a[href="admin.php?page=ultimate_store_kit_options_get_pro"]');
                 if (getProLink.length) {
                     getProLink.attr('target', '_blank');
+                }
+            });
+
+            jQuery(document).ready(function ($) {
+                const renewalLink = $('a[href="admin.php?page=ultimate_store_kit_options_license_renew"]');
+                if (renewalLink.length) {
+                    renewalLink.attr('target', '_blank');
                 }
             });
 

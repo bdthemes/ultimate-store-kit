@@ -236,6 +236,10 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Remove button color issue fixed in mini cart widget
 * Updated: System improved
 
+= 2.3.X [XXth April 2025] =
+
+* Updated: System improved
+
 = 2.3.7 [13th March 2025] =
 
 * Fixed: Security issue fixed ( Thanks to Peter Thaleikis )
