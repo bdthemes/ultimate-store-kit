@@ -873,6 +873,109 @@ class Featured_Box extends Module_Base {
             ]
         );
 
+        $this->add_control(
+			'button_offset_toggle',
+			[
+				'label' => __('Offset', 'ultimate-store-kit'),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'label_off' => __('None', 'ultimate-store-kit'),
+				'label_on' => __('Custom', 'ultimate-store-kit'),
+				'return_value' => 'yes',
+			]
+		);
+		$this->start_popover();
+		$this->add_responsive_control(
+			'button_x_position',
+			[
+				'label'   => __( 'X', 'ultimate-store-kit' ),
+				'type'    => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
+					'size' => 0,
+				],
+				'range' => [
+					'px' => [
+						'min' => -800,
+						'max' => 800,
+					],
+				],
+				'condition' => [
+					'button_offset_toggle' => 'yes'
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}}' => '--usk-button-x-offset: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_y_position',
+			[
+				'label'   => __( 'Y', 'ultimate-store-kit' ),
+				'type'    => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
+					'size' => 0,
+				],
+				'range' => [
+					'px' => [
+						'min' => -800,
+						'max' => 800,
+					],
+				],
+				'condition' => [
+					'button_offset_toggle' => 'yes'
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}}' => '--usk-button-y-offset: {{SIZE}}px;'
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_rotate',
+			[
+				'label'   => __( 'Rotate', 'ultimate-store-kit' ),
+				'type'    => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+				],
+				'tablet_default' => [
+					'size' => 0,
+				],
+				'mobile_default' => [
+					'size' => 0,
+				],
+				'range' => [
+					'px' => [
+						'min'  => -180,
+						'max'  => 180,
+						'step' => 5,
+					],
+				],
+				'condition' => [
+					'button_offset_toggle' => 'yes'
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}}' => '--usk-button-rotate: {{SIZE}}deg;'
+				],
+			]
+		);
+		$this->end_popover();
+
         $this->start_controls_tabs('tabs_readmore_style');
 
         $this->start_controls_tab(
@@ -1145,10 +1248,10 @@ class Featured_Box extends Module_Base {
         $this->add_control(
 			'badge_offset_toggle',
 			[
-				'label' => __('Offset', 'bdthemes-element-pack'),
+				'label' => __('Offset', 'ultimate-store-kit'),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label_off' => __('None', 'bdthemes-element-pack'),
-				'label_on' => __('Custom', 'bdthemes-element-pack'),
+				'label_off' => __('None', 'ultimate-store-kit'),
+				'label_on' => __('Custom', 'ultimate-store-kit'),
 				'return_value' => 'yes',
 			]
 		);
@@ -1156,7 +1259,7 @@ class Featured_Box extends Module_Base {
 		$this->add_responsive_control(
 			'badge_x_position',
 			[
-				'label'   => __( 'X', 'bdthemes-element-pack' ),
+				'label'   => __( 'X', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0,
@@ -1186,7 +1289,7 @@ class Featured_Box extends Module_Base {
 		$this->add_responsive_control(
 			'badge_y_position',
 			[
-				'label'   => __( 'Y', 'bdthemes-element-pack' ),
+				'label'   => __( 'Y', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0,
@@ -1216,7 +1319,7 @@ class Featured_Box extends Module_Base {
 		$this->add_responsive_control(
 			'badge_rotate',
 			[
-				'label'   => __( 'Rotate', 'bdthemes-element-pack' ),
+				'label'   => __( 'Rotate', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0,

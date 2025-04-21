@@ -5323,6 +5323,9 @@ table.dataTable.display tbody tr.odd {
 .usk-featured-box .usk-text p {
   margin: 0;
 }
+.usk-featured-box .usk-link-btn {
+  transform: translate(var(--usk-button-x-offset, 0), var(--usk-button-y-offset, 0)) rotate(var(--usk-button-rotate, 0));
+}
 .usk-featured-box .usk-link-btn a {
   position: relative;
   overflow: hidden;
