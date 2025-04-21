@@ -209,6 +209,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.4.X [XXth April 2025] =
 
 * Fixed: Offcanvas shows on page loading issue fixed in Mini Cart widget
+* Fixed: Security issue fixed
 * Updated: Only one plugin DCI notice will show at a time
 
 = 2.4.1 [15th April 2025] =
