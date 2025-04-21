@@ -210,6 +210,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Added: Text Alignment option added in image hotspot widget
 * Added: Button offset added in featured box widget
+* Fixed: Offcanvas shows on page loading issue fixed in Mini Cart widget
 * Updated: Only one plugin DCI notice will show at a time
 
 = 2.4.1 [15th April 2025] =

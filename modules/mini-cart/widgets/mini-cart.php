@@ -1164,7 +1164,7 @@ class Mini_Cart extends Module_Base {
 		], null, true );
 		$this->add_render_attribute( 'offcanvas', [ 
 			'id'    => $id,
-			'class' => [ 'usk-mini-cart' ],
+			'class' => [ 'usk-mini-cart toolslide' ],
 		], null, true );
 		?>
 		<div class="ultimate-store-kit">
