@@ -37,23 +37,37 @@ class Notices {
 			wp_send_json_error('Invalid nonce');
 		}
 
+		// Check if user is at least logged in
+		if (!is_user_logged_in()) {
+			wp_send_json_error('Authentication required');
+		}
+
 		$id   = isset($_POST['id']) ? sanitize_text_field($_POST['id']) : '';
-		$time = isset($_POST['time']) ? sanitize_text_field($_POST['time']) : '';
+		$time = isset($_POST['time']) ? absint($_POST['time']) : 0;
 		$meta = isset($_POST['meta']) ? sanitize_text_field($_POST['meta']) : '';
+
+		// Validate ID format - only allow alphanumeric, dash and underscore
+		if (!preg_match('/^[a-zA-Z0-9_-]+$/', $id)) {
+			wp_send_json_error('Invalid notice ID format');
+		}
 
 		// Valid inputs?
 		if (!empty($id)) {
+			// Always prefix meta keys for isolation
+			$prefixed_id = 'usk_notice_' . $id;
 
 			if ('user' === $meta) {
-				update_user_meta(get_current_user_id(), $id, true);
+				update_user_meta(get_current_user_id(), $prefixed_id, true);
 			} else {
-				set_transient($id, true, $time);
+				// Ensure time is a positive integer
+				$time = max(1, $time);
+				set_transient($prefixed_id, true, $time);
 			}
 
 			wp_send_json_success();
 		}
 
-		wp_send_json_error();
+		wp_send_json_error('Missing notice ID');
 	}
 
 	/**
@@ -106,10 +120,24 @@ class Notices {
 
 			// User meta.
 			$notice['data'] .= ' dismissible-meta=' . esc_attr($notice['dismissible-meta']) . ' ';
+			
+			// Create the prefixed ID for storage lookup
+			$prefixed_id = 'usk_notice_' . $notice_id;
+			
 			if ('user' === $notice['dismissible-meta']) {
-				$expired = get_user_meta(get_current_user_id(), $notice_id, true);
+				$expired = get_user_meta(get_current_user_id(), $prefixed_id, true);
+				
+				// Backward compatibility - check old format if not found
+				if (empty($expired)) {
+					$expired = get_user_meta(get_current_user_id(), $notice_id, true);
+				}
 			} elseif ('transient' === $notice['dismissible-meta']) {
-				$expired = get_transient($notice_id);
+				$expired = get_transient($prefixed_id);
+				
+				// Backward compatibility - check old format if not found
+				if (false === $expired) {
+					$expired = get_transient($notice_id);
+				}
 			}
 
 			// Notices visible after transient expire.
