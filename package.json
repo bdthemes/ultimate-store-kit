@@ -1,6 +1,6 @@
 {
 	"name": "ultimate-store-kit",
-	"version": "2.1.4",
+	"version": "2.4.1",
 	"main": "index.php",
 	"scripts": {
 		"build": "npm run && npm run clean && cross-env NODE_ENV=production grunt",

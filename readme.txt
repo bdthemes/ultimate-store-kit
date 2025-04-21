@@ -5,7 +5,7 @@ Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, easy d
 Stable tag: 2.4.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.7.2
+Tested up to: 6.8
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
@@ -208,6 +208,8 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.4.X [XXth April 2025] =
 
+* Added: Text Alignment option added in image hotspot widget
+* Added: Button offset added in featured box widget
 * Fixed: Offcanvas shows on page loading issue fixed in Mini Cart widget
 * Updated: Only one plugin DCI notice will show at a time
 

@@ -64,18 +64,21 @@
 		margin: 0;
 	}
 
-	.usk-link-btn a {
-		position: relative;
-		overflow: hidden;
-		padding: 10px 35px;
-		border-radius: 40px;
-		display: inline-block;
-		color: #D90429;
-		text-decoration: none;
-		font-weight: 700;
-		text-transform: capitalize;
-		font-size: 12px;
-		transition: all .3s ease-in-out;
+	.usk-link-btn {
+		transform: translate(var(--usk-button-x-offset, 0), var(--usk-button-y-offset, 0)) rotate(var(--usk-button-rotate, 0));
+		a {
+			position: relative;
+			overflow: hidden;
+			padding: 10px 35px;
+			border-radius: 40px;
+			display: inline-block;
+			color: #D90429;
+			text-decoration: none;
+			font-weight: 700;
+			text-transform: capitalize;
+			font-size: 12px;
+			transition: all .3s ease-in-out;
+		}
 	}
 
 	.usk-link-btn a span {

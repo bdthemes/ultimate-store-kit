@@ -193,6 +193,35 @@ class Image_Hotspot extends Module_Base {
                 ],
 			]
 		);
+
+        /**
+         * Product Item Text Alignment
+         */
+        $this->add_responsive_control(
+            'product_item_text_align',
+            [
+                'label'     => esc_html__('Text Alignment', 'ultimate-store-kit') . BDTUSK_NC,
+                'type'      => Controls_Manager::CHOOSE,
+                'options'   => [
+                    'left'    => [
+                        'title' => esc_html__('Left', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-text-align-left',
+                    ],
+                    'center'  => [
+                        'title' => esc_html__('Center', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-text-align-center',
+                    ],
+                    'right'   => [
+                        'title' => esc_html__('Right', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-content-inner, {{WRAPPER}} .usk-grid-carousel .usk-content-inner' => 'text-align: {{VALUE}};',
+                    '.tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-rating, {{WRAPPER}} .usk-grid-carousel .usk-rating' => 'justify-content: {{VALUE}};',
+                ],
+            ]
+        );
         
         $this->end_controls_section();
 
