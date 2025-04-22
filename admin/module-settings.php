@@ -405,7 +405,7 @@ class ModuleService {
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce slider',
                     'demo_url'     => 'https://storekit.pro/demo/mentor-slider/',
-                    'video_url'    => '',
+                    'video_url'    => 'https://youtu.be/qO4BSo8OTkA',
                 ],
                 [
                     'name'         => 'mini-cart',

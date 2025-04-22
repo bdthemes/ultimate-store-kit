@@ -64,6 +64,10 @@ class Mentor_Slider extends Module_Base {
         }
     }
 
+    public function get_custom_help_url() {
+        return 'https://youtu.be/qO4BSo8OTkA';
+    }
+
     public function get_query() {
         return $this->_query;
     }
