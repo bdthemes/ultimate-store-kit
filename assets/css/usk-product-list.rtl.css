@@ -59,10 +59,7 @@
   padding-right: 10px;
 }
 .usk-product-list .usk-badge-label-wrapper {
-  display: none;
-  position: absolute;
-  top: clamp(10px, 1vw, 15px);
-  left: clamp(10px, 1vw, 15px);
+  margin-top: clamp(10px, 1vw, 15px);
 }
 .usk-product-list .usk-badge {
   border-radius: 4px;
@@ -70,6 +67,8 @@
 
 @media (min-width: 768px) {
   .usk-product-list .usk-badge-label-wrapper {
-    display: inherit;
+    position: absolute;
+    top: clamp(10px, 1vw, 15px);
+    left: clamp(10px, 1vw, 15px);
   }
 }

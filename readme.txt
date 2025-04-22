@@ -208,11 +208,14 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.4.X [XXth April 2025] =
 
+* Added: Product widgets badge display type option added
+* Added: Image position and text limit option added in product accordion widget
 * Added: Text Alignment option added in image hotspot widget
 * Added: Button offset added in featured box widget
 * Fixed: Offcanvas shows on page loading issue fixed in Mini Cart widget
 * Fixed: Security issue fixed
 * Updated: Only one plugin DCI notice will show at a time
+* Fixed: Product price color, view cart & checkout button background issue fixed in mini cart widget 
 
 = 2.4.1 [15th April 2025] =
 

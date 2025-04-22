@@ -131,9 +131,20 @@ class Product_Accordion extends Module_Base {
         $this->add_control(
             'show_description',
             [
-                'label' => esc_html__('Description', 'ultimate-store-kit'),
+                'label' => esc_html__('Text', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'yes',
+            ]
+        );
+        $this->add_control(
+            'excerpt_limit',
+            [
+                'label'     => esc_html__('Text Limit', 'ultimate-store-kit') . BDTUSK_NC,
+                'type'      => Controls_Manager::NUMBER,
+                'default'   => 25,
+                'condition' => [
+                    'show_description' => 'yes',
+                ],
             ]
         );
 
@@ -164,6 +175,34 @@ class Product_Accordion extends Module_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'image_position',
+            [
+                'label'   => esc_html__('Image Position', 'ultimate-store-kit') . BDTUSK_NC,
+                'type'    => Controls_Manager::CHOOSE,
+                'options' => [
+                    'row' => [
+                        'title' => esc_html__('Left', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-h-align-left',
+                    ],
+                    'column' => [
+                        'title' => esc_html__('Top', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-v-align-top',
+                    ],
+                    'row-reverse' => [
+                        'title' => esc_html__('Right', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-h-align-right',
+                    ],
+                    'column-reverse' => [
+                        'title' => esc_html__('Bottom', 'ultimate-store-kit'),
+                        'icon'  => 'eicon-v-align-bottom',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-product-accordion .usk-single-item-box' => 'flex-direction: {{VALUE}};',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
         $this->start_controls_section(
@@ -1200,7 +1239,7 @@ class Product_Accordion extends Module_Base {
                                     <?php endif; ?>
                                     <?php if ('yes' == $settings['show_description']) : ?>
                                         <div class="usk-desc">
-                                            <p class="desc"><?php echo esc_html($product->get_short_description()); ?></p>
+                                            <p class="desc"><?php echo esc_html(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...')); ?></p>
                                         </div>
                                     <?php
                                     endif; ?>
