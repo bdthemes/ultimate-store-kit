@@ -457,12 +457,16 @@ class Product_List extends Module_Base {
                             <?php $this->print_price_output($product->get_price_html()); ?>
                         </div>
                     <?php endif; ?>
-                </div>
-                <div class="usk-badge-label-wrapper">
-                    <div class="usk-badge-label-content usk-flex">
-                        <?php $this->register_global_template_badge_label(); ?>
+
+                    <?php if ( 'yes' == $settings['show_sale_badge'] || 'yes' == $settings['show_discount_badge'] || 'yes' == $settings['show_stock_status'] || 'yes' == $settings['show_trending_badge'] || 'yes' == $settings['show_new_badge'] ) : ?>
+                    <div class="usk-badge-label-wrapper">
+                        <div class="usk-badge-label-content usk-flex">
+                            <?php $this->register_global_template_badge_label(); ?>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </div>
+                
             </div>
         </div>
         <?php endwhile; ?>

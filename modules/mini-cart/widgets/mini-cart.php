@@ -553,7 +553,7 @@ class Mini_Cart extends Module_Base {
 				'label'     => esc_html__( 'Quantity Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
-					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-product-item .usk-mini-cart-product-price' => 'color: {{VALUE}};',
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-product-item .usk-mini-cart-product-price .quantity' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -564,7 +564,7 @@ class Mini_Cart extends Module_Base {
 				'label'     => esc_html__( 'Amount Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
-					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-product-item .woocommerce-Price-amount .amount *' => 'color: {{VALUE}} !important;',
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-product-item .usk-mini-cart-product-price .amount' => 'color: {{VALUE}} !important;',
 				],
 			]
 		);
@@ -619,7 +619,7 @@ class Mini_Cart extends Module_Base {
 		$this->add_control(
 			'product_cart_subtotal_color',
 			[ 
-				'label'     => esc_html__( 'Subtotal Color', 'ultimate-store-kit' ),
+				'label'     => esc_html__( 'Label Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-subtotal strong' => 'color: {{VALUE}};',
@@ -630,7 +630,7 @@ class Mini_Cart extends Module_Base {
 		$this->add_control(
 			'product_cart_subtotal_tax_color',
 			[ 
-				'label'     => esc_html__( 'Tax Color', 'ultimate-store-kit' ),
+				'label'     => esc_html__( 'Price Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [ 
 					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-subtotal .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
@@ -677,21 +677,19 @@ class Mini_Cart extends Module_Base {
 				],
 			]
 		);
-		$this->add_control(
-			'heading_viewcart_background_color',
-			[ 
-				'label'     => __( 'Background', 'ultimate-store-kit' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
+
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[ 
 				'name'     => 'pc_viewcart_background_color',
 				'label'    => __( 'Background', 'ultimate-store-kit' ),
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-view-cart'
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-view-cart',
+				'fields_options' => [
+					'background' => [
+						'label' => esc_html__('Background', 'ultimate-store-kit'),
+					],
+				],
 			]
 		);
 
@@ -701,20 +699,14 @@ class Mini_Cart extends Module_Base {
 				'name'     => 'pc_viewcart_background_hover_color',
 				'label'    => __( 'Background', 'ultimate-store-kit' ),
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-view-cart:hover'
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-view-cart::before',
+				'fields_options' => [
+					'background' => [
+						'label' => esc_html__('Hover Background', 'ultimate-store-kit'),
+					],
+				],
 			]
 		);
-
-		// $this->add_control(
-		// 	'pc_viewcart_background_hover_color',
-		// 	[
-		// 		'label'     => esc_html__('Hover Background Color', 'ultimate-store-kit'),
-		// 		'type'      => Controls_Manager::COLOR,
-		// 		'selectors' => [
-		// 			'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-footer-buttons .bdt-button-view-cart:hover' => 'background-color: {{VALUE}};',
-		// 		],
-		// 	]
-		// );
 
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
@@ -819,17 +811,25 @@ class Mini_Cart extends Module_Base {
 				'label'    => __( 'Background', 'ultimate-store-kit' ),
 				'types'    => [ 'classic', 'gradient' ],
 				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout',
+				'fields_options' => [
+					'background' => [
+						'label' => esc_html__('Background', 'ultimate-store-kit'),
+					],
+				],
 			]
 		);
 
-		$this->add_control(
-			'pc_checkout_background_hover_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			[ 
-				'label'     => esc_html__( 'Hover Background Color', 'ultimate-store-kit' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [ 
-					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-footer-buttons .bdt-button-checkout:hover::before' => 'background-color: {{VALUE}};',
-					// '.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout::before'
+				'name'     => 'pc_checkout_background_hover_color',
+				'label'    => __( 'Background', 'ultimate-store-kit' ),
+				'types'    => [ 'classic', 'gradient' ],
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout::before',
+				'fields_options' => [
+					'background' => [
+						'label' => esc_html__('Hover Background', 'ultimate-store-kit'),
+					],
 				],
 			]
 		);

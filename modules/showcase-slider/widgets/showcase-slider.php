@@ -79,31 +79,7 @@ class Showcase_Slider extends Module_Base {
                 'label' => esc_html__('Layout', 'ultimate-store-kit'),
             ]
         );
-        // $this->add_responsive_control(
-        //     'items_height',
-        //     [
-        //         'label' => esc_html__('Image Height', 'ultimate-store-kit'),
-        //         'type' => Controls_Manager::SLIDER,
-        //         'default' => [
-        //             'size' => 500,
-        //         ],
-        //         'range' => [
-        //             'px' => [
-        //                 'min' => 200,
-        //                 'max' => 800,
-        //             ],
-        //         ],
-        //         'tablet_default' => [
-        //             'size' => 380,
-        //         ],
-        //         'mobile_default' => [
-        //             'size' => 300,
-        //         ],
-        //         'selectors'  => [
-        //             '{{WRAPPER}} .usk-showcase-slider .usk-showcase-slider-wrapper .usk-item .usk-image-wrap' => 'height: {{SIZE}}{{UNIT}}',
-        //         ],
-        //     ]
-        // );
+        
         $this->add_responsive_control(
             'items_gap',
             [
@@ -143,6 +119,27 @@ class Showcase_Slider extends Module_Base {
                 'label' => esc_html__('Image Size', 'ultimate-store-kit'),
                 'exclude' => ['custom'],
                 'default' => 'full',
+            ]
+        );
+        $this->add_responsive_control(
+            'items_height',
+            [
+                'label' => esc_html__('Image Height', 'ultimate-store-kit') . BDTUSK_NC,
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 200,
+                        'max' => 800,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-image-wrap' => 'height: {{SIZE}}{{UNIT}}',
+                ],
             ]
         );
 
@@ -554,7 +551,7 @@ class Showcase_Slider extends Module_Base {
                     'size' => 10
                 ],
                 'selectors'   => [
-                    '{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}}; margin: 0 -{{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .swiper-carousel' => 'padding: {{SIZE}}{{UNIT}};'
                 ],
             ]
         );

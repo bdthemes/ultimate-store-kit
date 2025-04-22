@@ -2019,6 +2019,9 @@ div.pp_pic_holder {
   font-size: 22px;
   margin: 0 0 12px;
 }
+.elementor-widget-usk-product-stock .usk-product-stock .usk-status {
+  display: inline-block;
+}
 .elementor-widget-usk-product-stock .usk-order-info-content {
   display: flex;
   justify-content: space-between;

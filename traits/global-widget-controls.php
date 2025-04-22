@@ -2362,6 +2362,26 @@ trait Global_Widget_Controls {
                 'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content > div .usk-badge',
             ]
         );
+        $this->add_responsive_control(
+            'badge_display_type',
+            [
+                'label' => esc_html__('Display Type', 'ultimate-store-kit') . BDTUSK_NC,
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'row' => [
+                        'title' => esc_html__('Inline', 'ultimate-store-kit'),
+                        'icon' => 'eicon-ellipsis-h',
+                    ],
+                    'column' => [
+                        'title' => esc_html__('Grid', 'ultimate-store-kit'),
+                        'icon' => 'eicon-ellipsis-v',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-badge-label-content' => 'flex-direction: {{VALUE}};',
+                ],
+            ]
+        );
         $this->start_controls_tabs(
             'label_badge_tabs'
         );
