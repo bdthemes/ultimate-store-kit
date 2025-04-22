@@ -215,6 +215,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Offcanvas shows on page loading issue fixed in Mini Cart widget
 * Updated: Only one plugin DCI notice will show at a time
 * Fixed: Product price color, view cart & checkout button background issue fixed in mini cart widget 
+* Added: [Mentor Slider](https://youtu.be/qO4BSo8OTkA) video tutorial added
 
 = 2.4.1 [15th April 2025] =
 
