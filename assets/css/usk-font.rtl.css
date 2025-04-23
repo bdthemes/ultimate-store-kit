@@ -1,6 +1,6 @@
 @font-face {
   font-family: "ultimate-store-kit";
-  src: url("../fonts/ultimate-store-kit.woff2?tggw1f") format("woff2"), url("../fonts/ultimate-store-kit.ttf?tggw1f") format("truetype"), url("../fonts/ultimate-store-kit.woff?tggw1f") format("woff"), url("../fonts/ultimate-store-kit.svg?tggw1f#ultimate-store-kit") format("svg");
+  src: url("../fonts/ultimate-store-kit.woff2?t5p9f8") format("woff2"), url("../fonts/ultimate-store-kit.ttf?t5p9f8") format("truetype"), url("../fonts/ultimate-store-kit.woff?t5p9f8") format("woff"), url("../fonts/ultimate-store-kit.svg?t5p9f8#ultimate-store-kit") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -647,86 +647,6 @@
   content: "\e942";
 }
 
-.usk-icon-user:before {
-  content: "\f007";
-}
-
-.usk-icon-eye:before {
-  content: "\f06e";
-}
-
-.usk-icon-preview:before {
-  content: "\f06e";
-}
-
-.usk-icon-email:before {
-  content: "\f0e0";
-}
-
-.usk-icon-cart:before {
-  content: "\e9b7";
-}
-
-.usk-icon-close:before {
-  content: "\e9b8";
-}
-
-.usk-icon-ultimate-store-kit:before {
-  content: "\e997";
-}
-
-.usk-icon-grid-list:before {
-  content: "\e951";
-}
-
-.usk-icon-grid-2:before {
-  content: "\e952";
-}
-
-.usk-icon-grid-3:before {
-  content: "\e953";
-}
-
-.usk-icon-grid-4:before {
-  content: "\e954";
-}
-
-.usk-icon-grid-5:before {
-  content: "\e955";
-}
-
-.usk-icon-grid-6:before {
-  content: "\e956";
-}
-
-.usk-icon-hexagon-zigzag:before {
-  content: "\e90f";
-}
-
-.usk-icon-bulge-rectangle:before {
-  content: "\e90e";
-}
-
-.usk-icon-hexagon-radius2:before {
-  content: "\e90d";
-}
-
-.usk-icon-hexagon:before {
-  content: "\e90c";
-}
-
-.usk-icon-hexagon-radius:before {
-  content: "\e604";
-}
-
-.usk-icon-g2:before {
-  content: "\e90b";
-}
-
-.usk-icon-plus-2:before {
-  content: "\e908";
-}
-
 .usk-icon-x:before {
   content: "\e9b6";
 }
@@ -955,8 +875,40 @@
   content: "\f37e";
 }
 
+.usk-icon-coin:before {
+  content: "\e9c6";
+}
+
+.usk-icon-credit-card:before {
+  content: "\e9c2";
+}
+
+.usk-icon-shopping-bag:before {
+  content: "\e9c3";
+}
+
+.usk-icon-truck:before {
+  content: "\e9c4";
+}
+
+.usk-icon-user:before {
+  content: "\f007";
+}
+
+.usk-icon-eye:before {
+  content: "\f06e";
+}
+
+.usk-icon-preview:before {
+  content: "\f06e";
+}
+
 .usk-icon-eye-blocked:before {
   content: "\e9c1";
+}
+
+.usk-icon-email:before {
+  content: "\f0e0";
 }
 
 .usk-icon-edit:before {
@@ -1101,6 +1053,70 @@
 
 .usk-icon-yelp:before {
   content: "\ef36";
+}
+
+.usk-icon-cart:before {
+  content: "\e9b7";
+}
+
+.usk-icon-close:before {
+  content: "\e9b8";
+}
+
+.usk-icon-ultimate-store-kit:before {
+  content: "\e997";
+}
+
+.usk-icon-grid-list:before {
+  content: "\e951";
+}
+
+.usk-icon-grid-2:before {
+  content: "\e952";
+}
+
+.usk-icon-grid-3:before {
+  content: "\e953";
+}
+
+.usk-icon-grid-4:before {
+  content: "\e954";
+}
+
+.usk-icon-grid-5:before {
+  content: "\e955";
+}
+
+.usk-icon-grid-6:before {
+  content: "\e956";
+}
+
+.usk-icon-hexagon-zigzag:before {
+  content: "\e90f";
+}
+
+.usk-icon-bulge-rectangle:before {
+  content: "\e90e";
+}
+
+.usk-icon-hexagon-radius2:before {
+  content: "\e90d";
+}
+
+.usk-icon-hexagon:before {
+  content: "\e90c";
+}
+
+.usk-icon-hexagon-radius:before {
+  content: "\e604";
+}
+
+.usk-icon-g2:before {
+  content: "\e90b";
+}
+
+.usk-icon-plus-2:before {
+  content: "\e908";
 }
 
 .usk-icon-plus:before {

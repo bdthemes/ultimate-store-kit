@@ -208,6 +208,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.4.X [XXth April 2025] =
 
+* Added: Made Compatible with WordPress Version 6.8
 * Added: Product widgets badge display type option added
 * Added: Image position and text limit option added in product accordion widget
 * Added: Text Alignment option added in image hotspot widget
