@@ -1,19 +1,49 @@
+/* Heaven Slider - Product slider with thumbnails and hover effects */
+:root {
+  /* Colors */
+  --usk-heaven-primary: #5bb300;
+  --usk-heaven-dark: #1f2027;
+  --usk-heaven-text: #6b6b6e;
+  --usk-heaven-muted: #8d8e9c;
+  --usk-heaven-category: #5f5f74;
+  --usk-heaven-bg: #eee;
+  --usk-heaven-white: #fff;
+  /* Spacing */
+  --usk-heaven-gap: clamp(15px, 2vw, 30px);
+  --usk-heaven-padding: clamp(10px, 2vw, 30px);
+  --usk-heaven-margin: clamp(10px, 2vw, 30px);
+  /* Typography */
+  --usk-heaven-title-size: clamp(24px, 2.5vw, 40px);
+  --usk-heaven-text-size: clamp(14px, 1vw, 16px);
+  --usk-heaven-price-size: clamp(16px, 1vw, 18px);
+  --usk-heaven-btn-size: clamp(13px, 1vw, 15px);
+  --usk-heaven-nav-size: clamp(14px, 1vw, 18px);
+  /* Animation */
+  --usk-heaven-transition: all 0.3s ease-in-out;
+}
+
+/* Base Layout */
 .usk-heaven-slider {
   display: flex;
   height: clamp(560px, 40vw, 600px);
   overflow: hidden;
-  padding: clamp(10px, 2vw, 30px);
+  padding: var(--usk-heaven-padding);
   justify-content: space-between;
   flex-direction: row-reverse;
   border-radius: 6px;
   position: relative;
 }
+
+/* Main Slider */
 .usk-heaven-slider .usk-main-slider {
   width: 100%;
 }
+
 .usk-heaven-slider .usk-main-slider .usk-image-wrap {
   opacity: 0;
 }
+
+/* Active Slide States */
 .usk-heaven-slider .swiper-slide-duplicate-active .usk-badge-label-wrapper,
 .usk-heaven-slider .swiper-slide-duplicate-active .usk-content,
 .usk-heaven-slider .swiper-slide-active .usk-badge-label-wrapper,
@@ -21,113 +51,144 @@
   opacity: 1;
   visibility: visible;
 }
+
 .usk-heaven-slider .swiper-slide-duplicate-active .usk-image-wrap,
 .usk-heaven-slider .swiper-slide-active .usk-image-wrap {
   opacity: 1;
 }
+
+/* Content Layout */
 .usk-heaven-slider .usk-content {
   width: 100%;
   opacity: 0;
   visibility: hidden;
   transition: all 0.6s ease-in-out;
 }
+
 .usk-heaven-slider .usk-item-box {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  gap: clamp(15px, 2vw, 30px);
+  gap: var(--usk-heaven-gap);
 }
+
+/* Image Styles */
 .usk-heaven-slider .usk-image-wrap {
   width: 100%;
-  transition: all 0.3s ease-in-out;
+  transition: var(--usk-heaven-transition);
   display: flex;
   border-radius: 6px;
   overflow: hidden;
 }
+
 .usk-heaven-slider .usk-image-wrap .usk-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* Category Styles */
 .usk-heaven-slider .usk-category {
   margin-bottom: 10px;
   display: inline-flex;
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .usk-heaven-slider .usk-category a {
   font-size: 14px;
-  color: #5f5f74;
+  color: var(--usk-heaven-category);
   font-weight: 600;
   text-transform: capitalize;
-  transition: all 0.3s ease-in-out;
+  transition: var(--usk-heaven-transition);
   text-decoration: underline;
-  text-decoration-color: #5bb300;
+  text-decoration-color: var(--usk-heaven-primary);
   text-decoration-skip-ink: none;
 }
+
 .usk-heaven-slider .usk-category a:hover {
-  color: #5bb300;
+  color: var(--usk-heaven-primary);
 }
+
+/* Title Styles */
 .usk-heaven-slider .usk-title {
   margin: 0 0 10px;
-  font-size: clamp(24px, 2.5vw, 40px);
+  font-size: var(--usk-heaven-title-size);
   letter-spacing: 2px;
   font-weight: 700;
   text-transform: capitalize;
 }
+
 .usk-heaven-slider .usk-title a {
-  color: #1f2027;
+  color: var(--usk-heaven-dark);
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  transition: var(--usk-heaven-transition);
 }
+
 .usk-heaven-slider .usk-title a:hover {
-  color: #5bb300;
+  color: var(--usk-heaven-primary);
 }
+
+/* Text Styles */
 .usk-heaven-slider .usk-text {
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: var(--usk-heaven-text-size);
   line-height: 1.8;
-  color: #6b6b6e;
-  margin-bottom: clamp(10px, 2vw, 15px);
+  color: var(--usk-heaven-text);
+  margin-bottom: var(--usk-heaven-margin);
 }
+
 .usk-heaven-slider .usk-text p {
   margin: 0;
 }
+
+/* Price Styles */
 .usk-heaven-slider .usk-price {
   display: flex;
   align-items: center;
   grid-column-gap: 12px;
-  font-size: clamp(16px, 1vw, 18px);
+  font-size: var(--usk-heaven-price-size);
   font-weight: 600;
   margin-bottom: clamp(12px, 1.2vw, 14px);
 }
+
 .usk-heaven-slider .usk-price del {
-  color: #8d8e9c;
+  color: var(--usk-heaven-muted);
 }
+
 .usk-heaven-slider .usk-price ins {
-  color: #5bb300;
+  color: var(--usk-heaven-primary);
   text-decoration: none;
 }
+
+/* Shopping Button Styles */
 .usk-heaven-slider .usk-shoping {
   display: flex;
   align-items: center;
   grid-column-gap: 10px;
 }
+
 .usk-heaven-slider .usk-shoping a {
   display: inline-flex;
   position: relative;
-  color: #fff;
-  font-size: clamp(13px, 1vw, 15px);
+  color: var(--usk-heaven-white);
+  font-size: var(--usk-heaven-btn-size);
   padding: clamp(10px, 1vw, 12px);
   text-decoration: none;
   border-radius: 4px;
-  background-color: #5bb300;
+  background-color: var(--usk-heaven-primary);
   line-height: 1.2;
 }
+
 .usk-heaven-slider .usk-shoping a:hover {
-  background-color: #1f2027;
+  background-color: var(--usk-heaven-dark);
 }
+
+.usk-heaven-slider .usk-shoping .usk-wishlist.usk-active {
+  background-color: var(--usk-heaven-dark);
+}
+
 .usk-heaven-slider .usk-shoping a i {
   height: 1.2em;
   width: 1.2em;
@@ -135,53 +196,63 @@
   align-items: center;
   justify-content: center;
 }
-.usk-heaven-slider .usk-shoping .usk-wishlist.usk-active {
-  background-color: #1f2027;
-}
+
+/* Rating Styles */
 .usk-heaven-slider .usk-item .usk-rating {
   display: flex;
   align-items: center;
   width: 100%;
   margin-bottom: 30px;
 }
-.usk-heaven-slider .usk-item .usk-rating .woocommerce-product-rating {
+
+.usk-heaven-slider .usk-rating .woocommerce-product-rating {
   display: flex;
   align-items: center;
   padding: 0;
 }
-.usk-heaven-slider .usk-item .usk-rating .woocommerce-product-rating .star-rating {
+
+.usk-heaven-slider .usk-rating .star-rating {
   font-size: 12px;
   margin: 0;
 }
+
+/* Badge Styles */
 .usk-heaven-slider .usk-badge-label-wrapper {
   position: absolute;
   right: 0;
   top: 0;
   margin: 10px;
 }
+
 .usk-heaven-slider .usk-badge-label-wrapper .usk-badge {
   border-radius: 4px;
 }
+
+/* Thumbnail Slider */
 .usk-heaven-slider .usk-thumbs-slider {
   display: none;
   overflow: hidden;
   padding: 5px;
-  margin-right: clamp(10px, 2vw, 30px);
+  margin-right: var(--usk-heaven-margin);
 }
+
 .usk-heaven-slider .usk-thumbs-slider .usk-item-box,
 .usk-heaven-slider .usk-thumbs-slider .usk-image-wrap {
   height: 100%;
   width: 100%;
 }
+
 .usk-heaven-slider .usk-thumbs-slider .usk-image-wrap {
   padding: 10px;
 }
+
 .usk-heaven-slider .usk-thumbs-slider .usk-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
+
 .usk-heaven-slider .usk-thumbs-slider .usk-item {
   display: flex;
   align-items: center;
@@ -190,6 +261,7 @@
   overflow: hidden;
   cursor: pointer;
 }
+
 .usk-heaven-slider .usk-thumbs-slider .usk-item:before {
   position: absolute;
   content: "";
@@ -198,9 +270,11 @@
   top: 0;
   left: 0;
   border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: var(--usk-heaven-transition);
   z-index: -1;
 }
+
+/* Navigation Styles */
 .usk-heaven-slider .usk-navigation-wrap {
   position: absolute;
   right: 0;
@@ -208,24 +282,27 @@
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  margin: clamp(10px, 2vw, 30px);
+  margin: var(--usk-heaven-margin);
   grid-column-gap: 10px;
 }
+
 .usk-heaven-slider .usk-nav-btn {
-  color: #1f2027;
-  font-size: clamp(14px, 1vw, 18px);
+  color: var(--usk-heaven-dark);
+  font-size: var(--usk-heaven-nav-size);
   display: flex;
-  background: #eee;
+  background: var(--usk-heaven-bg);
   padding: clamp(10px, 1vw, 12px);
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: var(--usk-heaven-transition);
   z-index: 1;
 }
+
 .usk-heaven-slider .usk-nav-btn:hover {
-  color: #5bb300;
+  color: var(--usk-heaven-primary);
 }
 
+/* Responsive Styles */
 @media (min-width: 768px) {
   .usk-heaven-slider .usk-thumbs-slider {
     display: block;
