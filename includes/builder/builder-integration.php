@@ -33,10 +33,8 @@ class Builder_Integration {
 			// Check if we're in a demo environment or development site
 			// For demo sites, you might want to check domain names or other indicators
 			$demo_hosts = apply_filters('ultimate_store_kit/demo_hosts', [
-				'wpmet.com',
-				'demo.wpmet.com',
-				'ultimatestorekit.com',
-				'demo.ultimatestorekit.com',
+				'ultimatestorekit.pro',
+				'demo.ultimatestorekit.pro',
 				'localhost',
 				'127.0.0.1'
 			]);
