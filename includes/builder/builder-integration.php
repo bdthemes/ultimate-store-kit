@@ -103,15 +103,15 @@ class Builder_Integration {
 		}
 
 		$is_demo = apply_filters('ultimate_store_kit/preview/use_demo_bypass', false);
-		$nonce_value = $is_demo ? 'by_pass_demo' : wp_create_nonce('template_preview_' . $post_id);
+		$nonce_value = $is_demo ? 'verify_demo' : wp_create_nonce('template_preview_' . $post_id);
 
 		$param = [
 			'usk_template_id' => $post_id,
 			'preview_nonce' => $nonce_value,
-			'change_template' => '1',
+			'preview' => true
 		];
 
-		// Add parameters to URL
+		// Add parameters two URL
 		$url = add_query_arg($param, $template_url);
 
 		return $url;
@@ -376,12 +376,12 @@ class Builder_Integration {
 		}
 
 		// Handle template preview from URL parameters
-		if (!empty($_GET['change_template']) && !empty($_GET['usk_template_id']) && !empty($_GET['preview_nonce'])) {
+		if (!empty($_GET['preview']) && !empty($_GET['usk_template_id']) && !empty($_GET['preview_nonce'])) {
 			$usk_template_id = sanitize_text_field(wp_unslash($_GET['usk_template_id']));
 			$nonce = sanitize_text_field(wp_unslash($_GET['preview_nonce']));
 
 			// Special handling for demo bypass
-			$is_demo_bypass = ($nonce === 'by_pass_demo');
+			$is_demo_bypass = ($nonce === 'verify_demo');
 			$nonce_verified = $is_demo_bypass ?
 				apply_filters('ultimate_store_kit/preview/verify_demo_bypass', false) :
 				wp_verify_nonce($nonce, 'template_preview_' . $usk_template_id);
