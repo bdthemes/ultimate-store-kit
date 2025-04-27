@@ -199,7 +199,7 @@ trait Global_Widget_Controls {
         $this->start_controls_section(
             'section_woocommerce_additional',
             [
-                'label' => esc_html__('Additional Options', 'ultimate-store-kit'),
+                'label' => esc_html__('Settings', 'ultimate-store-kit'),
             ]
         );
         $this->start_controls_tabs(
