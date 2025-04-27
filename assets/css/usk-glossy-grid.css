@@ -1,47 +1,69 @@
-.usk-glossy-grid .usk-item:hover .usk-shoping a {
-  transform: translateY(0px);
+:root {
+  /* Colors */
+  --usk-glossy-shadow-color: rgba(0, 0, 0, 0.15);
+  /* Spacing */
+  --usk-glossy-offset: 12px;
+  --usk-glossy-btn-offset: 10px;
+  /* Animation */
+  --usk-glossy-transition: 0.55s cubic-bezier(0.2, 0.75, 0.5, 1);
 }
-.usk-glossy-grid .usk-item-box {
+
+/* Base Layout & Positioning */
+.usk-glossy-grid .usk-item-box,
+.usk-glossy-grid .usk-shoping,
+.usk-glossy-grid .usk-badge-label-wrapper {
+  position: absolute;
   z-index: 1;
 }
+
 .usk-glossy-grid .usk-shoping {
   top: clamp(10px, 1vw, 25px);
   left: clamp(10px, 1vw, 25px);
 }
-.usk-glossy-grid .usk-shoping a {
-  transform: translateY(-10px);
-}
+
 .usk-glossy-grid .usk-badge-label-wrapper {
   right: 0;
   top: 0;
 }
+
+/* Shopping Button */
+.usk-glossy-grid .usk-shoping a {
+  transform: translateY(calc(-1 * var(--usk-glossy-btn-offset)));
+}
+
+.usk-glossy-grid .usk-item:hover .usk-shoping a {
+  transform: translateY(0);
+}
+
+/* Shadow Effect */
 .usk-glossy-grid .usk-product-hover {
   position: absolute;
-  transition: transform 0.55s cubic-bezier(0.2, 0.75, 0.5, 1);
+  transition: transform var(--usk-glossy-transition);
   transform: scale(0.95) translateY(0) translateZ(0);
-  display: block;
-  height: calc(100% + 24px);
-  width: calc(100% + 24px);
+  height: calc(100% + var(--usk-glossy-offset) * 2);
+  width: calc(100% + var(--usk-glossy-offset) * 2);
   z-index: 0;
-  top: -12px;
-  left: -12px;
+  top: calc(-1 * var(--usk-glossy-offset));
+  left: calc(-1 * var(--usk-glossy-offset));
 }
+
 .usk-glossy-grid .usk-product-hover:before {
   content: "";
   position: absolute;
   z-index: -1;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  inset: 0;
   transform-origin: center;
   opacity: 0;
-  transition: opacity 0.55s cubic-bezier(0.2, 0.75, 0.5, 1);
-  box-shadow: 0 8px 55px rgba(0, 0, 0, 0.15);
+  transition: opacity var(--usk-glossy-transition);
+  box-shadow: 0 8px 55px var(--usk-glossy-shadow-color);
+  pointer-events: none;
 }
+
+/* Hover States */
 .usk-glossy-grid .usk-item:hover .usk-product-hover {
   transform: scale(1) translateY(0) translateZ(0);
 }
+
 .usk-glossy-grid .usk-item:hover .usk-product-hover:before {
   opacity: 1;
   pointer-events: all;

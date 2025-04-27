@@ -1,50 +1,81 @@
+:root {
+  /* Theme colors and effects */
+  --usk-fc-shadow: rgba(149, 157, 165, 0.2); /* Card shadow color */
+  --usk-fc-bg: #fff; /* Content background */
+  --usk-fc-offset: 25px; /* Shopping button offset */
+  --usk-fc-anim: 0.3s ease; /* Animation duration */
+}
+
+/* Card structure and effects */
 .usk-florence-carousel .usk-item {
-  box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+  box-shadow: 0 8px 24px var(--usk-fc-shadow);
   overflow: hidden;
 }
 .usk-florence-carousel .usk-item:hover .usk-shoping a {
   transform: translateX(0px);
 }
+
+/* Shopping button positioning and animation */
 .usk-florence-carousel .usk-shoping {
   bottom: clamp(10px, 1vw, 25px);
   right: clamp(10px, 1vw, 25px);
 }
 .usk-florence-carousel .usk-shoping a {
-  transform: translateX(25px);
+  transform: translateX(var(--usk-fc-offset));
+  transition: transform var(--usk-fc-anim);
 }
+
+.usk-florence-carousel .usk-item:hover .usk-shoping a {
+  transform: translateX(0);
+}
+
+/* Badge and content layout */
 .usk-florence-carousel .usk-badge-label-wrapper {
   left: 0;
   top: 0;
 }
+
 .usk-florence-carousel .usk-content {
-  background: #fff;
+  background: var(--usk-fc-bg);
 }
+
 .usk-florence-carousel .usk-content-inner {
   width: 100%;
   position: relative;
 }
+
+/* Rating and price animation system */
+.usk-florence-carousel .usk-have-rating .usk-price,
+.usk-florence-carousel .usk-have-rating .usk-rating {
+  transition: all var(--usk-fc-anim);
+  transform: translateY(0);
+}
+
+/* Initial states */
 .usk-florence-carousel .usk-have-rating .usk-price {
   opacity: 1;
-  transition: all 0.3s ease;
-  transform: translateY(0);
   margin-bottom: 0;
 }
-.usk-florence-carousel .usk-have-rating .usk-rating {
-  transform: translateY(0);
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-.usk-florence-carousel .usk-have-rating:hover .usk-rating {
-  transform: translateY(-20px);
-  opacity: 1;
-}
-.usk-florence-carousel .usk-have-rating:hover .usk-price {
-  transform: translateY(-20px);
-  opacity: 0;
-  visibility: hidden;
-}
+
+.usk-florence-carousel .usk-have-rating .usk-rating,
 .usk-florence-carousel .usk-item .usk-rating {
   position: absolute;
   width: 100%;
   display: flex;
+}
+
+.usk-florence-carousel .usk-have-rating .usk-rating {
+  opacity: 0;
+}
+
+/* Hover interactions */
+.usk-florence-carousel .usk-have-rating:hover .usk-rating {
+  transform: translateY(-20px);
+  opacity: 1;
+}
+
+.usk-florence-carousel .usk-have-rating:hover .usk-price {
+  transform: translateY(-20px);
+  opacity: 0;
+  visibility: hidden;
 }

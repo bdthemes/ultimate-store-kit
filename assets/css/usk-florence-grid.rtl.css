@@ -1,45 +1,85 @@
+:root {
+  /* Colors */
+  --usk-fg-shadow-color: rgba(149, 157, 165, 0.2);
+  /* Spacing */
+  --usk-fg-spacing-min: 10px;
+  --usk-fg-spacing-max: 25px;
+  --usk-fg-offset: 25px;
+  /* Animation */
+  --usk-fg-transition: 0.3s ease;
+}
+
+/* --------------------------------
+ * 1. Core Layout & Container
+ * -------------------------------- */
 .usk-florence-grid .usk-item {
-  box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+  box-shadow: 0 8px 24px var(--usk-fg-shadow-color);
   overflow: hidden;
 }
-.usk-florence-grid .usk-item:hover .usk-shoping a {
-  transform: translateX(0px);
-}
+
+/* --------------------------------
+ * 2. Shopping Button
+ * Dynamic positioning with clamp
+ * -------------------------------- */
 .usk-florence-grid .usk-shoping {
-  bottom: clamp(10px, 1vw, 25px);
-  left: clamp(10px, 1vw, 25px);
+  bottom: clamp(var(--usk-fg-spacing-min), 1vw, var(--usk-fg-spacing-max));
+  left: clamp(var(--usk-fg-spacing-min), 1vw, var(--usk-fg-spacing-max));
 }
+
 .usk-florence-grid .usk-shoping a {
-  transform: translateX(-25px);
+  transform: translateX(var(--usk-fg-offset));
+  transition: transform var(--usk-fg-transition);
 }
+
+.usk-florence-grid .usk-item:hover .usk-shoping a {
+  transform: translateX(0);
+}
+
+/* --------------------------------
+ * 3. Badge Positioning
+ * -------------------------------- */
 .usk-florence-grid .usk-badge-label-wrapper {
   right: 0;
   top: 0;
 }
+
+/* --------------------------------
+ * 4. Grid Layout & Price/Rating System
+ * Interactive price and rating display
+ * -------------------------------- */
 .usk-florence-grid .usk-grid-layout .usk-price {
   margin: 0;
 }
+
+/* Rating and Price Animation Container */
+.usk-florence-grid .usk-grid-layout .usk-have-rating .usk-price,
+.usk-florence-grid .usk-grid-layout .usk-have-rating .usk-rating {
+  transition: all var(--usk-fg-transition);
+}
+
+/* Price State */
 .usk-florence-grid .usk-grid-layout .usk-have-rating .usk-price {
   opacity: 1;
-  transition: all 0.3s ease;
   transform: translateY(0);
 }
+
+/* Rating State */
 .usk-florence-grid .usk-grid-layout .usk-have-rating .usk-rating {
+  position: absolute;
+  width: 100%;
+  display: flex;
   transform: translateY(0);
   opacity: 0;
-  transition: all 0.3s ease;
 }
+
+/* Hover Interactions */
 .usk-florence-grid .usk-grid-layout .usk-have-rating:hover .usk-rating {
   transform: translateY(-20px);
   opacity: 1;
 }
+
 .usk-florence-grid .usk-grid-layout .usk-have-rating:hover .usk-price {
   transform: translateY(-20px);
   opacity: 0;
   visibility: hidden;
-}
-.usk-florence-grid .usk-grid-layout .usk-rating {
-  position: absolute;
-  width: 100%;
-  display: flex;
 }
