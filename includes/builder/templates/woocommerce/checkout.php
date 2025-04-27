@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkout Page
  *
@@ -16,14 +17,19 @@
  * @version 3.8.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-get_header( 'shop' ); ?>
-<?php
-if ( class_exists( 'Elementor\Plugin' ) ) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
-}
+get_header('shop');
+
+if (class_exists('Elementor\Plugin')) {
 ?>
-
+	<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
+		<?php
+		echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
+		?>
+	</form>
 <?php
-get_footer( 'shop' ); ?>
+}
+
+get_footer('shop');
+?>

@@ -1044,19 +1044,16 @@ class Page_Checkout extends Module_Base {
 
     ?>
 
-        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
-            <div class="usk-page-checkout">
-
-                <div class="usk-checkout-address-wrapper">
-                    <?php $this->checkout_billing_address(); ?>
-                    <?php $this->checkout_shipping_form(); ?>
-                </div>
-                <div class="usk-checkout-details-wrapper">
-                    <?php $this->checkout_order_review(); ?>
-                    <?php $this->checkout_payment_methods(); ?>
-                </div>
+        <div class="usk-page-checkout">
+            <div class="usk-checkout-address-wrapper">
+                <?php $this->checkout_billing_address(); ?>
+                <?php $this->checkout_shipping_form(); ?>
             </div>
-        </form>
+            <div class="usk-checkout-details-wrapper">
+                <?php $this->checkout_order_review(); ?>
+                <?php $this->checkout_payment_methods(); ?>
+            </div>
+        </div>
 
 <?php
     }
