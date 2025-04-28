@@ -355,15 +355,11 @@ function ultimate_store_kit_post_pagination( $wp_query ) {
 	echo '</ul>' . "\n";
 }
 function ultimate_store_kit_post_pagination__new( $wp_query ) {
-
-	$page             = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
-	$page             = absint( empty( $_GET['product-page'] ) ? $page : $_GET['product-page'] );
-	$paged            = absint( $page );
-
-	$current_page_url = strtok( get_pagenum_link( 1 ), '?' );
+	$page  = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
+	$page  = absint( empty( $_GET['product-page'] ) ? $page : $_GET['product-page'] );
+	$paged = absint( $page );
 
 	/** Stop execution if there's only 1 page */
-
 	if ( $wp_query->max_num_pages <= 1 ) {
 		return;
 	}
@@ -371,13 +367,11 @@ function ultimate_store_kit_post_pagination__new( $wp_query ) {
 	$max = intval( $wp_query->max_num_pages );
 
 	/** Add current page to the array */
-
 	if ( $paged >= 1 ) {
 		$links[] = $paged;
 	}
 
 	/** Add the pages around the current page to the array */
-
 	if ( $paged >= 3 ) {
 		$links[] = $paged - 1;
 		$links[] = $paged - 2;
@@ -388,39 +382,41 @@ function ultimate_store_kit_post_pagination__new( $wp_query ) {
 		$links[] = $paged + 1;
 	}
 
+	// Get the current URL without any pagination parameters
+	$current_url = remove_query_arg( ['paged', 'page', 'product-page'] );
+	
+	// If we're on a custom post type archive or taxonomy page, preserve the base URL
+	if ( is_post_type_archive() || is_tax() ) {
+		$current_url = get_pagenum_link( 1, false );
+		$current_url = remove_query_arg( ['paged', 'page', 'product-page'], $current_url );
+	}
+
 	echo '<ul class="usk-pagination">' . "\n";
 
 	/** Previous Post Link */
-
 	if ( get_previous_posts_link() ) {
 		$prev_page = $paged - 1;
-
 		if( $prev_page < 1 ) {
 			return;
 		}
-
 		$class = $paged == $prev_page ? ' class="current"' : '';
-
 		printf(
 			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
 			wp_kses_post( $class ),
-			esc_url( add_query_arg( 'product-page', $prev_page, $current_page_url ) ),
+			esc_url( add_query_arg( 'product-page', $prev_page, $current_url ) ),
 			'<span class="usk-icon-arrow-left-5"></span>'
 		);
 	}
 
 	/** Link to first page, plus ellipses if necessary */
-
 	if ( ! in_array( 1, $links ) ) {
 		$class = 1 == $paged ? ' class="current"' : '';
-
 		printf( 
 			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n", 
 			wp_kses_post( $class ),
-			esc_url( add_query_arg( 'product-page', '1', $current_page_url ) ),
+			esc_url( add_query_arg( 'product-page', '1', $current_url ) ),
 			'1'
 		);
-
 		if ( ! in_array( 2, $links ) ) {
 			echo '<li class="usk-pagination-dot-dot"><span>...</span></li>';
 		}
@@ -428,44 +424,40 @@ function ultimate_store_kit_post_pagination__new( $wp_query ) {
 
 	/** Link to current page, plus 2 pages in either direction if necessary */
 	sort( $links );
-
 	foreach ( (array) $links as $link ) {
 		$class = $paged == $link ? ' class="usk-active"' : '';
-		printf( '<li%s><a href="%s" target="_self">%s</a></li>' . "\n", 
-		wp_kses_post( $class ), 
-		esc_url( add_query_arg( 'product-page', $link, $current_page_url ) ), 
-		esc_html( $link ) );
+		printf( 
+			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n", 
+			wp_kses_post( $class ), 
+			esc_url( add_query_arg( 'product-page', $link, $current_url ) ), 
+			esc_html( $link ) 
+		);
 	}
 
 	/** Link to last page, plus ellipses if necessary */
-
 	if ( ! in_array( $max, $links ) ) {
-
 		if ( ! in_array( $max - 1, $links ) ) {
 			echo '<li class="usk-pagination-dot-dot"><span>...</span></li>' . "\n";
 		}
-
 		$class = $paged == $max ? ' class="usk-active"' : '';
 		printf( 
 			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n", 
 			wp_kses_post( $class ), 
-			esc_url( add_query_arg( 'product-page', $max, $current_page_url ) ), 
-			esc_html( $max ) );
+			esc_url( add_query_arg( 'product-page', $max, $current_url ) ), 
+			esc_html( $max ) 
+		);
 	}
 
 	/** Next Post Link */
-
 	if ( get_next_posts_link() ) {
 		$next_page = $paged + 1;
-
 		if( $next_page > $max ) {
 			return;
 		}
-
 		printf(
 			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
 			wp_kses_post( $class ),
-			esc_url( add_query_arg( 'product-page', $next_page, $current_page_url ) ),
+			esc_url( add_query_arg( 'product-page', $next_page, $current_url ) ),
 			'<span class="usk-icon-arrow-right-1"></span>'
 		);
 	}

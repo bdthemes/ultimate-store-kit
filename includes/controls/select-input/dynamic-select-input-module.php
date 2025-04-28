@@ -56,16 +56,37 @@ class Dynamic_Select_Input_Module {
 
 			$query = isset($_POST['query']) ? sanitize_text_field($_POST['query']) : '';
 
-			if ($query == 'terms') {
-				$data = $this->getTerms();
-			} else if ($query == 'authors') {
-				$data = $this->getAuthors();
-			} else if ($query == 'authors_role') {
-				$data = $this->getAuthorRoles();
-			} else if ($query == 'only_post') {
-				$data = $this->getOnlyPosts();
-			} else {
-				$data = $this->getPosts();
+			switch ($query) {
+				case 'posts':
+					$data = $this->getPosts();
+					break;
+				case 'terms':
+					$data = $this->getTerms();
+					break;
+				case 'authors':
+					$data = $this->getAuthors();
+					break;
+				case 'authors_role':
+					$data = $this->getAuthorRoles();
+					break;
+				case 'only_post':
+					$data = $this->getOnlyPosts();
+					break;
+				case 'product_cat':
+					$data = $this->getProductTerms($query);
+					break;
+				case 'product_tag':
+					$data = $this->getProductTerms($query);
+					break;
+				case 'product_attributes':
+					$data = $this->getProductAttributes();
+					break;
+				case 'product_brand':
+					$data = $this->getProductTerms($query);
+					break;
+				default:
+					$data = $this->getPosts();
+					break;
 			}
 
 			wp_send_json_success($data);
@@ -360,6 +381,69 @@ class Dynamic_Select_Input_Module {
 
 		return $roles;
 	}
+
+	/**
+	 * Get Product Categories query Data
+	 *
+	 * @return array
+	 */
+	public function getProductTerms($taxonomy = 'product_cat') {
+		$include     = $this->getselecedIds();
+		$search_text = $this->getSearchQuery();
+		$args = [
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => false,
+		];
+
+		if (!empty($include)) {
+			$args['include'] = $include;
+		}
+
+		if ($search_text) {
+			$args['number'] = 20;
+			$args['search'] = $search_text;
+		}
+		$terms = get_terms($args);
+
+		if (is_wp_error($terms) || empty($terms)) {
+			return [];
+		}
+
+		foreach ($terms as $term) {
+			$data[] = [
+				'id'   => $term->term_taxonomy_id,
+				'text' => $term->name,
+			];
+		}
+		return $data;
+	}
+
+	/**
+	 * Get Product Attributes query Data
+	 *
+	 * @return array
+	 */
+	public function getProductAttributes(): array {
+		$search_text = $this->getSearchQuery();
+		// Get all global product attributes
+		$attribute_taxonomies = wc_get_attribute_taxonomies();
+	
+		// Map the attributes to the desired structure
+		$data = [];
+
+		foreach ($attribute_taxonomies as $attribute) {
+			$data[] = [
+				'id'   => $attribute->attribute_id,
+				'text' => $attribute->attribute_label,
+			];
+		}
+
+		$data = array_filter($data, function ($item) use ($search_text) {
+			return stripos($item['text'], $search_text) !== false;
+		});
+		$data = array_slice($data, 0, 20); // Limit to 20 results
+		return $data;
+	}	
 }
 
 function Dynamic_Select_Input_Module() {
