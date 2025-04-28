@@ -23,7 +23,7 @@ get_header('shop');
 
 if (class_exists('Elementor\Plugin')) {
 	// Check if user is logged in or if demo verification is in the URL parameters
-	$is_demo_mode = isset($_GET['preview_nonce']) && $_GET['preview_nonce'] === 'verify_demo';
+	$is_demo_mode = isset($_GET['preview_nonce']) && $_GET['preview_nonce'] === 'verified';
 
 	if (is_user_logged_in() || $is_demo_mode): ?>
 		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">

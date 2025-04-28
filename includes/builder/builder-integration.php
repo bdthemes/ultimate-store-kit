@@ -29,12 +29,12 @@ class Builder_Integration {
 		add_action('elementor/documents/register_controls', [$this, 'register_document_controls']);
 
 		// Add demo bypass filter for template preview
-		add_filter('ultimate_store_kit/preview/verify_demo_bypass', function ($verify) {
+		add_filter('ultimate_store_kit/preview/verified_bypass', function ($verify) {
 			// Check if we're in a demo environment or development site
 			// For demo sites, you might want to check domain names or other indicators
 			$demo_hosts = apply_filters('ultimate_store_kit/demo_hosts', [
-				'ultimatestorekit.pro',
-				'demo.ultimatestorekit.pro',
+				'storekit.pro',
+				'demo.storekit.pro',
 				'localhost',
 				'127.0.0.1'
 			]);
@@ -103,7 +103,7 @@ class Builder_Integration {
 		}
 
 		$is_demo = apply_filters('ultimate_store_kit/preview/use_demo_bypass', false);
-		$nonce_value = $is_demo ? 'verify_demo' : wp_create_nonce('template_preview_' . $post_id);
+		$nonce_value = $is_demo ? 'verified' : wp_create_nonce('template_preview_' . $post_id);
 
 		$param = [
 			'usk_template_id' => $post_id,
@@ -381,9 +381,9 @@ class Builder_Integration {
 			$nonce = sanitize_text_field(wp_unslash($_GET['preview_nonce']));
 
 			// Special handling for demo bypass
-			$is_demo_bypass = ($nonce === 'verify_demo');
+			$is_demo_bypass = ($nonce === 'verified');
 			$nonce_verified = $is_demo_bypass ?
-				apply_filters('ultimate_store_kit/preview/verify_demo_bypass', false) :
+				apply_filters('ultimate_store_kit/preview/verified_bypass', false) :
 				wp_verify_nonce($nonce, 'template_preview_' . $usk_template_id);
 
 			if ($nonce_verified) {
