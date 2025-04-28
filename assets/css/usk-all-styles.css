@@ -212,6 +212,19 @@
   position: absolute;
 }
 
+.form-row {
+  width: 100% !important;
+}
+
+.form-row .select2-container .select2-selection,
+.select2-container .select2-dropdown {
+  border-color: #dedede;
+}
+
+.form-row .select2-container .select2-selection:focus {
+  border-color: #adafb4;
+}
+
 #elementor-panel-category-ultimate-store-kit .elementor-element:hover .icon,
 #elementor-panel-category-ultimate-store-kit .elementor-element:hover .title {
   color: #EF233C;

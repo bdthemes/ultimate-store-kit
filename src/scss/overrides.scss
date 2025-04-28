@@ -70,14 +70,24 @@
   }
 }
 
-.woocommerce-js 
-[class*="elementor-widget-usk-"] {
-   .star-rating::before {
-    content: '\73\73\73\73\73';
+.woocommerce-js [class*="elementor-widget-usk-"] {
+  .star-rating::before {
+    content: "\73\73\73\73\73";
     color: #d3ced2;
     float: left;
     top: 0;
     left: 0;
     position: absolute;
+  }
 }
+
+.form-row {
+  width: 100% !important;
+}
+.form-row .select2-container .select2-selection,
+.select2-container .select2-dropdown {
+  border-color: #dedede;
+}
+.form-row .select2-container .select2-selection:focus {
+  border-color: #adafb4;
 }
