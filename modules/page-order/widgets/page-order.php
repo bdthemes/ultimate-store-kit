@@ -48,7 +48,7 @@ class Page_Order extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['usk-font', 'usk-add-to-cart'];
+            return ['usk-font', 'usk-add-to-cart', 'usk-page-order'];
         }
     }
     public function has_widget_inner_wrapper(): bool {
