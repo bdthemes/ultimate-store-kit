@@ -38,7 +38,7 @@ class Page_Order extends Module_Base {
     }
     public function show_in_panel() {
         return get_post_type() === 'usk-template-builder' || get_post_type() === 'elementor_library' || get_post_type() === 'product';
-	}
+    }
 
     public function get_keywords() {
         return ['add', 'to', 'cart', 'woocommerce', 'wc', 'additional', 'info'];
@@ -52,7 +52,7 @@ class Page_Order extends Module_Base {
         }
     }
     public function has_widget_inner_wrapper(): bool {
-        return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
     }
     protected function register_controls() {
         $this->start_controls_section(
@@ -1049,14 +1049,31 @@ class Page_Order extends Module_Base {
         }
     }
     public function render() {
-        global $wp;
-        $order_id =  isset($wp->query_vars['order-received']) ? $wp->query_vars['order-received'] : $this->get_last_order_id();
+        // Check if we're in Elementor editor
+        if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+            // Get last order for preview
+            $orders = wc_get_orders(array('limit' => 1));
+            if (!empty($orders)) {
+                $order = $orders[0];
+            } else {
+                echo esc_html__('No orders found. Please create a test order to preview this widget.', 'ultimate-store-kit');
+                return;
+            }
+        } else {
+            // Normal frontend rendering
+            global $wp;
+            $order_id = isset($wp->query_vars['order-received']) ? $wp->query_vars['order-received'] : $this->get_last_order_id();
 
-        if ( ! $order_id ) {
+            if (!$order_id) {
+                return;
+            }
+
+            $order = wc_get_order($order_id);
+        }
+
+        if (!$order) {
             return;
         }
-        
-        $order = wc_get_order($order_id);
         ?>
         <div class="usk-page-order">
             <?php
@@ -1067,6 +1084,5 @@ class Page_Order extends Module_Base {
             ?>
         </div>
 <?php
-
     }
 }
