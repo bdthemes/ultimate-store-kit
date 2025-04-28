@@ -323,7 +323,7 @@ class Page_Single extends Module_Base {
                 'type'          => Controls_Manager::SLIDER,
                 'size_units'    => ['px'],
                 'selectors' => [
-                    '{{WRAPPER}} .woocommerce div.product form.cart *' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .woocommerce div.product form.cart .button' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
