@@ -206,6 +206,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.5.X [XX April 2025] =
+
+* Fixed: DCI Notice transition issue fixed
+
 = 2.5.0 [28th April 2025] =
 
 * Added: Made Compatible with WordPress Version 6.8
