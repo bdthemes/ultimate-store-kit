@@ -82,11 +82,13 @@ class Builder_Integration {
 		if ($template_slug === 'shop' || $template_slug === 'archive') {
 			$template_url = get_permalink(wc_get_page_id('shop'));
 		} elseif ($template_slug === 'single' && $post_type === 'product') {
-			// Get a sample product URL
-			$products = wc_get_products(['status' => 'publish', 'limit' => 1]);
-			if (!empty($products)) {
-				$template_url = get_permalink($products[0]->get_id());
-			}
+			$page_settings_manager = \Elementor\Core\Settings\Manager::get_settings_managers('page');
+			$page_settings_model = $page_settings_manager->get_model($post_id);
+			$sample_product = $page_settings_model->get_settings('usk_builder_sample_post_id');
+
+			$template_url = !empty($sample_product) ?
+				get_permalink($sample_product) :
+				get_permalink(wc_get_products(['status' => 'publish', 'limit' => 1])[0]->get_id());
 		} elseif ($template_slug === 'cart') {
 			$template_url = wc_get_cart_url();
 		} elseif ($template_slug === 'checkout') {
@@ -101,21 +103,7 @@ class Builder_Integration {
 				$checkout_url = wc_get_checkout_url();
 				$template_url = add_query_arg('order-received', $order_id, $checkout_url);
 			}
-		} elseif ($template_slug === 'orders') {
-			$template_url = get_permalink(wc_get_page_id('myaccount') . '/orders');
 		}
-		// print_r($template_slug);
-		// die();
-
-		//my-account/orders
-		//my-account/edit-address
-		//my-account/edit-account
-		//my-account/edit-password
-		//my-account/edit-payment-method
-		//my-account/edit-billing
-
-
-
 
 		if (empty($template_url)) {
 			return $url;
