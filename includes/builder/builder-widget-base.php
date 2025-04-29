@@ -3,7 +3,7 @@
 namespace UltimateStoreKit\Includes\Builder;
 
 use Elementor\Widget_Base;
-
+use UltimateStoreKit\Ultimate_Store_Kit_Loader;
 
 
 if (! defined('ABSPATH')) {
@@ -29,6 +29,8 @@ abstract class Builder_Widget_Base extends Widget_Base {
 		} elseif (
 			\Elementor\Plugin::instance()->editor->is_edit_mode()
 			|| \Elementor\Plugin::instance()->preview->is_preview_mode()
+			|| Ultimate_Store_Kit_Loader::elementor()->editor->is_edit_mode()
+			|| Ultimate_Store_Kit_Loader::elementor()->preview->is_preview_mode()
 		) {
 			$result = true;
 		}
