@@ -222,6 +222,7 @@ module.exports = function (grunt) {
                 tasks: ["sass", "rtlcss"],
                 options: {
                     nospawn: true,
+                    livereload: true,
                 },
             },
             scripts: {
@@ -229,6 +230,7 @@ module.exports = function (grunt) {
                 tasks: ["terser", "concat"],
                 options: {
                     spawn: false,
+                    livereload: true,
                 },
             },
         },
