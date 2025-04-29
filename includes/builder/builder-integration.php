@@ -101,7 +101,21 @@ class Builder_Integration {
 				$checkout_url = wc_get_checkout_url();
 				$template_url = add_query_arg('order-received', $order_id, $checkout_url);
 			}
+		} elseif ($template_slug === 'orders') {
+			$template_url = get_permalink(wc_get_page_id('myaccount') . '/orders');
 		}
+		// print_r($template_slug);
+		// die();
+
+		//my-account/orders
+		//my-account/edit-address
+		//my-account/edit-account
+		//my-account/edit-password
+		//my-account/edit-payment-method
+		//my-account/edit-billing
+
+
+
 
 		if (empty($template_url)) {
 			return $url;
