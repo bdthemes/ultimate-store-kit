@@ -94,8 +94,13 @@ class Builder_Integration {
 		} elseif ($template_slug === 'myaccount' || strpos($template_slug, 'myaccount-') === 0) {
 			$template_url = get_permalink(wc_get_page_id('myaccount'));
 		} elseif ($template_slug === 'order-received') {
-			$checkout_url = wc_get_checkout_url();
-			$template_url = add_query_arg('order-received', '0', $checkout_url);
+			$orders = wc_get_orders(array('limit' => 1));
+			if (!empty($orders)) {
+				$order = $orders[0];
+				$order_id = $order->get_id();
+				$checkout_url = wc_get_checkout_url();
+				$template_url = add_query_arg('order-received', $order_id, $checkout_url);
+			}
 		}
 
 		if (empty($template_url)) {
