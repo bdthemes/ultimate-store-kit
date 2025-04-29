@@ -21,7 +21,7 @@ class Up_Sells extends Module_Base
 
     public function get_title()
     {
-        return BDTUSK . esc_html__('Up Sells', 'ultimate-store-kit');
+        return BDTUSK . esc_html__('Upsells', 'ultimate-store-kit');
     }
 
     public function get_icon()
@@ -452,7 +452,7 @@ class Up_Sells extends Module_Base
                 'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '.woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-category__title, .woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-product__title, .woocommerce {{WRAPPER}} ul.products li.product h3:hover' => 'color: {{VALUE}};',
+                    '.woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-category__title:hover, .woocommerce {{WRAPPER}} ul.products li.product .woocommerce-loop-product__title:hover, .woocommerce {{WRAPPER}} ul.products li.product h3:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -498,7 +498,7 @@ class Up_Sells extends Module_Base
                 'selectors' => [
                     '{{WRAPPER}} .usk-up-sells ul.products li.product .price'                                        => 'color: {{VALUE}}',
                     '{{WRAPPER}} .usk-up-sells ul.products li.product .price ins span'                               => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .usk-up-sells ul.products li.product .price .woocommerce-Price-amount.amount'       => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-up-sells ul.products li.product .price ins .woocommerce-Price-amount.amount'       => 'color: {{VALUE}}',
                     '{{WRAPPER}} .usk-up-sells ul.products li.product .price > .woocommerce-Price-amount.amount bdi' => 'color: {{VALUE}}',
                 ],
             ]
@@ -510,8 +510,9 @@ class Up_Sells extends Module_Base
                 'label'     => esc_html__('Regular Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-up-sells .woocommerce ul.products li.product .price.amount' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .usk-up-sells .woocommerce ul.products li.product .price del' => 'color: {{VALUE}};',
+                    '.woocommerce {{WRAPPER}} .usk-up-sells ul.products li.product .price.amount' => 'color: {{VALUE}};',
+                    '.woocommerce {{WRAPPER}} .usk-up-sells ul.products li.product .price del .woocommerce-Price-amount.amount' => 'color: {{VALUE}};',
+                    '.woocommerce {{WRAPPER}} .usk-up-sells ul.products li.product .price del' => 'color: {{VALUE}};',
                 ],
 
             ]
@@ -714,23 +715,11 @@ class Up_Sells extends Module_Base
         $this->add_responsive_control(
             'item_padding',
             [
-                'label'      => esc_html__('Item Padding', 'ultimate-store-kit'),
+                'label'      => esc_html__('Padding', 'ultimate-store-kit'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '{{WRAPPER}} .usk-up-sells ul.products li.product' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'content_padding',
-            [
-                'label'      => esc_html__('Content Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-up-sells ul.products li.product .usk-edd-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
