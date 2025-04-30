@@ -324,9 +324,34 @@
 .usk-page-order .wc-item-meta li strong,
 .usk-page-order .woocommerce-table tbody td.product-name dl dt {
   min-width: 120px;
-  color: var(--usk-order-page-text-body);
+  color: currentColor;
   font-weight: 500;
   margin-right: 12px;
+}
+
+.usk-page-order .woocommerce-table__line-item ul.wc-item-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0 0;
+  list-style: none;
+  padding: 0;
+  border: 0;
+}
+
+.usk-page-order .woocommerce-table__line-item ul.wc-item-meta li {
+  display: flex;
+  align-items: center;
+  font-size: var(--usk-thankyou-details-small-text);
+  border-left: 0 !important;
+  background: unset !important;
+  box-shadow: unset !important;
+  transform: unset !important;
+  color: var(--usk-order-page-text-body);
+}
+
+.usk-page-order .woocommerce-table__line-item ul.wc-item-meta li p {
+  margin: 0;
 }
 
 .usk-page-order .woocommerce-table tbody td.product-total {
