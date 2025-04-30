@@ -62,14 +62,26 @@ class Page_Order extends Module_Base {
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
+        
+        $this->add_responsive_control(
+            'thankyou_spacing',
             [
-                'name'      => 'thankyou_padding',
-                'label'     => __('Padding', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .usk-page-order-heading',
+                'label' => __('Spacing', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}' => '--usk-order-page-spacing: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
+
         $this->add_control(
             'thankyou_show_order_id',
             [
@@ -120,17 +132,40 @@ class Page_Order extends Module_Base {
         $this->start_controls_section(
             'section_style_thankyou_orders_style',
             [
-                'label' => __('Style', 'ultimate-store-kit'),
+                'label' => __('Order ID', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'thankyou_orders_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .usk-page-order .usk-page-order-heading',
+            ]
+        );
+
+        $this->add_control(
+            'thankyou_orders_border_color',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .usk-page-order-heading' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->start_controls_tabs(
             'tabs_style_thankyou_order'
         );
+
         $this->start_controls_tab(
             'tab_style_thankyou_order_heading',
             [
-                'label' => __('H E A D I N G', 'ultimate-store-kit'),
+                'label' => __('Title', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
@@ -139,21 +174,11 @@ class Page_Order extends Module_Base {
                 'label'     => __('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .thankyou-order-heading ' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-page-order .usk-page-order-heading .thankyou-order-heading' => 'color: {{VALUE}}',
                 ],
             ]
         );
-        $this->add_responsive_control(
-            'heading_margin',
-            [
-                'label'                 => __('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .thankyou-order-heading'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -166,7 +191,7 @@ class Page_Order extends Module_Base {
         $this->start_controls_tab(
             'tab_style_thankyou_order_desc',
             [
-                'label' => __('D E S C R I P T I O N', 'ultimate-store-kit'),
+                'label' => __('Description', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
@@ -176,17 +201,6 @@ class Page_Order extends Module_Base {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .thankyou-order-desc ' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'desc_margin',
-            [
-                'label'                 => __('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .thankyou-order-desc'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -202,553 +216,553 @@ class Page_Order extends Module_Base {
         $this->end_controls_tabs();
         $this->end_controls_section();
 
-        // order detals
-
+        // Order Details List Style Section
         $this->start_controls_section(
-            'style_section_header',
+            'section_style_order_details_list',
             [
-                'label' => esc_html__('Header', 'ultimate-store-kit'),
+                'label' => esc_html__('Order Card', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
+
+        // Container Style
         $this->add_control(
-            'header_color',
+            'order_list_container_heading',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Container', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'order_list_columns',
+            [
+                'label' => esc_html__('Columns', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 6,
+                        'step' => 1,
+                    ],
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title, {{WRAPPER}} .usk-page-order .woocommerce-order-downloads__title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .order_details' => 'grid-template-columns: repeat({{SIZE}}, 1fr);',
                 ],
             ]
         );
+
         $this->add_responsive_control(
-            'header_padding',
+            'order_list_gap',
             [
-                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title, {{WRAPPER}} .usk-page-order .woocommerce-order-downloads__title'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                'label' => esc_html__('Gap', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .order_details' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
-        $this->add_responsive_control(
-            'header_margin',
-            [
-                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title, {{WRAPPER}} .usk-page-order .woocommerce-order-downloads__title'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+
+
+
+        // Typography Style
         $this->add_control(
-            'header_alignment',
+            'order_list_typography_heading',
             [
-                'label'         => __('Alignment', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::CHOOSE,
-                'options'       => [
-                    'left'      => [
-                        'title' => __('Left', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-left',
-                    ],
-                    'center'    => [
-                        'title' => __('Center', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-center',
-                    ],
-                    'right'     => [
-                        'title' => __('Right', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-right',
-                    ],
+                'label' => esc_html__('Items', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->start_controls_tabs('order_list_typography_tabs');
+
+        $this->start_controls_tab(
+            'order_list_typography_wrapper',
+            [
+                'label' => esc_html__('Wrapper', 'ultimate-store-kit'),
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'order_list_item_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .order_details li',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'order_list_item_border_color',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .order_details li' => 'border-color: {{VALUE}};',
                 ],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title, {{WRAPPER}} .usk-page-order .woocommerce-order-downloads__title' => 'text-align:{{VALUE}}'
+            ]
+        );
+
+        $this->add_control(
+            'order_list_icon_color_style-border',
+            [
+                'label' => esc_html__('Style Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .order_details li, {{WRAPPER}} .usk-page-order .order_details li:last-of-type' => 'border-left-color: {{VALUE}} !important;',
                 ],
-                'default'       => 'left',
+            ]
+        );
+       
+        $this->end_controls_tab();
+        // Label Typography Tab
+        $this->start_controls_tab(
+            'order_list_typography_label',
+            [
+                'label' => esc_html__('Label', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'order_list_label_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .order_details li .usk-label' => 'color: {{VALUE}};',
+                ],
             ]
         );
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'header_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title, {{WRAPPER}} .usk-page-order .woocommerce-order-downloads__title',
+                'name' => 'order_list_label_typography',
+                'selector' => '{{WRAPPER}} .order_details li .usk-label',
             ]
         );
 
-        $this->end_controls_section();
-        $this->start_controls_section(
-            'section_style_table',
+        $this->end_controls_tab();
+
+        // Value Typography Tab
+        $this->start_controls_tab(
+            'order_list_typography_value',
             [
-                'label' => __('Table', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'label' => esc_html__('Value', 'ultimate-store-kit'),
             ]
         );
 
         $this->add_control(
-            'stripe_style',
+            'order_list_value_color',
             [
-                'label' => __('Stripe Style', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::SWITCHER,
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .order_details li .usk-value' => 'color: {{VALUE}};',
+                ],
+                'default' => '#1e293b',
             ]
         );
-        $this->add_responsive_control(
-            'table_padding',
+
+        $this->add_control(
+            'order_list_total_value_color',
             [
-                'label'      => __('Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-page-order  ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ]
-            ]
-        );
-        $this->add_responsive_control(
-            'table_margin',
-            [
-                'label'      => __('Margin', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-page-order  ' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ]
+                'label' => esc_html__('Total Value Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .order_details li.total .usk-value' => 'color: {{VALUE}};',
+                ],
+                'default' => '#0f766e',
             ]
         );
 
         $this->add_group_control(
-            Group_Control_Border::get_type(),
+            Group_Control_Typography::get_type(),
             [
-                'name'      => 'table_border',
-                'label'     => __('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order ',
+                'name' => 'order_list_value_typography',
+                'selector' => '{{WRAPPER}} .order_details li .usk-value',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+    
+        // Icon Typography Tab
+        $this->start_controls_tab(
+            'order_list_typography_icon',
+            [
+                'label' => esc_html__('Icon', 'ultimate-store-kit'),
             ]
         );
 
         $this->add_responsive_control(
-            'table_radius',
+            'order_list_icon_size',
             [
-                'label'      => __('Border Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-page-order  ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ]
+                'label' => esc_html__('Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 24,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .order_details li .usk-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
-        $this->end_controls_section();
-        $this->start_controls_section(
-            'style_section_table_header',
+
+        $this->add_control(
+            'order_list_icon_global_color',
             [
-                'label' => esc_html__('Table : Header', 'ultimate-store-kit'),
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .order_details li .usk-icon' => 'stroke: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'style_section_order_details',
+            [
+                'label' => esc_html__('Order Details', 'ultimate-store-kit'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->start_controls_tabs('order_details_title_tabs');
+
+        $this->start_controls_tab(
+            'order_details_wrap_tab',
+            [
+                'label' => esc_html__('Wrapper', 'ultimate-store-kit'),
+            ]
+        );
+        
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'order_details_wrap_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details',
+            ]
+        );
+
         $this->add_control(
-            'heading_text_color',
+            'order_details_wrap_border_color',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'order_details_heading_tab',
+            [
+                'label' => esc_html__('Title', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'order_details_title_color',
             [
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order  thead th' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title' => 'color: {{VALUE}}',
                 ],
             ]
         );
+
         $this->add_control(
-            'heading_background',
+            'order_details_title_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title::after' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'order_details_title_typography',
+                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_control(
+            'order_details_tabs_heading',
+            [
+                'label' => esc_html__('Table', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->start_controls_tabs('order_details_tabs_tables');
+
+        $this->start_controls_tab(
+            'order_details_tabs_table_header',
+            [
+                'label' => esc_html__('Header', 'ultimate-store-kit'),
+            ]
+        );
+
+   
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'table_header_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table thead , {{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tfoot tr:last-child',
+            ]
+        );
+
+        $this->add_control(
+            'table_header_color',
+            [
+                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table thead th, {{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tfoot tr:last-child th' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'table_header_typography',
+                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-table thead th',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(  
+            'order_details_tabs_table_body',
+            [
+                'label' => esc_html__('Body', 'ultimate-store-kit'),
+            ]
+        );
+        
+        $this->add_control(
+            'table_body_odd_row',
+            [
+                'label' => esc_html__('Odd Row', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
+        $this->add_control(
+            'table_body_odd_row_bg_color',
             [
                 'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order  thead' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tbody tr:nth-child(odd)' => 'background-color: {{VALUE}};',
                 ],
-            ]
-        );
-        // $this->add_group_control(
-        //     Group_Control_Background::get_type(),
-        //     [
-        //         'name'      => 'heading_background',
-        //         'label'     => esc_html__('Background', 'ultimate-store-kit'),
-        //         'types'     => ['classic', 'gradient'],
-        //         'selector'  => '{{WRAPPER}} .usk-page-order  thead th',
-        //     ]
-        // );
-        $this->add_responsive_control(
-            'table_header_padding',
-            [
-                'label'      => __('Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-page-order  thead th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'table_heading_border_width!' => 'none'
-                ]
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'table_heading_border',
-                'label'     => __('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order  thead th',
-            ]
-        );
-        $this->add_responsive_control(
-            'table_header_radius',
-            [
-                'label'      => __('Border Radius', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-page-order  thead th' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'table_heading_border_width!' => 'none'
-                ]
             ]
         );
 
+        $this->add_control(
+            'table_body_product_name_color',
+            [
+                'label'     => esc_html__('Product Name Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td.product-name a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_body_odd_row_text_color',
+            [
+                'label'     => esc_html__('Quantity Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td .product-quantity' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_body_amount_color',
+            [
+                'label'     => esc_html__('Amount Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td.product-total .amount' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_body_even_row',
+            [
+                'label' => esc_html__('Even Row', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'table_body_even_row_bg_color',
+            [
+                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tbody tr:nth-child(even)' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_body_even_row_product_name_color',
+            [
+                'label'     => esc_html__('Product Name Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(even) td.product-name a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_body_even_row_quantity_color',
+            [
+                'label'     => esc_html__('Quantity Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(even) td .product-quantity' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_body_even_row_amount_color',
+            [
+                'label'     => esc_html__('Amount Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(even) td.product-total .amount' => 'color: {{VALUE}};',
+                ],
+                'separator' => 'after',
+            ]
+        );
+        
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'table_heading_typography',
+                'name'     => 'table_body_typography',
                 'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order  thead th',
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td',
+
             ]
         );
-        $this->end_controls_section();
-        $this->start_controls_section(
-            'style_section_table_body',
-            [
-                'label' => esc_html__('Table : Body', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'cell_border',
-                'label'     => __('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order tr',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'cell_padding',
-            [
-                'label'      => __('Cell Padding', 'ultimate-store-kit'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .usk-page-order tr' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-                ]
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'body_text_typography',
-                'selector' => '{{WRAPPER}} .usk-page-order td',
-            ]
-        );
-
-        $this->start_controls_tabs('tabs_body_style');
-
-        $this->start_controls_tab(
-            'tab_normal',
-            [
-                'label' => __('Normal', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'normal_background',
-            [
-                'label'     => __('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tbody tr:nth-child(odd)' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'normal_color',
-            [
-                'label'     => __('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tbody tr:nth-child(odd) :is(th, td, span, .amount)' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'link_color',
-            [
-                'label'     => esc_html__('Link Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tbody tr:nth-child(odd) :is(th, td, span, .amount) a' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-
-
         $this->end_controls_tab();
 
-
         $this->start_controls_tab(
-            'tab_stripe',
+            'order_details_tabs_table_footer',
             [
-                'label'     => __('Stripe', 'ultimate-store-kit'),
-                'condition' => [
-                    'stripe_style' => 'yes',
-                ],
+                'label' => esc_html__('Footer', 'ultimate-store-kit'),
             ]
         );
 
-        $this->add_control(
-            'stripe_background',
-            [
-                'label'     => __('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tbody tr:nth-child(even)' => 'background-color: {{VALUE}};',
-                ],
-                'condition' => [
-                    'stripe_style' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'stripe_color',
-            [
-                'label'     => __('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tbody tr:nth-child(even) :is(th, td, span, .amount)' => 'color: {{VALUE}};',
-                ],
-                'condition' => [
-                    'stripe_style' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
-            'stripe_link_color',
-            [
-                'label'     => __('Link Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tbody tr:nth-child(even) :is(th, td, span, .amount) a' => 'color: {{VALUE}};',
-                ],
-                'condition' => [
-                    'stripe_style' => 'yes',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
-        $this->end_controls_section();
-        $this->start_controls_section(
-            'style_section_table_footer',
-            [
-                'label' => esc_html__('Table : Footer', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->start_controls_tabs(
-            'tabs_style_table_footer'
-        );
-        $this->start_controls_tab(
-            'table_footer_tab_normal',
-            [
-                'label' => __('Normal', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'table_footer_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tfoot tr:nth-child(odd) :is(th, td, span, .amount)' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'table_footer_bg_color',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tfoot tr:nth-child(odd)' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
         $this->add_group_control(
-            Group_Control_Border::get_type(),
+            Group_Control_Background::get_type(),
             [
-                'name'      => 'table_footer_border',
-                'label'     => __('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order tfoot tr',
+                'name' => 'table_footer_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot',
             ]
         );
+
+        $this->add_control(
+            'table_footer_text_color',
+            [
+                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr th' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr td' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'table_footer_total_color',
+            [
+                'label'     => esc_html__('Total Amount Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tfoot tr:last-child td .amount' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'table_footer_typography',
                 'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order tfoot tr > *',
-            ]
-        );
-        $this->end_controls_tab();
-        $this->start_controls_tab(
-            'table_footer_tab_striped',
-            [
-                'label' => __('Striped', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'table_footer_striped_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tfoot tr:nth-child(even) :is(th, td, span, .amount)' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'table_footer_striped_bg_color',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order table tfoot tr:nth-child(even)' => 'background: {{VALUE}}',
-                ],
+                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr th, {{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr td',
             ]
         );
 
         $this->end_controls_tab();
+        
+
         $this->end_controls_tabs();
+
+
         $this->end_controls_section();
 
-        $this->start_controls_section(
-            'style_section_order_again',
-            [
-                'label' => esc_html__('Order Again Button', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->start_controls_tabs(
-            'order_again_tabs'
-        );
-        $this->start_controls_tab(
-            'order_again_tab_normal',
-            [
-                'label' => esc_html__('Normal', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'order_again_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .order-again a' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'order_again_bg_color',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .order-again a' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->start_controls_tab(
-            'order_again_tab_hover',
-            [
-                'label' => esc_html__('Hover', 'ultimate-store-kit'),
-            ]
-        );
-        $this->add_control(
-            'order_again_hover_color',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .order-again a:hover' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'order_again_hover_bg_color',
-            [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .order-again a:hover' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
-        $this->add_responsive_control(
-            'order_again_padding',
-            [
-                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .order-again a'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'order_again_margin',
-            [
-                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .order-again a'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'order_again_radius',
-            [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-page-order .order-again a'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'order_again_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .order-again a',
-            ]
-        );
 
-        $this->end_controls_section();
         $this->start_controls_section(
             'styles_section_thankyou_address_details',
             [
@@ -757,47 +771,45 @@ class Page_Order extends Module_Base {
             ]
         );
 
-        $this->add_control(
+        $this->start_controls_tabs('thankyou_address_details_tabs');
+
+        $this->start_controls_tab(
             'thankyou_address_details_wrapper',
             [
-                'label'        => esc_html__('Wrapper', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::HEADING,
+                'label' => esc_html__('Wrapper', 'ultimate-store-kit'),
             ]
         );
 
-        $this->add_control(
-            'thankyou_addrss_details_alignment',
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
             [
-                'label'         => __('Alignment', 'ultiamte-store-kit-pro'),
-                'type'          => Controls_Manager::CHOOSE,
-                'options'       => [
-                    'left'      => [
-                        'title' => __('Left', 'ultiamte-store-kit-pro'),
-                        'icon'  => 'eicon-h-align-left',
-                    ],
-                    'center'    => [
-                        'title' => __('Center', 'ultiamte-store-kit-pro'),
-                        'icon'  => 'eicon-h-align-center',
-                    ],
-                    'right'     => [
-                        'title' => __('Right', 'ultiamte-store-kit-pro'),
-                        'icon'  => 'eicon-h-align-right',
-                    ],
-                ],
-                'default'       => 'left',
+                'name' => 'thankyou_address_details_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column',
+            ]
+        );
+
+        
+
+        $this->add_control(
+            'thankyou_address_details_border_color',
+            [
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
+        
 
+        $this->end_controls_tab();
 
-        $this->add_control(
-            'thankyou_address_details_title_heading',
+        $this->start_controls_tab(
+            'thankyou_address_details_title_tab',
             [
-                'label'        => esc_html__('Title', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::HEADING,
-                'separator'    => 'before',
+                'label' => esc_html__('Title', 'ultimate-store-kit'),
             ]
         );
 
@@ -807,7 +819,18 @@ class Page_Order extends Module_Base {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order :is(h2, .woocommerce-column__title)' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        
+        $this->add_control(
+            'thankyou_address_details_title_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title::after' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -817,17 +840,16 @@ class Page_Order extends Module_Base {
             array(
                 'name'           => 'thankyou_address_details_title_typography',
                 'label'          => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'       => '{{WRAPPER}} .usk-page-order :is(h2, .woocommerce-column__title)',
+                'selector'       => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title',
             )
         );
 
-        // Style Heading - Address
-        $this->add_control(
-            'thankyou_address_details_address_heading',
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'thankyou_address_details_address_tab',
             [
-                'label'        => esc_html__('Address', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::HEADING,
-                'separator'    => 'before',
+                'label' => esc_html__('Address', 'ultimate-store-kit'),
             ]
         );
 
@@ -837,19 +859,25 @@ class Page_Order extends Module_Base {
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-page-order :not(.woocommerce-column__title)' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column address, 
+                    {{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column p' => 'color: {{VALUE}};',
                 ],
             ]
         );
-
+        
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             array(
                 'name'           => 'thankyou_address_details_address_typography',
                 'label'          => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'       => '{{WRAPPER}} .usk-page-order :not(.woocommerce-column__title)',
+                    'selector'       => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column address, 
+                    {{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column p',
             )
         );
+        
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
     }
     protected function get_last_order_id() {
         global $wpdb;
@@ -974,23 +1002,38 @@ class Page_Order extends Module_Base {
     public function thank_you_order_confirmation($order) { ?>
         <ul class="order_details">
             <li class="order">
-                <span class="usk-label"> <?php esc_html_e('Order number:', 'woocommerce'); ?></span>
+                <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+                <span class="usk-label"><?php esc_html_e('Order number:', 'woocommerce'); ?></span>
                 <strong class="usk-value"><?php echo esc_html($order->get_order_number()); ?></strong>
             </li>
             <li class="date">
+                <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
                 <span class="usk-label"><?php esc_html_e('Order Date:', 'woocommerce'); ?></span>
                 <strong class="usk-value"><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></strong>
             </li>
             <li class="order-status">
+                <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 <span class="usk-label"><?php echo esc_html__('Order status', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo wp_kses_post(wc_get_order_status_name($order->get_status())); ?></strong>
             </li>
             <li class="total">
+                <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 <span class="usk-label"><?php esc_html_e('Total:', 'woocommerce'); ?></span>
                 <strong class="usk-value"><?php echo wp_kses_post($order->get_formatted_order_total()); ?></strong>
             </li>
             <?php if ($order->get_payment_method_title()) : ?>
                 <li class="method">
+                    <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
                     <span class="usk-label"><?php esc_html_e('Payment method:', 'woocommerce'); ?></span>
                     <strong class="usk-value"><?php echo wp_kses_post($order->get_payment_method_title()); ?></strong>
                 </li>

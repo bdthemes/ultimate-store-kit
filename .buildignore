@@ -13,3 +13,4 @@ gruntfile.js
 node_modules
 .git
 *zip
+.cursorrules
