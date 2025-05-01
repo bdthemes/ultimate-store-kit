@@ -1070,18 +1070,6 @@ class ModuleService {
 					'type'              => 'number',
                     'default'           => '26',
 				],
-
-                [
-					'name'              => 'usk_variation_swatches_qty_btn',
-					'label'             => esc_html__('Convert Quantity Button', 'ultimate-store-kit'),
-					'type'              => 'select',
-                    'default'           => 'yes',
-                    'options'           => [
-                        'yes' => esc_html__('Default', 'ultimate-store-kit'),
-                        'no' => esc_html__('No', 'ultimate-store-kit'),
-                    ],
-				],
-
                 [
 					'name' => 'swatches_group_end',
 					'type' => 'end_group',
