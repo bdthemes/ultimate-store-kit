@@ -70,9 +70,9 @@ class Shiny_Grid extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
         $this->start_controls_section(
             'section_woocommerce_layout',
             [
@@ -315,13 +315,13 @@ class Shiny_Grid extends Module_Base {
             </a>
             <?php $this->render_add_to_cart(); ?>
             <div class="usk-shoping">
-                <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
-                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
-                <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
+                <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>
+                <?php $this->register_global_template_add_to_compare($tooltip_position, $settings); ?>
+                <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings); ?>
             </div>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column">
-                    <?php $this->register_global_template_badge_label(); ?>
+                    <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
             </div>
         </div>
