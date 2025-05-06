@@ -47,8 +47,10 @@ class USK_Florence_Grid_Template {
         $average = $product->get_average_rating();
         // Get product categories
         $categories = wc_get_product_category_list($product_id);
+        $category_tags = isset($settings['category_tags']) ? $settings['category_tags'] : 'h3';
+        $title_tags = isset($settings['title_tags']) ? $settings['title_tags'] : 'h3';
 
-        // get the class based on the widget
+        // get the class based on the widget name
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;
         $classes = $this->target_widget_name === 'florence-grid' ? 'usk-item' : 'usk-item swiper-slide';
         $classes .=  $show_rating ? ' usk-have-rating' : '';
@@ -60,18 +62,18 @@ class USK_Florence_Grid_Template {
                 <?php $this->render_product_image($product, $settings); ?>
                 <div class="usk-content">
                     <div class="usk-content-inner">
-                        <?php if ('yes' == $settings['show_category']) : ?>
-                            <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
+                        <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)) : ?>
+                            <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($category_tags), wp_kses_post($categories)); ?>
                         <?php endif; ?>
-                        <?php if ('yes' == $settings['show_title']) :
-                            printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                        <?php if (isset($settings['show_title']) ? $settings['show_title'] : true) :
+                            printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($title_tags), esc_url($product->get_permalink()), esc_html($product->get_title()));
                         endif; ?>
-                        <?php if ('yes' == $settings['show_price']) : ?>
+                        <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()) : ?>
                             <div class="usk-price">
                                 <?php $this->print_price_output($product->get_price_html()); ?>
                             </div>
                         <?php endif; ?>
-                        <?php if ('yes' == $settings['show_rating']) : ?>
+                        <?php if (isset($settings['show_rating']) ? $settings['show_rating'] : true) : ?>
                             <div class="usk-rating">
                                 <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
                             </div>
