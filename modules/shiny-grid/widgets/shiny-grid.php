@@ -12,6 +12,9 @@ use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\Traits\Global_Widget_Controls;
 use WP_Query;
+use UltimateStoreKit\Templates\USK_Shiny_Grid_Template;
+
+// require_once BDTUSK_TEMPLATES_PATH . 'shiny-grid.php';
 
 if (!defined('ABSPATH')) {
     exit;
@@ -358,44 +361,10 @@ class Shiny_Grid extends Module_Base {
                     if (empty($product)) {
                         continue;
                     }
-                    $rating_count = $product->get_rating_count();
-                    $average      = $product->get_average_rating();
-                    if ($settings['show_rating'] == 'yes') {
-                        $have_rating = 'usk-have-rating';
-                    } else {
-                        $have_rating = '';
-                    }
-                    $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
                 ?>
-                    <div class="usk-item <?php esc_attr_e($have_rating, 'utlimate-woo-kit'); ?>">
-                        <div class="usk-item-box">
-                            <?php $this->render_image(); ?>
-                            <div class="usk-content">
-                                <div class="usk-content-inner">
-                                    <?php if ('yes' == $settings['show_category']) : ?>
-                                        <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
-                                    <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_title']) :
-                                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                                    endif; ?>
-                                    <div class="usk-desc">
-                                        <span class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '…')); ?></span>
-                                    </div>
-                                    <?php if (('yes' == $settings['show_price'])) : ?>
-                                        <div class="usk-price">
-                                            <?php $this->print_price_output($product->get_price_html()); ?>
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <?php if ('yes' == $settings['show_rating']) : ?>
-                                        <div class="usk-rating">
-                                            <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $shiny_grid_template = new USK_Shiny_Grid_Template($settings);
+                    $shiny_grid_template->render_shiny_grid_item($product, $settings);
+                    ?>
                 <?php endwhile; ?>
             </div>
             <?php if ($settings['show_pagination']) :
