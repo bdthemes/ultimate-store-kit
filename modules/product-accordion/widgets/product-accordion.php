@@ -364,7 +364,7 @@ class Product_Accordion extends Module_Base {
                 'selector'  => '{{WRAPPER}} .usk-product-accordion .usk-accordion-header',
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
@@ -385,7 +385,7 @@ class Product_Accordion extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_responsive_control(
             'title_radius',
             [
@@ -464,8 +464,8 @@ class Product_Accordion extends Module_Base {
 
         $this->end_controls_tab();
         $this->end_controls_tabs();
-        
-        
+
+
         $this->end_controls_section();
         $this->start_controls_section(
             'section_style_icon',
@@ -727,7 +727,7 @@ class Product_Accordion extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -1250,13 +1250,13 @@ class Product_Accordion extends Module_Base {
                                     <?php endif; ?>
                                     <div class="usk-action-btn usk-shoping">
                                         <?php $this->render_add_to_cart('top'); ?>
-                                        <?php $this->register_global_template_add_to_wishlist('top'); ?>
-                                        <?php $this->register_global_template_quick_view($product_id, 'top') ?>
+                                        <?php $this->register_global_template_add_to_wishlist('top', $settings); ?>
+                                        <?php $this->register_global_template_quick_view($product_id, 'top', $settings); ?>
                                     </div>
                                 </div>
                                 <div class="usk-badge-label-wrapper">
                                     <div class="usk-badge-label-content usk-flex">
-                                        <?php $this->register_global_template_badge_label(); ?>
+                                        <?php $this->register_global_template_badge_label($settings); ?>
                                     </div>
                                 </div>
                             </div>

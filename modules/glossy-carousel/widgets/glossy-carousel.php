@@ -69,9 +69,9 @@ class Glossy_Carousel extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -219,7 +219,7 @@ class Glossy_Carousel extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'item_shape_color',
             [
@@ -268,7 +268,7 @@ class Glossy_Carousel extends Module_Base {
             </a>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column usk-flex-bottom">
-                    <?php $this->register_global_template_badge_label(); ?>
+                    <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
             </div>
 
@@ -322,10 +322,10 @@ class Glossy_Carousel extends Module_Base {
                         </div>
                         <div class="usk-shoping">
                             <?php
-                            $this->register_global_template_add_to_wishlist($tooltip_position);
-                            $this->register_global_template_add_to_compare($tooltip_position);
-                            $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                            $this->register_global_template_add_to_cart($tooltip_position);
+                            $this->register_global_template_add_to_wishlist($tooltip_position, $settings);
+                            $this->register_global_template_add_to_compare($tooltip_position, $settings);
+                            $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings);
+                            $this->register_global_template_add_to_cart($tooltip_position, $settings);
 
                             ?>
                         </div>

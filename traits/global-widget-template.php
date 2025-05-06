@@ -96,7 +96,6 @@ trait Global_Widget_Template {
 
 	}
 
-
 	protected function register_global_template_quick_view($product_id, $tooltip_position, $settings) {
 		// $settings = $this->get_settings_for_display();
 		if (('yes' == $settings['show_quick_view']) || empty($settings['show_quick_view'])) : ?>

@@ -388,7 +388,7 @@ class Product_List extends Module_Base {
         $this->register_global_controls_badge();
     }
 
-    public function render_header() { 
+    public function render_header() {
         ?>
         <div class="ultimate-store-kit">
             <div class="usk-product-list">
@@ -461,12 +461,12 @@ class Product_List extends Module_Base {
                     <?php if ( 'yes' == $settings['show_sale_badge'] || 'yes' == $settings['show_discount_badge'] || 'yes' == $settings['show_stock_status'] || 'yes' == $settings['show_trending_badge'] || 'yes' == $settings['show_new_badge'] ) : ?>
                     <div class="usk-badge-label-wrapper">
                         <div class="usk-badge-label-content usk-flex">
-                            <?php $this->register_global_template_badge_label(); ?>
+                            <?php $this->register_global_template_badge_label($settings); ?>
                         </div>
                     </div>
                     <?php endif; ?>
                 </div>
-                
+
             </div>
         </div>
         <?php endwhile; ?>

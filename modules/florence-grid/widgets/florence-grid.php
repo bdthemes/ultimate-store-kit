@@ -64,9 +64,9 @@ class Florence_Grid extends Module_Base {
     }
 
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -346,15 +346,15 @@ class Florence_Grid extends Module_Base {
             </a>
             <div class="usk-shoping">
                 <?php
-                $this->register_global_template_add_to_wishlist($tooltip_position);
-                $this->register_global_template_add_to_compare($tooltip_position);
-                $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                $this->register_global_template_add_to_cart($tooltip_position);
+                $this->register_global_template_add_to_wishlist($tooltip_position, $settings);
+                $this->register_global_template_add_to_compare($tooltip_position, $settings);
+                $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings);
+                $this->register_global_template_add_to_cart($tooltip_position, $settings);
                 ?>
             </div>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column">
-                    <?php $this->register_global_template_badge_label(); ?>
+                    <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@ class Florence_Grid extends Module_Base {
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     global $product;
 
-                    if(empty($product)) {
+                    if (empty($product)) {
                         continue;
                     }
 
@@ -422,7 +422,7 @@ class Florence_Grid extends Module_Base {
                                             <?php $this->print_price_output($product->get_price_html()); ?>
                                         </div>
                                     <?php endif; ?>
-                                    
+
                                     <?php if ('yes' == $settings['show_rating']) : ?>
                                         <div class="usk-rating">
                                             <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>

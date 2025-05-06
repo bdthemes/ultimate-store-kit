@@ -62,14 +62,14 @@ class Florence_Carousel extends Module_Base {
     public function get_custom_help_url() {
         return 'https://youtu.be/eqAsEwqcKdM';
     }
-    
+
     public function get_query() {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -170,15 +170,15 @@ class Florence_Carousel extends Module_Base {
             </a>
             <div class="usk-shoping">
                 <?php
-                $this->register_global_template_add_to_wishlist($tooltip_position);
-                $this->register_global_template_add_to_compare($tooltip_position);
-                $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                $this->register_global_template_add_to_cart($tooltip_position);
+                $this->register_global_template_add_to_wishlist($tooltip_position, $settings);
+                $this->register_global_template_add_to_compare($tooltip_position, $settings);
+                $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings);
+                $this->register_global_template_add_to_cart($tooltip_position, $settings);
                 ?>
             </div>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column">
-                    <?php $this->register_global_template_badge_label(); ?>
+                    <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
             </div>
         </div>
@@ -260,32 +260,32 @@ class Florence_Carousel extends Module_Base {
 
                 $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
             ?>
-            <div <?php $this->print_render_attribute_string('usk-item'); ?>>
-                <div class="usk-item-box">
-                    <?php $this->render_image(); ?>
-                    <div class="usk-content">
-                        <div class="usk-content-inner">
-                            <?php if ('yes' == $settings['show_category']) : ?>
-                                <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
-                            <?php endif; ?>
-                            <?php if ('yes' == $settings['show_title']) :
-                                printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                            endif; ?>
-                            <?php if ('yes' == $settings['show_price']) : ?>
-                                <div class="usk-price">
-                                    <?php $this->print_price_output($product->get_price_html()); ?>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ('yes' == $settings['show_rating']) : ?>
-                                <div class="usk-rating">
-                                    <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
-                                </div>
-                            <?php endif; ?>
+                <div <?php $this->print_render_attribute_string('usk-item'); ?>>
+                    <div class="usk-item-box">
+                        <?php $this->render_image(); ?>
+                        <div class="usk-content">
+                            <div class="usk-content-inner">
+                                <?php if ('yes' == $settings['show_category']) : ?>
+                                    <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
+                                <?php endif; ?>
+                                <?php if ('yes' == $settings['show_title']) :
+                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                                endif; ?>
+                                <?php if ('yes' == $settings['show_price']) : ?>
+                                    <div class="usk-price">
+                                        <?php $this->print_price_output($product->get_price_html()); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ('yes' == $settings['show_rating']) : ?>
+                                    <div class="usk-rating">
+                                        <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <?php endwhile;
+<?php endwhile;
             wp_reset_postdata();
         } else {
             echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';

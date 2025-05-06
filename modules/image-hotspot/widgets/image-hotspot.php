@@ -70,7 +70,7 @@ class Image_Hotspot extends Module_Base {
     public function get_custom_help_url() {
         return 'https://youtu.be/7vrY1aY5mMw';
     }
-    
+
     public function get_query() {
         return $this->_query;
     }
@@ -222,7 +222,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->end_controls_section();
 
         //Query
@@ -246,7 +246,7 @@ class Image_Hotspot extends Module_Base {
 
         $this->start_controls_section(
 			'section_marker_image',
-			[ 
+			[
 				'label' => __( 'Hotspot Settings', 'ultimate-store-kit' ),
 			]
 		);
@@ -255,16 +255,16 @@ class Image_Hotspot extends Module_Base {
 
 		$repeater->add_responsive_control(
 			'marker_x_position',
-			[ 
+			[
 				'label'     => esc_html__( 'X Postion', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SLIDER,
-				'range'     => [ 
-					'%' => [ 
+				'range'     => [
+					'%' => [
 						'min' => 0,
 						'max' => 100,
 					],
 				],
-				'selectors' => [ 
+				'selectors' => [
 					'{{WRAPPER}} .usk-image-hotspot-thumbs {{CURRENT_ITEM}}.usk-thumbs-item' => 'left: {{SIZE}}%;',
 				],
 			]
@@ -272,16 +272,16 @@ class Image_Hotspot extends Module_Base {
 
 		$repeater->add_responsive_control(
 			'marker_y_position',
-			[ 
+			[
 				'label'     => esc_html__( 'Y Postion', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SLIDER,
-				'range'     => [ 
-					'%' => [ 
+				'range'     => [
+					'%' => [
 						'min' => 0,
 						'max' => 100,
 					],
 				],
-				'selectors' => [ 
+				'selectors' => [
 					'{{WRAPPER}} .usk-image-hotspot-thumbs {{CURRENT_ITEM}}.usk-thumbs-item' => 'top: {{SIZE}}%;',
 				],
 			]
@@ -289,7 +289,7 @@ class Image_Hotspot extends Module_Base {
 
 		$repeater->add_control(
 			'advanced_option_toggle',
-			[ 
+			[
 				'label'        => __( 'Hotspot Style', 'ultimate-store-kit' ),
 				'type'         => Controls_Manager::POPOVER_TOGGLE,
 				'label_off'    => __( 'None', 'ultimate-store-kit' ),
@@ -302,15 +302,15 @@ class Image_Hotspot extends Module_Base {
 
 		$repeater->add_control(
 			'repeater_marker_color',
-			[ 
+			[
 				'label'       => esc_html__( 'Color', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::COLOR,
-				'selectors'   => [ 
+				'selectors'   => [
 					'{{WRAPPER}} .usk-image-hotspot-thumbs {{CURRENT_ITEM}} .usk-thumbs-box i' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .usk-image-hotspot-thumbs {{CURRENT_ITEM}} .usk-thumbs-box svg' => 'fill: {{VALUE}};',
 				],
 				'render_type' => 'ui',
-				'condition'   => [ 
+				'condition'   => [
 					'advanced_option_toggle' => 'yes',
 				],
 			]
@@ -318,11 +318,11 @@ class Image_Hotspot extends Module_Base {
 
 		$repeater->add_group_control(
 			Group_Control_Background::get_type(),
-			[ 
+			[
 				'name'        => 'repeater_marker_background',
 				'selector'    => '{{WRAPPER}} .usk-image-hotspot-thumbs {{CURRENT_ITEM}} .usk-thumbs-box',
 				'render_type' => 'ui',
-				'condition'   => [ 
+				'condition'   => [
 					'advanced_option_toggle' => 'yes',
 				],
 			]
@@ -332,37 +332,37 @@ class Image_Hotspot extends Module_Base {
 
 		$this->add_control(
 			'markers',
-			[ 
+			[
 				'label'       => esc_html__( 'Hotspot Items', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
-				'default'     => [ 
-					[ 
-						'marker_x_position' => [ 
+				'default'     => [
+					[
+						'marker_x_position' => [
 							'size' => 50,
 							'unit' => '%',
 						],
-						'marker_y_position' => [ 
+						'marker_y_position' => [
 							'size' => 75,
 							'unit' => '%',
 						],
 					],
-					[ 
-						'marker_x_position' => [ 
+					[
+						'marker_x_position' => [
 							'size' => 20,
 							'unit' => '%',
 						],
-						'marker_y_position' => [ 
+						'marker_y_position' => [
 							'size' => 30,
 							'unit' => '%',
 						],
 					],
-					[ 
-						'marker_x_position' => [ 
+					[
+						'marker_x_position' => [
 							'size' => 65,
 							'unit' => '%',
 						],
-						'marker_y_position' => [ 
+						'marker_y_position' => [
 							'size' => 20,
 							'unit' => '%',
 						],
@@ -375,9 +375,9 @@ class Image_Hotspot extends Module_Base {
 
         $this->start_controls_section(
 			'section_tooltip_settings',
-			[ 
+			[
 				'label' => __( 'Tooltip Settings', 'ultimate-store-kit' ),
-                'condition' => [ 
+                'condition' => [
                     'image_hotspot_layout' => 'tooltip',
                 ],
 			]
@@ -385,11 +385,11 @@ class Image_Hotspot extends Module_Base {
 
 		$this->add_control(
 			'marker_tooltip_animation',
-			[ 
+			[
 				'label'       => esc_html__( 'Animation', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'shift-toward',
-				'options'     => [ 
+				'options'     => [
 					'shift-away'   => esc_html__( 'Shift-Away', 'ultimate-store-kit' ),
 					'shift-toward' => esc_html__( 'Shift-Toward', 'ultimate-store-kit' ),
 					'fade'         => esc_html__( 'Fade', 'ultimate-store-kit' ),
@@ -401,11 +401,11 @@ class Image_Hotspot extends Module_Base {
 		);
         $this->add_control(
 			'marker_tooltip_placement',
-			[ 
+			[
 				'label'       => esc_html__( 'Placement', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'top',
-				'options'     => [ 
+				'options'     => [
 					'top-start'    => esc_html__( 'Top Left', 'ultimate-store-kit' ),
 					'top'          => esc_html__( 'Top', 'ultimate-store-kit' ),
 					'top-end'      => esc_html__( 'Top Right', 'ultimate-store-kit' ),
@@ -421,10 +421,10 @@ class Image_Hotspot extends Module_Base {
 
 		$this->add_control(
 			'marker_tooltip_x_offset',
-			[ 
+			[
 				'label'   => esc_html__( 'Offset', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
-				'default' => [ 
+				'default' => [
 					'size' => 0,
 				],
 			]
@@ -432,18 +432,18 @@ class Image_Hotspot extends Module_Base {
 
 		$this->add_control(
 			'marker_tooltip_y_offset',
-			[ 
+			[
 				'label'   => esc_html__( 'Distance', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SLIDER,
-				'default' => [ 
+				'default' => [
 					'size' => 0,
 				],
 			]
 		);
-        
+
 		$this->add_control(
 			'marker_tooltip_arrow',
-			[ 
+			[
 				'label' => esc_html__( 'Arrow', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::SWITCHER,
 			]
@@ -451,7 +451,7 @@ class Image_Hotspot extends Module_Base {
 
 		$this->add_control(
 			'marker_tooltip_trigger',
-			[ 
+			[
 				'label'       => __( 'Trigger on Click', 'ultimate-store-kit' ),
 				'description' => __( 'Don\'t set yes when you set lightbox image with marker.', 'ultimate-store-kit' ),
 				'type'        => Controls_Manager::SWITCHER,
@@ -821,7 +821,7 @@ class Image_Hotspot extends Module_Base {
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
@@ -1178,7 +1178,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_responsive_control(
             'category_space_between',
             [
@@ -1429,7 +1429,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_responsive_control(
             'badge_spacing',
             [
@@ -1541,7 +1541,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'discount_badge_border_color',
             [
@@ -1591,7 +1591,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'stock_badge_border_color',
             [
@@ -1641,7 +1641,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'trending_badge_border_color',
             [
@@ -1692,7 +1692,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'new_badge_border_color',
             [
@@ -1801,7 +1801,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_responsive_control(
             'button_height',
             [
@@ -2017,7 +2017,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'wishlist_border_color',
             [
@@ -2062,7 +2062,7 @@ class Image_Hotspot extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'wishlist_border_hover_color',
             [
@@ -2425,13 +2425,13 @@ class Image_Hotspot extends Module_Base {
             </a>
             <?php $this->render_add_to_cart(); ?>
             <div class="usk-shoping">
-                <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
-                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
-                <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
+                <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>
+                <?php $this->register_global_template_add_to_compare($tooltip_position, $settings); ?>
+                <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings); ?>
             </div>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column">
-                    <?php $this->register_global_template_badge_label(); ?>
+                    <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
             </div>
         </div>
@@ -2466,7 +2466,7 @@ class Image_Hotspot extends Module_Base {
                 <?php if ($settings['image_hotspot_layout'] == 'slider') : ?>
                 <div class="swiper usk-image-hotspot-main">
                     <div class="swiper-wrapper">
-                    <?php endif; 
+                    <?php endif;
     }
 
     public function render_slider_footer() {
@@ -2486,7 +2486,7 @@ class Image_Hotspot extends Module_Base {
 
                 <!-- thumbsslider -->
                 <div thumbsSlider="" <?php $this->print_render_attribute_string('thumbs'); ?>>
-                    <?php 
+                    <?php
                     $image_size = $settings['image_resolution_size'];
                     $placeholder_image_src = Utils::get_placeholder_image_src();
                     $image_src             = wp_get_attachment_image_src( $settings['hotspot_image']['id'], $image_size );
@@ -2497,8 +2497,8 @@ class Image_Hotspot extends Module_Base {
                             $settings['hotspot_image']['id'],
                             $image_size,
                             false,
-                            [ 
-            
+                            [
+
                                 'alt' => esc_html( get_the_title() )
                             ]
                         ) );
@@ -2582,7 +2582,7 @@ class Image_Hotspot extends Module_Base {
 
         if ($wp_query->have_posts()) { ?>
             <?php while ($wp_query->have_posts()) : $wp_query->the_post();
-                
+
 
             ?>
                 <?php $this->render_product_content();?>
@@ -2617,40 +2617,40 @@ class Image_Hotspot extends Module_Base {
 
         $this->query_product();
         $wp_query = $this->get_query();
-        
-        if ($wp_query->have_posts()) { 
+
+        if ($wp_query->have_posts()) {
             $index = 0;
-            
+
             while ($wp_query->have_posts()): $wp_query->the_post();
                 global $product;
 
-                
+
                 $unique_id_class = isset($unique_ids[$index]) ? esc_attr($unique_ids[$index]) : '';
-                
+
                 if ($settings['image_hotspot_layout'] == 'tooltip') {
                     $marker_title = $this->render_tooltip_product_content();
 
                     $this->add_render_attribute( 'marker', 'class', 'usk-thumbs-item  elementor-repeater-item-' . esc_attr($unique_id_class), true );
-    
+
                     $this->add_render_attribute( 'marker', 'data-tippy-content', $marker_title, true );
-    
+
                     $this->add_render_attribute( 'marker', 'class', 'bdt-tippy-tooltip' );
                     $this->add_render_attribute( 'marker', 'data-tippy', '', true );
-    
+
                     if ( $settings['marker_tooltip_animation'] ) {
                         $this->add_render_attribute( 'marker', 'data-tippy-animation', $settings['marker_tooltip_animation'], true );
                     }
-    
+
                     if ( $settings['marker_tooltip_x_offset']['size'] or $settings['marker_tooltip_y_offset']['size'] ) {
                         $this->add_render_attribute( 'marker', 'data-tippy-offset', '[' . $settings['marker_tooltip_x_offset']['size'] . ',' . $settings['marker_tooltip_y_offset']['size'] . ']', true );
                     }
-    
+
                     if ( 'yes' == $settings['marker_tooltip_arrow'] ) {
                         $this->add_render_attribute( 'marker', 'data-tippy-arrow', 'true', true );
                     } else {
                         $this->add_render_attribute( 'marker', 'data-tippy-arrow', 'false', true );
                     }
-    
+
                     if ( 'yes' == $settings['marker_tooltip_trigger'] ) {
                         $this->add_render_attribute( 'marker', 'data-tippy-trigger', 'click', true );
                     }
@@ -2676,10 +2676,10 @@ class Image_Hotspot extends Module_Base {
                     <?php endif; ?>
                     </div>
                 </div>
-            <?php 
+            <?php
             $index++;
             endwhile;
-        
+
             wp_reset_postdata();} else {
             echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
         }
