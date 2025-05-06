@@ -395,6 +395,10 @@
   padding: 0 !important;
 }
 
+.usk-page-checkout .woocommerce-privacy-policy-text {
+  margin: 0 !important;
+}
+
 .usk-page-checkout #payment #place_order {
   width: 100%;
   margin-top: var(--usk-spacing-lg);
@@ -406,6 +410,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: var(--usk-transition);
+  float: unset;
 }
 
 .usk-page-checkout .woocommerce-terms-and-conditions-wrapper {
