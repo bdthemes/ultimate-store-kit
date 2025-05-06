@@ -45,28 +45,17 @@ class USK_Florence_Grid_Template {
         $product_id = $product->get_id();
         $rating_count = $product->get_rating_count();
         $average = $product->get_average_rating();
-
-        // Get product image
-        $product_image = wp_get_attachment_image_url(get_post_thumbnail_id($product_id), 'medium');
-
-        // Get gallery image for hover effect
-        $gallery_image_link = $product_image; // Default to same image
-        $gallery_thumbs = $product->get_gallery_image_ids();
-        if (!empty($gallery_thumbs)) {
-            $gallery_image_link = wp_get_attachment_image_url($gallery_thumbs[0], 'medium');
-        }
-
         // Get product categories
         $categories = wc_get_product_category_list($product_id);
 
-        // Determine if we should show rating class
+        // get the class based on the widget
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;
-        $have_rating = ($show_rating) ? 'usk-have-rating' : '';
         $classes = $this->target_widget_name === 'florence-grid' ? 'usk-item' : 'usk-item swiper-slide';
+        $classes .=  $show_rating ? ' usk-have-rating' : '';
 
 
 ?>
-        <div class="<?php echo esc_attr($classes); ?> <?php echo esc_attr($have_rating); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
+        <div class="<?php echo esc_attr($classes); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
             <div class="usk-item-box">
                 <?php $this->render_product_image($product, $settings); ?>
                 <div class="usk-content">
