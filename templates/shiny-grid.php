@@ -20,14 +20,16 @@ class USK_Shiny_Grid_Template {
      * @var array
      */
     protected $target_widget_settings = [];
-
+    protected $target_widget_name = '';
     /**
      * Constructor
      *
      * @param array $settings Widget settings
+     * @param string $widget_name Widget name
      */
-    public function __construct($settings = []) {
+    public function __construct($settings = [], $widget_name = '') {
         $this->target_widget_settings = $settings;
+        $this->target_widget_name = $widget_name;
     }
 
     /**
@@ -60,8 +62,11 @@ class USK_Shiny_Grid_Template {
         // Determine if we should show rating class
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;
         $have_rating = ($show_rating) ? 'usk-have-rating' : '';
+        $classes = $this->target_widget_name === 'shiny-grid' ? 'usk-item' : 'usk-item swiper-slide';
+
+
 ?>
-        <div class="usk-item <?php echo esc_attr($have_rating); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
+        <div class="<?php echo esc_attr($classes); ?> <?php echo esc_attr($have_rating); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
             <div class="usk-item-box">
                 <?php $this->render_product_image($product); ?>
 
@@ -85,7 +90,7 @@ class USK_Shiny_Grid_Template {
 
                         <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()) : ?>
                             <div class="usk-price">
-                                <?php echo wp_kses_post($product->get_price_html()); ?>
+                                <?php $this->print_price_output($product->get_price_html()); ?>
                             </div>
                         <?php endif; ?>
 
@@ -195,5 +200,18 @@ class USK_Shiny_Grid_Template {
             </div>
         </div>
 <?php
+    }
+
+    public function print_price_output($output) {
+        $tags = [
+            'del' => ['aria-hidden' => []],
+            'span'  => ['class' => []],
+            'bdi' => [],
+            'ins' => [],
+        ];
+
+        if (isset($output)) {
+            echo wp_kses($output, $tags);
+        }
     }
 }
