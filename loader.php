@@ -135,7 +135,7 @@ class Ultimate_Store_Kit_Loader {
 
 		// GRID TEMPLATES
 		require_once BDTUSK_PATH . 'templates/shiny-grid.php';
-
+		require_once BDTUSK_PATH . 'templates/florence-grid.php';
 
 		if (class_exists('woocommerce')) {
 			require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';

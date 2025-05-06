@@ -108,9 +108,8 @@ trait Global_Widget_Template {
 			</a>
 		<?php endif;
 	}
-	protected function register_global_template_add_to_cart($tooltip_position) {
+	protected function register_global_template_add_to_cart($tooltip_position, $settings) {
 		global $product;
-		$settings = $this->get_settings_for_display();
 		if ('yes' == $settings['show_cart']) : ?>
 			<?php if ($product) {
 				$defaults = [
