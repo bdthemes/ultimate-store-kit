@@ -264,62 +264,7 @@ class Florence_Grid extends Module_Base {
                     wc_get_template('loop/result-count.php', $args);
                 endif;
                 ?>
-                <ul class="usk-grid-header-tabs">
-                    <?php if (in_array("list-2", $settings['filter_column_lists'])) : ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-1">
-                                <span class="usk-icon-grid-list"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-2', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-2">
-                                <span class="usk-icon-grid-2"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-3', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-3">
-                                <span class="usk-icon-grid-3"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-4', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-4">
-                                <span class="usk-icon-grid-4"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-5', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-5">
-                                <span class="usk-icon-grid-5"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-6', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-6">
-                                <span class="usk-icon-grid-6"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    ?>
-                </ul>
+                <?php $this->register_templates_grid_columns_markup($settings); ?>
             </div>
         <?php endif;
         }
@@ -341,7 +286,8 @@ class Florence_Grid extends Module_Base {
                     $florence_grid_template->render_florence_grid_item($product, $settings);
                 endwhile; ?>
             </div>
-<?php if ($settings['show_pagination']) :
+<?php
+                if ($settings['show_pagination']) :
                     ultimate_store_kit_post_pagination__new($wp_query);
                 endif;
                 wp_reset_postdata();

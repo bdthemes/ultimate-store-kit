@@ -55,9 +55,9 @@ class EDD_Beauty_Grid extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
         /**
          * render controls layout
          */
@@ -84,71 +84,12 @@ class EDD_Beauty_Grid extends Module_Base {
 ?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('usk-edd-beauty-grid'); ?>>
-                <?php $this->template_grid_columns(); ?>
             <?php
         }
         public function render_footer() { ?>
             </div>
         </div>
         <?php
-        }
-        protected function template_grid_columns() {
-            $settings = $this->get_settings_for_display();
-
-            $this->query_product();
-            $wp_query = $this->get_query();
-            if (get_query_var('paged')) {
-                $paged = get_query_var('paged');
-            } elseif (get_query_var('page')) {
-                $paged = get_query_var('page');
-            } else {
-                $paged = 1;
-            }
-            $args = array(
-                'total'    => $wp_query->found_posts,
-                'per_page' => $settings['product_limit'],
-                'current'  => $paged,
-            );
-            if ($settings['show_tab'] == 'yes') : ?>
-            <div class="usk-grid-header">
-                <?php if (($settings['show_result_count'] == 'yes')) :
-                    wc_get_template('loop/result-count.php', $args);
-                endif;
-                ?>
-                <ul class="usk-grid-header-tabs">
-                    <li class="usk-grid-tabs-list">
-                        <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-list-2">
-                            <span class="usk-icon-grid-list"></span>
-                        </a>
-                    </li>
-                    <li class="usk-grid-tabs-list">
-                        <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-2">
-                            <span class="usk-icon-grid-2"></span>
-                        </a>
-                    </li>
-                    <li class="usk-grid-tabs-list usk-visible@m">
-                        <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-3">
-                            <span class="usk-icon-grid-3">
-                        </a>
-                    </li>
-                    <li class="usk-grid-tabs-list usk-visible@m">
-                        <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-4">
-                            <span class="usk-icon-grid-4">
-                        </a>
-                    </li>
-                    <li class="usk-grid-tabs-list usk-visible@m">
-                        <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-5">
-                            <span class="usk-icon-grid-5"></span>
-                        </a>
-                    </li>
-                    <li class="usk-grid-tabs-list usk-visible@l">
-                        <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-6">
-                            <span class="usk-icon-grid-6"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        <?php endif;
         }
 
         public function render() {
