@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkout Page
  *
@@ -18,14 +19,14 @@
 
 use UltimateStoreKit\Builder\Builder_Integration;
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-get_header( 'shop' ); ?>
+get_header('shop'); ?>
 <?php
-if ( class_exists( 'Elementor\Plugin' ) ) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+if (class_exists('Elementor\Plugin')) {
+	echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
 }
 ?>
 
 <?php
-get_footer( 'shop' ); ?>
+get_footer('shop'); ?>

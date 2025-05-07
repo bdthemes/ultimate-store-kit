@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cart Page
  *
@@ -15,21 +16,22 @@
  * @version 3.8.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 use UltimateStoreKit\Builder\Builder_Integration;
+
 get_header('shop'); ?>
 
-<?php do_action( 'woocommerce_before_cart' ); ?>
+<?php do_action('woocommerce_before_cart'); ?>
 
 <?php
 
 if (class_exists('Elementor\Plugin')) {
-    echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+    echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
 }
 
 ?>
-<?php do_action( 'woocommerce_after_cart' ); ?>
+<?php do_action('woocommerce_after_cart'); ?>
 
 <?php get_footer('shop'); ?>
 
