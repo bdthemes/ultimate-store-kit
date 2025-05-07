@@ -70,7 +70,7 @@ class USK_Shiny_Grid_Template {
                             </a>
                         <?php endif; ?>
 
-                        <?php if ($settings['show_desc'] === 'yes') : ?>
+                        <?php if (isset($settings['show_desc']) ? $settings['show_desc'] : true) : ?>
                             <div class="usk-desc">
                                 <span class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), 15, '…')); ?></span>
                             </div>
