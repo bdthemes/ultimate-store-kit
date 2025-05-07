@@ -19,6 +19,8 @@
 
 defined('ABSPATH') || exit;
 
+use UltimateStoreKit\Builder\Builder_Integration;
+
 get_header('shop');
 
 if (class_exists('Elementor\Plugin')) {

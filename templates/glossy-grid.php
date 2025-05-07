@@ -100,15 +100,15 @@ class USK_Glossy_Grid_Template {
             return;
         }
         $gallery_thumbs = $product->get_gallery_image_ids();
-        $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
+        $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), isset($settings['image_size']) ? $settings['image_size'] : 'full');
         if ($gallery_thumbs) {
             foreach ($gallery_thumbs as $key => $gallery_thumb) {
                 if ($key == 0) :
-                    $gallery_image_link = wp_get_attachment_image_url($gallery_thumb, $settings['image_size']);
+                    $gallery_image_link = wp_get_attachment_image_url($gallery_thumb, isset($settings['image_size']) ? $settings['image_size'] : 'full');
                 endif;
             }
         } else {
-            $gallery_image_link = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
+            $gallery_image_link = wp_get_attachment_image_url(get_post_thumbnail_id(), isset($settings['image_size']) ? $settings['image_size'] : 'full');
         }
     ?>
         <div class="usk-image">

@@ -98,7 +98,7 @@ trait Global_Widget_Template {
 			$tooltip      = __('Add to Wishlist', 'ultimate-store-kit');
 			$redirect_url = "javascript:void(0);";
 		} ?>
-		<?php if (($settings['show_wishlist'] == 'yes') || empty($settings['show_wishlist'])) : ?>
+		<?php if (isset($settings['show_wishlist']) && $settings['show_wishlist'] == 'yes') : ?>
 			<a href="<?php echo esc_url($redirect_url); ?>"
 				class="usk-action-btn ajax_add_to_wishlist usk-shoping-icon-wishlist usk-btn usk-wishlist<?php echo esc_attr($selected); ?>"
 				data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html($tooltip); ?>"
@@ -140,7 +140,7 @@ trait Global_Widget_Template {
 			$selected = '';
 			$compare_page_link = "javascript:void(0);";
 		} ?>
-		<?php if ($settings['show_compare'] == 'yes') : ?>
+		<?php if (isset($settings['show_compare']) && $settings['show_compare'] == 'yes') : ?>
 			<a href="<?php echo esc_url($compare_page_link); ?>"
 				class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>"
 				data-product_id="<?php echo esc_attr($product_id); ?>"
@@ -158,7 +158,7 @@ trait Global_Widget_Template {
 
 	protected function register_global_template_quick_view($product_id, $tooltip_position, $settings) {
 		// $settings = $this->get_settings_for_display();
-		if (('yes' == $settings['show_quick_view']) || empty($settings['show_quick_view'])) : ?>
+		if (isset($settings['show_quick_view']) && $settings['show_quick_view'] == 'yes') : ?>
 			<?php wp_nonce_field('ajax-usk-quick-view-nonce', 'usk-quick-view-modal-sc');
 			?>
 			<a class="usk-action-btn usk-shoping-icon-quickview quick_view usk-view usk-btn" href="javascript:void(0)"
@@ -170,7 +170,7 @@ trait Global_Widget_Template {
 	}
 	protected function register_global_template_add_to_cart($tooltip_position, $settings) {
 		global $product;
-		if ('yes' == $settings['show_cart']) : ?>
+		if (isset($settings['show_cart']) && $settings['show_cart'] == 'yes') : ?>
 			<?php if ($product) {
 				$defaults = [
 					'quantity'   => 1,
@@ -223,7 +223,7 @@ trait Global_Widget_Template {
 		if (isset($settings['show_discount_badge']) ? $settings['show_discount_badge'] : true) :
 			$this->usk_get_badge_label_percentage();
 		endif;
-		if (($settings['show_stock_status'] === 'yes')) :
+		if (isset($settings['show_stock_status']) && $settings['show_stock_status'] === 'yes') :
 			if ($product->get_stock_status() === 'instock') {
 				$stock_status = esc_html__('In Stock', 'ultimate-store-kit');
 			} else {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying product content in the single-product.php template
  *
@@ -15,34 +16,36 @@
  * @version 3.6.0
  */
 
-defined( 'ABSPATH' ) || exit;
+use UltimateStoreKit\Builder\Builder_Integration;
+
+defined('ABSPATH') || exit;
 
 global $product;
 
-get_header( 'shop' );
+get_header('shop');
 
 /**
  * Hook: woocommerce_before_single_product.
  *
  * @hooked woocommerce_output_all_notices - 10
  */
-do_action( 'woocommerce_before_single_product' );
+do_action('woocommerce_before_single_product');
 
-if ( post_password_required() ) {
+if (post_password_required()) {
     echo get_the_password_form(); // WPCS: XSS ok.
     return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
     <?php
-    if ( class_exists( 'Elementor\Plugin' ) ) {
-	    echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+    if (class_exists('Elementor\Plugin')) {
+        echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
     }
     ?>
 </div>
 
-<?php do_action( 'woocommerce_after_single_product' );
+<?php do_action('woocommerce_after_single_product');
 
-get_footer( 'shop' );
+get_footer('shop');
 
 ?>
