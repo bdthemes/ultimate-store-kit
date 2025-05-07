@@ -16,6 +16,8 @@
  * @version 3.8.0
  */
 
+use UltimateStoreKit\Builder\Builder_Integration;
+
 defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' ); ?>

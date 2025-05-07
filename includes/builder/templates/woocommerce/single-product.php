@@ -15,6 +15,8 @@
  * @version 3.6.0
  */
 
+use UltimateStoreKit\Builder\Builder_Integration;
+
 defined( 'ABSPATH' ) || exit;
 
 global $product;

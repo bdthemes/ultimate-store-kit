@@ -17,6 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+use UltimateStoreKit\Builder\Builder_Integration;
 get_header('shop'); ?>
 
 <?php do_action( 'woocommerce_before_cart' ); ?>

@@ -17,6 +17,9 @@
  */
 
 defined('ABSPATH') || exit;
+
+use UltimateStoreKit\Builder\Builder_Integration;
+
 get_header();
 
 do_action('ultimate-store-kit-builder/woocommerce/before-main-content');

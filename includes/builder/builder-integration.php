@@ -1,5 +1,7 @@
 <?php
 
+namespace UltimateStoreKit\Builder;
+
 if (! defined('WPINC')) {
 	die;
 }
