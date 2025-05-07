@@ -209,6 +209,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.5.X [XX April 2025] =
 
 * Updated: Improved styling and settings controls for Checkout (Page) widget.
+* Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
 * Fixed: DCI Notice transition issue fixed
 
 = 2.5.0 [28th April 2025] =
