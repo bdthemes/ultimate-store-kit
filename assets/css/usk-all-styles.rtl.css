@@ -4770,6 +4770,14 @@ table.dataTable.display tbody tr.odd {
   line-height: clamp(30px, 3vw, 40px);
   font-size: 12px;
 }
+.usk-shiny-grid .usk-variation-button.active {
+  background: #2b2d42;
+  color: #fff;
+}
+.usk-shiny-grid .usk-variation-button.active:hover {
+  background: #2b2d42;
+  color: #fff;
+}
 
 .usk-shiny-carousel {
   --btn-width: 100%;
