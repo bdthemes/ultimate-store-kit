@@ -46,7 +46,7 @@ class USK_Florence_Grid_Template {
         $rating_count = $product->get_rating_count();
         $average = $product->get_average_rating();
         // Get product categories
-        $categories = wc_get_product_category_list($product_id);
+        $categories = wc_get_product_category_list($product_id, ' ');
         $category_tags = isset($settings['category_tags']) ? $settings['category_tags'] : 'h3';
         $title_tags = isset($settings['title_tags']) ? $settings['title_tags'] : 'h3';
 

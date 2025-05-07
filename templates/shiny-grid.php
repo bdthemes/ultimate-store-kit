@@ -46,7 +46,7 @@ class USK_Shiny_Grid_Template {
         $rating_count = $product->get_rating_count();
         $average = $product->get_average_rating();
         // Get product categories
-        $categories = wc_get_product_category_list($product_id);
+        $categories = wc_get_product_category_list($product_id, ' ');
 
         // get the class based on the widget
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;

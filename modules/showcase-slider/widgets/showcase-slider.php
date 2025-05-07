@@ -1430,7 +1430,7 @@ class Showcase_Slider extends Module_Base {
                         <?php $this->render_image(); ?>
                         <div class="usk-badge-label-wrapper">
                             <div class="usk-badge-label-content usk-flex usk-flex-column">
-                                <?php $this->register_global_template_badge_label($settings, $product); ?>
+                                <?php $this->register_global_template_badge_label($settings); ?>
                             </div>
                         </div>
                         <div class="usk-item-box">
