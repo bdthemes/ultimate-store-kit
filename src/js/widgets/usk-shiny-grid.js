@@ -224,7 +224,8 @@
       $button,
     ]);
 
-    showSuccessMessage($button);
+    // showSuccessMessage($button);
+
   }
 
   // Show success message after adding to cart
