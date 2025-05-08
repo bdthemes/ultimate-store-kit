@@ -42,7 +42,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
     public function load_assets() {
         // Load WooCommerce variation scripts for product variations
-        // \wp_enqueue_script('wc-add-to-cart-variation');
+        \wp_enqueue_script('wc-add-to-cart-variation');
 
         // Load additional scripts for quick view functionality
         \wp_enqueue_script('prettyPhoto');

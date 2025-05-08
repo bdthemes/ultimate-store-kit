@@ -91,13 +91,13 @@
                 $addToCartBtn.html('Add to cart <i class="button-icon usk-icon-arrow-right-8"></i>');
 
                 // Create the most reliable URL for fallback
-                var url = '?add-to-cart=' + product_id + '&variation_id=' + variation_id;
-                for (var attr in allAttributes) {
-                    if (allAttributes.hasOwnProperty(attr)) {
-                        url += '&attribute_' + attr + '=' + encodeURIComponent(allAttributes[attr]);
-                    }
-                }
-                $addToCartBtn.attr('href', url);
+                // var url = '?add-to-cart=' + product_id + '&variation_id=' + variation_id;
+                // for (var attr in allAttributes) {
+                //     if (allAttributes.hasOwnProperty(attr)) {
+                //         url += '&attribute_' + attr + '=' + encodeURIComponent(allAttributes[attr]);
+                //     }
+                // }
+                $addToCartBtn.attr('href', 'javascript:void(0)');
             }
 
             // Update product image if color is selected
@@ -138,17 +138,22 @@
 
         // Fix add to cart for variations - prevent multiple triggers
         // First, remove any existing handlers to avoid duplicates
-        $(document.body).off('click', '.usk-shiny-grid .usk-button.product_type_variation');
+        $(document.body).off('click', '.usk-button.product_type_variation');
 
         // Then add our custom handler with a flag to prevent multiple submissions
         $(document.body).on('click', '.usk-shiny-grid .usk-button.product_type_variation', function(e) {
+            // Stop the default action immediately
+            e.preventDefault();
+
 
             var $button = $(this);
 
             // Check if button is already processing to prevent multiple clicks
-            if ($button.hasClass('loading') || $button.hasClass('processing')) {
-                return false;
-            }
+            // if ($button.hasClass('loading') || $button.hasClass('processing')) {
+            //     e.preventDefault();
+            //     alert('already processing');
+            //     return false;
+            // }
 
             // Mark button as processing
             $button.addClass('processing');
@@ -156,14 +161,15 @@
             // Only proceed if button has required data
             if (!$button.data('variation_id') || !$button.data('product_id')) {
                 $button.removeClass('processing');
-                return true; // Let default handler take over
+                    return true; // Let default handler take over
             }
 
             // Extract all required attributes
             var data = {
                 'product_id': $button.data('product_id'),
                 'variation_id': $button.data('variation_id'),
-                'quantity': $button.data('quantity') || 1
+                'quantity': $button.data('quantity') || 1,
+                'add-to-cart': $button.data('product_id')
             };
 
             // Get all attribute data
@@ -177,61 +183,63 @@
             // Show loading state
             $button.addClass('loading');
 
-            // Perform the AJAX request
-            $.ajax({
-                type: 'POST',
-                url: woocommerce_params.wc_ajax_url.replace('%%endpoint%%', 'add_to_cart'),
-                data: data,
-                success: function(response) {
-                    alert('success');
-                    if (!response) {
+            // Remove default click behavior by returning false immediately
+            // setTimeout(function() {
+                // Perform the AJAX request in a timeout to ensure event propagation has stopped
+                $.ajax({
+                    type: 'POST',
+                    url: woocommerce_params.wc_ajax_url.replace('%%endpoint%%', 'add_to_cart'),
+                    data: data,
+                    success: function(response) {
+                        alert('success');
+                        if (!response) {
+                            $button.removeClass('loading processing');
+                            return;
+                        }
+
+                        if (response.error) {
+                            // Handle error case - redirect to product page
+                            window.location = $button.attr('href');
+                            return;
+                        }
+
+                        // Trigger WooCommerce's events to update cart fragments
+                        $(document.body).trigger('wc_fragment_refresh');
+                        $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
+
+                        // Update button state
+                        $button.removeClass('loading').addClass('added');
+
+                        // Show a success message
+                        var $productContainer = $button.closest('.usk-item');
+
+                        // Create and append success notification
+                        var $notification = $('<div class="usk-cart-success-message">Product added to cart! ✓</div>');
+                        $productContainer.append($notification);
+
+                        // Auto remove after delay
+                        setTimeout(function() {
+                            $notification.fadeOut(300, function() {
+                                $(this).remove();
+                                // Remove processing class after animation completes
+                                $button.removeClass('processing');
+                            });
+                        }, 2000);
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.log('Add to cart error:', errorThrown);
+                        // On failure, remove processing class
                         $button.removeClass('loading processing');
-                        return;
                     }
+                });
+            // }, 10);
 
-                    if (response.error) {
-                        // Handle error case - redirect to product page
-                        window.location = $button.attr('href');
-                        return;
-                    }
-
-                    // Trigger WooCommerce's events to update cart fragments
-                    $(document.body).trigger('wc_fragment_refresh');
-                    // $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
-                    //prevent default
-                    e.preventDefault();
-
-                    // Update button state
-                    $button.removeClass('loading').addClass('added');
-
-                    // Show a success message
-                    var $productContainer = $button.closest('.usk-item');
-
-                    // Create and append success notification
-                    var $notification = $('<div class="usk-cart-success-message">Product added to cart! ✓</div>');
-                    $productContainer.append($notification);
-
-                    // Auto remove after delay
-                    setTimeout(function() {
-                        $notification.fadeOut(300, function() {
-                            $(this).remove();
-                            // Remove processing class after animation completes
-                            $button.removeClass('processing');
-                        });
-                    }, 2000);
-                },
-                error: function() {
-                    // On failure, remove processing class
-                    $button.removeClass('loading processing');
-                    // Redirect to the fallback URL
-                    window.location = $button.attr('href');
-                }
-            });
-
+            // Prevent default action and stop propagation
             return false;
         });
 
-        // Disable WooCommerce's default AJAX handler for our variation buttons
+        // Also disable WooCommerce's default handlers for any add to cart buttons in our grid
+        $(document.body).off('click', '.usk-shiny-grid .ajax_add_to_cart');
         $(document.body).off('click', '.usk-shiny-grid .ajax_add_to_cart.product_type_variation');
     };
 
