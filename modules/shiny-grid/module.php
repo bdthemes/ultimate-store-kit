@@ -29,15 +29,15 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     }
 
     public function add_products_post_class_filter() {
-        add_filter('post_class', [$this, 'add_product_post_class']);
+        \add_filter('post_class', [$this, 'add_product_post_class']);
     }
 
     public function remove_products_post_class_filter() {
-        remove_filter('post_class', [$this, 'add_product_post_class']);
+        \remove_filter('post_class', [$this, 'add_product_post_class']);
     }
 
     public function register_wc_hooks() {
-        wc()->frontend_includes();
+        \wc()->frontend_includes();
     }
 
     public function load_assets() {
@@ -47,37 +47,44 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         // Load additional scripts for quick view functionality
         \wp_enqueue_script('prettyPhoto');
         \wp_enqueue_style('woocommerce_prettyPhoto_css');
+        \wp_localize_script('usk-shiny-grid', 'usk_ajax_config', [
+            'ajax_url' => \admin_url('admin-ajax.php'),
+            'nonce' => \wp_create_nonce('usk_add_to_cart'),
+        ]);
     }
 
     public function __construct() {
 
         parent::__construct();
 
-        if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && is_admin()) {
-            add_action('init', [$this, 'register_wc_hooks'], 5);
+        if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && \is_admin()) {
+            \add_action('init', [$this, 'register_wc_hooks'], 5);
         }
 
         // Load variation scripts and styles
-        // add_action('wp_enqueue_scripts', array($this, 'load_assets'));
+        \add_action('wp_enqueue_scripts', array($this, 'load_assets'));
 
         /**
          * Modal data
          */
-        add_action('wp_ajax_nopriv_ultimate_store_kit_wc_product_quick_view_content', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
-        add_action('wp_ajax_ultimate_store_kit_wc_product_quick_view_content', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
+        \add_action('wp_ajax_nopriv_ultimate_store_kit_wc_product_quick_view_content', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
+        \add_action('wp_ajax_ultimate_store_kit_wc_product_quick_view_content', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
 
         // Register get variation data AJAX handler
-        add_action('wp_ajax_get_variation_data', [$this, 'get_variation_data']);
-        add_action('wp_ajax_nopriv_get_variation_data', [$this, 'get_variation_data']);
+        \add_action('wp_ajax_get_variation_data', [$this, 'get_variation_data']);
+        \add_action('wp_ajax_nopriv_get_variation_data', [$this, 'get_variation_data']);
 
-        add_action('ultimate_store_kit_quick_view_product_title', 'woocommerce_template_single_title');
-        add_action('ultimate_store_kit_quick_view_product_single_rating', 'woocommerce_template_single_rating');
-        add_action('ultimate_store_kit_quick_view_product_single_price', 'woocommerce_template_single_price');
-        add_action('ultimate_store_kit_quick_view_product_single_excerpt', 'woocommerce_template_single_excerpt');
-        add_action('ultimate_store_kit_quick_view_product_single_add_to_cart', 'woocommerce_template_single_add_to_cart');
-        add_action('ultimate_store_kit_quick_view_product_single_meta', 'woocommerce_template_single_meta');
-        add_action('ultimate_store_kit_quick_view_product_sale_flash', 'woocommerce_show_product_sale_flash');
-        add_action('ultimate_store_kit_quick_shiny_grid_view_product_images', [$this, 'ultimate_store_kit_quick_view_product_images']);
+        \add_action('wp_ajax_usk_add_to_cart', [$this, 'usk_add_to_cart']);
+        \add_action('wp_ajax_nopriv_usk_add_to_cart', [$this, 'usk_add_to_cart']);
+
+        \add_action('ultimate_store_kit_quick_view_product_title', 'woocommerce_template_single_title');
+        \add_action('ultimate_store_kit_quick_view_product_single_rating', 'woocommerce_template_single_rating');
+        \add_action('ultimate_store_kit_quick_view_product_single_price', 'woocommerce_template_single_price');
+        \add_action('ultimate_store_kit_quick_view_product_single_excerpt', 'woocommerce_template_single_excerpt');
+        \add_action('ultimate_store_kit_quick_view_product_single_add_to_cart', 'woocommerce_template_single_add_to_cart');
+        \add_action('ultimate_store_kit_quick_view_product_single_meta', 'woocommerce_template_single_meta');
+        \add_action('ultimate_store_kit_quick_view_product_sale_flash', 'woocommerce_show_product_sale_flash');
+        \add_action('ultimate_store_kit_quick_shiny_grid_view_product_images', [$this, 'ultimate_store_kit_quick_view_product_images']);
     }
 
     public function ultimate_store_kit_wc_product_quick_view_content() {
@@ -146,5 +153,73 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         }
 
         \wp_send_json_success($variation_data);
+    }
+
+    public function usk_add_to_cart() {
+        check_ajax_referer('usk_add_to_cart', 'nonce');
+
+        $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
+        $variation_id = isset($_POST['variation_id']) ? absint($_POST['variation_id']) : 0;
+        $quantity = isset($_POST['quantity']) ? absint($_POST['quantity']) : 1;
+
+        // Get product and validate
+        $product = wc_get_product($product_id);
+        if (!$product) {
+            wp_send_json_error(['message' => 'Product not found']);
+            return;
+        }
+
+        // Add to cart based on product type
+        try {
+            // For variable products, we need variation ID and attributes
+            if ($product->is_type('variable') && $variation_id) {
+                // Get variation attributes from request
+                $variation_data = [];
+                foreach ($_POST as $key => $value) {
+                    if (strpos($key, 'attribute_') === 0) {
+                        $variation_data[$key] = sanitize_text_field($value);
+                    }
+                }
+
+                // Add to cart
+                $cart_item_key = WC()->cart->add_to_cart(
+                    $product_id,
+                    $quantity,
+                    $variation_id,
+                    $variation_data
+                );
+            } else {
+                // Simple product
+                $cart_item_key = WC()->cart->add_to_cart($product_id, $quantity);
+            }
+
+            if ($cart_item_key) {
+                do_action('woocommerce_ajax_added_to_cart', $product_id);
+
+                // Prepare fragments
+                $fragments = [];
+                ob_start();
+                woocommerce_mini_cart();
+                $mini_cart = ob_get_clean();
+                $fragments['div.widget_shopping_cart_content'] = $mini_cart;
+
+                wp_send_json([
+                    'success' => true,
+                    'fragments' => $fragments,
+                    'cart_hash' => WC()->cart->get_cart_hash(),
+                    'message' => 'Product added to cart'
+                ]);
+            } else {
+                wp_send_json_error([
+                    'message' => 'Failed to add to cart'
+                ]);
+            }
+        } catch (Exception $e) {
+            wp_send_json_error([
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        exit;
     }
 }

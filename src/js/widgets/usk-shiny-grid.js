@@ -149,25 +149,28 @@
 
   // ===== ADD TO CART FUNCTIONALITY =====
   function setupAddToCartButtons() {
-    $(document.body).off("click", ".usk-shiny-grid .usk-button.product_type_variation")
-      .on("click", ".usk-shiny-grid .usk-button.product_type_variation", function (e) {
-        e.preventDefault();
+    // Remove any existing click handlers to prevent duplicates
+    $(document.body).off("click", ".usk-shiny-grid .usk-button.product_type_variation");
 
-        const $button = $(this);
-        if ($button.hasClass("processing")) return false;
+    // Add the click handler
+    $(document.body).on("click", ".usk-shiny-grid .usk-button.product_type_variation", function (e) {
+      e.preventDefault();
 
-        $button.addClass("processing loading");
+      const $button = $(this);
+      if ($button.hasClass("processing")) return false;
 
-        // Check for required data
-        if (!$button.data("variation_id") || !$button.data("product_id")) {
-          $button.removeClass("processing loading");
-          return true;
-        }
+      $button.addClass("processing loading");
 
-        const data = prepareCartData($button);
-        sendAddToCartRequest($button, data);
-        return false;
-      });
+      // Check for required data
+      if (!$button.data("variation_id") || !$button.data("product_id")) {
+        $button.removeClass("processing loading");
+        return true;
+      }
+
+      const data = prepareCartData($button);
+      sendAddToCartRequest($button, data);
+      return false;
+    });
   }
 
   // Prepare data for add to cart request
@@ -191,55 +194,74 @@
 
   // Send AJAX request to add product to cart
   function sendAddToCartRequest($button, data) {
-    $.ajax({
-      type: "POST",
+    // Collect all attributes data
+    const attributes = {};
+    $.each($button[0].attributes, function() {
+      if (this.name.startsWith("data-attribute_")) {
+        const attrName = this.name.replace("data-", "");
+        attributes[attrName] = this.value;
+      }
+    });
+
+    // Format the data properly for the AJAX request
+    const ajaxData = {
       action: "usk_add_to_cart",
-      data: data,
+      nonce: usk_ajax_config.nonce,
+      product_id: data.product_id,
+      variation_id: data.variation_id,
+      quantity: data.quantity || 1
+    };
+
+    // Add the attributes to the request
+    Object.assign(ajaxData, attributes);
+
+    console.log("Sending data:", ajaxData);
+
+    $.ajax({
+      url: usk_ajax_config.ajax_url, // Use the localized AJAX URL
+      type: "POST",
+      data: ajaxData,
+      cache: false, // Prevent caching of AJAX requests
       success: function (response) {
-        if (!response) {
-          $button.removeClass("loading processing");
+        console.log("Success response:", response);
+        $button.removeClass("loading");
+
+        if (!response || response.error) {
+          console.error("Error response:", response);
+          $button.removeClass("processing");
           return;
         }
 
-        if (response.error) {
-          window.location = $button.attr("href");
-          return;
-        }
+        // Trigger WooCommerce cart update
+        // $(document.body).trigger("wc_fragment_refresh");
+        // $(document.body).trigger("added_to_cart");
 
-        handleSuccessfulAddToCart($button, response);
+        // Show success message
+        const $notification = $(
+          '<div class="usk-cart-success-message">Product added to cart! ✓</div>'
+        );
+        // $button.closest(".usk-item").append($notification);
+
+        // setTimeout(function () {
+        //   $notification.fadeOut(300, function () {
+        //     $(this).remove();
+        //     $button.removeClass("processing");
+        //   });
+        // }, 2000);
       },
-      error: function () {
+      error: function (xhr, status, error) {
+        console.error("AJAX Error:", xhr.responseText);
+        console.error("Status:", status);
+        console.error("Error:", error);
         $button.removeClass("loading processing");
       },
+      complete: function() {
+        // Ensure button state is reset even if there's an unexpected error
+        setTimeout(function() {
+          $button.removeClass("loading processing");
+        }, 2500);
+      }
     });
-  }
-
-  // Handle successful add to cart
-  function handleSuccessfulAddToCart($button, response) {
-    // Update cart fragments and trigger WooCommerce events
-    $(document.body).trigger("wc_fragment_refresh");
-    $(document.body).trigger("added_to_cart", [
-      response.fragments,
-      response.cart_hash,
-      $button,
-    ]);
-
-    // showSuccessMessage($button);
-
-  }
-
-  // Show success message after adding to cart
-  function showSuccessMessage($button) {
-    const $notification = $('<div class="usk-cart-success-message">Product added to cart! ✓</div>');
-    $button.closest(".usk-item").append($notification);
-
-    // Auto remove notification
-    setTimeout(function () {
-      $notification.fadeOut(300, function () {
-        $(this).remove();
-        $button.removeClass("processing");
-      });
-    }, 2000);
   }
 
   // ===== MAIN INITIALIZATION FUNCTION =====

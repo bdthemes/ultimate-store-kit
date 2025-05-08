@@ -174,26 +174,19 @@ class USK_Shiny_Grid_Template {
         }
 
         // Get the URL
-        $url = $product->add_to_cart_url();
+        if ($product->is_type('variable')) {
+            $url = 'javascript:void(0)';
+        } else {
+            $url = $product->add_to_cart_url();
+        }
 
-        // For variable products with default attributes, create direct add-to-cart URL
-        // if ($product->is_type('variable') && $has_default_attributes && isset($args['attributes']['data-variation_id']) && $args['attributes']['data-variation_id']) {
-        //     $variation_id = $args['attributes']['data-variation_id'];
-        //     $url = 'javascript:void(0)';
-        //     // $url = \add_query_arg([
-        //     //     'add-to-cart' => $product->get_id(),
-        //     //     'variation_id' => $variation_id,
-        //     //     'product_id' => $product->get_id()
-        //     // ], \wc_get_cart_url());
-
-        //     // // Add variation attributes to URL
-        //     // $attributes = $product->get_default_attributes();
-        //     // foreach ($attributes as $attribute_name => $attribute_value) {
-        //     //     $taxonomy = wc_attribute_taxonomy_name(str_replace('pa_', '', $attribute_name));
-        //     //     $url = \add_query_arg('attribute_' . $taxonomy, $attribute_value, $url);
-        //     // }
-
-        // }
+        // Make sure variable products use correct classes
+        if ($product->is_type('variable') && in_array('product_type_variable', $button_classes)) {
+            $key = array_search('product_type_variable', $button_classes);
+            if ($key !== false) {
+                $button_classes[$key] = 'product_type_variation';
+            }
+        }
 
         // Output the button
         echo \apply_filters(
