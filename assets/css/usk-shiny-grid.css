@@ -36,21 +36,27 @@
   height: 20px;
   border: 2px dotted #fff;
   border-radius: 50%;
-  margin-left: -15px;
+  margin-left: 10px;
   display: inline-block;
   position: relative;
-  position: absolute;
-  top: 31%;
-  text-align: center;
+  vertical-align: middle;
   animation: rotation 2s linear infinite;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 .usk-shiny-grid .usk-button.loading i {
   transition: all 0.3s ease-in-out;
-  transform: translate(70px);
-  opacity: 0.02;
+  opacity: 0;
+  visibility: hidden;
 }
 .usk-shiny-grid .added_to_cart {
-  transition: all 3s ease;
+  transition: all 0.3s ease;
 }
 .usk-shiny-grid .added_to_cart::after {
   content: "✓";
@@ -141,4 +147,186 @@
 .usk-shiny-grid .usk-variation-button.active:hover {
   background: #2b2d42;
   color: #fff;
+}
+
+/* Variation Styles */
+.usk-shiny-grid .usk-variations-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 10;
+  justify-content: center;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.usk-shiny-grid .usk-item:hover .usk-variations-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.usk-shiny-grid .usk-variation-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.usk-shiny-grid .usk-variation-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: 500;
+}
+
+.usk-shiny-grid .usk-variation-button {
+  min-width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  border-radius: 3px;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+
+.usk-shiny-grid .usk-variation-button:hover {
+  border-color: #2b2d42;
+  box-shadow: 0 0 5px rgba(43, 45, 66, 0.2);
+}
+
+.usk-shiny-grid .usk-variation-button.active {
+  background: #2b2d42;
+  color: #fff;
+  border-color: #2b2d42;
+}
+
+/* Color Variations */
+.usk-shiny-grid .usk-color-variation {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-indent: -9999px;
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 0;
+}
+
+.usk-shiny-grid .usk-color-variation.active {
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+.usk-shiny-grid .usk-color-variation:hover {
+  transform: scale(1.1);
+}
+
+/* Size Variations */
+.usk-shiny-grid .usk-size-variation {
+  min-width: 28px;
+  height: 28px;
+  text-transform: uppercase;
+}
+
+/* Sweatshirt & Custom Variations */
+.usk-shiny-grid .usk-pa_sweatshirt-type-variation,
+.usk-shiny-grid .usk-pa_material-variation,
+.usk-shiny-grid .usk-pa_pattern-variation,
+.usk-shiny-grid .usk-pa_style-variation {
+  background-color: #f5f5f5;
+  padding: 2px 8px;
+  font-size: 11px;
+  text-transform: capitalize;
+  border-radius: 3px;
+  height: auto;
+  line-height: 1.5;
+}
+
+.usk-shiny-grid .usk-pa_sweatshirt-type-variation.active,
+.usk-shiny-grid .usk-pa_material-variation.active,
+.usk-shiny-grid .usk-pa_pattern-variation.active,
+.usk-shiny-grid .usk-pa_style-variation.active {
+  background-color: #2b2d42;
+  color: white;
+}
+
+/* Add to Cart Button Enhancements */
+.usk-shiny-grid .usk-button.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.usk-shiny-grid .usk-button.added {
+  background-color: #4CAF50; /* Success green color */
+}
+
+/* Loading Animation */
+@keyframes usk-spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.usk-shiny-grid .usk-button.loading:after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: usk-spinner 0.8s linear infinite;
+}
+
+/* Add to Cart Success Message */
+.usk-shiny-grid .usk-cart-success-message {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  animation: usk-fade-in 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@keyframes usk-fade-in {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Enhance Added to Cart Button Feedback */
+.usk-shiny-grid .usk-button.added {
+  display: inline-block !important;
+  background-color: #4CAF50;
+  pointer-events: none;
+}
+
+.usk-shiny-grid .usk-button.added:after {
+  content: "✓";
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 16px;
 }
