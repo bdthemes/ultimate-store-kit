@@ -347,13 +347,14 @@ class USK_Shiny_Grid_Template {
                     $color_term = \get_term_by('slug', $color, 'pa_color');
                     $color_value = '';
                     if ($color_term) {
-                        $color_value = \get_term_meta($color_term->term_id, 'product_attribute_color', true);
+                        $color_value = $color_term->slug;
                     }
 
                     $style = '';
                     if ($color_value) {
                         $style = 'style="background-color:' . \esc_attr($color_value) . ';"';
                     }
+
 
                     echo '<button type="button" class="usk-variation-button usk-color-variation' . \esc_attr($active_class) . '" ' .
                         'data-variation-id="' . \esc_attr($variation_id) . '" ' .

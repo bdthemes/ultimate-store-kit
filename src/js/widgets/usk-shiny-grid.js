@@ -117,11 +117,7 @@
                             if (response.data.image && response.data.image.src) {
                                 // Update both default and hover images
                                 $productContainer.find('.image-default').attr('src', response.data.image.src);
-
-                                // For hover image, use either additional image from variation or keep existing
-                                if (response.data.additional_image) {
-                                    $productContainer.find('.image-hover').attr('src', response.data.additional_image);
-                                }
+                                $productContainer.find('.image-hover').attr('src', response.data.image.src);
                             }
                         }
                     }
@@ -191,7 +187,6 @@
                     url: woocommerce_params.wc_ajax_url.replace('%%endpoint%%', 'add_to_cart'),
                     data: data,
                     success: function(response) {
-                        alert('success');
                         if (!response) {
                             $button.removeClass('loading processing');
                             return;
