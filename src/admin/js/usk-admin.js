@@ -210,19 +210,25 @@ jQuery(document).ready(function ($) {
 
   // Variations swatches
   const variationSwatchesBtn = jQuery(".bdt-feature-option-parent");
-
-  variationSwatchesBtn.on("change", function () {
-    if (jQuery(this).prop("checked")) {
-      jQuery(this).closest(".usk-option-item").nextAll().fadeIn(250);
-    } else {
-      jQuery(this).closest(".usk-option-item").nextAll().fadeOut(250);
-    }
-  });
-  if (variationSwatchesBtn.prop("checked")) {
-    variationSwatchesBtn.closest(".usk-option-item").nextAll().fadeIn(250);
-  } else {
-    variationSwatchesBtn.closest(".usk-option-item").nextAll().fadeOut(250);
+  const variationDependentOptions = variationSwatchesBtn.length > 0 
+      ? variationSwatchesBtn.closest(".usk-option-item").nextAll()
+      : jQuery('.usk-option-item[class*="bdt-usk_variation_swatches_"]');
+  
+  const toggleVariationOptions = function() {
+      if (variationSwatchesBtn.length > 0 && variationSwatchesBtn.prop("checked")) {
+          variationDependentOptions.fadeIn(250);
+      } else {
+          variationDependentOptions.hide();
+      }
+  };
+  
+  toggleVariationOptions();
+  
+  if (variationSwatchesBtn.length > 0) {
+      variationSwatchesBtn.on("change", toggleVariationOptions);
   }
+  
+  jQuery("#bdt-ultimate_store_kit_other_settings").on("click", toggleVariationOptions);
 
   //End Variations swatches
 });
