@@ -58,7 +58,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         }
 
         // Load variation scripts and styles
-        add_action('wp_enqueue_scripts', array($this, 'load_assets'));
+        // add_action('wp_enqueue_scripts', array($this, 'load_assets'));
 
         /**
          * Modal data
