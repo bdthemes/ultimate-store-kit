@@ -100,7 +100,7 @@
 				[
 					'label'         => __( 'Url', 'ultimate-store-kit' ),
 					'type'          => Controls_Manager::URL,
-					'placeholder'   => __( 'https://your-link.com', 'plugin-domain' ),
+					'placeholder'   => __( 'https://your-link.com', 'ultimate-store-kit' ),
 					'show_external' => true,
 					'default'      => [
 						'url'         => '#',

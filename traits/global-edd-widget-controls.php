@@ -187,7 +187,7 @@ trait Global_EDD_Widget_Controls {
         $this->add_control(
             'show_tab',
             [
-                'label'     => __('Title', 'plugin-domain'),
+                'label'     => __('Title', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HIDDEN,
                 'default'   => 'traditional',
             ]
@@ -1097,7 +1097,7 @@ trait Global_EDD_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'view_details_bg',
-                'label'     => __('Title', 'plugin-domain'),
+                'label'     => __('Title', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-details-button a',
             ]
@@ -1124,7 +1124,7 @@ trait Global_EDD_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'view_details_hover_bg',
-                'label'     => __('Title', 'plugin-domain'),
+                'label'     => __('Title', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-details-button a:hover',
                 'separator' => 'after'
@@ -1151,7 +1151,7 @@ trait Global_EDD_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'purchase_btn_bg',
-                'label'     => __('Title', 'plugin-domain'),
+                'label'     => __('Title', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button .blue',
             ]
@@ -1178,7 +1178,7 @@ trait Global_EDD_Widget_Controls {
             Group_Control_Background::get_type(),
             [
                 'name'      => 'purchase_btn_hover_bg',
-                'label'     => __('Title', 'plugin-domain'),
+                'label'     => __('Title', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button .blue:hover',
                 'separator' => 'after'
