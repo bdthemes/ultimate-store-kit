@@ -326,7 +326,7 @@ trait Global_Widget_Controls {
                 Group_Control_Image_Size::get_type(),
                 [ 
                     'name'    => 'thumbnail',
-                    'label'   => __( 'Image Size', 'bdthemes-prime-slider' ),
+                    'label'   => __( 'Image Size', 'ultimate-store-kit' ),
                     'default' => 'full',
                     'separator' => 'before',
                 ]

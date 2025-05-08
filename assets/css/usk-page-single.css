@@ -87,9 +87,10 @@
   border: 0;
   font-style: normal;
   background-color: transparent !important;
+  padding: 10px 15px;
 }
 .usk-page-single .woocommerce table.shop_attributes td p {
-  padding: 10px 15px;
+  padding: 0;
 }
 
 @media (min-width: 768px) {
