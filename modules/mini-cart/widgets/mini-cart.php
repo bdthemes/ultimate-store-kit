@@ -1222,7 +1222,7 @@ class Mini_Cart extends Module_Base {
 									<div class="usk-mini-cart-content-footer">
 										<div class="usk-mini-cart-subtotal bdt-flex bdt-flex-between">
 											<div>
-												<strong><?php echo esc_html__( 'Subtotal', 'bdthemes-element-pack' ); ?>:</strong>
+												<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
 											</div>
 											<div>
 												<?php echo WC()->cart->get_cart_subtotal(); ?>
@@ -1231,11 +1231,11 @@ class Mini_Cart extends Module_Base {
 										<div class="usk-mini-cart-footer-buttons">
 											<a href="<?php echo esc_url( wc_get_cart_url() ); ?>"
 												class="bdt-button bdt-button-view-cart bdt-size-md">
-												<span class="bdt-button-text"><?php echo esc_html__( 'View cart', 'bdthemes-element-pack' ); ?></span>
+												<span class="bdt-button-text"><?php echo esc_html__( 'View cart', 'ultimate-store-kit' ); ?></span>
 											</a>
 											<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
 												class="bdt-button bdt-button-checkout bdt-size-md">
-												<span class="bdt-button-text"><?php echo esc_html__( 'Checkout', 'bdthemes-element-pack' ); ?></span>
+												<span class="bdt-button-text"><?php echo esc_html__( 'Checkout', 'ultimate-store-kit' ); ?></span>
 											</a>
 										</div>
 									</div>

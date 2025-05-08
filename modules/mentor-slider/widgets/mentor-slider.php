@@ -196,8 +196,8 @@ class Mentor_Slider extends Module_Base {
             [
                 'label' => esc_html__('Hide Review Text', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'product-grid'),
-                'label_off' => esc_html__('No', 'product-grid'),
+                'label_on' => esc_html__('Yes', 'ultimate-store-kit'),
+                'label_off' => esc_html__('No', 'ultimate-store-kit'),
                 // 'return_value' => 'yes',
                 'default' => 'yes',
                 'condition' => [
@@ -900,7 +900,7 @@ class Mentor_Slider extends Module_Base {
         $this->add_control(
             'font_family',
             [
-                'label'                 => esc_html__('Tooltip Font', 'font family'),
+                'label'                 => esc_html__('Tooltip Font', 'ultimate-store-kit'),
                 'type'                  => Controls_Manager::FONT,
                 'default'               => "'Open Sans', sans-serif",
                 'selectors'             => [
@@ -1142,7 +1142,7 @@ class Mentor_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'category_border',
-                'label'          => __('Border', 'elementor'),
+                'label'          => esc_html__('Border', 'elementor', 'ultimate-store-kit'),
                 'selector'       => '{{WRAPPER}} .usk-mentor-slider .usk-category a',
                 'separator' => 'before'
             ]
@@ -1529,7 +1529,7 @@ class Mentor_Slider extends Module_Base {
         $this->add_control(
 			'thumbs_hover_heading',
 			[
-				'label' => esc_html__( 'Hover', 'plugin-name' ),
+				'label' => esc_html__( 'Hover', 'ultimate-store-kit' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]

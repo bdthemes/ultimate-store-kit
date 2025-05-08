@@ -300,7 +300,7 @@ class Glossy_Carousel extends Module_Base {
                 $average = $product->get_average_rating();
                 $have_rating = ('yes' == $settings['show_rating']) ? 'usk-have-rating' : ''; ?>
 
-                <div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'utlimate-woo-kit'); ?>">
+                <div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
                     <div class="usk-item-box">
                         <?php $this->render_image(); ?>
                         <div class="usk-content">

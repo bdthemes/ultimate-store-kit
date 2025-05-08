@@ -105,7 +105,7 @@ trait Global_Widget_Template {
 			<?php wp_nonce_field( 'ajax-usk-quick-view-nonce', 'usk-quick-view-modal-sc' );
 			?>
 			<a class="usk-action-btn usk-shoping-icon-quickview quick_view usk-view usk-btn" href="javascript:void(0)"
-				data-id="<?php echo absint( $product_id ); ?>" aria-label="<?php echo esc_html__( 'Quick View' ); ?>"
+				data-id="<?php echo absint( $product_id ); ?>" aria-label="<?php echo esc_html__( 'Quick View', 'ultimate-store-kit' ); ?>"
 				data-microtip-position="<?php echo esc_attr( $tooltip_position ); ?>" role="tooltip">
 				<i class="icon usk-icon-preview"></i>
 			</a>
