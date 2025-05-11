@@ -79,9 +79,37 @@ class Builder_Integration {
 		// Get template URL based on template type
 		$template_url = '';
 
-		if ($template_slug === 'shop' || $template_slug === 'archive') {
+		// Check for product category first
+		if ($template_slug === 'product-category') {
+			$product_cats = get_terms([
+				'taxonomy'   => 'product_cat',
+				'hide_empty' => true,
+				'number'     => 1,
+			]);
+
+			if (!empty($product_cats) && !is_wp_error($product_cats)) {
+				$template_url = get_term_link($product_cats[0]);
+			}
+		}
+
+		// Check for product tag
+		elseif ($template_slug === 'product-tag') {
+			$product_tags = get_terms([
+				'taxonomy'   => 'product_tag',
+				'hide_empty' => true,
+				'number'     => 1,
+			]);
+
+			if (!empty($product_tags) && !is_wp_error($product_tags)) {
+				$template_url = get_term_link($product_tags[0]);
+			}
+		}
+
+		elseif ($template_slug === 'shop' || $template_slug === 'archive') {
 			$template_url = get_permalink(wc_get_page_id('shop'));
-		} elseif ($template_slug === 'single' && $post_type === 'product') {
+		}
+
+		elseif ($template_slug === 'single' && $post_type === 'product') {
 			$page_settings_manager = \Elementor\Core\Settings\Manager::get_settings_managers('page');
 			$page_settings_model = $page_settings_manager->get_model($post_id);
 			$sample_product = $page_settings_model->get_settings('usk_builder_sample_post_id');
@@ -89,19 +117,26 @@ class Builder_Integration {
 			$template_url = !empty($sample_product) ?
 				get_permalink($sample_product) :
 				get_permalink(wc_get_products(['status' => 'publish', 'limit' => 1])[0]->get_id());
-		} elseif ($template_slug === 'cart') {
+		}
+
+		elseif ($template_slug === 'cart') {
 			$template_url = wc_get_cart_url();
-		} elseif ($template_slug === 'checkout') {
+		}
+
+		elseif ($template_slug === 'checkout') {
 			$template_url = wc_get_checkout_url();
-		} elseif ($template_slug === 'myaccount' || strpos($template_slug, 'myaccount-') === 0) {
+		}
+
+		elseif ($template_slug === 'myaccount' || strpos($template_slug, 'myaccount-') === 0) {
 			$template_url = get_permalink(wc_get_page_id('myaccount'));
-		} elseif ($template_slug === 'order-received') {
-			$orders = wc_get_orders(array('limit' => 1));
+		}
+
+		elseif ($template_slug === 'order-received') {
+			$orders = wc_get_orders(['limit' => 1]);
 			if (!empty($orders)) {
 				$order = $orders[0];
 				$order_id = $order->get_id();
-				$checkout_url = wc_get_checkout_url();
-				$template_url = add_query_arg('order-received', $order_id, $checkout_url);
+				$template_url = add_query_arg('order-received', $order_id, wc_get_checkout_url());
 			}
 		}
 
@@ -247,12 +282,22 @@ class Builder_Integration {
 			}
 		}
 
+		
 		if (is_post_type_archive('product') || is_page(wc_get_page_id('shop')) || is_product_taxonomy()) {
-			if ($custom_template = $this->get_template_id('shop')) {
+			$template_type = 'shop';
+			
+			if (is_tax('product_cat')) {
+				$template_type = 'category';
+			} elseif (is_tax('product_tag')) {
+				$template_type = 'tag';
+			}
+			
+			if ($custom_template = $this->get_template_id($template_type)) {
 				$this->current_template_id = $custom_template;
 				return $this->getTemplatePath('woocommerce/archive-product', $template);
 			}
 		}
+		
 
 		if (is_cart()) {
 			if ($custom_template = $this->get_template_id('cart', 'product')) {
