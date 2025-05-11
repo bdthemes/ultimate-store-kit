@@ -63,9 +63,31 @@
       const variationId = $this.data("variation-id");
       const $productContainer = $(`.usk-item[data-product-id="${productId}"]`);
 
+      // Check if already active - toggle selection for optional attributes
+      if ($this.hasClass("active")) {
+        // Don't allow deselection if this is the only selected attribute
+        const selectedCount = $productContainer.find(".usk-variation-button.active").length;
+        if (selectedCount > 1) {
+          $this.removeClass("active");
+          // Update add to cart button with remaining selected attributes
+          const remainingAttributes = collectSelectedAttributes($productContainer);
+          if (Object.keys(remainingAttributes).length > 0) {
+            updateAddToCartButton($productContainer, productId, null, remainingAttributes);
+          } else {
+            // If no attributes selected, reset the button to "Select options"
+            resetButtonToSelectOptions($productContainer);
+          }
+          return;
+        }
+      }
+
       updateActiveVariation($this, productId, attribute);
       const allAttributes = collectSelectedAttributes($productContainer);
-      updateAddToCartButton($productContainer, productId, variationId, allAttributes);
+
+      // Only update add to cart if we have at least one attribute selected
+      if (Object.keys(allAttributes).length > 0) {
+        updateAddToCartButton($productContainer, productId, variationId, allAttributes);
+      }
 
       // Handle color variations specially
       if (attribute === "pa_color") {
@@ -73,6 +95,27 @@
         storeSelectedColor($this, value, $productContainer);
       }
     });
+  }
+
+  // Reset button to "Select options" state
+  function resetButtonToSelectOptions($productContainer) {
+    const $addToCartBtn = $productContainer.find(".usk-button");
+    if (!$addToCartBtn.length) return;
+
+    // Clear attributes
+    $.each($addToCartBtn[0].attributes, function () {
+      if (this.name.indexOf("data-attribute_") === 0) {
+        $addToCartBtn.removeAttr(this.name);
+      }
+    });
+
+    // Reset button
+    $addToCartBtn
+      .removeClass("add_to_cart_button product_type_variation")
+      .addClass("product_type_variable")
+      .attr("href", "javascript:void(0)")
+      .removeAttr("data-variation_id")
+      .html('Select options <i class="button-icon usk-icon-arrow-right-8"></i>');
   }
 
   // Update which variation is active
@@ -102,23 +145,69 @@
       }
     });
 
-    // Set new attributes
-    $addToCartBtn.attr({
+    // Find the correct variation ID for the selected attributes combination
+    let finalVariationId = variationId;
+
+    // If we have multiple attributes selected, we need to find the correct variation ID
+    if (Object.keys(allAttributes).length > 1) {
+      findCorrectVariation($productContainer, allAttributes, productId).then(correctVariationId => {
+        if (correctVariationId) {
+          finalVariationId = correctVariationId;
+
+          // Update button attributes with the correct variation ID
+          updateButtonAttributes($addToCartBtn, productId, finalVariationId, allAttributes);
+        }
+      });
+    } else {
+      // If only one attribute is selected, just use the provided variation ID
+      updateButtonAttributes($addToCartBtn, productId, finalVariationId, allAttributes);
+    }
+  }
+
+  // Helper function to update button attributes
+  function updateButtonAttributes($button, productId, variationId, attributes) {
+    // Set base attributes
+    $button.attr({
       "data-variation_id": variationId,
       "data-product_id": productId,
       href: "javascript:void(0)",
     });
 
     // Add attribute data
-    Object.keys(allAttributes).forEach(attr => {
-      $addToCartBtn.attr(`data-attribute_${attr}`, allAttributes[attr]);
+    Object.keys(attributes).forEach(attr => {
+      $button.attr(`data-attribute_${attr}`, attributes[attr]);
     });
 
     // Update button classes
-    $addToCartBtn
+    $button
       .addClass("add_to_cart_button product_type_variation")
       .removeClass("product_type_variable")
       .html('Add to cart <i class="button-icon usk-icon-arrow-right-8"></i>');
+  }
+
+  // Function to find the correct variation ID for a combination of attributes
+  function findCorrectVariation($productContainer, selectedAttributes, productId) {
+    return new Promise((resolve) => {
+      $.ajax({
+        url: woocommerce_params.ajax_url,
+        type: "POST",
+        data: {
+          action: "usk_find_variation",
+          product_id: productId,
+          attributes: selectedAttributes
+        },
+        success: function(response) {
+          if (response.success && response.data.variation_id) {
+            resolve(response.data.variation_id);
+          } else {
+            resolve(null);
+          }
+        },
+        error: function() {
+          resolve(null);
+        }
+      });
+    });
   }
 
   // Update product image for color variations
@@ -233,21 +322,24 @@
         }
 
         // Trigger WooCommerce cart update
-        // $(document.body).trigger("wc_fragment_refresh");
-        // $(document.body).trigger("added_to_cart");
+        $(document.body).trigger("wc_fragment_refresh");
+        $(document.body).trigger("added_to_cart");
 
         // Show success message
         const $notification = $(
           '<div class="usk-cart-success-message">Product added to cart! ✓</div>'
         );
-        // $button.closest(".usk-item").append($notification);
+        $button.closest(".usk-item").append($notification);
 
-        // setTimeout(function () {
-        //   $notification.fadeOut(300, function () {
-        //     $(this).remove();
-        //     $button.removeClass("processing");
-        //   });
-        // }, 2000);
+        setTimeout(function () {
+          $notification.fadeOut(300, function () {
+            $(this).remove();
+            $button.removeClass("processing");
+
+            // Reset button state for future add to cart events
+            resetAddToCartButtonState($button);
+          });
+        }, 2000);
       },
       error: function (xhr, status, error) {
         console.error("AJAX Error:", xhr.responseText);
@@ -264,17 +356,75 @@
     });
   }
 
+  // Reset add to cart button state for future add to cart events
+  function resetAddToCartButtonState($button) {
+    // Preserve the original attributes but ensure they're still valid
+    const productId = $button.data("product_id");
+    const variationId = $button.data("variation_id");
+
+    // Find the corresponding product container
+    const $productContainer = $(`.usk-item[data-product-id="${productId}"]`);
+
+    // Re-collect the current selected attributes to ensure they're fresh
+    const currentAttributes = collectSelectedAttributes($productContainer);
+
+    // Only update if we have valid attributes
+    if (Object.keys(currentAttributes).length > 0) {
+      // Verify the variation ID is still valid with the data store
+      findCorrectVariation($productContainer, currentAttributes, productId).then(correctVariationId => {
+        if (correctVariationId) {
+          // Update with fresh data
+          updateButtonAttributes($button, productId, correctVariationId, currentAttributes);
+        }
+      });
+    }
+  }
+
   // ===== MAIN INITIALIZATION FUNCTION =====
   function initializeGridFunctionality($scope) {
     setupGridFilter($scope);
     setupVariationButtons($scope);
     setupAddToCartButtons();
+
+    // Reset any processing buttons on initialization
+    $scope.find('.usk-button.processing').removeClass('processing');
   }
 
   // Initialize on element ready
   function GridColumn($scope) {
     initializeGridFunctionality($scope);
   }
+
+  // Listen for cart changes to update buttons
+  $(document.body).on('added_to_cart removed_from_cart wc_fragments_refreshed', function() {
+    // This helps maintain proper state after cart operations
+    setTimeout(function() {
+      // Clear all processing states
+      $('.usk-button.processing').removeClass('processing');
+
+      // Reset any add to cart buttons that might be in an invalid state
+      $('.usk-variations-container').each(function() {
+        const $container = $(this);
+        const productId = $container.data('product-id');
+        const $productItem = $(`.usk-item[data-product-id="${productId}"]`);
+
+        if ($productItem.length) {
+          const $addToCartBtn = $productItem.find('.usk-button');
+          const selectedAttributes = collectSelectedAttributes($productItem);
+
+          if (Object.keys(selectedAttributes).length > 0) {
+            // Find correct variation ID for selected attributes
+            findCorrectVariation($productItem, selectedAttributes, productId).then(correctVariationId => {
+              if (correctVariationId) {
+                // Update with fresh data
+                updateButtonAttributes($addToCartBtn, productId, correctVariationId, selectedAttributes);
+              }
+            });
+          }
+        }
+      });
+    }, 500);
+  });
 
   // Re-initialize after AJAX content is loaded
   $(document).ajaxComplete(function (event, xhr) {

@@ -142,3 +142,121 @@
   background: #2b2d42;
   color: #fff;
 }
+
+/* Variations Container Styling */
+.usk-shiny-grid .usk-variations-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 10px 10px;
+  flex-direction: column;
+}
+
+.usk-shiny-grid .usk-variation-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  min-height: 30px;
+}
+
+.usk-shiny-grid .usk-variation-label {
+  font-size: 12px;
+  margin-right: 8px;
+  font-weight: 500;
+  color: #555;
+  min-width: 40px;
+}
+
+.usk-shiny-grid .usk-variation-button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.usk-shiny-grid .usk-variation-button:hover {
+  border-color: #999;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.usk-shiny-grid .usk-variation-button.active {
+  background: #2b2d42;
+  color: #fff;
+  border-color: #2b2d42;
+}
+
+.usk-shiny-grid .usk-variation-button.active:hover {
+  background: #2b2d42;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Indicate when a button can be deselected */
+.usk-shiny-grid .usk-variation-button.active:after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* Color variation styling */
+.usk-shiny-grid .usk-color-variation {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usk-shiny-grid .usk-color-variation:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.usk-shiny-grid .usk-color-variation.active {
+  border: 2px solid #2b2d42;
+  z-index: 2;
+}
+
+.usk-shiny-grid .usk-color-variation.active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Success message styling */
+.usk-shiny-grid .usk-cart-success-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #4caf50;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
