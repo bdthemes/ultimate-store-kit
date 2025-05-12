@@ -375,15 +375,15 @@ class Sub_Category_Carousel extends Module_Base {
 		$this->add_control(
 			'creative_effect',
 			[ 
-				'label'     => esc_html__( 'Creative Effect', 'bdthemes-prime-slider' ),
+				'label'     => esc_html__( 'Creative Effect', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'creative-1',
 				'options'   => [ 
-					'creative-1' => esc_html__( 'Creative 1', 'bdthemes-prime-slider' ),
-					'creative-2' => esc_html__( 'Creative 2', 'bdthemes-prime-slider' ),
-					'creative-3' => esc_html__( 'Creative 3', 'bdthemes-prime-slider' ),
-					'creative-4' => esc_html__( 'Creative 4', 'bdthemes-prime-slider' ),
-					'creative-5' => esc_html__( 'Creative 5', 'bdthemes-prime-slider' ),
+					'creative-1' => esc_html__( 'Creative 1', 'ultimate-store-kit' ),
+					'creative-2' => esc_html__( 'Creative 2', 'ultimate-store-kit' ),
+					'creative-3' => esc_html__( 'Creative 3', 'ultimate-store-kit' ),
+					'creative-4' => esc_html__( 'Creative 4', 'ultimate-store-kit' ),
+					'creative-5' => esc_html__( 'Creative 5', 'ultimate-store-kit' ),
 				],
 				'condition' => [ 
 					'thumbs_effect' => 'creative',

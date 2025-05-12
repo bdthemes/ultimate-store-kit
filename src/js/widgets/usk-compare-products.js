@@ -35,7 +35,7 @@
       widgetProductQuickView.loadQuickViewHtml(this, $scope);
     });
   };
-  $(".ajax_remove_from_wishlist").click(function (e) {
+  $(".ajax_remove_from_wishlist").on("click", function (e) {
     e.preventDefault();
     var $this = $(this);
     var $product_id = $this.data("product_id");
