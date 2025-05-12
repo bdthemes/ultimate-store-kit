@@ -96,7 +96,7 @@ trait Global_Widget_Controls {
                 'type'        => Controls_Manager::TEXT,
                 'placeholder' => 'product_id',
                 'label_block' => true,
-                'description' => esc_html__('Write product id here, if you want to exclude multiple products so use comma as separator. Such as 1 , 2', ''),
+                'description' => esc_html__('Write product id here, if you want to exclude multiple products so use comma as separator. Such as 1 , 2', 'ultimate-store-kit'),
             ]
         );
 
@@ -1246,7 +1246,7 @@ trait Global_Widget_Controls {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'category_border',
-                'label'          => __('Border', 'elementor'),
+                'label'          => esc_html__('Border', 'ultimate-store-kit'),
                 'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
                 'separator' => 'before'
             ]
@@ -1602,7 +1602,7 @@ trait Global_Widget_Controls {
         $this->add_control(
             'font_family',
             [
-                'label'                 => esc_html__('Tooltip Font', 'font family'),
+                'label'                 => esc_html__('Tooltip Font', 'ultimate-store-kit'),
                 'type'                  => Controls_Manager::FONT,
                 'selectors'             => [
                     '{{WRAPPER}} .usk-shoping a'    => 'font-family: {{VALUE}}',

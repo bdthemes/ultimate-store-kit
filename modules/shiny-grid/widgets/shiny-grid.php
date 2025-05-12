@@ -367,7 +367,7 @@ class Shiny_Grid extends Module_Base {
                     }
                     $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
                 ?>
-                    <div class="usk-item <?php esc_attr_e($have_rating, 'utlimate-woo-kit'); ?>">
+                    <div class="usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
                         <div class="usk-item-box">
                             <?php $this->render_image(); ?>
                             <div class="usk-content">

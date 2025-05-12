@@ -727,7 +727,7 @@ class Page_Single extends Module_Base {
         $this->add_control(
             'tabs_nav_active_line_color',
             [
-                'label' => __('Active Line Color', 'ultimate-store-kit-pro') . BDTUSK_NC,
+                'label' => __('Active Line Color', 'ultimate-store-kit') . BDTUSK_NC,
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .woocommerce div.product .woocommerce-tabs ul.tabs li a::after' => 'background-color: {{VALUE}};',

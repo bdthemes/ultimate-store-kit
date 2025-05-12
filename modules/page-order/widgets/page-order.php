@@ -941,15 +941,15 @@ class Page_Order extends Module_Base
         <div class="woocommerce-order-details">
             <?php do_action('woocommerce_order_details_before_order_table', $order); ?>
 
-            <h2 class="woocommerce-order-details__title"><?php esc_html_e('Order details', 'woocommerce'); ?></h2>
+            <h2 class="woocommerce-order-details__title"><?php esc_html_e('Order details', 'ultimate-store-kit'); ?></h2>
 
             <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
 
                 <thead>
                     <tr>
-                        <th class="woocommerce-table__product-name product-name"><?php esc_html_e('Product', 'woocommerce'); ?>
+                        <th class="woocommerce-table__product-name product-name"><?php esc_html_e('Product', 'ultimate-store-kit'); ?>
                         </th>
-                        <th class="woocommerce-table__product-table product-total"><?php esc_html_e('Total', 'woocommerce'); ?>
+                        <th class="woocommerce-table__product-table product-total"><?php esc_html_e('Total', 'ultimate-store-kit'); ?>
                         </th>
                     </tr>
                 </thead>
@@ -992,7 +992,7 @@ class Page_Order extends Module_Base
                     ?>
                     <?php if ($order->get_customer_note()): ?>
                         <tr>
-                            <th><?php esc_html_e('Note:', 'woocommerce'); ?></th>
+                            <th><?php esc_html_e('Note:', 'ultimate-store-kit'); ?></th>
                             <td><?php echo wp_kses_post(nl2br(wptexturize($order->get_customer_note()))); ?></td>
                         </tr>
                     <?php endif; ?>
@@ -1019,7 +1019,7 @@ class Page_Order extends Module_Base
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                         d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                 </svg>
-                <span class="usk-label"><?php esc_html_e('Order number:', 'woocommerce'); ?></span>
+                <span class="usk-label"><?php esc_html_e('Order number:', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo esc_html($order->get_order_number()); ?></strong>
             </li>
             <li class="date">
@@ -1027,7 +1027,7 @@ class Page_Order extends Module_Base
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span class="usk-label"><?php esc_html_e('Order Date:', 'woocommerce'); ?></span>
+                <span class="usk-label"><?php esc_html_e('Order Date:', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></strong>
             </li>
             <li class="order-status">
@@ -1043,7 +1043,7 @@ class Page_Order extends Module_Base
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                         d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="usk-label"><?php esc_html_e('Total:', 'woocommerce'); ?></span>
+                <span class="usk-label"><?php esc_html_e('Total:', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo wp_kses_post($order->get_formatted_order_total()); ?></strong>
             </li>
             <?php if ($order->get_payment_method_title()): ?>
@@ -1052,7 +1052,7 @@ class Page_Order extends Module_Base
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
-                    <span class="usk-label"><?php esc_html_e('Payment method:', 'woocommerce'); ?></span>
+                    <span class="usk-label"><?php esc_html_e('Payment method:', 'ultimate-store-kit'); ?></span>
                     <strong class="usk-value"><?php echo wp_kses_post($order->get_payment_method_title()); ?></strong>
                 </li>
             <?php endif; ?>
@@ -1073,10 +1073,10 @@ class Page_Order extends Module_Base
                         <div class="woocommerce-column woocommerce-column--1 woocommerce-column--billing-address col-1">
                         <?php endif; ?>
 
-                        <h2 class="woocommerce-column__title"><?php esc_html_e('Billing address', 'woocommerce'); ?></h2>
+                        <h2 class="woocommerce-column__title"><?php esc_html_e('Billing address', 'ultimate-store-kit'); ?></h2>
 
                         <address>
-                            <?php echo wp_kses_post($order->get_formatted_billing_address(esc_html__('N/A', 'woocommerce'))); ?>
+                            <?php echo wp_kses_post($order->get_formatted_billing_address(esc_html__('N/A', 'ultimate-store-kit'))); ?>
 
                             <?php if ($order->get_billing_phone()): ?>
                                 <p class="woocommerce-customer-details--phone"><?php echo esc_html($order->get_billing_phone()); ?></p>
@@ -1092,9 +1092,9 @@ class Page_Order extends Module_Base
                         </div><!-- /.col-1 -->
 
                         <div class="woocommerce-column woocommerce-column--2 woocommerce-column--shipping-address col-2">
-                            <h2 class="woocommerce-column__title"><?php esc_html_e('Shipping address', 'woocommerce'); ?></h2>
+                            <h2 class="woocommerce-column__title"><?php esc_html_e('Shipping address', 'ultimate-store-kit'); ?></h2>
                             <address>
-                                <?php echo wp_kses_post($order->get_formatted_shipping_address(esc_html__('N/A', 'woocommerce'))); ?>
+                                <?php echo wp_kses_post($order->get_formatted_shipping_address(esc_html__('N/A', 'ultimate-store-kit'))); ?>
                                 <?php if ($order->get_shipping_phone()): ?>
                                     <p class="woocommerce-customer-details--phone"><?php echo esc_html($order->get_shipping_phone()); ?></p>
                                 <?php endif; ?>
