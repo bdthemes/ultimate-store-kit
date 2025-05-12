@@ -162,7 +162,9 @@ final class WishlistCompare {
 
 		// send response
 		$response['status']  = 1;
-		$response['message'] = sprintf( __( 'compare products item %s!', 'ultimate-store-kit' ), $response['action'] );
+		// $response['message'] = sprintf( __( 'compare products item %s!', 'ultimate-store-kit' ), $response['action'] );
+		$response['message'] = sprintf( __( 'Compared product item: %s.', 'ultimate-store-kit' ), $response['action'] );
+		
 		wp_send_json( $response );
 	}
 	public function ultimate_store_kit_set_compare_products( $compare_products, $user_id = 0 ) {

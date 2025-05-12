@@ -1142,7 +1142,7 @@ class Mentor_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'category_border',
-                'label'          => esc_html__('Border', 'elementor', 'ultimate-store-kit'),
+                'label'          => esc_html__('Border', 'ultimate-store-kit'),
                 'selector'       => '{{WRAPPER}} .usk-mentor-slider .usk-category a',
                 'separator' => 'before'
             ]

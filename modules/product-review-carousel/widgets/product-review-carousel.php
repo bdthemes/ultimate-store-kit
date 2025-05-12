@@ -766,7 +766,14 @@ class Product_Review_Carousel extends Module_Base {
                             <span>
                                 <i class="usk-rating-icon usk-icon-star-full"></i>
                             </span>
-                            <span class="usk-rating-text"><?php esc_html_e(floor($product->get_average_rating()), 'ultimate-store-kit');?></span>
+                            <span class="usk-rating-text">
+                                <?php 
+                                printf(
+                                    esc_html__('%s', 'ultimate-store-kit'), 
+                                    esc_html(floor($product->get_average_rating()))
+                                ); 
+                                ?>
+                            </span>
                         </div>
                     <?php endif;?>
                     <?php if ($settings['show_review_text']): ?>
