@@ -23,43 +23,36 @@ class Product_Review_Carousel extends Module_Base {
     use Global_Widget_Controls;
     use Global_Widget_Template;
 
-    public function get_name()
-    {
+    public function get_name() {
         return 'usk-product-review-carousel';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return BDTUSK . esc_html__('Product Review Carousel', 'ultimate-store-kit');
     }
 
-    public function get_icon()
-    {
+    public function get_icon() {
         return 'usk-widget-icon usk-icon-product-review-carousel';
     }
 
-    public function get_categories()
-    {
+    public function get_categories() {
         return ['ultimate-store-kit'];
     }
 
-    public function get_keywords()
-    {
+    public function get_keywords() {
         return ['ultimate-store-kit', 'shop', 'store', 'reviews', 'carousel', 'product'];
     }
 
-    public function get_style_depends()
-    {
+    public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['swiper', 'usk-all-styles'];
         } else {
             return ['swiper', 'usk-font', 'usk-product-review-carousel'];
         }
     }
-    public function get_script_depends()
-    {
+    public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['swiper', 'usk-all-styles'];
+            return ['swiper', 'usk-site'];
         } else {
             return ['swiper', 'usk-product-review-carousel'];
         }
@@ -70,9 +63,9 @@ class Product_Review_Carousel extends Module_Base {
     // }
 
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
         $this->start_controls_section(
             'section_woocommerce_layout',
             [
@@ -335,7 +328,7 @@ class Product_Review_Carousel extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -344,7 +337,7 @@ class Product_Review_Carousel extends Module_Base {
             ]
         );
         $this->end_controls_section();
-        
+
         $this->start_controls_section(
             'section_style_image',
             [
@@ -357,23 +350,23 @@ class Product_Review_Carousel extends Module_Base {
         );
 
         $this->add_control(
-			'avatar_size',
-			[
-				'label'     => __('Size', 'ultimate-post-kit'),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => [
-					'25'  => '25 x 25',
-					'35'  => '35 x 35',
-					'45'  => '45 x 45',
-					'60'  => '60 x 60',
-					'80'  => '80 x 80',
-					'100' => '100 x 100',
-					'120' => '120 x 120',
-					'150' => '150 x 150',
-				],
-				'default'   => '80',
-			]
-		);
+            'avatar_size',
+            [
+                'label'     => __('Size', 'ultimate-post-kit'),
+                'type'      => Controls_Manager::SELECT,
+                'options'   => [
+                    '25'  => '25 x 25',
+                    '35'  => '35 x 35',
+                    '45'  => '45 x 45',
+                    '60'  => '60 x 60',
+                    '80'  => '80 x 80',
+                    '100' => '100 x 100',
+                    '120' => '120 x 120',
+                    '150' => '150 x 150',
+                ],
+                'default'   => '80',
+            ]
+        );
 
         $this->add_group_control(
             Group_Control_Border::get_type(),
@@ -593,7 +586,7 @@ class Product_Review_Carousel extends Module_Base {
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
-        
+
         $this->start_controls_section(
             'section_style_rating',
             [
@@ -711,7 +704,7 @@ class Product_Review_Carousel extends Module_Base {
 
     public function render_image() {
         global $post, $product;
-        $settings = $this->get_settings_for_display();?>
+        $settings = $this->get_settings_for_display(); ?>
         <div class="usk-avatar-img">
             <a href="#">
                 <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
@@ -736,29 +729,29 @@ class Product_Review_Carousel extends Module_Base {
         if ($comments) {
             foreach ($comments as $index => $comment):
                 $product_id = $comment->comment_post_ID;
-                $product = wc_get_product($product_id);?>
+                $product = wc_get_product($product_id); ?>
                 <?php if ($comment->comment_approved == '0'): ?>
                     <p class="usk-waiting-approval-info">
-                        <em><?php esc_html_e('Thanks, your review is awaiting for approval', 'ultimate-store-kit');?></em>
+                        <em><?php esc_html_e('Thanks, your review is awaiting for approval', 'ultimate-store-kit'); ?></em>
                     </p>
-                <?php endif;?>
+                <?php endif; ?>
                 <div class="usk-item swiper-slide">
                     <div class="usk-avatar-wrap usk-flex usk-flex-middle usk-flex-wrap">
                         <?php if ($settings['show_image']): ?>
                             <div class="usk-avatar-img usk-flex-inline">
                                 <?php echo get_avatar($comment->comment_author_email, $settings['avatar_size']); ?>
                             </div>
-                        <?php endif;?>
+                        <?php endif; ?>
                         <div class="usk-content-wrap">
                             <?php if ($settings['show_title']) :
                                 printf('<%1$s class="usk-title"><a href="%3$s">%2$s</a></%1$s>', esc_attr($settings['title_tags']), esc_html($product->get_name()), esc_url($product->get_permalink()));
-                            endif;?>
+                            endif; ?>
                             <?php if ($settings['show_author']): ?>
                                 <div class="usk-author-name">
-                                    <span><?php esc_html_e('purchase by', 'ultimate-store-kit');?></span>
-                                    <?php printf('<a href="%2$s">%1$s</a>', esc_html($comment->comment_author), esc_url(get_the_author_meta('url')));?>
+                                    <span><?php esc_html_e('purchase by', 'ultimate-store-kit'); ?></span>
+                                    <?php printf('<a href="%2$s">%1$s</a>', esc_html($comment->comment_author), esc_url(get_the_author_meta('url'))); ?>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php if ($settings['show_rating']): ?>
@@ -766,18 +759,18 @@ class Product_Review_Carousel extends Module_Base {
                             <span>
                                 <i class="usk-rating-icon usk-icon-star-full"></i>
                             </span>
-                            <span class="usk-rating-text"><?php esc_html_e(floor($product->get_average_rating()));?></span>
+                            <span class="usk-rating-text"><?php esc_html_e(floor($product->get_average_rating())); ?></span>
                         </div>
-                    <?php endif;?>
+                    <?php endif; ?>
                     <?php if ($settings['show_review_text']): ?>
                         <div class="usk-text">
 
                             <?php echo esc_html(wp_trim_words($comment->comment_content, $settings['review_text_limit'], '...')); ?>
 
                         </div>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
-            <?php
+<?php
             endforeach;
         } else {
             echo esc_html__('No reviews found', 'ultimate-store-kit');
