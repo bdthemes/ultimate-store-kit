@@ -10,8 +10,7 @@ namespace UltimateStoreKit\Templates;
 
 use UltimateStoreKit\Traits\Global_Widget_Template;
 
-class USK_Shiny_Grid_Template
-{
+class USK_Shiny_Grid_Template {
     use Global_Widget_Template;
 
     /**
@@ -23,8 +22,7 @@ class USK_Shiny_Grid_Template
     /**
      * Constructor
      */
-    public function __construct($settings = [], $widget_name = '')
-    {
+    public function __construct($settings = [], $widget_name = '') {
         $this->target_widget_settings = $settings;
         $this->target_widget_name = $widget_name;
     }
@@ -32,8 +30,7 @@ class USK_Shiny_Grid_Template
     /**
      * Render a single product item
      */
-    public function render_shiny_grid_item($product, $settings)
-    {
+    public function render_shiny_grid_item($product, $settings) {
         if (!$product) {
             return;
         }
@@ -46,12 +43,14 @@ class USK_Shiny_Grid_Template
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;
         $classes = $this->target_widget_name === 'shiny-grid' ? 'usk-item' : 'usk-item swiper-slide';
         $classes .= $show_rating ? ' usk-have-rating' : '';
-        ?>
+?>
         <div class="<?php echo esc_attr($classes); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
             <div class="usk-item-box">
                 <?php $this->render_product_image($product); ?>
                 <div class="usk-content">
-                    <?php $this->render_product_variation($product); ?>
+                    <?php if (isset($settings['show_variation']) ? $settings['show_variation'] : true): ?>
+                        <?php $this->render_product_variation($product); ?>
+                    <?php endif; ?>
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)): ?>
                             <div class="usk-category"><?php echo wp_kses_post($categories); ?></div>
@@ -87,14 +86,13 @@ class USK_Shiny_Grid_Template
                 </div>
             </div>
         </div>
-        <?php
+    <?php
     }
 
     /**
      * Render add to cart button
      */
-    public function render_add_to_cart_button($product)
-    {
+    public function render_add_to_cart_button($product) {
         if (!$product) {
             return;
         }
@@ -214,8 +212,7 @@ class USK_Shiny_Grid_Template
      * Get variation ID from product attributes
      * Uses WooCommerce data store for reliable variation finding
      */
-    private function get_variation_id_from_attributes($product, $attributes)
-    {
+    private function get_variation_id_from_attributes($product, $attributes) {
         if (!$product || !$product->is_type('variable')) {
             return null;
         }
@@ -240,8 +237,7 @@ class USK_Shiny_Grid_Template
     /**
      * Render product image with hover effect and action buttons
      */
-    public function render_product_image($product)
-    {
+    public function render_product_image($product) {
         if (!$product) {
             return;
         }
@@ -260,7 +256,7 @@ class USK_Shiny_Grid_Template
         if ($gallery_thumbs && !empty($gallery_thumbs[0])) {
             $gallery_image_link = wp_get_attachment_image_url($gallery_thumbs[0], $image_size);
         }
-        ?>
+    ?>
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
                 <img class="img image-default" src="<?php echo esc_url($product_image); ?>"
@@ -283,14 +279,13 @@ class USK_Shiny_Grid_Template
                 <!-- display product variation -->
             </div>
         </div>
-        <?php
+<?php
     }
 
     /**
      * Print price HTML with allowed tags
      */
-    public function print_price_output($output)
-    {
+    public function print_price_output($output) {
         $allowed_tags = [
             'del' => ['aria-hidden' => []],
             'span' => ['class' => []],
@@ -309,8 +304,7 @@ class USK_Shiny_Grid_Template
      * Displays variation swatches on product grid items
      * When a user selects a variation, it becomes active and ready for add to cart
      */
-    public function render_product_variation($product)
-    {
+    public function render_product_variation($product) {
         if (!$product || !$product->is_type('variable')) {
             return;
         }
