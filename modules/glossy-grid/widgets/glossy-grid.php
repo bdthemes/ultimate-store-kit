@@ -55,7 +55,11 @@ class Glossy_Grid extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['micromodal'];
+        if ($this->usk_is_edit_mode()) {
+            return ['micromodal', 'usk-site'];
+        } else {
+            return ['micromodal', 'usk-shiny-grid'];
+        }
     }
 
     public function get_custom_help_url() {
