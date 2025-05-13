@@ -1069,6 +1069,7 @@ class ModuleService {
                     'label'             => esc_html__('Size', 'ultimate-store-kit'),
                     'type'              => 'number',
                     'default'           => '26',
+
 				        ],
                 [
                     'name' => 'swatches_group_end',
