@@ -3433,7 +3433,6 @@
 }
 
 /* Base Layout & Positioning */
-.usk-glossy-grid .usk-item-box,
 .usk-glossy-grid .usk-shoping,
 .usk-glossy-grid .usk-badge-label-wrapper {
   position: absolute;
@@ -3508,7 +3507,6 @@
   overflow: inherit;
 }
 
-.usk-glossy-carousel .usk-item-box,
 .usk-glossy-carousel .usk-shoping,
 .usk-glossy-carousel .usk-badge-label-wrapper {
   position: absolute;
