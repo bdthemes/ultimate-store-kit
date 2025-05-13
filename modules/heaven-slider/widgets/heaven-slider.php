@@ -111,7 +111,7 @@ class Heaven_Slider extends Module_Base {
                 'default' => 'full',
             ]
         );
-        
+
         $this->add_control(
             'content_position',
             [
@@ -581,7 +581,7 @@ class Heaven_Slider extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'category_text_decoration_color',
             [
@@ -1168,7 +1168,7 @@ class Heaven_Slider extends Module_Base {
 
 	                            <div class="usk-badge-label-wrapper">
 	                                <div class="usk-badge-label-content usk-flex">
-	                                    <?php $this->register_global_template_badge_label();?>
+	                                    <?php $this->register_global_template_badge_label($settings);?>
 	                                </div>
 	                            </div>
 
@@ -1202,11 +1202,11 @@ class Heaven_Slider extends Module_Base {
 
                                 <?php if ('yes' == $settings['show_cart'] or 'yes' == $settings['show_wishlist'] or 'yes' == $settings['show_quick_view']): ?>
                                     <div class="usk-shoping">
-                                        <?php 
-                                        $this->register_global_template_add_to_wishlist($tooltip_position);
-                                        $this->register_global_template_add_to_compare($tooltip_position);
-                                        $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                                        $this->register_global_template_add_to_cart($tooltip_position);
+                                        <?php
+                                        $this->register_global_template_add_to_wishlist($tooltip_position, $settings);
+                                        $this->register_global_template_add_to_compare($tooltip_position, $settings);
+                                        $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings);
+                                        $this->register_global_template_add_to_cart($tooltip_position, $settings);
                                         ?>
                                     </div>
                                 <?php endif;?>

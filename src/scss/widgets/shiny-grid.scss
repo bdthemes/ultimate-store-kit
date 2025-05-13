@@ -171,4 +171,14 @@
             font-size: 12px;
         }
     }
+
+    .usk-variation-button.active {
+        background: #2b2d42;
+        color: #fff;
+
+        &:hover {
+            background: #2b2d42;
+            color: #fff;
+        }
+    }
 }

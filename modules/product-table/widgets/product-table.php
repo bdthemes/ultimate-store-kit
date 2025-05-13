@@ -173,7 +173,7 @@ class Product_Table extends Module_Base {
                 'default' => 'yes',
             ]
         );
-        
+
 
         $this->end_controls_section();
         $this->start_controls_section(
@@ -548,7 +548,7 @@ class Product_Table extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'table_heading_background',
             [
@@ -645,7 +645,7 @@ class Product_Table extends Module_Base {
                 'default'   => 'yes',
             ]
         );
-        
+
         $this->start_controls_tabs('tabs_table_style');
         $this->start_controls_tab(
             'tab_table_normal',
@@ -2128,7 +2128,7 @@ class Product_Table extends Module_Base {
 
                                 <?php if ($settings['show_quick_view']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-quick-view'); ?>>
-                                        <?php $this->register_global_template_quick_view($product->get_id(), 'top') ?>
+                                        <?php $this->register_global_template_quick_view($product->get_id(), 'top', $settings) ?>
                                     </td>
                                 <?php endif; ?>
 

@@ -7,6 +7,7 @@ use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\Traits\Global_Widget_Controls;
 use UltimateStoreKit\Traits\Global_Widget_Template;
+use UltimateStoreKit\Templates\USK_Glossy_Grid_Template;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -65,9 +66,9 @@ class Glossy_Grid extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -250,53 +251,10 @@ class Glossy_Grid extends Module_Base {
             ?>
             </div>
         </div>
-    <?php
-        }
-        public function render_image() {
-            global $product;
-            $settings = $this->get_settings_for_display();
-            $gallery_thumbs = $product->get_gallery_image_ids();
-            $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
-            if ($gallery_thumbs) {
-                foreach ($gallery_thumbs as $key => $gallery_thumb) {
-                    if ($key == 0) :
-                        $gallery_image_link = wp_get_attachment_image_url($gallery_thumb, $settings['image_size']);
-                    endif;
-                }
-            } else {
-                $gallery_image_link = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
-            }
-    ?>
-        <div class="usk-image">
-            <a href="<?php echo esc_url(get_permalink()); ?>">
-                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-            </a>
-            <div class="usk-badge-label-wrapper">
-                <div class="usk-badge-label-content usk-flex usk-flex-column usk-flex-bottom">
-                    <?php $this->register_global_template_badge_label(); ?>
-                </div>
-            </div>
-        </div>
         <?php
         }
-
-        public function print_price_output($output) {
-            $tags = [
-                'del' => ['aria-hidden' => []],
-                'span'  => ['class' => []],
-                'bdi' => [],
-                'ins' => [],
-            ];
-
-            if (isset($output)) {
-                echo wp_kses($output, $tags);
-            }
-        }
         public function render_loop_item() {
-            $tooltip_position = 'left';
             $settings = $this->get_settings_for_display();
-            // $wp_query = $this->register_global_template_query();
             $this->query_product();
             $wp_query = $this->get_query();
             if ($settings['layout_style'] === 'grid') {
@@ -304,56 +262,12 @@ class Glossy_Grid extends Module_Base {
             } else {
                 $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout', 'usk-grid-1']);
             }
-            if ($wp_query->have_posts()) { ?>
+            if ($wp_query->have_posts()): ?>
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
                 <?php while ($wp_query->have_posts()) : $wp_query->the_post();
                     global $product;
-                    $tooltip_position = 'right';
-                    $rating_count = $product->get_rating_count() ? $product->get_rating_count() : 0;
-                    $average      = $product->get_average_rating();
-
-                    if ($settings['show_rating'] == 'yes') {
-                        $this->add_render_attribute('usk-item', 'class', ['usk-item', 'usk-have-rating'], true);
-                    } else {
-                        $this->add_render_attribute('usk-item', 'class', ['usk-item'], true);
-                    }
-                ?>
-                    <div <?php $this->print_render_attribute_string('usk-item'); ?>>
-                        <div class="usk-item-box">
-                            <?php $this->render_image(); ?>
-                            <div class="usk-content">
-                                <div class="usk-content-inner">
-                                    <?php if ('yes' == $settings['show_title']) :
-                                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                                    endif; ?>
-                                    <?php if ('yes' == $settings['show_excerpt']) : ?>
-                                        <div class="usk-desc">
-                                            <span class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...')); ?></span>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_price']) : ?>
-                                        <div class="usk-price">
-                                            <?php $this->print_price_output($product->get_price_html()); ?>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_rating']) : ?>
-                                        <div class="usk-rating">
-                                            <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="usk-shoping">
-                                <?php
-                                $this->register_global_template_add_to_wishlist($tooltip_position);
-                                $this->register_global_template_add_to_compare($tooltip_position);
-                                $this->register_global_template_quick_view($product->get_id(), $tooltip_position);
-                                $this->register_global_template_add_to_cart($tooltip_position);
-                                ?>
-                            </div>
-                        </div>
-                        <div class="usk-product-hover"></div>
-                    </div>
+                    $template = new USK_Glossy_Grid_Template($settings, 'glossy-grid');
+                    $template->render_glossy_grid_item($product, $settings); ?>
                 <?php endwhile; ?>
             </div>
             <?php
@@ -362,9 +276,9 @@ class Glossy_Grid extends Module_Base {
                     ultimate_store_kit_post_pagination($wp_query);
                 endif;
                 wp_reset_postdata();
-            } else {
+            else :
                 echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
-            }
+            endif;
         }
 
         public function render() {
@@ -399,62 +313,7 @@ class Glossy_Grid extends Module_Base {
                     wc_get_template('loop/result-count.php', $args);
                 endif;
                 ?>
-                <ul class="usk-grid-header-tabs">
-                    <?php if (in_array("list-2", $settings['filter_column_lists'])) : ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-1">
-                                <span class="usk-icon-grid-list"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-2', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-2">
-                                <span class="usk-icon-grid-2"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-3', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-3">
-                                <span class="usk-icon-grid-3"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-4', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-4">
-                                <span class="usk-icon-grid-4"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-5', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-5">
-                                <span class="usk-icon-grid-5"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-6', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-6">
-                                <span class="usk-icon-grid-6"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    ?>
-                </ul>
+                <?php $this->register_templates_grid_columns_markup($settings); ?>
             </div>
 <?php endif;
         }

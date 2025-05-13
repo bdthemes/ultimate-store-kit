@@ -12,6 +12,9 @@ use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\Traits\Global_Widget_Controls;
 use WP_Query;
+use UltimateStoreKit\Templates\USK_Shiny_Grid_Template;
+
+// require_once BDTUSK_TEMPLATES_PATH . 'shiny-grid.php';
 
 if (!defined('ABSPATH')) {
     exit;
@@ -70,9 +73,9 @@ class Shiny_Grid extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
         $this->start_controls_section(
             'section_woocommerce_layout',
             [
@@ -247,98 +250,6 @@ class Shiny_Grid extends Module_Base {
         </div>
         <?php
         }
-        public function render_add_to_cart() {
-            global $product;
-            $settings = $this->get_settings_for_display();
-            if ('yes' == $settings['show_cart']) : ?>
-            <?php if ($product) {
-                    $defaults = [
-                        'quantity'   => 1,
-                        'class'      => implode(
-                            ' ',
-                            array_filter(
-                                [
-                                    'usk-button',
-                                    'product_type_' . $product->get_type(),
-                                    $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-                                    $product->supports('ajax_add_to_cart') && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
-                                ]
-                            )
-                        ),
-                        'attributes' => [
-                            'data-product_id'  => $product->get_id(),
-                            'data-product_sku' => $product->get_sku(),
-                            'aria-label'       => $product->add_to_cart_description(),
-                            'rel'              => 'nofollow',
-                        ],
-                    ];
-                    $args = apply_filters('woocommerce_loop_add_to_cart_args', wp_parse_args($defaults), $product);
-                    if (isset($args['attributes']['aria-label'])) {
-                        $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
-                    }
-                    echo wp_kses_post(apply_filters(
-                        'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
-                        sprintf(
-                            '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
-                            esc_url($product->add_to_cart_url()),
-                            esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
-                            esc_attr(isset($args['class']) ? $args['class'] : 'button'),
-                            isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
-                            esc_html($product->add_to_cart_text())
-                        ),
-                        $product,
-                        $args
-                    ));
-                }; ?>
-        <?php endif;
-        }
-        public function render_image() {
-            global $product;
-            $tooltip_position = 'left';
-            $settings = $this->get_settings_for_display();
-            $gallery_thumbs = $product->get_gallery_image_ids();
-            $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
-            if ($gallery_thumbs) {
-                foreach ($gallery_thumbs as $key => $gallery_thumb) {
-                    if ($key == 0) :
-                        $gallery_image_link = wp_get_attachment_image_url($gallery_thumb, $settings['image_size']);
-                    endif;
-                }
-            } else {
-                $gallery_image_link = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
-            }
-        ?>
-        <div class="usk-image">
-            <a href="<?php echo esc_url(get_permalink()); ?>">
-                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-            </a>
-            <?php $this->render_add_to_cart(); ?>
-            <div class="usk-shoping">
-                <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
-                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
-                <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
-            </div>
-            <div class="usk-badge-label-wrapper">
-                <div class="usk-badge-label-content usk-flex usk-flex-column">
-                    <?php $this->register_global_template_badge_label(); ?>
-                </div>
-            </div>
-        </div>
-        <?php
-        }
-        public function print_price_output($output) {
-            $tags = [
-                'del' => ['aria-hidden' => []],
-                'span'  => ['class' => []],
-                'bdi' => [],
-                'ins' => [],
-            ];
-
-            if (isset($output)) {
-                echo wp_kses($output, $tags);
-            }
-        }
         public function render_loop_item() {
             $settings = $this->get_settings_for_display();
             $this->query_product();
@@ -358,44 +269,10 @@ class Shiny_Grid extends Module_Base {
                     if (empty($product)) {
                         continue;
                     }
-                    $rating_count = $product->get_rating_count();
-                    $average      = $product->get_average_rating();
-                    if ($settings['show_rating'] == 'yes') {
-                        $have_rating = 'usk-have-rating';
-                    } else {
-                        $have_rating = '';
-                    }
-                    $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
                 ?>
-                    <div class="usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
-                        <div class="usk-item-box">
-                            <?php $this->render_image(); ?>
-                            <div class="usk-content">
-                                <div class="usk-content-inner">
-                                    <?php if ('yes' == $settings['show_category']) : ?>
-                                        <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
-                                    <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_title']) :
-                                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
-                                    endif; ?>
-                                    <div class="usk-desc">
-                                        <span class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '…')); ?></span>
-                                    </div>
-                                    <?php if (('yes' == $settings['show_price'])) : ?>
-                                        <div class="usk-price">
-                                            <?php $this->print_price_output($product->get_price_html()); ?>
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <?php if ('yes' == $settings['show_rating']) : ?>
-                                        <div class="usk-rating">
-                                            <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $shiny_grid_template = new USK_Shiny_Grid_Template($settings, 'shiny-grid');
+                    $shiny_grid_template->render_shiny_grid_item($product, $settings);
+                    ?>
                 <?php endwhile; ?>
             </div>
             <?php if ($settings['show_pagination']) :
@@ -443,62 +320,7 @@ class Shiny_Grid extends Module_Base {
                     wc_get_template('loop/result-count.php', $args);
                 endif;
                 ?>
-                <ul class="usk-grid-header-tabs">
-                    <?php if (in_array("list-2", $settings['filter_column_lists'])) : ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-1">
-                                <span class="usk-icon-grid-list"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-2', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-2">
-                                <span class="usk-icon-grid-2"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-3', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-3">
-                                <span class="usk-icon-grid-3"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-4', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-4">
-                                <span class="usk-icon-grid-4"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-5', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-5">
-                                <span class="usk-icon-grid-5"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    if (in_array('grid-6', $settings['filter_column_lists'])) :
-                    ?>
-                        <li class="usk-grid-tabs-list">
-                            <a class="tab-option" href="javascript:void(0)" data-grid-column="usk-grid-6">
-                                <span class="usk-icon-grid-6"></span>
-                            </a>
-                        </li>
-                    <?php
-                    endif;
-                    ?>
-                </ul>
+                <?php $this->register_templates_grid_columns_markup($settings); ?>
             </div>
 <?php endif;
         }

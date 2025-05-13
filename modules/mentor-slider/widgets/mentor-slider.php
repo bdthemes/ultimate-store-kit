@@ -349,7 +349,7 @@ class Mentor_Slider extends Module_Base {
                 'default' => 'yes',
             ]
         );
-        
+
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -1180,7 +1180,7 @@ class Mentor_Slider extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_responsive_control(
             'category_space_between',
             [
@@ -1560,12 +1560,12 @@ class Mentor_Slider extends Module_Base {
         </div>
         <?php
     }
-    
+
     function render_slider_header() {
         $settings = $this->get_settings_for_display();
         $this->add_render_attribute('slider', 'class', ['usk-mentor-slider']);
         $id = 'ultimate-store-kit-' . $this->get_id();
-        
+
         $this->add_render_attribute('slider', 'id', $id);
 
         $this->add_render_attribute(
@@ -1671,7 +1671,7 @@ class Mentor_Slider extends Module_Base {
             echo wp_kses($output, $tags);
         }
     }
-    
+
     public function render_loop_item() {
         $settings = $this->get_settings_for_display();
         $id = 'usk-wc-product-' . $this->get_id();
@@ -1698,7 +1698,7 @@ class Mentor_Slider extends Module_Base {
 
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex">
-                    <?php $this->register_global_template_badge_label(); ?>
+                    <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
             </div>
 
@@ -1737,13 +1737,13 @@ class Mentor_Slider extends Module_Base {
             </div>
             <div class="usk-action-btn-wrap">
                 <div>
-                    <?php $this->register_global_template_add_to_cart($tooltip_position); ?>
+                    <?php $this->register_global_template_add_to_cart($tooltip_position, $settings); ?>
                 </div>
                 <div>
-                    <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position); ?>
+                    <?php $this->register_global_template_quick_view($product->get_id(), $tooltip_position, $settings); ?>
                 </div>
                 <div>
-                    <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
+                    <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>
                 </div>
             </div>
         </div>

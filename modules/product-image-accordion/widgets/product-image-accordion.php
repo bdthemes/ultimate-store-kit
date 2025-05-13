@@ -184,7 +184,7 @@ class Product_Image_Accordion extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'overlay_color',
             [
@@ -291,7 +291,7 @@ class Product_Image_Accordion extends Module_Base {
                         </div>
                         <div class="usk-badge-label-wrapper">
                             <div class="usk-badge-label-content usk-flex usk-flex-column">
-                                <?php $this->register_global_template_badge_label(); ?>
+                                <?php $this->register_global_template_badge_label($settings); ?>
                             </div>
                         </div>
                         <div class="usk-content-box">
@@ -316,10 +316,10 @@ class Product_Image_Accordion extends Module_Base {
                                 <?php endif; ?>
                             </div>
                             <div class="usk-shoping">
-                                <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
-                                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
-                                <?php $this->register_global_template_quick_view($product_id, $tooltip_position) ?>
-                                <?php $this->register_global_template_add_to_cart($tooltip_position); ?>
+                                <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>
+                                <?php $this->register_global_template_add_to_compare($tooltip_position, $settings); ?>
+                                <?php $this->register_global_template_quick_view($product_id, $tooltip_position, $settings); ?>
+                                <?php $this->register_global_template_add_to_cart($tooltip_position, $settings); ?>
                             </div>
 
                         </div>
