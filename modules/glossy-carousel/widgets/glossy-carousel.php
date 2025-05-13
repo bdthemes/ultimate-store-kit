@@ -51,7 +51,11 @@ class Glossy_Carousel extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['swiper', 'micromodal'];
+        if ($this->usk_is_edit_mode()) {
+            return ['swiper', 'micromodal', 'usk-site'];
+        } else {
+            return ['swiper', 'micromodal', 'usk-glossy-carousel'];
+        }
     }
 
     public function get_style_depends() {

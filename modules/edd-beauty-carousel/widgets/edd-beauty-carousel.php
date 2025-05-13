@@ -54,20 +54,24 @@ class EDD_Beauty_Carousel extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['swiper'];
+        if ($this->usk_is_edit_mode()) {
+            return ['swiper', 'usk-site'];
+        } else {
+            return ['swiper', 'usk-edd-beauty-carousel'];
+        }
     }
 
     public function get_custom_help_url() {
-		return 'https://youtu.be/YxPfPZUu_3M?si=8zJ9aWZ1NV4iOubs';
-	}
+        return 'https://youtu.be/YxPfPZUu_3M?si=8zJ9aWZ1NV4iOubs';
+    }
 
     public function get_query() {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
         /**
          * render controls layout
          */
