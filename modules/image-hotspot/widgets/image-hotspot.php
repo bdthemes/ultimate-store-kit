@@ -1137,7 +1137,7 @@ class Image_Hotspot extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'           => 'category_border',
-                'label'          => __('Border', 'elementor'),
+                'label'          => esc_html__('Border', 'ultimate-store-kit'),
                 'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a, .tippy-box[data-theme="bdt-tippy-image-hotspot-{{ID}}"] .usk-item .usk-category a',
                 'separator' => 'before'
             ]
@@ -1975,7 +1975,7 @@ class Image_Hotspot extends Module_Base {
         $this->add_control(
             'font_family',
             [
-                'label'                 => esc_html__('Tooltip Font', 'font family'),
+                'label'                 => esc_html__('Tooltip Font', 'ultimate-store-kit'),
                 'type'                  => Controls_Manager::FONT,
                 'selectors'             => [
                     '{{WRAPPER}}  .' . $this->get_name() . ' .usk-shoping a'    => 'font-family: {{VALUE}}',

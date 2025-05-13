@@ -177,8 +177,8 @@ class Product_List extends Module_Base {
             [
                 'label' => esc_html__('Hide Review Text', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'product-grid'),
-                'label_off' => esc_html__('No', 'product-grid'),
+                'label_on' => esc_html__('Yes', 'ultimate-store-kit'),
+                'label_off' => esc_html__('No', 'ultimate-store-kit'),
                 // 'return_value' => 'yes',
                 'default' => 'yes',
                 'condition' => [

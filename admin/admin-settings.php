@@ -966,7 +966,7 @@ class UltimateStoreKit_Admin_Settings
         </ul>
 
         <div class="bdt-admin-alert">
-            <strong><?php esc_html_e('Note:', 'ultimate-store-kit'); ?></strong> <?php esc_html_e('If you have multiple addons like'); ?> <b><?php esc_html_e('Ultimate Store Kit', 'ultimate-store-kit'); ?></b>
+            <strong><?php esc_html_e('Note:', 'ultimate-store-kit'); ?></strong> <?php esc_html_e('If you have multiple addons like', 'ultimate-store-kit'); ?> <b><?php esc_html_e('Ultimate Store Kit', 'ultimate-store-kit'); ?></b>
             <?php esc_html_e('so you need some more requirement some
       cases so make sure you added more memory for others addon too.', 'ultimate-store-kit'); ?>
         </div>
@@ -1124,9 +1124,15 @@ class UltimateStoreKit_Admin_Settings
                     }
                 }
 
-                jQuery(window).on('load', function() {
+                function onWindowLoad() {
                     hashHandler();
-                });
+                }
+
+                if (document.readyState === 'complete') {
+					onWindowLoad();
+				} else {
+					jQuery(window).on('load', onWindowLoad);
+				}
 
                 window.addEventListener("hashchange", hashHandler, true);
 
@@ -1135,7 +1141,7 @@ class UltimateStoreKit_Admin_Settings
                     jQuery(this).parent().addClass('current');
                 });
 
-                jQuery('#ultimate_store_kit_active_modules_page a.bdt-active-all-widget').click(function(e) {
+                jQuery('#ultimate_store_kit_active_modules_page a.bdt-active-all-widget').on('click', function(e) {
                     e.preventDefault();
                     jQuery('#ultimate_store_kit_active_modules_page .usk-option-item:not(.usk-pro-inactive) .checkbox:visible').not("[disabled]").each(function() {
                         jQuery(this).attr('checked', 'checked').prop("checked", true);
@@ -1145,7 +1151,7 @@ class UltimateStoreKit_Admin_Settings
                     jQuery('a.bdt-deactive-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('#ultimate_store_kit_active_modules_page a.bdt-deactive-all-widget').click(function(e) {
+                jQuery('#ultimate_store_kit_active_modules_page a.bdt-deactive-all-widget').on('click', function(e) {
                     e.preventDefault();
                     jQuery('#ultimate_store_kit_active_modules_page .usk-option-item:not(.usk-pro-inactive) .checkbox:visible').not("[disabled]").each(function() {
                         jQuery(this).removeAttr('checked');
@@ -1155,7 +1161,7 @@ class UltimateStoreKit_Admin_Settings
                     jQuery('a.bdt-active-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('#ultimate_store_kit_edd_modules_page a.bdt-active-all-widget').click(function() {
+                jQuery('#ultimate_store_kit_edd_modules_page a.bdt-active-all-widget').on('click', function() {
 
                     jQuery('#ultimate_store_kit_edd_modules_page .checkbox:visible').not("[disabled]").each(function() {
                         jQuery(this).attr('checked', 'checked').prop("checked", true);
@@ -1165,7 +1171,7 @@ class UltimateStoreKit_Admin_Settings
                     jQuery('a.bdt-deactive-all-widget').removeClass('bdt-active');
                 });
 
-                jQuery('#ultimate_store_kit_edd_modules_page a.bdt-deactive-all-widget').click(function() {
+                jQuery('#ultimate_store_kit_edd_modules_page a.bdt-deactive-all-widget').on('click', function() {
 
                     jQuery('#ultimate_store_kit_edd_modules_page .checkbox:visible').not("[disabled]").each(function() {
                         jQuery(this).removeAttr('checked');
@@ -1178,7 +1184,7 @@ class UltimateStoreKit_Admin_Settings
                 /**
                  * Others Widget
                  */
-                jQuery('#ultimate_store_kit_general_modules_page a.bdt-active-all-widget').click(function() {
+                jQuery('#ultimate_store_kit_general_modules_page a.bdt-active-all-widget').on('click', function() {
 
                     jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
                         jQuery(this).attr('checked', 'checked').prop("checked", true);
@@ -1187,7 +1193,7 @@ class UltimateStoreKit_Admin_Settings
                     jQuery(this).addClass('bdt-active');
                     jQuery('a.bdt-deactive-all-widget').removeClass('bdt-active');
                 });
-                jQuery('#ultimate_store_kit_general_modules_page a.bdt-deactive-all-widget').click(function() {
+                jQuery('#ultimate_store_kit_general_modules_page a.bdt-deactive-all-widget').on('click', function() {
 
                     jQuery('#ultimate_store_kit_general_modules_page .checkbox:visible').not("[disabled]").each(function() {
                         jQuery(this).removeAttr('checked');
@@ -1198,7 +1204,7 @@ class UltimateStoreKit_Admin_Settings
                 });
 
 
-                jQuery('form.settings-save').submit(function(event) {
+                jQuery('form.settings-save').on('submit', function(event) {
                     event.preventDefault();
 
                     bdtUIkit.notification({

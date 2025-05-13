@@ -375,15 +375,15 @@ class Sub_Category_Carousel extends Module_Base {
 		$this->add_control(
 			'creative_effect',
 			[ 
-				'label'     => esc_html__( 'Creative Effect', 'bdthemes-prime-slider' ),
+				'label'     => esc_html__( 'Creative Effect', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'creative-1',
 				'options'   => [ 
-					'creative-1' => esc_html__( 'Creative 1', 'bdthemes-prime-slider' ),
-					'creative-2' => esc_html__( 'Creative 2', 'bdthemes-prime-slider' ),
-					'creative-3' => esc_html__( 'Creative 3', 'bdthemes-prime-slider' ),
-					'creative-4' => esc_html__( 'Creative 4', 'bdthemes-prime-slider' ),
-					'creative-5' => esc_html__( 'Creative 5', 'bdthemes-prime-slider' ),
+					'creative-1' => esc_html__( 'Creative 1', 'ultimate-store-kit' ),
+					'creative-2' => esc_html__( 'Creative 2', 'ultimate-store-kit' ),
+					'creative-3' => esc_html__( 'Creative 3', 'ultimate-store-kit' ),
+					'creative-4' => esc_html__( 'Creative 4', 'ultimate-store-kit' ),
+					'creative-5' => esc_html__( 'Creative 5', 'ultimate-store-kit' ),
 				],
 				'condition' => [ 
 					'thumbs_effect' => 'creative',
@@ -871,7 +871,7 @@ class Sub_Category_Carousel extends Module_Base {
                             </div>
 
                             <div class="usk-link-btn">
-                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i>', esc_html__('All ' . $category->name . ''), esc_url(get_term_link($category->term_id, 'product_cat'))); ?>
+                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i>', esc_html__('All ' . $category->name . '', 'ultimate-store-kit'), esc_url(get_term_link($category->term_id, 'product_cat'))); ?>
                                 </a>
                             </div>
                         </div>

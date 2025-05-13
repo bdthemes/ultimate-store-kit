@@ -12,57 +12,69 @@ use Elementor\Icons_Manager;
 
 use UltimateStoreKit\Base\Module_Base;
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+if (!defined('ABSPATH'))
+    exit; // Exit if accessed directly
 
 // class Add_To_Cart extends Widget_Button {
-class Page_Order extends Module_Base {
+class Page_Order extends Module_Base
+{
 
-    public function get_show_in_panel_tags() {
+    public function get_show_in_panel_tags()
+    {
         return ['shop_single'];
     }
 
-    public function get_name() {
+    public function get_name()
+    {
         return 'usk-page-order';
     }
 
-    public function get_title() {
+    public function get_title()
+    {
         return BDTUSK . esc_html__('Order Page', 'ultimate-store-kit');
     }
 
-    public function get_icon() {
+    public function get_icon()
+    {
         return 'usk-widget-icon usk-icon-page-order usk-new';
     }
 
-    public function get_categories() {
+    public function get_categories()
+    {
         return ['ultimate-store-kit-order-thankyou'];
     }
-    public function show_in_panel() {
+    public function show_in_panel()
+    {
         return get_post_type() === 'usk-template-builder' || get_post_type() === 'elementor_library' || get_post_type() === 'product';
     }
 
-    public function get_keywords() {
+    public function get_keywords()
+    {
         return ['add', 'to', 'cart', 'woocommerce', 'wc', 'additional', 'info'];
     }
 
-    public function get_style_depends() {
+    public function get_style_depends()
+    {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
             return ['usk-font', 'usk-add-to-cart', 'usk-page-order'];
         }
     }
-    public function has_widget_inner_wrapper(): bool {
-        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    public function has_widget_inner_wrapper(): bool
+    {
+        return !\Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
     }
-    protected function register_controls() {
+    protected function register_controls()
+    {
         $this->start_controls_section(
             'section_layout_thankyou_orders',
             [
                 'label' => __('ThankYou Order', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_CONTENT,
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
-        
+
         $this->add_responsive_control(
             'thankyou_spacing',
             [
@@ -85,43 +97,43 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'thankyou_show_order_id',
             [
-                'label'         => __('Show Order ID', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SWITCHER,
-                'default'       => 'yes',
-                'separator'     => 'after'
+                'label' => __('Show Order ID', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'separator' => 'after'
             ]
         );
         $this->add_control(
             'thankyou_order_received_text',
             [
-                'label'       => __('Description', 'ultimate-store-kit'),
-                'type'        => Controls_Manager::TEXTAREA,
-                'rows'        => 5,
-                'default'     => __('Thank you. Your order has been received.', 'ultimate-store-kit'),
+                'label' => __('Description', 'ultimate-store-kit'),
+                'type' => Controls_Manager::TEXTAREA,
+                'rows' => 5,
+                'default' => __('Thank you. Your order has been received.', 'ultimate-store-kit'),
                 'placeholder' => __('Thank you. Your order has been received.', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
             'thankyour_order_alignment',
             [
-                'label'         => __('Alignment', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::CHOOSE,
-                'options'       => [
-                    'left'      => [
+                'label' => __('Alignment', 'ultimate-store-kit'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
                         'title' => __('Left', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-left',
+                        'icon' => 'eicon-h-align-left',
                     ],
-                    'center'    => [
+                    'center' => [
                         'title' => __('Center', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-center',
+                        'icon' => 'eicon-h-align-center',
                     ],
-                    'right'     => [
+                    'right' => [
                         'title' => __('Right', 'ultimate-store-kit'),
-                        'icon'  => 'eicon-h-align-right',
+                        'icon' => 'eicon-h-align-right',
                     ],
                 ],
-                'default'       => 'center',
-                'toggle'        => false,
+                'default' => 'center',
+                'toggle' => false,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .usk-page-order-heading' => 'text-align:{{VALUE}}; display:block;'
                 ]
@@ -133,7 +145,7 @@ class Page_Order extends Module_Base {
             'section_style_thankyou_orders_style',
             [
                 'label' => __('Order ID', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -171,8 +183,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'heading_color',
             [
-                'label'     => __('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => __('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .usk-page-order-heading .thankyou-order-heading' => 'color: {{VALUE}}',
                 ],
@@ -182,9 +194,9 @@ class Page_Order extends Module_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'heading_typography',
-                'label'     => __('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}}  .usk-page-order .thankyou-order-heading',
+                'name' => 'heading_typography',
+                'label' => __('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}}  .usk-page-order .thankyou-order-heading',
             ]
         );
         $this->end_controls_tab();
@@ -197,8 +209,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'desc_color',
             [
-                'label'     => __('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => __('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .thankyou-order-desc ' => 'color: {{VALUE}}',
                 ],
@@ -207,9 +219,9 @@ class Page_Order extends Module_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'desc_typography',
-                'label'     => __('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .thankyou-order-desc',
+                'name' => 'desc_typography',
+                'label' => __('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .thankyou-order-desc',
             ]
         );
         $this->end_controls_tab();
@@ -221,7 +233,7 @@ class Page_Order extends Module_Base {
             'section_style_order_details_list',
             [
                 'label' => esc_html__('Order Card', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -327,7 +339,7 @@ class Page_Order extends Module_Base {
                 ],
             ]
         );
-       
+
         $this->end_controls_tab();
         // Label Typography Tab
         $this->start_controls_tab(
@@ -400,7 +412,7 @@ class Page_Order extends Module_Base {
 
         $this->end_controls_tab();
 
-    
+
         // Icon Typography Tab
         $this->start_controls_tab(
             'order_list_typography_icon',
@@ -452,7 +464,7 @@ class Page_Order extends Module_Base {
             'style_section_order_details',
             [
                 'label' => esc_html__('Order Details', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->start_controls_tabs('order_details_title_tabs');
@@ -463,7 +475,7 @@ class Page_Order extends Module_Base {
                 'label' => esc_html__('Wrapper', 'ultimate-store-kit'),
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
@@ -484,7 +496,7 @@ class Page_Order extends Module_Base {
                 ],
             ]
         );
-        
+
 
         $this->end_controls_tab();
 
@@ -498,8 +510,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'order_details_title_color',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title' => 'color: {{VALUE}}',
                 ],
@@ -509,8 +521,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'order_details_title_border_color',
             [
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title::after' => 'background: {{VALUE}}',
                 ],
@@ -520,9 +532,9 @@ class Page_Order extends Module_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'order_details_title_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title',
+                'name' => 'order_details_title_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details__title',
             ]
         );
 
@@ -548,7 +560,7 @@ class Page_Order extends Module_Base {
             ]
         );
 
-   
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
@@ -562,8 +574,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'table_header_color',
             [
-                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-table thead th, {{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tfoot tr:last-child th' => 'color: {{VALUE}};',
                 ],
@@ -573,21 +585,21 @@ class Page_Order extends Module_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'table_header_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-table thead th',
+                'name' => 'table_header_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table thead th',
             ]
         );
 
         $this->end_controls_tab();
 
-        $this->start_controls_tab(  
+        $this->start_controls_tab(
             'order_details_tabs_table_body',
             [
                 'label' => esc_html__('Body', 'ultimate-store-kit'),
             ]
         );
-        
+
         $this->add_control(
             'table_body_odd_row',
             [
@@ -599,8 +611,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'table_body_odd_row_bg_color',
             [
-                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-table tbody tr:nth-child(odd)' => 'background-color: {{VALUE}};',
                 ],
@@ -608,33 +620,13 @@ class Page_Order extends Module_Base {
         );
 
         $this->add_control(
-            'table_body_product_name_color',
-            [
-                'label'     => esc_html__('Product Name Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td.product-name a' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
             'table_body_odd_row_text_color',
             [
-                'label'     => esc_html__('Quantity Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td.product-name a' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td .product-quantity' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'table_body_amount_color',
-            [
-                'label'     => esc_html__('Amount Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(odd) td.product-total .amount' => 'color: {{VALUE}};',
                 ],
             ]
@@ -652,8 +644,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'table_body_even_row_bg_color',
             [
-                'label'     => esc_html__('Background Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Background Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-table tbody tr:nth-child(even)' => 'background-color: {{VALUE}};',
                 ],
@@ -661,48 +653,63 @@ class Page_Order extends Module_Base {
         );
 
         $this->add_control(
-            'table_body_even_row_product_name_color',
+            'table_body_even_row_text_color',
             [
-                'label'     => esc_html__('Product Name Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(even) td.product-name a' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'table_body_even_row_quantity_color',
-            [
-                'label'     => esc_html__('Quantity Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(even) td .product-quantity' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'table_body_even_row_amount_color',
-            [
-                'label'     => esc_html__('Amount Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tbody tr:nth-child(even) td.product-total .amount' => 'color: {{VALUE}};',
                 ],
                 'separator' => 'after',
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'     => 'table_body_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
+                'name' => 'table_body_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td',
-
             ]
         );
+
+        $this->add_control(
+            'table_body_meta_heading',
+            [
+                'label' => esc_html__('Meta Data', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'table_body_meta_color',
+            [
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name dl dt' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name dl dd' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name .wc-item-meta li' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name .wc-item-meta li p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'table_body_meta_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name dl dt, {{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name dl dd, {{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name .wc-item-meta li, {{WRAPPER}} .usk-page-order .woocommerce-table tbody td.product-name .wc-item-meta li p',
+            ]
+        );
+
+
+
+
         $this->end_controls_tab();
 
         $this->start_controls_tab(
@@ -725,8 +732,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'table_footer_text_color',
             [
-                'label'     => esc_html__('Text Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr th' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr td' => 'color: {{VALUE}};',
@@ -737,8 +744,8 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'table_footer_total_color',
             [
-                'label'     => esc_html__('Total Amount Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Total Amount Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-order-details .woocommerce-table tfoot tr:last-child td .amount' => 'color: {{VALUE}};',
                 ],
@@ -748,14 +755,14 @@ class Page_Order extends Module_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'table_footer_typography',
-                'label'     => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr th, {{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr td',
+                'name' => 'table_footer_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr th, {{WRAPPER}} .usk-page-order .woocommerce-table tfoot tr td',
             ]
         );
 
         $this->end_controls_tab();
-        
+
 
         $this->end_controls_tabs();
 
@@ -767,7 +774,7 @@ class Page_Order extends Module_Base {
             'styles_section_thankyou_address_details',
             [
                 'label' => esc_html__('Address Details', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -790,7 +797,7 @@ class Page_Order extends Module_Base {
             ]
         );
 
-        
+
 
         $this->add_control(
             'thankyou_address_details_border_color',
@@ -802,7 +809,7 @@ class Page_Order extends Module_Base {
                 ],
             ]
         );
-        
+
 
         $this->end_controls_tab();
 
@@ -816,19 +823,19 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'thankyou_address_details_title_color',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
-        
+
         $this->add_control(
             'thankyou_address_details_title_border_color',
             [
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title::after' => 'background: {{VALUE}};',
                 ],
@@ -838,9 +845,9 @@ class Page_Order extends Module_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             array(
-                'name'           => 'thankyou_address_details_title_typography',
-                'label'          => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector'       => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title',
+                'name' => 'thankyou_address_details_title_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column__title',
             )
         );
 
@@ -856,30 +863,31 @@ class Page_Order extends Module_Base {
         $this->add_control(
             'thankyou_address_details_address_color',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => esc_html__('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column address, 
                     {{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column p' => 'color: {{VALUE}};',
                 ],
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             array(
-                'name'           => 'thankyou_address_details_address_typography',
-                'label'          => esc_html__('Typography', 'ultimate-store-kit'),
-                    'selector'       => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column address, 
+                'name' => 'thankyou_address_details_address_typography',
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column address, 
                     {{WRAPPER}} .usk-page-order .woocommerce-customer-details .woocommerce-columns .woocommerce-column p',
             )
         );
-        
+
         $this->end_controls_tabs();
 
         $this->end_controls_section();
     }
-    protected function get_last_order_id() {
+    protected function get_last_order_id()
+    {
         global $wpdb;
         $statuses = array_keys(wc_get_order_statuses());
         $statuses = implode("','", $statuses);
@@ -891,38 +899,40 @@ class Page_Order extends Module_Base {
     }
 
 
-    public function order_thank_you($order) {
+    public function order_thank_you($order)
+    {
         $settings = $this->get_settings_for_display();
         $order_received_text = $settings['thankyou_order_received_text'];
 
-?>
+        ?>
         <div class="usk-page-order-heading">
-            <?php if ($settings['thankyou_show_order_id'] === 'yes') :
+            <?php if ($settings['thankyou_show_order_id'] === 'yes'):
                 printf('<h3 class="thankyou-order-heading">%1$s # %2$s</h3>', esc_html__('Order', 'ultimate-store-kit'), esc_html($order->get_order_number()));
             endif; ?>
             <p class="thankyou-order-desc">
-                <?php if ($order->has_status('failed')) :
+                <?php if ($order->has_status('failed')):
                     echo esc_html__('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'ultimate-store-kit');
-                ?>
-                <?php else :
+                    ?>
+                <?php else:
                     echo wp_kses_post(apply_filters('woocommerce_thankyou_order_received_text', esc_html__($order_received_text, 'ultimate-store-kit'), $order));
                 endif; ?>
             </p>
         </div>
-    <?php
+        <?php
     }
-    public function thank_your_order_details($order) {
-        $order_items           = $order->get_items(apply_filters('woocommerce_purchase_order_item_types', 'line_item'));
-        $show_purchase_note    = $order->has_status(apply_filters('woocommerce_purchase_note_order_statuses', array('completed', 'processing')));
-        $downloads             = $order->get_downloadable_items();
-        $show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
-    ?>
+    public function thank_your_order_details($order)
+    {
+        $order_items = $order->get_items(apply_filters('woocommerce_purchase_order_item_types', 'line_item'));
+        $show_purchase_note = $order->has_status(apply_filters('woocommerce_purchase_note_order_statuses', array('completed', 'processing')));
+        $downloads = $order->get_downloadable_items();
+        $show_downloads = $order->has_downloadable_item() && $order->is_download_permitted();
+        ?>
         <?php
         if ($show_downloads) {
             wc_get_template(
                 'order/order-downloads.php',
                 array(
-                    'downloads'  => $downloads,
+                    'downloads' => $downloads,
                     'show_title' => true,
                 )
             );
@@ -931,14 +941,16 @@ class Page_Order extends Module_Base {
         <div class="woocommerce-order-details">
             <?php do_action('woocommerce_order_details_before_order_table', $order); ?>
 
-            <h2 class="woocommerce-order-details__title"><?php esc_html_e('Order details', 'woocommerce'); ?></h2>
+            <h2 class="woocommerce-order-details__title"><?php esc_html_e('Order details', 'ultimate-store-kit'); ?></h2>
 
             <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
 
                 <thead>
                     <tr>
-                        <th class="woocommerce-table__product-name product-name"><?php esc_html_e('Product', 'woocommerce'); ?></th>
-                        <th class="woocommerce-table__product-table product-total"><?php esc_html_e('Total', 'woocommerce'); ?></th>
+                        <th class="woocommerce-table__product-name product-name"><?php esc_html_e('Product', 'ultimate-store-kit'); ?>
+                        </th>
+                        <th class="woocommerce-table__product-table product-total"><?php esc_html_e('Total', 'ultimate-store-kit'); ?>
+                        </th>
                     </tr>
                 </thead>
 
@@ -952,12 +964,12 @@ class Page_Order extends Module_Base {
                         wc_get_template(
                             'order/order-details-item.php',
                             array(
-                                'order'              => $order,
-                                'item_id'            => $item_id,
-                                'item'               => $item,
+                                'order' => $order,
+                                'item_id' => $item_id,
+                                'item' => $item,
                                 'show_purchase_note' => $show_purchase_note,
-                                'purchase_note'      => $product ? $product->get_purchase_note() : '',
-                                'product'            => $product,
+                                'purchase_note' => $product ? $product->get_purchase_note() : '',
+                                'product' => $product,
                             )
                         );
                     }
@@ -969,18 +981,18 @@ class Page_Order extends Module_Base {
                 <tfoot>
                     <?php
                     foreach ($order->get_order_item_totals() as $key => $total) {
-                    ?>
+                        ?>
                         <tr>
                             <th scope="row"><?php echo esc_html($total['label']); ?></th>
                             <td><?php echo ('payment_method' === $key) ? esc_html($total['value']) : wp_kses_post($total['value']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                                ?></td>
+                                        ?></td>
                         </tr>
-                    <?php
+                        <?php
                     }
                     ?>
-                    <?php if ($order->get_customer_note()) : ?>
+                    <?php if ($order->get_customer_note()): ?>
                         <tr>
-                            <th><?php esc_html_e('Note:', 'woocommerce'); ?></th>
+                            <th><?php esc_html_e('Note:', 'ultimate-store-kit'); ?></th>
                             <td><?php echo wp_kses_post(nl2br(wptexturize($order->get_customer_note()))); ?></td>
                         </tr>
                     <?php endif; ?>
@@ -989,7 +1001,7 @@ class Page_Order extends Module_Base {
             <?php do_action('woocommerce_order_details_after_order_table', $order); ?>
         </div>
 
-    <?php
+        <?php
         /**
          * Action hook fired after the order details.
          *
@@ -999,84 +1011,91 @@ class Page_Order extends Module_Base {
         do_action('woocommerce_after_order_details', $order);
     }
 
-    public function thank_you_order_confirmation($order) { ?>
+    public function thank_you_order_confirmation($order)
+    { ?>
         <ul class="order_details">
             <li class="order">
                 <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                 </svg>
-                <span class="usk-label"><?php esc_html_e('Order number:', 'woocommerce'); ?></span>
+                <span class="usk-label"><?php esc_html_e('Order number:', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo esc_html($order->get_order_number()); ?></strong>
             </li>
             <li class="date">
                 <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span class="usk-label"><?php esc_html_e('Order Date:', 'woocommerce'); ?></span>
+                <span class="usk-label"><?php esc_html_e('Order Date:', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></strong>
             </li>
             <li class="order-status">
                 <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span class="usk-label"><?php echo esc_html__('Order status', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo wp_kses_post(wc_get_order_status_name($order->get_status())); ?></strong>
             </li>
             <li class="total">
                 <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="usk-label"><?php esc_html_e('Total:', 'woocommerce'); ?></span>
+                <span class="usk-label"><?php esc_html_e('Total:', 'ultimate-store-kit'); ?></span>
                 <strong class="usk-value"><?php echo wp_kses_post($order->get_formatted_order_total()); ?></strong>
             </li>
-            <?php if ($order->get_payment_method_title()) : ?>
+            <?php if ($order->get_payment_method_title()): ?>
                 <li class="method">
                     <svg class="usk-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
-                    <span class="usk-label"><?php esc_html_e('Payment method:', 'woocommerce'); ?></span>
+                    <span class="usk-label"><?php esc_html_e('Payment method:', 'ultimate-store-kit'); ?></span>
                     <strong class="usk-value"><?php echo wp_kses_post($order->get_payment_method_title()); ?></strong>
                 </li>
             <?php endif; ?>
         </ul>
         <?php do_action('woocommerce_receipt_' . $order->get_payment_method(), $order->get_id()); ?>
-        <?php
+    <?php
     }
-    public function thank_you_customer_address($order) {
+    public function thank_you_customer_address($order)
+    {
         $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
         if ($show_customer_details) {
             $show_shipping = !wc_ship_to_billing_address_only() && $order->needs_shipping_address();
-        ?>
+            ?>
             <div class="woocommerce-customer-details">
-                <?php if ($show_shipping) : ?>
+                <?php if ($show_shipping): ?>
 
                     <div class="woocommerce-columns woocommerce-columns--2 woocommerce-columns--addresses col2-set addresses">
                         <div class="woocommerce-column woocommerce-column--1 woocommerce-column--billing-address col-1">
                         <?php endif; ?>
 
-                        <h2 class="woocommerce-column__title"><?php esc_html_e('Billing address', 'woocommerce'); ?></h2>
+                        <h2 class="woocommerce-column__title"><?php esc_html_e('Billing address', 'ultimate-store-kit'); ?></h2>
 
                         <address>
-                            <?php echo wp_kses_post($order->get_formatted_billing_address(esc_html__('N/A', 'woocommerce'))); ?>
+                            <?php echo wp_kses_post($order->get_formatted_billing_address(esc_html__('N/A', 'ultimate-store-kit'))); ?>
 
-                            <?php if ($order->get_billing_phone()) : ?>
+                            <?php if ($order->get_billing_phone()): ?>
                                 <p class="woocommerce-customer-details--phone"><?php echo esc_html($order->get_billing_phone()); ?></p>
                             <?php endif; ?>
 
-                            <?php if ($order->get_billing_email()) : ?>
+                            <?php if ($order->get_billing_email()): ?>
                                 <p class="woocommerce-customer-details--email"><?php echo esc_html($order->get_billing_email()); ?></p>
                             <?php endif; ?>
                         </address>
 
-                        <?php if ($show_shipping) : ?>
+                        <?php if ($show_shipping): ?>
 
                         </div><!-- /.col-1 -->
 
                         <div class="woocommerce-column woocommerce-column--2 woocommerce-column--shipping-address col-2">
-                            <h2 class="woocommerce-column__title"><?php esc_html_e('Shipping address', 'woocommerce'); ?></h2>
+                            <h2 class="woocommerce-column__title"><?php esc_html_e('Shipping address', 'ultimate-store-kit'); ?></h2>
                             <address>
-                                <?php echo wp_kses_post($order->get_formatted_shipping_address(esc_html__('N/A', 'woocommerce'))); ?>
-                                <?php if ($order->get_shipping_phone()) : ?>
+                                <?php echo wp_kses_post($order->get_formatted_shipping_address(esc_html__('N/A', 'ultimate-store-kit'))); ?>
+                                <?php if ($order->get_shipping_phone()): ?>
                                     <p class="woocommerce-customer-details--phone"><?php echo esc_html($order->get_shipping_phone()); ?></p>
                                 <?php endif; ?>
                             </address>
@@ -1088,10 +1107,11 @@ class Page_Order extends Module_Base {
                 <?php do_action('woocommerce_order_details_after_customer_details', $order); ?>
 
             </div>
-        <?php
+            <?php
         }
     }
-    public function render() {
+    public function render()
+    {
         // Check if we're in Elementor editor
         if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
             // Get last order for preview
@@ -1126,6 +1146,6 @@ class Page_Order extends Module_Base {
             $this->thank_you_customer_address($order);
             ?>
         </div>
-<?php
+        <?php
     }
 }
