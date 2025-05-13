@@ -2537,7 +2537,7 @@ class Image_Hotspot extends Module_Base {
         $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
 
 		?>
-		<div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
+		<div class="swiper-slide usk-item <?php echo esc_attr($have_rating); ?>">
             <div class="usk-item-box">
                 <?php $this->render_image(); ?>
                 <div class="usk-content">

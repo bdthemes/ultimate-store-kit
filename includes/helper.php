@@ -1133,7 +1133,7 @@ function ultimate_store_kit_wc_product_quick_view_content( $product_id ) {
 			<?php endwhile; ?>
 		</div>
 
-		<?php echo ob_get_clean();
+		<?php echo wp_kses_post( ob_get_clean() );
 		exit();
 	}
 }
