@@ -202,8 +202,8 @@ class Showcase_Slider extends Module_Base {
             [
                 'label' => esc_html__('Hide Review Text', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'product-grid'),
-                'label_off' => esc_html__('No', 'product-grid'),
+                'label_on' => esc_html__('Yes', 'ultimate-store-kit'),
+                'label_off' => esc_html__('No', 'ultimate-store-kit'),
                 // 'return_value' => 'yes',
                 'default' => 'yes',
                 'condition' => [
@@ -962,7 +962,7 @@ class Showcase_Slider extends Module_Base {
         $this->add_control(
             'font_family',
             [
-                'label' => esc_html__('Tooltip Font', 'font family'),
+                'label' => esc_html__('Tooltip Font', 'ultimate-store-kit'),
                 'type' => Controls_Manager::FONT,
                 'selectors' => [
                     '{{WRAPPER}} .usk-shoping a' => 'font-family: {{VALUE}}',

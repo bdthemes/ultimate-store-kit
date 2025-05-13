@@ -148,22 +148,22 @@ class Featured_Box extends Module_Base {
         $this->add_responsive_control(
             'position',
             [
-                'label' => esc_html__( 'Position', 'elementor' ),
+                'label' => esc_html__( 'Position', 'ultimate-store-kit' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '',
                 'separator' => 'before',
                 'options' => [
-                    '' => esc_html__( 'Default', 'elementor' ),
-                    'center center' => esc_html__( 'Center Center', 'elementor' ),
-                    'center left' => esc_html__( 'Center Left', 'elementor' ),
-                    'center right' => esc_html__( 'Center Right', 'elementor' ),
-                    'top center' => esc_html__( 'Top Center', 'elementor' ),
-                    'top left' => esc_html__( 'Top Left', 'elementor' ),
-                    'top right' => esc_html__( 'Top Right', 'elementor' ),
-                    'bottom center' => esc_html__( 'Bottom Center', 'elementor' ),
-                    'bottom left' => esc_html__( 'Bottom Left', 'elementor' ),
-                    'bottom right' => esc_html__( 'Bottom Right', 'elementor' ),
-                    'initial' => esc_html__( 'Custom', 'elementor' ),
+                    '' => esc_html__( 'Default', 'ultimate-store-kit' ),
+                    'center center' => esc_html__( 'Center Center', 'ultimate-store-kit' ),
+                    'center left' => esc_html__( 'Center Left', 'ultimate-store-kit' ),
+                    'center right' => esc_html__( 'Center Right', 'ultimate-store-kit' ),
+                    'top center' => esc_html__( 'Top Center', 'ultimate-store-kit' ),
+                    'top left' => esc_html__( 'Top Left', 'ultimate-store-kit' ),
+                    'top right' => esc_html__( 'Top Right', 'ultimate-store-kit' ),
+                    'bottom center' => esc_html__( 'Bottom Center', 'ultimate-store-kit' ),
+                    'bottom left' => esc_html__( 'Bottom Left', 'ultimate-store-kit' ),
+                    'bottom right' => esc_html__( 'Bottom Right', 'ultimate-store-kit' ),
+                    'initial' => esc_html__( 'Custom', 'ultimate-store-kit' ),
     
                 ],
                 'selectors' => [
@@ -178,7 +178,7 @@ class Featured_Box extends Module_Base {
         $this->add_responsive_control(
             'xpos', 
             [
-                'label' => esc_html__( 'X Position', 'elementor' ),
+                'label' => esc_html__( 'X Position', 'ultimate-store-kit' ),
                 'type' => Controls_Manager::SLIDER,
                 'responsive' => true,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
@@ -223,7 +223,7 @@ class Featured_Box extends Module_Base {
         $this->add_responsive_control(
             'ypos', 
             [
-                'label' => esc_html__( 'Y Position', 'elementor' ),
+                'label' => esc_html__( 'Y Position', 'ultimate-store-kit' ),
                 'type' => Controls_Manager::SLIDER,
                 'responsive' => true,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'vh', 'custom' ],
@@ -268,15 +268,15 @@ class Featured_Box extends Module_Base {
         $this->add_responsive_control(
             'repeat', 
             [
-                'label' => esc_html_x( 'Repeat', 'Background Control', 'elementor' ),
+                'label' => esc_html_x( 'Repeat', 'Background Control', 'ultimate-store-kit' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    '' => esc_html__( 'Default', 'elementor' ),
-                    'no-repeat' => esc_html__( 'No-repeat', 'elementor' ),
-                    'repeat' => esc_html__( 'Repeat', 'elementor' ),
-                    'repeat-x' => esc_html__( 'Repeat-x', 'elementor' ),
-                    'repeat-y' => esc_html__( 'Repeat-y', 'elementor' ),
+                    '' => esc_html__( 'Default', 'ultimate-store-kit' ),
+                    'no-repeat' => esc_html__( 'No-repeat', 'ultimate-store-kit' ),
+                    'repeat' => esc_html__( 'Repeat', 'ultimate-store-kit' ),
+                    'repeat-x' => esc_html__( 'Repeat-x', 'ultimate-store-kit' ),
+                    'repeat-y' => esc_html__( 'Repeat-y', 'ultimate-store-kit' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-repeat: {{VALUE}};',
@@ -290,15 +290,15 @@ class Featured_Box extends Module_Base {
         $this->add_responsive_control(
             'size', 
             [
-                'label' => esc_html__( 'Display Size', 'elementor' ),
+                'label' => esc_html__( 'Display Size', 'ultimate-store-kit' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    '' => esc_html__( 'Default', 'elementor' ),
-                    'auto' => esc_html__( 'Auto', 'elementor' ),
-                    'cover' => esc_html__( 'Cover', 'elementor' ),
-                    'contain' => esc_html__( 'Contain', 'elementor' ),
-                    'initial' => esc_html__( 'Custom', 'elementor' ),
+                    '' => esc_html__( 'Default', 'ultimate-store-kit' ),
+                    'auto' => esc_html__( 'Auto', 'ultimate-store-kit' ),
+                    'cover' => esc_html__( 'Cover', 'ultimate-store-kit' ),
+                    'contain' => esc_html__( 'Contain', 'ultimate-store-kit' ),
+                    'initial' => esc_html__( 'Custom', 'ultimate-store-kit' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-size: {{VALUE}};',
@@ -312,7 +312,7 @@ class Featured_Box extends Module_Base {
         $this->add_responsive_control(
             'bg_width', 
             [
-                'label' => esc_html__( 'Width', 'elementor' ),
+                'label' => esc_html__( 'Width', 'ultimate-store-kit' ),
                 'type' => Controls_Manager::SLIDER,
                 'responsive' => true,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],

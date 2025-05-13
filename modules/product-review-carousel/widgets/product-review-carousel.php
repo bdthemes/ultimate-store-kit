@@ -141,7 +141,7 @@ class Product_Review_Carousel extends Module_Base {
         $this->add_control(
             'items_limit',
             [
-                'label' => __('Limit', 'ultimae-store-kit'),
+                'label' => __('Limit', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -350,24 +350,23 @@ class Product_Review_Carousel extends Module_Base {
         );
 
         $this->add_control(
-            'avatar_size',
-            [
-                'label'     => __('Size', 'ultimate-post-kit'),
-                'type'      => Controls_Manager::SELECT,
-                'options'   => [
-                    '25'  => '25 x 25',
-                    '35'  => '35 x 35',
-                    '45'  => '45 x 45',
-                    '60'  => '60 x 60',
-                    '80'  => '80 x 80',
-                    '100' => '100 x 100',
-                    '120' => '120 x 120',
-                    '150' => '150 x 150',
-                ],
-                'default'   => '80',
-            ]
-        );
-
+			'avatar_size',
+			[
+				'label'     => __('Size', 'ultimate-store-kit'),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => [
+					'25'  => '25 x 25',
+					'35'  => '35 x 35',
+					'45'  => '45 x 45',
+					'60'  => '60 x 60',
+					'80'  => '80 x 80',
+					'100' => '100 x 100',
+					'120' => '120 x 120',
+					'150' => '150 x 150',
+				],
+				'default'   => '80',
+			]
+		);
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
@@ -759,7 +758,7 @@ class Product_Review_Carousel extends Module_Base {
                             <span>
                                 <i class="usk-rating-icon usk-icon-star-full"></i>
                             </span>
-                            <span class="usk-rating-text"><?php esc_html_e(floor($product->get_average_rating())); ?></span>
+                            <span class="usk-rating-text"><?php esc_html_e(floor($product->get_average_rating()), 'ultimate-store-kit');?></span>
                         </div>
                     <?php endif; ?>
                     <?php if ($settings['show_review_text']): ?>

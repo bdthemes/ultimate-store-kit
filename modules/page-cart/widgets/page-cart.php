@@ -1605,14 +1605,14 @@ class Page_Cart extends Module_Base {
 							
 											// Backorder notification.
 											if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $values['quantity'] ) ) {
-												echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $_product ) );
+												echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'ultimate-store-kit' ) . '</p>', $_product ) );
 											}
 											?>
 										</td>
 									<?php endif; ?>
 
 									<?php if ( $settings['show_price'] == 'yes' ) : ?>
-										<td class="usk-product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
+										<td class="usk-product-price" data-title="<?php esc_attr_e( 'Price', 'ultimate-store-kit' ); ?>">
 											<?php
 											echo wp_kses_post( apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $values, $item ) ); // PHPCS: XSS ok.
 											?>
@@ -1665,17 +1665,17 @@ class Page_Cart extends Module_Base {
 								<td colspan="6" class="actions">
 									<?php if ( wc_coupons_enabled() ) { ?>
 										<div class="coupon">
-											<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
+											<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'ultimate-store-kit' ); ?></label>
 											<input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
-												placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" />
+												placeholder="<?php esc_attr_e( 'Coupon code', 'ultimate-store-kit' ); ?>" />
 											<button type="submit" class="button" name="apply_coupon"
-												value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+												value="<?php esc_attr_e( 'Apply coupon', 'ultimate-store-kit' ); ?>"><?php esc_attr_e( 'Apply coupon', 'ultimate-store-kit' ); ?></button>
 											<?php do_action( 'woocommerce_cart_coupon' ); ?>
 										</div>
 									<?php } ?>
 
 									<button type="submit" class="button" name="update_cart"
-										value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
+										value="<?php esc_attr_e( 'Update cart', 'ultimate-store-kit' ); ?>"><?php esc_html_e( 'Update cart', 'ultimate-store-kit' ); ?>
 
 									</button>
 

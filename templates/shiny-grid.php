@@ -10,7 +10,8 @@ namespace UltimateStoreKit\Templates;
 
 use UltimateStoreKit\Traits\Global_Widget_Template;
 
-class USK_Shiny_Grid_Template {
+class USK_Shiny_Grid_Template
+{
     use Global_Widget_Template;
 
     /**
@@ -22,7 +23,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Constructor
      */
-    public function __construct($settings = [], $widget_name = '') {
+    public function __construct($settings = [], $widget_name = '')
+    {
         $this->target_widget_settings = $settings;
         $this->target_widget_name = $widget_name;
     }
@@ -30,7 +32,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Render a single product item
      */
-    public function render_shiny_grid_item($product, $settings) {
+    public function render_shiny_grid_item($product, $settings)
+    {
         if (!$product) {
             return;
         }
@@ -43,52 +46,55 @@ class USK_Shiny_Grid_Template {
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;
         $classes = $this->target_widget_name === 'shiny-grid' ? 'usk-item' : 'usk-item swiper-slide';
         $classes .= $show_rating ? ' usk-have-rating' : '';
-?>
+        ?>
         <div class="<?php echo esc_attr($classes); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
             <div class="usk-item-box">
                 <?php $this->render_product_image($product); ?>
-                <?php $this->render_product_variation($product); ?>
-
                 <div class="usk-content">
+                    <?php $this->render_product_variation($product); ?>
                     <div class="usk-content-inner">
-                        <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)) : ?>
+                        <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)): ?>
                             <div class="usk-category"><?php echo wp_kses_post($categories); ?></div>
                         <?php endif; ?>
 
-                        <?php if (isset($settings['show_title']) ? $settings['show_title'] : true) : ?>
+                        <?php if (isset($settings['show_title']) ? $settings['show_title'] : true): ?>
                             <a href="<?php echo esc_url(get_permalink($product_id)); ?>" class="usk-title">
                                 <h3 class="title"><?php echo esc_html(get_the_title($product_id)); ?></h3>
                             </a>
                         <?php endif; ?>
 
-                        <?php if (isset($settings['show_desc']) ? $settings['show_desc'] : true) : ?>
+                        <?php if (isset($settings['show_desc']) ? $settings['show_desc'] : true): ?>
                             <div class="usk-desc">
-                                <span class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), 15, '…')); ?></span>
+                                <span
+                                    class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), 15, '…')); ?></span>
                             </div>
                         <?php endif; ?>
 
-                        <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()) : ?>
+                        <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()): ?>
                             <div class="usk-price">
                                 <?php $this->print_price_output($product->get_price_html()); ?>
                             </div>
                         <?php endif; ?>
 
-                        <?php if (isset($settings['show_rating']) ? $settings['show_rating'] : true) : ?>
+                        <?php if (isset($settings['show_rating']) ? $settings['show_rating'] : true): ?>
                             <div class="usk-rating">
                                 <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
+
                             </div>
                         <?php endif; ?>
                     </div>
+
                 </div>
             </div>
         </div>
-    <?php
+        <?php
     }
 
     /**
      * Render add to cart button
      */
-    public function render_add_to_cart_button($product) {
+    public function render_add_to_cart_button($product)
+    {
         if (!$product) {
             return;
         }
@@ -208,7 +214,8 @@ class USK_Shiny_Grid_Template {
      * Get variation ID from product attributes
      * Uses WooCommerce data store for reliable variation finding
      */
-    private function get_variation_id_from_attributes($product, $attributes) {
+    private function get_variation_id_from_attributes($product, $attributes)
+    {
         if (!$product || !$product->is_type('variable')) {
             return null;
         }
@@ -233,7 +240,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Render product image with hover effect and action buttons
      */
-    public function render_product_image($product) {
+    public function render_product_image($product)
+    {
         if (!$product) {
             return;
         }
@@ -252,13 +260,16 @@ class USK_Shiny_Grid_Template {
         if ($gallery_thumbs && !empty($gallery_thumbs[0])) {
             $gallery_image_link = wp_get_attachment_image_url($gallery_thumbs[0], $image_size);
         }
-    ?>
+        ?>
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
-                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img image-default" src="<?php echo esc_url($product_image); ?>"
+                    alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>"
+                    alt="<?php echo esc_html(get_the_title()); ?>">
             </a>
             <?php $this->render_add_to_cart_button($product); ?>
+
             <div class="usk-shoping">
                 <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>
                 <?php $this->register_global_template_add_to_compare($tooltip_position, $settings); ?>
@@ -268,19 +279,21 @@ class USK_Shiny_Grid_Template {
                 <div class="usk-badge-label-content usk-flex usk-flex-column">
                     <?php $this->register_global_template_badge_label($settings); ?>
                 </div>
+
+                <!-- display product variation -->
             </div>
-            <!-- display product variation -->
         </div>
-<?php
+        <?php
     }
 
     /**
      * Print price HTML with allowed tags
      */
-    public function print_price_output($output) {
+    public function print_price_output($output)
+    {
         $allowed_tags = [
             'del' => ['aria-hidden' => []],
-            'span'  => ['class' => []],
+            'span' => ['class' => []],
             'bdi' => [],
             'ins' => [],
         ];
@@ -296,7 +309,8 @@ class USK_Shiny_Grid_Template {
      * Displays variation swatches on product grid items
      * When a user selects a variation, it becomes active and ready for add to cart
      */
-    public function render_product_variation($product) {
+    public function render_product_variation($product)
+    {
         if (!$product || !$product->is_type('variable')) {
             return;
         }
@@ -329,14 +343,14 @@ class USK_Shiny_Grid_Template {
             $attribute_values = [];
             $attribute_label = \wc_attribute_label($attribute_name);
             $is_color_attribute = ($attribute_name === 'pa_color');
-
+            $is_size_attribute = ($attribute_name === 'pa_size');
             // Create a container for this attribute type with a label
             echo '<div class="usk-variation-group usk-' . \esc_attr(\sanitize_title($attribute_name)) . '-group">';
 
             // Only show label for non-color attributes
-            if (!$is_color_attribute) {
-                echo '<span class="usk-variation-label">' . \esc_html($attribute_label) . '</span>';
-            }
+            // if (!$is_color_attribute) {
+            //     echo '<span class="usk-variation-label">' . \esc_html($attribute_label) . '</span>';
+            // }
 
             // Get all available values for this attribute
             foreach ($variations as $variation) {
@@ -377,7 +391,8 @@ class USK_Shiny_Grid_Template {
                                 '>' .
                                 ($color_value ? '' : \esc_html($value)) .
                                 '</button>';
-                        } else {
+                        }
+                        if ($is_size_attribute) {
                             // For non-color attributes (size, material, etc.)
                             // Get term data if it's a taxonomy
                             $display_value = $value;
