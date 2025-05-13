@@ -106,19 +106,19 @@ class QR_Code extends Module_Base {
         $this->add_control(
             'qr_code_alignemnt',
             [
-                'label'         => __('Alignement', 'ultiamte-store-kit'),
+                'label'         => __('Alignement', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::CHOOSE,
                 'options'       => [
                     'left'      => [
-                        'title' => __('Left', 'ultiamte-store-kit'),
+                        'title' => __('Left', 'ultimate-store-kit'),
                         'icon'  => 'eicon-h-align-left',
                     ],
                     'center'    => [
-                        'title' => __('Center', 'ultiamte-store-kit'),
+                        'title' => __('Center', 'ultimate-store-kit'),
                         'icon'  => 'eicon-h-align-center',
                     ],
                     'right'     => [
-                        'title' => __('Right', 'ultiamte-store-kit'),
+                        'title' => __('Right', 'ultimate-store-kit'),
                         'icon'  => 'eicon-h-align-right',
                     ],
                 ],

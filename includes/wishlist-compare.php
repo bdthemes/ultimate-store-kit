@@ -98,11 +98,11 @@ final class WishlistCompare {
 	public function usk_add_to_compare_products() {
 		$response = [ 
 			'status'  => 0,
-			'message' => __( 'Unauthorized!', 'usk' ),
+			'message' => __( 'Unauthorized!', 'ultimate-store-kit' ),
 		];
 
 		if ( ! isset( $_POST['product_id'] ) ) {
-			$response['message'] = __( 'No product selected!', 'usk' );
+			$response['message'] = __( 'No product selected!', 'ultimate-store-kit' );
 			wp_send_json( $response );
 		}
 

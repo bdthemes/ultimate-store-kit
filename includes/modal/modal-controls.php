@@ -69,7 +69,7 @@ class Settings_Modal extends Tab_Base {
             [
                 'label'         => esc_html__('Width', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SLIDER,
-                'description' => esc_html__('You must need to update and preview changes for seeing updated result'),
+                'description' => esc_html__('You must need to update and preview changes for seeing updated result', 'ultimate-store-kit'),
                 'size_units'    => ['px', '%', 'vh'],
                 'range'         => [
                     'px'        => [
@@ -85,7 +85,7 @@ class Settings_Modal extends Tab_Base {
             [
                 'label'         => esc_html__('Height', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SLIDER,
-                'description' => esc_html__('You must need to update and preview changes for seeing updated result'),
+                'description' => esc_html__('You must need to update and preview changes for seeing updated result', 'ultimate-store-kit'),
                 'size_units'    => ['px', '%', 'vh'],
                 'range'         => [
                     'px'        => [
@@ -101,7 +101,7 @@ class Settings_Modal extends Tab_Base {
             [
                 'label'      => esc_html__('Animation Type', 'ultimate-store-kit'),
                 'type'       => Controls_Manager::SELECT,
-                'description' => esc_html__('You must need to update and preview changes for seeing updated result'),
+                'description' => esc_html__('You must need to update and preview changes for seeing updated result', 'ultimate-store-kit'),
                 'default'    => 'zoomIn',
                 'options'    => [
                     'zoomIn'            => esc_html__('ZoomIn', 'ultimate-store-kit'),
@@ -494,7 +494,7 @@ class Settings_Modal extends Tab_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'modal_desc_typography',
-                'label' => esc_html__('Typography', 'ultimate-wooo-kit'),
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-desc p',
             ]
         );
@@ -586,7 +586,7 @@ class Settings_Modal extends Tab_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'modal_stock_typography',
-                'label' => esc_html__('Typography', 'ultimate-wooo-kit'),
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.ultimate-store-kit-product-modal-wrap .usk-modal-page .usk-modal-content-box .usk-quick-action-wrap .out-of-stock',
             ]
         );
@@ -646,7 +646,7 @@ class Settings_Modal extends Tab_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'modal_sku_typography',
-                'label' => esc_html__('Typography', 'ultimate-wooo-kit'),
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-meta .sku_wrapper .sku',
             ]
         );
@@ -666,7 +666,7 @@ class Settings_Modal extends Tab_Base {
         $this->start_controls_tab(
             'category_tab_label',
             [
-                'label' => esc_html__('Label', 'ultimae-woo-kit'),
+                'label' => esc_html__('Label', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
@@ -691,7 +691,7 @@ class Settings_Modal extends Tab_Base {
         $this->start_controls_tab(
             'category_tab_value',
             [
-                'label' => esc_html__('Value', 'ultimae-woo-kit'),
+                'label' => esc_html__('Value', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
@@ -708,7 +708,7 @@ class Settings_Modal extends Tab_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'modal_category_typography',
-                'label' => esc_html__('Typography', 'ultimate-wooo-kit'),
+                'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-meta .posted_in a',
             ]
         );

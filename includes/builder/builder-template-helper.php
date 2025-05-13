@@ -23,6 +23,8 @@ class Builder_Template_Helper {
 			'shop'           => 'Shop Page',
 			'archive'        => 'Archive Page',
 			'single'         => 'Single Page',
+			'category'       => 'Category Page',
+			'tag'            => 'Tag Page',
 			'cart'           => 'Cart Page',
 			'checkout'       => 'Checkout',
 			'order-received' => 'Order Received',

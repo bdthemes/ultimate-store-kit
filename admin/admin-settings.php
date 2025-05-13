@@ -966,7 +966,7 @@ class UltimateStoreKit_Admin_Settings
         </ul>
 
         <div class="bdt-admin-alert">
-            <strong><?php esc_html_e('Note:', 'ultimate-store-kit'); ?></strong> <?php esc_html_e('If you have multiple addons like'); ?> <b><?php esc_html_e('Ultimate Store Kit', 'ultimate-store-kit'); ?></b>
+            <strong><?php esc_html_e('Note:', 'ultimate-store-kit'); ?></strong> <?php esc_html_e('If you have multiple addons like', 'ultimate-store-kit'); ?> <b><?php esc_html_e('Ultimate Store Kit', 'ultimate-store-kit'); ?></b>
             <?php esc_html_e('so you need some more requirement some
       cases so make sure you added more memory for others addon too.', 'ultimate-store-kit'); ?>
         </div>
