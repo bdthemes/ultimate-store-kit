@@ -445,4 +445,19 @@
       GridColumn
     );
   });
+
+  // for glossy grid
+  $(window).on("elementor/frontend/init", function () {
+    elementorFrontend.hooks.addAction(
+      "frontend/element_ready/usk-glossy-grid.default",
+      setupGridFilter
+    );
+  });
+  // for florence grid
+  $(window).on("elementor/frontend/init", function () {
+    elementorFrontend.hooks.addAction(
+      "frontend/element_ready/usk-florence-grid.default",
+      setupGridFilter
+    );
+  });
 })(jQuery, window.elementorFrontend);
