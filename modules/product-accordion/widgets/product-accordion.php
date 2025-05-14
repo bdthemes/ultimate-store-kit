@@ -1220,7 +1220,7 @@ class Product_Accordion extends Module_Base {
                     <div class="usk-accordion-header">
                         <div class="usk-accordion-trigger">
                             <span>
-                                <?php esc_html_e($product->get_name(), 'ultimate-store-kit'); ?>
+                                <?php echo esc_html($product->get_name()); ?>
                             </span>
                         </div>
                     </div>

@@ -1430,12 +1430,11 @@ class Showcase_Slider extends Module_Base {
                             $have_rating = ('yes' === $settings['show_rating']) ? 'usk-have-rating' : '';
 
                 ?>
-                    <div class="swiper-slide usk-item <?php esc_attr_e($have_rating, 'ultimate-store-kit'); ?>">
-                        <?php $this->render_image(); ?>
-                        <div class="usk-badge-label-wrapper">
-                            <div class="usk-badge-label-content usk-flex usk-flex-column">
-                                <?php $this->register_global_template_badge_label($settings); ?>
-                            </div>
+                <div class="swiper-slide usk-item <?php echo esc_attr($have_rating);?>">
+                    <?php $this->render_image();?>
+                    <div class="usk-badge-label-wrapper">
+                        <div class="usk-badge-label-content usk-flex usk-flex-column">
+                            <?php $this->register_global_template_badge_label();?>
                         </div>
                         <div class="usk-item-box">
                             <div class="usk-content">

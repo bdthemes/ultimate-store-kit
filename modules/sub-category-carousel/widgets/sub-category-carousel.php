@@ -871,8 +871,12 @@ class Sub_Category_Carousel extends Module_Base {
                             </div>
 
                             <div class="usk-link-btn">
-                                <?php printf('<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i>', esc_html__('All ' . $category->name . '', 'ultimate-store-kit'), esc_url(get_term_link($category->term_id, 'product_cat'))); ?>
-                                </a>
+                                <?php printf(
+                                    '<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i></a>',
+                                     /* translators: %s: Category name */ 
+                                    sprintf(esc_html__('All %s', 'ultimate-store-kit'), $category->name),
+                                    esc_url(get_term_link($category->term_id, 'product_cat'))
+                                ); ?>
                             </div>
                         </div>
                     </div>

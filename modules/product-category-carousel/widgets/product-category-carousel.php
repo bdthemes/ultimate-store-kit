@@ -562,7 +562,13 @@ class Product_Category_Carousel extends Module_Base {
 			[
 				'label'       => esc_html__('Glassmorphism', 'ultimate-store-kit'),
 				'type'        => Controls_Manager::SWITCHER,
-				'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-store-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				//'description' => sprintf(__('This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'ultimate-store-kit'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>'),
+				'description' => sprintf(
+					  /* translators: 1: opening anchor tag, 2: closing anchor tag */
+					__('This feature will not work in the Firefox browser until you enable browser compatibility, so please %1$s look here %2$s.', 'ultimate-store-kit'),
+					'<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">',
+					'</a>'
+				),
 			]
 		);
 
