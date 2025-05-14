@@ -2139,13 +2139,11 @@ div.pp_pic_holder {
 }
 
 .usk-variations-container {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 12px;
-  flex-wrap: wrap;
+}
+
+.usk-variations-container .usk-pa_size-group {
+  margin-top: 10px;
 }
 
 .usk-variations-container .usk-color-variation {
@@ -2176,7 +2174,7 @@ div.pp_pic_holder {
 }
 
 .usk-variations-container .usk-variation-group {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 }
