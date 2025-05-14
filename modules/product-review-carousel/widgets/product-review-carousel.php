@@ -367,7 +367,6 @@ class Product_Review_Carousel extends Module_Base {
 				'default'   => '80',
 			]
 		);
-
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [

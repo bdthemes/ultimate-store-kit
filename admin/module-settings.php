@@ -1070,7 +1070,7 @@ class ModuleService {
                     'type'              => 'number',
                     'default'           => '26',
 
-				],
+				        ],
                 [
                     'name' => 'swatches_group_end',
                     'type' => 'end_group',

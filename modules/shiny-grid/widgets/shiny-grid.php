@@ -52,7 +52,6 @@ class Shiny_Grid extends Module_Base {
     public function get_keywords() {
         return ['product', 'product-grid', 'table', 'wc'];
     }
-
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['usk-site'];
@@ -77,7 +76,7 @@ class Shiny_Grid extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+        return !\Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
     }
     protected function register_controls() {
         $this->start_controls_section(
@@ -90,8 +89,8 @@ class Shiny_Grid extends Module_Base {
         $this->add_control(
             'layout_style',
             [
-                'label'   => esc_html__('Style', 'ultimate-store-kit'),
-                'type'    => Controls_Manager::SELECT,
+                'label' => esc_html__('Style', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
                     'grid' => esc_html__('Grid', 'ultimate-store-kit'),
@@ -102,12 +101,12 @@ class Shiny_Grid extends Module_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label'          => esc_html__('Columns', 'ultimate-store-kit'),
-                'type'           => Controls_Manager::SELECT,
-                'default'        => '3',
+                'label' => esc_html__('Columns', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '3',
                 'tablet_default' => '2',
                 'mobile_default' => '1',
-                'options'        => [
+                'options' => [
                     '1' => '1',
                     '2' => '2',
                     '3' => '3',
@@ -119,7 +118,34 @@ class Shiny_Grid extends Module_Base {
                     'layout_style' => 'grid'
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-shiny-grid .usk-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .usk-shiny-grid .usk-grid.usk-grid-layout' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+
+                ],
+                'render_type' => 'template'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'columns_list',
+            [
+                'label' => esc_html__('Columns', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '2',
+                'tablet_default' => '2',
+                'mobile_default' => '1',
+                'options' => [
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                ],
+                'condition' => [
+                    'layout_style' => 'list'
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-shiny-grid .usk-grid.usk-list-layout' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
 
                 ],
                 'render_type' => 'template'
@@ -129,9 +155,9 @@ class Shiny_Grid extends Module_Base {
         $this->add_responsive_control(
             'items_columns_gap',
             [
-                'label'     => esc_html__('Columns Gap', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'default'   => [
+                'label' => esc_html__('Columns Gap', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
                     'size' => 30,
                 ],
                 'selectors' => [
@@ -143,9 +169,9 @@ class Shiny_Grid extends Module_Base {
         $this->add_responsive_control(
             'items_row_gap',
             [
-                'label'     => esc_html__('Row Gap', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SLIDER,
-                'default'   => [
+                'label' => esc_html__('Row Gap', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
                     'size' => 30,
                 ],
                 'selectors' => [
@@ -160,7 +186,7 @@ class Shiny_Grid extends Module_Base {
             'show_tab',
             [
                 'label' => esc_html__('Columns Filter', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::SWITCHER,
+                'type' => Controls_Manager::SWITCHER,
                 'separator' => 'before'
             ]
         );
@@ -168,35 +194,35 @@ class Shiny_Grid extends Module_Base {
         $this->add_control(
             'filter_column_lists',
             [
-                'label'           => __('Select Column Type', 'ultimate-store-kit'),
-                'type'            => Controls_Manager::SELECT2,
-                'label_block'     => true,
-                'multiple'        => true,
-                'options'         => [
-                    'list-2'        => __('List', 'ultimate-store-kit'),
-                    'grid-2'        => __('Column 2', 'ultimate-store-kit'),
-                    'grid-3'        => __('Column 3', 'ultimate-store-kit'),
-                    'grid-4'        => __('Column 4', 'ultimate-store-kit'),
-                    'grid-5'        => __('Column 5', 'ultimate-store-kit'),
-                    'grid-6'        => __('Column 6', 'ultimate-store-kit'),
+                'label' => __('Select Column Type', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SELECT2,
+                'label_block' => true,
+                'multiple' => true,
+                'options' => [
+                    'list-2' => __('List', 'ultimate-store-kit'),
+                    'grid-2' => __('Column 2', 'ultimate-store-kit'),
+                    'grid-3' => __('Column 3', 'ultimate-store-kit'),
+                    'grid-4' => __('Column 4', 'ultimate-store-kit'),
+                    'grid-5' => __('Column 5', 'ultimate-store-kit'),
+                    'grid-6' => __('Column 6', 'ultimate-store-kit'),
 
                 ],
                 'condition' => [
                     'show_tab' => 'yes'
                 ],
-                'default'         => ['list-2', 'grid-2', 'grid-3', 'grid-4'],
+                'default' => ['list-2', 'grid-2', 'grid-3', 'grid-4'],
             ]
         );
         $this->add_control(
             'show_result_count',
             [
-                'label'         => esc_html__('Result Count', 'ultimate-store-kit'),
-                'type'          => Controls_Manager::SWITCHER,
-                'label_on'      => esc_html__('Show', 'ultimate-store-kit'),
-                'label_off'     => esc_html__('Hide', 'ultimate-store-kit'),
-                'return_value'  => 'yes',
-                'default'       => 'yes',
-                'separator'    => 'before',
+                'label' => esc_html__('Result Count', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'ultimate-store-kit'),
+                'label_off' => esc_html__('Hide', 'ultimate-store-kit'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'separator' => 'before',
                 'condition' => [
                     'show_tab' => 'yes'
                 ]
@@ -205,8 +231,8 @@ class Shiny_Grid extends Module_Base {
         $this->add_control(
             'show_pagination',
             [
-                'label'     => esc_html__('Pagination', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::SWITCHER,
+                'label' => esc_html__('Pagination', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SWITCHER,
                 'separator' => 'before'
             ]
         );
@@ -236,6 +262,8 @@ class Shiny_Grid extends Module_Base {
         $this->register_global_controls_badge();
         $this->register_global_controls_add_to_cart();
         $this->register_global_controls_action_btn();
+        $this->register_global_controls_variation();
+
         $this->register_global_controls_grid_pagination();
     }
     public function render_header() {
@@ -263,12 +291,13 @@ class Shiny_Grid extends Module_Base {
             if ($settings['layout_style'] === 'grid') {
                 $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-grid-layout']);
             } else {
-                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout', 'usk-grid-1']);
+                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout']);
             }
 
             if ($wp_query->have_posts()) { ?>
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>">
-                <?php while ($wp_query->have_posts()) : $wp_query->the_post();
+                <?php while ($wp_query->have_posts()):
+                    $wp_query->the_post();
                     global $product;
                     if (empty($product)) {
                         continue;
@@ -279,7 +308,7 @@ class Shiny_Grid extends Module_Base {
                     ?>
                 <?php endwhile; ?>
             </div>
-            <?php if ($settings['show_pagination']) :
+            <?php if ($settings['show_pagination']):
                     ultimate_store_kit_post_pagination($wp_query);
                 endif;
                 wp_reset_postdata();
@@ -313,14 +342,14 @@ class Shiny_Grid extends Module_Base {
             }
 
             $args = array(
-                'total'    => $wp_query->found_posts,
+                'total' => $wp_query->found_posts,
                 'per_page' => $settings['product_limit'],
-                'current'  => $paged,
+                'current' => $paged,
                 'orderedby' => $wp_query->get('orderby'),
             );
-            if ($settings['show_tab'] == 'yes') : ?>
+            if ($settings['show_tab'] == 'yes'): ?>
             <div class="usk-grid-header usk-visible@l">
-                <?php if (($settings['show_result_count'] == 'yes')) :
+                <?php if (($settings['show_result_count'] == 'yes')):
                     wc_get_template('loop/result-count.php', $args);
                 endif;
                 ?>

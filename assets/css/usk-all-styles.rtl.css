@@ -3433,7 +3433,6 @@
 }
 
 /* Base Layout & Positioning */
-.usk-glossy-grid .usk-item-box,
 .usk-glossy-grid .usk-shoping,
 .usk-glossy-grid .usk-badge-label-wrapper {
   position: absolute;
@@ -3508,7 +3507,6 @@
   overflow: inherit;
 }
 
-.usk-glossy-carousel .usk-item-box,
 .usk-glossy-carousel .usk-shoping,
 .usk-glossy-carousel .usk-badge-label-wrapper {
   position: absolute;
@@ -5171,14 +5169,6 @@ table.dataTable.display tbody tr.odd {
   height: clamp(30px, 3vw, 40px);
   line-height: clamp(30px, 3vw, 40px);
   font-size: 12px;
-}
-.usk-shiny-grid .usk-variation-button.active {
-  background: #2b2d42;
-  color: #fff;
-}
-.usk-shiny-grid .usk-variation-button.active:hover {
-  background: #2b2d42;
-  color: #fff;
 }
 
 .usk-shiny-carousel {
