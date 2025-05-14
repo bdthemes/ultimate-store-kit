@@ -53,9 +53,13 @@ class Shiny_Grid extends Module_Base {
         return ['product', 'product-grid', 'table', 'wc'];
     }
 
-    // public function get_script_depends() {
-    //     return ['usk-shiny-grid'];
-    // }
+    public function get_script_depends() {
+        if ($this->usk_is_edit_mode()) {
+            return ['usk-site'];
+        } else {
+            return ['usk-shiny-grid'];
+        }
+    }
 
     public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {

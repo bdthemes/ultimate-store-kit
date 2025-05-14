@@ -237,11 +237,11 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_script('toolslide-js', BDTUSK_ASSETS_URL . 'vendor/js/toolslide.min.js', [], BDTUSK_VER, true); // tooltip file should be separate
 
 		wp_enqueue_script('usk-core');
-		wp_enqueue_script('usk-site');
+		// wp_enqueue_script('usk-site');
 		wp_enqueue_script('slick-modal');
 		wp_enqueue_script('toolslide-js');
 
-		wp_localize_script('usk-site', 'ultimate_store_kit_ajax_config', array(
+		wp_localize_script('usk-core', 'ultimate_store_kit_ajax_config', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
 		));
 	}

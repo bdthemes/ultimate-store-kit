@@ -122,7 +122,7 @@ class USK_Shiny_Grid_Template {
             'data-product_id' => $product->get_id(),
             'data-product_sku' => $product->get_sku(),
             'aria-label' => $product->add_to_cart_description(),
-            'rel' => 'nofollow',
+            // 'rel' => 'nofollow',
         ];
 
         // Add default attributes data for variable products
@@ -136,6 +136,19 @@ class USK_Shiny_Grid_Template {
             $variation_id = $this->get_variation_id_from_attributes($product, $product->get_default_attributes());
             if ($variation_id) {
                 $button_attributes['data-variation_id'] = $variation_id;
+
+                // Add each default attribute as separate data attributes for AJAX support
+                foreach ($default_attributes as $attribute_name => $attribute_value) {
+                    $button_attributes['data-attribute_' . $attribute_name] = $attribute_value;
+                }
+
+                // If we have a default variation, use product_type_variation instead of variable
+                if (in_array('product_type_variable', $button_classes)) {
+                    $key = array_search('product_type_variable', $button_classes);
+                    if ($key !== false) {
+                        $button_classes[$key] = 'product_type_variation';
+                    }
+                }
             }
         }
 
@@ -161,22 +174,17 @@ class USK_Shiny_Grid_Template {
         }
 
         // Get the URL
-        $url = $product->add_to_cart_url();
+        if ($product->is_type('variable')) {
+            $url = 'javascript:void(0)';
+        } else {
+            $url = $product->add_to_cart_url();
+        }
 
-        // For variable products with default attributes, create direct add-to-cart URL
-        if ($product->is_type('variable') && $has_default_attributes && isset($args['attributes']['data-variation_id']) && $args['attributes']['data-variation_id']) {
-            $variation_id = $args['attributes']['data-variation_id'];
-            $url = \add_query_arg([
-                'add-to-cart' => $product->get_id(),
-                'variation_id' => $variation_id,
-                'product_id' => $product->get_id()
-            ], \wc_get_cart_url());
-
-            // Add variation attributes to URL
-            $attributes = $product->get_default_attributes();
-            foreach ($attributes as $attribute_name => $attribute_value) {
-                $taxonomy = wc_attribute_taxonomy_name(str_replace('pa_', '', $attribute_name));
-                $url = \add_query_arg('attribute_' . $taxonomy, $attribute_value, $url);
+        // Make sure variable products use correct classes
+        if ($product->is_type('variable') && in_array('product_type_variable', $button_classes)) {
+            $key = array_search('product_type_variable', $button_classes);
+            if ($key !== false) {
+                $button_classes[$key] = 'product_type_variation';
             }
         }
 
@@ -198,30 +206,25 @@ class USK_Shiny_Grid_Template {
 
     /**
      * Get variation ID from product attributes
+     * Uses WooCommerce data store for reliable variation finding
      */
     private function get_variation_id_from_attributes($product, $attributes) {
-        if (!$product->is_type('variable')) {
+        if (!$product || !$product->is_type('variable')) {
             return null;
         }
 
-        $variations = $product->get_available_variations();
+        // Format attributes for WooCommerce
+        $formatted_attributes = [];
+        foreach ($attributes as $attribute_name => $attribute_value) {
+            $formatted_attributes['attribute_' . $attribute_name] = $attribute_value;
+        }
 
-        foreach ($variations as $variation) {
-            $match = true;
+        // Use WooCommerce's data store to find matching variation
+        $data_store = \WC_Data_Store::load('product');
+        $variation_id = $data_store->find_matching_product_variation($product, $formatted_attributes);
 
-            foreach ($attributes as $attribute_name => $attribute_value) {
-                $taxonomy = 'attribute_' . $attribute_name;
-
-                if (!isset($variation['attributes'][$taxonomy]) ||
-                    $variation['attributes'][$taxonomy] !== $attribute_value) {
-                    $match = false;
-                    break;
-                }
-            }
-
-            if ($match) {
-                return $variation['variation_id'];
-            }
+        if ($variation_id) {
+            return $variation_id;
         }
 
         return null;
@@ -268,7 +271,7 @@ class USK_Shiny_Grid_Template {
             </div>
             <!-- display product variation -->
         </div>
-        <?php
+<?php
     }
 
     /**
@@ -289,6 +292,9 @@ class USK_Shiny_Grid_Template {
 
     /**
      * Render product variation options (colors, sizes)
+     *
+     * Displays variation swatches on product grid items
+     * When a user selects a variation, it becomes active and ready for add to cart
      */
     public function render_product_variation($product) {
         if (!$product || !$product->is_type('variable')) {
@@ -303,64 +309,97 @@ class USK_Shiny_Grid_Template {
         // Get default attributes
         $default_attributes = $product->get_default_attributes();
 
-        echo '<div class="usk-variations-container">';
+        // Get all attribute taxonomies for this product
+        $attributes = $product->get_attributes();
+        $product_id = $product->get_id();
 
-        // Display color variations
-        $colors = [];
-        foreach ($variations as $variation) {
-            if (isset($variation['attributes']['attribute_pa_color'])) {
-                $color = $variation['attributes']['attribute_pa_color'];
+        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '">';
 
-                if (!in_array($color, $colors)) {
-                    $colors[] = $color;
-                    $variation_id = $variation['variation_id'];
+        // Group attribute buttons by attribute type for better organization
+        $processed_attributes = [];
 
-                    // Check if this is the default color
-                    $is_default = isset($default_attributes['pa_color']) && $default_attributes['pa_color'] === $color;
-                    $active_class = $is_default ? ' active' : '';
+        // Process all attributes in a more organized way
+        foreach ($attributes as $attribute_name => $attribute) {
+            // Skip non-variation attributes
+            if (!$attribute->get_variation()) {
+                continue;
+            }
 
-                    echo '<button type="button" class="usk-variation-button usk-color-variation' . esc_attr($active_class) . '" ' .
-                         'data-variation-id="' . esc_attr($variation_id) . '" ' .
-                         'data-product-id="' . esc_attr($product->get_id()) . '" ' .
-                         'data-attribute="pa_color" ' .
-                         'data-value="' . esc_attr($color) . '">' .
-                         esc_html($color) .
-                         '</button>';
+            $processed_attributes[$attribute_name] = true;
+            $attribute_values = [];
+            $attribute_label = \wc_attribute_label($attribute_name);
+            $is_color_attribute = ($attribute_name === 'pa_color');
+
+            // Create a container for this attribute type with a label
+            echo '<div class="usk-variation-group usk-' . \esc_attr(\sanitize_title($attribute_name)) . '-group">';
+
+            // Only show label for non-color attributes
+            if (!$is_color_attribute) {
+                echo '<span class="usk-variation-label">' . \esc_html($attribute_label) . '</span>';
+            }
+
+            // Get all available values for this attribute
+            foreach ($variations as $variation) {
+                $taxonomy_key = 'attribute_' . $attribute_name;
+                if (isset($variation['attributes'][$taxonomy_key])) {
+                    $value = $variation['attributes'][$taxonomy_key];
+
+                    if (!in_array($value, $attribute_values)) {
+                        $attribute_values[] = $value;
+                        $variation_id = $variation['variation_id'];
+
+                        // Check if this is the default value
+                        $is_default = isset($default_attributes[$attribute_name]) && $default_attributes[$attribute_name] === $value;
+                        $active_class = $is_default ? ' active' : '';
+
+                        // Special handling for color attributes
+                        if ($is_color_attribute) {
+                            // Get the color term to find if there's any color value
+                            $color_term = \get_term_by('slug', $value, $attribute_name);
+                            $color_value = '';
+                            if ($color_term) {
+                                // Try to get color from term name or slug
+                                $color_value = $color_term->slug;
+                            }
+
+                            $style = '';
+                            if ($color_value) {
+                                $style = 'style="background-color:' . \esc_attr($color_value) . ';"';
+                            }
+
+                            echo '<button type="button" class="usk-variation-button usk-color-variation' . \esc_attr($active_class) . '" ' .
+                                'data-variation-id="' . \esc_attr($variation_id) . '" ' .
+                                'data-product-id="' . \esc_attr($product_id) . '" ' .
+                                'data-attribute="' . \esc_attr($attribute_name) . '" ' .
+                                'data-value="' . \esc_attr($value) . '" ' .
+                                $style . ' ' .
+                                'title="' . \esc_attr($color_term ? $color_term->name : $value) . '"' .
+                                '>' .
+                                ($color_value ? '' : \esc_html($value)) .
+                                '</button>';
+                        } else {
+                            // For non-color attributes (size, material, etc.)
+                            // Get term data if it's a taxonomy
+                            $display_value = $value;
+                            if ($attribute->is_taxonomy()) {
+                                $term = \get_term_by('slug', $value, $attribute_name);
+                                $display_value = $term ? $term->name : $value;
+                            }
+
+                            echo '<button type="button" class="usk-variation-button usk-' . \esc_attr(\sanitize_title($attribute_name)) . '-variation' . \esc_attr($active_class) . '" ' .
+                                'data-variation-id="' . \esc_attr($variation_id) . '" ' .
+                                'data-product-id="' . \esc_attr($product_id) . '" ' .
+                                'data-attribute="' . \esc_attr($attribute_name) . '" ' .
+                                'data-value="' . \esc_attr($value) . '">' .
+                                \esc_html($display_value) .
+                                '</button>';
+                        }
+                    }
                 }
             }
+
+            echo '</div>';
         }
-
-        // Display size variations
-        $sizes = [];
-        foreach ($variations as $variation) {
-            if (isset($variation['attributes']['attribute_pa_size'])) {
-                $size = $variation['attributes']['attribute_pa_size'];
-
-                if (!in_array($size, $sizes)) {
-                    $sizes[] = $size;
-                    $variation_id = $variation['variation_id'];
-
-                    // Check if this is the default size
-                    $is_default = isset($default_attributes['pa_size']) && $default_attributes['pa_size'] === $size;
-                    $active_class = $is_default ? ' active' : '';
-
-                    echo '<button type="button" class="usk-variation-button usk-size-variation' . esc_attr($active_class) . '" ' .
-                         'data-variation-id="' . esc_attr($variation_id) . '" ' .
-                         'data-product-id="' . esc_attr($product->get_id()) . '" ' .
-                         'data-attribute="pa_size" ' .
-                         'data-value="' . esc_attr($size) . '">' .
-                         esc_html($size) .
-                         '</button>';
-                }
-            }
-        }
-
-        // JavaScript for variation selection is commented out in the original
-        ?>
-            <script>
-                // jQuery code for variation selection is commented out
-            </script>
-        <?php
 
         echo '</div>';
     }

@@ -54,7 +54,11 @@ class EDD_Classic_Carousel extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['swiper'];
+        if ($this->usk_is_edit_mode()) {
+            return ['swiper', 'usk-site'];
+        } else {
+            return ['swiper', 'usk-edd-classic-carousel'];
+        }
     }
 
 
