@@ -208,6 +208,8 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.5.X [XX May 2025] =
 
+* Added: Column options and image size settings have been added for the Shiny Grid, Florence Grid, and Glossy Grid List layout.
+* Updated: The overall design for the Shiny Grid, Florence Grid, and Glossy Grid has been further improved.
 * Updated: Improved styling and settings controls for Checkout (Page) widget.
 * Fixed: WPML integration with Elementor editor for Theme Builder
 * Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )

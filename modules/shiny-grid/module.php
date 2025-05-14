@@ -128,7 +128,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         // Get the variation image
         $image_id = $variation->get_image_id();
         if ($image_id) {
-            $image_src = \wp_get_attachment_image_src($image_id, 'woocommerce_thumbnail');
+            $image_src = \wp_get_attachment_image_src($image_id, 'full');
             if ($image_src) {
                 $variation_data['image'] = [
                     'src' => $image_src[0],
@@ -140,7 +140,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             // Get the gallery images for this variation
             $gallery_ids = $variation->get_gallery_image_ids();
             if (!empty($gallery_ids)) {
-                $additional_image_src = \wp_get_attachment_image_src($gallery_ids[0], 'woocommerce_thumbnail');
+                $additional_image_src = \wp_get_attachment_image_src($gallery_ids[0], 'full');
                 if ($additional_image_src) {
                     $variation_data['additional_image'] = $additional_image_src[0];
                 }
@@ -148,7 +148,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
                 // If variation has no gallery images, use product gallery for hover effect
                 $product_gallery = $product->get_gallery_image_ids();
                 if (!empty($product_gallery)) {
-                    $additional_image_src = \wp_get_attachment_image_src($product_gallery[0], 'woocommerce_thumbnail');
+                    $additional_image_src = \wp_get_attachment_image_src($product_gallery[0], 'full');
                     if ($additional_image_src) {
                         $variation_data['additional_image'] = $additional_image_src[0];
                     }

@@ -254,7 +254,7 @@ trait Global_Widget_Controls {
                 ]
             );
         endif;
-        if ($this->get_name() !== 'usk-product-image-accordion' && $this->get_name() !== 'usk-heaven-slider'):
+        if ($this->get_name() !== 'usk-product-image-accordion' && $this->get_name() !== 'usk-heaven-slider' && $this->get_name() !== 'usk-glossy-grid' && $this->get_name() !== 'usk-florence-grid'):
             $this->add_control(
                 'show_excerpt',
                 [
@@ -263,7 +263,7 @@ trait Global_Widget_Controls {
                     'default' => 'yes',
                     'separator' => 'before',
                     'condition' => [
-                        'layout_style' => 'list'
+                        'layout_style' => 'list',
                     ]
                 ]
             );
@@ -803,6 +803,34 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Normal', 'ultimate-store-kit'),
             ]
         );
+
+        $this->add_responsive_control(
+            'list_image_size',
+            [
+                'label' => esc_html__('Image Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 200,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'max-width: {{SIZE}}{{UNIT}}',
+                ],
+                'condition' => [
+                    'layout_style' => 'list',
+                ],
+                'separator' => 'after',
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
@@ -1257,9 +1285,9 @@ trait Global_Widget_Controls {
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'           => 'category_border',
-                'label'          => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'       => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
+                'name' => 'category_border',
+                'label' => esc_html__('Border', 'ultimate-store-kit'),
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-category a',
                 'separator' => 'before'
             ]
         );
@@ -1375,6 +1403,7 @@ trait Global_Widget_Controls {
                 'condition' => [
                     'show_excerpt' => 'yes',
                     'layout_style' => 'list'
+
                 ]
             ]
         );
@@ -1614,10 +1643,10 @@ trait Global_Widget_Controls {
         $this->add_control(
             'font_family',
             [
-                'label'                 => esc_html__('Tooltip Font', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::FONT,
-                'selectors'             => [
-                    '{{WRAPPER}} .usk-shoping a'    => 'font-family: {{VALUE}}',
+                'label' => esc_html__('Tooltip Font', 'ultimate-store-kit'),
+                'type' => Controls_Manager::FONT,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-shoping a' => 'font-family: {{VALUE}}',
                 ],
             ]
         );
