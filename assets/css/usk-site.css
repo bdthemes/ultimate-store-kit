@@ -842,12 +842,12 @@ div.pp_pic_holder {
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-image .image-default,
 .usk-grid-carousel .usk-item:hover .usk-image .image-default {
   opacity: 0;
-  transform: scale(1);
+  transform: scale(0.8);
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-image .image-hover,
 .usk-grid-carousel .usk-item:hover .usk-image .image-hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1);
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-shoping a,
 .usk-grid-carousel .usk-item:hover .usk-shoping a {
@@ -889,6 +889,7 @@ div.pp_pic_holder {
   right: 0;
   transition: all 0.5s ease;
   transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s;
+  transform: scale(0.9);
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping,
 .usk-grid-carousel .usk-shoping {
@@ -1087,7 +1088,8 @@ div.pp_pic_holder {
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image,
 .usk-grid-carousel .usk-list-layout .usk-image {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 100%;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image .img,

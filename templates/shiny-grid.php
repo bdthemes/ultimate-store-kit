@@ -62,12 +62,18 @@ class USK_Shiny_Grid_Template {
                             </a>
                         <?php endif; ?>
 
-                        <?php if (isset($settings['show_desc']) ? $settings['show_desc'] : true): ?>
+                        <?php if (
+                            (isset($settings['show_excerpt']) ? $settings['show_excerpt'] : true)
+                            && isset($settings['layout_style']) && $settings['layout_style'] === 'list'
+                        ): ?>
                             <div class="usk-desc">
-                                <span
-                                    class="desc"><?php echo wp_kses_post(wp_trim_words($product->get_short_description(), 15, '…')); ?></span>
+                                <span class="desc">
+                                    <?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '…')); ?>
+                                </span>
                             </div>
                         <?php endif; ?>
+
+
 
                         <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()): ?>
                             <div class="usk-price">
