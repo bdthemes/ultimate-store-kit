@@ -8,8 +8,12 @@
   --usk-glossy-transition: 0.55s cubic-bezier(0.2, 0.75, 0.5, 1);
 }
 
+.usk-glossy-grid .usk-item {
+  box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+  background: #fff;
+}
+
 /* Base Layout & Positioning */
-.usk-glossy-grid .usk-item-box,
 .usk-glossy-grid .usk-shoping,
 .usk-glossy-grid .usk-badge-label-wrapper {
   position: absolute;
@@ -36,35 +40,4 @@
 }
 
 /* Shadow Effect */
-.usk-glossy-grid .usk-product-hover {
-  position: absolute;
-  transition: transform var(--usk-glossy-transition);
-  transform: scale(0.95) translateY(0) translateZ(0);
-  height: calc(100% + var(--usk-glossy-offset) * 2);
-  width: calc(100% + var(--usk-glossy-offset) * 2);
-  z-index: 0;
-  top: calc(-1 * var(--usk-glossy-offset));
-  left: calc(-1 * var(--usk-glossy-offset));
-}
-
-.usk-glossy-grid .usk-product-hover:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  transform-origin: center;
-  opacity: 0;
-  transition: opacity var(--usk-glossy-transition);
-  box-shadow: 0 8px 55px var(--usk-glossy-shadow-color);
-  pointer-events: none;
-}
-
 /* Hover States */
-.usk-glossy-grid .usk-item:hover .usk-product-hover {
-  transform: scale(1) translateY(0) translateZ(0);
-}
-
-.usk-glossy-grid .usk-item:hover .usk-product-hover:before {
-  opacity: 1;
-  pointer-events: all;
-}

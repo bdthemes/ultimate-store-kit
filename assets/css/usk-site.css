@@ -842,12 +842,12 @@ div.pp_pic_holder {
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-image .image-default,
 .usk-grid-carousel .usk-item:hover .usk-image .image-default {
   opacity: 0;
-  transform: scale(1);
+  transform: scale(0.8);
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-image .image-hover,
 .usk-grid-carousel .usk-item:hover .usk-image .image-hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1);
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-item:hover .usk-shoping a,
 .usk-grid-carousel .usk-item:hover .usk-shoping a {
@@ -866,19 +866,17 @@ div.pp_pic_holder {
   overflow: hidden;
   background: #fff;
   transition: all 0.3s ease;
-  height: 100%;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-image .img,
 .usk-grid-carousel .usk-image .img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   overflow: hidden;
+  vertical-align: middle;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-image .image-default,
 .usk-grid-carousel .usk-image .image-default {
   opacity: 1;
-  transform: scale(1.1);
   transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .image-hover,
@@ -891,6 +889,7 @@ div.pp_pic_holder {
   right: 0;
   transition: all 0.5s ease;
   transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.18), opacity 0.5s;
+  transform: scale(0.9);
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-shoping,
 .usk-grid-carousel .usk-shoping {
@@ -1004,7 +1003,6 @@ div.pp_pic_holder {
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-content-inner,
 .usk-grid-carousel .usk-content-inner {
-  width: 100%;
   position: relative;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-category,
@@ -1012,25 +1010,21 @@ div.pp_pic_holder {
   margin-bottom: clamp(12px, 1vw, 15px);
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-category a,
 .usk-grid-carousel .usk-category a {
   font-size: clamp(10px, 1vw, 12px);
-  color: #9fa8bc;
-  border: 1px solid #c0c9dd;
+  color: #858890;
   text-transform: uppercase;
   font-weight: 500;
   display: inline-block;
-  padding: 4px 6px;
   transition: all 0.3s ease;
   line-height: 1;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-category a:hover,
 .usk-grid-carousel .usk-category a:hover {
-  color: #e6edef;
-  background: #2b2d42;
-  border-color: #2b2d42;
+  color: #2b2d42;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-title,
 .usk-grid-carousel .usk-title {
@@ -1051,7 +1045,7 @@ div.pp_pic_holder {
 .usk-grid-carousel .usk-price {
   font-size: clamp(12px, 1vw, 14px);
   font-weight: 700;
-  color: #9fa8bc;
+  color: #858890;
   margin-bottom: 10px;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-price del,
@@ -1090,12 +1084,12 @@ div.pp_pic_holder {
 .usk-grid-carousel .usk-list-layout .usk-item-box {
   display: flex;
   align-items: center;
-  height: 100%;
   flex-direction: row;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image,
 .usk-grid-carousel .usk-list-layout .usk-image {
   width: 100%;
+  max-width: 400px;
   height: 100%;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image .img,
@@ -1107,7 +1101,6 @@ div.pp_pic_holder {
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-content,
 .usk-grid-carousel .usk-list-layout .usk-content {
   width: 100%;
-  height: 100%;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-desc,
 .usk-grid-carousel .usk-list-layout .usk-desc {
@@ -2104,7 +2097,8 @@ div.pp_pic_holder {
 .elementor-widget-usk-add-to-cart .woocommerce-variation-add-to-cart {
   display: flex;
 }
-.elementor-widget-usk-page-single table th, .elementor-widget-usk-page-single table td,
+.elementor-widget-usk-page-single table th,
+.elementor-widget-usk-page-single table td,
 .elementor-widget-usk-add-to-cart table th,
 .elementor-widget-usk-add-to-cart table td {
   padding: 0;
@@ -2115,8 +2109,10 @@ div.pp_pic_holder {
 .elementor-widget-usk-add-to-cart div.product form.cart table td {
   padding-left: 20px !important;
 }
-.elementor-widget-usk-page-single table tbody tr:hover > td, .elementor-widget-usk-page-single table tbody tr:hover > th,
-.elementor-widget-usk-page-single table tbody > tr:nth-child(odd) > td, .elementor-widget-usk-page-single table tbody > tr:nth-child(odd) > th,
+.elementor-widget-usk-page-single table tbody tr:hover > td,
+.elementor-widget-usk-page-single table tbody tr:hover > th,
+.elementor-widget-usk-page-single table tbody > tr:nth-child(odd) > td,
+.elementor-widget-usk-page-single table tbody > tr:nth-child(odd) > th,
 .elementor-widget-usk-add-to-cart table tbody tr:hover > td,
 .elementor-widget-usk-add-to-cart table tbody tr:hover > th,
 .elementor-widget-usk-add-to-cart table tbody > tr:nth-child(odd) > td,
@@ -2140,4 +2136,65 @@ div.pp_pic_holder {
 .usk-product-rating .woocommerce-review-link {
   line-height: 1;
   display: flex;
+}
+
+.usk-variations-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.usk-variations-container .usk-color-variation {
+  --usk-variation-size: 20px;
+  width: var(--usk-variation-size);
+  height: var(--usk-variation-size);
+  padding: 0;
+  border-radius: 50%;
+  border: 0;
+  position: relative;
+}
+
+.usk-variations-container .usk-color-variation::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--usk-variation-size) / 2);
+  height: calc(var(--usk-variation-size) / 2);
+  border-radius: inherit;
+  background-color: #fff;
+  opacity: 0;
+}
+
+.usk-variations-container .usk-color-variation.active::before {
+  opacity: 1;
+}
+
+.usk-variations-container .usk-variation-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usk-variations-container .usk-pa_size-variation {
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid #d6d8e5;
+  color: #9194a5;
+  border-radius: 3px;
+  padding: 5px;
+  display: block;
+  line-height: 1;
+}
+
+.usk-variations-container .usk-pa_size-variation:hover,
+.usk-variations-container .usk-pa_size-variation.active {
+  border-color: #2b2d42;
+  color: #fff;
+  background-color: #2b2d42;
 }

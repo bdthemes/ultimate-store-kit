@@ -50,7 +50,11 @@ class Product_Table extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['datatables', 'micromodal'];
+        if ($this->usk_is_edit_mode()) {
+            return ['datatables', 'micromodal', 'usk-site'];
+        } else {
+            return ['datatables', 'micromodal', 'usk-product-table'];
+        }
     }
 
     public function get_style_depends() {
@@ -64,9 +68,9 @@ class Product_Table extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -173,7 +177,7 @@ class Product_Table extends Module_Base {
                 'default' => 'yes',
             ]
         );
-        
+
 
         $this->end_controls_section();
         $this->start_controls_section(
@@ -548,7 +552,7 @@ class Product_Table extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'table_heading_background',
             [
@@ -645,7 +649,7 @@ class Product_Table extends Module_Base {
                 'default'   => 'yes',
             ]
         );
-        
+
         $this->start_controls_tabs('tabs_table_style');
         $this->start_controls_tab(
             'tab_table_normal',
@@ -2076,11 +2080,11 @@ class Product_Table extends Module_Base {
 
                                 <?php if ($settings['show_title']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-title'); ?>>
-                                        <<?php echo esc_attr(Utils::get_valid_html_tag( $settings['title_tags'] )); ?> <?php $this->print_render_attribute_string('usk-wc-product-title'); ?>>
+                                        <<?php echo esc_attr(Utils::get_valid_html_tag($settings['title_tags'])); ?> <?php $this->print_render_attribute_string('usk-wc-product-title'); ?>>
                                             <a href="<?php the_permalink(); ?>" class="usk-link-reset">
                                                 <?php the_title(); ?>
                                             </a>
-                                        </<?php echo esc_attr(Utils::get_valid_html_tag( $settings['title_tags'] )); ?>>
+                                        </<?php echo esc_attr(Utils::get_valid_html_tag($settings['title_tags'])); ?>>
                                     </td>
                                 <?php endif; ?>
 
@@ -2128,7 +2132,7 @@ class Product_Table extends Module_Base {
 
                                 <?php if ($settings['show_quick_view']) : ?>
                                     <td <?php $this->print_render_attribute_string('usk-quick-view'); ?>>
-                                        <?php $this->register_global_template_quick_view($product->get_id(), 'top') ?>
+                                        <?php $this->register_global_template_quick_view($product->get_id(), 'top', $settings) ?>
                                     </td>
                                 <?php endif; ?>
 

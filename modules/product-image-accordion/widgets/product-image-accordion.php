@@ -52,7 +52,11 @@ class Product_Image_Accordion extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['micromodal'];
+        if ($this->usk_is_edit_mode()) {
+            return ['micromodal', 'usk-site'];
+        } else {
+            return ['micromodal'];
+        }
     }
 
     // public function get_custom_help_url() {
@@ -62,9 +66,9 @@ class Product_Image_Accordion extends Module_Base {
         return $this->_query;
     }
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -184,7 +188,7 @@ class Product_Image_Accordion extends Module_Base {
                 ],
             ]
         );
-        
+
         $this->add_control(
             'overlay_color',
             [
@@ -291,7 +295,7 @@ class Product_Image_Accordion extends Module_Base {
                         </div>
                         <div class="usk-badge-label-wrapper">
                             <div class="usk-badge-label-content usk-flex usk-flex-column">
-                                <?php $this->register_global_template_badge_label(); ?>
+                                <?php $this->register_global_template_badge_label($settings); ?>
                             </div>
                         </div>
                         <div class="usk-content-box">
@@ -316,10 +320,10 @@ class Product_Image_Accordion extends Module_Base {
                                 <?php endif; ?>
                             </div>
                             <div class="usk-shoping">
-                                <?php $this->register_global_template_add_to_wishlist($tooltip_position); ?>
-                                <?php $this->register_global_template_add_to_compare($tooltip_position); ?>
-                                <?php $this->register_global_template_quick_view($product_id, $tooltip_position) ?>
-                                <?php $this->register_global_template_add_to_cart($tooltip_position); ?>
+                                <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>
+                                <?php $this->register_global_template_add_to_compare($tooltip_position, $settings); ?>
+                                <?php $this->register_global_template_quick_view($product_id, $tooltip_position, $settings); ?>
+                                <?php $this->register_global_template_add_to_cart($tooltip_position, $settings); ?>
                             </div>
 
                         </div>

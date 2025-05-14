@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkout Page
  *
@@ -16,14 +17,16 @@
  * @version 3.8.0
  */
 
-defined( 'ABSPATH' ) || exit;
+use UltimateStoreKit\Builder\Builder_Integration;
 
-get_header( 'shop' ); ?>
+defined('ABSPATH') || exit;
+
+get_header('shop'); ?>
 <?php
-if ( class_exists( 'Elementor\Plugin' ) ) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+if (class_exists('Elementor\Plugin')) {
+	echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
 }
 ?>
 
 <?php
-get_footer( 'shop' ); ?>
+get_footer('shop'); ?>
