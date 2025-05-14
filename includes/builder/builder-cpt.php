@@ -26,6 +26,11 @@ class Builder_Cpt {
 		add_action( "manage_{$builderCpt}_posts_custom_column", [ $this, 'set_custom_column_value' ], 10, 2 );
 		add_filter( 'post_row_actions', [ $this, 'post_row_actions_filter' ], 20, 2 );
 
+		// Simple WPML fix
+		if (function_exists('icl_object_id')) {
+			add_filter('elementor/editor/before_enqueue_scripts', [$this, 'fix_wpml_elementor_data'], 1);
+		}
+
 		if ( is_admin() ) {
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ], 1 );
 			add_action( 'admin_menu', [ $this, 'add_admin_menu' ], 202 );
@@ -99,7 +104,28 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 		if ( get_post_meta( $post->ID, Meta::EDIT_WITH, true ) == 'elementor' ) {
 			$actions['usk_edit_with_elementor'] = sprintf(
 				'<a href="%1$s">%2$s</a>',
-				add_query_arg( [ 'post' => $post->ID, 'action' => 'elementor', 'usk-template' => 1 ], admin_url( 'post.php' ) ),
+				add_query_arg( 
+					[ 
+						'post' => $post->ID, 
+						'action' => 'elementor', 
+						'usk-template' => 1
+					], 
+					admin_url( 'post.php' ) 
+				),
+				esc_html__( 'Edit with Elementor', 'ultimate-store-kit' )
+			);
+		} else {
+			// Always offer Elementor edit option regardless of stored preference
+			$actions['usk_edit_with_elementor'] = sprintf(
+				'<a href="%1$s">%2$s</a>',
+				add_query_arg( 
+					[ 
+						'post' => $post->ID, 
+						'action' => 'elementor', 
+						'usk-template' => 1 
+					], 
+					admin_url( 'post.php' ) 
+				),
 				esc_html__( 'Edit with Elementor', 'ultimate-store-kit' )
 			);
 
@@ -414,6 +440,26 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 		];
 
 		register_post_type( Meta::POST_TYPE, $args );
+
+		// Fix WPML integration with Elementor
+		if (function_exists('icl_object_id')) {
+			add_filter('wpml_pb_elementor_get_data', [$this, 'fix_wpml_elementor_data'], 10, 2);
+		}
+	}
+
+	/**
+	 * Simple fix for WPML and Elementor integration
+	 */
+	public function fix_wpml_elementor_data() {
+		if (isset($_REQUEST['post']) && get_post_type($_REQUEST['post']) === Meta::POST_TYPE) {
+			$post_id = (int) $_REQUEST['post'];
+			$meta_data = get_post_meta($post_id, '_elementor_data', true);
+			
+			// If metadata exists but is in array format, convert it to JSON string
+			if (is_array($meta_data)) {
+				update_post_meta($post_id, '_elementor_data', wp_json_encode($meta_data));
+			}
+		}
 	}
 }
 
