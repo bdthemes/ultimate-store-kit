@@ -98,7 +98,7 @@ trait Global_Widget_Template {
 			$tooltip      = __('Add to Wishlist', 'ultimate-store-kit');
 			$redirect_url = "javascript:void(0);";
 		} ?>
-		<?php if (isset($settings['show_wishlist']) && $settings['show_wishlist'] == 'yes') : ?>
+		<?php if (isset($settings['show_wishlist']) ? $settings['show_wishlist'] : true) : ?>
 			<a href="<?php echo esc_url($redirect_url); ?>"
 				class="usk-action-btn ajax_add_to_wishlist usk-shoping-icon-wishlist usk-btn usk-wishlist<?php echo esc_attr($selected); ?>"
 				data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html($tooltip); ?>"
@@ -158,19 +158,19 @@ trait Global_Widget_Template {
 
 	protected function register_global_template_quick_view($product_id, $tooltip_position, $settings) {
 		// $settings = $this->get_settings_for_display();
-		if (isset($settings['show_quick_view']) && $settings['show_quick_view'] == 'yes') : ?>
+		if (isset($settings['show_quick_view']) ? $settings['show_quick_view'] : true) : ?>
 			<?php wp_nonce_field('ajax-usk-quick-view-nonce', 'usk-quick-view-modal-sc');
 			?>
 			<a class="usk-action-btn usk-shoping-icon-quickview quick_view usk-view usk-btn" href="javascript:void(0)"
-				data-id="<?php echo absint( $product_id ); ?>" aria-label="<?php echo esc_html__( 'Quick View', 'ultimate-store-kit' ); ?>"
-				data-microtip-position="<?php echo esc_attr( $tooltip_position ); ?>" role="tooltip">
+				data-id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html__('Quick View', 'ultimate-store-kit'); ?>"
+				data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
 				<i class="icon usk-icon-preview"></i>
 			</a>
 		<?php endif;
 	}
 	protected function register_global_template_add_to_cart($tooltip_position, $settings) {
 		global $product;
-		if (isset($settings['show_cart']) && $settings['show_cart'] == 'yes') : ?>
+		if (isset($settings['show_cart']) ? $settings['show_cart'] : true) : ?>
 			<?php if ($product) {
 				$defaults = [
 					'quantity'   => 1,
