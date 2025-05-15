@@ -2,21 +2,38 @@
 .usk-showcase-slider .usk-item {
   background: #fff;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: 1px solid rgba(136, 137, 144, 0.102) !important;
   height: auto;
   display: flex;
   flex-direction: column;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+.usk-showcase-slider .usk-item.swiper-slide-active {
+  opacity: 1;
+}
+.usk-showcase-slider .usk-item.swiper-slide-active .usk-image-wrap {
+  transform: scale(1);
 }
 .usk-showcase-slider .usk-item.swiper-slide-active:hover .usk-action-btn {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
 }
+.usk-showcase-slider .usk-item.swiper-slide-active:hover .usk-button,
+.usk-showcase-slider .usk-item.swiper-slide-active:hover .added_to_cart {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(50%) translateY(0);
+}
 .usk-showcase-slider .usk-image-wrap {
   position: relative;
   z-index: -1;
-  height: 100%;
   display: flex;
+  border-bottom: 1px solid rgba(136, 137, 144, 0.102);
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
 }
 .usk-showcase-slider .usk-shoping {
   position: absolute;
@@ -28,10 +45,10 @@
 }
 .usk-showcase-slider .usk-action-btn {
   display: inline-flex;
-  padding: 18px;
+  padding: 10px;
   background: #ef233c;
   text-align: center;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(14px, 2vw, 16px);
   color: #edf2f4;
   border-radius: 4px;
   transform: translateY(50px);
@@ -48,7 +65,7 @@
   transition: 0.3s ease, transform 0.7s cubic-bezier(0.17, 0.73, 0.66, 0.99);
 }
 .usk-showcase-slider .usk-price {
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(14px, 2vw, 16px);
   font-weight: 700;
   color: #69727d;
 }
@@ -63,18 +80,8 @@
 .usk-showcase-slider .product_type_external {
   transition: transform 1.2s cubic-bezier(0.17, 0.73, 0.66, 0.99) 0s, z-index 0s step-end, opacity 1.2s ease;
 }
-.usk-showcase-slider .usk-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 .usk-showcase-slider .usk-item-box {
   padding: clamp(20px, 2vw, 30px);
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100%;
-  position: relative;
 }
 .usk-showcase-slider .usk-title {
   color: #2b2d42;
@@ -82,38 +89,36 @@
   transition: all 0.3s ease;
 }
 .usk-showcase-slider .usk-title .title {
-  font-size: clamp(18px, 2vw, 30px);
+  font-size: clamp(16px, 2vw, 20px);
   letter-spacing: 1px;
   font-weight: bold;
   margin: 0;
   color: inherit;
 }
 .usk-showcase-slider .usk-category {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 .usk-showcase-slider .usk-category a {
   font-size: clamp(12px, 2vw, 14px);
-  border-width: 1px;
-  border-color: #d5d8dc;
-  border-style: solid;
-  padding: 4px 8px;
-  border-radius: 4px;
   color: #69727d;
   transition: all 0.3s ease;
   display: inline-flex;
   line-height: 1.2;
 }
 .usk-showcase-slider .usk-category a:hover {
-  color: #fff;
-  border-color: #69727d;
-  background-color: #69727d;
+  color: #d90429;
 }
 .usk-showcase-slider .usk-price-button-wrap {
-  text-align: left;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.usk-showcase-slider .usk-rating .star-rating {
+  margin: 0;
 }
 .usk-showcase-slider .usk-button.added {
   display: none;
@@ -152,24 +157,25 @@
 .usk-showcase-slider .usk-button,
 .usk-showcase-slider .added_to_cart {
   font-weight: 600;
-  text-align: center;
   background: #ef233c;
-  text-decoration: none;
   color: #fff;
-  text-transform: capitalize;
   transition: all 0.3s ease;
   width: 33%;
   min-width: 125px;
-  height: clamp(40px, 5vw, 50px);
-  position: absolute;
-  left: clamp(20px, 2vw, 30px);
-  top: 0;
-  transform: translateY(-50%);
+  height: clamp(40px, 5vw, 40px);
   border-radius: 4px;
-  font-size: clamp(13px, 1.5vw, 16px);
+  font-size: clamp(13px, 1.5vw, 14px);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(50%) translateY(30px);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .usk-showcase-slider .usk-button a,
 .usk-showcase-slider .added_to_cart a {
