@@ -3,10 +3,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?t5p9f8') format('woff2'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?t5p9f8') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?t5p9f8') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?t5p9f8##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?59apng') format('woff2'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?59apng') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?59apng') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?59apng##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -372,9 +372,9 @@
     content: $usk-icon-compare-button; 
   }
 }
-.usk-icon-product-filter {
+.usk-icon-product-filters {
   &:before {
-    content: $usk-icon-product-filter; 
+    content: $usk-icon-product-filters; 
   }
 }
 .usk-icon-florence-grid {
