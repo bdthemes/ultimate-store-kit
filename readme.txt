@@ -1,11 +1,11 @@
 === Ultimate Store Kit - Elementor powered WooCommerce Builder, 80+ Widgets and Template Builder ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
-Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, easy digital downloads
-Stable tag: 2.5.0
+Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, woocommerce product
+Stable tag: 2.6.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.8
+Tested up to: 6.8.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
@@ -206,7 +206,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.5.X [XX May 2025] =
+= 2.6.0 [15th May 2025] =
 
 * Added: Column options and image size settings have been added for the Shiny Grid, Florence Grid, and Glossy Grid List layout.
 * Updated: The overall design for the Shiny Grid, Florence Grid, and Glossy Grid has been further improved.
@@ -214,6 +214,8 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: WPML integration with Elementor editor for Theme Builder
 * Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
 * Fixed: DCI Notice transition issue fixed
+* Fixed: Text domain translate issue fixed
+* Updated: Security issue improved
 
 = 2.5.0 [28th April 2025] =
 

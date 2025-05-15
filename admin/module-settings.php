@@ -524,7 +524,7 @@ class ModuleService {
                     'widget_type'  => 'pro',
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
-                    'content_type' => 'woocommerce others',
+                    'content_type' => 'woocommerce others new',
                     'demo_url'     => 'https://storekit.pro/demo/product-filters/',
                     'video_url'    => '',
                 ],
