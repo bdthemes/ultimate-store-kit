@@ -214,6 +214,8 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: WPML integration with Elementor editor for Theme Builder
 * Fixed: Resolved jQuery Migrate warning ( Thanks to BackuPs )
 * Fixed: DCI Notice transition issue fixed
+* Fixed: Text domain translate issue fixed
+* Updated: Security issue improved
 
 = 2.5.0 [28th April 2025] =
 
