@@ -62,9 +62,9 @@ class Sub_Category extends Module_Base {
     // }
 
     public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
-		}
-		protected function register_controls() {
+        return ! \Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+    }
+    protected function register_controls() {
         $this->start_controls_section(
             'section_content_layout',
             [
@@ -129,23 +129,23 @@ class Sub_Category extends Module_Base {
         $this->add_responsive_control(
             'item_flex_direction',
             [
-                'label' => esc_html__( 'Direction', 'ultimate-store-kit' ),
+                'label' => esc_html__('Direction', 'ultimate-store-kit'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'row' => [
-                        'title' => esc_html__( 'Row - horizontal', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Row - horizontal', 'ultimate-store-kit'),
                         'icon' => 'eicon-arrow-right',
                     ],
                     'column' => [
-                        'title' => esc_html__( 'Column - vertical', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Column - vertical', 'ultimate-store-kit'),
                         'icon' => 'eicon-arrow-down',
                     ],
                     'row-reverse' => [
-                        'title' => esc_html__( 'Row - reversed', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Row - reversed', 'ultimate-store-kit'),
                         'icon' => 'eicon-arrow-left',
                     ],
                     'column-reverse' => [
-                        'title' => esc_html__( 'Column - reversed', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Column - reversed', 'ultimate-store-kit'),
                         'icon' => 'eicon-arrow-up',
                     ],
                 ],
@@ -158,23 +158,23 @@ class Sub_Category extends Module_Base {
         $this->add_responsive_control(
             'text_align',
             [
-                'label' => esc_html__( 'Text Align', 'ultimate-store-kit' ),
+                'label' => esc_html__('Text Align', 'ultimate-store-kit'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__( 'Left', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Left', 'ultimate-store-kit'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__( 'Center', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Center', 'ultimate-store-kit'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__( 'Right', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Right', 'ultimate-store-kit'),
                         'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
-                        'title' => esc_html__( 'Justify', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Justify', 'ultimate-store-kit'),
                         'icon' => 'eicon-text-align-justify',
                     ],
                 ],
@@ -300,7 +300,7 @@ class Sub_Category extends Module_Base {
                 'selector' => '{{WRAPPER}} .usk-sub-category .usk-item',
             ]
         );
-        
+
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
@@ -346,9 +346,9 @@ class Sub_Category extends Module_Base {
         $this->add_responsive_control(
             'space_between',
             [
-                'label' => esc_html__( 'Space Between', 'ultimate-store-kit' ),
+                'label' => esc_html__('Space Between', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', 'em', '%' ],
+                'size_units' => ['px', 'em', '%'],
                 'selectors' => [
                     '{{WRAPPER}} .usk-sub-category .usk-item' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
@@ -446,19 +446,19 @@ class Sub_Category extends Module_Base {
         $this->add_responsive_control(
             'image_alignment',
             [
-                'label' => esc_html__( 'Alignment', 'ultimate-store-kit' ),
+                'label' => esc_html__('Alignment', 'ultimate-store-kit'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__( 'Left', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Left', 'ultimate-store-kit'),
                         'icon' => 'eicon-h-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__( 'Center', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Center', 'ultimate-store-kit'),
                         'icon' => 'eicon-h-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__( 'Right', 'ultimate-store-kit' ),
+                        'title' => esc_html__('Right', 'ultimate-store-kit'),
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
@@ -681,7 +681,7 @@ class Sub_Category extends Module_Base {
                 'default'       => 'yes',
             ]
         );
-        
+
         $this->add_control(
             'thumbs_loop',
             [
@@ -693,7 +693,7 @@ class Sub_Category extends Module_Base {
                 'default'       => 'yes',
             ]
         );
-        
+
         $this->add_control(
             'thumbs_autoplay_speed',
             [
@@ -745,24 +745,24 @@ class Sub_Category extends Module_Base {
             ]
         );
         //creative effect control
-		$this->add_control(
-			'creative_effect',
-			[ 
-				'label'     => esc_html__( 'Creative Effect', 'ultimate-store-kit' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'creative-1',
-				'options'   => [ 
-					'creative-1' => esc_html__( 'Creative 1', 'ultimate-store-kit' ),
-					'creative-2' => esc_html__( 'Creative 2', 'ultimate-store-kit' ),
-					'creative-3' => esc_html__( 'Creative 3', 'ultimate-store-kit' ),
-					'creative-4' => esc_html__( 'Creative 4', 'ultimate-store-kit' ),
-					'creative-5' => esc_html__( 'Creative 5', 'ultimate-store-kit' ),
-				],
-				'condition' => [ 
-					'thumbs_effect' => 'creative',
-				],
-			]
-		);
+        $this->add_control(
+            'creative_effect',
+            [
+                'label'     => esc_html__('Creative Effect', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SELECT,
+                'default'   => 'creative-1',
+                'options'   => [
+                    'creative-1' => esc_html__('Creative 1', 'ultimate-store-kit'),
+                    'creative-2' => esc_html__('Creative 2', 'ultimate-store-kit'),
+                    'creative-3' => esc_html__('Creative 3', 'ultimate-store-kit'),
+                    'creative-4' => esc_html__('Creative 4', 'ultimate-store-kit'),
+                    'creative-5' => esc_html__('Creative 5', 'ultimate-store-kit'),
+                ],
+                'condition' => [
+                    'thumbs_effect' => 'creative',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
     }
@@ -785,7 +785,7 @@ class Sub_Category extends Module_Base {
         $taxonomies = get_terms($args);
         if (!(empty($taxonomies))) :
             $index  = 50;
-            foreach ($taxonomies as $category) :                
+            foreach ($taxonomies as $category) :
                 if ($category->parent == 0 && get_term_children($category->term_id, 'product_cat')) :
                     $this->add_render_attribute('sub-category-item', [
                         'class' => [
@@ -796,7 +796,7 @@ class Sub_Category extends Module_Base {
                                 "autoplay"              => ("yes" == $settings["thumbs_autoplay"]) ? ["delay" => $settings["thumbs_autoplay_speed"] + $index += rand(500, 1500)] : false,
                                 "loop"                  => ($settings["thumbs_loop"] == "yes") ? true : false,
                                 "speed"                 => $settings["thumbs_slide_speed"]["size"],
-                                "fadeEffect"          => [ 'crossFade' => true ],
+                                "fadeEffect"          => ['crossFade' => true],
                                 "effect"                => $settings["thumbs_effect"],
                                 "creativeEffect" => isset($settings["creative_effect"]) ? $settings["creative_effect"] : false,
                             ]))
@@ -856,18 +856,18 @@ class Sub_Category extends Module_Base {
                             </div>
 
                             <div class="usk-link-btn">
-                               <?php 
-                               printf(
-                                   '<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i></a>',
-                                   /* translators: %s: Category name */
-                                   sprintf(esc_html__('All %s', 'ultimate-store-kit'), $category->name),
-                                   esc_url(get_term_link($category->term_id, 'product_cat'))
-                               );
-                               ?>
+                                <?php
+                                printf(
+                                    '<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i></a>',
+                                    /* translators: %s: Category name */
+                                    sprintf(esc_html__('All %s', 'ultimate-store-kit'), $category->name),
+                                    esc_url(get_term_link($category->term_id, 'product_cat'))
+                                );
+                                ?>
                             </div>
                         </div>
                     </div>
-                <?php
+        <?php
                 endif;
                 $index++;
             endforeach;
@@ -878,6 +878,6 @@ class Sub_Category extends Module_Base {
         <div class="usk-sub-category">
             <?php $this->render_items(); ?>
         </div>
-        <?php
+<?php
     }
 }

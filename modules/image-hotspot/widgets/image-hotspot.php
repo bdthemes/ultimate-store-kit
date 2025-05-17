@@ -67,7 +67,7 @@ class Image_Hotspot extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['swiper', 'micromodal', 'popper', 'tippyjs', 'usk-site'];
         } else {
-            return ['swiper', 'micromodal', 'popper', 'tippyjs'];
+            return ['swiper', 'micromodal', 'popper', 'tippyjs', 'usk-image-hotspot'];
         }
     }
 
@@ -2539,8 +2539,8 @@ class Image_Hotspot extends Module_Base {
                     $have_rating = ('yes' === $settings['show_rating']) ? 'usk-have-rating' : '';
                     $categories = str_replace(',', '', wc_get_product_category_list($product->get_id()));
 
-		?>
-		<div class="swiper-slide usk-item <?php echo esc_attr($have_rating); ?>">
+    ?>
+        <div class="swiper-slide usk-item <?php echo esc_attr($have_rating); ?>">
             <div class="usk-item-box">
                 <?php $this->render_image(); ?>
                 <div class="usk-content">
