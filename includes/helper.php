@@ -1085,18 +1085,8 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 	?>
 		<div class="usk-modal-page">
 			<?php
-
 			while (have_posts()) :
 				the_post(); ?>
-
-				<script>
-					var url = '<?php echo esc_url(plugins_url('assets/js/prettyPhoto/jquery.prettyPhoto.init.js', WC_PLUGIN_FILE)); ?>';
-					jQuery.getScript(url);
-					var wc_add_to_cart_variation_params = {
-						"ajax_url": "\/wp-admin\/admin-ajax.php"
-					};
-					jQuery.getScript("<?php echo esc_url($woocommerce->plugin_url()); ?> '/assets/js/frontend/add-to-cart-variation.min.js'");
-				</script>
 				<div class="usk-modal-product">
 					<div id="product-<?php the_ID(); ?>" <?php post_class('product'); ?>>
 						<div class="usk-modal-image-wrapper">
@@ -1133,7 +1123,56 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 			<?php endwhile; ?>
 		</div>
 
-		<?php echo wp_kses_post( ob_get_clean() );
+		<?php
+		$content = ob_get_clean();
+		echo wp_kses_post($content);
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				// Load required WooCommerce scripts
+				var scripts = [
+					'<?php echo esc_url(plugins_url('assets/js/prettyPhoto/jquery.prettyPhoto.init.js', WC_PLUGIN_FILE)); ?>',
+					'<?php echo esc_url(plugins_url('assets/js/frontend/add-to-cart-variation.min.js', WC_PLUGIN_FILE)); ?>',
+					'<?php echo esc_url(plugins_url('assets/js/frontend/add-to-cart.min.js', WC_PLUGIN_FILE)); ?>',
+					'<?php echo esc_url(plugins_url('assets/js/frontend/single-product.min.js', WC_PLUGIN_FILE)); ?>'
+				];
+
+				// Load scripts sequentially
+				function loadScript(index) {
+					if (index >= scripts.length) {
+						initializeWooCommerce();
+						return;
+					}
+
+					$.getScript(scripts[index], function() {
+						loadScript(index + 1);
+					});
+				}
+
+				function initializeWooCommerce() {
+					// Initialize WooCommerce add to cart functionality
+					var wc_add_to_cart_variation_params = {
+						"ajax_url": "<?php echo admin_url('admin-ajax.php'); ?>",
+						"i18n_view_cart": "<?php echo esc_js(__('View cart', 'woocommerce')); ?>",
+						"cart_url": "<?php echo esc_url(wc_get_cart_url()); ?>",
+						"is_cart": "<?php echo is_cart() ? '1' : '0'; ?>",
+						"cart_redirect_after_add": "<?php echo get_option('woocommerce_cart_redirect_after_add') ? '1' : '0'; ?>"
+					};
+
+					// Initialize variation forms
+					$(document.body).trigger('wc_variation_form');
+
+					// Initialize add to cart buttons
+					$(document.body).trigger('wc_fragments_refreshed');
+					$(document.body).trigger('wc_fragments_loaded');
+					$(document.body).trigger('added_to_cart');
+				}
+
+				// Start loading scripts
+				// loadScript(0);
+			});
+		</script>
+	<?php
 		exit();
 	}
 }
