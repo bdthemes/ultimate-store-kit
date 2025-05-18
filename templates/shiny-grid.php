@@ -51,9 +51,9 @@ class USK_Shiny_Grid_Template
             <div class="usk-item-box">
                 <?php $this->render_product_image($product); ?>
                 <div class="usk-content">
-                    <?php if (isset($settings['show_variation']) && $settings['show_variation'] === 'yes'): ?>
-                        <?php $this->render_product_variation($product); ?>
-                    <?php endif; ?>
+                    <?php //if (isset($settings['show_variation']) && $settings['show_variation'] === 'yes'): ?>
+                        <?php //$this->render_product_variation($product); ?>
+                    <?php //endif; ?>
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)): ?>
                             <div class="usk-category"><?php echo wp_kses_post($categories); ?></div>
