@@ -326,18 +326,18 @@ trait Global_Widget_Controls
                 'default' => 'yes',
             ]
         );
-        if ($this->get_name() === 'usk-shiny-grid'):
-            $this->add_control(
-                'show_variation',
-                [
-                    'label' => esc_html__('Show Variation', 'ultimate-store-kit') . BDTUSK_PC,
-                    'type' => Controls_Manager::SWITCHER,
-                    'separator' => 'before',
-                    'default' => 'no',
-                    'classes' => BDTUSK_IS_PC
-                ]
-            );
-        endif;
+        // if ($this->get_name() === 'usk-shiny-grid'):
+        //     $this->add_control(
+        //         'show_variation',
+        //         [
+        //             'label' => esc_html__('Show Variation', 'ultimate-store-kit') . BDTUSK_PC,
+        //             'type' => Controls_Manager::SWITCHER,
+        //             'separator' => 'before',
+        //             'default' => 'no',
+        //             'classes' => BDTUSK_IS_PC
+        //         ]
+        //     );
+        // endif;
         if ($this->get_name() === 'usk-image-hotspot'):
             $this->add_group_control(
                 Group_Control_Image_Size::get_type(),
