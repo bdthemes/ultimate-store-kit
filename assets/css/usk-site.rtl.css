@@ -1088,8 +1088,7 @@ div.pp_pic_holder {
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image,
 .usk-grid-carousel .usk-list-layout .usk-image {
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   height: 100%;
 }
 .tippy-box[data-theme^=bdt-tippy-image-hotspot-] .usk-list-layout .usk-image .img,

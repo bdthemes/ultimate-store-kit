@@ -194,7 +194,10 @@ class Glossy_Grid extends Module_Base
             [
                 'label' => esc_html__('Columns Filter', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'separator' => 'before'
+                'separator' => 'before',
+                'condition' => [
+                    'layout_style' => 'grid'
+                ]
             ]
         );
         $this->add_control(

@@ -831,7 +831,7 @@ trait Global_Widget_Controls
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'max-width: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'width: {{SIZE}}{{UNIT}}',
                 ],
                 'condition' => [
                     'layout_style' => 'list',

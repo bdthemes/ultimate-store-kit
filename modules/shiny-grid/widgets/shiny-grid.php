@@ -187,7 +187,10 @@ class Shiny_Grid extends Module_Base {
             [
                 'label' => esc_html__('Columns Filter', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SWITCHER,
-                'separator' => 'before'
+                'separator' => 'before',
+                'condition' => [
+                    'layout_style' => 'grid'
+                ],
             ]
         );
 
@@ -208,7 +211,8 @@ class Shiny_Grid extends Module_Base {
 
                 ],
                 'condition' => [
-                    'show_tab' => 'yes'
+                    'show_tab' => 'yes',
+                    'layout_style' => 'grid'
                 ],
                 'default' => ['list-2', 'grid-2', 'grid-3', 'grid-4'],
             ]
