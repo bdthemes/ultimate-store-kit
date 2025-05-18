@@ -56,7 +56,7 @@ class Mentor_Slider extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['swiper', 'micromodal', 'usk-site'];
         } else {
-            return ['swiper', 'micromodal'];
+            return ['swiper', 'micromodal', 'usk-mentor-slider'];
         }
     }
 
@@ -1535,13 +1535,13 @@ class Mentor_Slider extends Module_Base {
         );
 
         $this->add_control(
-			'thumbs_hover_heading',
-			[
-				'label' => esc_html__( 'Hover', 'ultimate-store-kit' ),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
+            'thumbs_hover_heading',
+            [
+                'label' => esc_html__('Hover', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
         $this->add_control(
             'thumbs_items_hover_border_color',
