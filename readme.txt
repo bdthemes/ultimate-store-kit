@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, woocommerce product
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.1
@@ -205,6 +205,11 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.6.1 [18th May 2025] =
+
+* Fixed: Quick view issue fixed
+* Fixed: Mentor slider issue fixed
 
 = 2.6.0 [15th May 2025] =
 
