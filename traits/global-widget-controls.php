@@ -41,6 +41,7 @@ trait Global_Widget_Controls
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-item .usk-item-box .usk-content' => 'text-align: {{VALUE}}',
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-rating' => 'justify-content: {{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-variation-group' => 'justify-content: {{VALUE}}',
                 ],
                 'render_type' => 'template'
             ]
