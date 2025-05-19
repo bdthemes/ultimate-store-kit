@@ -1,0 +1,117 @@
+.ultimate-store-kit .edd-blocks__checkout p {
+  font-size: 16px;
+  color: #535259;
+  line-height: 1.7;
+}
+.ultimate-store-kit #edd_checkout_cart {
+  border-radius: 6px;
+}
+.ultimate-store-kit .edd-blocks-cart__row {
+  padding: 15px;
+}
+.ultimate-store-kit .edd_cart_header_row .edd_cart_item_name,
+.ultimate-store-kit .edd_cart_header_row .edd_cart_item_price {
+  font-size: 16px;
+  color: #3e3f42;
+}
+.ultimate-store-kit .edd_cart_item .edd_cart_item_name,
+.ultimate-store-kit .edd_cart_item .edd_cart_item_price {
+  font-size: 14px;
+  color: #3e3f42;
+  font-weight: 600;
+}
+.ultimate-store-kit .edd_cart_item_image img {
+  width: 40px;
+  height: auto;
+  border-radius: 6px;
+}
+.ultimate-store-kit .edd_cart_total {
+  font-size: 14px;
+}
+.ultimate-store-kit .edd-submit {
+  border: 0 !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+}
+.ultimate-store-kit .edd-discount-code-field-wrap #edd-discount {
+  padding: 10px !important;
+  border-radius: 6px;
+  outline: none;
+  border: 1px solid #ddd;
+}
+.ultimate-store-kit .edd-discount-code-field-wrap #edd-discount:focus,
+.ultimate-store-kit .edd-input:focus,
+.ultimate-store-kit .p-Input .p-Input-input:focus {
+  border-color: #d1e3ff;
+  box-shadow: 0 0 0 1px #d1e3ff;
+}
+.ultimate-store-kit #edd_checkout_form_wrap fieldset {
+  border-radius: 6px;
+}
+.ultimate-store-kit #edd_checkout_form_wrap legend {
+  background: #fff;
+  width: auto;
+  font-size: 20px;
+  padding: 0 10px;
+}
+.ultimate-store-kit label.edd-label {
+  font-size: 14px !important;
+  color: #3e3f42 !important;
+  font-weight: 500 !important;
+  margin: 0 0 10px !important;
+}
+.ultimate-store-kit .edd-input,
+.ultimate-store-kit .Input {
+  padding: 12px !important;
+  line-height: 1 !important;
+  border: 1px solid #e7e6e9;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #4d4d55;
+  outline: none;
+}
+.ultimate-store-kit input#card_phone {
+  padding-left: 46px !important;
+}
+.ultimate-store-kit .edd-gateway-option {
+  border: 1px solid #e4e4e8 !important;
+  padding: 15px !important;
+  border-radius: 6px !important;
+}
+.ultimate-store-kit .edd-blocks-receipt__items,
+.ultimate-store-kit .edd-blocks-receipt__totals {
+  border-radius: 6px;
+  padding: 20px;
+  gap: 15px;
+}
+.ultimate-store-kit .edd_purchase_receipt_files {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.ultimate-store-kit .edd-blocks__row {
+  padding: 0 0 15px;
+}
+.ultimate-store-kit .edd-blocks__row:last-child {
+  padding: 0;
+  border: 0;
+}
+.ultimate-store-kit .edd-blocks__row-label {
+  font-size: 16px;
+}
+.ultimate-store-kit .edd_purchase_receipt_files {
+  font-size: 14px;
+  color: #585763;
+  margin: 8px 0 0;
+}
+.ultimate-store-kit .edd-blocks-receipt__item-price,
+.ultimate-store-kit .edd-blocks__row-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e3f42;
+}
+.ultimate-store-kit .wp-block-edd-receipt h3,
+.ultimate-store-kit .wp-block-edd-confirmation h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
