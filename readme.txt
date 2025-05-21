@@ -206,6 +206,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.6.XX [XXth May 2025] =
+
+* Fixed: JS error fixed in Dashboard Settings
+
 = 2.6.1 [18th May 2025] =
 
 * Fixed: Quick view issue fixed
