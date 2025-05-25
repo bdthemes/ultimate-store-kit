@@ -15,10 +15,8 @@ use Elementor\Group_Control_Box_Shadow;
 defined('ABSPATH') || die();
 
 
-trait Global_Widget_Controls
-{
-    protected function register_global_controls_grid_layout()
-    {
+trait Global_Widget_Controls {
+    protected function register_global_controls_grid_layout() {
         $this->add_responsive_control(
             'alignment',
             [
@@ -56,8 +54,7 @@ trait Global_Widget_Controls
             ]
         );
     }
-    protected function register_global_controls_query()
-    {
+    protected function register_global_controls_query() {
         $this->start_controls_section(
             'section_content_query',
             [
@@ -199,8 +196,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_additional()
-    {
+    protected function register_global_controls_additional() {
         $this->start_controls_section(
             'section_woocommerce_additional',
             [
@@ -326,18 +322,18 @@ trait Global_Widget_Controls
                 'default' => 'yes',
             ]
         );
-        // if ($this->get_name() === 'usk-shiny-grid'):
-        //     $this->add_control(
-        //         'show_variation',
-        //         [
-        //             'label' => esc_html__('Show Variation', 'ultimate-store-kit') . BDTUSK_PC,
-        //             'type' => Controls_Manager::SWITCHER,
-        //             'separator' => 'before',
-        //             'default' => 'no',
-        //             'classes' => BDTUSK_IS_PC
-        //         ]
-        //     );
-        // endif;
+        if ($this->get_name() === 'usk-shiny-grid'):
+            $this->add_control(
+                'show_variation',
+                [
+                    'label' => esc_html__('Show Variation', 'ultimate-store-kit') . BDTUSK_PC,
+                    'type' => Controls_Manager::SWITCHER,
+                    'separator' => 'before',
+                    'default' => 'no',
+                    'classes' => BDTUSK_IS_PC
+                ]
+            );
+        endif;
         if ($this->get_name() === 'usk-image-hotspot'):
             $this->add_group_control(
                 Group_Control_Image_Size::get_type(),
@@ -451,8 +447,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_grid_columns()
-    {
+    protected function register_global_controls_grid_columns() {
         $this->start_controls_section(
             'section_style_columns_filter',
             [
@@ -609,8 +604,7 @@ trait Global_Widget_Controls
         $this->end_controls_tabs();
         $this->end_controls_section();
     }
-    protected function register_global_controls_result_count()
-    {
+    protected function register_global_controls_result_count() {
         $this->start_controls_section(
             'section_style_result_count',
             [
@@ -657,8 +651,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_grid_items()
-    {
+    protected function register_global_controls_grid_items() {
         $this->start_controls_section(
             'section_style_item',
             [
@@ -794,8 +787,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_grid_image()
-    {
+    protected function register_global_controls_grid_image() {
         $this->start_controls_section(
             'section_style_image',
             [
@@ -943,8 +935,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_content()
-    {
+    protected function register_global_controls_content() {
         $this->start_controls_section(
             'section_style_content',
             [
@@ -1041,8 +1032,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_title()
-    {
+    protected function register_global_controls_title() {
         $this->start_controls_section(
             'section_style_title',
             [
@@ -1097,8 +1087,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    public function register_global_controls_add_to_cart()
-    {
+    public function register_global_controls_add_to_cart() {
         $this->start_controls_section(
             'section_style_button',
             [
@@ -1257,8 +1246,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_category()
-    {
+    protected function register_global_controls_category() {
         $this->start_controls_section(
             'section_style_category',
             [
@@ -1407,8 +1395,7 @@ trait Global_Widget_Controls
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_excerpt()
-    {
+    protected function register_global_controls_excerpt() {
         $this->start_controls_section(
             'section_style_excerpt',
             [
@@ -1467,8 +1454,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_price()
-    {
+    protected function register_global_controls_price() {
         $this->start_controls_section(
             'section_style_price',
             [
@@ -1529,8 +1515,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_rating()
-    {
+    protected function register_global_controls_rating() {
         $this->start_controls_section(
             'section_style_rating',
             [
@@ -1567,8 +1552,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_action_btn()
-    {
+    protected function register_global_controls_action_btn() {
         $this->start_controls_section(
             'style_action_btn',
             [
@@ -2103,8 +2087,7 @@ trait Global_Widget_Controls
         $this->end_controls_tabs();
         $this->end_controls_section();
     }
-    protected function register_global_controls_grid_pagination()
-    {
+    protected function register_global_controls_grid_pagination() {
         $this->start_controls_section(
             'section_style_pagination',
             [
@@ -2325,8 +2308,7 @@ trait Global_Widget_Controls
     /**
      * Register global controls for badge
      */
-    protected function register_global_controls_badge()
-    {
+    protected function register_global_controls_badge() {
         $this->start_controls_section(
             'badge',
             [
@@ -2691,8 +2673,7 @@ trait Global_Widget_Controls
         $this->end_controls_tabs();
         $this->end_controls_section();
     }
-    protected function register_global_controls_carousel_navigation()
-    {
+    protected function register_global_controls_carousel_navigation() {
         $this->start_controls_section(
             'section_content_navigation',
             [
@@ -2858,8 +2839,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_navigation_style()
-    {
+    protected function register_global_controls_navigation_style() {
         $this->start_controls_section(
             'section_style_navigation',
             [
@@ -3935,8 +3915,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_carousel_settings()
-    {
+    protected function register_global_controls_carousel_settings() {
         $this->start_controls_section(
             'section_carousel_settings',
             [
@@ -4211,8 +4190,7 @@ trait Global_Widget_Controls
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_variation()
-    {
+    protected function register_global_controls_variation() {
         $this->start_controls_section(
             'section_global_variation',
             [
