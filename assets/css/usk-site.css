@@ -867,6 +867,9 @@ div.pp_pic_holder {
   .usk-css-grid .usk-grid.usk-grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
+  .usk-css-grid .usk-grid.usk-grid-1.usk-list-layout {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
 }
 @media screen and (min-width: 1024px) {
   .usk-css-grid .usk-grid.usk-list-2 {

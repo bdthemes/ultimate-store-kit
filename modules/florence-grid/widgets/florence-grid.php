@@ -50,9 +50,10 @@ class Florence_Grid extends Module_Base
         return ['product', 'product grid', 'table', 'wc', 'grid', 'list', 'florence grid'];
     }
 
-    // public function get_script_depends() {
-    //     return ['micromodal'];
-    // }
+    public function get_script_depends()
+    {
+        return ['usk-shiny-grid'];
+    }
 
     public function get_style_depends()
     {
@@ -97,6 +98,9 @@ class Florence_Grid extends Module_Base
                     'grid' => esc_html__('Grid', 'ultimate-store-kit'),
                     'list' => esc_html__('List', 'ultimate-store-kit'),
                 ],
+                'condition' => [
+                    'show_tab!' => 'yes'
+                ]
             ]
         );
         $this->add_responsive_control(
@@ -116,7 +120,8 @@ class Florence_Grid extends Module_Base
                     '6' => '6',
                 ],
                 'condition' => [
-                    'layout_style' => 'grid'
+                    'layout_style' => 'grid',
+                    'show_tab!' => 'yes'
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-florence-grid .usk-grid.usk-grid-layout' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
@@ -211,7 +216,8 @@ class Florence_Grid extends Module_Base
 
                 ],
                 'condition' => [
-                    'show_tab' => 'yes'
+                    'show_tab' => 'yes',
+                    'layout_style' => 'grid'
                 ],
                 'default' => ['list-2', 'grid-2', 'grid-3', 'grid-4'],
             ]
