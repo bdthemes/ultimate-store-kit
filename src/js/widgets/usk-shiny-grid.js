@@ -62,16 +62,33 @@
     // Remove any existing handlers to prevent duplicates
     $(document.body).off('click.uskVariationAddToCart', '.usk-button.product_type_variation.add_to_cart_button');
 
+    // Remove WooCommerce's default click handler that might be causing redirects
+    $(document.body).off('click', '.add_to_cart_button');
+
+    // Remove href attributes from all variation buttons to prevent default browser navigation
+    $('.usk-button.product_type_variation.add_to_cart_button').each(function() {
+      $(this).attr('href', 'javascript:void(0)');
+      $(this).attr('data-prevent_redirect', 'true');
+    });
+
     // Add handler for variation add to cart buttons
     $(document.body).on('click.uskVariationAddToCart', '.usk-button.product_type_variation.add_to_cart_button', function(e) {
+      // Always prevent default action to avoid redirect
       e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
 
       const $button = $(this);
+
+      // Remove href to prevent any chance of redirect
+      $button.attr('href', 'javascript:void(0)');
+
       const productId = $button.data('product_id');
       const variationId = $button.data('variation_id');
 
       if (!productId || !variationId) {
-        return true; // Let the default link behavior happen
+        console.log('Missing product ID or variation ID');
+        return false; // Don't proceed without required data
       }
 
       // Prepare data for AJAX add to cart
@@ -133,11 +150,22 @@
         error: function() {
           $button.removeClass('loading');
           alert('Error occurred while adding to cart. Please try again.');
+        },
+        complete: function() {
+          // Ensure the href is still void to prevent any redirects
+          $button.attr('href', 'javascript:void(0)');
         }
       });
 
       return false;
     });
+
+    // Also handle any dynamically added buttons
+    $(document.body).on('wc_fragments_refreshed wc_fragments_loaded added_to_cart', function() {
+      $('.usk-button.product_type_variation.add_to_cart_button').each(function() {
+        $(this).attr('href', 'javascript:void(0)');
+        $(this).attr('data-prevent_redirect', 'true');
+      });
+    });
   }
 })(jQuery, window.elementorFrontend);
-

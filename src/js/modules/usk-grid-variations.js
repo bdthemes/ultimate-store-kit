@@ -598,22 +598,16 @@
         .removeClass("product_type_variable")
         .addClass("product_type_variation add_to_cart_button ajax_add_to_cart")
         .attr("data-product_id", self.productId)
-        .attr("data-variation_id", variationId);
-
-      // Build the cart URL with proper parameters
-      var cartUrl =
-        "?add-to-cart=" + self.productId + "&variation_id=" + variationId;
+        .attr("data-variation_id", variationId)
+        .attr("data-prevent_redirect", "true")
+        .attr("href", "javascript:void(0)");
 
       // Add attribute data
       $.each(attributes.data, function (name, value) {
         if (value) {
           $addToCartBtn.attr("data-" + name, value);
-          cartUrl +=
-            "&" + encodeURIComponent(name) + "=" + encodeURIComponent(value);
         }
       });
-
-      $addToCartBtn.attr("href", cartUrl);
 
       // Update button text
       var buttonText = $addToCartBtn.find(".usk-icon-arrow-right-8").length
@@ -787,112 +781,14 @@
     });
   }
 
-  // Handle variation add to cart
-  function setupVariationAddToCart() {
-    // Remove any existing handlers to prevent duplicates
-    $(document.body).off(
-      "click.uskVariationAddToCart",
-      ".usk-button.product_type_variation.add_to_cart_button"
-    );
-
-    // Add handler for variation add to cart buttons
-    $(document.body).on(
-      "click.uskVariationAddToCart",
-      ".usk-button.product_type_variation.add_to_cart_button",
-      function (e) {
-        e.preventDefault();
-
-        const $button = $(this);
-        const productId = $button.data("product_id");
-        const variationId = $button.data("variation_id");
-
-        if (!productId || !variationId) {
-          return true; // Let the default link behavior happen
-        }
-
-        // Prepare data for AJAX add to cart
-        const data = {
-          product_id: productId,
-          variation_id: variationId,
-          quantity: 1,
-        };
-
-        // Add all attributes
-        $.each($button[0].attributes, function (i, attr) {
-          if (attr.name.startsWith("data-attribute_")) {
-            const attrName = attr.name.substring(5); // Remove 'data-'
-            data[attrName] = attr.value;
-          }
-        });
-
-        // Add the loading class
-        $button.addClass("loading");
-
-        // Send AJAX request
-        $.ajax({
-          type: "POST",
-          url: usk_ajax_config.ajax_url,
-          data: {
-            action: "usk_add_to_cart",
-            nonce: usk_ajax_config.nonce,
-            ...data,
-          },
-          success: function (response) {
-            $button.removeClass("loading");
-
-            if (response.success) {
-              // Update fragments
-              if (response.fragments) {
-                $.each(response.fragments, function (key, value) {
-                  $(key).replaceWith(value);
-                });
-              }
-
-              // Trigger events for WC compatibility
-              $(document.body).trigger("wc_fragment_refresh");
-              $(document.body).trigger("added_to_cart", [
-                response.fragments,
-                response.cart_hash,
-                $button,
-              ]);
-
-              // Show success message
-              const $notification = $(
-                '<div class="usk-cart-success-message">Product added to cart! ✓</div>'
-              );
-              $button.closest(".usk-item").append($notification);
-
-              setTimeout(function () {
-                $notification.fadeOut(300, function () {
-                  $(this).remove();
-                });
-              }, 2000);
-            } else {
-              console.error("Error adding to cart:", response);
-              alert(response.message || "Error adding product to cart");
-            }
-          },
-          error: function () {
-            $button.removeClass("loading");
-            alert("Error occurred while adding to cart. Please try again.");
-          },
-        });
-
-        return false;
-      }
-    );
-  }
-
   $(function () {
     // Initialize on page load
     init_grid_variations();
-    setupVariationAddToCart();
     // Also reinitialize after cart fragments refresh (important for when returning from cart/checkout)
     $(document.body).on(
       "wc_fragments_refreshed wc_fragments_loaded added_to_cart",
       function () {
         init_grid_variations();
-        setupVariationAddToCart();
       }
     );
   });
