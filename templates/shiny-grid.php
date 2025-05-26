@@ -49,7 +49,8 @@ class USK_Shiny_Grid_Template {
                 <?php $this->render_product_image($product); ?>
                 <div class="usk-content">
                     <?php if (isset($settings['show_variation']) && $settings['show_variation'] === 'yes'): ?>
-                        <?php $this->render_product_variation($product); ?>
+                        <?php $this->render_product_variation($product);
+                        ?>
                     <?php endif; ?>
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)): ?>
@@ -98,7 +99,7 @@ class USK_Shiny_Grid_Template {
     /**
      * Render add to cart button
      */
-    public function render_add_to_cart_button($product) {
+    public function __render_add_to_cart_button($product) {
         if (!$product) {
             return;
         }
@@ -213,6 +214,47 @@ class USK_Shiny_Grid_Template {
             $args
         );
     }
+    public function render_add_to_cart_button($product) {
+        if ($product) {
+            $defaults = [
+                'quantity'   => 1,
+                'class'      => implode(
+                    ' ',
+                    array_filter(
+                        [
+                            'usk-button',
+                            'product_type_' . $product->get_type(),
+                            $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                            $product->supports('ajax_add_to_cart') && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
+                        ]
+                    )
+                ),
+                'attributes' => [
+                    'data-product_id'  => $product->get_id(),
+                    'data-product_sku' => $product->get_sku(),
+                    'aria-label'       => $product->add_to_cart_description(),
+                    'rel'              => 'nofollow',
+                ],
+            ];
+            $args = apply_filters('woocommerce_loop_add_to_cart_args', wp_parse_args($defaults), $product);
+            if (isset($args['attributes']['aria-label'])) {
+                $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
+            }
+            echo wp_kses_post(apply_filters(
+                'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+                sprintf(
+                    '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
+                    esc_url($product->add_to_cart_url()),
+                    esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
+                    esc_attr(isset($args['class']) ? $args['class'] : 'button'),
+                    isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
+                    esc_html($product->add_to_cart_text())
+                ),
+                $product,
+                $args
+            ));
+        };
+    }
 
     /**
      * Get variation ID from product attributes
@@ -305,6 +347,13 @@ class USK_Shiny_Grid_Template {
     }
 
     /**
+     * Check if swatches support is available
+     */
+    private function has_swatches_support() {
+        return class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches');
+    }
+
+    /**
      * Render product variation options (colors, sizes)
      * Displays variation swatches on product grid items
      */
@@ -318,64 +367,114 @@ class USK_Shiny_Grid_Template {
             return;
         }
 
+        // If Pro version with swatches is active, use that functionality
+        if ($this->has_swatches_support() && function_exists('apply_filters')) {
+            $this->render_swatches_variation($product, $variations);
+            return;
+        }
+
+        // Otherwise use the simple variation buttons
+        $this->render_simple_variations($product, $variations);
+    }
+
+    /**
+     * Render simple variation buttons for the free version
+     */
+    private function render_simple_variations($product, $variations) {
         $product_id = $product->get_id();
-        $default_attributes = $product->get_default_attributes();
-        $attributes = $product->get_attributes();
+        $attributes = $product->get_variation_attributes();
 
-        printf('<div class="usk-variations-container" data-product-id="%s">', esc_attr($product_id));
+        if (empty($attributes)) {
+            return;
+        }
 
-        foreach ($attributes as $attribute_name => $attribute) {
-            if (!$attribute->get_variation()) {
+        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true">';
+
+        foreach ($attributes as $attribute_name => $options) {
+            if (empty($options)) {
                 continue;
             }
 
-            $attribute_values = [];
+            // Get attribute label
             $attribute_label = wc_attribute_label($attribute_name);
-            $sanitized_name = sanitize_title($attribute_name);
+            $attribute_slug = sanitize_title($attribute_name);
 
-            printf(
-                '<div class="usk-variation-group usk-%s-group"><span class="usk-variation-label">%s</span>',
-                esc_attr($sanitized_name),
-                esc_html($attribute_label)
-            );
+            echo '<div class="usk-variation-group">';
+            echo '<span class="usk-variation-label">' . esc_html($attribute_label) . '</span>';
+            echo '<div class="usk-variation-options">';
 
-            foreach ($variations as $variation) {
-                $taxonomy_key = 'attribute_' . $attribute_name;
-                if (!isset($variation['attributes'][$taxonomy_key])) {
-                    continue;
-                }
-
-                $value = $variation['attributes'][$taxonomy_key];
-                if (in_array($value, $attribute_values)) {
-                    continue;
-                }
-
-                $attribute_values[] = $value;
-                $variation_id = $variation['variation_id'];
-                $is_default = isset($default_attributes[$attribute_name]) && $default_attributes[$attribute_name] === $value;
-                $active_class = $is_default ? ' active' : '';
-                $display_value = $value;
-
-                if ($attribute->is_taxonomy()) {
-                    $term = get_term_by('slug', $value, $attribute_name);
-                    $display_value = $term ? $term->name : $value;
-                }
-
-                printf(
-                    '<button type="button" class="usk-variation-button usk-%s-variation%s" data-variation-id="%s" data-product-id="%s" data-attribute="%s" data-value="%s">%s</button>',
-                    esc_attr($sanitized_name),
-                    esc_attr($active_class),
-                    esc_attr($variation_id),
-                    esc_attr($product_id),
-                    esc_attr($attribute_name),
-                    esc_attr($value),
-                    esc_html($display_value)
-                );
+            foreach ($options as $option) {
+                $classes = 'usk-variation-button';
+                echo '<button type="button" class="' . esc_attr($classes) . '" data-attribute="' . esc_attr($attribute_slug) . '" data-value="' . esc_attr($option) . '">' . esc_html($option) . '</button>';
             }
 
-            echo '</div>';
+            echo '</div>'; // Close .usk-variation-options
+            echo '</div>'; // Close .usk-variation-group
         }
 
-        echo '</div>';
+        echo '</div>'; // Close .usk-variations-container
+    }
+
+    /**
+     * Render variation swatches using the Pro version's swatches functionality
+     */
+    private function render_swatches_variation($product, $variations) {
+        $product_id = $product->get_id();
+        $attributes = $product->get_variation_attributes();
+
+        if (empty($attributes)) {
+            return;
+        }
+
+        echo '<div class="usk-variations-container usk-pro-swatches" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true">';
+
+        // Loop through each product attribute
+        foreach ($attributes as $attribute_name => $options) {
+            if (empty($options)) {
+                continue;
+            }
+
+            // Get the formatted name
+            $attribute_label = wc_attribute_label($attribute_name);
+
+            echo '<div class="usk-variation-group">';
+            echo '<span class="usk-variation-label">' . esc_html($attribute_label) . '</span>';
+
+            // Build the args for the swatches
+            $args = array(
+                'options' => $options,
+                'product' => $product,
+                'attribute' => $attribute_name,
+                'name' => 'attribute_' . sanitize_title($attribute_name),
+                'selected' => isset($_REQUEST['attribute_' . sanitize_title($attribute_name)])
+                    ? wc_clean(wp_unslash($_REQUEST['attribute_' . sanitize_title($attribute_name)]))
+                    : $product->get_variation_default_attribute($attribute_name)
+            );
+
+            // Create a placeholder for the dropdown - this will be replaced with swatches
+            $dropdown_html = '<select id="' . esc_attr($args['name']) . '" class="' . esc_attr($args['name']) . '" name="' . esc_attr($args['name']) . '" data-attribute_name="' . esc_attr($args['name']) . '" data-show_option_none="yes" style="display:none;">';
+            $dropdown_html .= '<option value="">' . esc_html__('Choose an option', 'woocommerce') . '</option>';
+
+            if (!empty($options)) {
+                foreach ($options as $option) {
+                    $dropdown_html .= '<option value="' . esc_attr($option) . '" ' . selected($args['selected'], $option, false) . '>' . esc_html(apply_filters('woocommerce_variation_option_name', $option, null, $attribute_name, $product)) . '</option>';
+                }
+            }
+
+            $dropdown_html .= '</select>';
+
+            // Apply the filter to transform the dropdown to swatches
+            if (class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches')) {
+                $swatches = \UltimateStoreKitPro\VariationSwatches\Swatches::instance();
+                $swatches_html = $swatches->swatches_html($dropdown_html, $args);
+                echo $swatches_html;
+            } else {
+                echo $dropdown_html;
+            }
+
+            echo '</div>'; // Close .usk-variation-group
+        }
+
+        echo '</div>'; // Close .usk-variations-container
     }
 }
