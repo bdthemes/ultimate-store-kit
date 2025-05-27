@@ -367,20 +367,23 @@ class USK_Shiny_Grid_Template {
             return;
         }
 
+        // Check if sequential mode is enabled
+        $sequential = apply_filters('usk_sequential_variations', true);
+
         // If Pro version with swatches is active, use that functionality
         if ($this->has_swatches_support() && function_exists('apply_filters')) {
-            $this->render_swatches_variation($product, $variations);
+            $this->render_swatches_variation($product, $variations, $sequential);
             return;
         }
 
         // Otherwise use the simple variation buttons
-        $this->render_simple_variations($product, $variations);
+        $this->render_simple_variations($product, $variations, $sequential);
     }
 
     /**
      * Render simple variation buttons for the free version
      */
-    private function render_simple_variations($product, $variations) {
+    private function render_simple_variations($product, $variations, $sequential = false) {
         $product_id = $product->get_id();
         $attributes = $product->get_variation_attributes();
 
@@ -388,7 +391,10 @@ class USK_Shiny_Grid_Template {
             return;
         }
 
-        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true">';
+        // Add sequential data attribute if enabled
+        $sequential_attr = $sequential ? ' data-sequential="true"' : '';
+
+        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true"' . $sequential_attr . '>';
 
         foreach ($attributes as $attribute_name => $options) {
             if (empty($options)) {
@@ -405,7 +411,24 @@ class USK_Shiny_Grid_Template {
 
             foreach ($options as $option) {
                 $classes = 'usk-variation-button';
-                echo '<button type="button" class="' . esc_attr($classes) . '" data-attribute="' . esc_attr($attribute_slug) . '" data-value="' . esc_attr($option) . '">' . esc_html($option) . '</button>';
+
+                // Check if this is a color attribute
+                $is_color = (strpos(strtolower($attribute_slug), 'color') !== false ||
+                             strpos(strtolower($attribute_label), 'color') !== false);
+
+                if ($is_color) {
+                    // For color attributes, use background color and minimal text
+                    echo '<button type="button" class="' . esc_attr($classes . ' usk-color-button') . '"
+                        data-attribute="' . esc_attr($attribute_slug) . '"
+                        data-value="' . esc_attr($option) . '"
+                        style="background-color: ' . esc_attr($option) . '"
+                        title="' . esc_attr($option) . '"></button>';
+                } else {
+                    // For non-color attributes, display as regular text buttons
+                    echo '<button type="button" class="' . esc_attr($classes) . '"
+                        data-attribute="' . esc_attr($attribute_slug) . '"
+                        data-value="' . esc_attr($option) . '">' . esc_html($option) . '</button>';
+                }
             }
 
             echo '</div>'; // Close .usk-variation-options
@@ -418,7 +441,7 @@ class USK_Shiny_Grid_Template {
     /**
      * Render variation swatches using the Pro version's swatches functionality
      */
-    private function render_swatches_variation($product, $variations) {
+    private function render_swatches_variation($product, $variations, $sequential = false) {
         $product_id = $product->get_id();
         $attributes = $product->get_variation_attributes();
 
@@ -426,7 +449,10 @@ class USK_Shiny_Grid_Template {
             return;
         }
 
-        echo '<div class="usk-variations-container usk-pro-swatches" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true">';
+        // Add sequential data attribute if enabled
+        $sequential_attr = $sequential ? ' data-sequential="true"' : '';
+
+        echo '<div class="usk-variations-container usk-pro-swatches" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true"' . $sequential_attr . '>';
 
         // Loop through each product attribute
         foreach ($attributes as $attribute_name => $options) {

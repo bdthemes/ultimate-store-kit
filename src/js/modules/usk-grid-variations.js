@@ -4,392 +4,498 @@
  * Handles the interactive behavior of variation swatches in product grids
  */
 
-(function ($, document) {
-  ("use strict");
+class USKGridVariations {
+  constructor($container) {
+    this.$container = $container;
+    this.productId = $container.data("product-id");
+    this.$swatchWrappers = $container.find(".usk-variation-swatches__wrapper");
+    this.availableVariations = this.getAvailableVariations();
+    this.sequentialMode = $container.data("sequential") === true;
+    this.currentStep = 0;
+    this.totalSteps = 0;
 
-  var USKGridVariations = function ($container) {
-    var self = this;
+    // Initialize the container
+    this.initContainer();
 
-    self.$container = $container;
-    self.productId = $container.data("product-id");
-    self.$swatchWrappers = $container.find(".usk-variation-swatches__wrapper");
-    self.availableVariations = self.getAvailableVariations();
+    // Bind methods to maintain context
+    this.bindMethods();
 
-    // Initial states
-    $container.off(".usk-grid-variations");
+    // Set up event handlers
+    this.setupEventListeners();
 
-    // Add a class to the container
-    if ($container.find(".usk-variation-swatches__wrapper").length) {
-      $container.addClass("swatches-support");
+    // Initialize variations
+    this.initActiveVariations();
+    this.updateAvailableAttributes();
+
+    // Setup sequential mode if enabled
+    if (this.sequentialMode) {
+      this.setupSequentialMode();
     }
 
-    // Add reset button if not already present
-    self.addResetButton();
+    // Trigger initialization event
+    jQuery(document.body).trigger("usk_grid_variations_init", this);
+  }
 
-    // Methods
-    self.getChosenAttributes = self.getChosenAttributes.bind(self);
+  // Initialize container with required elements
+  initContainer() {
+    this.$container.off(".usk-grid-variations");
 
-    // Events
-    $container.on(
+    // Add classes
+    if (this.$swatchWrappers.length) {
+      this.$container.addClass("swatches-support");
+    }
+
+    if (this.sequentialMode) {
+      this.$container.addClass("usk-sequential-variations");
+    }
+
+    // Add required buttons
+    this.addResetButton();
+
+    if (this.sequentialMode) {
+      this.addBackButton();
+    }
+  }
+
+  // Bind methods to maintain 'this' context
+  bindMethods() {
+    this.getChosenAttributes = this.getChosenAttributes.bind(this);
+    this.onSwatchSelect = this.onSwatchSelect.bind(this);
+    this.onVariationButtonClick = this.onVariationButtonClick.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
+    this.onResetClick = this.onResetClick.bind(this);
+    this.onBackClick = this.onBackClick.bind(this);
+  }
+
+  // Set up event listeners
+  setupEventListeners() {
+    this.$container.on(
       "click.usk-grid-variations",
       ".usk-variation-swatches__item",
-      { USKGridVariations: self },
-      self.onSwatchSelect
+      this.onSwatchSelect
     );
-    $container.on(
+
+    this.$container.on(
       "click.usk-grid-variations",
       ".usk-variation-button",
-      { USKGridVariations: self },
-      self.onVariationButtonClick
+      this.onVariationButtonClick
     );
-    $container.on(
+
+    this.$container.on(
       "keydown.usk-grid-variations",
       ".usk-variation-swatches__item, .usk-variation-button",
-      { USKGridVariations: self },
-      self.onKeyPress
+      this.onKeyPress
     );
-    $container.on(
+
+    this.$container.on(
       "click.usk-grid-variations",
       ".usk-reset-variations",
-      { USKGridVariations: self },
-      self.onResetClick
+      this.onResetClick
     );
 
-    $(document.body).trigger("usk_grid_variations_init", self);
+    this.$container.on(
+      "click.usk-grid-variations",
+      ".usk-back-variation",
+      this.onBackClick
+    );
+  }
 
-    // Initialize active variations
-    self.initActiveVariations();
-
-    // Update available attributes based on current selection
-    self.updateAvailableAttributes();
-  };
-
-  /**
-   * Add reset button to the variations container
-   */
-  USKGridVariations.prototype.addResetButton = function () {
-    var self = this;
-
-    // Only add if it doesn't exist already
-    if (self.$container.find(".usk-reset-variations").length === 0) {
-      var $resetButton = $(
+  // Add reset button to the variations container
+  addResetButton() {
+    if (this.$container.find(".usk-reset-variations").length === 0) {
+      const $resetButton = jQuery(
         '<button type="button" class="usk-reset-variations">Reset</button>'
       );
       $resetButton.insertAfter(
-        self.$container.find(".usk-variation-group").last()
+        this.$container.find(".usk-variation-group").last()
       );
-
-      // Initially hide the reset button (will show when at least one variation is selected)
       $resetButton.hide();
     }
-  };
+  }
 
-  /**
-   * Handle reset button click
-   */
-  USKGridVariations.prototype.onResetClick = function (event) {
+  // Add back button for sequential variation selection
+  addBackButton() {
+    if (this.$container.find(".usk-back-variation").length === 0) {
+      const $backButton = jQuery(
+        '<button type="button" class="usk-back-variation">Back</button>'
+      );
+      $backButton.insertAfter(
+        this.$container.find(".usk-variation-group").last()
+      );
+      $backButton.hide();
+    }
+  }
+
+  // Setup sequential variation selection mode
+  setupSequentialMode() {
+    this.totalSteps = this.$container.find(".usk-variation-group").length || this.$swatchWrappers.length;
+
+    if (this.totalSteps > 1) {
+      this.$container.find(".usk-variation-group").each((index, el) => {
+        jQuery(el).toggle(index === 0);
+      });
+
+      this.$swatchWrappers.each((index, el) => {
+        jQuery(el).toggle(index === 0);
+      });
+    }
+
+    this.currentStep = 0;
+  }
+
+  // Go to the next variation step
+  goToNextStep() {
+    if (this.currentStep < this.totalSteps - 1) {
+      this.updateStepSummary();
+      this.currentStep++;
+
+      this.$container.find(".usk-variation-group").each((index, el) => {
+        jQuery(el).toggle(index === this.currentStep);
+      });
+
+      this.$swatchWrappers.each((index, el) => {
+        jQuery(el).toggle(index === this.currentStep);
+      });
+
+      if (this.currentStep > 0) {
+        this.$container.find(".usk-back-variation").show();
+      }
+    }
+  }
+
+  // Update step summary to show the user's progress
+  updateStepSummary() {
+    const attributes = this.getChosenAttributes();
+    this.$container.find('.usk-step-summary').remove();
+
+    // Further implementation can be added here as needed
+  }
+
+  // Go to the previous variation step
+  goToPreviousStep() {
+    if (this.currentStep > 0) {
+      this.currentStep--;
+
+      this.$container.find(".usk-variation-group").each((index, el) => {
+        jQuery(el).toggle(index === this.currentStep);
+      });
+
+      this.$swatchWrappers.each((index, el) => {
+        jQuery(el).toggle(index === this.currentStep);
+      });
+
+      if (this.currentStep === 0) {
+        this.$container.find(".usk-back-variation").hide();
+      }
+    }
+  }
+
+  // Handle back button click
+  onBackClick(event) {
+    event.preventDefault();
+    this.goToPreviousStep();
+  }
+
+  // Handle reset button click
+  onResetClick(event) {
     event.preventDefault();
 
-    var self = event.data.USKGridVariations;
-
-    // Reset swatches
-    self.$container
-      .find(".usk-variation-swatches__item")
-      .removeClass("selected disabled")
+    // Reset swatches and buttons
+    this.$container
+      .find(".usk-variation-swatches__item, .usk-variation-button")
+      .removeClass("selected active disabled")
       .data("disabled", false)
       .attr("aria-pressed", "false")
       .attr("tabindex", 0);
 
-    // Reset variation buttons
-    self.$container
-      .find(".usk-variation-button")
-      .removeClass("active disabled")
-      .data("disabled", false)
-      .attr("tabindex", 0);
-
     // Reset data attributes
-    self.$container.find(".usk-variation-group").each(function () {
-      var $group = $(this);
-      var attrName = $group
-        .find(".usk-variation-button")
-        .first()
-        .data("attribute");
+    this.resetDataAttributes();
 
-      if (attrName) {
-        self.$container.removeData("selected-attribute_" + attrName);
+    // Reset Add to Cart button
+    this.resetAddToCartButton();
+
+    // Reset UI elements
+    this.$container.find(".usk-reset-variations").hide();
+    this.removeVariationSummary();
+    this.$container.find('.usk-step-summary').remove();
+
+    // Reset sequential mode if enabled
+    if (this.sequentialMode) {
+      this.resetSequentialMode();
+    }
+
+    // Update available attributes
+    this.updateAvailableAttributes();
+  }
+
+  // Reset all data attributes
+  resetDataAttributes() {
+    // Reset variation group data
+    this.$container.find(".usk-variation-group").each((i, el) => {
+      const $group = jQuery(el);
+      const $button = $group.find(".usk-variation-button").first();
+
+      if ($button.length) {
+        const attrName = $button.data("attribute");
+        if (attrName) {
+          this.$container.removeData("selected-attribute_" + attrName);
+        }
       }
     });
 
-    self.$swatchWrappers.each(function () {
-      var attrName = $(this).data("attribute_name");
+    // Reset swatch wrapper data
+    this.$swatchWrappers.each((i, el) => {
+      const attrName = jQuery(el).data("attribute_name");
       if (attrName) {
-        self.$container.removeData("selected-" + attrName);
+        this.$container.removeData("selected-" + attrName);
       }
     });
 
     // Reset variation ID
-    self.$container.removeData("variation-id");
+    this.$container.removeData("variation-id");
+  }
 
-    // Reset Add to Cart button
-    var $productItem = self.$container.closest(".usk-item");
-    var $addToCartBtn = $productItem.find(".usk-button");
+  // Reset Add to Cart button to default state
+  resetAddToCartButton() {
+    const $productItem = this.$container.closest(".usk-item");
+    const $addToCartBtn = $productItem.find(".usk-button");
 
-    if ($addToCartBtn.length) {
-      $addToCartBtn
-        .removeClass(
-          "product_type_variation add_to_cart_button ajax_add_to_cart"
-        )
-        .addClass("product_type_variable")
-        .removeAttr("data-variation_id")
-        .attr("href", "javascript:void(0)");
+    if (!$addToCartBtn.length) return;
 
-      // Remove attribute data
-      $addToCartBtn.each(function () {
-        var $btn = $(this);
-        $.each($btn[0].attributes, function (i, attr) {
-          if (attr.name.indexOf("data-attribute_") === 0) {
-            $btn.removeAttr(attr.name);
-          }
-        });
+    $addToCartBtn
+      .removeClass("product_type_variation add_to_cart_button ajax_add_to_cart")
+      .addClass("product_type_variable")
+      .removeAttr("data-variation_id")
+      .attr("href", "javascript:void(0)");
+
+    // Remove attribute data
+    try {
+      jQuery.each($addToCartBtn[0].attributes, (i, attr) => {
+        if (attr && attr.name && attr.name.indexOf("data-attribute_") === 0) {
+          $addToCartBtn.removeAttr(attr.name);
+        }
       });
-
-      // Update button text
-      var buttonText = $addToCartBtn.find(".usk-icon-arrow-right-8").length
-        ? 'Select options <i class="button-icon usk-icon-arrow-right-8"></i>'
-        : "Select options";
-
-      $addToCartBtn.html(buttonText);
+    } catch (e) {
+      console.log("Error clearing button attributes:", e);
     }
 
-    // Hide reset button
-    self.$container.find(".usk-reset-variations").hide();
+    // Update button text
+    const buttonText = $addToCartBtn.find(".usk-icon-arrow-right-8").length
+      ? 'Select options <i class="button-icon usk-icon-arrow-right-8"></i>'
+      : "Select options";
 
-    // Update available attributes
-    self.updateAvailableAttributes();
-  };
+    $addToCartBtn.html(buttonText);
+  }
 
-  /**
-   * Get available variations from data attribute if available
-   */
-  USKGridVariations.prototype.getAvailableVariations = function () {
-    var self = this;
-    var variations = self.$container.data("available_variations");
+  // Reset sequential mode to first step
+  resetSequentialMode() {
+    this.$container.find(".usk-back-variation").hide();
+    this.currentStep = 0;
+
+    this.$container.find(".usk-variation-group").each((index, el) => {
+      jQuery(el).toggle(index === 0);
+    });
+
+    this.$swatchWrappers.each((index, el) => {
+      jQuery(el).toggle(index === 0);
+    });
+  }
+
+  // Get available variations from data attribute or AJAX
+  getAvailableVariations() {
+    let variations = this.$container.data("available_variations");
 
     if (!variations && typeof usk_vars !== "undefined" && usk_vars.ajax_url) {
-      // If variations aren't stored in data, try to fetch them via AJAX
-      $.ajax({
+      jQuery.ajax({
         url: usk_vars.ajax_url,
         type: "POST",
         async: false,
         data: {
           action: "usk_get_available_variations",
-          product_id: self.productId,
+          product_id: this.productId,
         },
-        success: function (response) {
+        success: (response) => {
           if (response.success && response.data) {
             variations = response.data;
-            // Store for future use
-            self.$container.data("available_variations", variations);
+            this.$container.data("available_variations", variations);
           }
         },
       });
     }
 
     return variations || [];
-  };
+  }
 
-  /**
-   * Initialize active variation items
-   */
-  USKGridVariations.prototype.initActiveVariations = function () {
-    var self = this;
-    var selectedCount = 0;
+  // Initialize active variation items
+  initActiveVariations() {
+    let selectedCount = 0;
 
-    // Trigger click on selected swatches
-    self.$container
-      .find(".usk-variation-swatches__item.selected")
-      .each(function () {
-        $(this).trigger("click.usk-grid-variations");
-        selectedCount++;
-      });
-
-    // Trigger click on active variation buttons
-    self.$container.find(".usk-variation-button.active").each(function () {
-      $(this).trigger("click.usk-grid-variations");
+    // Activate pre-selected swatches
+    this.$container.find(".usk-variation-swatches__item.selected").each((i, el) => {
+      jQuery(el).trigger("click.usk-grid-variations");
       selectedCount++;
     });
 
-    // If no variations are already selected, select any default attributes
-    if (selectedCount === 0) {
-      var defaultAttributes = self.$container.data("default_attributes");
-      if (defaultAttributes) {
-        // Try to select default attributes
-        for (var attrName in defaultAttributes) {
-          if (defaultAttributes.hasOwnProperty(attrName)) {
-            var value = defaultAttributes[attrName];
-            var $item = self.$container.find(
-              '.usk-variation-swatches__item[data-value="' + value + '"]'
-            );
+    // Activate pre-selected buttons
+    this.$container.find(".usk-variation-button.active").each((i, el) => {
+      jQuery(el).trigger("click.usk-grid-variations");
+      selectedCount++;
+    });
 
-            if ($item.length) {
-              $item.trigger("click.usk-grid-variations");
-            } else {
-              // Try button format
-              var $button = self.$container.find(
-                '.usk-variation-button[data-value="' + value + '"]'
-              );
-              if ($button.length) {
-                $button.trigger("click.usk-grid-variations");
-              }
-            }
+    // Select default attributes if nothing is selected
+    if (selectedCount === 0) {
+      this.selectDefaultAttributes();
+    }
+
+    // Toggle reset button
+    this.toggleResetButton();
+
+    // Update attributes if nothing is selected
+    if (selectedCount === 0) {
+      this.updateAvailableAttributes();
+    }
+  }
+
+  // Select default attributes if provided
+  selectDefaultAttributes() {
+    const defaultAttributes = this.$container.data("default_attributes");
+    if (!defaultAttributes) return;
+
+    for (const attrName in defaultAttributes) {
+      if (defaultAttributes.hasOwnProperty(attrName)) {
+        const value = defaultAttributes[attrName];
+
+        // Try to find and select matching swatch
+        const $item = this.$container.find(
+          `.usk-variation-swatches__item[data-value="${value}"]`
+        );
+
+        if ($item.length) {
+          $item.trigger("click.usk-grid-variations");
+        } else {
+          // Try to find and select matching button
+          const $button = this.$container.find(
+            `.usk-variation-button[data-value="${value}"]`
+          );
+
+          if ($button.length) {
+            $button.trigger("click.usk-grid-variations");
           }
         }
       }
     }
+  }
 
-    // Show/hide reset button based on selections
-    self.toggleResetButton();
+  // Toggle reset button visibility based on selections
+  toggleResetButton() {
+    const attributes = this.getChosenAttributes();
+    const $resetButton = this.$container.find(".usk-reset-variations");
 
-    // If no items are selected, just update all available attributes
-    if (selectedCount === 0) {
-      self.updateAvailableAttributes();
-    }
-  };
+    $resetButton.toggle(attributes.chosenCount > 0);
+  }
 
-  /**
-   * Toggle reset button visibility based on selections
-   */
-  USKGridVariations.prototype.toggleResetButton = function () {
-    var self = this;
-    var attributes = self.getChosenAttributes();
-    var $resetButton = self.$container.find(".usk-reset-variations");
-
-    if (attributes.chosenCount > 0) {
-      $resetButton.show();
-    } else {
-      $resetButton.hide();
-    }
-  };
-
-  /**
-   * Handle click on a swatch
-   */
-  USKGridVariations.prototype.onSwatchSelect = function (event) {
+  // Handle click on a swatch
+  onSwatchSelect(event) {
     event.preventDefault();
 
-    var self = event.data.USKGridVariations;
-    var $swatch = $(this);
+    const $swatch = jQuery(event.currentTarget);
 
     if ($swatch.hasClass("disabled") || $swatch.data("disabled")) {
       return;
     }
 
-    var $wrapper = $swatch.closest(".usk-variation-swatches__wrapper");
-    var attributeName = $wrapper.data("attribute_name");
-    var value = $swatch.data("value");
+    const $wrapper = $swatch.closest(".usk-variation-swatches__wrapper");
+    const attributeName = $wrapper.data("attribute_name");
+    const value = $swatch.data("value");
 
-    // Update selected state visually
+    // Update UI
     $wrapper
       .find(".usk-variation-swatches__item")
       .removeClass("selected")
       .attr("aria-pressed", "false");
-    $swatch.addClass("selected").attr("aria-pressed", "true");
 
-    // Store selected attribute in data
-    self.$container.data("selected-" + attributeName, value);
+    $swatch
+      .addClass("selected")
+      .attr("aria-pressed", "true");
 
-    // Update available attributes based on this selection
-    self.updateAvailableAttributes();
+    // Store selection
+    this.$container.data("selected-" + attributeName, value);
 
-    // Show/hide reset button
-    self.toggleResetButton();
+    // Update state
+    this.updateAvailableAttributes();
+    this.toggleResetButton();
+    this.updateAddToCartButton();
 
-    // Update Add to Cart button
-    self.updateAddToCartButton();
-  };
+    // Handle sequential mode
+    if (this.sequentialMode && this.currentStep < this.totalSteps - 1) {
+      this.goToNextStep();
+    }
+  }
 
-  /**
-   * Handle click on variation button
-   */
-  USKGridVariations.prototype.onVariationButtonClick = function (event) {
+  // Handle click on variation button
+  onVariationButtonClick(event) {
     event.preventDefault();
 
-    var self = event.data.USKGridVariations;
-    var $button = $(this);
-    var attribute = $button.data("attribute");
-    var value = $button.data("value");
+    const $button = jQuery(event.currentTarget);
+    const attribute = $button.data("attribute");
+    const value = $button.data("value");
 
     if ($button.hasClass("disabled") || $button.data("disabled")) {
       return;
     }
 
-    // Update active state
+    // Update UI
     $button.siblings(".usk-variation-button").removeClass("active");
     $button.addClass("active");
 
-    // Store selected attribute in data
-    self.$container.data("selected-" + attribute, value);
+    // Store selection
+    this.$container.data("selected-attribute_" + attribute, value);
 
-    // Update available attributes based on this selection
-    self.updateAvailableAttributes();
+    // Update state
+    this.updateAvailableAttributes();
+    this.toggleResetButton();
+    this.updateAddToCartButton();
 
-    // Show/hide reset button
-    self.toggleResetButton();
+    // Handle sequential mode
+    if (this.sequentialMode && this.currentStep < this.totalSteps - 1) {
+      this.goToNextStep();
+    }
+  }
 
-    // Update Add to Cart button
-    self.updateAddToCartButton();
-  };
+  // Update available attributes based on current selection
+  updateAvailableAttributes() {
+    const attributes = this.getChosenAttributes();
+    const currentAttributes = attributes.data;
+    const variations = this.availableVariations;
 
-  /**
-   * Update available attributes based on current selection
-   * Disables attributes that are not available with current selection
-   */
-  USKGridVariations.prototype.updateAvailableAttributes = function () {
-    var self = this;
-    var attributes = self.getChosenAttributes();
-    var currentAttributes = attributes.data;
-    var variations = self.availableVariations;
-
-    // If we don't have variations data, we can't determine availability
+    // If no variations data, we can't determine availability
     if (!variations || !variations.length) {
       return;
     }
 
-    // First, reset all attributes to enabled state
-    self.$container
-      .find(".usk-variation-swatches__item")
-      .removeClass("disabled")
-      .data("disabled", false)
-      .attr("tabindex", 0);
-    self.$container
-      .find(".usk-variation-button")
+    // Reset all to enabled state
+    this.$container
+      .find(".usk-variation-swatches__item, .usk-variation-button")
       .removeClass("disabled")
       .data("disabled", false)
       .attr("tabindex", 0);
 
-    // If no attributes are chosen, nothing to disable
+    // If no attributes chosen, nothing to disable
     if (!attributes.chosenCount) {
       return;
     }
 
-    // For each attribute wrapper, find and disable unavailable options
-    self.$swatchWrappers.each(function () {
-      var $attributeWrapper = $(this);
-      var attributeName = $attributeWrapper.data("attribute_name");
-      var $items = $attributeWrapper.find(".usk-variation-swatches__item");
+    // Process swatch wrappers
+    this.$swatchWrappers.each((i, wrapper) => {
+      const $wrapper = jQuery(wrapper);
+      const attributeName = $wrapper.data("attribute_name");
 
-      $items.each(function () {
-        var $item = $(this);
-        var attributeValue = $item.data("value");
+      $wrapper.find(".usk-variation-swatches__item").each((j, item) => {
+        const $item = jQuery(item);
+        const attributeValue = $item.data("value");
 
-        // Check if this value is available with the current selections
-        var isAvailable = self.isAttributeAvailable(
-          attributeName,
-          attributeValue,
-          currentAttributes
-        );
-
-        if (!isAvailable) {
+        // Disable if not available with current selections
+        if (!this.isAttributeAvailable(attributeName, attributeValue, currentAttributes)) {
           $item
             .addClass("disabled")
             .data("disabled", true)
@@ -398,26 +504,18 @@
       });
     });
 
-    // Also handle regular variation buttons
-    self.$container.find(".usk-variation-group").each(function () {
-      var $group = $(this);
-      var attributeName =
-        "attribute_" +
-        $group.find(".usk-variation-button").first().data("attribute");
-      var $buttons = $group.find(".usk-variation-button");
+    // Process variation buttons
+    this.$container.find(".usk-variation-group").each((i, group) => {
+      const $group = jQuery(group);
+      const firstButton = $group.find(".usk-variation-button").first();
+      const attributeName = "attribute_" + firstButton.data("attribute");
 
-      $buttons.each(function () {
-        var $button = $(this);
-        var attributeValue = $button.data("value");
+      $group.find(".usk-variation-button").each((j, button) => {
+        const $button = jQuery(button);
+        const attributeValue = $button.data("value");
 
-        // Check if this value is available with the current selections
-        var isAvailable = self.isAttributeAvailable(
-          attributeName,
-          attributeValue,
-          currentAttributes
-        );
-
-        if (!isAvailable) {
+        // Disable if not available with current selections
+        if (!this.isAttributeAvailable(attributeName, attributeValue, currentAttributes)) {
           $button
             .addClass("disabled")
             .data("disabled", true)
@@ -425,47 +523,47 @@
         }
       });
     });
-  };
+  }
 
-  /**
-   * Check if a specific attribute value is available based on current selections
-   */
-  USKGridVariations.prototype.isAttributeAvailable = function (
-    attributeName,
-    attributeValue,
-    currentAttributes
-  ) {
-    var self = this;
-    var variations = self.availableVariations;
+  // Check if a specific attribute value is available based on current selections
+  isAttributeAvailable(attributeName, attributeValue, currentAttributes) {
+    const variations = this.availableVariations;
 
-    if (!variations || !variations.length) {
-      return true; // If we don't have variations data, assume everything is available
+    // Basic validation
+    if (!attributeName || !attributeValue || !currentAttributes) {
+      return true;
     }
 
-    // Create a copy of current attributes to test with
-    var testAttributes = {};
-    for (var key in currentAttributes) {
-      if (
-        currentAttributes.hasOwnProperty(key) &&
-        currentAttributes[key] !== ""
-      ) {
+    if (!variations || !variations.length) {
+      return true;
+    }
+
+    // Create test attributes object
+    const testAttributes = {};
+    for (const key in currentAttributes) {
+      if (currentAttributes.hasOwnProperty(key) && currentAttributes[key] !== "") {
         testAttributes[key] = currentAttributes[key];
       }
     }
 
-    // Set the attribute we're testing
+    // Add the attribute we're testing
     testAttributes[attributeName] = attributeValue;
 
-    // Check if any variations match the test attributes
-    for (var i = 0; i < variations.length; i++) {
-      var variation = variations[i];
-      var attributes = variation.attributes;
-      var match = true;
+    // Check for matching variations
+    for (let i = 0; i < variations.length; i++) {
+      const variation = variations[i];
 
-      // Check if this variation matches all our test attributes
-      for (var testKey in testAttributes) {
+      if (!variation || !variation.attributes) {
+        continue;
+      }
+
+      const attributes = variation.attributes;
+      let match = true;
+
+      // Check if this variation matches test attributes
+      for (const testKey in testAttributes) {
         if (testAttributes.hasOwnProperty(testKey)) {
-          var testValue = testAttributes[testKey];
+          const testValue = testAttributes[testKey];
 
           // Skip if variation doesn't define this attribute
           if (typeof attributes[testKey] === "undefined") {
@@ -477,7 +575,7 @@
             continue;
           }
 
-          // Actual value check
+          // Check for exact match
           if (attributes[testKey] !== testValue) {
             match = false;
             break;
@@ -485,312 +583,347 @@
         }
       }
 
-      // We found a matching variation, so this attribute value is available
+      // Return true if we found a matching variation
       if (match && variation.is_in_stock && variation.is_purchasable) {
         return true;
       }
     }
 
     return false;
-  };
+  }
 
-  /**
-   * Handle keypress events for accessibility
-   */
-  USKGridVariations.prototype.onKeyPress = function (event) {
-    if (
-      (event.keyCode && 32 === event.keyCode) ||
-      (event.key && " " === event.key) ||
-      (event.keyCode && 13 === event.keyCode) ||
-      (event.key && "enter" === event.key.toLowerCase())
-    ) {
+  // Handle keypress events for accessibility
+  onKeyPress(event) {
+    const isSpace = (event.keyCode && event.keyCode === 32) || (event.key && event.key === " ");
+    const isEnter = (event.keyCode && event.keyCode === 13) || (event.key && event.key.toLowerCase() === "enter");
+
+    if (isSpace || isEnter) {
       event.preventDefault();
-      $(this).trigger("click.usk-grid-variations");
+      jQuery(event.currentTarget).trigger("click.usk-grid-variations");
     }
-  };
+  }
 
-  /**
-   * Update product image with the provided URL
-   */
-  USKGridVariations.prototype.updateProductImage = function (imageUrl) {
-    var self = this;
-    var $productItem = self.$container.closest(".usk-item");
+  // Update product image with the provided URL
+  updateProductImage(imageUrl) {
+    const $productItem = this.$container.closest(".usk-item");
 
-    // Update both default and hover image
     $productItem
       .find(".usk-image .img.image-default, .usk-image .img.image-hover")
       .attr("src", imageUrl);
-  };
+  }
 
-  /**
-   * Update Add to Cart button based on selected variations
-   */
-  USKGridVariations.prototype.updateAddToCartButton = function () {
-    var self = this;
-    var $productItem = self.$container.closest(".usk-item");
-    var $addToCartBtn = $productItem.find(".usk-button");
+  // Update Add to Cart button based on selected variations
+  updateAddToCartButton() {
+    const $productItem = this.$container.closest(".usk-item");
+    const $addToCartBtn = $productItem.find(".usk-button");
 
     if (!$addToCartBtn.length) {
       return;
     }
 
     // Check if all attributes are selected
-    var attributes = self.getChosenAttributes();
-    if (attributes.chosenCount !== attributes.count) {
-      // Not all attributes selected, reset button to Select Options
-      $addToCartBtn
-        .removeClass(
-          "product_type_variation add_to_cart_button ajax_add_to_cart"
-        )
-        .addClass("product_type_variable")
-        .removeAttr("data-variation_id")
-        .attr("href", "javascript:void(0)");
-
-      // Clear any attribute data
-      $.each($addToCartBtn[0].attributes, function (i, attr) {
-        if (attr.name && attr.name.indexOf("data-attribute_") === 0) {
-          $addToCartBtn.removeAttr(attr.name);
-        }
-      });
-
-      // Update button text to Select Options
-      var buttonText = $addToCartBtn.find(".usk-icon-arrow-right-8").length
-        ? 'Select options <i class="button-icon usk-icon-arrow-right-8"></i>'
-        : "Select options";
-
-      $addToCartBtn.html(buttonText);
+    const attributes = this.getChosenAttributes();
+    if (!attributes || attributes.chosenCount !== attributes.count) {
+      this.resetAddToCartToSelectOptions($addToCartBtn);
       return;
     }
 
-    // Find the matching variation based on selected attributes
-    self.findMatchingVariation(attributes.data, function (variationId) {
-      // Store variation ID in container data
-      self.$container.data("variation-id", variationId);
+    // Find matching variation
+    this.findMatchingVariation(attributes.data, (variationId) => {
+      // Store variation ID
+      this.$container.data("variation-id", variationId);
 
       if (!variationId) {
-        // No matching variation found
-        $addToCartBtn
-          .removeClass(
-            "product_type_variation add_to_cart_button ajax_add_to_cart"
-          )
-          .addClass("product_type_variable")
-          .removeAttr("data-variation_id")
-          .attr("href", "javascript:void(0)");
-
-        // Update button text to Unavailable
-        var buttonText = $addToCartBtn.find(".usk-icon-arrow-right-8").length
-          ? 'Unavailable <i class="button-icon usk-icon-arrow-right-8"></i>'
-          : "Unavailable";
-
-        $addToCartBtn.html(buttonText);
+        this.setUnavailableButton($addToCartBtn);
         return;
       }
 
-      // Clear existing attribute data
-      $.each($addToCartBtn[0].attributes, function (i, attr) {
-        if (attr.name && attr.name.indexOf("data-attribute_") === 0) {
-          $addToCartBtn.removeAttr(attr.name);
-        }
-      });
-
-      // Make button an Add to Cart button
-      $addToCartBtn
-        .removeClass("product_type_variable")
-        .addClass("product_type_variation add_to_cart_button ajax_add_to_cart")
-        .attr("data-product_id", self.productId)
-        .attr("data-variation_id", variationId)
-        .attr("data-prevent_redirect", "true")
-        .attr("href", "javascript:void(0)");
-
-      // Add attribute data
-      $.each(attributes.data, function (name, value) {
-        if (value) {
-          $addToCartBtn.attr("data-" + name, value);
-        }
-      });
-
-      // Update button text
-      var buttonText = $addToCartBtn.find(".usk-icon-arrow-right-8").length
-        ? 'Add to cart <i class="button-icon usk-icon-arrow-right-8"></i>'
-        : "Add to cart";
-
-      $addToCartBtn.html(buttonText);
+      this.setAddToCartButton($addToCartBtn, variationId, attributes);
     });
-  };
+  }
 
-  /**
-   * Find matching variation ID for the given attributes
-   * Uses AJAX to query the server if not found locally
-   */
-  USKGridVariations.prototype.findMatchingVariation = function (
-    attributesData,
-    callback
-  ) {
-    var self = this;
-    var variations = self.availableVariations;
-    var matchingVariationId = null;
+  // Reset button to "Select Options" state
+  resetAddToCartToSelectOptions($button) {
+    $button
+      .removeClass("product_type_variation add_to_cart_button ajax_add_to_cart")
+      .addClass("product_type_variable")
+      .removeAttr("data-variation_id")
+      .attr("href", "javascript:void(0)");
 
-    // Try to find matching variation locally first
-    if (variations && variations.length) {
-      for (var i = 0; i < variations.length; i++) {
-        var variation = variations[i];
-        var attributes = variation.attributes;
-        var match = true;
+    // Clear attributes
+    this.clearButtonAttributes($button);
 
-        // Check if this variation matches all selected attributes
-        for (var attrName in attributesData) {
-          if (
-            attributesData.hasOwnProperty(attrName) &&
-            attributesData[attrName] !== ""
-          ) {
-            var attrValue = attributesData[attrName];
+    // Update text
+    const buttonText = $button.find(".usk-icon-arrow-right-8").length
+      ? 'Select options <i class="button-icon usk-icon-arrow-right-8"></i>'
+      : "Select options";
 
-            // Skip if variation doesn't define this attribute
-            if (typeof attributes[attrName] === "undefined") {
-              continue;
-            }
+    $button.html(buttonText);
 
-            // If variation attribute is empty, it matches any value
-            if (attributes[attrName] === "") {
-              continue;
-            }
+    // Remove any summary
+    this.removeVariationSummary();
+  }
 
-            // Actual value check
-            if (attributes[attrName] !== attrValue) {
-              match = false;
-              break;
-            }
-          }
+  // Set button to "Unavailable" state
+  setUnavailableButton($button) {
+    $button
+      .removeClass("product_type_variation add_to_cart_button ajax_add_to_cart")
+      .addClass("product_type_variable")
+      .removeAttr("data-variation_id")
+      .attr("href", "javascript:void(0)");
+
+    // Update text
+    const buttonText = $button.find(".usk-icon-arrow-right-8").length
+      ? 'Unavailable <i class="button-icon usk-icon-arrow-right-8"></i>'
+      : "Unavailable";
+
+    $button.html(buttonText);
+
+    // Remove any summary
+    this.removeVariationSummary();
+  }
+
+  // Set button to "Add to Cart" state with variation data
+  setAddToCartButton($button, variationId, attributes) {
+    // Clear existing attributes
+    this.clearButtonAttributes($button);
+
+    // Set button properties
+    $button
+      .removeClass("product_type_variable")
+      .addClass("product_type_variation add_to_cart_button ajax_add_to_cart")
+      .attr("data-product_id", this.productId)
+      .attr("data-variation_id", variationId)
+      .attr("data-prevent_redirect", "true")
+      .attr("href", "javascript:void(0)");
+
+    // Add attribute data
+    if (attributes.data) {
+      jQuery.each(attributes.data, (name, value) => {
+        if (name && value) {
+          $button.attr("data-" + name, value);
         }
-
-        // Found a matching variation
-        if (match && variation.is_in_stock && variation.is_purchasable) {
-          matchingVariationId = variation.variation_id;
-          break;
-        }
-      }
+      });
     }
 
-    // If we found a matching variation locally, return it immediately
+    // Update text
+    const buttonText = $button.find(".usk-icon-arrow-right-8").length
+      ? 'Add to cart <i class="button-icon usk-icon-arrow-right-8"></i>'
+      : "Add to cart";
+
+    $button.html(buttonText);
+  }
+
+  // Clear data-attribute_ properties from button
+  clearButtonAttributes($button) {
+    try {
+      jQuery.each($button[0].attributes, (i, attr) => {
+        if (attr && attr.name && attr.name.indexOf("data-attribute_") === 0) {
+          $button.removeAttr(attr.name);
+        }
+      });
+    } catch (e) {
+      console.log("Error clearing attributes:", e);
+    }
+  }
+
+  // Remove the variation summary display
+  removeVariationSummary() {
+    this.$container.find('.usk-variation-summary').remove();
+  }
+
+  // Find matching variation ID for the given attributes
+  findMatchingVariation(attributesData, callback) {
+    if (!attributesData) {
+      callback(null);
+      return;
+    }
+
+    // Try to find match locally first
+    const matchingVariationId = this.findMatchingVariationLocally(attributesData);
+
     if (matchingVariationId) {
       callback(matchingVariationId);
       return;
     }
 
-    // If not found locally and AJAX is available, try to find it on the server
-    if (typeof usk_vars !== "undefined" && usk_vars.ajax_url) {
-      // Format attributes for the AJAX request
-      var formattedAttributes = {};
-      for (var key in attributesData) {
-        if (attributesData.hasOwnProperty(key)) {
-          var attrName = key.replace("attribute_", "");
-          formattedAttributes[attrName] = attributesData[key];
+    // If not found locally, try server
+    this.findMatchingVariationOnServer(attributesData, callback);
+  }
+
+  // Find matching variation locally
+  findMatchingVariationLocally(attributesData) {
+    const variations = this.availableVariations;
+
+    if (!variations || !variations.length) {
+      return null;
+    }
+
+    for (let i = 0; i < variations.length; i++) {
+      const variation = variations[i];
+
+      if (!variation || !variation.attributes) {
+        continue;
+      }
+
+      const attributes = variation.attributes;
+      let match = true;
+
+      // Check if variation matches all selected attributes
+      for (const attrName in attributesData) {
+        if (attributesData.hasOwnProperty(attrName) && attributesData[attrName] !== "") {
+          const attrValue = attributesData[attrName];
+
+          // Skip if variation doesn't define this attribute
+          if (typeof attributes[attrName] === "undefined") {
+            continue;
+          }
+
+          // If variation attribute is empty, it matches any value
+          if (attributes[attrName] === "") {
+            continue;
+          }
+
+          // Check for exact match
+          if (attributes[attrName] !== attrValue) {
+            match = false;
+            break;
+          }
         }
       }
 
-      $.ajax({
-        url: usk_vars.ajax_url,
-        type: "POST",
-        data: {
-          action: "usk_find_variation",
-          product_id: self.productId,
-          attributes: formattedAttributes,
-          security: usk_vars.nonce || "",
-        },
-        success: function (response) {
-          if (response.success && response.data && response.data.variation_id) {
-            callback(response.data.variation_id);
-          } else {
-            callback(null);
-          }
-        },
-        error: function () {
-          callback(null);
-        },
-      });
-    } else {
-      callback(null);
+      // Return ID if we found a match
+      if (match && variation.is_in_stock && variation.is_purchasable) {
+        return variation.variation_id;
+      }
     }
-  };
 
-  /**
-   * Get chosen attributes from container
-   */
-  USKGridVariations.prototype.getChosenAttributes = function () {
-    var self = this;
-    var data = {};
-    var count = 0;
-    var chosen = 0;
+    return null;
+  }
+
+  // Find matching variation via AJAX
+  findMatchingVariationOnServer(attributesData, callback) {
+    if (typeof usk_vars === "undefined" || !usk_vars.ajax_url) {
+      callback(null);
+      return;
+    }
+
+    // Format attributes for AJAX
+    const formattedAttributes = {};
+    for (const key in attributesData) {
+      if (attributesData.hasOwnProperty(key) && attributesData[key]) {
+        const attrName = key.replace("attribute_", "");
+        formattedAttributes[attrName] = attributesData[key];
+      }
+    }
+
+    jQuery.ajax({
+      url: usk_vars.ajax_url,
+      type: "POST",
+      data: {
+        action: "usk_find_variation",
+        product_id: this.productId,
+        attributes: formattedAttributes,
+        security: usk_vars.nonce || "",
+      },
+      success: (response) => {
+        if (response && response.success && response.data && response.data.variation_id) {
+          callback(response.data.variation_id);
+        } else {
+          callback(null);
+        }
+      },
+      error: () => {
+        callback(null);
+      },
+    });
+  }
+
+  // Get chosen attributes from container
+  getChosenAttributes() {
+    const data = {};
+    let count = 0;
+    let chosen = 0;
 
     // Get attributes from variation swatches
-    self.$swatchWrappers.each(function () {
-      var attribute_name = $(this).data("attribute_name");
-      var $selected = $(this).find(".usk-variation-swatches__item.selected");
-      var value = $selected.length ? $selected.data("value") : "";
+    if (this.$swatchWrappers && this.$swatchWrappers.length) {
+      this.$swatchWrappers.each((i, wrapper) => {
+        const $wrapper = jQuery(wrapper);
+        const attributeName = $wrapper.data("attribute_name");
 
-      if (value.length > 0) {
-        chosen++;
-      }
+        if (!attributeName) {
+          return true; // Skip this iteration
+        }
 
-      count++;
-      data[attribute_name] = value;
-    });
+        const $selected = $wrapper.find(".usk-variation-swatches__item.selected");
+        const value = $selected.length ? $selected.data("value") : "";
 
-    // Also get attributes from variation buttons
-    self.$container.find(".usk-variation-group").each(function () {
-      var $group = $(this);
-      var $activeBtn = $group.find(".usk-variation-button.active");
+        if (value) {
+          chosen++;
+        }
 
-      if ($activeBtn.length) {
-        var attribute = "attribute_" + $activeBtn.data("attribute");
-        var value = $activeBtn.data("value");
+        count++;
+        data[attributeName] = value;
+      });
+    }
 
-        if (!data[attribute]) {
-          if (value.length > 0) {
+    // Get attributes from variation buttons
+    if (this.$container) {
+      this.$container.find(".usk-variation-group").each((i, group) => {
+        const $group = jQuery(group);
+        const $activeBtn = $group.find(".usk-variation-button.active");
+
+        if (!$activeBtn.length) {
+          return true;
+        }
+
+        const attribute = $activeBtn.data("attribute");
+        if (!attribute) {
+          return true;
+        }
+
+        const attributeName = "attribute_" + attribute;
+        const value = $activeBtn.data("value") || "";
+
+        // Only add if not already set by swatches
+        if (!data[attributeName]) {
+          if (value) {
             chosen++;
           }
 
           count++;
-          data[attribute] = value;
+          data[attributeName] = value;
         }
-      }
-    });
+      });
+    }
 
     return {
       count: count,
       chosenCount: chosen,
       data: data,
     };
-  };
+  }
+}
 
-  /**
-   * Function to call USKGridVariations on jquery selector
-   */
-  $.fn.usk_grid_variations = function () {
-    return this.each(function () {
+// Initialize on document ready
+jQuery(function($) {
+  function initGridVariations() {
+    $(".usk-variations-container:not(.swatches-support)").each(function() {
       new USKGridVariations($(this));
-    });
-  };
-
-  /**
-   * Initialize grid variations on all containers
-   */
-  function init_grid_variations() {
-    $(".usk-variations-container:not(.swatches-support)").each(function () {
-      $(this).usk_grid_variations();
     });
   }
 
-  $(function () {
-    // Initialize on page load
-    init_grid_variations();
-    // Also reinitialize after cart fragments refresh (important for when returning from cart/checkout)
-    $(document.body).on(
-      "wc_fragments_refreshed wc_fragments_loaded added_to_cart",
-      function () {
-        init_grid_variations();
-      }
-    );
-  });
-})(jQuery, document);
+  // Initialize on page load
+  initGridVariations();
+
+  // Reinitialize after cart operations
+  $(document.body).on(
+    "wc_fragments_refreshed wc_fragments_loaded added_to_cart",
+    initGridVariations
+  );
+});
+
+
+
+
 
