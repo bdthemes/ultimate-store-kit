@@ -49,7 +49,7 @@ class USK_Shiny_Grid_Template {
                 <?php $this->render_product_image($product); ?>
                 <div class="usk-content">
                     <?php if (isset($settings['show_variation']) && $settings['show_variation'] === 'yes'): ?>
-                        <?php $this->render_product_variation($product);
+                        <?php $this->render_product_variation($product, $settings);
                         ?>
                     <?php endif; ?>
                     <div class="usk-content-inner">
@@ -357,7 +357,7 @@ class USK_Shiny_Grid_Template {
      * Render product variation options (colors, sizes)
      * Displays variation swatches on product grid items
      */
-    public function render_product_variation($product) {
+    public function render_product_variation($product, $settings) {
         if (!$product || !$product->is_type('variable')) {
             return;
         }
@@ -368,7 +368,7 @@ class USK_Shiny_Grid_Template {
         }
 
         // Check if sequential mode is enabled
-        $sequential = apply_filters('usk_sequential_variations', true);
+        $sequential = \apply_filters('usk_sequential_variations', isset($settings['show_variation_sequential']) && $settings['show_variation_sequential'] === 'yes');
 
         // If Pro version with swatches is active, use that functionality
         if ($this->has_swatches_support() && function_exists('apply_filters')) {
@@ -414,7 +414,7 @@ class USK_Shiny_Grid_Template {
 
                 // Check if this is a color attribute
                 $is_color = (strpos(strtolower($attribute_slug), 'color') !== false ||
-                             strpos(strtolower($attribute_label), 'color') !== false);
+                    strpos(strtolower($attribute_label), 'color') !== false);
 
                 if ($is_color) {
                     // For color attributes, use background color and minimal text

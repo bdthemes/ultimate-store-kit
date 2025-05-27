@@ -333,6 +333,17 @@ trait Global_Widget_Controls {
                     'classes' => BDTUSK_IS_PC
                 ]
             );
+            $this->add_control(
+                'show_variation_sequential',
+                [
+                    'label' => esc_html__('Show Variation Sequential', 'ultimate-store-kit'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'default' => 'no',
+                    'condition' => [
+                        'show_variation' => 'yes',
+                    ],
+                ]
+            );
         endif;
         if ($this->get_name() === 'usk-image-hotspot'):
             $this->add_group_control(

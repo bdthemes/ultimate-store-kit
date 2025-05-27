@@ -146,7 +146,6 @@ class USKGridVariations {
   // Go to the next variation step
   goToNextStep() {
     if (this.currentStep < this.totalSteps - 1) {
-      this.updateStepSummary();
       this.currentStep++;
 
       this.$container.find(".usk-variation-group").each((index, el) => {
@@ -163,13 +162,6 @@ class USKGridVariations {
     }
   }
 
-  // Update step summary to show the user's progress
-  updateStepSummary() {
-    const attributes = this.getChosenAttributes();
-    this.$container.find('.usk-step-summary').remove();
-
-    // Further implementation can be added here as needed
-  }
 
   // Go to the previous variation step
   goToPreviousStep() {
@@ -605,12 +597,31 @@ class USKGridVariations {
 
   // Update product image with the provided URL
   updateProductImage(imageUrl) {
-    const $productItem = this.$container.closest(".usk-item");
+    if (!imageUrl) return;
 
-    $productItem
-      .find(".usk-image .img.image-default, .usk-image .img.image-hover")
-      .attr("src", imageUrl);
+    const $productItem = this.$container.closest(".usk-item");
+    const $defaultImage = $productItem.find(".usk-image .img.image-default");
+    const $hoverImage = $productItem.find(".usk-image .img.image-hover");
+
+    // Update images with new src
+    if ($defaultImage.length) {
+      $defaultImage.attr("src", imageUrl);
+    }
+
+    if ($hoverImage.length) {
+      $hoverImage.attr("src", imageUrl);
+    }
+
+    // Also update srcset if it exists
+    if ($defaultImage.attr("srcset")) {
+      $defaultImage.attr("srcset", "");
+    }
+
+    if ($hoverImage.attr("srcset")) {
+      $hoverImage.attr("srcset", "");
+    }
   }
+
 
   // Update Add to Cart button based on selected variations
   updateAddToCartButton() {
@@ -629,13 +640,18 @@ class USKGridVariations {
     }
 
     // Find matching variation
-    this.findMatchingVariation(attributes.data, (variationId) => {
+    this.findMatchingVariation(attributes.data, (variationId, variationData) => {
       // Store variation ID
       this.$container.data("variation-id", variationId);
 
       if (!variationId) {
         this.setUnavailableButton($addToCartBtn);
         return;
+      }
+
+      // Update the product image if variation has an image
+      if (variationData && variationData.image && variationData.image.src) {
+        this.updateProductImage(variationData.image.src);
       }
 
       this.setAddToCartButton($addToCartBtn, variationId, attributes);
@@ -740,10 +756,10 @@ class USKGridVariations {
     }
 
     // Try to find match locally first
-    const matchingVariationId = this.findMatchingVariationLocally(attributesData);
+    const matchingVariation = this.findMatchingVariationLocally(attributesData);
 
-    if (matchingVariationId) {
-      callback(matchingVariationId);
+    if (matchingVariation) {
+      callback(matchingVariation.variation_id, matchingVariation);
       return;
     }
 
@@ -792,9 +808,9 @@ class USKGridVariations {
         }
       }
 
-      // Return ID if we found a match
+      // Return variation if we found a match
       if (match && variation.is_in_stock && variation.is_purchasable) {
-        return variation.variation_id;
+        return variation;
       }
     }
 
@@ -821,14 +837,14 @@ class USKGridVariations {
       url: usk_vars.ajax_url,
       type: "POST",
       data: {
-        action: "usk_find_variation",
+        action: "usk_get_available_variations",
         product_id: this.productId,
         attributes: formattedAttributes,
         security: usk_vars.nonce || "",
       },
       success: (response) => {
-        if (response && response.success && response.data && response.data.variation_id) {
-          callback(response.data.variation_id);
+        if (response && response.success && response.data) {
+          callback(response.data.variation_id, response.data);
         } else {
           callback(null);
         }
@@ -921,9 +937,11 @@ jQuery(function($) {
     "wc_fragments_refreshed wc_fragments_loaded added_to_cart",
     initGridVariations
   );
+
+  // Initialize on AJAX content load
+  $(document).ajaxComplete(function(event, xhr, settings) {
+    setTimeout(function() {
+      initGridVariations();
+    }, 100);
+  });
 });
-
-
-
-
-
