@@ -2202,6 +2202,9 @@ div.pp_pic_holder {
 .usk-variations-container {
   margin-top: 10px;
 }
+.usk-variations-container[data-sequential=true] .usk-variation-group:not(:first-of-type) {
+  display: none;
+}
 
 .usk-variation-group {
   margin-bottom: 8px;

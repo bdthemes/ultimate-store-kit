@@ -1800,7 +1800,15 @@
 /* Simple variation buttons styling */
 .usk-variations-container {
   margin-top: 10px;
+  &[data-sequential="true"] {
+    .usk-variation-group:not(:first-of-type) {
+      display: none;
+    }
+  }
 }
+
+
+
 
 .usk-variation-group {
   margin-bottom: 8px;
