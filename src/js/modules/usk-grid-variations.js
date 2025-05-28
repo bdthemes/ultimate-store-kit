@@ -25,7 +25,9 @@ class USKGridVariations {
 
     // Initialize variations
     this.initActiveVariations();
-    this.updateAvailableAttributes();
+    
+    // Initialize available attributes immediately to disable unavailable options
+    this.updateAvailableAttributes(true); // Passing true to indicate initial load
 
     // Setup sequential mode if enabled
     if (this.sequentialMode) {
@@ -50,7 +52,11 @@ class USKGridVariations {
     }
 
     // Add required buttons
-    this.addActionButtons();
+    this.addResetButton();
+
+    if (this.sequentialMode) {
+      this.addBackButton();
+    }
   }
 
   // Bind methods to maintain 'this' context
@@ -96,14 +102,11 @@ class USKGridVariations {
     );
   }
 
-  // Add action buttons (reset and back) to the variations container
-  addActionButtons() {
-    if (this.$container.find(".usk-variation-action-btn-wrap").length === 0) {
-      // Create button wrapper
-      const $actionBtnWrap = jQuery('<div class="usk-variation-action-btn-wrap"></div>');
-
-      // Create reset button
-      const $resetButton = jQuery(`<button type="button" class="usk-reset-variations" aria-label="Reset">
+  // Add reset button to the variations container
+  addResetButton() {
+    if (this.$container.find(".usk-reset-variations").length === 0) {
+      const $resetButton =
+        jQuery(`<button type="button" class="usk-reset-variations" aria-label="Reset">
     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path
         stroke="currentColor"
@@ -113,31 +116,30 @@ class USKGridVariations {
         d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"
       />
     </svg>
-  </button>`);
+  </button>
+`);
+      $resetButton.insertAfter(
+        this.$container.find(".usk-variation-group").last()
+      );
+      $resetButton.hide();
+    }
+  }
 
-      // Add reset button to wrapper
-
-      // Add back button if in sequential mode
-      if (this.sequentialMode) {
-        const $backButton = jQuery(`<button type="button" class="usk-back-variation" aria-label="Go Back">
+  // Add back button for sequential variation selection
+  addBackButton() {
+    if (this.$container.find(".usk-back-variation").length === 0) {
+      const $backButton = jQuery(`
+  <button type="button" class="usk-back-variation" aria-label="Go Back">
     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
 </svg>
-  </button>`);
+  </button>
+`);
 
-        // Add back button to wrapper
-        $actionBtnWrap.append($backButton);
-        $actionBtnWrap.append($resetButton);
-
-        $backButton.hide();
-        $resetButton.hide();
-      }
-
-      // Add the wrapper after the last variation group
-      $actionBtnWrap.insertAfter(this.$container.find(".usk-variation-group").last());
-
-      // Hide reset button initially
-      $resetButton.hide();
+      $backButton.insertAfter(
+        this.$container.find(".usk-variation-group").first()
+      );
+      $backButton.hide();
     }
   }
 
@@ -233,7 +235,7 @@ class USKGridVariations {
     }
 
     // Update available attributes
-    this.updateAvailableAttributes();
+    this.updateAvailableAttributes(true);
   }
 
   // Reset all data attributes
@@ -359,11 +361,6 @@ class USKGridVariations {
 
     // Toggle reset button
     this.toggleResetButton();
-
-    // Update attributes if nothing is selected
-    if (selectedCount === 0) {
-      this.updateAvailableAttributes();
-    }
   }
 
   // Select default attributes if provided
@@ -471,7 +468,7 @@ class USKGridVariations {
   }
 
   // Update available attributes based on current selection
-  updateAvailableAttributes() {
+  updateAvailableAttributes(isInitialLoad = false) {
     const attributes = this.getChosenAttributes();
     const currentAttributes = attributes.data;
     const variations = this.availableVariations;
@@ -488,11 +485,92 @@ class USKGridVariations {
       .data("disabled", false)
       .attr("tabindex", 0);
 
-    // If no attributes chosen, nothing to disable
-    if (!attributes.chosenCount) {
+    // First pass: Mark all options that don't have any valid variations as disabled
+    // This should happen even if no attributes are chosen yet (on initial load)
+    if (isInitialLoad || !attributes.chosenCount) {
+      // Process swatch wrappers - mark all unavailable attributes as disabled immediately
+      this.$swatchWrappers.each((i, wrapper) => {
+        const $wrapper = jQuery(wrapper);
+        const attributeName = $wrapper.data("attribute_name");
+
+        $wrapper.find(".usk-variation-swatches__item").each((j, item) => {
+          const $item = jQuery(item);
+          const attributeValue = $item.data("value");
+
+          // Check if this value appears in any variation
+          let isAvailable = false;
+          for (let v = 0; v < variations.length; v++) {
+            const variation = variations[v];
+            
+            if (!variation || !variation.attributes || 
+                !variation.is_in_stock || !variation.is_purchasable) {
+              continue;
+            }
+            
+            const variationAttrs = variation.attributes;
+            
+            // Check if this variation includes this attribute value
+            if (variationAttrs[attributeName] === "" || 
+                variationAttrs[attributeName] === attributeValue) {
+              isAvailable = true;
+              break;
+            }
+          }
+
+          // Disable if not available in any variation
+          if (!isAvailable) {
+            $item
+              .addClass("disabled")
+              .data("disabled", true)
+              .attr("tabindex", -1);
+          }
+        });
+      });
+
+      // Process variation buttons - mark all unavailable buttons as disabled immediately
+      this.$container.find(".usk-variation-group").each((i, group) => {
+        const $group = jQuery(group);
+        const firstButton = $group.find(".usk-variation-button").first();
+        const attributeName = "attribute_" + firstButton.data("attribute");
+
+        $group.find(".usk-variation-button").each((j, button) => {
+          const $button = jQuery(button);
+          const attributeValue = $button.data("value");
+
+          // Check if this value appears in any variation
+          let isAvailable = false;
+          for (let v = 0; v < variations.length; v++) {
+            const variation = variations[v];
+            
+            if (!variation || !variation.attributes || 
+                !variation.is_in_stock || !variation.is_purchasable) {
+              continue;
+            }
+            
+            const variationAttrs = variation.attributes;
+            
+            // Check if this variation includes this attribute value
+            if (variationAttrs[attributeName] === "" || 
+                variationAttrs[attributeName] === attributeValue) {
+              isAvailable = true;
+              break;
+            }
+          }
+
+          // Disable if not available in any variation
+          if (!isAvailable) {
+            $button
+              .addClass("disabled")
+              .data("disabled", true)
+              .attr("tabindex", -1);
+          }
+        });
+      });
+      
       return;
     }
 
+    // Second pass: If attributes are chosen, show only compatible options
     // Process swatch wrappers
     this.$swatchWrappers.each((i, wrapper) => {
       const $wrapper = jQuery(wrapper);
