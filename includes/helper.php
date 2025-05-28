@@ -1338,8 +1338,6 @@ function usk_load_variation_swatches_assets() {
 		'ajax_url' => admin_url('admin-ajax.php'),
 		'nonce' => wp_create_nonce('usk_variations')
 	));
-
-	wp_enqueue_script('usk-grid-variations');
 }
 add_action('wp_enqueue_scripts', 'usk_load_variation_swatches_assets', 20);
 

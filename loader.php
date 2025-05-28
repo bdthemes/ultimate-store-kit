@@ -190,7 +190,6 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_script('datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.min.js', [], '1.0.0', true);
 		wp_register_script('micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.min.js', [], '1.0.0', true);
 		wp_register_script('usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/usk-accordion.min.js', [], '1.0.0', true);
-		wp_register_script('usk-grid-variations', BDTUSK_ASSETS_URL . 'js/modules/usk-grid-variations.min.js', ['jquery'], BDTUSK_VER, true);
 
 		if (ultimate_store_kit_is_widget_enabled('image-hotspot')) {
 			wp_register_script('popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', ['jquery'], null, true);
