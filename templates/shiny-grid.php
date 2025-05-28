@@ -406,7 +406,6 @@ class USK_Shiny_Grid_Template {
             $attribute_slug = sanitize_title($attribute_name);
 
             echo '<div class="usk-variation-group">';
-            echo '<span class="usk-variation-label">' . esc_html($attribute_label) . '</span>';
             echo '<div class="usk-variation-options">';
 
             foreach ($options as $option) {
@@ -459,9 +458,6 @@ class USK_Shiny_Grid_Template {
             if (empty($options)) {
                 continue;
             }
-
-            // Get the formatted name
-            $attribute_label = wc_attribute_label($attribute_name);
 
             echo '<div class="usk-variation-group">';
 
