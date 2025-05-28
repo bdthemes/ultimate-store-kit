@@ -25,7 +25,7 @@ class USKGridVariations {
 
     // Initialize variations
     this.initActiveVariations();
-    
+
     // Initialize available attributes immediately to disable unavailable options
     this.updateAvailableAttributes(true); // Passing true to indicate initial load
 
@@ -501,16 +501,16 @@ class USKGridVariations {
           let isAvailable = false;
           for (let v = 0; v < variations.length; v++) {
             const variation = variations[v];
-            
-            if (!variation || !variation.attributes || 
+
+            if (!variation || !variation.attributes ||
                 !variation.is_in_stock || !variation.is_purchasable) {
               continue;
             }
-            
+
             const variationAttrs = variation.attributes;
-            
+
             // Check if this variation includes this attribute value
-            if (variationAttrs[attributeName] === "" || 
+            if (variationAttrs[attributeName] === "" ||
                 variationAttrs[attributeName] === attributeValue) {
               isAvailable = true;
               break;
@@ -541,16 +541,16 @@ class USKGridVariations {
           let isAvailable = false;
           for (let v = 0; v < variations.length; v++) {
             const variation = variations[v];
-            
-            if (!variation || !variation.attributes || 
+
+            if (!variation || !variation.attributes ||
                 !variation.is_in_stock || !variation.is_purchasable) {
               continue;
             }
-            
+
             const variationAttrs = variation.attributes;
-            
+
             // Check if this variation includes this attribute value
-            if (variationAttrs[attributeName] === "" || 
+            if (variationAttrs[attributeName] === "" ||
                 variationAttrs[attributeName] === attributeValue) {
               isAvailable = true;
               break;
@@ -566,7 +566,7 @@ class USKGridVariations {
           }
         });
       });
-      
+
       return;
     }
 
@@ -747,6 +747,13 @@ class USKGridVariations {
     // Check if all attributes are selected
     const attributes = this.getChosenAttributes();
     if (!attributes || attributes.chosenCount !== attributes.count) {
+      this.resetAddToCartToSelectOptions($addToCartBtn);
+      return;
+    }
+
+    // Make sure we have all required variations selected
+    const requiredAttributeCount = this.getTotalRequiredAttributes();
+    if (attributes.chosenCount < requiredAttributeCount) {
       this.resetAddToCartToSelectOptions($addToCartBtn);
       return;
     }
@@ -1038,6 +1045,42 @@ class USKGridVariations {
       chosenCount: chosen,
       data: data,
     };
+  }
+
+  // Get total number of required attributes
+  getTotalRequiredAttributes() {
+    let count = 0;
+
+    // Count variation swatches
+    if (this.$swatchWrappers && this.$swatchWrappers.length) {
+      this.$swatchWrappers.each((i, wrapper) => {
+        const $wrapper = jQuery(wrapper);
+        if ($wrapper.data("attribute_name")) {
+          count++;
+        }
+      });
+    }
+
+    // Count variation buttons in groups that aren't already counted
+    const countedAttributes = new Set();
+    this.$swatchWrappers.each((i, wrapper) => {
+      const attrName = jQuery(wrapper).data("attribute_name");
+      if (attrName) {
+        countedAttributes.add(attrName.replace('attribute_', ''));
+      }
+    });
+
+    this.$container.find(".usk-variation-group").each((i, group) => {
+      const $group = jQuery(group);
+      const $firstBtn = $group.find(".usk-variation-button").first();
+      const attribute = $firstBtn.data("attribute");
+
+      if (attribute && !countedAttributes.has(attribute)) {
+        count++;
+      }
+    });
+
+    return count;
   }
 }
 
