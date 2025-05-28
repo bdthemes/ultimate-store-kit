@@ -103,9 +103,19 @@ class USKGridVariations {
   // Add reset button to the variations container
   addResetButton() {
     if (this.$container.find(".usk-reset-variations").length === 0) {
-      const $resetButton = jQuery(
-        '<button type="button" class="usk-reset-variations">Reset</button>'
-      );
+      const $resetButton =
+        jQuery(`<button type="button" class="usk-reset-variations" aria-label="Reset">
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"
+      />
+    </svg>
+  </button>
+`);
       $resetButton.insertAfter(
         this.$container.find(".usk-variation-group").last()
       );
@@ -116,9 +126,14 @@ class USKGridVariations {
   // Add back button for sequential variation selection
   addBackButton() {
     if (this.$container.find(".usk-back-variation").length === 0) {
-      const $backButton = jQuery(
-        '<button type="button" class="usk-back-variation">Back</button>'
-      );
+      const $backButton = jQuery(`
+  <button type="button" class="usk-back-variation" aria-label="Go Back">
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+</svg>
+  </button>
+`);
+
       $backButton.insertAfter(
         this.$container.find(".usk-variation-group").last()
       );
@@ -128,7 +143,9 @@ class USKGridVariations {
 
   // Setup sequential variation selection mode
   setupSequentialMode() {
-    this.totalSteps = this.$container.find(".usk-variation-group").length || this.$swatchWrappers.length;
+    this.totalSteps =
+      this.$container.find(".usk-variation-group").length ||
+      this.$swatchWrappers.length;
 
     if (this.totalSteps > 1) {
       this.$container.find(".usk-variation-group").each((index, el) => {
@@ -161,7 +178,6 @@ class USKGridVariations {
       }
     }
   }
-
 
   // Go to the previous variation step
   goToPreviousStep() {
@@ -209,7 +225,7 @@ class USKGridVariations {
     // Reset UI elements
     this.$container.find(".usk-reset-variations").hide();
     this.removeVariationSummary();
-    this.$container.find('.usk-step-summary').remove();
+    this.$container.find(".usk-step-summary").remove();
 
     // Reset sequential mode if enabled
     if (this.sequentialMode) {
@@ -323,10 +339,12 @@ class USKGridVariations {
     let selectedCount = 0;
 
     // Activate pre-selected swatches
-    this.$container.find(".usk-variation-swatches__item.selected").each((i, el) => {
-      jQuery(el).trigger("click.usk-grid-variations");
-      selectedCount++;
-    });
+    this.$container
+      .find(".usk-variation-swatches__item.selected")
+      .each((i, el) => {
+        jQuery(el).trigger("click.usk-grid-variations");
+        selectedCount++;
+      });
 
     // Activate pre-selected buttons
     this.$container.find(".usk-variation-button.active").each((i, el) => {
@@ -406,9 +424,7 @@ class USKGridVariations {
       .removeClass("selected")
       .attr("aria-pressed", "false");
 
-    $swatch
-      .addClass("selected")
-      .attr("aria-pressed", "true");
+    $swatch.addClass("selected").attr("aria-pressed", "true");
 
     // Store selection
     this.$container.data("selected-" + attributeName, value);
@@ -487,7 +503,13 @@ class USKGridVariations {
         const attributeValue = $item.data("value");
 
         // Disable if not available with current selections
-        if (!this.isAttributeAvailable(attributeName, attributeValue, currentAttributes)) {
+        if (
+          !this.isAttributeAvailable(
+            attributeName,
+            attributeValue,
+            currentAttributes
+          )
+        ) {
           $item
             .addClass("disabled")
             .data("disabled", true)
@@ -507,7 +529,13 @@ class USKGridVariations {
         const attributeValue = $button.data("value");
 
         // Disable if not available with current selections
-        if (!this.isAttributeAvailable(attributeName, attributeValue, currentAttributes)) {
+        if (
+          !this.isAttributeAvailable(
+            attributeName,
+            attributeValue,
+            currentAttributes
+          )
+        ) {
           $button
             .addClass("disabled")
             .data("disabled", true)
@@ -533,7 +561,10 @@ class USKGridVariations {
     // Create test attributes object
     const testAttributes = {};
     for (const key in currentAttributes) {
-      if (currentAttributes.hasOwnProperty(key) && currentAttributes[key] !== "") {
+      if (
+        currentAttributes.hasOwnProperty(key) &&
+        currentAttributes[key] !== ""
+      ) {
         testAttributes[key] = currentAttributes[key];
       }
     }
@@ -586,8 +617,12 @@ class USKGridVariations {
 
   // Handle keypress events for accessibility
   onKeyPress(event) {
-    const isSpace = (event.keyCode && event.keyCode === 32) || (event.key && event.key === " ");
-    const isEnter = (event.keyCode && event.keyCode === 13) || (event.key && event.key.toLowerCase() === "enter");
+    const isSpace =
+      (event.keyCode && event.keyCode === 32) ||
+      (event.key && event.key === " ");
+    const isEnter =
+      (event.keyCode && event.keyCode === 13) ||
+      (event.key && event.key.toLowerCase() === "enter");
 
     if (isSpace || isEnter) {
       event.preventDefault();
@@ -622,7 +657,6 @@ class USKGridVariations {
     }
   }
 
-
   // Update Add to Cart button based on selected variations
   updateAddToCartButton() {
     const $productItem = this.$container.closest(".usk-item");
@@ -640,22 +674,25 @@ class USKGridVariations {
     }
 
     // Find matching variation
-    this.findMatchingVariation(attributes.data, (variationId, variationData) => {
-      // Store variation ID
-      this.$container.data("variation-id", variationId);
+    this.findMatchingVariation(
+      attributes.data,
+      (variationId, variationData) => {
+        // Store variation ID
+        this.$container.data("variation-id", variationId);
 
-      if (!variationId) {
-        this.setUnavailableButton($addToCartBtn);
-        return;
+        if (!variationId) {
+          this.setUnavailableButton($addToCartBtn);
+          return;
+        }
+
+        // Update the product image if variation has an image
+        if (variationData && variationData.image && variationData.image.src) {
+          this.updateProductImage(variationData.image.src);
+        }
+
+        this.setAddToCartButton($addToCartBtn, variationId, attributes);
       }
-
-      // Update the product image if variation has an image
-      if (variationData && variationData.image && variationData.image.src) {
-        this.updateProductImage(variationData.image.src);
-      }
-
-      this.setAddToCartButton($addToCartBtn, variationId, attributes);
-    });
+    );
   }
 
   // Reset button to "Select Options" state
@@ -745,7 +782,7 @@ class USKGridVariations {
 
   // Remove the variation summary display
   removeVariationSummary() {
-    this.$container.find('.usk-variation-summary').remove();
+    this.$container.find(".usk-variation-summary").remove();
   }
 
   // Find matching variation ID for the given attributes
@@ -787,7 +824,10 @@ class USKGridVariations {
 
       // Check if variation matches all selected attributes
       for (const attrName in attributesData) {
-        if (attributesData.hasOwnProperty(attrName) && attributesData[attrName] !== "") {
+        if (
+          attributesData.hasOwnProperty(attrName) &&
+          attributesData[attrName] !== ""
+        ) {
           const attrValue = attributesData[attrName];
 
           // Skip if variation doesn't define this attribute
@@ -871,7 +911,9 @@ class USKGridVariations {
           return true; // Skip this iteration
         }
 
-        const $selected = $wrapper.find(".usk-variation-swatches__item.selected");
+        const $selected = $wrapper.find(
+          ".usk-variation-swatches__item.selected"
+        );
         const value = $selected.length ? $selected.data("value") : "";
 
         if (value) {
@@ -922,9 +964,9 @@ class USKGridVariations {
 }
 
 // Initialize on document ready
-jQuery(function($) {
+jQuery(function ($) {
   function initGridVariations() {
-    $(".usk-variations-container:not(.swatches-support)").each(function() {
+    $(".usk-variations-container:not(.swatches-support)").each(function () {
       new USKGridVariations($(this));
     });
   }
@@ -939,8 +981,8 @@ jQuery(function($) {
   );
 
   // Initialize on AJAX content load
-  $(document).ajaxComplete(function(event, xhr, settings) {
-    setTimeout(function() {
+  $(document).ajaxComplete(function (event, xhr, settings) {
+    setTimeout(function () {
       initGridVariations();
     }, 100);
   });
