@@ -10,7 +10,8 @@ namespace UltimateStoreKit\Templates;
 
 use UltimateStoreKit\Traits\Global_Widget_Template;
 
-class USK_Shiny_Grid_Template {
+class USK_Shiny_Grid_Template
+{
     use Global_Widget_Template;
 
     /**
@@ -22,7 +23,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Constructor
      */
-    public function __construct($settings = [], $widget_name = '') {
+    public function __construct($settings = [], $widget_name = '')
+    {
         $this->target_widget_settings = $settings;
         $this->target_widget_name = $widget_name;
     }
@@ -30,7 +32,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Render a single product item
      */
-    public function render_shiny_grid_item($product, $settings) {
+    public function render_shiny_grid_item($product, $settings)
+    {
         if (!$product) {
             return;
         }
@@ -43,7 +46,7 @@ class USK_Shiny_Grid_Template {
         $show_rating = isset($settings['show_rating']) ? $settings['show_rating'] : true;
         $classes = $this->target_widget_name === 'shiny-grid' ? 'usk-item' : 'usk-item swiper-slide';
         $classes .= $show_rating ? ' usk-have-rating' : '';
-?>
+        ?>
         <div class="<?php echo esc_attr($classes); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
             <div class="usk-item-box">
                 <?php $this->render_product_image($product); ?>
@@ -93,13 +96,14 @@ class USK_Shiny_Grid_Template {
                 </div>
             </div>
         </div>
-    <?php
+        <?php
     }
 
     /**
      * Render add to cart button
      */
-    public function __render_add_to_cart_button($product) {
+    public function __render_add_to_cart_button($product)
+    {
         if (!$product) {
             return;
         }
@@ -214,11 +218,12 @@ class USK_Shiny_Grid_Template {
             $args
         );
     }
-    public function render_add_to_cart_button($product) {
+    public function render_add_to_cart_button($product)
+    {
         if ($product) {
             $defaults = [
-                'quantity'   => 1,
-                'class'      => implode(
+                'quantity' => 1,
+                'class' => implode(
                     ' ',
                     array_filter(
                         [
@@ -230,10 +235,10 @@ class USK_Shiny_Grid_Template {
                     )
                 ),
                 'attributes' => [
-                    'data-product_id'  => $product->get_id(),
+                    'data-product_id' => $product->get_id(),
                     'data-product_sku' => $product->get_sku(),
-                    'aria-label'       => $product->add_to_cart_description(),
-                    'rel'              => 'nofollow',
+                    'aria-label' => $product->add_to_cart_description(),
+                    'rel' => 'nofollow',
                 ],
             ];
             $args = apply_filters('woocommerce_loop_add_to_cart_args', wp_parse_args($defaults), $product);
@@ -253,14 +258,16 @@ class USK_Shiny_Grid_Template {
                 $product,
                 $args
             ));
-        };
+        }
+        ;
     }
 
     /**
      * Get variation ID from product attributes
      * Uses WooCommerce data store for reliable variation finding
      */
-    private function get_variation_id_from_attributes($product, $attributes) {
+    private function get_variation_id_from_attributes($product, $attributes)
+    {
         if (!$product || !$product->is_type('variable')) {
             return null;
         }
@@ -285,7 +292,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Render product image with hover effect and action buttons
      */
-    public function render_product_image($product) {
+    public function render_product_image($product)
+    {
         if (!$product) {
             return;
         }
@@ -304,7 +312,7 @@ class USK_Shiny_Grid_Template {
         if ($gallery_thumbs && !empty($gallery_thumbs[0])) {
             $gallery_image_link = wp_get_attachment_image_url($gallery_thumbs[0], $image_size);
         }
-    ?>
+        ?>
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
                 <img class="img image-default" src="<?php echo esc_url($product_image); ?>"
@@ -327,13 +335,14 @@ class USK_Shiny_Grid_Template {
                 <!-- display product variation -->
             </div>
         </div>
-<?php
+        <?php
     }
 
     /**
      * Print price HTML with allowed tags
      */
-    public function print_price_output($output) {
+    public function print_price_output($output)
+    {
         $allowed_tags = [
             'del' => ['aria-hidden' => []],
             'span' => ['class' => []],
@@ -349,7 +358,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Check if swatches support is available
      */
-    private function has_swatches_support() {
+    private function has_swatches_support()
+    {
         return class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches');
     }
 
@@ -357,7 +367,8 @@ class USK_Shiny_Grid_Template {
      * Render product variation options (colors, sizes)
      * Displays variation swatches on product grid items
      */
-    public function render_product_variation($product, $settings) {
+    public function render_product_variation($product, $settings)
+    {
         if (!$product || !$product->is_type('variable')) {
             return;
         }
@@ -383,7 +394,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Render simple variation buttons for the free version
      */
-    private function render_simple_variations($product, $variations, $sequential = false) {
+    private function render_simple_variations($product, $variations, $sequential = false)
+    {
         $product_id = $product->get_id();
         $attributes = $product->get_variation_attributes();
 
@@ -410,6 +422,7 @@ class USK_Shiny_Grid_Template {
 
             foreach ($options as $option) {
                 $classes = 'usk-variation-button';
+                $option_name = apply_filters('woocommerce_variation_option_name', $option);
 
                 // Check if this is a color attribute
                 $is_color = (strpos(strtolower($attribute_slug), 'color') !== false ||
@@ -421,12 +434,13 @@ class USK_Shiny_Grid_Template {
                         data-attribute="' . esc_attr($attribute_slug) . '"
                         data-value="' . esc_attr($option) . '"
                         style="background-color: ' . esc_attr($option) . '"
-                        title="' . esc_attr($option) . '"></button>';
+                        aria-label="' . sprintf(__('Select %s', 'ultimate-store-kit'), esc_attr($option_name)) . '"><span class="usk-tooltip-text">' . esc_html($option_name) . '</span></button>';
                 } else {
                     // For non-color attributes, display as regular text buttons
                     echo '<button type="button" class="' . esc_attr($classes) . '"
                         data-attribute="' . esc_attr($attribute_slug) . '"
-                        data-value="' . esc_attr($option) . '">' . esc_html($option) . '</button>';
+                        data-value="' . esc_attr($option) . '"
+                        aria-label="' . sprintf(__('Select %s', 'ultimate-store-kit'), esc_attr($option_name)) . '">' . esc_html($option_name) . '<span class="usk-tooltip-text">' . esc_html($option_name) . '</span></button>';
                 }
             }
 
@@ -440,7 +454,8 @@ class USK_Shiny_Grid_Template {
     /**
      * Render variation swatches using the Pro version's swatches functionality
      */
-    private function render_swatches_variation($product, $variations, $sequential = false) {
+    private function render_swatches_variation($product, $variations, $sequential = false)
+    {
         $product_id = $product->get_id();
         $attributes = $product->get_variation_attributes();
 

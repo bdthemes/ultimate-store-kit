@@ -15,8 +15,10 @@ use Elementor\Group_Control_Box_Shadow;
 defined('ABSPATH') || die();
 
 
-trait Global_Widget_Controls {
-    protected function register_global_controls_grid_layout() {
+trait Global_Widget_Controls
+{
+    protected function register_global_controls_grid_layout()
+    {
         $this->add_responsive_control(
             'alignment',
             [
@@ -54,7 +56,8 @@ trait Global_Widget_Controls {
             ]
         );
     }
-    protected function register_global_controls_query() {
+    protected function register_global_controls_query()
+    {
         $this->start_controls_section(
             'section_content_query',
             [
@@ -196,7 +199,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_additional() {
+    protected function register_global_controls_additional()
+    {
         $this->start_controls_section(
             'section_woocommerce_additional',
             [
@@ -458,7 +462,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_grid_columns() {
+    protected function register_global_controls_grid_columns()
+    {
         $this->start_controls_section(
             'section_style_columns_filter',
             [
@@ -615,7 +620,8 @@ trait Global_Widget_Controls {
         $this->end_controls_tabs();
         $this->end_controls_section();
     }
-    protected function register_global_controls_result_count() {
+    protected function register_global_controls_result_count()
+    {
         $this->start_controls_section(
             'section_style_result_count',
             [
@@ -662,7 +668,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_grid_items() {
+    protected function register_global_controls_grid_items()
+    {
         $this->start_controls_section(
             'section_style_item',
             [
@@ -798,7 +805,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_grid_image() {
+    protected function register_global_controls_grid_image()
+    {
         $this->start_controls_section(
             'section_style_image',
             [
@@ -946,7 +954,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_content() {
+    protected function register_global_controls_content()
+    {
         $this->start_controls_section(
             'section_style_content',
             [
@@ -1043,7 +1052,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_title() {
+    protected function register_global_controls_title()
+    {
         $this->start_controls_section(
             'section_style_title',
             [
@@ -1098,7 +1108,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    public function register_global_controls_add_to_cart() {
+    public function register_global_controls_add_to_cart()
+    {
         $this->start_controls_section(
             'section_style_button',
             [
@@ -1257,7 +1268,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_category() {
+    protected function register_global_controls_category()
+    {
         $this->start_controls_section(
             'section_style_category',
             [
@@ -1406,7 +1418,8 @@ trait Global_Widget_Controls {
         $this->end_controls_section();
     }
 
-    protected function register_global_controls_excerpt() {
+    protected function register_global_controls_excerpt()
+    {
         $this->start_controls_section(
             'section_style_excerpt',
             [
@@ -1465,7 +1478,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_price() {
+    protected function register_global_controls_price()
+    {
         $this->start_controls_section(
             'section_style_price',
             [
@@ -1526,7 +1540,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_rating() {
+    protected function register_global_controls_rating()
+    {
         $this->start_controls_section(
             'section_style_rating',
             [
@@ -1563,7 +1578,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_action_btn() {
+    protected function register_global_controls_action_btn()
+    {
         $this->start_controls_section(
             'style_action_btn',
             [
@@ -2098,7 +2114,8 @@ trait Global_Widget_Controls {
         $this->end_controls_tabs();
         $this->end_controls_section();
     }
-    protected function register_global_controls_grid_pagination() {
+    protected function register_global_controls_grid_pagination()
+    {
         $this->start_controls_section(
             'section_style_pagination',
             [
@@ -2319,7 +2336,8 @@ trait Global_Widget_Controls {
     /**
      * Register global controls for badge
      */
-    protected function register_global_controls_badge() {
+    protected function register_global_controls_badge()
+    {
         $this->start_controls_section(
             'badge',
             [
@@ -2684,7 +2702,8 @@ trait Global_Widget_Controls {
         $this->end_controls_tabs();
         $this->end_controls_section();
     }
-    protected function register_global_controls_carousel_navigation() {
+    protected function register_global_controls_carousel_navigation()
+    {
         $this->start_controls_section(
             'section_content_navigation',
             [
@@ -2850,7 +2869,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_navigation_style() {
+    protected function register_global_controls_navigation_style()
+    {
         $this->start_controls_section(
             'section_style_navigation',
             [
@@ -3926,7 +3946,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_carousel_settings() {
+    protected function register_global_controls_carousel_settings()
+    {
         $this->start_controls_section(
             'section_carousel_settings',
             [
@@ -4201,7 +4222,8 @@ trait Global_Widget_Controls {
 
         $this->end_controls_section();
     }
-    protected function register_global_controls_variation() {
+    protected function register_global_controls_variation()
+    {
         $this->start_controls_section(
             'section_global_variation',
             [
@@ -4229,7 +4251,7 @@ trait Global_Widget_Controls {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-group' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -4262,7 +4284,7 @@ trait Global_Widget_Controls {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-color-variation' => '--usk-variation-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-color-button' => '--usk-variation-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -4274,7 +4296,7 @@ trait Global_Widget_Controls {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-color-variation' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-color-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -4284,7 +4306,7 @@ trait Global_Widget_Controls {
         $this->start_controls_tab(
             'tab_variation_size',
             [
-                'label' => esc_html__('Size', 'ultimate-store-kit'),
+                'label' => esc_html__('Common', 'ultimate-store-kit'),
             ]
         );
 
@@ -4294,7 +4316,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -4303,7 +4325,7 @@ trait Global_Widget_Controls {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'variation_size_typography',
-                'selector' => '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation',
+                'selector' => '{{WRAPPER}} .usk-variations-container .usk-variation-button',
             ]
         );
 
@@ -4313,7 +4335,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button' => 'background-color: {{VALUE}};',
                 ],
                 'separator' => 'before',
             ]
@@ -4326,7 +4348,7 @@ trait Global_Widget_Controls {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -4347,7 +4369,7 @@ trait Global_Widget_Controls {
             Group_Control_Border::get_type(),
             [
                 'name' => 'variation_size_border',
-                'selector' => '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation',
+                'selector' => '{{WRAPPER}} .usk-variations-container .usk-variation-button',
                 'separator' => 'before',
             ]
         );
@@ -4359,7 +4381,7 @@ trait Global_Widget_Controls {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -4379,7 +4401,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -4390,7 +4412,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -4401,7 +4423,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -4421,7 +4443,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation.active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button.active' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -4432,7 +4454,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Background Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation.active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button.active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -4443,7 +4465,7 @@ trait Global_Widget_Controls {
                 'label' => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-variations-container .usk-pa_size-variation.active' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-variations-container .usk-variation-button.active' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
