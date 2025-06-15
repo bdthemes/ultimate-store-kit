@@ -851,6 +851,34 @@ trait Global_Widget_Controls
             ]
         );
 
+        $this->add_responsive_control(
+            'list_image_size_filter',
+            [
+                'label' => esc_html__('Image Size', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 200,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-image' => 'width: {{SIZE}}{{UNIT}}',
+                ],
+                'condition' => [
+                    'show_tab' => 'yes',
+                ],
+                'separator' => 'after',
+            ]
+        );
+
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [

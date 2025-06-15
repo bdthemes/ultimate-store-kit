@@ -115,6 +115,9 @@
       &.usk-grid-3 {
         grid-template-columns: repeat(2, 1fr);
       }
+      &.usk-grid-1.usk-list-layout {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
     }
   }
 }
@@ -129,6 +132,7 @@
       &.usk-grid-1 {
         grid-template-columns: repeat(1, 1fr) !important;
       }
+
 
       &.usk-grid-2 {
         grid-template-columns: repeat(2, 1fr) !important;

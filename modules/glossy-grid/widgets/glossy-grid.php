@@ -103,6 +103,9 @@ class Glossy_Grid extends Module_Base
                     'grid' => esc_html__('Grid', 'ultimate-store-kit'),
                     'list' => esc_html__('List', 'ultimate-store-kit'),
                 ],
+                'condition' => [
+                    'show_tab!' => 'yes'
+                ]
             ]
         );
         $this->add_responsive_control(
@@ -122,7 +125,8 @@ class Glossy_Grid extends Module_Base
                     '6' => '6',
                 ],
                 'condition' => [
-                    'layout_style' => 'grid'
+                    'layout_style' => 'grid',
+                    'show_tab!' => 'yes'
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-glossy-grid .usk-grid.usk-grid-layout' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
@@ -217,7 +221,8 @@ class Glossy_Grid extends Module_Base
 
                 ],
                 'condition' => [
-                    'show_tab' => 'yes'
+                    'show_tab' => 'yes',
+                    'layout_style' => 'grid'
                 ],
                 'default' => ['list-2', 'grid-2', 'grid-3', 'grid-4'],
             ]
