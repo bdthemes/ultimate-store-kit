@@ -127,16 +127,23 @@
 }
 
 /* Quantity Input */
-.usk-page-cart .woocommerce-cart-form .shop_table .usk-product-quantity .qty {
-  width: 90px;
-  height: var(--usk-cart-input-height);
-  text-align: left;
-  outline: none;
-  color: var(--usk-cart-input-text);
-  border: 1px solid var(--usk-cart-input-border);
-  background: transparent;
-  border-radius: var(--usk-cart-btn-radius);
-  padding: 0 10px;
+.usk-page-cart .woocommerce-cart-form .shop_table .usk-product-quantity {
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .qty {
+    width: 5.631em;
+    outline: none;
+    color: var(--usk-cart-input-text);
+    border: 1px solid #a4afb7;
+    border-radius: 3px 3px 3px 3px;
+    background: transparent;
+    padding: 14px;
+    text-align: center;
+  }
 }
 
 .usk-page-cart
