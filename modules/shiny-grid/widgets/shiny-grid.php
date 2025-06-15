@@ -63,7 +63,7 @@ class Shiny_Grid extends Module_Base
         if ($this->usk_is_edit_mode()) {
             return ['usk-site'];
         } else {
-            return ['usk-shiny-grid'];
+            return ['usk-shiny-grid', 'usk-grid-variations'];
         }
     }
 

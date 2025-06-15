@@ -55,6 +55,7 @@ final class Manager {
 
         $direction = is_rtl() ? '.rtl' : '';
 
+
         $module_id  = $module['name'];
         $class_name = str_replace('-', ' ', $module_id);
         $class_name = str_replace(' ', '', ucwords($class_name));

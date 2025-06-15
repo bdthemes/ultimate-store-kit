@@ -1318,3 +1318,60 @@ if (! function_exists('ultimate_store_kit_is_compare_product_page')) {
 		}
 	}
 }
+
+/**
+ * Helper function to check if variation swatches Pro is active
+ *
+ * @return bool
+ */
+function usk_has_variation_swatches_support() {
+	return class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches');
+}
+
+/**
+ * Helper function to load variation swatches scripts and styles
+ */
+function usk_load_variation_swatches_assets() {
+	// Always load the grid variations script for variation support
+	wp_register_script('usk-grid-variations', BDTUSK_ASSETS_URL . 'js/modules/usk-grid-variations.min.js', ['jquery'], BDTUSK_VER, true);
+	wp_localize_script('usk-grid-variations', 'usk_vars', array(
+		'ajax_url' => admin_url('admin-ajax.php'),
+		'nonce' => wp_create_nonce('usk_variations')
+	));
+}
+add_action('wp_enqueue_scripts', 'usk_load_variation_swatches_assets', 20);
+
+// Hook into AJAX variation selection to update product image
+function usk_ajax_variation_image_update() {
+	if (!isset($_POST['variation_id']) || !isset($_POST['product_id'])) {
+		wp_send_json_error('Missing required parameters');
+		return;
+	}
+
+	$variation_id = absint($_POST['variation_id']);
+	$product_id = absint($_POST['product_id']);
+
+	$variation = wc_get_product($variation_id);
+	if (!$variation) {
+		wp_send_json_error('Invalid variation');
+		return;
+	}
+
+	$image_id = $variation->get_image_id();
+	$image_url = '';
+
+	if ($image_id) {
+		$image_url = wp_get_attachment_image_url($image_id, 'woocommerce_thumbnail');
+	} else {
+		// If variation has no image, use the parent product image
+		$parent = wc_get_product($product_id);
+		$parent_image_id = $parent->get_image_id();
+		if ($parent_image_id) {
+			$image_url = wp_get_attachment_image_url($parent_image_id, 'woocommerce_thumbnail');
+		}
+	}
+
+	wp_send_json_success(array('image_url' => $image_url));
+}
+add_action('wp_ajax_usk_get_variation_image', 'usk_ajax_variation_image_update');
+add_action('wp_ajax_nopriv_usk_get_variation_image', 'usk_ajax_variation_image_update');

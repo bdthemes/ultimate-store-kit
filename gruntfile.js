@@ -164,6 +164,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: "src/js/modules/",
+                        src: "*.js",
+                        dest: "assets/js/modules/",
+                        ext: ".min.js",
+                    },
+                    {
+                        expand: true,
                         cwd: "src/vendor/js/",
                         src: ["*.js", "!jquery.slickmodal.js", "!tippy.all.min.js"],
                         dest: "assets/vendor/js/",
