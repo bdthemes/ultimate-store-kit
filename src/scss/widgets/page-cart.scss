@@ -38,13 +38,15 @@
 }
 
 /* Table Layout */
-.usk-page-cart .woocommerce-cart-form .shop_table {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-collapse: collapse;
-  margin: 0;
-  text-align: center;
-  width: 100%;
-  border-radius: var(--usk-cart-radius);
+.usk-page-cart {
+  .woocommerce-cart-form .shop_table {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    border-radius: var(--usk-cart-radius);
+  }
 }
 
 /* Table Headers */
