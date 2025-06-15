@@ -54,7 +54,6 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     }
 
     public function __construct() {
-
         parent::__construct();
 
         if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && \is_admin()) {
@@ -70,16 +69,8 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         \add_action('wp_ajax_nopriv_ultimate_store_kit_wc_product_quick_view_content', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
         \add_action('wp_ajax_ultimate_store_kit_wc_product_quick_view_content', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
 
-        // Register get variation data AJAX handler
-        \add_action('wp_ajax_get_variation_data', [$this, 'get_variation_data']);
-        \add_action('wp_ajax_nopriv_get_variation_data', [$this, 'get_variation_data']);
-
         \add_action('wp_ajax_usk_add_to_cart', [$this, 'usk_add_to_cart']);
         \add_action('wp_ajax_nopriv_usk_add_to_cart', [$this, 'usk_add_to_cart']);
-
-        // Add handler for finding variation ID
-        \add_action('wp_ajax_usk_find_variation', [$this, 'usk_find_variation']);
-        \add_action('wp_ajax_nopriv_usk_find_variation', [$this, 'usk_find_variation']);
 
         \add_action('ultimate_store_kit_quick_view_product_title', 'woocommerce_template_single_title');
         \add_action('ultimate_store_kit_quick_view_product_single_rating', 'woocommerce_template_single_rating');
@@ -89,6 +80,18 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         \add_action('ultimate_store_kit_quick_view_product_single_meta', 'woocommerce_template_single_meta');
         \add_action('ultimate_store_kit_quick_view_product_sale_flash', 'woocommerce_show_product_sale_flash');
         \add_action('ultimate_store_kit_quick_shiny_grid_view_product_images', [$this, 'ultimate_store_kit_quick_view_product_images']);
+
+        // Get available variations AJAX
+        \add_action('wp_ajax_usk_get_available_variations', [$this, 'usk_get_available_variations']);
+        \add_action('wp_ajax_nopriv_usk_get_available_variations', [$this, 'usk_get_available_variations']);
+
+        // Filter product class
+        \add_action('woocommerce_before_shop_loop_item', [$this, 'add_products_post_class_filter']);
+        \add_action('woocommerce_after_shop_loop_item', [$this, 'remove_products_post_class_filter']);
+
+        // Quick view support
+        \add_action('wp_ajax_ultimate_store_kit_wc_product_quick_view', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
+        \add_action('wp_ajax_nopriv_ultimate_store_kit_wc_product_quick_view', [$this, 'ultimate_store_kit_wc_product_quick_view_content']);
     }
 
     public function ultimate_store_kit_wc_product_quick_view_content() {
@@ -100,76 +103,18 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         ultimate_store_kit_quick_view_product_images();
     }
 
-    /**
-     * AJAX handler to get variation data including images
-     */
-    public function get_variation_data() {
-        if (!isset($_POST['product_id']) || !isset($_POST['variation_id'])) {
-            \wp_send_json_error();
-            return;
-        }
-
-        $product_id = \intval($_POST['product_id']);
-        $variation_id = \intval($_POST['variation_id']);
-
-        $product = \wc_get_product($product_id);
-        $variation = \wc_get_product($variation_id);
-
-        if (!$product || !$variation) {
-            \wp_send_json_error();
-            return;
-        }
-
-        $variation_data = [
-            'image' => null,
-            'additional_image' => null
-        ];
-
-        // Get the variation image
-        $image_id = $variation->get_image_id();
-        if ($image_id) {
-            $image_src = \wp_get_attachment_image_src($image_id, 'full');
-            if ($image_src) {
-                $variation_data['image'] = [
-                    'src' => $image_src[0],
-                    'width' => $image_src[1],
-                    'height' => $image_src[2],
-                ];
-            }
-
-            // Get the gallery images for this variation
-            $gallery_ids = $variation->get_gallery_image_ids();
-            if (!empty($gallery_ids)) {
-                $additional_image_src = \wp_get_attachment_image_src($gallery_ids[0], 'full');
-                if ($additional_image_src) {
-                    $variation_data['additional_image'] = $additional_image_src[0];
-                }
-            } else {
-                // If variation has no gallery images, use product gallery for hover effect
-                $product_gallery = $product->get_gallery_image_ids();
-                if (!empty($product_gallery)) {
-                    $additional_image_src = \wp_get_attachment_image_src($product_gallery[0], 'full');
-                    if ($additional_image_src) {
-                        $variation_data['additional_image'] = $additional_image_src[0];
-                    }
-                }
-            }
-        }
-
-        \wp_send_json_success($variation_data);
-    }
 
     public function usk_add_to_cart() {
-        check_ajax_referer('usk_add_to_cart', 'nonce');
+        \check_ajax_referer('usk_add_to_cart', 'nonce');
 
         $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
         $variation_id = isset($_POST['variation_id']) ? absint($_POST['variation_id']) : 0;
         $quantity = isset($_POST['quantity']) ? absint($_POST['quantity']) : 1;
 
         // Get product and validate
-        $product = wc_get_product($product_id);
+        $product = \wc_get_product($product_id);
         if (!$product) {
-            wp_send_json_error(['message' => 'Product not found']);
+            \wp_send_json_error(['message' => 'Product not found']);
             return;
         }
 
@@ -178,50 +123,41 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             // For variable products, we need variation ID and attributes
             if ($product->is_type('variable') && $variation_id) {
                 // Validate that the variation exists
-                $variation = wc_get_product($variation_id);
+                $variation = \wc_get_product($variation_id);
                 if (!$variation || $variation->get_parent_id() !== $product_id) {
-                    wp_send_json_error(['message' => 'Invalid variation']);
+                    \wp_send_json_error(['message' => 'Invalid variation']);
                     return;
                 }
 
-                // Get all available product variations
-                $available_variations = $product->get_available_variations();
+                // Extract all variation attributes from the request
                 $variation_data = [];
+                foreach ($_POST as $key => $value) {
+                    // Check if this is an attribute
+                    if (strpos($key, 'attribute_') === 0) {
+                        $variation_data[$key] = \sanitize_text_field($value);
+                    }
+                }
 
-                // Collect and validate attributes
-                $product_attributes = $product->get_attributes();
-                foreach ($product_attributes as $attribute_name => $attribute) {
-                    if ($attribute->get_variation()) {
-                        $taxonomy = 'attribute_' . $attribute_name;
-
-                        if (isset($_POST[$taxonomy])) {
-                            $value = sanitize_text_field($_POST[$taxonomy]);
-                            $variation_data[$taxonomy] = $value;
+                // If no attributes found, try to get them from the variation
+                if (empty($variation_data)) {
+                    $attributes = $variation->get_attributes();
+                    if (!empty($attributes)) {
+                        foreach ($attributes as $name => $value) {
+                            if (!empty($value)) {
+                                $variation_data['attribute_' . $name] = $value;
+                            }
                         }
                     }
                 }
 
                 // Verify we have all required variation attributes
-                if (count($variation_data) === 0) {
-                    wp_send_json_error(['message' => 'No variation attributes provided']);
+                if (empty($variation_data)) {
+                    \wp_send_json_error(['message' => 'Missing variation attributes']);
                     return;
                 }
 
-                // Double-check the variation ID matches the provided attributes
-                $data_store = \WC_Data_Store::load('product');
-                $matching_variation = $data_store->find_matching_product_variation($product, $variation_data);
-
-                if ($matching_variation !== $variation_id) {
-                    // Use the correct variation ID
-                    $variation_id = $matching_variation;
-                    if (!$variation_id) {
-                        wp_send_json_error(['message' => 'No matching variation found for the provided attributes']);
-                        return;
-                    }
-                }
-
                 // Add to cart with verified data
-                $cart_item_key = WC()->cart->add_to_cart(
+                $cart_item_key = \WC()->cart->add_to_cart(
                     $product_id,
                     $quantity,
                     $variation_id,
@@ -229,40 +165,40 @@ class Module extends Ultimate_Store_Kit_Module_Base {
                 );
             } else {
                 // Simple product
-                $cart_item_key = WC()->cart->add_to_cart($product_id, $quantity);
+                $cart_item_key = \WC()->cart->add_to_cart($product_id, $quantity);
             }
 
             if ($cart_item_key) {
-                do_action('woocommerce_ajax_added_to_cart', $product_id);
+                \do_action('woocommerce_ajax_added_to_cart', $product_id);
 
-                // Prepare fragments
+                // Prepare fragments for cart update
                 $fragments = [];
-                ob_start();
-                woocommerce_mini_cart();
-                $mini_cart = ob_get_clean();
+                \ob_start();
+                \woocommerce_mini_cart();
+                $mini_cart = \ob_get_clean();
                 $fragments['div.widget_shopping_cart_content'] = $mini_cart;
 
-                wp_send_json([
+                \wp_send_json([
                     'success' => true,
                     'fragments' => $fragments,
-                    'cart_hash' => WC()->cart->get_cart_hash(),
+                    'cart_hash' => \WC()->cart->get_cart_hash(),
                     'message' => 'Product added to cart'
                 ]);
             } else {
-                $cart_error = wc_get_notices('error');
+                $cart_error = \wc_get_notices('error');
                 $error_message = 'Failed to add to cart';
 
                 if (!empty($cart_error)) {
-                    wc_clear_notices();
-                    $error_message = strip_tags($cart_error[0]['notice']);
+                    \wc_clear_notices();
+                    $error_message = \strip_tags($cart_error[0]['notice']);
                 }
 
-                wp_send_json_error([
+                \wp_send_json_error([
                     'message' => $error_message
                 ]);
             }
-        } catch (Exception $e) {
-            wp_send_json_error([
+        } catch (\Exception $e) {
+            \wp_send_json_error([
                 'message' => $e->getMessage()
             ]);
         }
@@ -270,42 +206,41 @@ class Module extends Ultimate_Store_Kit_Module_Base {
         exit;
     }
 
+
     /**
-     * AJAX handler to find the correct variation ID from attribute combinations
+     * AJAX handler to get available variations for a product
      */
-    public function usk_find_variation() {
-        if (!isset($_POST['product_id']) || !isset($_POST['attributes']) || !is_array($_POST['attributes'])) {
-            wp_send_json_error(['message' => 'Invalid data']);
+    public function usk_get_available_variations() {
+        if (!isset($_POST['product_id'])) {
+            \wp_send_json_error(['message' => 'Invalid product ID']);
             return;
         }
 
-        $product_id = absint($_POST['product_id']);
-        $attributes = $_POST['attributes'];
+        $product_id = \absint($_POST['product_id']);
+        $product = \wc_get_product($product_id);
 
-        $product = wc_get_product($product_id);
         if (!$product || !$product->is_type('variable')) {
-            wp_send_json_error(['message' => 'Invalid product']);
+            \wp_send_json_error(['message' => 'Not a variable product']);
             return;
         }
 
-        // Format attributes for WooCommerce
-        $formatted_attributes = [];
-        foreach ($attributes as $name => $value) {
-            $formatted_attributes['attribute_' . $name] = sanitize_text_field($value);
+        // Get all available variations
+        $available_variations = $product->get_available_variations();
+
+        // Clean up variation data to only include what's needed for attribute filtering
+        $clean_variations = [];
+        foreach ($available_variations as $variation) {
+            $clean_variations[] = [
+                'variation_id' => $variation['variation_id'],
+                'attributes' => $variation['attributes'],
+                'is_in_stock' => $variation['is_in_stock'],
+                'is_purchasable' => $variation['is_purchasable'],
+                'image' => $variation['image'],
+                'price_html' => $variation['price_html'],
+            ];
         }
 
-        // Find matching variation
-        $data_store = \WC_Data_Store::load('product');
-        $variation_id = $data_store->find_matching_product_variation($product, $formatted_attributes);
-
-        if ($variation_id) {
-            wp_send_json_success([
-                'variation_id' => $variation_id
-            ]);
-        } else {
-            wp_send_json_error(['message' => 'No matching variation found']);
-        }
-
+        \wp_send_json_success($clean_variations);
         exit;
     }
 }

@@ -2,19 +2,20 @@
 
 use UltimateStoreKit\Base\Support\Optional;
 
-if(!function_exists('dd')){
+if (!function_exists('dd')) {
 
     /**
      * dump & die.
      */
-    function dd( $x ) {
+    function dd($x) {
         echo '<pre>';
-        if ( is_array( $x ) || is_object( $x ) ) {
-            print_r( $x );
+        if (is_array($x) || is_object($x)) {
+            print_r($x);
         } else {
             echo wp_kses_post($x);
         }
-        echo '</pre>';exit;
+        echo '</pre>';
+        exit;
     }
 }
 
@@ -26,8 +27,7 @@ if (! function_exists('optional')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function optional($value = null, callable $callback = null)
-    {
+    function optional($value = null, callable $callback = null) {
         if (is_null($callback)) {
             return new Optional($value);
         } elseif (! is_null($value)) {
@@ -45,44 +45,42 @@ if (! function_exists('array_except')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function array_except($array, $keys)
-    {
+    function array_except($array, $keys) {
 
-	    $original = &$array;
+        $original = &$array;
 
-	    $keys = (array) $keys;
+        $keys = (array) $keys;
 
-	    if (count($keys) === 0) {
-		    return;
-	    }
+        if (count($keys) === 0) {
+            return;
+        }
 
-	    foreach ($keys as $key) {
-		    // if the exact key exists in the top-level, remove it
-		    if (array_key_exists($key, $array)) {
-			    unset($array[$key]);
+        foreach ($keys as $key) {
+            // if the exact key exists in the top-level, remove it
+            if (array_key_exists($key, $array)) {
+                unset($array[$key]);
 
-			    continue;
-		    }
+                continue;
+            }
 
-		    $parts = explode('.', $key);
+            $parts = explode('.', $key);
 
-		    // clean up before each pass
-		    $array = &$original;
+            // clean up before each pass
+            $array = &$original;
 
-		    while (count($parts) > 1) {
-			    $part = array_shift($parts);
+            while (count($parts) > 1) {
+                $part = array_shift($parts);
 
-			    if (isset($array[$part]) && is_array($array[$part])) {
-				    $array = &$array[$part];
-			    } else {
-				    continue 2;
-			    }
-		    }
+                if (isset($array[$part]) && is_array($array[$part])) {
+                    $array = &$array[$part];
+                } else {
+                    continue 2;
+                }
+            }
 
-		    unset($array[array_shift($parts)]);
-	    }
+            unset($array[array_shift($parts)]);
+        }
 
-		return $array;
+        return $array;
     }
 }
-

@@ -51,9 +51,10 @@ class USK_Shiny_Grid_Template
             <div class="usk-item-box">
                 <?php $this->render_product_image($product); ?>
                 <div class="usk-content">
-                    <?php //if (isset($settings['show_variation']) && $settings['show_variation'] === 'yes'): ?>
-                        <?php //$this->render_product_variation($product); ?>
-                    <?php //endif; ?>
+                    <?php if (isset($settings['show_variation']) && $settings['show_variation'] === 'yes'): ?>
+                        <?php $this->render_product_variation($product, $settings);
+                        ?>
+                    <?php endif; ?>
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)): ?>
                             <div class="usk-category"><?php echo wp_kses_post($categories); ?></div>
@@ -101,7 +102,7 @@ class USK_Shiny_Grid_Template
     /**
      * Render add to cart button
      */
-    public function render_add_to_cart_button($product)
+    public function __render_add_to_cart_button($product)
     {
         if (!$product) {
             return;
@@ -217,6 +218,49 @@ class USK_Shiny_Grid_Template
             $args
         );
     }
+    public function render_add_to_cart_button($product)
+    {
+        if ($product) {
+            $defaults = [
+                'quantity' => 1,
+                'class' => implode(
+                    ' ',
+                    array_filter(
+                        [
+                            'usk-button',
+                            'product_type_' . $product->get_type(),
+                            $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                            $product->supports('ajax_add_to_cart') && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
+                        ]
+                    )
+                ),
+                'attributes' => [
+                    'data-product_id' => $product->get_id(),
+                    'data-product_sku' => $product->get_sku(),
+                    'aria-label' => $product->add_to_cart_description(),
+                    'rel' => 'nofollow',
+                ],
+            ];
+            $args = apply_filters('woocommerce_loop_add_to_cart_args', wp_parse_args($defaults), $product);
+            if (isset($args['attributes']['aria-label'])) {
+                $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
+            }
+            echo wp_kses_post(apply_filters(
+                'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+                sprintf(
+                    '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
+                    esc_url($product->add_to_cart_url()),
+                    esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
+                    esc_attr(isset($args['class']) ? $args['class'] : 'button'),
+                    isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
+                    esc_html($product->add_to_cart_text())
+                ),
+                $product,
+                $args
+            ));
+        }
+        ;
+    }
 
     /**
      * Get variation ID from product attributes
@@ -312,12 +356,18 @@ class USK_Shiny_Grid_Template
     }
 
     /**
-     * Render product variation options (colors, sizes)
-     *
-     * Displays variation swatches on product grid items
-     * When a user selects a variation, it becomes active and ready for add to cart
+     * Check if swatches support is available
      */
-    public function render_product_variation($product)
+    private function has_swatches_support()
+    {
+        return class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches');
+    }
+
+    /**
+     * Render product variation options (colors, sizes)
+     * Displays variation swatches on product grid items
+     */
+    public function render_product_variation($product, $settings)
     {
         if (!$product || !$product->is_type('variable')) {
             return;
@@ -328,102 +378,139 @@ class USK_Shiny_Grid_Template
             return;
         }
 
-        // Get default attributes
-        $default_attributes = $product->get_default_attributes();
+        // Check if sequential mode is enabled
+        $sequential = \apply_filters('usk_sequential_variations', isset($settings['show_variation_sequential']) && $settings['show_variation_sequential'] === 'yes');
 
-        // Get all attribute taxonomies for this product
-        $attributes = $product->get_attributes();
+        // If Pro version with swatches is active, use that functionality
+        if ($this->has_swatches_support() && function_exists('apply_filters')) {
+            $this->render_swatches_variation($product, $variations, $sequential);
+            return;
+        }
+
+        // Otherwise use the simple variation buttons
+        $this->render_simple_variations($product, $variations, $sequential);
+    }
+
+    /**
+     * Render simple variation buttons for the free version
+     */
+    private function render_simple_variations($product, $variations, $sequential = false)
+    {
         $product_id = $product->get_id();
+        $attributes = $product->get_variation_attributes();
 
-        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '">';
+        if (empty($attributes)) {
+            return;
+        }
 
-        // Group attribute buttons by attribute type for better organization
-        $processed_attributes = [];
+        // Add sequential data attribute if enabled
+        $sequential_attr = $sequential ? ' data-sequential="true"' : '';
 
-        // Process all attributes in a more organized way
-        foreach ($attributes as $attribute_name => $attribute) {
-            // Skip non-variation attributes
-            if (!$attribute->get_variation()) {
+        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true"' . $sequential_attr . '>';
+
+        foreach ($attributes as $attribute_name => $options) {
+            if (empty($options)) {
                 continue;
             }
 
-            $processed_attributes[$attribute_name] = true;
-            $attribute_values = [];
-            $attribute_label = \wc_attribute_label($attribute_name);
-            $is_color_attribute = ($attribute_name === 'pa_color');
-            $is_size_attribute = ($attribute_name === 'pa_size');
-            // Create a container for this attribute type with a label
-            echo '<div class="usk-variation-group usk-' . \esc_attr(\sanitize_title($attribute_name)) . '-group">';
+            // Get attribute label
+            $attribute_label = wc_attribute_label($attribute_name);
+            $attribute_slug = sanitize_title($attribute_name);
 
-            // Only show label for non-color attributes
-            // if (!$is_color_attribute) {
-            //     echo '<span class="usk-variation-label">' . \esc_html($attribute_label) . '</span>';
-            // }
+            echo '<div class="usk-variation-group">';
+            echo '<div class="usk-variation-options">';
 
-            // Get all available values for this attribute
-            foreach ($variations as $variation) {
-                $taxonomy_key = 'attribute_' . $attribute_name;
-                if (isset($variation['attributes'][$taxonomy_key])) {
-                    $value = $variation['attributes'][$taxonomy_key];
+            foreach ($options as $option) {
+                $classes = 'usk-variation-button';
+                $option_name = apply_filters('woocommerce_variation_option_name', $option);
 
-                    if (!in_array($value, $attribute_values)) {
-                        $attribute_values[] = $value;
-                        $variation_id = $variation['variation_id'];
+                // Check if this is a color attribute
+                $is_color = (strpos(strtolower($attribute_slug), 'color') !== false ||
+                    strpos(strtolower($attribute_label), 'color') !== false);
 
-                        // Check if this is the default value
-                        $is_default = isset($default_attributes[$attribute_name]) && $default_attributes[$attribute_name] === $value;
-                        $active_class = $is_default ? ' active' : '';
-
-                        // Special handling for color attributes
-                        if ($is_color_attribute) {
-                            // Get the color term to find if there's any color value
-                            $color_term = \get_term_by('slug', $value, $attribute_name);
-                            $color_value = '';
-                            if ($color_term) {
-                                // Try to get color from term name or slug
-                                $color_value = $color_term->slug;
-                            }
-
-                            $style = '';
-                            if ($color_value) {
-                                $style = 'style="background-color:' . \esc_attr($color_value) . ';"';
-                            }
-
-                            echo '<button type="button" class="usk-variation-button usk-color-variation' . \esc_attr($active_class) . '" ' .
-                                'data-variation-id="' . \esc_attr($variation_id) . '" ' .
-                                'data-product-id="' . \esc_attr($product_id) . '" ' .
-                                'data-attribute="' . \esc_attr($attribute_name) . '" ' .
-                                'data-value="' . \esc_attr($value) . '" ' .
-                                $style . ' ' .
-                                'title="' . \esc_attr($color_term ? $color_term->name : $value) . '"' .
-                                '>' .
-                                ($color_value ? '' : \esc_html($value)) .
-                                '</button>';
-                        }
-                        if ($is_size_attribute) {
-                            // For non-color attributes (size, material, etc.)
-                            // Get term data if it's a taxonomy
-                            $display_value = $value;
-                            if ($attribute->is_taxonomy()) {
-                                $term = \get_term_by('slug', $value, $attribute_name);
-                                $display_value = $term ? $term->name : $value;
-                            }
-
-                            echo '<button type="button" class="usk-variation-button usk-' . \esc_attr(\sanitize_title($attribute_name)) . '-variation' . \esc_attr($active_class) . '" ' .
-                                'data-variation-id="' . \esc_attr($variation_id) . '" ' .
-                                'data-product-id="' . \esc_attr($product_id) . '" ' .
-                                'data-attribute="' . \esc_attr($attribute_name) . '" ' .
-                                'data-value="' . \esc_attr($value) . '">' .
-                                \esc_html($display_value) .
-                                '</button>';
-                        }
-                    }
+                if ($is_color) {
+                    // For color attributes, use background color and minimal text
+                    echo '<button type="button" class="' . esc_attr($classes . ' usk-color-button') . '"
+                        data-attribute="' . esc_attr($attribute_slug) . '"
+                        data-value="' . esc_attr($option) . '"
+                        style="background-color: ' . esc_attr($option) . '"
+                        aria-label="' . sprintf(__('Select %s', 'ultimate-store-kit'), esc_attr($option_name)) . '"><span class="usk-tooltip-text">' . esc_html($option_name) . '</span></button>';
+                } else {
+                    // For non-color attributes, display as regular text buttons
+                    echo '<button type="button" class="' . esc_attr($classes) . '"
+                        data-attribute="' . esc_attr($attribute_slug) . '"
+                        data-value="' . esc_attr($option) . '"
+                        aria-label="' . sprintf(__('Select %s', 'ultimate-store-kit'), esc_attr($option_name)) . '">' . esc_html($option_name) . '<span class="usk-tooltip-text">' . esc_html($option_name) . '</span></button>';
                 }
             }
 
-            echo '</div>';
+            echo '</div>'; // Close .usk-variation-options
+            echo '</div>'; // Close .usk-variation-group
         }
 
-        echo '</div>';
+        echo '</div>'; // Close .usk-variations-container
+    }
+
+    /**
+     * Render variation swatches using the Pro version's swatches functionality
+     */
+    private function render_swatches_variation($product, $variations, $sequential = false)
+    {
+        $product_id = $product->get_id();
+        $attributes = $product->get_variation_attributes();
+
+        if (empty($attributes)) {
+            return;
+        }
+
+        // Add sequential data attribute if enabled
+        $sequential_attr = $sequential ? ' data-sequential="true"' : '';
+
+        echo '<div class="usk-variations-container usk-pro-swatches" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true"' . $sequential_attr . '>';
+
+        // Loop through each product attribute
+        foreach ($attributes as $attribute_name => $options) {
+            if (empty($options)) {
+                continue;
+            }
+
+            echo '<div class="usk-variation-group">';
+
+            // Build the args for the swatches
+            $args = array(
+                'options' => $options,
+                'product' => $product,
+                'attribute' => $attribute_name,
+                'name' => 'attribute_' . sanitize_title($attribute_name),
+                'selected' => isset($_REQUEST['attribute_' . sanitize_title($attribute_name)])
+                    ? wc_clean(wp_unslash($_REQUEST['attribute_' . sanitize_title($attribute_name)]))
+                    : $product->get_variation_default_attribute($attribute_name)
+            );
+
+            // Create a placeholder for the dropdown - this will be replaced with swatches
+            $dropdown_html = '<select id="' . esc_attr($args['name']) . '" class="' . esc_attr($args['name']) . '" name="' . esc_attr($args['name']) . '" data-attribute_name="' . esc_attr($args['name']) . '" data-show_option_none="yes" style="display:none;">';
+            $dropdown_html .= '<option value="">' . esc_html__('Choose an option', 'woocommerce') . '</option>';
+
+            if (!empty($options)) {
+                foreach ($options as $option) {
+                    $dropdown_html .= '<option value="' . esc_attr($option) . '" ' . selected($args['selected'], $option, false) . '>' . esc_html(apply_filters('woocommerce_variation_option_name', $option, null, $attribute_name, $product)) . '</option>';
+                }
+            }
+
+            $dropdown_html .= '</select>';
+
+            // Apply the filter to transform the dropdown to swatches
+            if (class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches')) {
+                $swatches = \UltimateStoreKitPro\VariationSwatches\Swatches::instance();
+                $swatches_html = $swatches->swatches_html($dropdown_html, $args);
+                echo $swatches_html;
+            } else {
+                echo $dropdown_html;
+            }
+
+            echo '</div>'; // Close .usk-variation-group
+        }
+
+        echo '</div>'; // Close .usk-variations-container
     }
 }

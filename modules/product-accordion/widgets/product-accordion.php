@@ -58,9 +58,9 @@ class Product_Accordion extends Module_Base {
 
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['micromodal', 'usk-site'];
+            return ['micromodal', 'usk-accordion'];
         } else {
-            return ['micromodal', 'usk-product-accordion'];
+            return ['micromodal', 'usk-product-accordion', 'usk-accordion'];
         }
     }
 
