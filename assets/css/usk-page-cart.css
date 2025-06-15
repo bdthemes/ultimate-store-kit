@@ -118,6 +118,20 @@
 }
 
 /* Quantity Input */
+.usk-page-cart .woocommerce-cart-form .shop_table .usk-product-quantity .quantity button {
+  padding: 15px;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #a4afb7;
+  border-radius: 3px 3px 3px 3px;
+  color: #444;
+  line-height: 1;
+  cursor: pointer;
+  background: transparent;
+}
+.usk-page-cart .woocommerce-cart-form .shop_table .usk-product-quantity .quantity button:hover {
+  background: #f9f9f9;
+}
 .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-quantity .quantity {
   display: flex;
   align-items: center;
@@ -125,6 +139,7 @@
   gap: 5px;
 }
 .usk-page-cart .woocommerce-cart-form .shop_table .usk-product-quantity .qty {
+  margin-right: 0 !important;
   width: 5.631em;
   outline: none;
   color: var(--usk-cart-input-text);
