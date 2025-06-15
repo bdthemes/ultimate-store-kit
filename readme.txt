@@ -209,6 +209,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.6.XX [XXth May 2025] =
 
 * Fixed: JS error fixed in Dashboard Settings
+* Fixed: Page cart widget quantity plus minus design issue fixed
 
 = 2.6.1 [18th May 2025] =
 
