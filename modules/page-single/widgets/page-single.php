@@ -1367,6 +1367,7 @@ class Page_Single extends Module_Base {
         }        
         ?>
         <div class="usk-page-single">
+            <?php usk_setup_quantity_buttons(); // this is for quantity plus minus button ?>
             <?php echo do_shortcode('[product_page id="' . $product_id . '"]'); ?>
         </div>
         <?php

@@ -1375,3 +1375,70 @@ function usk_ajax_variation_image_update() {
 }
 add_action('wp_ajax_usk_get_variation_image', 'usk_ajax_variation_image_update');
 add_action('wp_ajax_nopriv_usk_get_variation_image', 'usk_ajax_variation_image_update');
+
+// Start: Add to cart quantity buttons conversion
+if ( ! function_exists( 'usk_display_quantity_minus' ) ) {
+	function usk_display_quantity_minus() {
+		if ( ! is_product() ) return;
+		echo '<button type="button" class="bdt-add-to-cart-qty-minus" ><i class="usk-icon-minus3"></i></button>';
+	}
+}
+
+if ( ! function_exists( 'usk_display_quantity_plus' ) ) {	
+	function usk_display_quantity_plus() {
+		if ( ! is_product() ) return;
+		echo '<button type="button" class="bdt-add-to-cart-qty-plus" ><i class="usk-icon-plus3"></i></button>';
+	}
+}
+
+if ( ! function_exists( 'usk_add_cart_quantity_plus_minus' ) ) {
+	function usk_add_cart_quantity_plus_minus() {
+
+	echo '<style>
+		input[type="number"]::-webkit-outer-spin-button,
+		input[type="number"]::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		input[type="number"] {
+			-moz-appearance: textfield; /* Firefox */
+		}		
+	</style>';
+
+	wc_enqueue_js( "
+		$(document).off('click.bdtQtyHandler'); // Remove previous handler
+		$(document).on('click.bdtQtyHandler', 'button.bdt-add-to-cart-qty-plus, button.bdt-add-to-cart-qty-minus', function(e) {
+			e.preventDefault();
+			var qty = $(this).closest('form.cart').find('.qty');
+			var val = parseFloat(qty.val()) || 0;
+			var max = parseFloat(qty.attr('max')) || Infinity;
+			var min = parseFloat(qty.attr('min')) || 0;
+			var step = parseFloat(qty.attr( 'step' ));
+
+			if ($(this).is('.bdt-add-to-cart-qty-plus')) {
+				qty.val(Math.min(val + step, max)).trigger('change');
+			} else {
+				qty.val(Math.max(val - step, min)).trigger('change');
+			}
+		});
+	");
+	}
+}
+
+if ( ! function_exists( 'usk_setup_quantity_buttons' ) ) {
+	function usk_setup_quantity_buttons() {
+		if ( function_exists( 'is_product' ) ) {
+			// Remove the default version
+			remove_all_actions( 'woocommerce_before_quantity_input_field' );
+			remove_all_actions( 'woocommerce_after_quantity_input_field' );
+			remove_all_actions( 'woocommerce_before_single_product' );
+		
+			// Add our version
+			add_action( 'woocommerce_before_quantity_input_field', 'usk_display_quantity_minus' );
+			add_action( 'woocommerce_after_quantity_input_field', 'usk_display_quantity_plus' );
+			add_action( 'woocommerce_after_single_product', 'usk_add_cart_quantity_plus_minus' );
+		}		
+	}
+}
+// End: Add to cart quantity buttons conversion
