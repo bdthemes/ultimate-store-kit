@@ -430,17 +430,23 @@ class USK_Shiny_Grid_Template
 
                 if ($is_color) {
                     // For color attributes, use background color and minimal text
+                    // Translators: %s is the name of the color option (e.g., "Red", "Blue").
+                    $aria_label = sprintf( __( 'Select %s', 'ultimate-store-kit' ), esc_attr( $option_name ) );
                     echo '<button type="button" class="' . esc_attr($classes . ' usk-color-button') . '"
-                        data-attribute="' . esc_attr($attribute_slug) . '"
-                        data-value="' . esc_attr($option) . '"
-                        style="background-color: ' . esc_attr($option) . '"
-                        aria-label="' . sprintf(__('Select %s', 'ultimate-store-kit'), esc_attr($option_name)) . '"><span class="usk-tooltip-text">' . esc_html($option_name) . '</span></button>';
+                            data-attribute="' . esc_attr($attribute_slug) . '"
+                            data-value="' . esc_attr($option) . '"
+                            style="background-color: ' . esc_attr($option) . '"
+                            aria-label="' . esc_attr($aria_label) . '"><span class="usk-tooltip-text">' . esc_html($option_name) . '</span>
+                        </button>';
                 } else {
                     // For non-color attributes, display as regular text buttons
+                    // Translators: %s is the name of the variation option (e.g., "Large", "Cotton").
+                    $aria_label = sprintf( __( 'Select %s', 'ultimate-store-kit' ), esc_attr( $option_name ) );
                     echo '<button type="button" class="' . esc_attr($classes) . '"
-                        data-attribute="' . esc_attr($attribute_slug) . '"
-                        data-value="' . esc_attr($option) . '"
-                        aria-label="' . sprintf(__('Select %s', 'ultimate-store-kit'), esc_attr($option_name)) . '">' . esc_html($option_name) . '<span class="usk-tooltip-text">' . esc_html($option_name) . '</span></button>';
+                            data-attribute="' . esc_attr($attribute_slug) . '"
+                            data-value="' . esc_attr($option) . '"
+                            aria-label="' . esc_attr($aria_label) . '">' . esc_html($option_name) . '<span class="usk-tooltip-text">' . esc_html($option_name) . '</span>
+                        </button>';
                 }
             }
 
