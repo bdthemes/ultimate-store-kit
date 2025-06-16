@@ -761,7 +761,8 @@ class Product_Review_Carousel extends Module_Base {
                             <span class="usk-rating-text">
                                 <?php 
                                 printf(
-                                    esc_html__('%s', 'ultimate-store-kit'), 
+                                    /* translators: %s is the average rating number */
+                                    esc_html__('%s', 'ultimate-store-kit'),
                                     esc_html(floor($product->get_average_rating()))
                                 ); 
                                 ?>

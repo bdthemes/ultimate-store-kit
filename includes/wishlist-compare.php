@@ -162,7 +162,7 @@ final class WishlistCompare {
 
 		// send response
 		$response['status']  = 1;
-		// $response['message'] = sprintf( __( 'compare products item %s!', 'ultimate-store-kit' ), $response['action'] );
+		/* translators: %s is the action performed on the compared product */
 		$response['message'] = sprintf( __( 'Compared product item: %s.', 'ultimate-store-kit' ), $response['action'] );
 		
 		wp_send_json( $response );
