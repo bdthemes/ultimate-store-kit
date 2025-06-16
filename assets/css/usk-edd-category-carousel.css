@@ -56,7 +56,6 @@
 }
 .usk-edd-category-carousel.style-1 .usk-edd-category-carousel-image {
   object-fit: cover;
-  min-height: 240px;
   height: 100%;
   width: 100%;
 }

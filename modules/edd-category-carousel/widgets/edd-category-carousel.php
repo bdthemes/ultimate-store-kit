@@ -127,9 +127,6 @@ class EDD_Category_Carousel extends Module_Base {
 				'default' => [
 					'size' => 20,
 				],
-				'selectors' => [
-					'{{WRAPPER}} .usk-edd-category-carousel' => 'grid-gap: {{SIZE}}{{UNIT}};',
-				],
 			]
 		);
 
@@ -243,7 +240,7 @@ class EDD_Category_Carousel extends Module_Base {
 				'name'      => 'items_background',
 				'label'     => esc_html__('Backgrund', 'ultimate-store-kit'),
 				'types'     => ['classic', 'gradient'],
-				'selector'  => '{{WRAPPER}} .usk-edd-category-carousel .usk-edd-category-grid-image',
+				'selector'  => '{{WRAPPER}} .usk-edd-category-carousel .edd-item',
 			]
 		);
 		$this->add_control(
@@ -381,7 +378,7 @@ class EDD_Category_Carousel extends Module_Base {
 				'name'      => 'items_hover_background',
 				'label'     => esc_html__('Backgrund', 'ultimate-store-kit'),
 				'types'     => ['classic', 'gradient'],
-				'selector'  => '{{WRAPPER}} .usk-edd-category-carousel .edd-item:hover .usk-edd-category-grid-image',
+				'selector'  => '{{WRAPPER}} .usk-edd-category-carousel .edd-item:hover',
 				'condition' => [
 					'skin_layout!' => 'style-5'
 				]
