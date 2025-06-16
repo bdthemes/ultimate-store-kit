@@ -1153,7 +1153,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 					// Initialize WooCommerce add to cart functionality
 					var wc_add_to_cart_variation_params = {
 						"ajax_url": "<?php echo admin_url('admin-ajax.php'); ?>",
-						"i18n_view_cart": "<?php echo esc_js(__('View cart', 'woocommerce')); ?>",
+						"i18n_view_cart": "<?php echo esc_js(__('View cart', 'ultimate-store-kit')); ?>",
 						"cart_url": "<?php echo esc_url(wc_get_cart_url()); ?>",
 						"is_cart": "<?php echo is_cart() ? '1' : '0'; ?>",
 						"cart_redirect_after_add": "<?php echo get_option('woocommerce_cart_redirect_after_add') ? '1' : '0'; ?>"
