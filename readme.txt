@@ -210,6 +210,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Fixed: JS error fixed in Dashboard Settings
 * Fixed: Page cart widget quantity plus minus design issue fixed
+* WooCommerce quantity plus/minus button issue fixed
 
 = 2.6.1 [18th May 2025] =
 
