@@ -98,6 +98,7 @@
   font-weight: 500;
   display: inline-block;
   color: #272c32;
+  white-space: nowrap;
 }
 .ultimate-store-kit-dashboard.wrap .bdt-option-page .usk-option-item .bdt-option-demo,
 .ultimate-store-kit-dashboard.wrap .bdt-option-page .usk-option-item .bdt-option-video {
