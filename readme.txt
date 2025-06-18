@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, woocommerce product
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.28.4
+Elementor tested up to: 3.29.2
 
 Best addon for Elementor WordPress plugin with 80+ most popular eCommerce, EDD and Static elements that need your everyday website page building.
 
@@ -104,6 +104,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Featured Box](https://storekit.pro/demo/featured-box/) - Highlight key features or services with customizable featured boxes.  
 * [Info List](https://storekit.pro/demo/info-list/) - Present information in a clean and well-structured list format.  
 * [QR Code](https://storekit.pro/demo/qr-code/) - Generate and display QR codes for quick sharing or scanning.  
+* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners to your store for announcements, promotions, or highlights.  
 
 == Pro version Widgets 🔥 ==
 
@@ -206,11 +207,12 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.6.XX [XXth May 2025] =
+= 2.6.2 [18th June 2025] =
 
+* Added: Price regular color added in single page widget
 * Fixed: JS error fixed in Dashboard Settings
 * Fixed: Page cart widget quantity plus minus design issue fixed
-* WooCommerce quantity plus/minus button issue fixed
+* Fixed: WooCommerce quantity plus/minus button issue fixed
 
 = 2.6.1 [18th May 2025] =
 
@@ -463,7 +465,7 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 ### How can I import my products from the existing EDD/WooCommerce/Digital Downloads store?
 
-- You don’t have to import anything. Ultimate Store Kit doesn’t use a separate platform to store your shop data. Rather, it reads the store data from your existing store in WordPress automatically.
+- You don't have to import anything. Ultimate Store Kit doesn't use a separate platform to store your shop data. Rather, it reads the store data from your existing store in WordPress automatically.
 
 ### Is Ultimate Store Kit an eCommerce platform?
 
