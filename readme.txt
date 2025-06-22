@@ -207,6 +207,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.6.X [XXth June 2025] =
+
+* Fixed: Fixed text alignment issue in Checkout page Widget
+* Fixed: Marker color control added to the Account Registration Form widget
+
 = 2.6.2 [18th June 2025] =
 
 * Added: Price regular color added in single page widget
