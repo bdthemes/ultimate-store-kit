@@ -210,6 +210,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.6.X [XXth June 2025] =
 
 * Fixed: Fixed text alignment issue in Checkout page Widget
+* Fixed: List style type issue fixed in Checkout Page widget
 * Fixed: Marker color control added to the Account Registration Form widget
 
 = 2.6.2 [18th June 2025] =

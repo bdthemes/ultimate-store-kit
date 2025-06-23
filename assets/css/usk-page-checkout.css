@@ -262,6 +262,10 @@
   border-bottom: none !important;
 }
 
+.usk-page-checkout .woocommerce-checkout-review-order-table .woocommerce-shipping-totals .woocommerce-shipping-methods {
+  list-style-type: none;
+}
+
 .usk-page-checkout .woocommerce-checkout-review-order-table tfoot th {
   font-weight: 600;
   color: var(--usk-text-heading);
