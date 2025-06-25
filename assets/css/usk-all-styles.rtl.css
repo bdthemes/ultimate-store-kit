@@ -1787,6 +1787,10 @@
   color: var(--usk-text-body);
 }
 
+.usk-page-checkout .woocommerce-checkout-review-order-table tfoot tr.shipping ul {
+  list-style-type: none;
+}
+
 .usk-page-checkout .woocommerce-checkout-review-order-table tfoot tr.order-total {
   background-color: var(--usk-bg-table-total);
 }
@@ -2453,6 +2457,9 @@
   border: none;
   border-radius: var(--usk-cart-btn-radius);
   text-decoration: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .usk-page-cart .cart-collaterals .cart_totals .wc-proceed-to-checkout .button:hover {

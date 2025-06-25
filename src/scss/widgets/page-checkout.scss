@@ -340,6 +340,15 @@
 .usk-page-checkout
   .woocommerce-checkout-review-order-table
   tfoot
+  tr.shipping {
+  ul{
+    list-style-type: none;
+  }
+}
+
+.usk-page-checkout
+  .woocommerce-checkout-review-order-table
+  tfoot
   tr.order-total {
   background-color: var(--usk-bg-table-total);
 }
