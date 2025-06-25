@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, woocommerce product
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.1
@@ -207,7 +207,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.6.X [XXth June 2025] =
+= 2.6.3 [25th June 2025] =
 
 * Fixed: CartPage button text alignment issue fixed in CartPage Widget
 * Fixed: List style type issue fixed in Checkout Page widget
