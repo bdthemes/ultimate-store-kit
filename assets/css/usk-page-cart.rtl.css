@@ -281,6 +281,9 @@
   border: none;
   border-radius: var(--usk-cart-btn-radius);
   text-decoration: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .usk-page-cart .cart-collaterals .cart_totals .wc-proceed-to-checkout .button:hover {
