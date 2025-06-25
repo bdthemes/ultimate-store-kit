@@ -207,6 +207,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.6.X [XXth June 2025] =
+
+* Added: Mobile Menu Widget Added
+* Added: Typography control added under Tabs Content section in the Single Product Page widget
+
 = 2.6.3 [25th June 2025] =
 
 * Fixed: CartPage button text alignment issue fixed in CartPage Widget

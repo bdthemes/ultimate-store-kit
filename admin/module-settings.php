@@ -1028,6 +1028,16 @@ class ModuleService {
                     'demo_url'     => 'https://storekit.pro/demo/marquee/',
                     'video_url'    => '',
                 ],
+                [
+                    'name'         => 'mobile-menu',
+                    'label'        => esc_html__('Mobile Menu', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'free',
+                    'content_type' => 'others new',
+                    'demo_url'     => 'https://storekit.pro/demo/mobile-menu/',
+                    'video_url'    => '',
+                ]
             ],
             'ultimate_store_kit_other_settings' => [
 
