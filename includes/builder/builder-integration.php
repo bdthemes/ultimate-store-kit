@@ -118,7 +118,7 @@ class Builder_Integration {
 
 			$template_url = !empty($sample_product) ?
 				get_permalink($sample_product) :
-				get_permalink(wc_get_products(['status' => 'publish', 'limit' => 1])[0]->get_id());
+				$this->get_default_product_url();
 		}
 
 		elseif ($template_slug === 'cart') {
@@ -487,6 +487,25 @@ class Builder_Integration {
 		}
 
 		return $default;
+	}
+
+	/**
+	 * Get default product URL with proper error checking
+	 *
+	 * @return string
+	 */
+	protected function get_default_product_url() {
+		$products = wc_get_products(['status' => 'publish', 'limit' => 1]);
+		
+		if (!empty($products) && isset($products[0]) && is_object($products[0])) {
+			$product = $products[0];
+			if (method_exists($product, 'get_id')) {
+				return get_permalink($product->get_id());
+			}
+		}
+		
+		// Fallback to shop page if no products found
+		return get_permalink(wc_get_page_id('shop'));
 	}
 }
 
