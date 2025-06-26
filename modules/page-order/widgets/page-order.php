@@ -144,7 +144,7 @@ class Page_Order extends Module_Base
         $this->start_controls_section(
             'section_style_thankyou_orders_style',
             [
-                'label' => __('Order ID', 'ultimate-store-kit'),
+                'label' => __('Order Heading', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -766,6 +766,149 @@ class Page_Order extends Module_Base
 
         $this->end_controls_tabs();
 
+        $this->add_control(
+            'order_again_button_heading',
+            [
+                'label' => esc_html__('Order Button', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->start_controls_tabs('order_again_button_tabs');
+        $this->start_controls_tab(
+            'tab_order_again_button_normal',
+            [
+                'label' => __('Normal', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'order_again_button_text_color',
+            [
+                'label' => __('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'order_again_button_background',
+                'label' => __('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'exclude' => ['image'],
+                'fields_options' => [
+                    'background' => [
+                        'default' => 'classic',
+                    ],
+                    'color' => [
+                        'default' => '#1E87F0',
+                    ],
+                ],
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'order_again_button_border',
+                'label'          => __('Border', 'ultimate-store-kit'),
+                'default' => 'n',
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button',
+            ]
+        );
+
+        $this->add_control(
+            'order_again_button_border_radius',
+            [
+                'label' => __('Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'rem', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'order_again_button_padding',
+            [
+                'label' => __('Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'rem', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'order_again_button_typography',
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'order_again_button_box_shadow',
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button',
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'tab_order_again_button_hover',
+            [
+                'label' => __('Hover', 'ultimate-store-kit'),
+            ]
+        );
+
+        $this->add_control(
+            'order_again_button_hover_color',
+            [
+                'label' => __('Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order_again_button_hover_border_color',
+            [
+                'label' => __('Border Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'order_again_button_border_border!' => 'none',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'order_again_button_hover_background',
+                'label' => __('Background', 'ultimate-store-kit'),
+                'exclude' => ['image'],
+                'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button:hover',
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
 
         $this->end_controls_section();
 

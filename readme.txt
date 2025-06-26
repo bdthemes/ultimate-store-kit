@@ -211,6 +211,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Added: Mobile Menu Widget Added
 * Added: Typography control added under Tabs Content section in the Single Product Page widget
+* Added: Order Again Button's style control added inside the Order details section in the Order Page widget
 
 = 2.6.3 [25th June 2025] =
 
