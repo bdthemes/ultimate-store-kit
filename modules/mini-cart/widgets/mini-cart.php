@@ -236,7 +236,7 @@ class Mini_Cart extends Module_Base {
 				'label'   => esc_html__( 'Show Cart Icon', 'ultimate-store-kit' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
-
+				'prefix_class' => 'wc-cart-icon--',
 			]
 		);
 		$this->add_responsive_control(

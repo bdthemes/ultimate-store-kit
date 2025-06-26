@@ -347,3 +347,18 @@
     font-size: 14px;
   }
 }
+.elementor-widget-usk-mini-cart .usk-mini-cart-price-amount {
+  display: none;
+}
+
+.elementor-widget-usk-mini-cart.wc-cart-price--yes .usk-mini-cart-price-amount {
+  display: block;
+}
+
+.elementor-widget-usk-mini-cart .usk-cart-icon {
+  display: none;
+}
+
+.elementor-widget-usk-mini-cart.wc-cart-icon--yes .usk-cart-icon {
+  display: block;
+}

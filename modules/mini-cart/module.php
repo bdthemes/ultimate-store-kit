@@ -66,29 +66,24 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
 	public function ultimate_store_kit_mini_cart_fragment( $fragments ) {
 		global $woocommerce;
-		$settings = $this->get_settings_for_display();
 
 		ob_start();
 
 		?>
 		<span class="usk-mini-cart-inner">
-			<?php if ( $settings['show_price_amount'] === 'yes' ) : ?>
-				<span class="usk-cart-button-text">
-					<span class="usk-mini-cart-price-amount">
-						<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?>
-					</span>
+			<span class="usk-cart-button-text">
+				<span class="usk-mini-cart-price-amount">
+					<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?>
 				</span>
-			<?php endif; ?>
-			<?php if ( $settings['show_cart_icon'] === 'yes' ) : ?>
-				<span class="usk-mini-cart-button-icon">
-					<span class="usk-cart-badge">
-						<?php echo wp_kses_post( WC()->cart->get_cart_contents_count() ); ?>
-					</span>
-					<span class="usk-cart-icon">
-						<i class="usk-icon-cart" aria-hidden="true"></i>
-					</span>
+			</span>
+			<span class="usk-mini-cart-button-icon">
+				<span class="usk-cart-badge">
+					<?php echo wp_kses_post( WC()->cart->get_cart_contents_count() ); ?>
 				</span>
-			<?php endif; ?>
+				<span class="usk-cart-icon">
+					<i class="usk-icon-cart" aria-hidden="true"></i>
+				</span>
+			</span>
 		</span>
 		<?php
 		$fragments['div.usk-mini-cart-toggle-btn .usk-mini-cart-inner'] = ob_get_clean();
