@@ -210,6 +210,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.6.X [XXth June 2025] =
 
 * Fixed: Fatal error "Call to a member function get_id() on null" fixed in Builder Integration
+* Amount show/hide issue fixed in Mini Cart widget
 
 = 2.6.3 [25th June 2025] =
 
