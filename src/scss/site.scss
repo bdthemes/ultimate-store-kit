@@ -645,6 +645,12 @@
     width: 1em;
     height: 1em;
   }
+
+  .swiper-slide {
+    border-style: solid;
+    border-width: 0;
+    overflow: hidden;
+  }
 }
 
 /*------------------------------------------
@@ -693,11 +699,7 @@
     }
   }
 
-  .swiper-slide {
-    border-style: solid;
-    border-width: 0;
-    overflow: hidden;
-  }
+  
 
   .swiper-horizontal + .swiper-pagination-progressbar,
   .swiper-vertical

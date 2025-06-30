@@ -29,6 +29,12 @@
 .usk-page-single .woocommerce ul.products::before, .usk-page-single .woocommerce ul.products::after {
   display: none;
 }
+.usk-page-single .woocommerce .product .onsale {
+  padding: 0;
+}
+.usk-page-single .woocommerce .product form.cart .button {
+  padding: 16px 25px;
+}
 .usk-page-single .product_meta {
   display: flex;
   flex-direction: column;

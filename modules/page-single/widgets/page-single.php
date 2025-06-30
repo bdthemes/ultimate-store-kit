@@ -154,6 +154,103 @@ class Page_Single extends Module_Base {
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_product_gallery_style',
+            [
+                'label' => esc_html__('Product Image', 'ultimate-store-kit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'        => 'image_background',
+                'selector'    => '.woocommerce {{WRAPPER}} .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
+				.woocommerce {{WRAPPER}} .flex-viewport, .woocommerce {{WRAPPER}} .flex-control-thumbs img',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'image_border',
+                'selector' => '.woocommerce {{WRAPPER}} .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
+				.woocommerce {{WRAPPER}} .flex-viewport, .woocommerce {{WRAPPER}} .flex-control-thumbs img',
+
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors' => [
+                    '.woocommerce {{WRAPPER}} .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
+					.woocommerce {{WRAPPER}} .flex-viewport' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'spacing',
+            [
+                'label' => esc_html__('Spacing', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem', 'custom'],
+                'selectors' => [
+                    '.woocommerce {{WRAPPER}} .flex-viewport:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_thumbs_style',
+            [
+                'label' => esc_html__('Thumbnails', 'ultimate-store-kit'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'thumbs_border',
+                'selector' => '.woocommerce {{WRAPPER}} .flex-control-thumbs img',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'thumbs_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors' => [
+                    '.woocommerce {{WRAPPER}} .flex-control-thumbs img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'spacing_thumbs',
+            [
+                'label' => esc_html__('Spacing', 'ultimate-store-kit'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem', 'custom'],
+                'selectors' => [
+                    '.woocommerce {{WRAPPER}} .flex-control-thumbs li' => 'padding-right: calc({{SIZE}}{{UNIT}} / 2); padding-left: calc({{SIZE}}{{UNIT}} / 2); padding-bottom: {{SIZE}}{{UNIT}}',
+                    '.woocommerce {{WRAPPER}} .flex-control-thumbs' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function register_controls_price() {
@@ -316,17 +413,17 @@ class Page_Single extends Module_Base {
             ]
         );
 
-        // $this->add_responsive_control(
-        //     'add_to_cart_padding',
-        //     [
-        //         'label' => __('Padding', 'ultimate-store-kit'),
-        //         'type' => Controls_Manager::DIMENSIONS,
-        //         'size_units' => ['px', 'em', '%'],
-        //         'selectors' => [
-        //             '{{WRAPPER}} .woocommerce div.product form.cart .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        //         ],
-        //     ]
-        // );
+        $this->add_responsive_control(
+            'add_to_cart_padding',
+            [
+                'label' => __('Padding', 'ultimate-store-kit'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce div.product form.cart .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_responsive_control(
             'add_to_cart_size',
             [
