@@ -2505,6 +2505,12 @@
 .usk-page-single .variations td.value {
   position: relative;
 }
+.usk-page-single .woocommerce .woocommerce-product-gallery__wrapper,
+.usk-page-single .woocommerce .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
+.usk-page-single .woocommerce .flex-viewport,
+.usk-page-single .woocommerce .flex-control-thumbs img {
+  overflow: hidden;
+}
 .usk-page-single .woocommerce ul.products {
   display: grid;
   margin: 0;
