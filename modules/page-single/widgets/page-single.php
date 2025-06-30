@@ -168,7 +168,7 @@ class Page_Single extends Module_Base {
             [
                 'name'        => 'image_background',
                 'selector'    => '.woocommerce {{WRAPPER}} .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
-				.woocommerce {{WRAPPER}} .flex-viewport, .woocommerce {{WRAPPER}} .flex-control-thumbs img',
+				.woocommerce {{WRAPPER}} .flex-viewport, .woocommerce {{WRAPPER}} .flex-control-thumbs img, {{WRAPPER}} .woocommerce .woocommerce-product-gallery__wrapper',
                 'separator' => 'before',
             ]
         );
@@ -178,7 +178,7 @@ class Page_Single extends Module_Base {
             [
                 'name' => 'image_border',
                 'selector' => '.woocommerce {{WRAPPER}} .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
-				.woocommerce {{WRAPPER}} .flex-viewport, .woocommerce {{WRAPPER}} .flex-control-thumbs img',
+				.woocommerce {{WRAPPER}} .flex-viewport, .woocommerce {{WRAPPER}} .flex-control-thumbs img, {{WRAPPER}} .woocommerce .woocommerce-product-gallery__wrapper',
 
             ]
         );
@@ -191,7 +191,7 @@ class Page_Single extends Module_Base {
                 'size_units' => ['px', '%', 'em', 'rem', 'custom'],
                 'selectors' => [
                     '.woocommerce {{WRAPPER}} .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
-					.woocommerce {{WRAPPER}} .flex-viewport' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+					.woocommerce {{WRAPPER}} .flex-viewport, {{WRAPPER}} .woocommerce .woocommerce-product-gallery__wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
                 ],
             ]
         );

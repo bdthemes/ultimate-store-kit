@@ -16,6 +16,13 @@
         position: relative;
     }
 
+    .woocommerce .woocommerce-product-gallery__wrapper, 
+    .woocommerce .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper, 
+    .woocommerce .flex-viewport, 
+    .woocommerce .flex-control-thumbs img {
+        overflow: hidden;
+    }
+
     .woocommerce {
         ul.products{
             display: grid;
