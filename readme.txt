@@ -212,6 +212,11 @@ https://youtu.be/9J4zCaDcPnk
 * Added: Mobile Menu Widget Added
 * Added: Typography control added under Tabs Content section in the Single Product Page widget
 * Added: Order Again Button's style control added inside the Order details section in the Order Page widget
+* Fixed: Fatal error "Call to a member function get_id() on null" fixed in Builder Integration
+* Fixed: Fatal error "Call to undefined method get_settings_for_display()" fixed in Mini Cart Module
+* Fixed: Added proper null checking for product retrieval in template preview functionality
+* Fixed: Preserved show/hide functionality in mini cart widget while fixing AJAX fragment updates
+
 
 = 2.6.3 [25th June 2025] =
 

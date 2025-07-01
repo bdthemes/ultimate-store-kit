@@ -1302,6 +1302,11 @@ div.pp_pic_holder {
   width: 1em;
   height: 1em;
 }
+[class*=" elementor-widget-usk-"] .swiper-slide {
+  border-style: solid;
+  border-width: 0;
+  overflow: hidden;
+}
 
 /*------------------------------------------
    usk Shiny Widget rating position scss
@@ -1339,11 +1344,6 @@ div.pp_pic_holder {
 }
 .ultimate-store-kit .swiper .elementor-lightbox-content-source {
   display: none;
-}
-.ultimate-store-kit .swiper-slide {
-  border-style: solid;
-  border-width: 0;
-  overflow: hidden;
 }
 .ultimate-store-kit .swiper-horizontal + .swiper-pagination-progressbar,
 .ultimate-store-kit .swiper-vertical + .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
