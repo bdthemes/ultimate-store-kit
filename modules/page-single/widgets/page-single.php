@@ -909,6 +909,14 @@ class Page_Single extends Module_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'        => 'tabs_content_typography',
+                'selector'    => '{{WRAPPER}} .usk-page-single .woocommerce-tabs .wc-tab',
+            ]
+        );
+
         $this->end_controls_section();
     }
     protected function register_controls_product_related() {
