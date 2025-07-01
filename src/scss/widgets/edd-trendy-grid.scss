@@ -37,11 +37,11 @@
                }
             }
 
-            .usk-edd-price {
+            /* .usk-edd-price {
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-20px);
-            }
+            } */
         }
 
         &::before {
@@ -160,12 +160,20 @@
             border-radius: 0;
             line-height: 1;
             text-align: center;
+            margin-bottom: 4px;
             &.blue {
                 background-color: #EF262C;
             }
             &.blue:hover {
                 background-color: #d61017;
             }
+        }
+        .edd-submit {
+            border-radius: 0px !important;
+            padding: 14px 0 !important;
+        }
+        span.edd-cart-ajax-alert {
+            display: none;
         }
         .usk-details-button {
             a {
