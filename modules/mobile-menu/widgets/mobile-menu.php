@@ -329,7 +329,7 @@ class Mobile_Menu extends Module_Base {
 				'label'     => __( 'Border Width', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::SLIDER,
 				'selectors' => [ 
-					'{{WRAPPER}}' => '--ep-border-width: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}}' => '--usk-border-width: {{SIZE}}{{UNIT}};'
 				],
 				'condition' => [ 
 					'item_border_type!' => [ 'none' ],

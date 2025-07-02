@@ -63,7 +63,7 @@
   
   /* demo style 4 */
   .usk-mobile-menu-style-2 .usk-mobile-menu-link {
-    border: var(--ep-border-width, 1px);
+    border: var(--usk-border-width, 1px);
     border-color: #e5e5e5;
     border-style: solid;
     border-right-width: 0;
@@ -72,7 +72,7 @@
   .usk-mobile-menu-style-2
     .usk-mobile-menu-list:nth-last-child(1)
     .usk-mobile-menu-link {
-    border-right-width: var(--ep-border-width, 1px);
+    border-right-width: var(--usk-border-width, 1px);
   }
   
   .usk-mobile-menu-style-3 .usk-text-mobile-menu,

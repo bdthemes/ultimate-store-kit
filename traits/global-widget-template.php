@@ -527,11 +527,11 @@ trait Global_Widget_Template
 									class="bdt-position-z-index bdt-position-<?php echo esc_attr($settings['arrows_position'] . $hide_arrow_on_mobile); ?>">
 									<div class="bdt-arrows-container bdt-slidenav-container">
 										<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav">
-											<i class="ep-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
+											<i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 												aria-hidden="true"></i>
 										</a>
 										<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav">
-											<i class="ep-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
+											<i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 												aria-hidden="true"></i>
 										</a>
 									</div>
@@ -573,7 +573,7 @@ trait Global_Widget_Template
 										<div class="<?php
 										echo esc_attr($hide_arrow_on_mobile); ?>">
 											<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav">
-												<i class="ep-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
+												<i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 													aria-hidden="true"></i>
 											</a>
 										</div>
@@ -587,7 +587,7 @@ trait Global_Widget_Template
 										<div class="<?php
 										echo esc_attr($hide_arrow_on_mobile); ?>">
 											<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav">
-												<i class="ep-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
+												<i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 													aria-hidden="true"></i>
 											</a>
 										</div>
@@ -609,7 +609,7 @@ trait Global_Widget_Template
 										<div class="<?php
 										echo esc_attr($hide_arrow_on_mobile); ?>">
 											<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav">
-												<i class="ep-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
+												<i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 													aria-hidden="true"></i>
 											</a>
 										</div>
@@ -623,7 +623,7 @@ trait Global_Widget_Template
 										<div class="<?php
 										echo esc_attr($hide_arrow_on_mobile); ?>">
 											<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav">
-												<i class="ep-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
+												<i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 													aria-hidden="true"></i>
 											</a>
 										</div>
