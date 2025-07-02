@@ -207,6 +207,9 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.7.X [XXnd July 2025] =
+* Added: Alignment issue fixed in EDD Trendy Grid and EDD Trendy Carousel widget
+
 = 2.7.0 [2nd July 2025] =
 
 * Added: Mobile Menu Widget Added
