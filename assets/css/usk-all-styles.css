@@ -8902,7 +8902,7 @@ table.dataTable.display tbody tr.odd {
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 25px;
+  margin: 14px;
   display: flex;
   flex-direction: column;
   grid-row-gap: 5px;
@@ -9300,6 +9300,11 @@ table.dataTable.display tbody tr.odd {
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover {
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
+  /* .usk-edd-price {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+  } */
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover::before {
   width: 100%;
@@ -9315,11 +9320,6 @@ table.dataTable.display tbody tr.odd {
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover .usk-action-button .usk-details-button a {
   transition-delay: 0.1s;
-}
-.usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover .usk-edd-price {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item::before {
   content: "";
@@ -9424,6 +9424,7 @@ table.dataTable.display tbody tr.odd {
   border-radius: 0;
   line-height: 1;
   text-align: center;
+  margin-bottom: 4px;
 }
 .usk-edd-trendy-grid .usk-action-button a.blue,
 .usk-edd-trendy-grid .usk-action-button .edd-add-to-cart.blue {
@@ -9432,6 +9433,13 @@ table.dataTable.display tbody tr.odd {
 .usk-edd-trendy-grid .usk-action-button a.blue:hover,
 .usk-edd-trendy-grid .usk-action-button .edd-add-to-cart.blue:hover {
   background-color: #d61017;
+}
+.usk-edd-trendy-grid .usk-action-button .edd-submit {
+  border-radius: 0px !important;
+  padding: 14px 0 !important;
+}
+.usk-edd-trendy-grid .usk-action-button span.edd-cart-ajax-alert {
+  display: none;
 }
 .usk-edd-trendy-grid .usk-action-button .usk-details-button a {
   background: #1d1e25;
