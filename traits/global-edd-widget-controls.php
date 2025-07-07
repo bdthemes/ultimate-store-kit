@@ -1074,6 +1074,100 @@ trait Global_EDD_Widget_Controls {
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'action_btn_border',
+                'label'     => esc_html__('Border', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart',
+                'separator' => 'before'
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_radius',
+            [
+                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_padding',
+            [
+                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'action_btn_margin',
+            [
+                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => ['px', '%', 'em'],
+                'selectors'             => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        if (($this->get_name() == 'usk-edd-beauty-grid') || ($this->get_name() == 'usk-edd-beauty-carousel') || ($this->get_name() == 'usk-edd-standard-grid') || ($this->get_name() == 'usk-edd-standard-carousel')) :
+            $this->add_responsive_control(
+                'action_btn_space_between',
+                [
+                    'label'         => __('Space Between', 'ultimate-store-kit'),
+                    'type'          => Controls_Manager::SLIDER,
+                    'size_units'    => ['px'],
+                    'range'         => [
+                        'px'        => [
+                            'min'   => 0,
+                            'max'   => 50,
+                            'step'  => 1,
+                        ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+        endif;
+
+        if (($this->get_name() == 'usk-edd-classic-grid') || ($this->get_name() == 'usk-edd-classic-carousel') || ($this->get_name() == 'usk-edd-trendy-grid') || ($this->get_name() == 'usk-edd-trendy-carousel')) :
+            $this->add_responsive_control(
+                'action_btn_space_between_classic_trendy',
+                [
+                    'label'         => __('Space Between', 'ultimate-store-kit'),
+                    'type'          => Controls_Manager::SLIDER,
+                    'size_units'    => ['px'],
+                    'range'         => [
+                        'px'        => [
+                            'min'   => 0,
+                            'max'   => 50,
+                            'step'  => 1,
+                        ]
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+        endif;
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'action_btn_typography',
+                'label'     => __('Typography', 'ultimate-store-kit'),
+                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .usk-action-button .edd-add-to-cart',
+            ]
+        );
+
         $this->start_controls_tabs(
             'action_btn_tabs'
         );
@@ -1186,101 +1280,6 @@ trait Global_EDD_Widget_Controls {
         );
         $this->end_controls_tab();
         $this->end_controls_tabs();
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => 'action_btn_border',
-                'label'     => esc_html__('Border', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart',
-                'separator' => 'before'
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_radius',
-            [
-                'label'                 => esc_html__('Radius', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart'    => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_padding',
-            [
-                'label'                 => esc_html__('Padding', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'action_btn_margin',
-            [
-                'label'                 => esc_html__('Margin', 'ultimate-store-kit'),
-                'type'                  => Controls_Manager::DIMENSIONS,
-                'size_units'            => ['px', '%', 'em'],
-                'selectors'             => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a, {{WRAPPER}} .' . $this->get_name() . ' .edd-add-to-cart'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        if (($this->get_name() == 'usk-edd-beauty-grid') || ($this->get_name() == 'usk-edd-beauty-carousel') || ($this->get_name() == 'usk-edd-standard-grid') || ($this->get_name() == 'usk-edd-standard-carousel')) :
-            $this->add_responsive_control(
-                'action_btn_space_between',
-                [
-                    'label'         => __('Space Between', 'ultimate-store-kit'),
-                    'type'          => Controls_Manager::SLIDER,
-                    'size_units'    => ['px'],
-                    'range'         => [
-                        'px'        => [
-                            'min'   => 0,
-                            'max'   => 50,
-                            'step'  => 1,
-                        ]
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );
-        endif;
-
-        if (($this->get_name() == 'usk-edd-classic-grid') || ($this->get_name() == 'usk-edd-classic-carousel') || ($this->get_name() == 'usk-edd-trendy-grid') || ($this->get_name() == 'usk-edd-trendy-carousel')) :
-            $this->add_responsive_control(
-                'action_btn_space_between_classic_trendy',
-                [
-                    'label'         => __('Space Between', 'ultimate-store-kit'),
-                    'type'          => Controls_Manager::SLIDER,
-                    'size_units'    => ['px'],
-                    'range'         => [
-                        'px'        => [
-                            'min'   => 0,
-                            'max'   => 50,
-                            'step'  => 1,
-                        ]
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );
-        endif;
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'action_btn_typography',
-                'label'     => __('Typography', 'ultimate-store-kit'),
-                'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button a',
-                'separator' => 'after'
-            ]
-        );
-
         $this->end_controls_section();
     }
 
