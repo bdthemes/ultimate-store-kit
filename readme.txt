@@ -207,6 +207,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.7.X [XX July 2025] =
+
+* Fixed: Action button typography fixed in EDD Widgets
+* Fixed: Alignment fixed in EDD Widgets
+
 = 2.7.0 [2nd July 2025] =
 
 * Added: Mobile Menu Widget Added
