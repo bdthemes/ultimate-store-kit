@@ -93,6 +93,7 @@
 }
 .usk-edd-trendy-grid .usk-edd-content .usk-edd-price {
   display: flex;
+  justify-content: center;
   font-size: 12px;
   font-weight: 600;
   grid-column-gap: 10px;

@@ -178,9 +178,9 @@ trait Global_EDD_Widget_Controls {
                         'icon'  => 'eicon-h-align-right',
                     ],
                 ],
-                'default'       => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content .usk-edd-price' => 'justify-content:{{VALUE}}'
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content .usk-edd-price' => 'justify-content:{{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item-box' => 'text-align:{{VALUE}}'
                 ]
             ]
         );
