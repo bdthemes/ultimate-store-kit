@@ -86,7 +86,8 @@ trait Global_EDD_Widget_Controls {
                 ],
                 'default'       => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content' => 'text-align:{{VALUE}}'
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-top-content' => 'text-align:{{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content .usk-edd-price' => 'justify-content:{{VALUE}}'
                 ]
             ]
         );

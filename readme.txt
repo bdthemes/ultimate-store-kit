@@ -209,6 +209,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.7.X [XX July 2025] =
 
+* Fixed: Alignment issue fixed in EDD Trendy Carousel Widget
 * Fixed: Action button typography fixed in EDD Widgets
 * Fixed: Alignment fixed in EDD Widgets
 
