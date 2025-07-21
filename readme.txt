@@ -1,17 +1,17 @@
 === Ultimate Store Kit - Elementor powered WooCommerce Builder, 80+ Widgets and Template Builder ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
-Tags: elementor, woocommerce, woocommerce builder, woocommerce elementor, woocommerce product
-Stable tag: 2.7.0
+Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
+Stable tag: 2.7.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.30.0
+Elementor tested up to: 3.30.2
 
-Best addon for Elementor WordPress plugin with 80+ most popular eCommerce, EDD and Static elements that need your everyday website page building.
+WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
 
 == Description ==
@@ -207,7 +207,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.7.X [XX July 2025] =
+= 2.7.1 [21st July 2025] =
 
 * Fixed: Alignment issue fixed in EDD Trendy Carousel Widget
 * Fixed: Action button typography fixed in EDD Widgets
