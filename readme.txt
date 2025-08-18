@@ -207,6 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.7.X [Xth August 2025] =
+
+* Added: Admin Store API Notice added
+
 = 2.7.1 [21st July 2025] =
 
 * Fixed: Alignment issue fixed in EDD Trendy Carousel Widget
