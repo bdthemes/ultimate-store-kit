@@ -64,7 +64,7 @@ class UltimateStoreKit_Admin_Settings
     public function usk_redirect_to_get_pro()
     {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
-            wp_redirect('https://storekit.pro/pricing/?utm_source=UltimateStoreKit&utm_medium=PluginPage&utm_campaign=30%OffOnUSK&coupon=FREETOPRO');
+            wp_redirect('https://store.bdthemes.com/ultimate-store-kit?utm_source=UltimateStoreKit&utm_medium=PluginPage&utm_campaign=UltimateStoreKit&coupon=SUMMER25');
             exit;
         }
     }
@@ -137,7 +137,7 @@ class UltimateStoreKit_Admin_Settings
             add_submenu_page(
                 self::PAGE_ID,
                 BDTUSK_TITLE,
-                esc_html__('Upgrade For 30% Off!', 'ultimate-store-kit'),
+                esc_html__('Upgrade For Up to 83% Off!', 'ultimate-store-kit'),
                 'manage_options',
                 self::PAGE_ID . '_get_pro',
                 [$this, 'display_page']

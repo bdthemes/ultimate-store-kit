@@ -1504,6 +1504,14 @@ class Mentor_Slider extends Module_Base {
             ]
         );
 
+        $this->start_controls_tabs('thumbs_style_tabs');
+        $this->start_controls_tab(
+            'thumbs_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'ultimate-store-kit'),
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
@@ -1516,7 +1524,6 @@ class Mentor_Slider extends Module_Base {
             Group_Control_Border::get_type(),
             [
                 'name'      => 'thumbs_items_border',
-                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'selector'  => '{{WRAPPER}} .usk-mentor-slider .usk-thumbs-slider-wrap .usk-image-wrap',
                 'separator' => 'before'
             ]
@@ -1525,7 +1532,7 @@ class Mentor_Slider extends Module_Base {
         $this->add_responsive_control(
             'thumbs_items_radius',
             [
-                'label'      => esc_html__('Radius', 'ultimate-store-kit'),
+                'label'      => esc_html__('Border Radius', 'ultimate-store-kit'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'selectors'  => [
@@ -1534,12 +1541,19 @@ class Mentor_Slider extends Module_Base {
             ]
         );
 
-        $this->add_control(
-            'thumbs_hover_heading',
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'thumbs_hover_tab',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'      => 'thumbs_items_hover_background',
+                'selector'  => '{{WRAPPER}} .usk-mentor-slider .usk-thumbs-slider-wrap .usk-item:hover .usk-image-wrap',
             ]
         );
 
@@ -1551,8 +1565,14 @@ class Mentor_Slider extends Module_Base {
                 'selectors' => [
                     '{{WRAPPER}} .usk-mentor-slider .usk-thumbs-slider-wrap .usk-item:hover .usk-image-wrap'  => 'border-color: {{VALUE}};',
                 ],
+                'condition' => [
+                    'thumbs_items_border_border!' => 'none',
+                ],
             ]
         );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
 
         $this->end_controls_section();
     }
