@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.30.2
+Elementor tested up to: 3.31.2
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -206,6 +206,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.7.2 [21st August 2025] =
+
+* Updated: Thumbs controls updated in mentor slider widget
 
 = 2.7.1 [21st July 2025] =
 
