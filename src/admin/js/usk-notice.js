@@ -1,30 +1,26 @@
 jQuery(document).ready(function ($) {
-  //import { check } from "@wordpress/icons";
-  jQuery(".ultimate-store-kit-notice.is-dismissible .notice-dismiss").on(
-    "click",
-    function () {
-      $this = jQuery(this).parents(".ultimate-store-kit-notice");
-      var $id = $this.attr("id") || "";
-      var $time = $this.attr("dismissible-time") || "";
-      var $meta = $this.attr("dismissible-meta") || "";
+    // Delegate to capture dynamically injected notices as well
+    $(document).on('click', '.ultimate-store-kit-notice.is-dismissible .notice-dismiss', function () {
+        $this = $(this).parents('.ultimate-store-kit-notice');
+        var $id = $this.attr('id') || '';
+        var $time = $this.attr('dismissible-time') || '';
+        var $meta = $this.attr('dismissible-meta') || '';
+        $.ajax({
+            url: (window.UltimateStoreKitNoticeConfig && UltimateStoreKitNoticeConfig.ajaxurl) ? UltimateStoreKitNoticeConfig.ajaxurl : (typeof ajaxurl !== 'undefined' ? ajaxurl : ''),
+            type: 'POST',
+            data: {
+                action: 'ultimate-store-kit-notices',
+                id: $id,
+                meta: $meta,
+                time: $time,
+                _wpnonce: UltimateStoreKitNoticeConfig.nonce
+            }
+        });
+    });
 
-      jQuery.ajax({
-        url: ajaxurl,
-        type: "POST",
-        data: {
-          action: "ultimate-store-kit-notices",
-          nonce: usk_admin_config.nonce,
-          id: $id,
-          meta: $meta,
-          time: $time,
-        },
-      });
-    }
-  );
-
-  /* ===================================
+    /* ===================================
        Admin Store API NOTICE
-    =================================== */
+       =================================== */
     
     /**
      * Initialize countdown timers for API notices
@@ -198,4 +194,5 @@ jQuery(document).ready(function ($) {
     /* ===================================
        END Admin Store API NOTICE
        =================================== */
+
 });

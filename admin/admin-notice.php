@@ -357,7 +357,7 @@ class Notices {
 		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
 		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
 		$time = (isset($_POST['time'])) ? esc_attr($_POST['time']) : '';
-		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
+		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';		
 
 		if ( ! wp_verify_nonce($nonce, 'ultimate-store-kit') ) {
 			wp_send_json_error();
