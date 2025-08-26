@@ -103,6 +103,14 @@ class Admin {
 		if (is_admin()) { // for Admin Dashboard Only
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery-form');
+			wp_enqueue_script('usk-notice', BDTUSK_ADMIN_URL  . 'assets/js/usk-notice.min.js', ['jquery'], BDTUSK_VER, true);
+
+			$script_config = [
+				'ajaxurl'	=> admin_url('admin-ajax.php'),
+				'nonce'		=> wp_create_nonce('ultimate-store-kit'),
+			];
+			
+			wp_localize_script('usk-notice', 'UltimateStoreKitNoticeConfig', $script_config);
 
 			if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 				wp_enqueue_script('chart', BDTUSK_ADMIN_URL . 'assets/js/chart.min.js', ['jquery'], '3.9.3', true);

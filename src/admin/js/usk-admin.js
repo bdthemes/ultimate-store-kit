@@ -1,26 +1,4 @@
 jQuery(document).ready(function ($) {
-  //import { check } from "@wordpress/icons";
-  jQuery(".ultimate-store-kit-notice.is-dismissible .notice-dismiss").on(
-    "click",
-    function () {
-      $this = jQuery(this).parents(".ultimate-store-kit-notice");
-      var $id = $this.attr("id") || "";
-      var $time = $this.attr("dismissible-time") || "";
-      var $meta = $this.attr("dismissible-meta") || "";
-
-      jQuery.ajax({
-        url: ajaxurl,
-        type: "POST",
-        data: {
-          action: "ultimate-store-kit-notices",
-          nonce: usk_admin_config.nonce,
-          id: $id,
-          meta: $meta,
-          time: $time,
-        },
-      });
-    }
-  );
 
   if (jQuery(".wrap").hasClass("ultimate-store-kit-dashboard")) {
     // total activate
