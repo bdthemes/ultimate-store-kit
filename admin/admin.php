@@ -103,6 +103,14 @@ class Admin {
 		if (is_admin()) { // for Admin Dashboard Only
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery-form');
+			wp_enqueue_script('usk-notice', BDTUSK_ADMIN_URL  . 'assets/js/usk-notice.min.js', ['jquery'], BDTUSK_VER, true);
+
+			$script_config = [
+				'ajaxurl'	=> admin_url('admin-ajax.php'),
+				'nonce'		=> wp_create_nonce('ultimate-store-kit'),
+			];
+			
+			wp_localize_script('usk-notice', 'UltimateStoreKitNoticeConfig', $script_config);
 
 			if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 				wp_enqueue_script('chart', BDTUSK_ADMIN_URL . 'assets/js/chart.min.js', ['jquery'], '3.9.3', true);
@@ -110,17 +118,10 @@ class Admin {
 			} else {
 				wp_enqueue_script('usk-admin', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin.min.js', ['jquery'], BDTUSK_VER, true);
 			}
-			wp_enqueue_script('usk-notice', BDTUSK_ADMIN_URL  . 'assets/js/usk-notice.min.js', ['jquery'], BDTUSK_VER, true);
 		}
 
 		wp_localize_script('usk-admin', 'usk_admin_config', [
 			'nonce'   => wp_create_nonce('usk_admin_nonce'),
 		]);
-
-		$script_config = [
-			'ajaxurl'	=> admin_url('admin-ajax.php'),
-			'nonce'		=> wp_create_nonce('ultimate-store-kit'),
-		];
-		wp_localize_script('usk-notice', 'UltimateStoreKitNoticeConfig', $script_config);
 	}
 }
