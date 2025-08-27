@@ -36,7 +36,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   align-items: center;
   margin: 0 20px;
   text-align: center;
@@ -46,6 +48,10 @@
 }
 .usk-edd-beauty-carousel .usk-action-button .edd_purchase_submit_wrapper {
   padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .usk-edd-beauty-carousel .usk-action-button a,
 .usk-edd-beauty-carousel .usk-action-button .edd-add-to-cart {
@@ -60,6 +66,9 @@
   border: 0;
   border-radius: 0;
   line-height: 1;
+}
+.usk-edd-beauty-carousel .usk-action-button span.edd-cart-ajax-alert {
+  display: none;
 }
 .usk-edd-beauty-carousel .usk-action-button .blue,
 .usk-edd-beauty-carousel .usk-action-button .edd-add-to-cart {

@@ -8315,7 +8315,9 @@ table.dataTable.display tbody tr.odd {
   bottom: 0;
   right: 0;
   left: 0;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   align-items: center;
   margin: 0 20px;
   text-align: center;
@@ -8325,6 +8327,10 @@ table.dataTable.display tbody tr.odd {
 }
 .usk-edd-beauty-carousel .usk-action-button .edd_purchase_submit_wrapper {
   padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .usk-edd-beauty-carousel .usk-action-button a,
 .usk-edd-beauty-carousel .usk-action-button .edd-add-to-cart {
@@ -8339,6 +8345,9 @@ table.dataTable.display tbody tr.odd {
   border: 0;
   border-radius: 0;
   line-height: 1;
+}
+.usk-edd-beauty-carousel .usk-action-button span.edd-cart-ajax-alert {
+  display: none;
 }
 .usk-edd-beauty-carousel .usk-action-button .blue,
 .usk-edd-beauty-carousel .usk-action-button .edd-add-to-cart {
@@ -8906,7 +8915,7 @@ table.dataTable.display tbody tr.odd {
   margin: 14px;
   display: flex;
   flex-direction: column;
-  grid-row-gap: 5px;
+  gap: 5px;
 }
 .usk-edd-trendy-carousel .usk-action-button input[type=submit] {
   display: none;
@@ -9400,7 +9409,7 @@ table.dataTable.display tbody tr.odd {
   margin: 25px;
   display: flex;
   flex-direction: column;
-  grid-row-gap: 5px;
+  gap: 5px;
 }
 .usk-edd-trendy-grid .usk-action-button input[type=submit] {
   display: none;
@@ -9437,8 +9446,8 @@ table.dataTable.display tbody tr.odd {
   background-color: #d61017;
 }
 .usk-edd-trendy-grid .usk-action-button .edd-submit {
-  border-radius: 0px !important;
-  padding: 14px 0 !important;
+  border-radius: 0pxt;
+  padding: 14px 0;
 }
 .usk-edd-trendy-grid .usk-action-button span.edd-cart-ajax-alert {
   display: none;

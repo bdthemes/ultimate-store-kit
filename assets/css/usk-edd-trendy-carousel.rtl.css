@@ -109,7 +109,7 @@
   margin: 14px;
   display: flex;
   flex-direction: column;
-  grid-row-gap: 5px;
+  gap: 5px;
 }
 .usk-edd-trendy-carousel .usk-action-button input[type=submit] {
   display: none;

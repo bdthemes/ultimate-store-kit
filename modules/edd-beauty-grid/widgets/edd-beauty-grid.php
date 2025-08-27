@@ -140,8 +140,6 @@ class EDD_Beauty_Grid extends Module_Base {
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="usk-edd-content">
                             <?php

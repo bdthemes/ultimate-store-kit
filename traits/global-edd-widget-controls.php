@@ -87,7 +87,8 @@ trait Global_EDD_Widget_Controls {
                 'default'       => 'center',
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-top-content' => 'text-align:{{VALUE}}',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content .usk-edd-price' => 'justify-content:{{VALUE}}'
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content .usk-edd-price' => 'justify-content:{{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content' => 'text-align:{{VALUE}}',
                 ]
             ]
         );
@@ -181,7 +182,8 @@ trait Global_EDD_Widget_Controls {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content .usk-edd-price' => 'justify-content:{{VALUE}}',
-                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item-box' => 'text-align:{{VALUE}}'
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-item-box' => 'text-align:{{VALUE}}',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-edd-content' => 'text-align:{{VALUE}}',
                 ]
             ]
         );
@@ -269,6 +271,7 @@ trait Global_EDD_Widget_Controls {
                 'description' => __('Give your Query a custom unique id to allow server side filtering', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::TEXT,
                 'separator'   => 'before',
+                'dynamic' => [ 'active' => true, ],
             ]
         );
         $this->end_controls_section();
@@ -1133,7 +1136,7 @@ trait Global_EDD_Widget_Controls {
                         ]
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button' => 'gap: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -1222,9 +1225,23 @@ trait Global_EDD_Widget_Controls {
                 'label'     => __('Title', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-details-button a:hover',
-                'separator' => 'after'
             ]
         );
+
+        $this->add_control(
+            'action_btn_hover_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-details-button a:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => '',
+                ],
+            ]
+        );
+
         $this->end_controls_tab();
         $this->start_controls_tab(
             'purchase_btn_tab',
@@ -1276,9 +1293,23 @@ trait Global_EDD_Widget_Controls {
                 'label'     => __('Title', 'ultimate-store-kit'),
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button .blue:hover',
-                'separator' => 'after'
             ]
         );
+
+        $this->add_control(
+            'action_btn_purchase_border_color',
+            [
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-action-button .blue:hover' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'action_btn_border_border!' => ''
+                ],
+            ]
+        );
+
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();

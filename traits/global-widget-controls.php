@@ -98,6 +98,7 @@ trait Global_Widget_Controls
             [
                 'label' => esc_html__('Exclude Product(s)', 'ultimate-store-kit'),
                 'type' => Controls_Manager::TEXT,
+                'dynamic' => [ 'active' => true, ],
                 'placeholder' => 'product_id',
                 'label_block' => true,
                 'description' => esc_html__('Write product id here, if you want to exclude multiple products so use comma as separator. Such as 1 , 2', 'ultimate-store-kit'),

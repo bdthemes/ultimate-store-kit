@@ -263,6 +263,7 @@ class Page_Cart extends Module_Base {
 				'toggle'    => true,
 				'selectors' => [ 
 					'{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table td' => 'text-align: {{VALUE}};',
+					// '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table .quantity' => 'justify-content: {{VALUE}};',
 				],
 			]
 		);
