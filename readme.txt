@@ -210,6 +210,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.7.X [Xth August 2025] =
 
 * Added: Admin Store API Notice added
+* Fixed: Deprication error fixed
 
 = 2.7.2 [21st August 2025] =
 

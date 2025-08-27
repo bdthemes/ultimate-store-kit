@@ -650,7 +650,10 @@ function ultimate_store_kit_get_category($taxonomy = 'product_cat') {
 
 	if (false !== $post_categories and is_array($post_categories)) {
 		foreach ($post_categories as $category) {
-			$post_options[$category->term_id] = $category->name;
+			// Ensure $category is an object, not an array
+			if (is_object($category) && isset($category->term_id, $category->name)) {
+				$post_options[$category->term_id] = $category->name;
+			}
 		}
 	}
 
@@ -668,7 +671,10 @@ function ultimate_store_kit_get_only_parent_cats($taxonomy = 'category') {
 	$parent_cats       = get_terms($taxonomy, $args);
 
 	foreach ($parent_cats as $parent_cat) {
-		$parent_categories[$parent_cat->term_id] = ucfirst($parent_cat->name);
+		// Ensure $parent_cat is an object, not an array
+		if (is_object($parent_cat) && isset($parent_cat->term_id, $parent_cat->name)) {
+			$parent_categories[$parent_cat->term_id] = ucfirst($parent_cat->name);
+		}
 	}
 
 	return $parent_categories;
