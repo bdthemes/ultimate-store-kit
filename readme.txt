@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.7.2
+Stable tag: 2.8.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.31.2
+Elementor tested up to: 3.31.3
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -207,18 +207,17 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.7.X [Xth August 2025] =
+= 2.8.0 [28th August 2025] =
 
 * Added: Admin Store API Notice added
+* Added: Dynamic Content support for several controls
+* Added: Border color controls added for EDD grid and EDD carousel widget
+* Added: Image alt text added for EDD Category grid and carousel widget
 * Fixed: Deprication error fixed
 * Fixed: Resolved regular notice display problem for white-label users
-
-Added: Dynamic Content support for several controls
-Added: Border color controls added for EDD grid and EDD carousel widget
-Added: Image alt text added for EDD Category grid and carousel widget
-Fixed: Add to Cart button show/hide issue fixed in Shiny grid and Shiny carousel widgets
-Fixed: Conditional logic applied to the Product Category widget to show or hide images
-Fixed: Alignment issue fixed in EDD trendy carousel widget
+* Fixed: Add to Cart button show/hide issue fixed in Shiny grid and Shiny carousel widgets
+* Fixed: Conditional logic applied to the Product Category widget to show or hide images
+* Fixed: Alignment issue fixed in EDD trendy carousel widget
 
 = 2.7.2 [21st August 2025] =
 
@@ -307,173 +306,6 @@ Fixed: Alignment issue fixed in EDD trendy carousel widget
 * Fixed: Color issue fixed in mini cart widget
 * Fixed: Remove button color issue fixed in mini cart widget
 * Updated: System improved
-
-= 2.3.X [XXth April 2025] =
-
-* Updated: System improved
-
-= 2.3.7 [13th March 2025] =
-
-* Fixed: Security issue fixed ( Thanks to Peter Thaleikis )
-
-= 2.3.6 [2nd March 2025] =
-
-* Updated: Dashboard system improved
-
-= 2.3.5 [19th February 2025] =
-
-* Fixed: Width issue fixed in product image accordion widget
-
-= 2.3.4 [13th February 2025] =
-
-* Fixed: Dashboard notice dismiss icon conflict issue fixed
-
-= 2.3.3 [6th February 2025] =
-
-* Updated: Dashboard widgets searching system improved
-
-= 2.3.2 [19th December 2024] =
-
-* Fixed: Swiper loading issue fixed
-
-= 2.3.1 [17th December 2024] =
-
-* Added: Optimized Markup feature compatibility added
-* Added: Upgrade Swiper Library compatibility added
-
-= 2.3.0 [4th December 2024] =
-
-* Added: Variation Swatches feature added
-* Added: Quantity field plus & minus feature added
-* Fixed: Ajax cart content update issue fixed in Mini Cart widget (Thanks to Nancy)
-* Updated: Single Product Page widget improved
-* Updated: Dashboard system improved
-
-= 2.2.3 [23th November 2024] =
-
-* Fixed: Translation issue fixed
-
-= 2.2.2 [19th November 2024] =
-
-* Fixed: Hotspot item width issue fixed in image hotspot widget
-
-= 2.2.1 [12th November 2024] =
-
-* Fixed: Image bottom spacing issue fixed in image hotspot widget
-* Fixed: Script file loading issue fixed in image hotspot widget
-
-= 2.2.0 [11th November 2024] =
-
-* Added: Image hotspot widget added
-
-= 2.1.10 [23th October 2024] =
-
-* Added: Style controls added in product accordion widget
-* Fixed: Cart update issue fixed in Mini Cart widget
-
-= 2.1.9 [10th October 2024] =
-
-* Fixed: Rating crop issue fixed in product review carousel widget
-
-= 2.1.8 [7th October 2024] =
-
-* Fixed: Security improved
-* Fixed: Content width issue fixed in featured box widget
-
-= 2.1.7 [26th September 2024] =
-
-* Fixed: JS scripts error fixed
-
-= 2.1.6 [25th September 2024] =
-
-* Fixed: Fatal error fixed (Thanks to Julio Guzmán)
-* Removed: Extra closing div removed from builder
-
-= 2.1.5 [23th September 2024] =
-
-* Added: Item match height option added in florence carousel, glossy carousel & shiny carousel widgets
-
-= 2.1.4 [11th September 2024] =
-
-* Updated: System improved
-
-= 2.1.3 [10th September 2024] =
-
-* Fixed: Item background issue fixed in product category carousel
-* Fixed: Categories margin issue fixed in sub category & sub category carousel widget
-
-= 2.1.2 [5th September 2024] =
-
-* Fixed: Alignment undefined error fixed in edd widgets
-* Fixed: Thumbs image issue fixed in EDD Category Grid & EDD Category Carousel widgets
-* Fixed: Child category not showing issue fixed in Sub Category and Sub Category Carousel widgets
-* Fixed: Button issue fixed in EDD Standard grid & EDD Standard Carousel widget
-
-= 2.1.1 [3rd September 2024] =
-
-* Added: Image width & align option added in sub category & sub category carousel widget
-* Fixed: Hide empty issue in sub category & sub category carousel widget
-* Fixed: Error fixed in Shiny Grid widget
-
-= 2.1.0 [2nd September 2024] =
-
-* Added: Badge added in featured box widget
-* Added: Item direction & align added in product category widget
-* Added: Item direction & align added in product category carousel widget
-* Added: Image height option added in sub category & sub category carousel widget
-* Fixed: Undefined error fixed in brand carousel widget
-* Updated: Swiper library old support completely removed
-
-= 2.0.6 [29th August 2024] =
-
-* Fixed: Security issue fixed ( Thanks to João Pedro Soares de Alcântara )
-* Fixed: Thumbs fade issue fixed in sub category & sub category carousel widgets
-
-= 2.0.5 [27th August 2024] =
-
-* Fixed: Content position fixed in featured box widget
-* Fixed: Template builder shop page issue fixed
-
-= 2.0.4 [25th August 2024] =
-
-* Added: Quantity Field style controls added in single product (page) widget
-* Fixed: Columns filter issue fixed in shiny, florence & glossy grid widget
-* Fixed: Price color issue fixed in single product (page) widget
-* Fixed: Security issue fixed ( Thanks to Francesco Carlucci )
-* Fixed: Icon hover color issue fixed in info list widget
-
-= 2.0.3 [21th August 2024] =
-
-* Added: Close button, image & table style controls added in cart page widget
-* Updated: Product table, Cart page widgets improved
-
-= 2.0.2 [19th August 2024] =
-
-* Updated: Language file updated
-
-= 2.0.1 [15th August 2024] =
-
-* Added: Content position, thumbs show/hide & text decoration color option added in heaven slider widget
-* Fixed: Rating align issue fixed in shiny grid & shiny carousel widget
-
-= 2.0.0 [14th August 2024] =
-
-* Added: Order by Modified feature added in Query
-* Added: Product Compare feature added in all products grid, carousel & slider type widgets
-* Fixed: Product Not show issue fixed on Archive Page (Thanks to NexThemes)
-* Fixed: Pagination with Current Query issue fixed on Archive Page (Thanks to Gregor Kramberger)
-* Fixed: Order received page not showing issue fixed (Thanks to NexThemes)
-* Fixed: Quantity not showing issue fixed in Cart Page (Thanks to NexThemes)
-* Fixed: Product limit issue fixed in Current Query
-* Fixed: Update Cart error fixed in Cart Page
-* Fixed: Cart Page issue fixed
-* Fixed: Security issue fixed (Thanks to Peter Thaleikis and Ray Wilson)
-* Fixed: Translation support issue fixed (Thanks to itapress)
-* Fixed: Cart Page Notice position fixed
-* Updated: Theme Builder improved (Thanks to NexThemes)
-* Updated: Mini-Cart feature improved
-* Updated: Query improved in Current Query
-* Updated: Brand grid, brand carousel, featured box, florence grid, florence carousel, glossy grid, glossy carousel, heaven slider, info list, mentor slider, mini cart, page single, product accordion, product category, product category carousel, product image accordion, product list, product reviews, product review carousel, qr code, shiny grid, shiny carousel, showcase slider, sub category, sub category carousel widgets improved
 
 Details [changelog here](https://feedback.bdthemes.com/announcements?category=category_yqkne1pq)
 
