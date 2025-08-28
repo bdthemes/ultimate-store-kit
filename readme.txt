@@ -207,7 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.7.X [XXth September 2025] =
+= 2.7.X [Xth August 2025] =
+
+* Added: Admin Store API Notice added
+* Fixed: Deprication error fixed
 
 Added: Dynamic Content support for several controls
 Added: Border color controls added for EDD grid and EDD carousel widget
