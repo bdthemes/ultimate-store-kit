@@ -77,8 +77,6 @@ class USK_Shiny_Grid_Template
                             </div>
                         <?php endif; ?>
 
-
-
                         <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()): ?>
                             <div class="usk-price">
                                 <?php $this->print_price_output($product->get_price_html()); ?>
@@ -88,7 +86,6 @@ class USK_Shiny_Grid_Template
                         <?php if (isset($settings['show_rating']) ? $settings['show_rating'] : true): ?>
                             <div class="usk-rating">
                                 <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>
-
                             </div>
                         <?php endif; ?>
                     </div>
@@ -218,7 +215,7 @@ class USK_Shiny_Grid_Template
             $args
         );
     }
-    public function render_add_to_cart_button($product)
+    public function render_add_to_cart_button($product, $settings)
     {
         if ($product) {
             $defaults = [
@@ -245,19 +242,22 @@ class USK_Shiny_Grid_Template
             if (isset($args['attributes']['aria-label'])) {
                 $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
             }
-            echo wp_kses_post(apply_filters(
-                'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
-                sprintf(
-                    '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
-                    esc_url($product->add_to_cart_url()),
-                    esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
-                    esc_attr(isset($args['class']) ? $args['class'] : 'button'),
-                    isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
-                    esc_html($product->add_to_cart_text())
-                ),
-                $product,
-                $args
-            ));
+
+            if ( isset( $settings['show_cart'] ) ? $settings['show_cart'] : true ) {
+                echo wp_kses_post(apply_filters(
+                    'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+                    sprintf(
+                        '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
+                        esc_url( $product->add_to_cart_url() ),
+                        esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+                        esc_attr( isset($args['class'] ) ? $args['class'] : 'button' ),
+                        isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+                        esc_html( $product->add_to_cart_text() )
+                    ),
+                    $product,
+                    $args
+                ));
+            }
         }
         ;
     }
@@ -320,7 +320,7 @@ class USK_Shiny_Grid_Template
                 <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>"
                     alt="<?php echo esc_html(get_the_title()); ?>">
             </a>
-            <?php $this->render_add_to_cart_button($product); ?>
+            <?php $this->render_add_to_cart_button($product, $settings); ?>
 
             <div class="usk-shoping">
                 <?php $this->register_global_template_add_to_wishlist($tooltip_position, $settings); ?>

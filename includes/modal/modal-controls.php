@@ -199,6 +199,7 @@ class Settings_Modal extends Tab_Base {
             [
                 'label'       => esc_html__('Button Text', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::TEXT,
+                'dynamic'     => [ 'active' => true ],
                 'placeholder' => esc_html__('close', 'ultimate-store-kit'),
                 'condition' => [
                     'show_close_btn' => 'yes',

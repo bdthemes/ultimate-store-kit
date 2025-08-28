@@ -29,9 +29,9 @@
   font-size: 14px;
 }
 .ultimate-store-kit .edd-submit {
-  border: 0 !important;
-  border-radius: 6px !important;
-  padding: 8px 16px !important;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 16px;
 }
 .ultimate-store-kit .edd-discount-code-field-wrap #edd-discount {
   padding: 10px !important;

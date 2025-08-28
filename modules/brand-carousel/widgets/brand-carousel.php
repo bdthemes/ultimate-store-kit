@@ -81,6 +81,7 @@ class Brand_Carousel extends Module_Base {
 			[
 				'label'   => __('Brand Image', 'ultimate-store-kit'),
 				'type'    => Controls_Manager::MEDIA,
+				'dynamic' => [ 'active' => true ],
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -94,7 +95,7 @@ class Brand_Carousel extends Module_Base {
 				'type'        => Controls_Manager::TEXT,
 				'default'     => __('Brand Name', 'ultimate-store-kit'),
 				'label_block' => true,
-				'dynamic'     => ['active'      => true],
+				'dynamic'     => [ 'active' => true ],
 			]
 		);
 

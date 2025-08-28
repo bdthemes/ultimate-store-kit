@@ -565,6 +565,7 @@ trait Group_Control_Query
 				'description' => __('Give your Query a custom unique id to allow server side filtering', 'ultimate-store-kit'),
 				'type'        => Controls_Manager::TEXT,
 				'separator'   => 'before',
+				'dynamic' 	  => [ 'active' => true ],
 			]
 		);
 	}

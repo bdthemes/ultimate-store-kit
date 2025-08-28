@@ -112,7 +112,7 @@
   margin: 25px;
   display: flex;
   flex-direction: column;
-  grid-row-gap: 5px;
+  gap: 5px;
 }
 .usk-edd-trendy-grid .usk-action-button input[type=submit] {
   display: none;
@@ -149,8 +149,8 @@
   background-color: #d61017;
 }
 .usk-edd-trendy-grid .usk-action-button .edd-submit {
-  border-radius: 0px !important;
-  padding: 14px 0 !important;
+  border-radius: 0pxt;
+  padding: 14px 0;
 }
 .usk-edd-trendy-grid .usk-action-button span.edd-cart-ajax-alert {
   display: none;

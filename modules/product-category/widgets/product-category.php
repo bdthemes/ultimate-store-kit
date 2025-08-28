@@ -259,7 +259,10 @@ class Product_Category extends Module_Base {
 				'label'     => esc_html__('Show Image', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
-				'separator' => 'before'
+				'separator' => 'before',
+				'condition' => [
+					'layout_style' => 'style-6',
+				],
 			]
 		);
 		$this->add_group_control(
@@ -269,7 +272,8 @@ class Product_Category extends Module_Base {
 				'exclude'   => ['custom',],
 				'default'   => 'large',
 				'condition' => [
-					'show_image' => 'yes'
+					'show_image' => 'yes',
+					'layout_style' => 'style-6',
 				]
 			]
 		);
@@ -1074,7 +1078,7 @@ class Product_Category extends Module_Base {
 
 		?>
 		<a class="usk-item category-link" href="<?php echo esc_url($term_link); ?>">
-			<?php if ($settings['show_image']) : ?>
+			<?php if ( 'style-6' === $settings['layout_style'] ? $settings['show_image'] === 'yes' : true ) : ?>
 				<div class="usk-image">
 					<img src="<?php echo esc_url($category_image); ?>" alt="">
 				</div>

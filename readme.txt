@@ -212,6 +212,13 @@ https://youtu.be/9J4zCaDcPnk
 * Added: Admin Store API Notice added
 * Fixed: Deprication error fixed
 
+Added: Dynamic Content support for several controls
+Added: Border color controls added for EDD grid and EDD carousel widget
+Added: Image alt text added for EDD Category grid and carousel widget
+Fixed: Add to Cart button show/hide issue fixed in Shiny grid and Shiny carousel widgets
+Fixed: Conditional logic applied to the Product Category widget to show or hide images
+Fixed: Alignment issue fixed in EDD trendy carousel widget
+
 = 2.7.2 [21st August 2025] =
 
 * Updated: Thumbs controls updated in mentor slider widget

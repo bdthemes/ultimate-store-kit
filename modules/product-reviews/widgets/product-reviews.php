@@ -143,6 +143,7 @@ class Product_Reviews extends Module_Base {
                 'label' => __('Offset', 'ultimate-store-kit'),
                 'description' => __(' The number of comments to pass over in the query.', 'ultimate-store-kit'),
                 'type' => Controls_Manager::TEXT,
+                'dynamic' 	  => [ 'active' => true ],
             ]
         );
         $this->add_control(

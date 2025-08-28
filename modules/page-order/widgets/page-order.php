@@ -108,6 +108,7 @@ class Page_Order extends Module_Base
             [
                 'label' => __('Description', 'ultimate-store-kit'),
                 'type' => Controls_Manager::TEXTAREA,
+                'dynamic' => [ 'active' => true ],
                 'rows' => 5,
                 'default' => __('Thank you. Your order has been received.', 'ultimate-store-kit'),
                 'placeholder' => __('Thank you. Your order has been received.', 'ultimate-store-kit'),

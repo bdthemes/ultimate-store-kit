@@ -183,6 +183,7 @@ class EDD_Category_Carousel extends Module_Base {
 			[
 				'label'     => __('Select Image', 'ultimate-store-kit'),
 				'type'      => Controls_Manager::MEDIA,
+				'dynamic'   => [ 'active' => true ],
 				'default'   => [
 					'url'   => Utils::get_placeholder_image_src(),
 				],
@@ -793,8 +794,10 @@ class EDD_Category_Carousel extends Module_Base {
 				if (!empty($thumb_url)) {
 					$image_src = $settings['category_image']['url'];
 				}
+				$path_parts = pathinfo( $image_src );
+				$image_alt_text  = isset( $path_parts['filename'] ) ? $path_parts['filename'] : '';
 			?>
-				<img src="<?php echo esc_url($image_src); ?>" alt="">
+				<img src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr( $image_alt_text ); ?>">
 			<?php endif; ?>
 		</div><?php
 			}
@@ -808,6 +811,7 @@ class EDD_Category_Carousel extends Module_Base {
 						$category_thumb_id = get_term_meta($category->term_id, 'download_term_image', true);
 						$img_url = wp_get_attachment_image_url($category_thumb_id, $settings['category_thumbnail_size']);
 						$category_image = $img_url ? $img_url : Utils::get_placeholder_image_src();
+						$image_alt_text = pathinfo( $category_image, PATHINFO_FILENAME );
 
 						$this->add_render_attribute('edd-category-item', 'class', ['edd-item swiper-slide', 'category-link'], true);
 						$this->add_render_attribute('edd-category-item', 'href',  get_term_link($category->term_id, 'download_category'), true); ?>
@@ -816,7 +820,7 @@ class EDD_Category_Carousel extends Module_Base {
 							$this->render_image();
 						} else { ?>
 						<div class="usk-edd-category-carousel-image">
-							<img src="<?php echo esc_url($category_image); ?>" alt="">
+							<img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr( $image_alt_text ); ?>">
 						</div>
 					<?php } ?>
 					<div class="edd-content">

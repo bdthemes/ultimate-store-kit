@@ -113,6 +113,7 @@ class Mobile_Menu extends Module_Base {
 			[ 
 				'label' => __( 'Menu Text', 'ultimate-store-kit' ),
 				'type'  => Controls_Manager::TEXT,
+				'dynamic' 	  => [ 'active' => true ],
 			]
 		);
 
