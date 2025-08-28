@@ -211,6 +211,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Added: Admin Store API Notice added
 * Fixed: Deprication error fixed
+* Fixed: Resolved regular notice display problem for white-label users
 
 Added: Dynamic Content support for several controls
 Added: Border color controls added for EDD grid and EDD carousel widget
