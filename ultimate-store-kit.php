@@ -200,7 +200,7 @@ if (! function_exists('_is_dep_plugin_installed')) {
  * SDK Integration
  */
 
-if (! function_exists('dci_plugin_ultimate_store_kit')) {
+if (! function_exists('dci_plugin_ultimate_store_kit') && ! defined('BDTUSK_WL')) {
 	function dci_plugin_ultimate_store_kit() {
 
 		// Include DCI SDK.
