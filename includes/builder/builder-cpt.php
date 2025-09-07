@@ -392,7 +392,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			'ultimate_store_kit_options',
 			esc_html__( 'Template Builder', 'ultimate-store-kit' ),
 			esc_html__( 'Template Builder', 'ultimate-store-kit' ),
-			'edit_pages',
+			'manage_options',
 			'edit.php?post_type=' . Meta::POST_TYPE
 		);
 	}
