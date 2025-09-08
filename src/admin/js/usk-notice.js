@@ -109,7 +109,7 @@ jQuery(document).ready(function ($) {
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    action: 'usk_fetch_api_notices',
+                    action: 'usk_fetch_notices',
                     _wpnonce: UltimateStoreKitNoticeConfig.nonce
                 }
             })

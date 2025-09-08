@@ -207,6 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [Xth September 2025] =
+
+* Fixed: License related duplicate notice showing issue fixed
+
 = 2.8.1 [8th September 2025] =
 
 * Fixed: Template Builder access issue fixed

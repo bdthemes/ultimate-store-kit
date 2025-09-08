@@ -20,11 +20,11 @@ class Notices {
 
 	public function __construct() {
 
-		add_action('admin_notices', [$this, 'show_notices']);
+		// add_action('admin_notices', [$this, 'show_notices']);
 		add_action('wp_ajax_ultimate-store-kit-notices', [$this, 'dismiss']);
 
 		// AJAX endpoint to fetch API notices on demand (after page load)
-		add_action('wp_ajax_usk_fetch_api_notices', [$this, 'ajax_fetch_api_notices']);
+		add_action('wp_ajax_usk_fetch_notices', [$this, 'ajax_fetch_notices']);
 
 	}
 
@@ -305,7 +305,7 @@ class Notices {
 	/**
 	 * AJAX: Build and return API notices HTML for dynamic injection
 	 */
-	public function ajax_fetch_api_notices() {
+	public function ajax_fetch_notices() {
 		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : '';
 		if (!wp_verify_nonce($nonce, 'ultimate-store-kit')) {
 			wp_send_json_error([ 'message' => 'invalid_nonce' ]);
