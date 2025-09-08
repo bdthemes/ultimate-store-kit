@@ -207,6 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [XXth September 2025] =
+
+* Fixed: Template Builder access issue fixed
+
 = 2.8.0 [28th August 2025] =
 
 * Added: Admin Store API Notice added
