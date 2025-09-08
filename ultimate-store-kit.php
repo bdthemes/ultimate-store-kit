@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Store Kit
  * Plugin URI: https://bdthemes.com/ultimate-store-kit/
  * Description: Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.
- * Version: 2.8.0
+ * Version: 2.8.1
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-store-kit
@@ -15,7 +15,7 @@
  */
 
 // Some pre define value for easy use
-define('BDTUSK_VER', '2.8.0');
+define('BDTUSK_VER', '2.8.1');
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
@@ -193,38 +193,4 @@ if (! function_exists('_is_dep_plugin_installed')) {
 
 		return isset($installed_plugins[$file_path]);
 	}
-}
-
-
-/**
- * SDK Integration
- */
-
-if (! function_exists('dci_plugin_ultimate_store_kit') && ! defined('BDTUSK_WL')) {
-	function dci_plugin_ultimate_store_kit() {
-
-		// Include DCI SDK.
-		require_once dirname(__FILE__) . '/dci/start.php';
-
-		wp_enqueue_style('dci-sdk-usk', plugins_url('dci/assets/css/dci.css', __FILE__), array(), '1.2.0', 'all');
-
-		dci_dynamic_init(array(
-			'sdk_version'         => '1.2.1',
-			'product_id'          => 6,
-			'plugin_name'         => 'Ultimate Store Kit', // make simple, must not empty
-			'plugin_title'        => 'Love using Ultimate Store Kit? Congrats 🎉  ( Never miss an Important Update )', // You can describe your plugin title here
-			'plugin_icon'         => BDTUSK_ASSETS_URL . 'images/logo.svg', // delete the line of you don't need
-			'api_endpoint'        => 'https://analytics.bdthemes.com/wp-json/dci/v1/data-insights',
-			'slug'                => 'ultimate-store-kit', // write 'no-need' if you don't want to use
-			'menu'                => array(
-				'slug' => 'ultimate_store_kit_options',
-			),
-			'public_key'          => 'pk_IMF43HfTlEdsaQjoE8atAWlb6xTMjX3w',
-			'is_premium'          => true,
-			'popup_notice'        => false,
-			'deactivate_feedback' => true,
-			'plugin_msg'          => '<p>Be Top-contributor by sharing non-sensitive plugin data and create an impact to the global WordPress community today! You can receive valuable emails periodically.</p>',
-		));
-	}
-	add_action('admin_init', 'dci_plugin_ultimate_store_kit');
 }

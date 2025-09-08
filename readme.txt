@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.0
+Stable tag: 2.8.1
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.2
@@ -207,9 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.8.X [XXth September 2025] =
+= 2.8.1 [8th September 2025] =
 
 * Fixed: Template Builder access issue fixed
+* Fixed: DCI Notice removed for security reason
 
 = 2.8.0 [28th August 2025] =
 
