@@ -825,6 +825,17 @@ class Mentor_Slider extends Module_Base {
         );
 
         $this->add_control(
+            'action_button_color_hover',
+            [
+                'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .usk-mentor-slider .usk-main-slider .usk-action-btn-wrap a:hover i' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
             'action_button_bg',
             [
                 'label'     => esc_html__('Background', 'ultimate-store-kit'),
@@ -834,28 +845,11 @@ class Mentor_Slider extends Module_Base {
                 ],
             ]
         );
-        $this->add_control(
-            'heading_action_button_hover',
-            [
-                'label'     => esc_html__('Hover', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-        $this->add_control(
-            'action_button_color_hover',
-            [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .usk-mentor-slider .usk-main-slider .usk-action-btn-wrap a:hover i' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
+        
         $this->add_control(
             'action_button_bg_hover',
             [
-                'label'     => esc_html__('Background', 'ultimate-store-kit'),
+                'label'     => esc_html__('Hover Background', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .usk-mentor-slider .usk-main-slider .usk-action-btn-wrap a:hover' => 'background: {{VALUE}}',

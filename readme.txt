@@ -210,6 +210,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.8.4 [28th September 2025] =
 
 * Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed
+* Fixed: Action button normal color, hover color, normal background and hover background controls issues fixed in the mentor slider widget
 
 = 2.8.4 [21st September 2025] =
 
