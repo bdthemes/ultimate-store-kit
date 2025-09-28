@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.3
+Stable tag: 2.8.4
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.2
@@ -207,7 +207,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.8.3 [21st September 2025] =
+= 2.8.4 [28th September 2025] =
+
+* Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed
+
+= 2.8.4 [21st September 2025] =
 
 * Fixed: Element caching compatibility fixed
 

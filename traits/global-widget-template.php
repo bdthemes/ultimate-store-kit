@@ -431,7 +431,7 @@ trait Global_Widget_Template
 							"pauseOnHover" => ("yes" == $settings["pauseonhover"]) ? true : false,
 							"slidesPerView" => isset($settings["columns_mobile"]) ? (int) $settings["columns_mobile"] : 1,
 							"slidesPerGroup" => isset($settings["slides_to_scroll_mobile"]) ? (int) $settings["slides_to_scroll_mobile"] : 1,
-							"spaceBetween" => $settings["items_gap"]["size"],
+							"spaceBetween"   => !empty($settings["items_gap_mobile"]["size"]) ? (int)$settings["items_gap_mobile"]["size"] : 0,
 							"centeredSlides" => ($settings["centered_slides"] === "yes") ? true : false,
 							"grabCursor" => ($settings["grab_cursor"] === "yes") ? true : false,
 							"effect" => $settings["skin"],
@@ -443,12 +443,12 @@ trait Global_Widget_Template
 							"breakpoints" => [
 								(int) $viewport_md => [
 									"slidesPerView" => isset($settings["columns_tablet"]) ? (int) $settings["columns_tablet"] : 2,
-									"spaceBetween" => $settings["items_gap"]["size"],
+									"spaceBetween"   => !empty($settings["items_gap_tablet"]["size"]) ? (int)$settings["items_gap_tablet"]["size"] : 0,
 									"slidesPerGroup" => isset($settings["slides_to_scroll_tablet"]) ? (int) $settings["slides_to_scroll_tablet"] : 1,
 								],
 								(int) $viewport_lg => [
 									"slidesPerView" => isset($settings["columns"]) ? (int) $settings["columns"] : 3,
-									"spaceBetween" => $settings["items_gap"]["size"],
+									"spaceBetween"   => !empty($settings["items_gap"]["size"]) ? (int)$settings["items_gap"]["size"] : 0,
 									"slidesPerGroup" => isset($settings["slides_to_scroll"]) ? (int) $settings["slides_to_scroll"] : 1,
 								]
 							],

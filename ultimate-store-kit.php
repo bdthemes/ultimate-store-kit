@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Store Kit
  * Plugin URI: https://bdthemes.com/ultimate-store-kit/
  * Description: Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.
- * Version: 2.8.3
+ * Version: 2.8.4
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-store-kit
@@ -15,7 +15,7 @@
  */
 
 // Some pre define value for easy use
-define('BDTUSK_VER', '2.8.3');
+define('BDTUSK_VER', '2.8.4');
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
