@@ -1330,7 +1330,7 @@ class Showcase_Slider extends Module_Base
                             "pauseOnHover" => ("yes" == $settings["pauseonhover"]) ? true : false,
                             "slidesPerView" => 1,
                             "slidesPerGroup" => isset($settings["slides_to_scroll_mobile"]) ? (int) $settings["slides_to_scroll_mobile"] : 1,
-                            "spaceBetween" => !empty($settings["items_gap_mobile"]["size"]) ? (int) $settings["items_gap_mobile"]["size"] : 20,
+                            "spaceBetween" => !empty($settings["items_gap_mobile"]["size"]) ? (int) $settings["items_gap_mobile"]["size"] : 0,
                             "centeredSlides" => true,
                             "grabCursor" => ($settings["grab_cursor"] === "yes") ? true : false,
                             "effect" => 'coverflow',
@@ -1339,12 +1339,12 @@ class Showcase_Slider extends Module_Base
                             "breakpoints" => [
                                 (int) $viewport_md => [
                                     "slidesPerView" => 1.7,
-                                    "spaceBetween" => !empty($settings["items_gap_tablet"]["size"]) ? (int) $settings["items_gap_tablet"]["size"] : 20,
+                                    "spaceBetween" => !empty($settings["items_gap_tablet"]["size"]) ? (int) $settings["items_gap_tablet"]["size"] : 0,
                                     "slidesPerGroup" => isset($settings["slides_to_scroll_tablet"]) ? (int) $settings["slides_to_scroll_tablet"] : 1,
                                 ],
                                 (int) $viewport_lg => [
                                     "slidesPerView" => 2,
-                                    "spaceBetween" => !empty($settings["items_gap"]["size"]) ? (int) $settings["items_gap"]["size"] : 20,
+                                    "spaceBetween" => !empty($settings["items_gap"]["size"]) ? (int) $settings["items_gap"]["size"] : 0,
                                     "slidesPerGroup" => isset($settings["slides_to_scroll"]) ? (int) $settings["slides_to_scroll"] : 1,
                                 ],
                             ],
