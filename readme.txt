@@ -207,6 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [XXth September 2025] =
+
+* Fixed: Action button normal color, hover color, normal background and hover background controls issues fixed in the mentor slider widget
+
 = 2.8.3 [21st September 2025] =
 
 * Fixed: Element caching compatibility fixed
