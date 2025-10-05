@@ -207,6 +207,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [Xth October 2025] =
+
+* Fixed: PHP deprecation warning for implicitly nullable parameter in optional() function
+
 = 2.8.4 [28th September 2025] =
 
 * Fixed: Swiper carousel widgets item gap ( 0 Value ) not working issue fixed

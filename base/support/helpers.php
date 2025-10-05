@@ -27,7 +27,7 @@ if (! function_exists('optional')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function optional($value = null, callable $callback = null) {
+    function optional($value = null, ?callable $callback = null) {
         if (is_null($callback)) {
             return new Optional($value);
         } elseif (! is_null($value)) {
