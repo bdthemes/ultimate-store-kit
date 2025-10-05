@@ -1,15 +1,15 @@
-=== Ultimate Store Kit - Elementor powered WooCommerce Builder, 80+ Widgets and Template Builder ===
+=== Ultimate Store Kit - Addon For WooCommerce, EDD and Elementor ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.4
+Stable tag: 2.8.5
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.8.2
+Tested up to: 6.8.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Elementor requires at least: 3.22
-Elementor tested up to: 3.32.2
+Elementor requires at least: 3.28
+Elementor tested up to: 3.32.3
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -18,7 +18,7 @@ WooCommerce and EDD Elementor addon with product grid, category, reviews, carous
 
 **Ultimate Store Kit – The Complete WooCommerce & EDD Builder for Elementor**
 
-Ultimate Store Kit is the best WooCommerce and Easy Digital Downloads (EDD) builder for Elementor. It gives you complete control over your online store design.
+Ultimate Store Kit is an all-in-one WooCommerce and Easy Digital Downloads (EDD) builder for Elementor. It gives you complete control over your online store design.
 With 80+ advanced widgets and a powerful template builder, you can create stunning product pages, cart pages, checkout pages and account pages. No coding is needed!
 
 ### Key Features 👇 ###
@@ -174,7 +174,7 @@ Feel free to [Contact us](https://bdthemes.com/support-new/) 💌 or check our w
 
 == Check out our other Addons 👑 ==
 
-Explore the best free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
+Explore the more free addons for Elementor and Gutenberg to boost your site with advanced blocks, sliders and eCommerce tools.
 
 * **[ZoloBlocks](https://wordpress.org/plugins/zoloblocks/)** 🆕☀️ - Mind-blowing dynamic block plugin for Gutenberg with powerful and advanced features offering greater web design experience.
 
@@ -207,7 +207,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.8.X [Xth October 2025] =
+= 2.8.5 [5th October 2025] =
 
 * Fixed: PHP deprecation warning for implicitly nullable parameter in optional() function
 
