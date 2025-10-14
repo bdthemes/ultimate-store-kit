@@ -306,12 +306,20 @@ function ultimate_store_kit_post_pagination($wp_query) {
 		$links[] = $paged + 1;
 	}
 
-	echo '<ul class="usk-pagination">' . "\n";
+	echo '<ul class="usk-pagination" aria-label="' . esc_attr__( 'Pagination', 'ultimate-store-kit' ) . '">' . "\n";
 
 	/** Previous Post Link */
 
-	if (get_previous_posts_link()) {
-		printf('<li>%s</li>' . "\n", wp_kses_post(get_previous_posts_link('<span class="usk-icon-arrow-left-5"></span>')));
+	if ( $paged > 1 ) {
+		$prev_link = get_pagenum_link( $paged - 1 );
+		printf(
+			'<li class="usk-pagination-previous">
+				<a href="%s" aria-label="' . esc_attr__( 'Previous Page', 'ultimate-store-kit' ) . '">
+					<span class="usk-icon-arrow-left-5" aria-hidden="true"></span>
+				</a>
+			</li>' . "\n",
+			esc_url( $prev_link )
+		);
 	}
 
 	/** Link to first page, plus ellipses if necessary */
@@ -331,7 +339,11 @@ function ultimate_store_kit_post_pagination($wp_query) {
 
 	foreach ((array) $links as $link) {
 		$class = $paged == $link ? ' class="usk-active"' : '';
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", wp_kses_post($class), esc_url(get_pagenum_link($link)), esc_html($link));
+		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+			wp_kses_post($class),
+			esc_url(get_pagenum_link($link)),
+			esc_html($link)
+		);
 	}
 
 	/** Link to last page, plus ellipses if necessary */
@@ -343,13 +355,25 @@ function ultimate_store_kit_post_pagination($wp_query) {
 		}
 
 		$class = $paged == $max ? ' class="usk-active"' : '';
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n", wp_kses_post($class), esc_url(get_pagenum_link($max)), esc_html($max));
+		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+			wp_kses_post($class),
+			esc_url(get_pagenum_link($max)),
+			esc_html($max)
+		);
 	}
 
 	/** Next Post Link */
 
-	if (get_next_posts_link()) {
-		printf('<li>%s</li>' . "\n", wp_kses_post(get_next_posts_link('<span class="usk-icon-arrow-right-1"></span>')));
+	if ( $paged < $max ) {
+		$next_link = get_pagenum_link( $paged + 1 );
+		printf(
+			'<li class="usk-pagination-next">
+				<a href="%s" aria-label="' . esc_attr__( 'Next Page', 'ultimate-store-kit' ) . '">
+					<span class="usk-icon-arrow-right-5" aria-hidden="true"></span>
+				</a>
+			</li>' . "\n",
+			esc_url( $next_link )
+		);
 	}
 
 	echo '</ul>' . "\n";
@@ -391,17 +415,17 @@ function ultimate_store_kit_post_pagination__new($wp_query) {
 		$current_url = remove_query_arg(['paged', 'page', 'product-page'], $current_url);
 	}
 
-	echo '<ul class="usk-pagination">' . "\n";
+	echo '<ul class="usk-pagination" aria-label="' . esc_attr__( 'Pagination', 'ultimate-store-kit' ) . '">' . "\n";
 
 	/** Previous Post Link */
-	if (get_previous_posts_link()) {
+	if ($paged > 1) {
 		$prev_page = $paged - 1;
 		if ($prev_page < 1) {
 			return;
 		}
 		$class = $paged == $prev_page ? ' class="current"' : '';
 		printf(
-			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+			'<li%s><a href="%s" target="_self" aria-label="' . esc_attr__( 'Previous Page', 'ultimate-store-kit' ) . '">%s</a></li>' . "\n",
 			wp_kses_post($class),
 			esc_url(add_query_arg('product-page', $prev_page, $current_url)),
 			'<span class="usk-icon-arrow-left-5"></span>'
@@ -449,16 +473,16 @@ function ultimate_store_kit_post_pagination__new($wp_query) {
 	}
 
 	/** Next Post Link */
-	if (get_next_posts_link()) {
+	if ($paged < $max) {
 		$next_page = $paged + 1;
 		if ($next_page > $max) {
 			return;
 		}
 		printf(
-			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+			'<li%s><a href="%s" target="_self" aria-label="' . esc_attr__( 'Next Page', 'ultimate-store-kit' ) . '">%s</a></li>' . "\n",
 			wp_kses_post($class),
 			esc_url(add_query_arg('product-page', $next_page, $current_url)),
-			'<span class="usk-icon-arrow-right-1"></span>'
+			'<span class="usk-icon-arrow-right-5"></span>'
 		);
 	}
 
