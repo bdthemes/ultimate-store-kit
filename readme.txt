@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.5
+Stable tag: 2.8.6
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.32.3
+Elementor tested up to: 3.32.4
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -207,7 +207,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.8.X [XXth October 2025] =
+= 2.8.6 [14th October 2025] =
 
 * Improved: Web accessibility enhanced for pagination Previous/Next links ( Thanks to Oktawia )
 * Fixed: Pagination Previous/Next links appearance issue fixed for grid-type widgets
@@ -344,45 +344,49 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 == Frequently Asked Questions ==
 
-### Is your plugin compatible with latest WordPress update?
+= Is your plugin compatible with latest WordPress update? =
 
-- Yes. Ultimate Store Kit is tested with the latest version update of WordPress and it is compatible with the platform.
+Yes. Ultimate Store Kit is tested with the latest version update of WordPress and it is compatible with the platform.
 
-### Do you provide documentation?
+= Do you provide documentation? =
 
-- We provide documentation for each of our products/plugins/widgets to help users to better utilize the tools.
+We provide documentation for each of our products/plugins/widgets to help users to better utilize the tools.
 
-### What are the benefits of your plugin?
+= What are the benefits of your plugin? =
 
-- Ultimate Store Kit is the perfect online store design tool that combines multiple web designing features into one plugin. Using this tool, you can utilize online store platforms like WooCommerce, EDD and Download Monitor to shape your business as you want.
+Ultimate Store Kit is the perfect online store design tool that combines multiple web designing features into one plugin. Using this tool, you can utilize online store platforms like WooCommerce, EDD and Download Monitor to shape your business as you want.
 
-### Does your plugin work with my theme?
+= Does your plugin work with my theme? =
 
-- Ultimate Store Kit is designed to work with major WordPress themes and is compatible with all themes made for WordPress Elementor.
+Ultimate Store Kit is designed to work with major WordPress themes and is compatible with all themes made for WordPress Elementor.
 
-### How can I import my products from the existing EDD/WooCommerce/Digital Downloads store?
+= How can I import my products from the existing EDD/WooCommerce/Digital Downloads store? =
 
-- You don't have to import anything. Ultimate Store Kit doesn't use a separate platform to store your shop data. Rather, it reads the store data from your existing store in WordPress automatically.
+You don't have to import anything. Ultimate Store Kit doesn't use a separate platform to store your shop data. Rather, it reads the store data from your existing store in WordPress automatically.
 
-### Is Ultimate Store Kit an eCommerce platform?
+= Is Ultimate Store Kit an eCommerce platform? =
 
-- No. Ultimate Store Kit is not a new eCommerce platform but a support plugin for existing platforms on WordPress and works for design purposes.
+No. Ultimate Store Kit is not a new eCommerce platform but a support plugin for existing platforms on WordPress and works for design purposes.
 
-### Where can I request new features?
+= Where can I request new features? =
 
-- Please contact our support team through email or LiveChat in case you need to request new features for our product. Our team will connect with you within 24 hours.
+Please contact our support team through email or LiveChat in case you need to request new features for our product. Our team will connect with you within 24 hours.
 
-### Do I need Elementor Pro to use Ultimate Store Kit?
+= Do I need Elementor Pro to use Ultimate Store Kit? =
 
-- There is no need for Elementor Pro because Ultimate Store Kit works with both the free and pro versions of Elementor page builder plugin.
+There is no need for Elementor Pro because Ultimate Store Kit works with both the free and pro versions of Elementor page builder plugin.
 
-### Where can I see the Wishlist after I click the Wishlist button?
+= Where can I see the Wishlist after I click the Wishlist button? =
 
-- After adding any product to the wishlist, you can find the wishlist when you log into the store and click on the My Account menu to reveal the user dashboard.
+After adding any product to the wishlist, you can find the wishlist when you log into the store and click on the My Account menu to reveal the user dashboard.
 
-### How can I shift to Pro plugin?
+= How can I shift to Pro plugin? =
 
-- Visit BdThemes.com to buy a plugin license or see the current page for the licensing option to buy and shift to Pro plugin of Ultimate Store Kit.
+Visit BdThemes.com to buy a plugin license or see the current page for the licensing option to buy and shift to Pro plugin of Ultimate Store Kit.
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/9e5fbf21-88b1-49a4-bc2e-929894a7e998)
 
 == Screenshots ==
 

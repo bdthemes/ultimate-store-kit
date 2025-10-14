@@ -18,9 +18,6 @@
   padding: 25px;
   border-color: #e2e2e5;
   z-index: 99;
-  /**
-   * Start Prime Slider
-   */
 }
 .ultimate-store-kit-notice .bdt-license-notice-global .bdt-license-notice-logo img {
   width: 45px;
@@ -56,6 +53,11 @@
 .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-skip {
   border: 0;
   color: #e62a3f;
+}
+.ultimate-store-kit-notice .bdt-license-notice-global {
+  /**
+   * Start Prime Slider
+   */
 }
 .ultimate-store-kit-notice .bdt-license-notice-global .bdt-button-allow {
   --primaryColor: #e62a3f;
@@ -284,8 +286,6 @@ a.usk-go-pro:hover, a.usk-go-pro:focus {
   --nm-anim-duration-fast: 0.3s;
   text-align: right;
   animation: buttonSlideIn 0.8s ease-out 0.6s both;
-  /* Button Styles */
-  /* Star Hover Positions */
 }
 [id^=bdt-admin-notice-api-notice] .bdt-notice-btn a {
   background: transparent;
@@ -295,6 +295,9 @@ a.usk-go-pro:hover, a.usk-go-pro:focus {
 }
 [id^=bdt-admin-notice-api-notice] .bdt-notice-btn a:hover {
   background: transparent;
+}
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn {
+  /* Button Styles */
 }
 [id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn {
   color: var(--nm-text-primary);
@@ -324,6 +327,9 @@ a.usk-go-pro:hover, a.usk-go-pro:focus {
   width: 16px;
   height: 16px;
   display: block;
+}
+[id^=bdt-admin-notice-api-notice] .bdt-notice-btn {
+  /* Star Hover Positions */
 }
 [id^=bdt-admin-notice-api-notice] .bdt-notice-btn .nm-notice-btn:hover .zolo-star-1 {
   top: 21%;
