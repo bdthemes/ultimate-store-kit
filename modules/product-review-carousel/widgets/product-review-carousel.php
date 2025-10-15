@@ -11,6 +11,7 @@ use Elementor\Group_Control_Typography;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
+use UltimateStoreKit\Classes\Utils;
 
 // use WP_Query;
 
@@ -744,7 +745,12 @@ class Product_Review_Carousel extends Module_Base {
                         <?php endif; ?>
                         <div class="usk-content-wrap">
                             <?php if ($settings['show_title']) :
-                                printf('<%1$s class="usk-title"><a href="%3$s">%2$s</a></%1$s>', esc_attr($settings['title_tags']), esc_html($product->get_name()), esc_url($product->get_permalink()));
+                                printf(
+                                    '<%1$s class="usk-title"><a href="%3$s">%2$s</a></%1$s>', 
+                                    esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
+                                    esc_html($product->get_name()), 
+                                    esc_url($product->get_permalink())
+                                );
                             endif; ?>
                             <?php if ($settings['show_author']): ?>
                                 <div class="usk-author-name">

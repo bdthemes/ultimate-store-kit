@@ -15,6 +15,7 @@ use Elementor\Group_Control_Typography;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -1731,7 +1732,11 @@ class Mentor_Slider extends Module_Base {
                             <?php endif; ?>
 
                             <?php if ('yes' == $settings['show_title']) :
-                                printf('<%1$s class="usk-title" data-swiper-parallax-X="-100"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                                printf(
+                                    '<%1$s class="usk-title" data-swiper-parallax-X="-100"><a href="%2$s">%3$s</a></%1$s>', 
+                                    esc_attr(Utils::get_valid_html_tag($settings['title_tags'])),
+                                    esc_url($product->get_permalink()), 
+                                    esc_html($product->get_title()));
                             endif; ?>
 
                             <?php if ('yes' == $settings['show_excerpt']) : ?>

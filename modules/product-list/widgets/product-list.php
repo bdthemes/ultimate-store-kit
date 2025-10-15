@@ -14,6 +14,7 @@ use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
 // use UltimateStoreKit\traits\Global_Swiper_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -445,7 +446,12 @@ class Product_List extends Module_Base {
                 <div class="usk-content usk-flex usk-flex-column usk-flex-center">
                     <?php
                     if ($settings['show_title']) :
-                        printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                        printf(
+                            '<a href="%2$s" class="usk-title"><%1$s class="title">%3$s</%1$s></a>', 
+                            esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
+                            esc_url($product->get_permalink()), 
+                            esc_html($product->get_title()),
+                        );
                     endif; ?>
                     <?php if ($settings['show_rating']) : ?>
                         <div class="usk-rating">

@@ -10,6 +10,7 @@ use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) exit;
@@ -302,11 +303,22 @@ class Product_Image_Accordion extends Module_Base {
                             <div class="usk-content">
                                 <?php if ('yes' == $settings['show_category']) : ?>
                                     <div class="usk-category">
-                                        <?php echo wp_kses_post(wc_get_product_category_list($product->get_id(), ' ')); ?>
+                                        <?php printf(
+                                                '<%1$s>%2$s</%1$s>',
+                                                esc_attr( Utils::get_valid_html_tag( $settings['title_tags'] ) ),
+                                                wp_kses_post( wc_get_product_category_list( $product->get_id(), ' ' ) )
+                                            );
+                                        ?>
                                     </div>
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_title']) :
-                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                                    printf(
+                                        '<a href="%2$s" class="usk-title"><%1$s class="title">%3$s</%1$s></a>', 
+                                        esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
+                                        esc_url($product->get_permalink()), 
+                                        esc_html($product->get_title()),
+                                    );
+                                    
                                 endif; ?>
                                 <?php if ('yes' == $settings['show_price']) : ?>
                                     <div class="usk-price">
