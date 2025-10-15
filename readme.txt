@@ -207,6 +207,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [XXth October 2025] =
+
+* Fixed: HTML tag validation issue fixed
+* Fixed: Security issue fixed
+
 = 2.8.6 [14th October 2025] =
 
 * Improved: Web accessibility enhanced for pagination Previous/Next links ( Thanks to Oktawia )
