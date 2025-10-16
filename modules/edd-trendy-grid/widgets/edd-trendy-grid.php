@@ -6,6 +6,7 @@ use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Traits\Global_EDD_Widget_Controls;
 use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -128,12 +129,22 @@ class EDD_Trendy_Grid extends Module_Base {
                                     $category_list = wp_get_post_terms(get_the_ID(), 'download_category');
                                     foreach ($category_list as $term) {
                                         $term_link = get_term_link($term);
-                                        echo '<span class="usk-edd-category"><a href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a></span> ';
+                                        printf(
+                                            '<%1$s class="usk-edd-category"><a href="%2$s">%3$s</a></%1$s> ',
+                                            esc_attr( Utils::get_valid_html_tag( $settings['category_tags'] ) ),
+                                            esc_url( $term_link ),
+                                            esc_html( $term->name )
+                                        );
                                     }
                                 endif;
 
                                 if ($settings['show_title']) :
-                                    printf('<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>', esc_attr($settings['title_tags']), esc_url(get_the_permalink()), esc_html(get_the_title()));
+                                    printf(
+                                        '<%1$s class="usk-edd-title"><a href="%2$s">%3$s</a></%1$s>',
+                                        esc_attr(Utils::get_valid_html_tag($settings['title_tags'])),
+                                        esc_url(get_the_permalink()),
+                                        esc_html(get_the_title())
+                                    );
                                 endif; ?>
                             </div>
                             <div class="usk-edd-trendy-grid-image">

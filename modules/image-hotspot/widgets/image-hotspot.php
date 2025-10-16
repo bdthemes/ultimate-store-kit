@@ -13,11 +13,12 @@ use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Utils;
+// use Elementor\Utils;]
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -110,7 +111,7 @@ class Image_Hotspot extends Module_Base {
                 'type'    => Controls_Manager::MEDIA,
                 'dynamic' => [ 'active' => true ],
                 'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
             ]
         );
@@ -2492,7 +2493,7 @@ class Image_Hotspot extends Module_Base {
                 <div thumbsSlider="" <?php $this->print_render_attribute_string('thumbs'); ?>>
                     <?php
                     $image_size = $settings['image_resolution_size'];
-                    $placeholder_image_src = Utils::get_placeholder_image_src();
+                    $placeholder_image_src = \Elementor\Utils::get_placeholder_image_src();
                     $image_src             = wp_get_attachment_image_src($settings['hotspot_image']['id'], $image_size);
                     if (! $image_src) {
                         printf('<img src="%1$s" alt="%2$s">', esc_url($placeholder_image_src), esc_html(get_the_title()));
@@ -2547,10 +2548,20 @@ class Image_Hotspot extends Module_Base {
                 <div class="usk-content">
                     <div class="usk-content-inner">
                         <?php if ('yes' == $settings['show_category']) : ?>
-                            <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($settings['category_tags']), wp_kses_post($categories)); ?>
+                            <?php printf(
+                                    '<%1$s class="usk-category">%2$s</%1$s>', 
+                                    esc_attr($settings['category_tags']), 
+                                    wp_kses_post($categories)
+                                ); 
+                            ?>
                         <?php endif; ?>
                         <?php if ('yes' == $settings['show_title']) : ?>
-                            <?php printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title())); ?>
+                            <?php printf(
+                                '<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>',
+                                esc_attr(Utils::get_valid_html_tag($settings['title_tags'])),
+                                esc_url($product->get_permalink()),
+                                esc_html($product->get_title())
+                            ); ?>
                         <?php endif; ?>
                         <?php if ('yes' == $settings['show_price']) : ?>
                             <div class="usk-price">

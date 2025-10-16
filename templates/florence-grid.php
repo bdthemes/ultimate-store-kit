@@ -10,6 +10,7 @@
 namespace UltimateStoreKit\Templates;
 
 use UltimateStoreKit\Traits\Global_Widget_Template;
+use UltimateStoreKit\Classes\Utils;
 
 
 class USK_Florence_Grid_Template {
@@ -47,7 +48,7 @@ class USK_Florence_Grid_Template {
         $average = $product->get_average_rating();
         // Get product categories
         $categories = wc_get_product_category_list($product_id, ' ');
-        $category_tags = isset($settings['category_tags']) ? $settings['category_tags'] : 'h3';
+        $category_tags = isset($settings['category_tags']) ? $settings['category_tags'] : 'h5';
         $title_tags = isset($settings['title_tags']) ? $settings['title_tags'] : 'h3';
 
         // get the class based on the widget name
@@ -63,10 +64,20 @@ class USK_Florence_Grid_Template {
                 <div class="usk-content">
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)) : ?>
-                            <?php printf('<%1$s class="usk-category">%2$s</%1$s>', esc_attr($category_tags), wp_kses_post($categories)); ?>
+                            <?php printf(
+                                    '<%1$s class="usk-category">%2$s</%1$s>', 
+                                    esc_attr(Utils::get_valid_html_tag($category_tags)), 
+                                    wp_kses_post($categories)
+                                ); 
+                            ?>
                         <?php endif; ?>
                         <?php if (isset($settings['show_title']) ? $settings['show_title'] : true) :
-                            printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($title_tags), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                            printf(
+                                '<a href="%2$s" class="usk-title"><%1$s class="title">%3$s</%1$s></a>', 
+                                esc_attr(Utils::get_valid_html_tag($title_tags)), 
+                                esc_url($product->get_permalink()), 
+                                esc_html($product->get_title())
+                            );
                         endif; ?>
                         <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()) : ?>
                             <div class="usk-price">

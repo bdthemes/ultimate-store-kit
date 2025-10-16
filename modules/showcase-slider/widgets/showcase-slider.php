@@ -13,6 +13,7 @@ use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
+use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
 if (!defined('ABSPATH')) {
@@ -1463,7 +1464,12 @@ class Showcase_Slider extends Module_Base
                                     <?php printf('<div class="usk-category">%1$s</div>', wp_kses_post(wc_get_product_category_list($product->get_id(), ' '))); ?>
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_title']):
-                                    printf('<a href="%2$s" class="usk-title"><%1$s  class="title">%3$s</%1$s></a>', esc_attr($settings['title_tags']), esc_url($product->get_permalink()), esc_html($product->get_title()));
+                                    printf(
+                                        '<a href="%2$s" class="usk-title"><%1$s class="title">%3$s</%1$s></a>', 
+                                        esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
+                                        esc_url($product->get_permalink()), 
+                                        esc_html($product->get_title())
+                                    );
                                 endif; ?>
 
                             </div>

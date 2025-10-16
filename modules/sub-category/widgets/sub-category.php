@@ -8,9 +8,10 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Utils;
+// use Elementor\Utils;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Traits\Global_Terms_Query_Controls;
+use UltimateStoreKit\Classes\Utils;
 
 use WP_Query;
 
@@ -844,7 +845,12 @@ class Sub_Category extends Module_Base {
                         </div>
                         <div class="usk-content">
 
-                            <?php printf('<%1$s class="usk-name">%2$s</%1$s>', esc_attr($settings['title_tags']), esc_html($category->name)); ?>
+                            <?php printf(
+                                    '<%1$s class="usk-name">%2$s</%1$s>', 
+                                    esc_attr( Utils::get_valid_html_tag($settings['title_tags']) ), 
+                                    esc_html($category->name)
+                                ); 
+                            ?>
                             <div class="usk-list">
                                 <?php
                                 foreach ($subcategories as $key => $subcategory) :

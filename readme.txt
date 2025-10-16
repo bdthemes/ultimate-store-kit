@@ -211,6 +211,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Fixed: HTML tag validation issue fixed
 * Fixed: Security issue fixed
+* Added: Added dynamic tag support for category markup
 
 = 2.8.6 [14th October 2025] =
 
