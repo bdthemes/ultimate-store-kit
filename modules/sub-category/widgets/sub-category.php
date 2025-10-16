@@ -847,7 +847,7 @@ class Sub_Category extends Module_Base {
 
                             <?php printf(
                                     '<%1$s class="usk-name">%2$s</%1$s>', 
-                                    esc_attr($settings['title_tags']), 
+                                    esc_attr( Utils::get_valid_html_tag($settings['title_tags']) ), 
                                     esc_html($category->name)
                                 ); 
                             ?>

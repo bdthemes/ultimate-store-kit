@@ -305,7 +305,7 @@ class Product_Image_Accordion extends Module_Base {
                                     <div class="usk-category">
                                         <?php printf(
                                                 '<%1$s>%2$s</%1$s>',
-                                                esc_attr( Utils::get_valid_html_tag( $settings['title_tags'] ) ),
+                                                esc_attr( Utils::get_valid_html_tag( $settings['category_tags'] ) ),
                                                 wp_kses_post( wc_get_product_category_list( $product->get_id(), ' ' ) )
                                             );
                                         ?>
