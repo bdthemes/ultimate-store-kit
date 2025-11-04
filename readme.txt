@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.7
+Stable tag: 2.8.8
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.32.4
+Elementor tested up to: 3.32.5
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -207,7 +207,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.8.X [XXth October 2025] =
+= 2.8.8 [4th November 2025] =
 
 * Fixed: Action button design issue fixed in edd classic carousel widget
 * Fixed: Corrected wrong control name and border type condition logic issue fixed 
