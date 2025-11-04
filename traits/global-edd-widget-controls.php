@@ -1528,9 +1528,9 @@ trait Global_EDD_Widget_Controls {
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li a:hover' => 'border-color:{{VALUE}};',
                 ],
-                // 'condition' => [
-                //     'pagination_border!' => ' '
-                // ]
+                'condition' => [
+                    'pagination_border_border!' => ['none', ''],
+                ]
             ]
         );
 
@@ -1564,14 +1564,14 @@ trait Global_EDD_Widget_Controls {
         $this->add_control(
             'active_pagination_border_color',
             [
-                'label'     => esc_html__('Color', 'ultimate-store-kit'),
+                'label'     => esc_html__('Border Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-pagination li.usk-active a' => 'border-color: {{VALUE}};',
                 ],
-                // 'condition' => [
-                //     'pagination_border!' => ''
-                // ]
+                'condition' => [
+                    'pagination_border_border!' => ['none', ''],
+                ]
             ]
         );
         $this->end_controls_tab();
