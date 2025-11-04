@@ -8,7 +8,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Utils;
+use UltimateStoreKit\Classes\Utils;
 use UltimateStoreKit\Base\Module_Base;
 
 if (!defined('ABSPATH')) {
@@ -137,7 +137,7 @@ class Featured_Box extends Module_Base {
                 'type' => Controls_Manager::MEDIA,
                 'dynamic' => [ 'active' => true ],
                 'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .usk-featured-box .usk-image-wrap' => 'background-image: url("{{URL}}");',
@@ -1403,7 +1403,12 @@ class Featured_Box extends Module_Base {
         }
 
         if (!empty($settings['title'])) {
-            printf('<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', esc_attr($settings['title_tag']), wp_kses_post($this->get_render_attribute_string('title-link')), wp_kses_post($settings['title']));
+            printf(
+                '<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', 
+                esc_attr( Utils::get_valid_html_tag($settings['title_tag']) ), 
+                wp_kses_post($this->get_render_attribute_string('title-link')), 
+                wp_kses_post($settings['title'])
+            );
         }
     }
 

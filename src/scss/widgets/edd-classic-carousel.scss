@@ -69,6 +69,9 @@
 		}
 
 		.edd_purchase_submit_wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
 			margin-bottom: 10px;
 		}
 
@@ -109,6 +112,10 @@
 				}
 			}
 		}
+
+		span.edd-cart-ajax-alert {
+			display: none;
+		};
 
 	}
 

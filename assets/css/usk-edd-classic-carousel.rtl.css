@@ -57,6 +57,9 @@
   display: none;
 }
 .usk-edd-classic-carousel .usk-action-button .edd_purchase_submit_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 10px;
 }
 .usk-edd-classic-carousel .usk-action-button .edd-loading {
@@ -101,6 +104,9 @@
 .usk-edd-classic-carousel .usk-action-button .usk-details-button a .usk-cart-button,
 .usk-edd-classic-carousel .usk-action-button .usk-details-button .edd-add-to-cart .usk-cart-button {
   margin-bottom: 10px;
+}
+.usk-edd-classic-carousel .usk-action-button span.edd-cart-ajax-alert {
+  display: none;
 }
 .usk-edd-classic-carousel .usk-edd-content {
   text-align: center;

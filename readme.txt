@@ -207,6 +207,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [XXth October 2025] =
+
+* Fixed: Action button design issue fixed in edd classic carousel widget
+* Fixed: Corrected wrong control name and border type condition logic issue fixed 
+
 = 2.8.7 [16th October 2025] =
 
 * Fixed: HTML tag validation issue fixed
