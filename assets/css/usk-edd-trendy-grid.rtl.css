@@ -13,11 +13,6 @@
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover {
   box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
-  /* .usk-edd-price {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-20px);
-  } */
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover::before {
   width: 100%;
@@ -33,6 +28,13 @@
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover .usk-action-button .usk-details-button a {
   transition-delay: 0.1s;
+}
+.usk-edd-trendy-grid .usk-edd-trendy-grid-item:hover {
+  /* .usk-edd-price {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+  } */
 }
 .usk-edd-trendy-grid .usk-edd-trendy-grid-item::before {
   content: "";

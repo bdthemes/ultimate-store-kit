@@ -1,15 +1,15 @@
 === Ultimate Store Kit - Addon For WooCommerce, EDD and Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.9
+Stable tag: 2.8.10
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.8.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.32.5
+Elementor tested up to: 3.33.0
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -20,6 +20,8 @@ WooCommerce and EDD Elementor addon with product grid, category, reviews, carous
 
 Ultimate Store Kit is an all-in-one WooCommerce and Easy Digital Downloads (EDD) builder for Elementor. It gives you complete control over your online store design.
 With 80+ advanced widgets and a powerful template builder, you can create stunning product pages, cart pages, checkout pages and account pages. No coding is needed!
+
+### [🎉 Black Friday Offer: Upgrade to Pro and Save up to 87% on All Plugins! 🎊](https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_store_kit)
 
 ### Key Features 👇 ###
 
@@ -206,6 +208,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.8.10 [12th November 2025] =
+
+* Fixed: API Banner duplicate issue fixed
 
 = 2.8.9 [10th November 2025] =
 

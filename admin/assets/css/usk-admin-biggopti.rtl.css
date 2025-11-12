@@ -19,16 +19,13 @@
   border: none;
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global {
-  border-right: 4px solid #60df54 !important;
+  border-right: 4px solid #E31C79 !important;
   display: flex;
   align-items: flex-start;
   gap: 15px;
   padding: 25px;
   border-color: #e2e2e5;
   z-index: 99;
-  /**
-  * Start Ultimate Store Kit
-  */
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-logo img {
   width: 45px;
@@ -63,16 +60,21 @@
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global .bdt-button-skip {
   border: 0;
-  color: #08c972;
+  color: #FA11F2;
+}
+.ultimate-store-kit-biggopti .bdt-license-biggopti-global {
+  /**
+  * Start Ultimate Store Kit
+  */
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global.ultimate_store_kit .bdt-button-allow {
-  --primaryColor: #60df54;
-  --secondaryColor: #08c972;
+  --primaryColor: #E31C79;
+  --secondaryColor: #FA11F2;
   background: linear-gradient(-313deg, var(--primaryColor), var(--secondaryColor) 100%);
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global.ultimate_store_kit .bdt-button-allow:hover {
-  --primaryColor: #08c972;
-  --secondaryColor: #60df54;
+  --primaryColor: #FA11F2;
+  --secondaryColor: #E31C79;
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global.ultimate_store_kit .bdt-button-skip {
   background-color: rgba(86, 220, 88, 0.15);
@@ -83,19 +85,19 @@
 
 #adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"] {
   font-weight: 600;
-  color: #60DF54;
+  color: #E31C79;
 }
 #adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"]:hover {
-  color: #08C972;
+  color: #FA11F2;
 }
 
-a.upk-go-pro {
-  color: #08C972;
+a.usk-go-pro {
+  color: #FA11F2;
   font-weight: bold;
 }
 
-a.upk-go-pro:hover, a.upk-go-pro:focus {
-  color: #60DF54;
+a.usk-go-pro:hover, a.usk-go-pro:focus {
+  color: #E31C79;
 }
 
 /**
@@ -289,8 +291,6 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   --nm-anim-duration-fast: 0.3s;
   text-align: left;
   animation: buttonSlideIn 0.8s ease-out 0.6s both;
-  /* Button Styles */
-  /* Star Hover Positions */
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn a {
   background: transparent;
@@ -300,6 +300,9 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn a:hover {
   background: transparent;
+}
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn {
+  /* Button Styles */
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn {
   color: var(--nm-text-primary);
@@ -329,6 +332,9 @@ a.upk-go-pro:hover, a.upk-go-pro:focus {
   width: 16px;
   height: 16px;
   display: block;
+}
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn {
+  /* Star Hover Positions */
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-1 {
   top: 21%;

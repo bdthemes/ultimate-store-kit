@@ -21,7 +21,7 @@
     }
 
     .bdt-license-biggopti-global {
-        border-left: 4px solid #60df54 !important;
+        border-left: 4px solid #E31C79 !important;
         display: flex;
         align-items: flex-start;
         gap: 15px;
@@ -70,7 +70,7 @@
 
         .bdt-button-skip {
             border: 0;
-            color: #08c972;
+            color: #FA11F2;
         }
 
         /**
@@ -78,14 +78,14 @@
      */
 
         &.ultimate_store_kit .bdt-button-allow {
-            --primaryColor: #60df54;
-            --secondaryColor: #08c972;
+            --primaryColor: #E31C79;
+            --secondaryColor: #FA11F2;
             background: linear-gradient(313deg, var(--primaryColor), var(--secondaryColor) 100%);
         }
 
         &.ultimate_store_kit .bdt-button-allow:hover {
-            --primaryColor: #08c972;
-            --secondaryColor: #60df54;
+            --primaryColor: #FA11F2;
+            --secondaryColor: #E31C79;
         }
 
         &.ultimate_store_kit .bdt-button-skip {
@@ -100,18 +100,18 @@
 
 #adminmenu #toplevel_page_ultimate_store_kit_options a[href="admin.php?page=ultimate_store_kit_options_get_pro"] {
     font-weight: 600;
-    color: #60DF54;
+    color: #E31C79;
     &:hover {
-        color: #08C972;
+        color: #FA11F2;
     }
 }
 
-a.upk-go-pro {
-    color: #08C972;
+a.usk-go-pro {
+    color: #FA11F2;
     font-weight: bold;
 }
-a.upk-go-pro:hover, a.upk-go-pro:focus {
-    color: #60DF54;
+a.usk-go-pro:hover, a.usk-go-pro:focus {
+    color: #E31C79;
 }
 
 
