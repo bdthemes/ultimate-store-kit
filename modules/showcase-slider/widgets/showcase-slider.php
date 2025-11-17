@@ -140,7 +140,7 @@ class Showcase_Slider extends Module_Base
         $this->add_responsive_control(
             'items_height',
             [
-                'label' => esc_html__('Image Height', 'ultimate-store-kit') . BDTUSK_NC,
+                'label' => esc_html__('Image Height', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -173,7 +173,7 @@ class Showcase_Slider extends Module_Base
         $this->start_controls_section(
             'section_woocommerce_additional',
             [
-                'label' => esc_html__('Additional', 'ultimate-store-kit'),
+                'label' => esc_html__('Additional Options', 'ultimate-store-kit'),
             ]
         );
         $this->start_controls_tabs(

@@ -1728,7 +1728,10 @@ class Mentor_Slider extends Module_Base {
                         <div class="usk-inner-content">
 
                             <?php if ('yes' == $settings['show_category']) : ?>
-                                <?php printf('<div class="usk-category" data-swiper-parallax-X="-50">%1$s</div>', wp_kses_post(wc_get_product_category_list($product->get_id(), ' '))); ?>
+                                <?php printf(
+                                    '<div class="usk-category" data-swiper-parallax-X="-50">%1$s</div>', 
+                                    wp_kses_post(wc_get_product_category_list($product->get_id(), ' '))
+                                ); ?>
                             <?php endif; ?>
 
                             <?php if ('yes' == $settings['show_title']) :

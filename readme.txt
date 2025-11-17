@@ -209,6 +209,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [XXth November 2025] =
+
+* Fixed: Spacing issues fixed for categories in the heaven and product image accordion widgets
+
 = 2.8.11 [13th November 2025] =
 
 * Updated: Notice design improved
