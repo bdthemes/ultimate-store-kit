@@ -2548,12 +2548,9 @@ class Image_Hotspot extends Module_Base {
                 <div class="usk-content">
                     <div class="usk-content-inner">
                         <?php if ('yes' == $settings['show_category']) : ?>
-                            <?php printf(
-                                    '<%1$s class="usk-category">%2$s</%1$s>', 
-                                    esc_attr($settings['category_tags']), 
-                                    wp_kses_post($categories)
-                                ); 
-                            ?>
+                            <div class="usk-category">
+                                <?php echo wp_kses_post( wc_get_product_category_list( $product->get_id(), ' ' ) ); ?>
+                            </div>
                         <?php endif; ?>
                         <?php if ('yes' == $settings['show_title']) : ?>
                             <?php printf(

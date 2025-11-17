@@ -64,12 +64,9 @@ class USK_Florence_Grid_Template {
                 <div class="usk-content">
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)) : ?>
-                            <?php printf(
-                                    '<%1$s class="usk-category">%2$s</%1$s>', 
-                                    esc_attr(Utils::get_valid_html_tag($category_tags)), 
-                                    wp_kses_post($categories)
-                                ); 
-                            ?>
+                            <div class="usk-category">
+                                <?php echo wp_kses_post( wc_get_product_category_list( $product->get_id(), ' ' ) ); ?>
+                            </div>
                         <?php endif; ?>
                         <?php if (isset($settings['show_title']) ? $settings['show_title'] : true) :
                             printf(

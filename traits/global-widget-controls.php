@@ -247,20 +247,20 @@ trait Global_Widget_Controls
                     // 'separator' => 'before'
                 ]
             );
-            if ( !in_array( $this->get_name(), ['usk-heaven-slider', 'usk-product-image-accordion', 'usk-shiny-grid', 'usk-shiny-carousel'] ) ):
-                $this->add_control(
-                    'category_tags',
-                    [
-                        'label' => esc_html__('Category HTML Tag', 'ultimate-store-kit'),
-                        'type' => Controls_Manager::SELECT,
-                        'default' => 'h5',
-                        'options' => ultimate_store_kit_title_tags(),
-                        'condition' => [
-                            'show_category' => 'yes',
-                        ],
-                    ]
-                );
-            endif;
+            // if ( !in_array( $this->get_name(), ['usk-heaven-slider', 'usk-product-image-accordion', 'usk-shiny-grid', 'usk-shiny-carousel'] ) ):
+            //     $this->add_control(
+            //         'category_tags',
+            //         [
+            //             'label' => esc_html__('Category HTML Tag', 'ultimate-store-kit'),
+            //             'type' => Controls_Manager::SELECT,
+            //             'default' => 'h5',
+            //             'options' => ultimate_store_kit_title_tags(),
+            //             'condition' => [
+            //                 'show_category' => 'yes',
+            //             ],
+            //         ]
+            //     );
+            // endif;
         endif;
         if ($this->get_name() !== 'usk-product-image-accordion' && $this->get_name() !== 'usk-heaven-slider' && $this->get_name() !== 'usk-glossy-grid' && $this->get_name() !== 'usk-florence-grid'):
             $this->add_control(
