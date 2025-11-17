@@ -132,18 +132,18 @@ class Product_Accordion extends Module_Base
                 'default' => 'yes',
             ]
         );
-        $this->add_control(
-            'category_tags',
-            [
-                'label' => esc_html__('Category HTML Tag', 'ultimate-store-kit'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'h5',
-                'options' => ultimate_store_kit_title_tags(),
-                'condition' => [
-                    'show_category' => 'yes',
-                ],
-            ]
-        );
+        // $this->add_control(
+        //     'category_tags',
+        //     [
+        //         'label' => esc_html__('Category HTML Tag', 'ultimate-store-kit'),
+        //         'type' => Controls_Manager::SELECT,
+        //         'default' => 'h5',
+        //         'options' => ultimate_store_kit_title_tags(),
+        //         'condition' => [
+        //             'show_category' => 'yes',
+        //         ],
+        //     ]
+        // );
         $this->add_control(
             'show_description',
             [
@@ -155,7 +155,7 @@ class Product_Accordion extends Module_Base
         $this->add_control(
             'excerpt_limit',
             [
-                'label' => esc_html__('Text Limit', 'ultimate-store-kit') . BDTUSK_NC,
+                'label' => esc_html__('Text Limit', 'ultimate-store-kit'),
                 'type' => Controls_Manager::NUMBER,
                 'default' => 25,
                 'condition' => [
@@ -194,7 +194,7 @@ class Product_Accordion extends Module_Base
         $this->add_responsive_control(
             'image_position',
             [
-                'label' => esc_html__('Image Position', 'ultimate-store-kit') . BDTUSK_NC,
+                'label' => esc_html__('Image Position', 'ultimate-store-kit'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'row' => [

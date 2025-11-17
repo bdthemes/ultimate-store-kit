@@ -280,7 +280,7 @@ trait Global_EDD_Widget_Controls {
         $this->start_controls_section(
             'section_edd_additional',
             [
-                'label' => esc_html__('Additional', 'ultimate-store-kit'),
+                'label' => esc_html__('Additional Options', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
