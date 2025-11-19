@@ -2,7 +2,7 @@
 	<div id="ultimate-builder-kit-builder-modal-wrapper">
 		<div class="usk-template-modal-header">
 			<div class="usk-modal-logo-wrap">
-				<img class="usk-modal-logo" src="<?php echo esc_attr( BDTUSK_ADM_ASSETS_URL . '/images/logo.svg' ) ?>"
+				<img class="usk-modal-logo" src="<?php echo esc_attr(BDTUSK_ADM_ASSETS_URL . '/images/logo.svg') ?>"
 					alt="">
 				<span class="usk-logo-text">New Template</span>
 			</div>
@@ -35,32 +35,32 @@
 						$separator = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::separator();
 
 						// It is single
-						if ( count( $templates ) == 1 ) {
-							$templateKey = array_key_last( $templates );
-							$template    = $templates[ $templateKey ];
-							foreach ( $template as $key => $item ) :
+						if (count($templates) == 1) {
+							$templateKey = array_key_last($templates);
+							$template    = $templates[$templateKey];
+							foreach ($template as $key => $item) :
 								$selectValue = "{$templateKey}{$separator}{$key}";
-								?>
-								<option value="<?php echo esc_attr( $selectValue ) ?>"><?php echo esc_attr( $item ) ?></option>
+						?>
+								<option value="<?php echo esc_attr($selectValue) ?>"><?php echo esc_attr($item) ?></option>
 								<?php
 							endforeach;
 						}
 
-						if ( count( $templates ) > 1 ) {
-							foreach ( $templates as $keys => $items ) :
-								$label = ucwords( str_replace( [ '-', '_' ], [ ' ' ], $keys ) );
-								if ( is_array( $items ) ) {
-									?>
-									<optgroup label="<?php echo esc_attr( $label ) ?>"><?php
-									   foreach ( $items as $key => $item ) :
-										   $itemValue = "{$keys}{$separator}{$key}"
-										   	?>
-											<option value="<?php echo esc_attr( $itemValue ) ?>"><?php echo esc_attr( $item ) ?></option>
-											<?php
-									   endforeach;
-									   ?>
+						if (count($templates) > 1) {
+							foreach ($templates as $keys => $items) :
+								$label = ucwords(str_replace(['-', '_'], [' '], $keys));
+								if (is_array($items)) {
+								?>
+									<optgroup label="<?php echo esc_attr($label) ?>"><?php
+																						foreach ($items as $key => $item) :
+																							$itemValue = "{$keys}{$separator}{$key}"
+																						?>
+											<option value="<?php echo esc_attr($itemValue) ?>"><?php echo esc_attr($item) ?></option>
+										<?php
+																						endforeach;
+										?>
 									</optgroup>
-									<?php
+						<?php
 								}
 							endforeach;
 						}
@@ -68,11 +68,15 @@
 					</select>
 					<label for="fname">Name your template</label>
 					<input type="text" name="template_name" id="template_name" placeholder="Enter template name">
-					<select name="template_status" id="template_status">
-						<option value="">select</option>
+					<!-- <select name="template_status" id="template_status">
 						<option value="1">Active</option>
 						<option value="0">Inactive</option>
-					</select>
+					</select> -->
+
+					<label for="template_status">
+						<input class="bdt-checkbox" type="checkbox" name="template_status" id="template_status" value="1" checked>
+						Status
+					</label>
 					<input class="usk-modal-submit-btn" type="submit" value="Create Template">
 				</form>
 			</div>
