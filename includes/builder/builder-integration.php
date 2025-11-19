@@ -22,6 +22,39 @@ class Builder_Integration {
 	public $current_template_id = null;
 
 	function __construct() {
+
+		// Migration from old post type to new post type. TODO: it should be remove after 01 year
+		add_action('init', function () {
+			// Old and new post types
+			$old = 'usk-template-builder';
+			$new = 'bdt-template-builder';
+
+			// Check if any old posts still exist
+			$old_posts = get_posts([
+				'post_type'      => $old,
+				'post_status'    => 'any',
+				'posts_per_page' => 1,
+				'fields'         => 'ids'
+			]);
+
+			// If none exist, stop (already migrated)
+			if (empty($old_posts)) {
+				return;
+			}
+
+			// Run migration
+			global $wpdb;
+			$wpdb->update(
+				$wpdb->posts,
+				['post_type' => $new],
+				['post_type' => $old]
+			);
+
+			// Clear caches
+			clean_post_cache(null);
+		});
+
+
 		add_filter('template_include', [$this, 'set_builder_template'], 9999);
 		add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);
 
@@ -164,10 +197,10 @@ class Builder_Integration {
 	public function my_custom_fonts() {
 		if (is_admin() && Plugin::instance()->editor->is_edit_mode()) {
 			if (isset($_REQUEST['usk-template'])) {
-				wp_register_style('usk-template-builder-hide-preview-btn-inline', false); // phpcs:ignore
-				wp_enqueue_style('usk-template-builder-hide-preview-btn-inline');
+				wp_register_style('bdt-template-builder-hide-preview-btn-inline', false); // phpcs:ignore
+				wp_enqueue_style('bdt-template-builder-hide-preview-btn-inline');
 				wp_add_inline_style(
-					'usk-template-builder-hide-preview-btn-inline',
+					'bdt-template-builder-hide-preview-btn-inline',
 					'#elementor-panel-footer-saver-preview {display:none!important}'
 				);
 			}

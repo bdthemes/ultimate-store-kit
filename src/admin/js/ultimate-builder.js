@@ -30,7 +30,7 @@
         hideModal();
     })
 
-    $(document).on('click', 'body.post-type-usk-template-builder a.page-title-action', function (e) {
+    $(document).on('click', 'body.post-type-bdt-template-builder a.page-title-action', function (e) {
         e.preventDefault();
         resetModalForm();
         setSubmitBtn('Create Template');
@@ -66,7 +66,7 @@
 
     });
 
-    $(document).on('click', 'body.post-type-usk-template-builder .row-actions .usk-edit-action a', function (e) {
+    $(document).on('click', 'body.post-type-bdt-template-builder .row-actions .usk-edit-action a', function (e) {
         e.preventDefault();
         removeError();
         resetModalForm();

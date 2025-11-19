@@ -33,7 +33,7 @@ class Page_Single extends Module_Base {
         return ['ultimate-store-kit-single'];
     }
     public function show_in_panel() {
-        return get_post_type() === 'usk-template-builder' || get_post_type() === 'elementor_library' || get_post_type() === 'product';
+        return get_post_type() === 'bdt-template-builder' || get_post_type() === 'elementor_library' || get_post_type() === 'product';
 	}
 
     public function get_keywords() {

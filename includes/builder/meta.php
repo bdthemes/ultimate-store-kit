@@ -13,7 +13,7 @@ class Meta {
 
 	use Singleton;
 
-	const POST_TYPE = 'usk-template-builder';
+	const POST_TYPE = 'bdt-template-builder';
 
 	const EDIT_WITH = '_ultimate_store_kit_edit_with';
 

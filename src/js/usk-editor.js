@@ -139,8 +139,8 @@
 
 	$('iframe').on('load', function () {
 		var iframeContents = $(this).contents();
-		if (iframeContents.find(".usk-template-builder-template").length) {
-			iframeContents.find(".usk-template-builder-template").addClass('woocommerce woocommerce-page');
+		if (iframeContents.find(".bdt-template-builder-template").length) {
+			iframeContents.find(".bdt-template-builder-template").addClass('woocommerce woocommerce-page');
 		}
 	});
 
