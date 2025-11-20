@@ -66,7 +66,7 @@
 
     });
 
-    $(document).on('click', 'body.post-type-bdt-template-builder .row-actions .usk-edit-action a', function (e) {
+    $(document).on('click', 'body.post-type-bdt-template-builder .row-actions .bdt-edit-action a', function (e) {
         e.preventDefault();
         removeError();
         resetModalForm();

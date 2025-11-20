@@ -102,7 +102,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 		}
 
 		if ( get_post_meta( $post->ID, Meta::EDIT_WITH, true ) == 'elementor' ) {
-			$actions['usk_edit_with_elementor'] = sprintf(
+			$actions['bdt_edit_with_elementor'] = sprintf(
 				'<a href="%1$s">%2$s</a>',
 				add_query_arg( 
 					[ 
@@ -116,7 +116,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			);
 		} else {
 			// Always offer Elementor edit option regardless of stored preference
-			$actions['usk_edit_with_elementor'] = sprintf(
+			$actions['bdt_edit_with_elementor'] = sprintf(
 				'<a href="%1$s">%2$s</a>',
 				add_query_arg( 
 					[ 
@@ -142,7 +142,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			unset( $actions['edit'] );
 		}
 
-		return array_slice( $actions, 0, 1, true ) + [ 'usk-edit-action' => $editActionLink ] + array_slice( $actions, 1, null, true );
+		return array_slice( $actions, 0, 1, true ) + [ 'bdt-edit-action' => $editActionLink ] + array_slice( $actions, 1, null, true );
 	}
 
 	public function set_post_columns( $columns ) {
