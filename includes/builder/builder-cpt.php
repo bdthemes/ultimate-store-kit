@@ -93,7 +93,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 		}
 
 		if ( get_post_meta( $post->ID, Meta::EDIT_WITH, true ) == 'gutenberg' ) {
-			$actions['usk_edit_with_gutenberg'] = sprintf(
+			$actions['bdt_edit_with_gutenberg'] = sprintf(
 				'<a href="%1$s">%2$s</a>',
 				add_query_arg( [ 'post' => $post->ID, 'action' => 'edit' ], admin_url( 'post.php' ) ),
 				esc_html__( 'Edit with Gutenberg', 'ultimate-store-kit' )
