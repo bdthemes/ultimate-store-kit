@@ -34,12 +34,99 @@ class Builder_Cpt {
 		if ( is_admin() ) {
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ], 1 );
 			add_action( 'admin_menu', [ $this, 'add_admin_menu' ], 202 );
-			add_action( 'restrict_manage_posts', [ $this, 'add_filter' ] );
+			add_action( 'restrict_manage_posts', [ $this, 'add_filter' ], 20 );
 			add_filter( 'parse_query', [ $this, 'parse_query_filter' ] );
+
+			add_filter( 'bdt_template_filter_options', [ $this, 'usk_templates_filter' ], 1 );
+			
 		}
 
 		//        $this->resetTemplateCache();
 	}
+
+	public function usk_templates_filter($options = []) {
+		// Get templates from Builder_Helper
+		$templates = Builder_Template_Helper::templateForSelectDropdown();
+	
+		// Prepare an array for merged options
+		$merged = [];
+	
+		if ( count( $templates ) === 1 ) {
+			$templateKey = array_key_last( $templates );
+			$template    = $templates[ $templateKey ];
+	
+			$merged[ ucwords( str_replace(['-', '_'], [' ', ' '], $templateKey) ) ] = [];
+	
+			foreach ( $template as $key => $item ) {
+				$selectValue = "{$templateKey}_$key";
+				$merged[ ucwords( str_replace(['-', '_'], [' ', ' '], $templateKey)) ][$selectValue] = $item;
+			}
+		} elseif ( count( $templates ) > 1 ) {
+			foreach ( $templates as $groupKey => $items ) {
+				$label = ucwords( str_replace(['-', '_'], [' ', ' '], $groupKey) );
+	
+				if ( is_array($items) ) {
+					$merged[ $label ] = [];
+					foreach ( $items as $key => $item ) {
+						$itemValue = "{$groupKey}_$key";
+						$merged[ $label ][ $itemValue ] = $item;
+					}
+				}
+			}
+		}
+	
+		// Merge with passed options (if any)
+		$options = array_merge($options, $merged);
+	
+		return $options;
+	}
+	
+
+	public function add_filter() {
+		global $typenow;
+	
+		if ( $typenow !== Meta::POST_TYPE ) {
+			return;
+		}
+	
+		$selected = isset( $_GET['type'] ) ? sanitize_key( $_GET['type'] ) : 'all';
+	
+		// Get merged options
+		$merged_options = apply_filters( 'bdt_template_filter_options', [] );
+	
+		// Plugin-1 exists → do not print select
+		if ( defined('BDTEP') ) {
+			return;
+		}
+	
+		// Plugin-2 real options
+		$usk_options = $this->usk_templates_filter([]);
+		foreach ($usk_options as $group => $items) {
+			if (!isset($merged_options[$group])) {
+				$merged_options[$group] = $items;
+			} else {
+				$merged_options[$group] = array_merge($merged_options[$group], $items);
+			}
+		}
+		?>
+		<select name="type" id="type">
+			<option value="all" <?php selected( 'all', $selected ); ?>>
+				<?php esc_html_e( 'Template Type', 'ultimate-store-kit' ); ?>
+			</option>
+	
+			<?php foreach ( $merged_options as $group_label => $items ) : ?>
+				<optgroup label="<?php echo esc_html( $group_label ); ?>">
+					<?php foreach ( $items as $key => $label ) : ?>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $selected, $key ); ?>>
+							<?php echo esc_html( $label ); ?>
+						</option>
+					<?php endforeach; ?>
+				</optgroup>
+			<?php endforeach; ?>
+		</select>
+		<?php
+	}
+	
 
 	public function resetTemplateCache() {
 		global $wpdb;
@@ -166,70 +253,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 				echo ( Builder_Template_Helper::getTemplateId( $templateType ) == $post_id ? 'Active' : 'Inactive' );
 				break;
 		}
-	}
-
-	public function add_filter() {
-		global $typenow;
-
-		if ( $typenow !== Meta::POST_TYPE ) {
-			return;
-		}
-
-		$selected = isset( $_GET['type'] ) ? sanitize_key( $_GET['type'] ) : '';
-		?>
-		<select name="type" id="type">
-			<option value="all" <?php
-			selected( 'all', $selected ); ?>><?php
-			  esc_html_e(
-			  	'Template Type ',
-			  	'ultimate-store-kit'
-			  ); ?></option>
-			<?php
-			$templates = Builder_Template_Helper::templateForSelectDropdown();
-			// It is single
-			if ( count( $templates ) == 1 ) {
-				$templateKey = array_key_last( $templates );
-				$template    = $templates[ $templateKey ];
-				foreach ( $template as $key => $item ) :
-					$selectValue = "{$templateKey}_$key";
-					?>
-					<option value="<?php
-					echo esc_attr( $selectValue ) ?>"><?php
-					  echo wp_kses_post( $item ) ?></option>
-					<?php
-				endforeach;
-			}
-
-			if ( count( $templates ) > 1 ) {
-				foreach ( $templates as $keys => $items ) :
-					$label = ucwords( str_replace(
-						[ '-', '_' ],
-						[ ' ' ],
-						$keys
-					) );
-					if ( is_array( $items ) ) {
-						?>
-						<optgroup label="<?php
-						echo esc_attr( $label ) ?>"><?php
-						  foreach ( $items as $key => $item ) :
-							  $itemValue = "{$keys}_$key"
-							  	?>
-								<option value="<?php
-								echo esc_attr( $itemValue ) ?>" <?php
-								  selected( $key, $selected ); ?>><?php
-									echo wp_kses_post( $item ) ?></option>
-								<?php
-						  endforeach;
-						  ?>
-						</optgroup>
-						<?php
-					}
-				endforeach;
-			}
-			?>
-		</select>
-		<?php
-	}
+	}	
 
 	public function parse_query_filter( $query ) {
 		global $pagenow, $typenow;
