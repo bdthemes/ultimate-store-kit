@@ -25,35 +25,90 @@ class Builder_Integration {
 
 		// Migration from old post type to new post type. TODO: it should be remove after 01 year
 		add_action('init', function () {
-			// Old and new post types
-			$old = 'usk-template-builder';
-			$new = 'bdt-template-builder';
-
-			// Check if any old posts still exist
-			$old_posts = get_posts([
-				'post_type'      => $old,
-				'post_status'    => 'any',
-				'posts_per_page' => 1,
-				'fields'         => 'ids'
-			]);
-
-			// If none exist, stop (already migrated)
-			if (empty($old_posts)) {
+			// Check if migration already ran
+			if (get_option('usk_builder_migration_v2_completed')) {
 				return;
 			}
 
-			// Run migration
 			global $wpdb;
-			$wpdb->update(
-				$wpdb->posts,
-				['post_type' => $new],
-				['post_type' => $old]
+
+			// Step 1: Migrate old post type to new post type
+			$old = 'usk-template-builder';
+			$new = 'bdt-template-builder';
+
+			$old_posts = get_posts([
+				'post_type'      => $old,
+				'post_status'    => 'any',
+				'posts_per_page' => -1,
+				'fields'         => 'ids'
+			]);
+
+			if (!empty($old_posts)) {
+				$wpdb->update(
+					$wpdb->posts,
+					['post_type' => $new],
+					['post_type' => $old]
+				);
+			}
+
+			// Step 2: Migrate USK template options to Element Pack format
+			// Old format: _usk_template_{type} = {post_id}
+			// New format: _bdthemes_builder_{type}__{post_id} = {post_id}
+			
+			$usk_options = $wpdb->get_results(
+				"SELECT option_name, option_value FROM {$wpdb->options} 
+				WHERE option_name LIKE '_usk_template_%'"
 			);
+
+			foreach ($usk_options as $option) {
+				$post_id = intval($option->option_value);
+				
+				// Extract template type from option name
+				// _usk_template_product|single -> product|single
+				$type = str_replace('_usk_template_', '', $option->option_name);
+				
+				// Verify post still exists
+				if (!get_post($post_id)) {
+					continue;
+				}
+
+				// Create new Element Pack format option
+				$new_option_name = '_bdthemes_builder_' . $type . '__' . $post_id;
+				update_option($new_option_name, $post_id);
+				
+				// Keep old option for backward compatibility (for now)
+				// delete_option($option->option_name);
+			}
+
+			// Step 3: Ensure all USK templates have Element Pack meta keys
+			$usk_templates = get_posts([
+				'post_type'      => $new,
+				'post_status'    => 'any',
+				'posts_per_page' => -1,
+				'meta_query'     => [
+					[
+						'key'     => '_ultimate_store_kit_template_type',
+						'compare' => 'EXISTS'
+					]
+				]
+			]);
+
+			foreach ($usk_templates as $template) {
+				$usk_type = get_post_meta($template->ID, '_ultimate_store_kit_template_type', true);
+				
+				// Add Element Pack meta if missing
+				if ($usk_type && !get_post_meta($template->ID, '_bdthemes_builder_template_type', true)) {
+					update_post_meta($template->ID, '_bdthemes_builder_template_type', $usk_type);
+				}
+			}
 
 			// Clear caches
 			clean_post_cache(null);
-		});
+			wp_cache_flush();
 
+			// Mark migration as complete
+			update_option('usk_builder_migration_v2_completed', time());
+		});
 
 		add_filter('template_include', [$this, 'set_builder_template'], 9999);
 		add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);

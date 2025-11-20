@@ -22,8 +22,13 @@ class Builder_Cpt {
 
 		add_action( 'wp_ajax_ultimate_store_kit_builder_create_template', [ $this, 'create_builder_template' ] );
 		add_action( 'wp_ajax_ultimate_store_kit_builder_get_edit_template', [ $this, 'get_builder_template_action' ] );
-		add_filter( "manage_{$builderCpt}_posts_columns", [ $this, 'set_post_columns' ] );
-		add_action( "manage_{$builderCpt}_posts_custom_column", [ $this, 'set_custom_column_value' ], 10, 2 );
+		
+		// Only register column hooks if Element Pack is not active (to avoid duplicate columns)
+		if ( ! class_exists( 'ElementPack\Includes\Builder\Builder_Cpt' ) ) {
+			add_filter( "manage_{$builderCpt}_posts_columns", [ $this, 'set_post_columns' ] );
+			add_action( "manage_{$builderCpt}_posts_custom_column", [ $this, 'set_custom_column_value' ], 10, 2 );
+		}
+		
 		add_filter( 'post_row_actions', [ $this, 'post_row_actions_filter' ], 20, 2 );
 
 		// Simple WPML fix
@@ -162,8 +167,16 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			return;
 		}
 
-		if ( $template = get_post_meta( $postId, Meta::TEMPLATE_TYPE, true ) ) {
+		// Check both USK and Element Pack meta keys
+		$template = get_post_meta( $postId, Meta::TEMPLATE_TYPE, true );
+		if ( ! $template ) {
+			$template = get_post_meta( $postId, '_bdthemes_builder_template_type', true );
+		}
+
+		if ( $template ) {
+			// Delete both old USK format and new Element Pack format
 			delete_option( Meta::TEMPLATE_ID . $template );
+			delete_option( '_bdthemes_builder_' . $template . '__' . $postId );
 		}
 	}
 
@@ -243,14 +256,47 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			true
 		);
 
+		// Check for Element Pack templates (they share the same post type)
+		if ( empty( $templateType ) ) {
+			$templateType = get_post_meta( $post_id, '_bdthemes_builder_template_type', true );
+			if ( ! empty( $templateType ) ) {
+				// Mark as Element Pack template for display purposes
+				$is_ep_template = true;
+			}
+		}
+
 		switch ( $column ) {
 			case 'template_type':
+				if ( empty( $templateType ) ) {
+					echo '<em style="color: #999;">Not set</em>';
+					break;
+				}
+
+				$templateLabel = Builder_Template_Helper::getTemplateByIndex( $templateType );
+				
+				if ( false === $templateLabel ) {
+					echo '<em style="color: #d63638;">Invalid / Deprecated</em> <small>(' . esc_html( $templateType ) . ')</small>';
+					break;
+				}
+
 				$postType = Builder_Template_Helper::getTemplatePostTypeByIndex( $templateType );
 				$postTypeLabel = isset( $postType->name ) ? ' <strong>-- ' . ucwords( $postType->name ) . '</strong>' : '';
-				echo Builder_Template_Helper::getTemplateByIndex( $templateType ) . $postTypeLabel;
+
+				// Add badge for Element Pack templates
+				$epBadge = ! empty( $is_ep_template ) ? ' <span style="background:#1e40af;color:#fff;padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600;margin-left:4px;">EP</span>' : '';
+
+				echo $templateLabel . $postTypeLabel . $epBadge;
 				break;
 			case 'is_enabled':
-				echo ( Builder_Template_Helper::getTemplateId( $templateType ) == $post_id ? 'Active' : 'Inactive' );
+				// Check USK template activation
+				$template_id = Builder_Template_Helper::getTemplateId( $templateType );
+				
+				// Also check Element Pack template activation if it's an EP template
+				if ( ! $template_id && ! empty( $is_ep_template ) ) {
+					$template_id = get_option( '_bdthemes_builder_' . $templateType . '__' . $post_id, false );
+				}
+
+				echo ( $template_id == $post_id ? 'Active' : 'Inactive' );
 				break;
 		}
 	}	
@@ -271,6 +317,37 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			$query->query_vars['meta_key']     = Meta::TEMPLATE_TYPE;
 			$query->query_vars['meta_value']   = sanitize_key( $_GET['type'] );
 			$query->query_vars['meta_compare'] = '=';
+		}
+
+		// Hide posts with unknown/invalid template types
+		if ( 'edit.php' == $pagenow && ! isset( $_GET['show_invalid'] ) ) {
+			// Get all valid template types from both plugins
+			$valid_types = array_keys( Builder_Template_Helper::templates( true ) );
+			
+			// Add Element Pack template types if available
+			if ( class_exists( 'ElementPack\Includes\Builder\Builder_Template_Helper' ) ) {
+				$ep_types = array_keys( \ElementPack\Includes\Builder\Builder_Template_Helper::templates( true ) );
+				$valid_types = array_merge( $valid_types, $ep_types );
+			}
+			
+			// Only show posts with valid template types
+			if ( ! empty( $valid_types ) ) {
+				$meta_query = array(
+					'relation' => 'OR',
+					array(
+						'key'     => Meta::TEMPLATE_TYPE,
+						'value'   => $valid_types,
+						'compare' => 'IN'
+					),
+					array(
+						'key'     => '_bdthemes_builder_template_type',
+						'value'   => $valid_types,
+						'compare' => 'IN'
+					)
+				);
+				
+				$query->query_vars['meta_query'] = $meta_query;
+			}
 		}
 	}
 
@@ -334,13 +411,19 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 
 		$post_id = wp_insert_post( $page_data );
 
-		$enabledTemplate = strtolower( Meta::TEMPLATE_ID . $type );
+		// Use Element Pack format for compatibility: _bdthemes_builder_{type}__{post_id}
+		$enabledTemplate = strtolower( '_bdthemes_builder_' . $type );
 		if ( $isEnabled == 1 ) {
-			update_option( $enabledTemplate, $post_id );
+			update_option( $enabledTemplate . '__' . $post_id, $post_id );
 		} else {
-			if ( get_option( $enabledTemplate ) == $post_id ) {
-				delete_option( $enabledTemplate );
+			if ( get_option( $enabledTemplate . '__' . $post_id ) == $post_id ) {
+				delete_option( $enabledTemplate . '__' . $post_id );
 			}
+		}
+
+		// Also update Element Pack meta for compatibility
+		if ( ! get_post_meta( $post_id, '_bdthemes_builder_template_type', true ) ) {
+			update_post_meta( $post_id, '_bdthemes_builder_template_type', $type );
 		}
 
 
