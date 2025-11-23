@@ -13,8 +13,6 @@ class Builder_Cpt {
 	use Singleton;
 
 	public function init_hooks() {
-		$builderCpt = Meta::get_post_type();
-
 		add_action( 'init', [ $this, 'registered_post_type' ] );
 		add_action( 'admin_footer', [ $this, 'add_modal_html' ], 1 );
 		add_action( 'delete_post', [ $this, 'trashed_or_delete_post' ], 10, 2 );
@@ -22,8 +20,17 @@ class Builder_Cpt {
 
 		add_action( 'wp_ajax_ultimate_store_kit_builder_create_template', [ $this, 'create_builder_template' ] );
 		add_action( 'wp_ajax_ultimate_store_kit_builder_get_edit_template', [ $this, 'get_builder_template_action' ] );
-		add_filter( "manage_{$builderCpt}_posts_columns", [ $this, 'set_post_columns' ] );
-		add_action( "manage_{$builderCpt}_posts_custom_column", [ $this, 'set_custom_column_value' ], 10, 2 );
+		
+		// Register column hooks for both post types
+		add_filter( 'manage_usk-template-builder_posts_columns', [ $this, 'set_post_columns' ] );
+		add_action( 'manage_usk-template-builder_posts_custom_column', [ $this, 'set_custom_column_value' ], 10, 2 );
+		
+		// Only register bdt-template-builder columns if Element Pack is not active
+		if ( ! defined( 'BDTEP' ) ) {
+			add_filter( 'manage_bdt-template-builder_posts_columns', [ $this, 'set_post_columns' ] );
+			add_action( 'manage_bdt-template-builder_posts_custom_column', [ $this, 'set_custom_column_value' ], 10, 2 );
+		}
+		
 		add_filter( 'post_row_actions', [ $this, 'post_row_actions_filter' ], 20, 2 );
 
 		// Simple WPML fix
@@ -469,13 +476,17 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 	 * Simple fix for WPML and Elementor integration
 	 */
 	public function fix_wpml_elementor_data() {
-		if (isset($_REQUEST['post']) && get_post_type($_REQUEST['post']) === Meta::POST_TYPE) {
-			$post_id = (int) $_REQUEST['post'];
-			$meta_data = get_post_meta($post_id, '_elementor_data', true);
-			
-			// If metadata exists but is in array format, convert it to JSON string
-			if (is_array($meta_data)) {
-				update_post_meta($post_id, '_elementor_data', wp_json_encode($meta_data));
+		if (isset($_REQUEST['post'])) {
+			$post_type = get_post_type($_REQUEST['post']);
+			// Support both old and new post types
+			if ($post_type === 'usk-template-builder' || $post_type === 'bdt-template-builder') {
+				$post_id = (int) $_REQUEST['post'];
+				$meta_data = get_post_meta($post_id, '_elementor_data', true);
+				
+				// If metadata exists but is in array format, convert it to JSON string
+				if (is_array($meta_data)) {
+					update_post_meta($post_id, '_elementor_data', wp_json_encode($meta_data));
+				}
 			}
 		}
 	}
