@@ -13,7 +13,7 @@ class Builder_Cpt {
 	use Singleton;
 
 	public function init_hooks() {
-		$builderCpt = Meta::POST_TYPE;
+		$builderCpt = Meta::get_post_type();
 
 		add_action( 'init', [ $this, 'registered_post_type' ] );
 		add_action( 'admin_footer', [ $this, 'add_modal_html' ], 1 );
@@ -171,7 +171,8 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 	public function add_filter() {
 		global $typenow;
 
-		if ( $typenow !== Meta::POST_TYPE ) {
+		// Support both old and new post types
+		if ( $typenow !== 'usk-template-builder' && $typenow !== 'bdt-template-builder' ) {
 			return;
 		}
 
@@ -234,7 +235,8 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 	public function parse_query_filter( $query ) {
 		global $pagenow, $typenow;
 
-		if ( $typenow !== Meta::POST_TYPE ) {
+		// Support both old and new post types
+		if ( $typenow !== 'usk-template-builder' && $typenow !== 'bdt-template-builder' ) {
 			return;
 		}
 
@@ -379,7 +381,8 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 		if ( in_array( $hook_suffix, [ 'edit.php', 'post-new.php' ] ) ) {
 			$screen = get_current_screen();
 
-			if ( is_object( $screen ) && Meta::POST_TYPE == $screen->post_type ) {
+			// Support both old and new post types
+			if ( is_object( $screen ) && ( $screen->post_type == 'usk-template-builder' || $screen->post_type == 'bdt-template-builder' ) ) {
 				wp_enqueue_style( 'ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'css/usk-ultimate-builder.css', [], BDTUSK_VER );
 				wp_enqueue_script( 'ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'js/ultimate-builder.min.js', [ 'jquery' ], BDTUSK_VER );
 			}
@@ -393,7 +396,7 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			esc_html__( 'Template Builder', 'ultimate-store-kit' ),
 			esc_html__( 'Template Builder', 'ultimate-store-kit' ),
 			'manage_options',
-			'edit.php?post_type=' . Meta::POST_TYPE
+			'edit.php?post_type=' . Meta::get_post_type()
 		);
 	}
 
@@ -439,7 +442,22 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			//			'register_meta_box_cb' => [ $this, 'register_meta_box_cb' ],
 		];
 
-		register_post_type( Meta::POST_TYPE, $args );
+		// Check migration status
+		$migrated = get_option( 'usk_builder_migrated_to_bdt' );
+		
+		if ( $migrated ) {
+			// After migration: register new post type and keep old one for backward compatibility
+			register_post_type( 'bdt-template-builder', $args );
+			
+			// Register old post type as hidden (for direct URL access)
+			$hidden_args = $args;
+			$hidden_args['show_ui'] = false;
+			$hidden_args['show_in_admin_bar'] = false;
+			register_post_type( 'usk-template-builder', $hidden_args );
+		} else {
+			// Before migration: only register old post type
+			register_post_type( 'usk-template-builder', $args );
+		}
 
 		// Fix WPML integration with Elementor
 		if (function_exists('icl_object_id')) {

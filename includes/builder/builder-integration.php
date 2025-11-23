@@ -22,6 +22,12 @@ class Builder_Integration {
 	public $current_template_id = null;
 
 	function __construct() {
+		// Migration system
+		add_action('restrict_manage_posts', [$this, 'add_migration_button'], 11);
+		add_action('wp_ajax_usk_migrate_to_bdt', [$this, 'handle_migration']);
+		add_action('admin_footer', [$this, 'add_migration_script']);
+		add_action('admin_init', [$this, 'redirect_after_migration']);
+		
 		add_filter('template_include', [$this, 'set_builder_template'], 9999);
 		add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);
 
@@ -506,6 +512,146 @@ class Builder_Integration {
 		
 		// Fallback to shop page if no products found
 		return get_permalink(wc_get_page_id('shop'));
+	}
+	
+	/**
+	 * Redirect from old post type to new after migration
+	 */
+	public function redirect_after_migration() {
+		// Only redirect if migrated
+		if ( ! get_option( 'usk_builder_migrated_to_bdt' ) ) {
+			return;
+		}
+		
+		// Check if we're on the old post type page
+		global $pagenow;
+		if ( $pagenow === 'edit.php' && isset( $_GET['post_type'] ) && $_GET['post_type'] === 'usk-template-builder' ) {
+			wp_redirect( admin_url( 'edit.php?post_type=bdt-template-builder' ) );
+			exit;
+		}
+	}
+	
+	/**
+	 * Add migration button next to filter
+	 */
+	public function add_migration_button() {
+		global $typenow;
+		
+		// Only show if not migrated and on old post type page
+		if ( get_option( 'usk_builder_migrated_to_bdt' ) ) {
+			return;
+		}
+		
+		if ( $typenow !== 'usk-template-builder' ) {
+			return;
+		}
+		
+		// Check if old templates exist
+		global $wpdb;
+		$count = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type = 'usk-template-builder'" );
+		
+		if ( $count == 0 ) {
+			return;
+		}
+		?>
+		<div style="float: right; margin-right: 10px;">
+			<button type="button" class="button button-primary" id="usk-migrate-btn" title="<?php echo esc_attr( sprintf( __( 'Migrate %d template(s) to bdt-template-builder for Element Pack compatibility', 'ultimate-store-kit' ), $count ) ); ?>">
+				<span class="dashicons dashicons-update" style="margin-top: 3px;"></span>
+				<?php esc_html_e( 'Migrate to Common Builder', 'ultimate-store-kit' ); ?>
+			</button>
+			<span class="spinner" id="usk-migrate-spinner" style="float: none; margin: 0 10px;"></span>
+			<span class="usk-migration-msg" style="line-height: 28px;"></span>
+		</div>
+		<?php
+	}
+	
+	/**
+	 * Add migration script
+	 */
+	public function add_migration_script() {
+		global $typenow;
+		
+		if ( $typenow !== 'usk-template-builder' || get_option( 'usk_builder_migrated_to_bdt' ) ) {
+			return;
+		}
+		?>
+		<script>
+		jQuery(document).ready(function($) {
+			$('#usk-migrate-btn').on('click', function() {
+				if ( ! confirm( '<?php esc_html_e( 'Are you sure you want to migrate all templates to bdt-template-builder? This action cannot be undone.', 'ultimate-store-kit' ); ?>' ) ) {
+					return;
+				}
+				
+				var $btn = $(this);
+				var $spinner = $('#usk-migrate-spinner');
+				var $msg = $('.usk-migration-msg');
+				
+				$btn.prop('disabled', true);
+				$spinner.addClass('is-active');
+				$msg.text('<?php esc_html_e( 'Migrating...', 'ultimate-store-kit' ); ?>');
+				
+				$.ajax({
+					url: ajaxurl,
+					type: 'POST',
+					data: {
+						action: 'usk_migrate_to_bdt',
+						nonce: '<?php echo wp_create_nonce( 'usk_migrate' ); ?>'
+					},
+					success: function(response) {
+						$spinner.removeClass('is-active');
+						if (response.success) {
+							$msg.html('<span style="color: #46b450;">✓ ' + response.data.message + '</span>');
+							setTimeout(function() {
+								location.reload();
+							}, 1500);
+						} else {
+							$msg.html('<span style="color: #dc3232;">✗ ' + response.data.message + '</span>');
+							$btn.prop('disabled', false);
+						}
+					},
+					error: function() {
+						$spinner.removeClass('is-active');
+						$msg.html('<span style="color: #dc3232;">✗ <?php esc_html_e( 'Migration failed', 'ultimate-store-kit' ); ?></span>');
+						$btn.prop('disabled', false);
+					}
+				});
+			});
+		});
+		</script>
+		<?php
+	}
+	
+	/**
+	 * Handle migration AJAX
+	 */
+	public function handle_migration() {
+		check_ajax_referer( 'usk_migrate', 'nonce' );
+		
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( [ 'message' => __( 'Permission denied', 'ultimate-store-kit' ) ] );
+		}
+		
+		global $wpdb;
+		
+		// Update post type from usk-template-builder to bdt-template-builder
+		$updated = $wpdb->update(
+			$wpdb->posts,
+			[ 'post_type' => 'bdt-template-builder' ],
+			[ 'post_type' => 'usk-template-builder' ]
+		);
+		
+		// Mark migration as complete
+		update_option( 'usk_builder_migrated_to_bdt', time() );
+		
+		// Clear caches
+		wp_cache_flush();
+		
+		wp_send_json_success( [
+			'message' => sprintf(
+				__( 'Successfully migrated %d template(s)', 'ultimate-store-kit' ),
+				$updated
+			)
+		] );
 	}
 }
 
