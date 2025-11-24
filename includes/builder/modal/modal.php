@@ -68,11 +68,16 @@
 					</select>
 					<label for="fname">Name your template</label>
 					<input type="text" name="template_name" id="template_name" placeholder="Enter template name">
-					<select name="template_status" id="template_status">
+					<!-- <select name="template_status" id="template_status">
 						<option value="">select</option>
 						<option value="1">Active</option>
 						<option value="0">Inactive</option>
-					</select>
+					</select> -->
+
+					<label for="template_status">
+						<input type="checkbox" name="template_status" id="template_status" value="1" checked>
+						Status
+					</label>
 					<input class="usk-modal-submit-btn" type="submit" value="Create Template">
 				</form>
 			</div>

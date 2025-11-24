@@ -85,7 +85,10 @@
                     $("#ultimate-builder-kit-builder-modal form .template_id").val(response.data.id).change();
                     $("#ultimate-builder-kit-builder-modal form #template_name").val(response.data.name).change();
                     $("#ultimate-builder-kit-builder-modal form #template_type").val(response.data.type).change();
-                    $("#ultimate-builder-kit-builder-modal form #template_status").val(response.data.status).change();
+                    //$("#ultimate-builder-kit-builder-modal form #template_status").val(response.data.status).change();
+
+                    // Update checkbox instead of select
+						$("#ultimate-builder-kit-builder-modal form #template_status").prop("checked", response.data.status == 1).change();
                 }
                 showModal();
             },
