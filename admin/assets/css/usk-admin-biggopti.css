@@ -27,9 +27,6 @@
   padding: 25px;
   border-color: #e2e2e5;
   z-index: 99;
-  /**
-  * Start Ultimate Store Kit
-  */
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-logo img {
   width: 45px;
@@ -65,6 +62,11 @@
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global .bdt-button-skip {
   border: 0;
   color: #FA11F2;
+}
+.ultimate-store-kit-biggopti .bdt-license-biggopti-global {
+  /**
+  * Start Ultimate Store Kit
+  */
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global.ultimate_store_kit .bdt-button-allow {
   --primaryColor: #E31C79;
@@ -290,8 +292,6 @@ a.usk-go-pro:hover, a.usk-go-pro:focus {
   --nm-anim-duration-fast: 0.3s;
   text-align: right;
   animation: buttonSlideIn 0.8s ease-out 0.6s both;
-  /* Button Styles */
-  /* Star Hover Positions */
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn a {
   background: transparent;
@@ -301,6 +301,9 @@ a.usk-go-pro:hover, a.usk-go-pro:focus {
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn a:hover {
   background: transparent;
+}
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn {
+  /* Button Styles */
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn {
   color: var(--nm-text-primary);
@@ -330,6 +333,9 @@ a.usk-go-pro:hover, a.usk-go-pro:focus {
   width: 16px;
   height: 16px;
   display: block;
+}
+[id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn {
+  /* Star Hover Positions */
 }
 [id^=bdt-admin-biggopti-api-biggopti] .bdt-biggopti-btn .nm-biggopti-btn:hover .zolo-star-1 {
   top: 21%;
