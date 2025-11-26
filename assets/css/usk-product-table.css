@@ -35,6 +35,7 @@
   display: inline-block;
   padding-left: 4px;
   padding-right: 4px;
+  cursor: pointer;
 }
 .usk-wc-products-table .dataTables_wrapper .dataTables_filter {
   float: left;

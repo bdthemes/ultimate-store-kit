@@ -209,6 +209,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.8.X [XXth November 2025] =
+
+* Fixed: Proper condition applied for title and image controls in the product list widget
+
 = 2.8.14 [20th November 2025] =
 
 * Fixed: Notice duplicate issue fixed

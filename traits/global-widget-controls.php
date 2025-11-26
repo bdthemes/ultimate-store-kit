@@ -1088,8 +1088,11 @@ trait Global_Widget_Controls
         $this->start_controls_section(
             'section_style_title',
             [
-                'label' => esc_html__('Title', 'ultimate-store-kit'),
-                'tab' => Controls_Manager::TAB_STYLE,
+                'label'     => esc_html__('Title', 'ultimate-store-kit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_title' => 'yes',
+                ],
             ]
         );
 

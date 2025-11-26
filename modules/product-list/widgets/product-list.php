@@ -323,8 +323,11 @@ class Product_List extends Module_Base {
         $this->start_controls_section(
             'section_style_image',
             [
-                'label' => esc_html__('Image', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'label'       => esc_html__('Image', 'ultimate-store-kit'),
+                'tab'         => Controls_Manager::TAB_STYLE,
+                'condition'   => [
+                    'show_image' => 'yes',
+                ],
             ]
         );
 
