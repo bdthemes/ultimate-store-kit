@@ -208,6 +208,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+= 2.8.X [XXth December 2025] =
+
+* Fixed: Removed hard-coded title tag from shiny grid widget
+* Added: Added aria-label attribute to links for better accessibility
 
 = 2.8.15 [26th November 2025] =
 

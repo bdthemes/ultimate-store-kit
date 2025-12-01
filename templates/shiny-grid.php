@@ -9,6 +9,7 @@
 namespace UltimateStoreKit\Templates;
 
 use UltimateStoreKit\Traits\Global_Widget_Template;
+use UltimateStoreKit\Classes\Utils;
 
 class USK_Shiny_Grid_Template
 {
@@ -60,11 +61,16 @@ class USK_Shiny_Grid_Template
                             <div class="usk-category"><?php echo wp_kses_post($categories); ?></div>
                         <?php endif; ?>
 
-                        <?php if (isset($settings['show_title']) ? $settings['show_title'] : true): ?>
-                            <a href="<?php echo esc_url(get_permalink($product_id)); ?>" class="usk-title">
-                                <h3 class="title"><?php echo esc_html(get_the_title($product_id)); ?></h3>
-                            </a>
-                        <?php endif; ?>
+                        <?php if ( isset($settings['show_title']) && 'yes' === $settings['show_title'] ) {
+                            printf(
+                                '<a href="%2$s" class="usk-title" aria-label="%4$s"><%1$s class="title">%3$s</%1$s></a>',
+                                esc_attr(Utils::get_valid_html_tag( isset($settings['title_tags']) ? $settings['title_tags'] : 'h3' )),
+                                esc_url($product->get_permalink()),
+                                esc_html($product->get_title()),
+                                esc_attr(sprintf('View details for %s', $product->get_title()))
+                            );
+                            ?>  
+                        <?php } ?>
 
                         <?php if (
                             (isset($settings['show_excerpt']) ? $settings['show_excerpt'] : true)
