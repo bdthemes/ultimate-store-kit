@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.8.15
+Stable tag: 2.9.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
@@ -208,11 +208,13 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
-= 2.8.X [XXth December 2025] =
 
-* Fixed: Removed hard-coded title tag from shiny grid widget
-* Added: Added aria-label attribute to links for better accessibility
+= 2.9.0 [2nd December 2025] =
+
 * Added: Added current query in all woocommerce widget
+* Added: Added aria-label attribute to links for better accessibility
+* Fixed: Removed hard-coded title tag from shiny grid widget
+* Updated: Made compatible with WordPress version 6.9
 
 = 2.8.15 [26th November 2025] =
 
