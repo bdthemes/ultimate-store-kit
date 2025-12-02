@@ -54,7 +54,7 @@ trait Group_Control_Query
 			'tabs_product_include_exclude',
 			[
 				'condition' => [
-					'product_source!' => ['manual_selection'],
+					'product_source!' => ['manual_selection', 'current_query'],
 				]
 			]
 		);
@@ -270,7 +270,7 @@ trait Group_Control_Query
 			[
 				'label'     => __('Exclude', 'ultimate-store-kit'),
 				'condition' => [
-					'product_source!' => ['manual_selection'],
+					'product_source!' => ['manual_selection', 'current_query'],
 				]
 			]
 		);
@@ -536,6 +536,9 @@ trait Group_Control_Query
 					'rand'          => __('Random', 'ultimate-store-kit'),
 					'price'         => __('Price', 'ultimate-store-kit'),
 					'sales'         => __('Sales', 'ultimate-store-kit'),
+				],
+				'condition' => [
+					'product_source!' => ['current_query'],
 				]
 			]
 		);
@@ -581,6 +584,7 @@ trait Group_Control_Query
 			'sale'               => __('On Sale', 'ultimate-store-kit'),
 			'featured'           => __('Featured', 'ultimate-store-kit'),
 			'manual_selection'   => __('Manual Selection', 'ultimate-store-kit'),
+			'current_query'      => __('Current Query', 'ultimate-store-kit'),
 		];
 
 		return $post_types;
@@ -908,6 +912,12 @@ trait Group_Control_Query
 	{
 		$settings         = $this->get_settings();
 		$source           = $settings['product_source'] ?? 'product';
+		
+		// If current_query is selected, return special flag
+		if ($source === 'current_query') {
+			return ['__use_global_query' => true];
+		}
+		
 		$page             = max(1, get_query_var('paged'), get_query_var('page'));
 		$page             = absint(empty($_GET['product-page']) ? $page : $_GET['product-page']);
 		$paged            = absint($page);
@@ -955,5 +965,50 @@ trait Group_Control_Query
 		}
 
 		return $args;
+	}
+
+	/**
+	 * Get query - returns global query if current_query is selected, otherwise returns custom query
+	 */
+	public function get_query()
+	{
+		return $this->_query;
+	}
+
+	/**
+	 * Query products - handles both custom and global queries
+	 * This is a helper method that can be called from widget's query_product() method
+	 */
+	protected function build_query_from_args($query_args)
+	{
+		// Check if we should use global query
+		if (isset($query_args['__use_global_query']) && $query_args['__use_global_query'] === true) {
+			global $wp_query;
+			
+			// Get the product limit setting
+			$settings = $this->get_settings();
+			$product_limit = $settings['product_limit'] ?? null;
+			
+			// If product limit is set, create a new query based on global query args
+			if (!empty($product_limit)) {
+				$args = $wp_query->query_vars;
+				$args['posts_per_page'] = $product_limit;
+				return new \WP_Query($args);
+			}
+			
+			return $wp_query;
+		} else {
+			return new \WP_Query($query_args);
+		}
+	}
+
+	/**
+	 * Query products - handles both custom and global queries
+	 * Default implementation - widgets can override this
+	 */
+	public function query_product()
+	{
+		$query_args = $this->getGroupControlQueryArgs();
+		$this->_query = $this->build_query_from_args($query_args);
 	}
 }

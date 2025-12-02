@@ -274,6 +274,6 @@ class Glossy_Carousel extends Module_Base {
     }
     public function query_product() {
         $default = $this->getGroupControlQueryArgs();
-        $this->_query = new WP_Query($default);
+        $this->_query = $this->build_query_from_args($default);
     }
 }

@@ -212,6 +212,7 @@ https://youtu.be/9J4zCaDcPnk
 
 * Fixed: Removed hard-coded title tag from shiny grid widget
 * Added: Added aria-label attribute to links for better accessibility
+* Added: Added current query in all woocommerce widget
 
 = 2.8.15 [26th November 2025] =
 
