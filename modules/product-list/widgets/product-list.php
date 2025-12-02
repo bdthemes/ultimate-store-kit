@@ -494,8 +494,10 @@ class Product_List extends Module_Base {
 
     public function query_product() {
         $default = $this->getGroupControlQueryArgs();
-        $default['post_type'] = 'product';
-        unset($default['p']);
-        $this->_query = new WP_Query($default);
+        if (!isset($default['__use_global_query'])) {
+            $default['post_type'] = 'product';
+            unset($default['p']);
+        }
+        $this->_query = $this->build_query_from_args($default);
     }
 }
