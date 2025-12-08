@@ -1147,7 +1147,7 @@ trait Global_Widget_Controls
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => esc_html__('Add to Cart', 'ultimate-store-kit'),
+                'label' => esc_html__('Add To Cart', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'show_cart' => 'yes',
@@ -1241,6 +1241,18 @@ trait Global_Widget_Controls
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'height: {{SIZE}}px; line-height: {{SIZE}}px;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_margin',
+            [
+                'label' => esc_html__('Margin', 'ultimate-store-kit') . BDTUPK_NC,
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-button, {{WRAPPER}} .' . $this->get_name() . ' .added_to_cart' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
