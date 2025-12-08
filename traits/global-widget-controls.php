@@ -1248,7 +1248,7 @@ trait Global_Widget_Controls
         $this->add_responsive_control(
             'button_margin',
             [
-                'label' => esc_html__('Margin', 'ultimate-store-kit') . BDTUPK_NC,
+                'label' => esc_html__('Margin', 'ultimate-store-kit') . BDTUSK_NC,
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
