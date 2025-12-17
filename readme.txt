@@ -209,6 +209,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXth December 2025] =
+
+* Fixed: Applied correct condition for changing the title tag in the showcase slider widget
+* Fixed: Image width issue fixed in showcase slider
+
 = 2.9.1 [10th December 2025] =
 
 * Added: Add to cart margin added in shiny grid widget

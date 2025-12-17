@@ -5357,6 +5357,9 @@ table.dataTable.display tbody tr.odd {
   transform: scale(0.8);
   transition: transform 0.3s ease;
 }
+.usk-showcase-slider .usk-image-wrap .usk-image {
+  width: 100%;
+}
 .usk-showcase-slider .usk-shoping {
   position: absolute;
   top: 50%;

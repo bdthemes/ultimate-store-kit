@@ -125,6 +125,9 @@ class Showcase_Slider extends Module_Base
                 'type' => Controls_Manager::SELECT,
                 'default' => 'h3',
                 'options' => ultimate_store_kit_title_tags(),
+                'condition' => [
+                    'show_title' => 'yes',
+                ],
             ]
         );
 
@@ -305,7 +308,7 @@ class Showcase_Slider extends Module_Base
         $this->start_controls_tab(
             'show_action_btn_tab',
             [
-                'label' => esc_html__('Action btn', 'ultimate-store-kit'),
+                'label' => esc_html__('Action Button', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
@@ -486,12 +489,12 @@ class Showcase_Slider extends Module_Base
                 'tablet_default' => 1,
                 'mobile_default' => 1,
                 'options' => [
-                    1 => '1',
-                    2 => '2',
-                    3 => '3',
-                    4 => '4',
-                    5 => '5',
-                    6 => '6',
+                    1 => esc_html__('1', 'ultimate-store-kit'),
+                    2 => esc_html__('2', 'ultimate-store-kit'),
+                    3 => esc_html__('3', 'ultimate-store-kit'),
+                    4 => esc_html__('4', 'ultimate-store-kit'),
+                    5 => esc_html__('5', 'ultimate-store-kit'),
+                    6 => esc_html__('6', 'ultimate-store-kit'),
                 ],
             ]
         );
