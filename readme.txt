@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
@@ -209,10 +209,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.9.X [XXth December 2025] =
+= 2.9.2 [17th December 2025] =
 
 * Fixed: Applied correct condition for changing the title tag in the showcase slider widget
-* Fixed: Image width issue fixed in showcase slider
+* Fixed: Image width issue fixed in showcase slider widget
 
 = 2.9.1 [10th December 2025] =
 
