@@ -710,7 +710,7 @@ class Showcase_Slider extends Module_Base
         $this->start_controls_section(
             'section_style_button',
             [
-                'label' => esc_html__('Add to Cart', 'ultimate-store-kit'),
+                'label' => esc_html__('Add To Cart', 'ultimate-store-kit'),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'show_cart' => 'yes',
@@ -767,6 +767,19 @@ class Showcase_Slider extends Module_Base
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+            'button_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'ultimate-store-kit' ) . BDTUSK_NC,
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'button_spacing',
             [

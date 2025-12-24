@@ -209,6 +209,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXth December 2025] =
+
+Added: New control added to the add to cart button section in the showcase slider widget
+
 = 2.9.2 [17th December 2025] =
 
 * Fixed: Applied correct condition for changing the title tag in the showcase slider widget
