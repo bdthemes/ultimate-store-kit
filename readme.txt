@@ -209,6 +209,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXth December 2025] =
+
+* Updated: Modified the hover effect in the shiny grid widget
+
 = 2.9.3 [24th December 2025] =
 
 Added: New control added to the add to cart button section in the showcase slider widget
