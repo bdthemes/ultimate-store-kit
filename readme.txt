@@ -360,6 +360,10 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Text domain translate issue fixed
 * Updated: Security issue improved
 
+= 2.9.5 [1st January 2026] =
+
+* Fixed: Template builder security vulnerability patched - Added capability check and nonce verification to prevent unauthorized access to template data (CVSS 4.3)
+
 = 2.5.0 [28th April 2025] =
 
 * Added: Made Compatible with WordPress Version 6.8

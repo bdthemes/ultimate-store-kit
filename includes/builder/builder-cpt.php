@@ -349,11 +349,20 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 	}
 
 	public function get_builder_template_action() {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( [ 'success' => false, 'errors_arr' => [ 'permission' => 'Permission denied' ] ], 403 );
+		}
+
+		if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'ultimate_store_kit_builder_nonce' ) ) {
+			wp_send_json_error( [ 'success' => false, 'errors_arr' => [ 'nonce' => 'Invalid nonce' ] ], 403 );
+		}
+		
 		if ( isset( $_REQUEST['template_id'] ) && ! empty( $_REQUEST['template_id'] ) ) {
-			$templateId   = $_REQUEST['template_id'];
+			$templateId   = absint( $_REQUEST['template_id'] );
 			$templateData = get_post( $templateId );
 
-			if ( $templateData ) {
+			if ( $templateData && $templateData->post_type === Meta::POST_TYPE ) {
 				$meta = get_post_meta( $templateData->ID );
 
 
@@ -369,6 +378,8 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 				] );
 			}
 		}
+		
+		wp_send_json_error( [ 'success' => false, 'errors_arr' => [ 'template' => 'Template not found' ] ], 404 );
 	}
 
 	public function add_modal_html( $hook_suffix ) {
@@ -382,6 +393,12 @@ ORDER BY {$wpdb->posts}.post_date DESC" );
 			if ( is_object( $screen ) && Meta::POST_TYPE == $screen->post_type ) {
 				wp_enqueue_style( 'ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'css/usk-ultimate-builder.css', [], BDTUSK_VER );
 				wp_enqueue_script( 'ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'js/ultimate-builder.min.js', [ 'jquery' ], BDTUSK_VER );
+
+				wp_localize_script( 'ultimate-store-kit-builder', 'UltimateStoreKitConfigBuilder', [ 
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+					'nonce'   => wp_create_nonce( 'ultimate_store_kit_builder_nonce' ),
+					'resturl' => rest_url( 'usk/v1/' ),
+				] );
 			}
 		}
 	}
