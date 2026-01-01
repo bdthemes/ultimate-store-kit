@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.3
+Stable tag: 2.9.4
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
@@ -209,13 +209,13 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.9.X [XXth December 2025] =
+= 2.9.4 [1st January 2026] =
 
 * Updated: Modified the hover effect in the shiny grid widget
 
 = 2.9.3 [24th December 2025] =
 
-Added: New control added to the add to cart button section in the showcase slider widget
+* Added: New control added to the add to cart button section in the showcase slider widget
 
 = 2.9.2 [17th December 2025] =
 
