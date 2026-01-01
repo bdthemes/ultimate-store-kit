@@ -78,7 +78,8 @@
             method: 'post',
             data: {
                 'action': 'ultimate_store_kit_builder_get_edit_template',
-                'template_id': $(this).data('id')
+                'template_id': $(this).data('id'),
+                'nonce': UltimateStoreKitConfigBuilder.nonce
             },
             success: function (response) {
                 if(response.success){
@@ -91,7 +92,8 @@
             },
             error: function (errorThrown) {
                 console.log(errorThrown);
-                if (errorThrown.status == 422) {
+                if (errorThrown.status == 422 || errorThrown.status == 403) {
+                    alert('Permission denied or invalid request');
                 }
             }
         });
