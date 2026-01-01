@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.4
+Stable tag: 2.9.5
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
@@ -209,6 +209,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.5 [1st January 2026] =
+
+* Fixed: Template builder security vulnerability patched - Added capability check and nonce verification to prevent unauthorized access to template data (CVSS 4.3)
+
 = 2.9.4 [1st January 2026] =
 
 * Updated: Modified the hover effect in the shiny grid widget
@@ -359,10 +363,6 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: DCI Notice transition issue fixed
 * Fixed: Text domain translate issue fixed
 * Updated: Security issue improved
-
-= 2.9.5 [1st January 2026] =
-
-* Fixed: Template builder security vulnerability patched - Added capability check and nonce verification to prevent unauthorized access to template data (CVSS 4.3)
 
 = 2.5.0 [28th April 2025] =
 
