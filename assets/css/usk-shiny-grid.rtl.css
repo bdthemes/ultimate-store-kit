@@ -6,6 +6,9 @@
   box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
   overflow: hidden;
 }
+.usk-shiny-grid .usk-item:hover .img {
+  transform: scale(1.1);
+}
 .usk-shiny-grid .usk-item:hover .usk-action-btn {
   transform: translateX(0px);
 }
@@ -14,6 +17,9 @@
   transform: translateY(0px);
   opacity: 1;
   visibility: visible;
+}
+.usk-shiny-grid .img {
+  transition: all 0.3s ease-in-out;
 }
 .usk-shiny-grid .usk-action-btn {
   transform: translateX(-25px);
