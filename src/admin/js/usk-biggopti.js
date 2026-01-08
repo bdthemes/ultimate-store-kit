@@ -13,7 +13,8 @@ jQuery(document).ready(function ($) {
                 id: $id,
                 meta: $meta,
                 time: $time,
-                _wpnonce: UltimateStoreKitBiggoptiConfig.nonce
+                _wpnonce: UltimateStoreKitBiggoptiConfig.nonce,
+                current_url: window.location.href
             }
         });
     });
