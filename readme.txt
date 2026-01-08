@@ -209,6 +209,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXth January 2026] =
+
+* Fixed: Typography issue fixed in the page cart widget
+* Fixed: Border width issue fixed in the page cart widget
+
 = 2.9.5 [1st January 2026] =
 
 * Fixed: Template builder security vulnerability patched - Added capability check and nonce verification to prevent unauthorized access to template data (CVSS 4.3)

@@ -236,10 +236,8 @@
   font-size: var(--usk-minicart-text-size);
   text-align: center;
   padding: 16px;
-  color: var(--usk-minicart-white);
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   border-radius: var(--usk-minicart-btn-radius);
   transition: var(--usk-minicart-transition);
@@ -253,10 +251,14 @@
 
 .usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-view-cart {
   background: var(--usk-minicart-dark);
+  color: var(--usk-minicart-white);
+  text-transform: uppercase;
 }
 
 .usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout {
   background: var(--usk-minicart-accent);
+  color: var(--usk-minicart-white);
+  text-transform: uppercase;
 }
 
 /* Footer Content */
