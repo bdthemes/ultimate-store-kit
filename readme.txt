@@ -212,7 +212,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.9.X [XXth January 2026] =
 
 * Fixed: Typography issue fixed in the page cart widget
-* Fixed: Border width issue fixed in the page cart widget
+* Fixed: Border width and border radius issue fixed in the mini cart widget
 
 = 2.9.5 [1st January 2026] =
 
