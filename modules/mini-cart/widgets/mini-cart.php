@@ -602,7 +602,7 @@ class Mini_Cart extends Module_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
-					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-product-item .usk-mini-cart-product-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-product-item .usk-mini-cart-product-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
 				],
 			]
 		);
@@ -662,6 +662,7 @@ class Mini_Cart extends Module_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons a.bdt-button-view-cart' => 'color: {{VALUE}};',
 					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons a.bdt-button-view-cart .bdt-button-text' => 'color: {{VALUE}};',
 				],
 			]
@@ -673,6 +674,7 @@ class Mini_Cart extends Module_Base {
 				'label'     => esc_html__( 'Hover Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons a.bdt-button-view-cart:hover' => 'color: {{VALUE}};',
 					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons a.bdt-button-view-cart:hover .bdt-button-text' => 'color: {{VALUE}};',
 				],
 			]
@@ -788,6 +790,7 @@ class Mini_Cart extends Module_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout' => 'color: {{VALUE}};',
 					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout .bdt-button-text' => 'color: {{VALUE}};',
 				],
 			]
@@ -799,6 +802,7 @@ class Mini_Cart extends Module_Base {
 				'label'     => esc_html__( 'Hover Color', 'ultimate-store-kit' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout:hover' => 'color: {{VALUE}};',
 					'#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout:hover .bdt-button-text' => 'color: {{VALUE}};',
 				],
 			]
@@ -825,7 +829,7 @@ class Mini_Cart extends Module_Base {
 				'name'     => 'pc_checkout_background_hover_color',
 				'label'    => __( 'Background', 'ultimate-store-kit' ),
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout::before',
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout:hover',
 				'fields_options' => [
 					'background' => [
 						'label' => esc_html__('Hover Background', 'ultimate-store-kit'),
@@ -894,7 +898,7 @@ class Mini_Cart extends Module_Base {
 			[
 				'name'     => 'pc_checkout_typography',
 				'label'    => esc_html__( 'Typography', 'ultimate-store-kit' ),
-				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-footer-buttons .bdt-button-checkout .bdt-button-text',
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .usk-mini-cart-footer-buttons .bdt-button-checkout, #usk-mini-cart-{{ID}}.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout .bdt-button-text',
 			]
 		);
 

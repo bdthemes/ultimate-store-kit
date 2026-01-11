@@ -1214,13 +1214,15 @@ class Page_Cart extends Module_Base {
 				'selector' => '{{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table th, {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table td',
 			]
 		);
+
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[ 
 				'name'     => 'cart_total_table_border',
-				'selector' => '.woocommerce {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table th, .woocommerce {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table td, .woocommerce {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table',
+				'selector' => '{{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table th, {{WRAPPER}} .usk-page-cart .cart-collaterals .cart_totals .shop_table td',
 			]
 		);
+
 		$this->add_responsive_control(
 			'cart_total_table_padding',
 			[ 
