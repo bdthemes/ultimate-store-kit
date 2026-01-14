@@ -209,6 +209,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXth January 2026] =
+
+* Added: New control for styling the empty product message in the mini cart widget
+* Added: New control for styling the offcanvas border radius in the mini cart widget
+
 = 2.9.6 [12th January 2026] =
 
 * Fixed: Typography issue fixed in the page cart widget
