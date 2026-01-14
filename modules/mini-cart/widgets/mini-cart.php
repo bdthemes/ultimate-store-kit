@@ -1011,6 +1011,60 @@ class Mini_Cart extends Module_Base {
 			]
 		);
 
+		$this->add_control(
+			'pc_empty_product_notice',
+			[
+				'label' 	=> __('Empty Product Message', 'ultimate-store-kit') . BDTUSK_NC,
+				'type' 		=> Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'pc_empty_product_message_color',
+			[
+				'label'     => esc_html__( 'Color', 'ultimate-store-kit' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .widget_shopping_cart_content .woocommerce-mini-cart__empty-message' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pc_empty_product_message_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .widget_shopping_cart_content .woocommerce-mini-cart__empty-message' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'pc_empty_product_message_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'ultimate-store-kit' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .widget_shopping_cart_content .woocommerce-mini-cart__empty-message' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'pc_empty_product_message_typography',
+				'label'    => esc_html__( 'Typography', 'ultimate-store-kit' ),
+				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container .widget_shopping_cart_content .woocommerce-mini-cart__empty-message',
+			]
+		);
+
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
@@ -1036,6 +1090,19 @@ class Mini_Cart extends Module_Base {
 				'selector' => '#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container',
 			]
 		);
+
+		$this->add_responsive_control(
+			'offcanvas_content_border_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'ultimate-store-kit' ) . BDTUSK_NC,
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'#usk-mini-cart-{{ID}}.usk-mini-cart .ts-content-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'heading_offcanvas_item_background',
 			[
@@ -1235,11 +1302,11 @@ class Mini_Cart extends Module_Base {
 										<div class="usk-mini-cart-footer-buttons">
 											<a href="<?php echo esc_url( wc_get_cart_url() ); ?>"
 												class="bdt-button bdt-button-view-cart bdt-size-md">
-												<span class="bdt-button-text"><?php echo esc_html__( 'View cart', 'ultimate-store-kit' ); ?></span>
+												<span><?php echo esc_html__( 'View cart', 'ultimate-store-kit' ); ?></span>
 											</a>
 											<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
 												class="bdt-button bdt-button-checkout bdt-size-md">
-												<span class="bdt-button-text"><?php echo esc_html__( 'Checkout', 'ultimate-store-kit' ); ?></span>
+												<span><?php echo esc_html__( 'Checkout', 'ultimate-store-kit' ); ?></span>
 											</a>
 										</div>
 									</div>
