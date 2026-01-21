@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.6
+Stable tag: 2.9.7
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.34.1
+Elementor tested up to: 3.34.2
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -209,10 +209,9 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.9.X [XXth January 2026] =
+= 2.9.7 [21st January 2026] =
 
-* Added: New control for styling the empty product message in the mini cart widget
-* Added: New control for styling the offcanvas border radius in the mini cart widget
+* Added: Empty product message & offcanvas border radius controls added in the mini cart widget
 
 = 2.9.6 [12th January 2026] =
 
