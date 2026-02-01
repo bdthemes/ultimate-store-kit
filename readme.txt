@@ -209,6 +209,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXst January 2026] =
+
+* Fixed: Action Button style section visibility fixed in mentor slider, product accordion & showcase slider
+* Fixed: Removed hard-coded (prev & next) text from mentor slider widget
+
 = 2.9.7 [21st January 2026] =
 
 * Added: Empty product message & offcanvas border radius controls added in the mini cart widget
