@@ -310,7 +310,7 @@ class Product_Accordion extends Module_Base
         $this->start_controls_tab(
             'show_action_btn_tab',
             [
-                'label' => esc_html__('Action btn', 'ultimate-store-kit'),
+                'label' => esc_html__('Action Button', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
@@ -840,11 +840,29 @@ class Product_Accordion extends Module_Base
         $this->end_controls_section();
         $this->register_global_controls_rating();
         $this->register_global_controls_badge();
+
         $this->start_controls_section(
             'style_action_btn',
             [
-                'label' => esc_html__('Action Button', 'ultimate-store-kit'),
-                'tab' => Controls_Manager::TAB_STYLE,
+                'label'      => esc_html__('Action Button', 'ultimate-store-kit'),
+                'tab'        => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name'     => 'show_cart',
+                            'value'    => 'yes',
+                        ],
+                        [
+                            'name'     => 'show_wishlist',
+                            'value'    => 'yes',
+                        ],
+                        [
+                            'name'     => 'show_quick_view',
+                            'value'    => 'yes',
+                        ],
+                    ],
+                ],
             ]
         );
 

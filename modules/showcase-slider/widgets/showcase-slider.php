@@ -923,15 +923,39 @@ class Showcase_Slider extends Module_Base
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
+
         $this->register_global_controls_badge();
         $this->register_global_controls_rating();
+
         $this->start_controls_section(
             'style_action_btn',
             [
-                'label' => esc_html__('Action Button', 'ultimate-store-kit'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
+                'label'      => esc_html__( 'Action Button', 'ultimate-store-kit' ),
+                'tab'        => Controls_Manager::TAB_STYLE,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms'    => [
+                        [
+                            'name'  => 'show_wishlist',
+                            'value' => 'yes',
+                        ],
+                        [
+                            'name'  => 'show_quick_view',
+                            'value' => 'yes',
+                        ],
+                        [
+                            'name'  => 'show_cart',
+                            'value' => 'yes',
+                        ],
+                        [
+                            'name'  => 'show_compare',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]         
         );
+
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
