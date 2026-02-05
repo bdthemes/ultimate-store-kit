@@ -21,7 +21,6 @@ WooCommerce and EDD Elementor addon with product grid, category, reviews, carous
 Ultimate Store Kit is an all-in-one WooCommerce and Easy Digital Downloads (EDD) builder for Elementor. It gives you complete control over your online store design.
 With 80+ advanced widgets and a powerful template builder, you can create stunning product pages, cart pages, checkout pages and account pages. No coding is needed!
 
-### [🎉 Black Friday Offer: Upgrade to Pro and Save up to 87% on All Plugins! 🎊](https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_store_kit)
 
 ### Key Features 👇 ###
 
