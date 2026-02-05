@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.7
+Stable tag: 2.9.8
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.34.2
+Elementor tested up to: 3.35.1
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -209,7 +209,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.9.X [XXst January 2026] =
+= 2.9.8 [5th February 2026] =
 
 * Fixed: Action Button style section visibility fixed in mentor slider, product accordion & showcase slider
 * Fixed: Removed hard-coded (prev & next) text from mentor slider widget
