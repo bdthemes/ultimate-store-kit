@@ -61,7 +61,7 @@ class Admin {
 		if (true !== _is_usk_pro_activated()) {
 			$row_meta = [
 				'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
-				'gopro' => '<a href="https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_store_kit" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-store-kit')) . '" target="_blank" title="When you purchase through this link you will get Up to 87% discount!" class="usk-go-pro">' . __('Black Friday Limited Offer Up To 87% Off!', 'ultimate-store-kit') . '</a>',
+				'gopro' => '<a href="https://storekit.pro/pricing/" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-store-kit')) . '" target="_blank" title="When you purchase through this link you will get up to 87% discount!" class="usk-go-pro">' . __('Get Pro', 'ultimate-store-kit') . '</a>',
 			];
 		} else {
 			$row_meta = [
