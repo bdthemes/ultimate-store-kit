@@ -64,7 +64,7 @@ class UltimateStoreKit_Admin_Settings
     public function usk_redirect_to_get_pro()
     {
         if (isset($_GET['page']) && $_GET['page'] === self::PAGE_ID . '_get_pro') {
-            wp_redirect('https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_store_kit');
+            wp_redirect('https://storekit.pro/pricing/');
             exit;
         }
     }
@@ -137,7 +137,7 @@ class UltimateStoreKit_Admin_Settings
             add_submenu_page(
                 self::PAGE_ID,
                 BDTUSK_TITLE,
-                esc_html__('Black Friday Limited Offer Up To 87%', 'ultimate-store-kit'),
+                esc_html__('Get Pro', 'ultimate-store-kit'),
                 'manage_options',
                 self::PAGE_ID . '_get_pro',
                 [$this, 'display_page']
