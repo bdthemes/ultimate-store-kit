@@ -4,7 +4,6 @@ namespace UltimateStoreKit\Modules\ProductImageAccordion\Widgets;
 
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Background;
 use Elementor\Controls_Manager;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\traits\Global_Widget_Controls;
@@ -13,9 +12,12 @@ use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\Classes\Utils;
 use WP_Query;
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 class Product_Image_Accordion extends Module_Base {
+
     use Global_Widget_Controls;
     use Global_Widget_Template;
     use Group_Control_Query;
@@ -24,6 +26,7 @@ class Product_Image_Accordion extends Module_Base {
      * @var \WP_Query
      */
     private $_query = null;
+
     public function get_name() {
         return 'usk-product-image-accordion';
     }
@@ -227,7 +230,7 @@ class Product_Image_Accordion extends Module_Base {
                 'label'     => esc_html__('Hover Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-content .title:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-content .usk-title:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -237,7 +240,7 @@ class Product_Image_Accordion extends Module_Base {
             [
                 'name'     => 'title_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-content .title',
+                'selector' => '{{WRAPPER}} .usk-product-image-accordion .usk-item .usk-content .usk-title',
             ]
         );
 
@@ -308,12 +311,11 @@ class Product_Image_Accordion extends Module_Base {
                                 <?php endif; ?>
                                 <?php if ('yes' == $settings['show_title']) :
                                     printf(
-                                        '<a href="%2$s" class="usk-title"><%1$s class="title">%3$s</%1$s></a>', 
-                                        esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
-                                        esc_url($product->get_permalink()), 
-                                        esc_html($product->get_title()),
-                                    );
-                                    
+                                        '<%1$s class="title"><a href="%2$s" class="usk-title">%3$s</a></%1$s>',
+                                        esc_attr( Utils::get_valid_html_tag( $settings['title_tags'] ) ),
+                                        esc_url( $product->get_permalink() ),
+                                        esc_html( $product->get_title() )
+                                    ); 
                                 endif; ?>
                                 <?php if ('yes' == $settings['show_price']) : ?>
                                     <div class="usk-price">

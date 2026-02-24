@@ -28,19 +28,24 @@
         width: 100%;
         padding: clamp(10px, 1.5vw, 20px);
     }
-    .usk-title {
-        color: #2b2d42;
-        transition: all 0.3s cubic-bezier(0.18, 0.43, 0.58, 1);
 
-        .title {
-            font-size: clamp(18px, 1vw, 24px);
-            font-weight: 700;
-            line-height: 1.4;
-            margin-top: 0;
-            margin-bottom: clamp(10px, 1vw, 15px);
-            color: inherit;
+    .title {
+        font-size: clamp(18px, 1vw, 24px);
+        font-weight: 700;
+        line-height: 1.4;
+        margin-top: 0;
+        margin-bottom: clamp(10px, 1vw, 15px);
+        color: inherit;
+
+        .usk-title {
+            color: #2b2d42;
+            transition: all 0.3s cubic-bezier(0.18, 0.43, 0.58, 1);
+            &:hover {
+                color: #d90429;
+            }
         }
     }
+
     .usk-item .usk-rating {
         display: inline-flex;
         margin-bottom: clamp(10px, 1vw, 15px);

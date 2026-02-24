@@ -14,6 +14,19 @@
   box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
   background: #fff;
   overflow: hidden;
+
+  .usk-item-box {
+    .usk-content {
+      .usk-content-inner {
+        .title {
+          margin: 0;
+          .usk-title {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
 }
 
 /* Base Layout & Positioning */

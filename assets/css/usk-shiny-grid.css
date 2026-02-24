@@ -18,6 +18,12 @@
   opacity: 1;
   visibility: visible;
 }
+.usk-shiny-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-shiny-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 .usk-shiny-grid .img {
   transition: all 0.3s ease-in-out;
 }

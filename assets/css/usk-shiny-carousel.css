@@ -15,6 +15,12 @@
   opacity: 1;
   visibility: visible;
 }
+.usk-shiny-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-shiny-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 .usk-shiny-carousel .usk-action-btn {
   transform: translateX(25px);
 }

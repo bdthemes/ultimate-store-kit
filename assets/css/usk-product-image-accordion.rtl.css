@@ -132,20 +132,19 @@
   border: 1px solid #ef233c;
   color: #fff;
 }
-.usk-product-image-accordion .usk-title {
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: #edf2f4;
-  transition: all 0.3s ease;
-  display: block;
-}
-.usk-product-image-accordion .usk-title .title {
+.usk-product-image-accordion .title {
   font-size: 18px;
   line-height: 1.4;
   font-weight: 600;
   color: inherit;
 }
-.usk-product-image-accordion .usk-title:hover {
+.usk-product-image-accordion .title .usk-title {
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #edf2f4;
+  transition: all 0.3s ease;
+}
+.usk-product-image-accordion .title .usk-title:hover {
   color: #ef233c;
 }
 .usk-product-image-accordion .usk-price {
