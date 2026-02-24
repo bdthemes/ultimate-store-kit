@@ -14,6 +14,12 @@
 .usk-florence-carousel .usk-item:hover .usk-shoping a {
   transform: translateX(0px);
 }
+.usk-florence-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-florence-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 /* Shopping button positioning and animation */
 .usk-florence-carousel .usk-shoping {

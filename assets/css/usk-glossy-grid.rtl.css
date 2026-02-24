@@ -13,6 +13,12 @@
   background: #fff;
   overflow: hidden;
 }
+.usk-glossy-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-glossy-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 /* Base Layout & Positioning */
 .usk-glossy-grid .usk-shoping,

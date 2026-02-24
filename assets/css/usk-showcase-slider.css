@@ -86,17 +86,19 @@
 .usk-showcase-slider .usk-item-box {
   padding: clamp(20px, 2vw, 30px);
 }
-.usk-showcase-slider .usk-title {
-  color: #2b2d42;
-  display: block;
-  transition: all 0.3s ease;
-}
-.usk-showcase-slider .usk-title .title {
+.usk-showcase-slider .title {
   font-size: clamp(16px, 2vw, 20px);
   letter-spacing: 1px;
   font-weight: bold;
   margin: 0;
   color: inherit;
+}
+.usk-showcase-slider .title .usk-title {
+  color: #2b2d42;
+  transition: all 0.3s ease;
+}
+.usk-showcase-slider .title .usk-title:hover {
+  color: #d90429;
 }
 .usk-showcase-slider .usk-category {
   margin-bottom: 15px;

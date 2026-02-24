@@ -208,6 +208,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.X [XXth February 2026] =
+
+* Fixed: Title hover issue in the grid & carousel widgets
+
 = 2.9.9 [9th February 2026] =
 
 * Updated: System improved

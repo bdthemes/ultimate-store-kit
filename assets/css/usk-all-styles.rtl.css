@@ -3319,6 +3319,12 @@
   box-shadow: 0 8px 24px var(--usk-fg-shadow-color);
   overflow: hidden;
 }
+.usk-florence-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-florence-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 /* --------------------------------
  * 2. Shopping Button
@@ -3403,6 +3409,12 @@
 .usk-florence-carousel .usk-item:hover .usk-shoping a {
   transform: translateX(0px);
 }
+.usk-florence-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-florence-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 /* Shopping button positioning and animation */
 .usk-florence-carousel .usk-shoping {
@@ -3484,6 +3496,12 @@
   background: #fff;
   overflow: hidden;
 }
+.usk-glossy-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-glossy-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 /* Base Layout & Positioning */
 .usk-glossy-grid .usk-shoping,
@@ -3526,6 +3544,12 @@
 /* Base Layout & Positioning */
 .usk-glossy-carousel .usk-item {
   overflow: inherit;
+}
+.usk-glossy-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-glossy-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
 }
 
 .usk-glossy-carousel .usk-shoping,
@@ -4591,20 +4615,19 @@
   border: 1px solid #ef233c;
   color: #fff;
 }
-.usk-product-image-accordion .usk-title {
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: #edf2f4;
-  transition: all 0.3s ease;
-  display: block;
-}
-.usk-product-image-accordion .usk-title .title {
+.usk-product-image-accordion .title {
   font-size: 18px;
   line-height: 1.4;
   font-weight: 600;
   color: inherit;
 }
-.usk-product-image-accordion .usk-title:hover {
+.usk-product-image-accordion .title .usk-title {
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #edf2f4;
+  transition: all 0.3s ease;
+}
+.usk-product-image-accordion .title .usk-title:hover {
   color: #ef233c;
 }
 .usk-product-image-accordion .usk-price {
@@ -4666,17 +4689,20 @@
   width: 100%;
   padding: clamp(10px, 1.5vw, 20px);
 }
-.usk-product-list .usk-title {
-  color: #2b2d42;
-  transition: all 0.3s cubic-bezier(0.18, 0.43, 0.58, 1);
-}
-.usk-product-list .usk-title .title {
+.usk-product-list .title {
   font-size: clamp(18px, 1vw, 24px);
   font-weight: 700;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: clamp(10px, 1vw, 15px);
   color: inherit;
+}
+.usk-product-list .title .usk-title {
+  color: #2b2d42;
+  transition: all 0.3s cubic-bezier(0.18, 0.43, 0.58, 1);
+}
+.usk-product-list .title .usk-title:hover {
+  color: #d90429;
 }
 .usk-product-list .usk-item .usk-rating {
   display: inline-flex;
@@ -5076,6 +5102,12 @@ table.dataTable.display tbody tr.odd {
   opacity: 1;
   visibility: visible;
 }
+.usk-shiny-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-shiny-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 .usk-shiny-grid .img {
   transition: all 0.3s ease-in-out;
 }
@@ -5214,6 +5246,12 @@ table.dataTable.display tbody tr.odd {
   transform: translateY(0px);
   opacity: 1;
   visibility: visible;
+}
+.usk-shiny-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-shiny-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
 }
 .usk-shiny-carousel .usk-action-btn {
   transform: translateX(-25px);
@@ -5414,17 +5452,19 @@ table.dataTable.display tbody tr.odd {
 .usk-showcase-slider .usk-item-box {
   padding: clamp(20px, 2vw, 30px);
 }
-.usk-showcase-slider .usk-title {
-  color: #2b2d42;
-  display: block;
-  transition: all 0.3s ease;
-}
-.usk-showcase-slider .usk-title .title {
+.usk-showcase-slider .title {
   font-size: clamp(16px, 2vw, 20px);
   letter-spacing: 1px;
   font-weight: bold;
   margin: 0;
   color: inherit;
+}
+.usk-showcase-slider .title .usk-title {
+  color: #2b2d42;
+  transition: all 0.3s ease;
+}
+.usk-showcase-slider .title .usk-title:hover {
+  color: #d90429;
 }
 .usk-showcase-slider .usk-category {
   margin-bottom: 15px;

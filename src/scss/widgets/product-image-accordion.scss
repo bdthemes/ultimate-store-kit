@@ -157,20 +157,22 @@
         }
     }
 
-    .usk-title {
-        margin-bottom: 10px;
-        text-decoration: none;
-        color: #edf2f4;
-        transition: all 0.3s ease;
-        display: block;
-        .title {
-            font-size: 18px;
-            line-height: 1.4;
-            font-weight: 600;
-            color: inherit;
-        }
-        &:hover {
-            color: #ef233c;
+    .title {
+        font-size: 18px;
+        line-height: 1.4;
+        font-weight: 600;
+        color: inherit;
+
+        .usk-title {
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #edf2f4;
+            transition: all 0.3s ease;
+            // display: block;
+            
+            &:hover {
+                color: #ef233c;
+            }
         }
     }
 

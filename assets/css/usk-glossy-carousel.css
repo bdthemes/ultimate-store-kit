@@ -12,6 +12,12 @@
 .usk-glossy-carousel .usk-item {
   overflow: inherit;
 }
+.usk-glossy-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-glossy-carousel .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 .usk-glossy-carousel .usk-shoping,
 .usk-glossy-carousel .usk-badge-label-wrapper {

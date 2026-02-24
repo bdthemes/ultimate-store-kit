@@ -65,10 +65,10 @@ class USK_Glossy_Grid_Template
                     <div class="usk-content-inner">
                         <?php if (isset($settings['show_title']) ? $settings['show_title'] : true):
                             printf(
-                                '<a href="%2$s" class="usk-title" aria-label="%4$s"><%1$s class="title">%3$s</%1$s></a>', 
-                                esc_attr(Utils::get_valid_html_tag($title_tags)), 
-                                esc_url($product->get_permalink()), 
-                                esc_html($product->get_title()),
+                                '<%1$s class="title"><a href="%2$s" class="usk-title" aria-label="%4$s">%3$s</a></%1$s>',
+                                esc_attr( Utils::get_valid_html_tag( $title_tags ) ),
+                                esc_url( $product->get_permalink() ),
+                                esc_html( $product->get_title() ),
                                 esc_attr( sprintf( 'View details for %s', $product->get_title() ) )
                             );
                         endif; ?>

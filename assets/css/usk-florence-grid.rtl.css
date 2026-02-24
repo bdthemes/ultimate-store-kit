@@ -16,6 +16,12 @@
   box-shadow: 0 8px 24px var(--usk-fg-shadow-color);
   overflow: hidden;
 }
+.usk-florence-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title {
+  margin: 0;
+}
+.usk-florence-grid .usk-item .usk-item-box .usk-content .usk-content-inner .title .usk-title {
+  display: inline-block;
+}
 
 /* --------------------------------
  * 2. Shopping Button

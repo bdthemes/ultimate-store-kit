@@ -3,10 +3,6 @@
 namespace UltimateStoreKit\Modules\ShinyGrid\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Background;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
@@ -14,13 +10,9 @@ use UltimateStoreKit\Traits\Global_Widget_Controls;
 use WP_Query;
 use UltimateStoreKit\Templates\USK_Shiny_Grid_Template;
 
-// require_once BDTUSK_TEMPLATES_PATH . 'shiny-grid.php';
-
 if (!defined('ABSPATH')) {
     exit;
 }
-
-// Exit if accessed directly
 
 class Shiny_Grid extends Module_Base
 {

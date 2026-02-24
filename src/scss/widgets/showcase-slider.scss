@@ -106,16 +106,20 @@
   .usk-item-box {
     padding: clamp(20px, 2vw, 30px);
   }
-  .usk-title {
-    color: #2b2d42;
-    display: block;
-    transition: all 0.3s ease;
-    .title {
-      font-size: clamp(16px, 2vw, 20px);
-      letter-spacing: 1px;
-      font-weight: bold;
-      margin: 0;
-      color: inherit;
+
+  .title {
+    font-size: clamp(16px, 2vw, 20px);
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 0;
+    color: inherit;
+    .usk-title {
+      color: #2b2d42;
+      // display: block;
+      transition: all 0.3s ease;
+      &:hover {
+        color: #d90429;
+      }
     }
   }
 

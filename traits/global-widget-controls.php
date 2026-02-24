@@ -1135,7 +1135,7 @@ trait Global_Widget_Controls
             [
                 'name' => 'title_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
-                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-title .title',
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-title',
             ]
         );
 

@@ -450,11 +450,11 @@ class Product_List extends Module_Base {
                     <?php
                     if ($settings['show_title']) :
                         printf(
-                            '<a href="%2$s" class="usk-title"><%1$s class="title">%3$s</%1$s></a>', 
-                            esc_attr(Utils::get_valid_html_tag($settings['title_tags'])), 
-                            esc_url($product->get_permalink()), 
-                            esc_html($product->get_title()),
-                        );
+                        '<%1$s class="title"><a href="%2$s" class="usk-title">%3$s</a></%1$s>',
+                        esc_attr( Utils::get_valid_html_tag( $settings['title_tags'] ) ),
+                        esc_url( $product->get_permalink() ),
+                        esc_html( $product->get_title() )
+                    );
                     endif; ?>
                     <?php if ($settings['show_rating']) : ?>
                         <div class="usk-rating">

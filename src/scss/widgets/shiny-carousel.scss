@@ -16,6 +16,19 @@
                 visibility: visible;
             }
         }
+
+        .usk-item-box {
+            .usk-content {
+                .usk-content-inner {
+                    .title {
+                        margin: 0;
+                        .usk-title {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .usk-action-btn {
