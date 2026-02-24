@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.9
+Stable tag: 2.9.10
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.35.3
+Elementor tested up to: 3.35.5
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -208,7 +208,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 2.9.X [XXth February 2026] =
+= 2.9.10 [24th February 2026] =
 
 * Fixed: Title hover issue in the grid & carousel widgets
 
