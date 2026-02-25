@@ -64,7 +64,7 @@ module.exports = function (grunt) {
                             "*",
                             "!admin.scss",
                             "!admin-biggopti.scss",
-                            "!admin-biggopti.scss",
+                            "!admin-api-biggopti.scss",
                             "!ultimate-builder.scss",
                             "!tooltip.scss",
                             "!star.scss",
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: "src/scss/",
-                        src: ["admin.scss", "admin-biggopti.scss", "ultimate-builder.scss"],
+                        src: ["admin.scss", "admin-biggopti.scss", "admin-api-biggopti.scss", "ultimate-builder.scss"],
 
                         dest: "admin/assets/css/",
                         ext: ".css",
