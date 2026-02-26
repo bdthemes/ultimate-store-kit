@@ -397,6 +397,11 @@ class Ultimate_Store_Kit_Loader
 	{
 		if (!defined('BDTUSK_CH') && is_admin()) {
 			require(BDTUSK_ADM_PATH . 'class-settings-api.php');
+
+			// Biggopti class
+			require_once BDTUSK_ADM_PATH . 'admin-biggopti.php';
+			require_once BDTUSK_ADM_PATH . 'admin-api-biggopti.php';
+
 			require(BDTUSK_ADM_PATH . 'admin.php');
 			require(BDTUSK_ADM_PATH . 'admin-settings.php');
 			new Admin();

@@ -115,9 +115,6 @@ function bdthemes_ultimate_store_kit_load_plugin() {
 
 	// Element pack widget and assets loader
 	require(BDTUSK_PATH . 'loader.php');
-
-	// Notice class
-	require(BDTUSK_ADM_PATH . 'admin-biggopti.php');
 }
 add_action('plugins_loaded', 'bdthemes_ultimate_store_kit_load_plugin', 9);
 

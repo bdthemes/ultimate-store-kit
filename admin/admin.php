@@ -27,6 +27,7 @@ class Admin {
 
 	function notice_styles(){
 		wp_enqueue_style('usk-admin-biggopti', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-biggopti.css', [], BDTUSK_VER);
+		wp_enqueue_style('usk-admin-api-biggopti', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-api-biggopti.css', [], BDTUSK_VER);
 	}
 
 	/**
@@ -58,16 +59,9 @@ class Admin {
 
 	 public function plugin_action_links( $plugin_meta ) {
 
-		if (true !== _is_usk_pro_activated()) {
-			$row_meta = [
-				'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
-				'gopro' => '<a href="https://storekit.pro/pricing/" aria-label="' . esc_attr(__('Go get the pro version', 'ultimate-store-kit')) . '" target="_blank" title="When you purchase through this link you will get up to 87% discount!" class="usk-go-pro">' . __('Get Pro', 'ultimate-store-kit') . '</a>',
-			];
-		} else {
-			$row_meta = [
-				'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
-			];
-		}
+		$row_meta = [
+			'settings' => '<a href="'.admin_url( 'admin.php?page=ultimate_store_kit_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'ultimate-store-kit')) . '" >' . __('Settings', 'ultimate-store-kit') . '</b></a>',
+		];
 
         $plugin_meta = array_merge($plugin_meta, $row_meta);
 
@@ -104,13 +98,35 @@ class Admin {
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery-form');
 			wp_enqueue_script('usk-biggopti', BDTUSK_ADMIN_URL  . 'assets/js/usk-biggopti.min.js', ['jquery'], BDTUSK_VER, true);
+			wp_enqueue_script('usk-admin-api-biggopti', BDTUSK_ADMIN_URL  . 'assets/js/usk-admin-api-biggopti.min.js', ['jquery'], BDTUSK_VER, true);
+
+			$dismissals = get_option('bdt_biggopti_dismissals', []);
+			$dismissed_display_ids = [];
+			$prefix = 'bdt-admin-biggopti-api-biggopti-';
+			foreach (array_keys($dismissals) as $key) {
+				if (strpos($key, $prefix) === 0) {
+					$dismissed_display_ids[] = substr($key, strlen($prefix));
+				} else {
+					$dismissed_display_ids[] = $key;
+				}
+			}
+
+			$current_sector = '';
+			if ( isset( $_GET['page'] ) && $_GET['page'] === 'ultimate_store_kit_options' ) {
+				$current_sector = 'plugin_dashboard';
+			}
 
 			$script_config = [
-				'ajaxurl'	=> admin_url('admin-ajax.php'),
-				'nonce'		=> wp_create_nonce('ultimate-store-kit'),
+				'ajaxurl'				=> admin_url('admin-ajax.php'),
+				'nonce'					=> wp_create_nonce('ultimate-store-kit'),
+				'isPro'             	=> function_exists('_is_usk_pro_activated') && _is_usk_pro_activated(),
+				'assetsUrl'         	=> defined('BDTUSK_ASSETS_URL') ? BDTUSK_ASSETS_URL : '',
+				'dismissedDisplayIds'	=> $dismissed_display_ids,
+				'currentSector'      	=> $current_sector,
 			];
 			
 			wp_localize_script('usk-biggopti', 'UltimateStoreKitBiggoptiConfig', $script_config);
+			wp_localize_script('usk-admin-api-biggopti', 'UltimateStoreKitAdminApiBiggoptiConfig', $script_config);
 
 			if (isset($_GET['page']) && ($_GET['page'] == 'ultimate_store_kit_options')) {
 				wp_enqueue_script('chart', BDTUSK_ADMIN_URL . 'assets/js/chart.min.js', ['jquery'], '3.9.3', true);
