@@ -1,15 +1,15 @@
-#dashboard-widgets .inside .ultimate-store-kit-feed {
+#dashboard-widgets .inside .bdt-dashboard-feed {
   margin: -12px -12px 16px -12px;
   line-height: 0;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
-#dashboard-widgets .inside .ultimate-store-kit-feed a {
+#dashboard-widgets .inside .bdt-dashboard-feed a {
   display: block;
   text-decoration: none;
 }
-#dashboard-widgets .inside .ultimate-store-kit-feed img {
+#dashboard-widgets .inside .bdt-dashboard-feed img {
   display: block;
   max-width: 100%;
   height: auto;
