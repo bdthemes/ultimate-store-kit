@@ -163,6 +163,9 @@ class Admin_Feeds {
 						<li>
 							<a target="_blank" href="<?php echo esc_url( $item['link'] ); ?>"
 								title="<?php echo esc_html( $item['date'] ); ?>">
+								<?php if ( $this->is_feed_item_new( $item['date'] ) ) : ?>
+									<span class="usk-feed-badge usk-feed-badge--new"><?php esc_html_e( 'New', $this->settings['text_domain'] ); ?></span>
+								<?php endif; ?>
 								<?php echo esc_html( $item['title'] ); ?>
 							</a>
 							<span class="bdt-date" style="display: block; margin: 0;">
@@ -193,6 +196,21 @@ class Admin_Feeds {
 		</p>
 		<?php
 		return ob_get_clean();
+	}
+
+	/**
+	 * Check if a feed item is "new" (published within the last 7 days).
+	 *
+	 * @param int|string $date Unix timestamp.
+	 * @return bool
+	 */
+	private function is_feed_item_new( $date ) {
+		$timestamp = is_numeric( $date ) ? (int) $date : strtotime( $date );
+		if ( ! $timestamp ) {
+			return false;
+		}
+		$cutoff = time() - ( 7 * DAY_IN_SECONDS );
+		return $timestamp >= $cutoff;
 	}
 }
 
