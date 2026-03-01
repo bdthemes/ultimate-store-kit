@@ -164,7 +164,7 @@ class Admin_Feeds {
 							<a target="_blank" href="<?php echo esc_url( $item['link'] ); ?>"
 								title="<?php echo esc_html( $item['date'] ); ?>">
 								<?php if ( $this->is_feed_item_new( $item['date'] ) ) : ?>
-									<span class="usk-feed-badge usk-feed-badge--new"><?php esc_html_e( 'New', $this->settings['text_domain'] ); ?></span>
+									<span class="bdt-feed-badge bdt-feed-badge--new"><?php esc_html_e( 'New', $this->settings['text_domain'] ); ?></span>
 								<?php endif; ?>
 								<?php echo esc_html( $item['title'] ); ?>
 							</a>

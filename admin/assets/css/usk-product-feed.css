@@ -45,7 +45,7 @@
   color: #2271b1;
   text-decoration: none;
 }
-#dashboard-widgets .inside .bdt-widget .usk-feed-badge {
+#dashboard-widgets .inside .bdt-widget .bdt-feed-badge {
   display: inline-block;
   vertical-align: middle;
   font-size: 10px;
@@ -56,7 +56,7 @@
   border-radius: 3px;
   line-height: 1.2;
 }
-#dashboard-widgets .inside .bdt-widget .usk-feed-badge--new {
+#dashboard-widgets .inside .bdt-widget .bdt-feed-badge--new {
   background: #0A875A;
   color: #fff;
 }
