@@ -19,15 +19,16 @@ class Admin {
 		add_action('admin_init', [$this, 'admin_script']);
 
 		add_action('plugins_loaded', [$this, 'plugin_meta']);
-		add_action('admin_init', [ $this, 'notice_styles' ] );
+		add_action('admin_init', [ $this, 'admin_styles' ] );
 
 		add_filter('plugin_action_links_' . BDTUSK_PBNAME, [$this, 'plugin_action_links']);
 	}
 
 
-	function notice_styles(){
+	function admin_styles(){
 		wp_enqueue_style('usk-admin-biggopti', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('usk-admin-api-biggopti', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-api-biggopti.css', [], BDTUSK_VER);
+		wp_enqueue_style('bdt-product-feed', BDTUSK_ADMIN_URL . 'assets/css/usk-product-feed.css', [], BDTUSK_VER);
 	}
 
 	/**
