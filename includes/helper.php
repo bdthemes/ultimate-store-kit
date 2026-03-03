@@ -1280,7 +1280,7 @@ if (! function_exists('usk_license_validation')) {
 			return false;
 		}
 
-		$license_key = trim(get_option('ultimate_post_kit_license_key'));
+		$license_key = trim(get_option('ultimate_store_kit_license_key'));
 
 		if (isset($license_key) && ! empty($license_key)) {
 			return true;

@@ -120,7 +120,7 @@ class Admin {
 			$script_config = [
 				'ajaxurl'				=> admin_url('admin-ajax.php'),
 				'nonce'					=> wp_create_nonce('ultimate-store-kit'),
-				'isPro'             	=> function_exists('_is_usk_pro_activated') && _is_usk_pro_activated(),
+				'isPro'             	=> function_exists('usk_license_validation') && usk_license_validation(),
 				'assetsUrl'         	=> defined('BDTUSK_ASSETS_URL') ? BDTUSK_ASSETS_URL : '',
 				'dismissedDisplayIds'	=> $dismissed_display_ids,
 				'currentSector'      	=> $current_sector,
