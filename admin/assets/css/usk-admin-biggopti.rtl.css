@@ -27,9 +27,6 @@
   padding: 25px;
   border-color: #e2e2e5;
   z-index: 99;
-  /**
-  * Start Ultimate Store Kit
-  */
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global .bdt-license-biggopti-logo img {
   width: 45px;
@@ -65,6 +62,11 @@
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global .bdt-button-skip {
   border: 0;
   color: #FA11F2;
+}
+.ultimate-store-kit-biggopti .bdt-license-biggopti-global {
+  /**
+  * Start Ultimate Store Kit
+  */
 }
 .ultimate-store-kit-biggopti .bdt-license-biggopti-global.ultimate_store_kit .bdt-button-allow {
   --primaryColor: #E31C79;
