@@ -225,6 +225,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 2.9.XX [XXth March 2026] =
+
+* Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
+
 = 2.9.13 [10th March 2026] =
 
 * Updated: System improved
