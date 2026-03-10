@@ -203,7 +203,6 @@
   --nm-anim-duration-fast: 0.3s;
   text-align: left;
   animation: buttonSlideIn 0.8s ease-out 0.6s both;
-  /* Button Styles */
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn a {
   background: transparent;
@@ -213,6 +212,9 @@
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn a:hover {
   background: transparent;
+}
+[id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn {
+  /* Button Styles */
 }
 [id^=bdt-admin-biggopti-api-biggopti-] .bdt-biggopti-btn .nm-biggopti-btn {
   color: var(--nm-text-primary);
