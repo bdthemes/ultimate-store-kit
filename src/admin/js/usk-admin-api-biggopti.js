@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
             url: ajaxUrl,
             type: 'POST',
             data: {
-                action: 'bdt_admin_api_biggopti_dismiss',
+                action: 'usk_admin_api_biggopti_dismiss',
                 display_id: displayId,
                 id: $this.attr('id'),
                 meta: $meta,
