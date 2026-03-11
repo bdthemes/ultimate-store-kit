@@ -18,7 +18,7 @@ $blue: #3b82f6;
 // Reset WP admin styles for our root
 .ultimate-store-kit-admin-root {
 	margin-left: -20px;
-	margin-top: -44px;
+	// margin-top: -44px;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
@@ -516,7 +516,7 @@ $blue: #3b82f6;
 // ==================== WIDGET CARD ====================
 .usk-widgets-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	grid-template-columns: repeat(4, 1fr);
 	gap: 12px;
 
 	&__empty {
@@ -607,14 +607,14 @@ $blue: #3b82f6;
 .usk-welcome {
 	&__stats {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		gap: 16px;
 		margin-bottom: 24px;
 	}
 
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: 16px;
 		margin-bottom: 16px;
 	}
@@ -1012,7 +1012,7 @@ $blue: #3b82f6;
 
 // ==================== ABOUT ====================
 .usk-about {
-	max-width: 700px;
+	// max-width: 700px;
 
 	&__card {
 		background: $white;

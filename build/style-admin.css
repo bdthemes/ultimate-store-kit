@@ -4,7 +4,6 @@
 @charset "UTF-8";
 .ultimate-store-kit-admin-root {
   margin-left: -20px;
-  margin-top: -44px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
 }
 .usk-admin-app {
@@ -492,7 +491,7 @@ input:disabled + .usk-toggle__slider {
 }
 .usk-widgets-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 .usk-widgets-grid__empty {
@@ -569,13 +568,13 @@ input:disabled + .usk-toggle__slider {
 }
 .usk-welcome__stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
 .usk-welcome__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -912,9 +911,6 @@ input:disabled + .usk-toggle__slider {
 .usk-license__footer-info p a {
   color: #10b981;
   text-decoration: none;
-}
-.usk-about {
-  max-width: 700px;
 }
 .usk-about__card {
   background: #ffffff;
