@@ -30,6 +30,7 @@ define('BDTUSK_ASSETS_PATH', BDTUSK_PATH . 'assets/');
 define('BDTUSK_MODULES_URL', BDTUSK_URL . 'modules/');
 define('BDTUSK_ADM_PATH', BDTUSK_PATH . 'admin/');
 define('BDTUSK_ADM_ASSETS_URL', BDTUSK_URL . 'admin/assets/');
+define('BDTUSK_BUILD_URL', BDTUSK_URL . 'build/');
 
 define('BDTUSK_TITLE', 'Ultimate Store Kit');
 

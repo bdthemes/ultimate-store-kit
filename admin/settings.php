@@ -32,6 +32,7 @@ class UltimateStoreKit_Settings {
      */
     private function __construct() {
         add_action('admin_menu', [$this, 'register_admin_menu'], 20);
+        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
     }
 
     /**
@@ -74,6 +75,58 @@ class UltimateStoreKit_Settings {
 ?>
         <div class="ultimate-store-kit-admin-root"></div>
 <?php
+    }
+
+    public function admin_enqueue_scripts() {
+        $screen = get_current_screen();
+
+
+        if ('toplevel_page_ultimate-store-kit' !== $screen->id) {
+            return;
+        }
+
+        $asset_data = $this->get_asset_file('build/admin');
+
+        wp_enqueue_script(
+            'ultimate-store-kit-admin',
+            BDTUSK_BUILD_URL . 'admin.js',
+            $asset_data['dependencies'],
+            $asset_data['version'],
+            true
+        );
+
+        wp_localize_script(
+            'ultimate-store-kit-admin',
+            'ultimateStoreKitAdminData',
+            [
+                'settings' => array(),
+                'version' => BDTUSK_VER,
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('ultimate_store_kit_admin_nonce'),
+            ]
+        );
+
+        wp_enqueue_style(
+            'ultimate-store-kit-admin',
+            BDTUSK_BUILD_URL . 'style-admin.css',
+            [],
+            $asset_data['version']
+        );
+
+        wp_enqueue_style('wp-components');
+    }
+
+    public function get_asset_file($filepath) {
+        $asset_path = BDTUSK_PATH . $filepath . '.asset.php';
+
+        if (file_exists($asset_path)) {
+            return include $asset_path;
+        }
+
+        return [
+            'dependencies' => [],
+            'version'      => BDTUSK_VER,
+        ];
     }
 }
 
