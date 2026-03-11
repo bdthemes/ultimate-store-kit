@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 const adminData = window.ultimateStoreKitAdminData || {};
 const getPageFromHash = () => {
   const hash = window.location.hash.replace('#', '');
-  const validPages = ['welcome', 'wc-widgets', 'edd-widgets', 'other-widgets', 'other-settings', 'get-pro', 'license', 'about'];
+  const validPages = ['welcome', 'widgets', 'other-settings', 'get-pro', 'license', 'about'];
   return validPages.includes(hash) ? hash : 'welcome';
 };
 const App = () => {
@@ -107,36 +107,14 @@ const App = () => {
           settings: settings,
           isPro: adminData.isPro
         });
-      case 'wc-widgets':
+      case 'widgets':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_WidgetsPage__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce Widgets', 'ultimate-store-kit'),
-          widgets: widgets.ultimate_store_kit_active_modules || [],
-          section: "ultimate_store_kit_active_modules",
-          settings: settings.ultimate_store_kit_active_modules || {},
+          allWidgets: widgets,
+          allSettings: settings,
           onSave: saveSettings,
           saving: saving,
           isPro: adminData.isPro
-        }, "wc");
-      case 'edd-widgets':
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_WidgetsPage__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD Widgets', 'ultimate-store-kit'),
-          widgets: widgets.ultimate_store_kit_edd_modules || [],
-          section: "ultimate_store_kit_edd_modules",
-          settings: settings.ultimate_store_kit_edd_modules || {},
-          onSave: saveSettings,
-          saving: saving,
-          isPro: adminData.isPro
-        }, "edd");
-      case 'other-widgets':
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_WidgetsPage__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other Widgets', 'ultimate-store-kit'),
-          widgets: widgets.ultimate_store_kit_general_modules || [],
-          section: "ultimate_store_kit_general_modules",
-          settings: settings.ultimate_store_kit_general_modules || {},
-          onSave: saveSettings,
-          saving: saving,
-          isPro: adminData.isPro
-        }, "other");
+        });
       case 'other-settings':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_OtherSettings__WEBPACK_IMPORTED_MODULE_6__["default"], {
           widgets: widgets.ultimate_store_kit_other_settings || [],
@@ -291,18 +269,10 @@ const navItems = [{
     icon: 'dashicons-admin-home'
   }]
 }, {
-  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('WIDGETS', 'ultimate-store-kit'),
+  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Widgets', 'ultimate-store-kit'),
   items: [{
-    id: 'wc-widgets',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('WC Widgets', 'ultimate-store-kit'),
-    icon: 'dashicons-cart'
-  }, {
-    id: 'edd-widgets',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('EDD Widgets', 'ultimate-store-kit'),
-    icon: 'dashicons-download'
-  }, {
-    id: 'other-widgets',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Other Widgets', 'ultimate-store-kit'),
+    id: 'widgets',
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Widgets', 'ultimate-store-kit'),
     icon: 'dashicons-screenoptions'
   }]
 }, {
@@ -1301,24 +1271,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const WidgetsPage = ({
-  title,
-  widgets,
-  section,
-  settings,
+  allWidgets,
+  allSettings,
   onSave,
   saving,
   isPro
 }) => {
+  const [widgetType, setWidgetType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('wc');
+  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
+  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
+  const widgetTypeConfig = {
+    wc: {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce Widgets', 'ultimate-store-kit'),
+      key: 'ultimate_store_kit_active_modules'
+    },
+    edd: {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD Widgets', 'ultimate-store-kit'),
+      key: 'ultimate_store_kit_edd_modules'
+    },
+    other: {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other Widgets', 'ultimate-store-kit'),
+      key: 'ultimate_store_kit_general_modules'
+    }
+  };
+  const currentConfig = widgetTypeConfig[widgetType];
+  const widgets = allWidgets[currentConfig.key] || [];
+  const settings = allSettings[currentConfig.key] || {};
   const [localSettings, setLocalSettings] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(() => {
     const initial = {};
-    widgets.forEach(w => {
-      if (w.type !== 'checkbox') return;
-      initial[w.name] = settings[w.name] !== undefined ? settings[w.name] : w.default || 'off';
+    Object.keys(allSettings).forEach(sectionKey => {
+      const sectionSettings = allSettings[sectionKey] || {};
+      const sectionWidgets = allWidgets[sectionKey] || [];
+      sectionWidgets.forEach(w => {
+        if (w.type !== 'checkbox') return;
+        initial[w.name] = sectionSettings[w.name] !== undefined ? sectionSettings[w.name] : w.default || 'off';
+      });
     });
     return initial;
   });
-  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
   const contentTypes = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     const types = new Set();
     widgets.forEach(w => {
@@ -1338,10 +1329,10 @@ const WidgetsPage = ({
       if (search && !w.label.toLowerCase().includes(search.toLowerCase())) return false;
       if (filter === 'free' && w.widget_type !== 'free') return false;
       if (filter === 'pro' && w.widget_type !== 'pro') return false;
-      if (filter !== 'all' && filter !== 'free' && filter !== 'pro' && (!w.content_type || !w.content_type.includes(filter))) return false;
+      if (contentTypeFilter !== 'all' && (!w.content_type || !w.content_type.includes(contentTypeFilter))) return false;
       return true;
     });
-  }, [widgets, search, filter]);
+  }, [widgets, search, filter, contentTypeFilter]);
   const handleToggle = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(name => {
     setLocalSettings(prev => ({
       ...prev,
@@ -1373,7 +1364,13 @@ const WidgetsPage = ({
     });
   }, [filteredWidgets, isPro]);
   const handleSave = () => {
-    onSave(section, localSettings);
+    const currentSettings = {};
+    widgets.forEach(w => {
+      if (w.type === 'checkbox' && localSettings[w.name] !== undefined) {
+        currentSettings[w.name] = localSettings[w.name];
+      }
+    });
+    onSave(currentConfig.key, currentSettings);
   };
   const activeCount = Object.values(localSettings).filter(v => v === 'on').length;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -1382,7 +1379,7 @@ const WidgetsPage = ({
       className: "usk-widgets-page__header",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
         className: "usk-widgets-page__title",
-        children: title
+        children: currentConfig.title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "usk-widgets-page__meta",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
@@ -1403,24 +1400,62 @@ const WidgetsPage = ({
           onChange: e => setSearch(e.target.value)
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "usk-widgets-page__filters",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: `usk-filter-btn ${filter === 'all' ? 'usk-filter-btn--active' : ''}`,
-          onClick: () => setFilter('all'),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: `usk-filter-btn ${filter === 'free' ? 'usk-filter-btn--active' : ''}`,
-          onClick: () => setFilter('free'),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: `usk-filter-btn ${filter === 'pro' ? 'usk-filter-btn--active' : ''}`,
-          onClick: () => setFilter('pro'),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
-        }), contentTypes.map(type => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: `usk-filter-btn ${filter === type ? 'usk-filter-btn--active' : ''}`,
-          onClick: () => setFilter(type),
-          children: type.charAt(0).toUpperCase() + type.slice(1)
-        }, type))]
+        className: "usk-widgets-page__filter-group",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          className: "usk-select-label",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widget Type:', 'ultimate-store-kit')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          className: "usk-select",
+          value: widgetType,
+          onChange: e => setWidgetType(e.target.value),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "wc",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "edd",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "other",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other', 'ultimate-store-kit')
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "usk-widgets-page__filter-group",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          className: "usk-select-label",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status:', 'ultimate-store-kit')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          className: "usk-select",
+          value: filter,
+          onChange: e => setFilter(e.target.value),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "all",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "free",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "pro",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
+          })]
+        })]
+      }), contentTypes.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "usk-widgets-page__filter-group",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          className: "usk-select-label",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Template:', 'ultimate-store-kit')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          className: "usk-select",
+          value: contentTypeFilter,
+          onChange: e => setContentTypeFilter(e.target.value),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "all",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All Templates', 'ultimate-store-kit')
+          }), contentTypes.map(type => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: type,
+            children: type.charAt(0).toUpperCase() + type.slice(1)
+          }, type))]
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "usk-widgets-page__bulk",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {

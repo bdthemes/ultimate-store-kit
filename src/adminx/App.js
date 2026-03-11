@@ -15,9 +15,7 @@ const getPageFromHash = () => {
 	const hash = window.location.hash.replace('#', '');
 	const validPages = [
 		'welcome',
-		'wc-widgets',
-		'edd-widgets',
-		'other-widgets',
+		'widgets',
 		'other-settings',
 		'get-pro',
 		'license',
@@ -117,55 +115,11 @@ const App = () => {
 						isPro={adminData.isPro}
 					/>
 				);
-			case 'wc-widgets':
+			case 'widgets':
 				return (
 					<WidgetsPage
-						key="wc"
-						title={__(
-							'WooCommerce Widgets',
-							'ultimate-store-kit'
-						)}
-						widgets={
-							widgets.ultimate_store_kit_active_modules || []
-						}
-						section="ultimate_store_kit_active_modules"
-						settings={
-							settings.ultimate_store_kit_active_modules || {}
-						}
-						onSave={saveSettings}
-						saving={saving}
-						isPro={adminData.isPro}
-					/>
-				);
-			case 'edd-widgets':
-				return (
-					<WidgetsPage
-						key="edd"
-						title={__('EDD Widgets', 'ultimate-store-kit')}
-						widgets={
-							widgets.ultimate_store_kit_edd_modules || []
-						}
-						section="ultimate_store_kit_edd_modules"
-						settings={
-							settings.ultimate_store_kit_edd_modules || {}
-						}
-						onSave={saveSettings}
-						saving={saving}
-						isPro={adminData.isPro}
-					/>
-				);
-			case 'other-widgets':
-				return (
-					<WidgetsPage
-						key="other"
-						title={__('Other Widgets', 'ultimate-store-kit')}
-						widgets={
-							widgets.ultimate_store_kit_general_modules || []
-						}
-						section="ultimate_store_kit_general_modules"
-						settings={
-							settings.ultimate_store_kit_general_modules || {}
-						}
+						allWidgets={widgets}
+						allSettings={settings}
 						onSave={saveSettings}
 						saving={saving}
 						isPro={adminData.isPro}

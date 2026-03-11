@@ -12,21 +12,11 @@ const navItems = [
 		],
 	},
 	{
-		group: __('WIDGETS', 'ultimate-store-kit'),
+		group: __('Widgets', 'ultimate-store-kit'),
 		items: [
 			{
-				id: 'wc-widgets',
-				label: __('WC Widgets', 'ultimate-store-kit'),
-				icon: 'dashicons-cart',
-			},
-			{
-				id: 'edd-widgets',
-				label: __('EDD Widgets', 'ultimate-store-kit'),
-				icon: 'dashicons-download',
-			},
-			{
-				id: 'other-widgets',
-				label: __('Other Widgets', 'ultimate-store-kit'),
+				id: 'widgets',
+				label: __('Widgets', 'ultimate-store-kit'),
 				icon: 'dashicons-screenoptions',
 			},
 		],

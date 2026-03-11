@@ -2,27 +2,51 @@ import { useState, useMemo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const WidgetsPage = ({
-	title,
-	widgets,
-	section,
-	settings,
+	allWidgets,
+	allSettings,
 	onSave,
 	saving,
 	isPro,
 }) => {
+	const [widgetType, setWidgetType] = useState('wc');
+	const [search, setSearch] = useState('');
+	const [filter, setFilter] = useState('all');
+	const [contentTypeFilter, setContentTypeFilter] = useState('all');
+
+	const widgetTypeConfig = {
+		wc: {
+			title: __('WooCommerce Widgets', 'ultimate-store-kit'),
+			key: 'ultimate_store_kit_active_modules',
+		},
+		edd: {
+			title: __('EDD Widgets', 'ultimate-store-kit'),
+			key: 'ultimate_store_kit_edd_modules',
+		},
+		other: {
+			title: __('Other Widgets', 'ultimate-store-kit'),
+			key: 'ultimate_store_kit_general_modules',
+		},
+	};
+
+	const currentConfig = widgetTypeConfig[widgetType];
+	const widgets = allWidgets[currentConfig.key] || [];
+	const settings = allSettings[currentConfig.key] || {};
+
 	const [localSettings, setLocalSettings] = useState(() => {
 		const initial = {};
-		widgets.forEach((w) => {
-			if (w.type !== 'checkbox') return;
-			initial[w.name] =
-				settings[w.name] !== undefined
-					? settings[w.name]
-					: w.default || 'off';
+		Object.keys(allSettings).forEach((sectionKey) => {
+			const sectionSettings = allSettings[sectionKey] || {};
+			const sectionWidgets = allWidgets[sectionKey] || [];
+			sectionWidgets.forEach((w) => {
+				if (w.type !== 'checkbox') return;
+				initial[w.name] =
+					sectionSettings[w.name] !== undefined
+						? sectionSettings[w.name]
+						: w.default || 'off';
+			});
 		});
 		return initial;
 	});
-	const [search, setSearch] = useState('');
-	const [filter, setFilter] = useState('all');
 
 	const contentTypes = useMemo(() => {
 		const types = new Set();
@@ -52,17 +76,16 @@ const WidgetsPage = ({
 
 			if (filter === 'free' && w.widget_type !== 'free') return false;
 			if (filter === 'pro' && w.widget_type !== 'pro') return false;
+
 			if (
-				filter !== 'all' &&
-				filter !== 'free' &&
-				filter !== 'pro' &&
-				(!w.content_type || !w.content_type.includes(filter))
+				contentTypeFilter !== 'all' &&
+				(!w.content_type || !w.content_type.includes(contentTypeFilter))
 			)
 				return false;
 
 			return true;
 		});
-	}, [widgets, search, filter]);
+	}, [widgets, search, filter, contentTypeFilter]);
 
 	const handleToggle = useCallback(
 		(name) => {
@@ -97,7 +120,13 @@ const WidgetsPage = ({
 	}, [filteredWidgets, isPro]);
 
 	const handleSave = () => {
-		onSave(section, localSettings);
+		const currentSettings = {};
+		widgets.forEach((w) => {
+			if (w.type === 'checkbox' && localSettings[w.name] !== undefined) {
+				currentSettings[w.name] = localSettings[w.name];
+			}
+		});
+		onSave(currentConfig.key, currentSettings);
 	};
 
 	const activeCount = Object.values(localSettings).filter(
@@ -107,7 +136,7 @@ const WidgetsPage = ({
 	return (
 		<div className="usk-widgets-page">
 			<div className="usk-widgets-page__header">
-				<h2 className="usk-widgets-page__title">{title}</h2>
+				<h2 className="usk-widgets-page__title">{currentConfig.title}</h2>
 				<div className="usk-widgets-page__meta">
 					<span className="usk-widgets-page__count">
 						{activeCount} / {widgets.filter((w) => w.type === 'checkbox').length}{' '}
@@ -121,44 +150,61 @@ const WidgetsPage = ({
 					<span className="dashicons dashicons-search"></span>
 					<input
 						type="text"
-						placeholder={__(
-							'Search widgets...',
-							'ultimate-store-kit'
-						)}
+						placeholder={__('Search widgets...', 'ultimate-store-kit')}
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</div>
 
-				<div className="usk-widgets-page__filters">
-					<button
-						className={`usk-filter-btn ${filter === 'all' ? 'usk-filter-btn--active' : ''}`}
-						onClick={() => setFilter('all')}
+				<div className="usk-widgets-page__filter-group">
+					<label className="usk-select-label">
+						{__('Widget Type:', 'ultimate-store-kit')}
+					</label>
+					<select
+						className="usk-select"
+						value={widgetType}
+						onChange={(e) => setWidgetType(e.target.value)}
 					>
-						{__('All', 'ultimate-store-kit')}
-					</button>
-					<button
-						className={`usk-filter-btn ${filter === 'free' ? 'usk-filter-btn--active' : ''}`}
-						onClick={() => setFilter('free')}
-					>
-						{__('Free', 'ultimate-store-kit')}
-					</button>
-					<button
-						className={`usk-filter-btn ${filter === 'pro' ? 'usk-filter-btn--active' : ''}`}
-						onClick={() => setFilter('pro')}
-					>
-						{__('Pro', 'ultimate-store-kit')}
-					</button>
-					{contentTypes.map((type) => (
-						<button
-							key={type}
-							className={`usk-filter-btn ${filter === type ? 'usk-filter-btn--active' : ''}`}
-							onClick={() => setFilter(type)}
-						>
-							{type.charAt(0).toUpperCase() + type.slice(1)}
-						</button>
-					))}
+						<option value="wc">{__('WooCommerce', 'ultimate-store-kit')}</option>
+						<option value="edd">{__('EDD', 'ultimate-store-kit')}</option>
+						<option value="other">{__('Other', 'ultimate-store-kit')}</option>
+					</select>
 				</div>
+
+				<div className="usk-widgets-page__filter-group">
+					<label className="usk-select-label">
+						{__('Status:', 'ultimate-store-kit')}
+					</label>
+					<select
+						className="usk-select"
+						value={filter}
+						onChange={(e) => setFilter(e.target.value)}
+					>
+						<option value="all">{__('All', 'ultimate-store-kit')}</option>
+						<option value="free">{__('Free', 'ultimate-store-kit')}</option>
+						<option value="pro">{__('Pro', 'ultimate-store-kit')}</option>
+					</select>
+				</div>
+
+				{contentTypes.length > 0 && (
+					<div className="usk-widgets-page__filter-group">
+						<label className="usk-select-label">
+							{__('Template:', 'ultimate-store-kit')}
+						</label>
+						<select
+							className="usk-select"
+							value={contentTypeFilter}
+							onChange={(e) => setContentTypeFilter(e.target.value)}
+						>
+							<option value="all">{__('All Templates', 'ultimate-store-kit')}</option>
+							{contentTypes.map((type) => (
+								<option key={type} value={type}>
+									{type.charAt(0).toUpperCase() + type.slice(1)}
+								</option>
+							))}
+						</select>
+					</div>
+				)}
 
 				<div className="usk-widgets-page__bulk">
 					<button
