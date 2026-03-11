@@ -12,6 +12,7 @@
     function resetModalForm(){
         $("#ultimate-builder-kit-builder-modal form")[0].reset();
         $("#ultimate-builder-kit-builder-modal form .template_id").val('');
+        setTemplateStatusSwitcher(1);
     }
 
     function setSubmitBtn(string){
@@ -24,6 +25,15 @@
 
     function removeError($this) {
         $('.input-error').removeClass('input-error');
+    }
+
+    function setTemplateStatusSwitcher(value) {
+        var isActive = value == 1;
+        $('#template_status').val(isActive ? '1' : '0');
+        $('#template_status_switcher')
+            .toggleClass('usk-active', isActive)
+            .attr('aria-checked', isActive);
+        $('.usk-switcher-status-text').text(isActive ? 'Active' : 'Inactive');
     }
 
     $(document).on('click', '#ultimate-builder-kit-builder-modal .usk-modal-close-button', function (e) {
@@ -86,7 +96,7 @@
                     $("#ultimate-builder-kit-builder-modal form .template_id").val(response.data.id).change();
                     $("#ultimate-builder-kit-builder-modal form #template_name").val(response.data.name).change();
                     $("#ultimate-builder-kit-builder-modal form #template_type").val(response.data.type).change();
-                    $("#ultimate-builder-kit-builder-modal form #template_status").val(response.data.status).change();
+                    setTemplateStatusSwitcher(response.data.status);
                 }
                 showModal();
             },
@@ -98,6 +108,19 @@
             }
         });
 
+    });
+
+    $(document).ready(function () {
+        $('#template_status_switcher').on('click', function () {
+            var $input = $('#template_status');
+            var isActive = $input.val() == '1';
+            setTemplateStatusSwitcher(isActive ? 0 : 1);
+        }).on('keydown', function (e) {
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                $(this).click();
+            }
+        });
     });
 
 }(jQuery);
