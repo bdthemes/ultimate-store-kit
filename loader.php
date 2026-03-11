@@ -12,8 +12,7 @@ if (!defined('ABSPATH'))
 /**
  * Main class for element pack
  */
-class Ultimate_Store_Kit_Loader
-{
+class Ultimate_Store_Kit_Loader {
 	/**
 	 * @var Ultimate_Store_Kit_Loader
 	 */
@@ -41,16 +40,14 @@ class Ultimate_Store_Kit_Loader
 	 * @deprecated
 	 *
 	 */
-	public function get_version()
-	{
+	public function get_version() {
 		return BDTUSK_VER;
 	}
 
 	/**
 	 * return active theme
 	 */
-	public function get_theme()
-	{
+	public function get_theme() {
 		return wp_get_theme();
 	}
 
@@ -63,8 +60,7 @@ class Ultimate_Store_Kit_Loader
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		// Cloning instances of the class is forbidden
 		_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'ultimate-store-kit'), '1.6.0');
 	}
@@ -75,8 +71,7 @@ class Ultimate_Store_Kit_Loader
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public function __wakeup()
-	{
+	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
 		_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'ultimate-store-kit'), '1.6.0');
 	}
@@ -85,16 +80,14 @@ class Ultimate_Store_Kit_Loader
 	 * @return Plugin
 	 */
 
-	public static function elementor()
-	{
+	public static function elementor() {
 		return Plugin::$instance;
 	}
 
 	/**
 	 * @return Ultimate_Store_Kit_Loader
 	 */
-	public static function instance()
-	{
+	public static function instance() {
 		if (is_null(self::$_instance)) {
 			self::$_instance = new self();
 		}
@@ -108,8 +101,7 @@ class Ultimate_Store_Kit_Loader
 	 * we loaded module manager + admin php from here
 	 * @return [type] [description]
 	 */
-	private function _includes()
-	{
+	private function _includes() {
 
 		require_once BDTUSK_ADMIN_PATH . 'module-settings.php';
 		// ========================
@@ -155,8 +147,7 @@ class Ultimate_Store_Kit_Loader
 	 * @param  [type] string
 	 * @return [type]        [description]
 	 */
-	public function autoload($class)
-	{
+	public function autoload($class) {
 		if (0 !== strpos($class, __NAMESPACE__)) {
 			return;
 		}
@@ -195,8 +186,7 @@ class Ultimate_Store_Kit_Loader
 	 * Register all script that need for any specific widget on call basis.
 	 * @return [type] [description]
 	 */
-	public function register_site_scripts()
-	{
+	public function register_site_scripts() {
 		wp_register_script('datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.min.js', [], '1.0.0', true);
 		wp_register_script('micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.min.js', [], '1.0.0', true);
 		wp_register_script('usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/usk-accordion.min.js', [], '1.0.0', true);
@@ -207,8 +197,7 @@ class Ultimate_Store_Kit_Loader
 		}
 	}
 
-	public function register_site_styles()
-	{
+	public function register_site_styles() {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 		wp_register_style('usk-all-styles', BDTUSK_URL . 'assets/css/usk-all-styles' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_register_style('usk-font', BDTUSK_URL . 'assets/css/usk-font' . $direction_suffix . '.css', [], BDTUSK_VER);
@@ -222,8 +211,7 @@ class Ultimate_Store_Kit_Loader
 	 * Loading site related style from here.
 	 * @return [type] [description]
 	 */
-	public function enqueue_site_styles()
-	{
+	public function enqueue_site_styles() {
 
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
@@ -241,8 +229,7 @@ class Ultimate_Store_Kit_Loader
 	 * Loading site related script that needs all time such as uikit.
 	 * @return [type] [description]
 	 */
-	public function enqueue_site_scripts()
-	{
+	public function enqueue_site_scripts() {
 
 		wp_register_script('usk-core', BDTUSK_ASSETS_URL . 'js/usk-core.min.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
 		wp_register_script('usk-site', BDTUSK_ASSETS_URL . 'js/usk-site.min.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
@@ -259,8 +246,7 @@ class Ultimate_Store_Kit_Loader
 		));
 	}
 
-	public function enqueue_editor_scripts()
-	{
+	public function enqueue_editor_scripts() {
 
 		wp_register_script('usk-editor', BDTUSK_ASSETS_URL . 'js/usk-editor.min.js', ['backbone-marionette', 'elementor-common-modules', 'elementor-editor-modules',], BDTUSK_VER, true);
 
@@ -285,14 +271,12 @@ class Ultimate_Store_Kit_Loader
 		wp_localize_script('usk-editor', 'UltimateStoreKitConfigEditor', $localize_data);
 	}
 
-	public function enqueue_admin_scripts()
-	{
+	public function enqueue_admin_scripts() {
 		wp_register_script('usk-admin', BDTUSK_ASSETS_URL . 'js/usk-admin.min.js', ['jquery'], BDTUSK_VER, true);
 		wp_enqueue_script('usk-admin');
 	}
 
-	public function enqueue_editor_styles()
-	{
+	public function enqueue_editor_styles() {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
 		wp_register_style('usk-editor', BDTUSK_ASSETS_URL . 'css/usk-editor' . $direction_suffix . '.css', [], BDTUSK_VER);
@@ -304,8 +288,7 @@ class Ultimate_Store_Kit_Loader
 
 
 
-	public function ultimate_store_kit_init()
-	{
+	public function ultimate_store_kit_init() {
 		$this->_modules_manager = new Manager();
 		$this->ultimate_store_kit_modal_settings_init();
 		do_action('bdthemes_ultimate_store_kit/init');
@@ -315,8 +298,7 @@ class Ultimate_Store_Kit_Loader
 	 * initialize the category
 	 * @return [type] [description]
 	 */
-	public function ultimate_store_kit_category_register()
-	{
+	public function ultimate_store_kit_category_register() {
 
 		$elementor = Plugin::$instance;
 
@@ -360,8 +342,7 @@ class Ultimate_Store_Kit_Loader
 	 * Setup all hooks here
 	 * @return [type] [description]
 	 */
-	private function setup_hooks()
-	{
+	private function setup_hooks() {
 		add_filter('body_class', [$this, 'add_body_classes']);
 		add_action('elementor/elements/categories_registered', [$this, 'ultimate_store_kit_category_register'], 1, 1);
 		add_action('elementor/init', [$this, 'ultimate_store_kit_init']);
@@ -377,24 +358,21 @@ class Ultimate_Store_Kit_Loader
 	}
 
 
-	public function add_body_classes($classes)
-	{
+	public function add_body_classes($classes) {
 		$single_page_checkout_classes = ['ultimate-store-kit'];
 		return is_array($classes)
 			? array_merge($classes, $single_page_checkout_classes)
 			: $classes . ' ' . implode(' ', $single_page_checkout_classes);
 	}
 
-	public function ultimate_store_kit_modal_settings_init()
-	{
+	public function ultimate_store_kit_modal_settings_init() {
 		require 'includes/modal/modal-controls.php';
 		add_action('elementor/kit/register_tabs', function (Kit $kit) {
 			$kit->register_tab('ultimate-store-kit-modal', Includes\Settings\Settings_Modal::class);
 		}, 1, 40);
 	}
 
-	public function init()
-	{
+	public function init() {
 		if (!defined('BDTUSK_CH') && is_admin()) {
 
 			require(BDTUSK_ADM_PATH . 'admin.php');
@@ -402,6 +380,7 @@ class Ultimate_Store_Kit_Loader
 
 			require(BDTUSK_ADM_PATH . 'class-settings-api.php');
 			require(BDTUSK_ADM_PATH . 'admin-settings.php');
+			require(BDTUSK_ADM_PATH . 'settings.php');
 
 			if (current_user_can('manage_options')) {
 				require_once BDTUSK_ADMIN_PATH . 'admin-feeds.php';
@@ -416,8 +395,7 @@ class Ultimate_Store_Kit_Loader
 	/**
 	 * Ultimate_Store_Kit_Loader constructor.
 	 */
-	private function __construct()
-	{
+	private function __construct() {
 		// Register class automatically
 		spl_autoload_register([$this, 'autoload']);
 		// Include some backend files
@@ -436,7 +414,6 @@ if (!defined('BDTUSK_TESTS')) {
 }
 
 // handy fundtion for push data
-function ultimate_store_kit_config()
-{
+function ultimate_store_kit_config() {
 	return Ultimate_Store_Kit_Loader::instance();
 }
