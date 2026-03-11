@@ -1,3 +1,1142 @@
-body{
-    background: pink;
+// Ultimate Store Kit Admin Dashboard Styles
+$dark-bg: #1a2332;
+$dark-border: #2a3a4e;
+$green: #10b981;
+$green-dark: #059669;
+$gray-100: #f1f5f9;
+$gray-200: #e2e8f0;
+$gray-300: #cbd5e1;
+$gray-400: #94a3b8;
+$gray-500: #64748b;
+$gray-700: #334155;
+$gray-800: #1e293b;
+$white: #ffffff;
+$red: #ef4444;
+$yellow: #f59e0b;
+$blue: #3b82f6;
+
+// Reset WP admin styles for our root
+.ultimate-store-kit-admin-root {
+	margin-left: -20px;
+	margin-top: -44px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+// ==================== APP LAYOUT ====================
+.usk-admin-app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: $gray-100;
+}
+
+.usk-admin-body {
+	display: flex;
+	flex: 1;
+	min-height: calc(100vh - 64px);
+}
+
+.usk-admin-content {
+	flex: 1;
+	padding: 24px 32px;
+	overflow-y: auto;
+	max-height: calc(100vh - 64px);
+}
+
+// ==================== HEADER ====================
+.usk-admin-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: $white;
+	padding: 0 24px;
+	height: 64px;
+	border-bottom: 1px solid $gray-200;
+	position: sticky;
+	top: 32px;
+	z-index: 100;
+
+	&__left {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	&__logo {
+		width: 40px;
+		height: 40px;
+		background: $dark-bg;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__info {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	&__title {
+		font-size: 18px;
+		font-weight: 700;
+		color: $gray-800;
+		margin: 0;
+		padding: 0;
+		line-height: 1;
+	}
+
+	&__version {
+		background: $green;
+		color: $white;
+		font-size: 11px;
+		font-weight: 600;
+		padding: 2px 8px;
+		border-radius: 10px;
+		line-height: 1.4;
+	}
+
+	&__right {
+		display: flex;
+		gap: 8px;
+	}
+
+	&__btn {
+		padding: 6px 16px;
+		border-radius: 6px;
+		font-size: 13px;
+		font-weight: 600;
+		text-decoration: none;
+		cursor: pointer;
+		transition: all 0.2s;
+		background: $green;
+		color: $white;
+		border: 1px solid $green;
+
+		&:hover {
+			background: $green-dark;
+			color: $white;
+		}
+
+		&--outline {
+			background: transparent;
+			color: $gray-700;
+			border-color: $gray-300;
+
+			&:hover {
+				background: $gray-100;
+				color: $gray-800;
+			}
+		}
+	}
+}
+
+// ==================== SIDEBAR ====================
+.usk-admin-sidebar {
+	width: 240px;
+	min-width: 240px;
+	background: $dark-bg;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow-y: auto;
+	max-height: calc(100vh - 64px);
+
+	&__nav {
+		padding: 16px 0;
+	}
+
+	&__group {
+		margin-bottom: 8px;
+	}
+
+	&__group-label {
+		padding: 8px 20px 4px;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 1.2px;
+		color: $gray-400;
+		text-transform: uppercase;
+	}
+
+	&__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li { margin: 0; }
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		width: calc(100% - 16px);
+		margin: 2px 8px;
+		padding: 8px 12px;
+		border: none;
+		border-radius: 6px;
+		background: transparent;
+		color: $gray-400;
+		font-size: 13px;
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.15s;
+		text-align: left;
+
+		.dashicons {
+			font-size: 16px;
+			width: 16px;
+			height: 16px;
+		}
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.06);
+			color: $white;
+		}
+
+		&--active {
+			background: $green;
+			color: $white;
+
+			&:hover {
+				background: $green-dark;
+				color: $white;
+			}
+		}
+	}
+
+	&__promo {
+		padding: 16px;
+		margin: 8px;
+		background: darken($dark-bg, 3%);
+		border-radius: 10px;
+		margin-bottom: 16px;
+	}
+
+	&__promo-badge {
+		background: $yellow;
+		color: #000;
+		font-size: 11px;
+		font-weight: 700;
+		padding: 4px 12px;
+		border-radius: 16px;
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+
+	&__promo-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li {
+			color: $green;
+			font-size: 12px;
+			padding: 2px 0;
+			&::before {
+				content: "\2713 ";
+				margin-right: 4px;
+			}
+		}
+	}
+}
+
+// ==================== NOTIFICATION ====================
+.usk-notification {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 16px;
+	border-radius: 8px;
+	margin-bottom: 16px;
+	font-size: 13px;
+	font-weight: 500;
+	animation: uskSlideIn 0.3s ease;
+
+	&--success {
+		background: #d1fae5;
+		color: #065f46;
+		border: 1px solid #a7f3d0;
+	}
+
+	&--error {
+		background: #fee2e2;
+		color: #991b1b;
+		border: 1px solid #fecaca;
+	}
+
+	&__close {
+		background: none;
+		border: none;
+		font-size: 18px;
+		cursor: pointer;
+		color: inherit;
+		padding: 0 4px;
+		line-height: 1;
+	}
+}
+
+@keyframes uskSlideIn {
+	from { opacity: 0; transform: translateY(-8px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+// ==================== BUTTONS ====================
+.usk-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 18px;
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 0.2s;
+	border: 1px solid transparent;
+	line-height: 1.4;
+
+	&--primary {
+		background: $green;
+		color: $white;
+		border-color: $green;
+		&:hover { background: $green-dark; color: $white; }
+	}
+
+	&--secondary {
+		background: $white;
+		color: $gray-700;
+		border-color: $gray-300;
+		&:hover { background: $gray-100; color: $gray-800; }
+	}
+
+	&--lg {
+		padding: 10px 24px;
+		font-size: 14px;
+	}
+
+	&--small {
+		padding: 4px 12px;
+		font-size: 12px;
+	}
+
+	&--outline-green {
+		background: transparent;
+		color: $green;
+		border-color: $green;
+		&:hover { background: $green; color: $white; }
+	}
+
+	&--outline-red {
+		background: transparent;
+		color: $red;
+		border-color: $red;
+		&:hover { background: $red; color: $white; }
+	}
+
+	&--ep { background: #6366f1; color: $white; border-color: #6366f1; &:hover { opacity: 0.9; color: $white; } }
+	&--ps { background: #ec4899; color: $white; border-color: #ec4899; &:hover { opacity: 0.9; color: $white; } }
+	&--upk { background: #f97316; color: $white; border-color: #f97316; &:hover { opacity: 0.9; color: $white; } }
+	&--pg { background: #8b5cf6; color: $white; border-color: #8b5cf6; &:hover { opacity: 0.9; color: $white; } }
+	&--zb { background: #14b8a6; color: $white; border-color: #14b8a6; &:hover { opacity: 0.9; color: $white; } }
+
+	&:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+}
+
+// ==================== TOGGLE SWITCH ====================
+.usk-toggle {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+
+	input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	&__slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $gray-300;
+		border-radius: 22px;
+		transition: 0.25s;
+
+		&::before {
+			content: "";
+			position: absolute;
+			height: 16px;
+			width: 16px;
+			left: 3px;
+			bottom: 3px;
+			background: $white;
+			border-radius: 50%;
+			transition: 0.25s;
+		}
+	}
+
+	input:checked + &__slider {
+		background: $green;
+	}
+
+	input:checked + &__slider::before {
+		transform: translateX(18px);
+	}
+
+	input:disabled + &__slider {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+// ==================== WIDGETS PAGE ====================
+.usk-widgets-page {
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 20px;
+	}
+
+	&__title {
+		font-size: 20px;
+		font-weight: 700;
+		color: $gray-800;
+		margin: 0;
+	}
+
+	&__count {
+		font-size: 13px;
+		color: $gray-500;
+		background: $white;
+		padding: 4px 12px;
+		border-radius: 16px;
+		border: 1px solid $gray-200;
+	}
+
+	&__toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 20px;
+		background: $white;
+		padding: 12px 16px;
+		border-radius: 10px;
+		border: 1px solid $gray-200;
+	}
+
+	&__search {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		background: $gray-100;
+		border: 1px solid $gray-200;
+		border-radius: 6px;
+		padding: 0 10px;
+		flex: 0 0 220px;
+
+		.dashicons {
+			color: $gray-400;
+			font-size: 16px;
+			width: 16px;
+			height: 16px;
+		}
+
+		input {
+			border: none;
+			background: transparent;
+			padding: 6px 0;
+			font-size: 13px;
+			outline: none;
+			width: 100%;
+			color: $gray-700;
+
+			&::placeholder { color: $gray-400; }
+		}
+	}
+
+	&__filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		flex: 1;
+	}
+
+	&__bulk {
+		display: flex;
+		gap: 6px;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 24px;
+		padding-top: 16px;
+	}
+}
+
+.usk-filter-btn {
+	padding: 4px 12px;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 500;
+	border: 1px solid $gray-200;
+	background: $white;
+	color: $gray-500;
+	cursor: pointer;
+	transition: all 0.15s;
+
+	&:hover {
+		border-color: $green;
+		color: $green;
+	}
+
+	&--active {
+		background: $green;
+		color: $white;
+		border-color: $green;
+
+		&:hover {
+			background: $green-dark;
+			color: $white;
+		}
+	}
+}
+
+// ==================== WIDGET CARD ====================
+.usk-widgets-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 12px;
+
+	&__empty {
+		grid-column: 1 / -1;
+		text-align: center;
+		padding: 40px;
+		color: $gray-400;
+		font-size: 14px;
+	}
+}
+
+.usk-widget-card {
+	background: $white;
+	border: 1px solid $gray-200;
+	border-radius: 10px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 12px;
+	transition: all 0.2s;
+
+	&:hover {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	}
+
+	&--active {
+		border-color: lighten($green, 20%);
+		background: lighten($green, 48%);
+	}
+
+	&--disabled {
+		opacity: 0.6;
+	}
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 8px;
+	}
+
+	&__name {
+		font-size: 13px;
+		font-weight: 600;
+		color: $gray-800;
+		line-height: 1.4;
+	}
+
+	&__badge {
+		background: linear-gradient(135deg, #f59e0b, #f97316);
+		color: $white;
+		font-size: 10px;
+		font-weight: 700;
+		padding: 2px 8px;
+		border-radius: 10px;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__links {
+		display: flex;
+		gap: 8px;
+
+		a {
+			color: $gray-400;
+			text-decoration: none;
+			transition: color 0.15s;
+
+			.dashicons {
+				font-size: 16px;
+				width: 16px;
+				height: 16px;
+			}
+
+			&:hover { color: $green; }
+		}
+	}
+}
+
+// ==================== WELCOME PAGE ====================
+.usk-welcome {
+	&__stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 16px;
+		margin-bottom: 24px;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+		gap: 16px;
+		margin-bottom: 16px;
+	}
+
+	&__card {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 20px;
+
+		p {
+			color: $gray-500;
+			font-size: 13px;
+			line-height: 1.6;
+			margin: 8px 0;
+		}
+	}
+
+	&__card-title {
+		font-size: 15px;
+		font-weight: 700;
+		color: $gray-800;
+		margin: 0 0 8px;
+	}
+
+	&__card-actions {
+		display: flex;
+		gap: 8px;
+		margin-top: 12px;
+		flex-wrap: wrap;
+
+		&--wrap {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__card-desc {
+		margin-bottom: 12px;
+	}
+}
+
+.usk-stat-card {
+	background: $white;
+	border: 1px solid $gray-200;
+	border-radius: 10px;
+	padding: 16px;
+
+	&__title {
+		font-size: 13px;
+		font-weight: 600;
+		color: $gray-500;
+		margin: 0 0 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	&__body {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	&__counts {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	&__count {
+		font-size: 13px;
+		color: $gray-700;
+		display: flex;
+		gap: 6px;
+	}
+
+	&__label {
+		color: $gray-400;
+	}
+
+	&__chart {
+		width: 60px;
+		height: 60px;
+		flex-shrink: 0;
+	}
+}
+
+.usk-donut {
+	width: 100%;
+	height: 100%;
+
+	&__text {
+		font-weight: 700;
+	}
+}
+
+.usk-system-info {
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 8px 0;
+		border-bottom: 1px solid $gray-100;
+		font-size: 13px;
+		color: $gray-700;
+
+		&:last-child { border-bottom: none; }
+	}
+
+	&__badge {
+		font-size: 11px;
+		font-weight: 600;
+		padding: 2px 10px;
+		border-radius: 10px;
+
+		&--ok {
+			background: #d1fae5;
+			color: #065f46;
+		}
+
+		&--warn {
+			background: #fef3c7;
+			color: #92400e;
+		}
+	}
+}
+
+// ==================== OTHER SETTINGS ====================
+.usk-other-settings {
+	&__header {
+		margin-bottom: 20px;
+	}
+
+	&__title {
+		font-size: 20px;
+		font-weight: 700;
+		color: $gray-800;
+		margin: 0;
+	}
+}
+
+.usk-settings-group {
+	background: $white;
+	border: 1px solid $gray-200;
+	border-radius: 10px;
+	margin-bottom: 16px;
+	overflow: hidden;
+
+	&__title {
+		font-size: 14px;
+		font-weight: 700;
+		color: $gray-800;
+		padding: 14px 20px;
+		margin: 0;
+		background: $gray-100;
+		border-bottom: 1px solid $gray-200;
+	}
+
+	&__body {
+		padding: 8px 20px;
+	}
+}
+
+.usk-settings-field {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid $gray-100;
+
+	&:last-child { border-bottom: none; }
+
+	&__label {
+		font-size: 13px;
+		font-weight: 500;
+		color: $gray-700;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	&__select,
+	&__input {
+		padding: 6px 12px;
+		border: 1px solid $gray-200;
+		border-radius: 6px;
+		font-size: 13px;
+		color: $gray-700;
+		background: $white;
+		min-width: 120px;
+
+		&:focus {
+			outline: none;
+			border-color: $green;
+			box-shadow: 0 0 0 2px rgba($green, 0.15);
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+}
+
+// ==================== GET PRO ====================
+.usk-getpro {
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 24px;
+		background: $white;
+		padding: 24px;
+		border-radius: 10px;
+		border: 1px solid $gray-200;
+	}
+
+	&__title {
+		font-size: 20px;
+		font-weight: 800;
+		color: $gray-800;
+		margin: 0 0 4px;
+	}
+
+	&__subtitle {
+		font-size: 13px;
+		color: $gray-500;
+		margin: 0;
+	}
+
+	&__card {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 40px;
+		text-align: center;
+
+		h2 {
+			color: $green;
+			margin: 0 0 8px;
+		}
+
+		p { color: $gray-500; margin: 0; }
+	}
+
+	&__table {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		overflow: hidden;
+		margin-bottom: 24px;
+	}
+
+	&__table-head {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		padding: 14px 20px;
+		background: $gray-800;
+		color: $white;
+		font-size: 13px;
+		font-weight: 700;
+		text-align: center;
+
+		span:first-child { text-align: left; }
+	}
+
+	&__table-row {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		padding: 12px 20px;
+		border-bottom: 1px solid $gray-100;
+		font-size: 13px;
+		text-align: center;
+		align-items: center;
+
+		&:last-child { border-bottom: none; }
+		&:nth-child(even) { background: $gray-100; }
+	}
+
+	&__feature-name {
+		text-align: left;
+		color: $gray-700;
+		font-weight: 500;
+	}
+
+	&__icon--yes {
+		color: $green;
+	}
+
+	&__icon--no {
+		color: $red;
+	}
+
+	&__highlights {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 24px;
+	}
+
+	&__highlights-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 12px;
+		margin-bottom: 20px;
+	}
+
+	&__highlight-item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 13px;
+		color: $gray-700;
+
+		.dashicons {
+			color: $red;
+			font-size: 14px;
+			width: 14px;
+			height: 14px;
+		}
+	}
+
+	&__cta {
+		text-align: center;
+		padding-top: 12px;
+		border-top: 1px solid $gray-200;
+	}
+}
+
+// ==================== LICENSE ====================
+.usk-license {
+	max-width: 600px;
+
+	&__card {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 32px;
+		margin-bottom: 16px;
+	}
+
+	&__title {
+		font-size: 20px;
+		font-weight: 700;
+		color: $gray-800;
+		margin: 0 0 20px;
+	}
+
+	&__status {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 12px;
+		color: $green;
+
+		.dashicons {
+			font-size: 20px;
+			width: 20px;
+			height: 20px;
+		}
+
+		&--inactive {
+			color: $yellow;
+		}
+	}
+
+	&__active p,
+	&__inactive p {
+		color: $gray-500;
+		font-size: 13px;
+		line-height: 1.6;
+		margin: 0 0 16px;
+	}
+
+	&__actions {
+		display: flex;
+		gap: 8px;
+	}
+
+	&__footer-info {
+		text-align: center;
+		padding: 16px;
+
+		p {
+			color: $gray-400;
+			font-size: 12px;
+			margin: 2px 0;
+
+			a { color: $green; text-decoration: none; }
+		}
+	}
+}
+
+// ==================== ABOUT ====================
+.usk-about {
+	max-width: 700px;
+
+	&__card {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 32px;
+		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	&__logo {
+		margin-bottom: 12px;
+	}
+
+	&__title {
+		font-size: 22px;
+		font-weight: 800;
+		color: $gray-800;
+		margin: 0 0 8px;
+	}
+
+	&__version {
+		display: inline-block;
+		background: $green;
+		color: $white;
+		font-size: 12px;
+		font-weight: 600;
+		padding: 2px 12px;
+		border-radius: 12px;
+		margin-bottom: 12px;
+	}
+
+	&__desc {
+		color: $gray-500;
+		font-size: 13px;
+		line-height: 1.7;
+		margin: 0;
+		max-width: 540px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 12px;
+		margin-bottom: 16px;
+	}
+
+	&__info-card {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 16px 20px;
+
+		h3 {
+			font-size: 12px;
+			font-weight: 600;
+			color: $gray-400;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			margin: 0 0 4px;
+		}
+
+		p {
+			margin: 0;
+			font-size: 14px;
+
+			a {
+				color: $green;
+				text-decoration: none;
+				font-weight: 600;
+				&:hover { text-decoration: underline; }
+			}
+		}
+	}
+
+	&__links {
+		background: $white;
+		border: 1px solid $gray-200;
+		border-radius: 10px;
+		padding: 20px;
+		margin-bottom: 16px;
+
+		h3 {
+			font-size: 14px;
+			font-weight: 700;
+			color: $gray-800;
+			margin: 0 0 12px;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				padding: 6px 0;
+				border-bottom: 1px solid $gray-100;
+				margin: 0;
+
+				&:last-child { border-bottom: none; }
+
+				a {
+					color: $gray-700;
+					text-decoration: none;
+					font-size: 13px;
+
+					&:hover { color: $green; }
+				}
+			}
+		}
+	}
+
+	&__footer {
+		text-align: center;
+		padding: 16px;
+
+		p {
+			color: $gray-400;
+			font-size: 12px;
+			margin: 0;
+
+			a { color: $green; text-decoration: none; }
+		}
+	}
 }
