@@ -38,8 +38,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const adminData = window.ultimateStoreKitAdminData || {};
+const getPageFromHash = () => {
+  const hash = window.location.hash.replace('#', '');
+  const validPages = ['welcome', 'wc-widgets', 'edd-widgets', 'other-widgets', 'other-settings', 'get-pro', 'license', 'about'];
+  return validPages.includes(hash) ? hash : 'welcome';
+};
 const App = () => {
-  const [activePage, setActivePage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('welcome');
+  const [activePage, setActivePage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(getPageFromHash());
   const [settings, setSettings] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(adminData.savedSettings || {});
   const [saving, setSaving] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [notification, setNotification] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -49,6 +54,13 @@ const App = () => {
       return () => clearTimeout(timer);
     }
   }, [notification]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleHashChange = () => {
+      setActivePage(getPageFromHash());
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
   const saveSettings = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)((section, sectionSettings) => {
     setSaving(true);
     const formData = new FormData();
@@ -321,6 +333,9 @@ const Sidebar = ({
   onNavigate,
   isPro
 }) => {
+  const handleNavigate = pageId => {
+    window.location.hash = pageId;
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "usk-admin-sidebar",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("nav", {
@@ -337,9 +352,13 @@ const Sidebar = ({
               return null;
             }
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+                href: `#${item.id}`,
                 className: `usk-admin-sidebar__item ${activePage === item.id ? 'usk-admin-sidebar__item--active' : ''}`,
-                onClick: () => onNavigate(item.id),
+                onClick: e => {
+                  e.preventDefault();
+                  handleNavigate(item.id);
+                },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
                   className: `dashicons ${item.icon}`
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {

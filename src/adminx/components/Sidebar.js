@@ -64,6 +64,10 @@ const navItems = [
 ];
 
 const Sidebar = ({ activePage, onNavigate, isPro }) => {
+	const handleNavigate = (pageId) => {
+		window.location.hash = pageId;
+	};
+
 	return (
 		<div className="usk-admin-sidebar">
 			<nav className="usk-admin-sidebar__nav">
@@ -79,17 +83,19 @@ const Sidebar = ({ activePage, onNavigate, isPro }) => {
 								}
 								return (
 									<li key={item.id}>
-										<button
+										<a
+											href={`#${item.id}`}
 											className={`usk-admin-sidebar__item ${activePage === item.id ? 'usk-admin-sidebar__item--active' : ''}`}
-											onClick={() =>
-												onNavigate(item.id)
-											}
+											onClick={(e) => {
+												e.preventDefault();
+												handleNavigate(item.id);
+											}}
 										>
 											<span
 												className={`dashicons ${item.icon}`}
 											></span>
 											<span>{item.label}</span>
-										</button>
+										</a>
 									</li>
 								);
 							})}

@@ -11,8 +11,23 @@ import AboutInfo from './pages/AboutInfo';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
+const getPageFromHash = () => {
+	const hash = window.location.hash.replace('#', '');
+	const validPages = [
+		'welcome',
+		'wc-widgets',
+		'edd-widgets',
+		'other-widgets',
+		'other-settings',
+		'get-pro',
+		'license',
+		'about',
+	];
+	return validPages.includes(hash) ? hash : 'welcome';
+};
+
 const App = () => {
-	const [activePage, setActivePage] = useState('welcome');
+	const [activePage, setActivePage] = useState(getPageFromHash());
 	const [settings, setSettings] = useState(adminData.savedSettings || {});
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
@@ -23,6 +38,15 @@ const App = () => {
 			return () => clearTimeout(timer);
 		}
 	}, [notification]);
+
+	useEffect(() => {
+		const handleHashChange = () => {
+			setActivePage(getPageFromHash());
+		};
+
+		window.addEventListener('hashchange', handleHashChange);
+		return () => window.removeEventListener('hashchange', handleHashChange);
+	}, []);
 
 	const saveSettings = useCallback(
 		(section, sectionSettings) => {
