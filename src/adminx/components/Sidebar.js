@@ -63,9 +63,9 @@ const Sidebar = ({ activePage, onNavigate, isPro }) => {
 			<nav className="usk-admin-sidebar__nav">
 				{navItems.map((group) => (
 					<div key={group.group} className="usk-admin-sidebar__group">
-						<div className="usk-admin-sidebar__group-label">
+						{/* <div className="usk-admin-sidebar__group-label">
 							{group.group}
-						</div>
+						</div> */}
 						<ul className="usk-admin-sidebar__list">
 							{group.items.map((item) => {
 								if (item.id === 'get-pro' && isPro) {

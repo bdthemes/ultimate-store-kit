@@ -13,6 +13,7 @@ const adminData = window.ultimateStoreKitAdminData || {};
 
 const getPageFromHash = () => {
 	const hash = window.location.hash.replace('#', '');
+	const pageName = hash.split('?')[0];
 	const validPages = [
 		'welcome',
 		'widgets',
@@ -21,7 +22,7 @@ const getPageFromHash = () => {
 		'license',
 		'about',
 	];
-	return validPages.includes(hash) ? hash : 'welcome';
+	return validPages.includes(pageName) ? pageName : 'welcome';
 };
 
 const App = () => {

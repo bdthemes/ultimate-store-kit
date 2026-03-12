@@ -1,5 +1,16 @@
-import { useState, useMemo, useCallback } from '@wordpress/element';
+import { useState, useMemo, useCallback, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+const getFiltersFromHash = () => {
+	const hash = window.location.hash;
+	const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
+	return {
+		widgetType: params.get('type') || 'wc',
+		search: params.get('search') || '',
+		filter: params.get('status') || 'all',
+		contentTypeFilter: params.get('template') || 'all',
+	};
+};
 
 const WidgetsPage = ({
 	allWidgets,
@@ -8,10 +19,11 @@ const WidgetsPage = ({
 	saving,
 	isPro,
 }) => {
-	const [widgetType, setWidgetType] = useState('wc');
-	const [search, setSearch] = useState('');
-	const [filter, setFilter] = useState('all');
-	const [contentTypeFilter, setContentTypeFilter] = useState('all');
+	const initialFilters = getFiltersFromHash();
+	const [widgetType, setWidgetType] = useState(initialFilters.widgetType);
+	const [search, setSearch] = useState(initialFilters.search);
+	const [filter, setFilter] = useState(initialFilters.filter);
+	const [contentTypeFilter, setContentTypeFilter] = useState(initialFilters.contentTypeFilter);
 
 	const widgetTypeConfig = {
 		wc: {
@@ -47,6 +59,21 @@ const WidgetsPage = ({
 		});
 		return initial;
 	});
+
+	useEffect(() => {
+		const params = new URLSearchParams();
+		if (widgetType !== 'wc') params.set('type', widgetType);
+		if (search) params.set('search', search);
+		if (filter !== 'all') params.set('status', filter);
+		if (contentTypeFilter !== 'all') params.set('template', contentTypeFilter);
+
+		const queryString = params.toString();
+		const newHash = queryString ? `#widgets?${queryString}` : '#widgets';
+
+		if (window.location.hash !== newHash) {
+			window.history.replaceState(null, '', newHash);
+		}
+	}, [widgetType, search, filter, contentTypeFilter]);
 
 	const contentTypes = useMemo(() => {
 		const types = new Set();

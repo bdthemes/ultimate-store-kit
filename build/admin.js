@@ -40,8 +40,9 @@ __webpack_require__.r(__webpack_exports__);
 const adminData = window.ultimateStoreKitAdminData || {};
 const getPageFromHash = () => {
   const hash = window.location.hash.replace('#', '');
+  const pageName = hash.split('?')[0];
   const validPages = ['welcome', 'widgets', 'other-settings', 'get-pro', 'license', 'about'];
-  return validPages.includes(hash) ? hash : 'welcome';
+  return validPages.includes(pageName) ? pageName : 'welcome';
 };
 const App = () => {
   const [activePage, setActivePage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(getPageFromHash());
@@ -310,12 +311,9 @@ const Sidebar = ({
     className: "usk-admin-sidebar",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("nav", {
       className: "usk-admin-sidebar__nav",
-      children: navItems.map(group => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: navItems.map(group => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "usk-admin-sidebar__group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "usk-admin-sidebar__group-label",
-          children: group.group
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
           className: "usk-admin-sidebar__list",
           children: group.items.map(item => {
             if (item.id === 'get-pro' && isPro) {
@@ -337,7 +335,7 @@ const Sidebar = ({
               })
             }, item.id);
           })
-        })]
+        })
       }, group.group))
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "usk-admin-sidebar__promo",
@@ -1270,6 +1268,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const getFiltersFromHash = () => {
+  const hash = window.location.hash;
+  const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
+  return {
+    widgetType: params.get('type') || 'wc',
+    search: params.get('search') || '',
+    filter: params.get('status') || 'all',
+    contentTypeFilter: params.get('template') || 'all'
+  };
+};
 const WidgetsPage = ({
   allWidgets,
   allSettings,
@@ -1277,10 +1285,11 @@ const WidgetsPage = ({
   saving,
   isPro
 }) => {
-  const [widgetType, setWidgetType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('wc');
-  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
-  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
+  const initialFilters = getFiltersFromHash();
+  const [widgetType, setWidgetType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.widgetType);
+  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.search);
+  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.filter);
+  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.contentTypeFilter);
   const widgetTypeConfig = {
     wc: {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce Widgets', 'ultimate-store-kit'),
@@ -1310,6 +1319,18 @@ const WidgetsPage = ({
     });
     return initial;
   });
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const params = new URLSearchParams();
+    if (widgetType !== 'wc') params.set('type', widgetType);
+    if (search) params.set('search', search);
+    if (filter !== 'all') params.set('status', filter);
+    if (contentTypeFilter !== 'all') params.set('template', contentTypeFilter);
+    const queryString = params.toString();
+    const newHash = queryString ? `#widgets?${queryString}` : '#widgets';
+    if (window.location.hash !== newHash) {
+      window.history.replaceState(null, '', newHash);
+    }
+  }, [widgetType, search, filter, contentTypeFilter]);
   const contentTypes = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     const types = new Set();
     widgets.forEach(w => {
