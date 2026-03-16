@@ -322,6 +322,9 @@ class Product_Image_Accordion extends Module_Base {
                                         <?php $this->print_price_output($product->get_price_html()); ?>
                                     </div>
                                 <?php endif; ?>
+
+                                <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', $product ); ?>
+
                                 <?php if ('yes' == $settings['show_rating']) : ?>
                                     <div class="usk-rating">
                                         <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>

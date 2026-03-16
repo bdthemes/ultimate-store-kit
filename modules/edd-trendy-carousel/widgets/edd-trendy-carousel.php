@@ -170,6 +170,9 @@ class EDD_Trendy_Carousel extends Module_Base {
                                 </div>
                             <?php
                             endif; ?>
+
+                            <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', get_post() ); ?>
+
                         </div>
                         <div class="usk-action-button">
                             <?php if (function_exists('edd_price')) { ?>

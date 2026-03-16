@@ -2126,6 +2126,7 @@ class Product_Table extends Module_Base {
                                         <span class="usk-wc-product-price">
                                             <?php woocommerce_template_single_price(); ?>
                                         </span>
+                                        <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', $product ); ?>
                                     </td>
                                 <?php endif; ?>
 

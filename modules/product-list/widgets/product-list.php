@@ -467,6 +467,8 @@ class Product_List extends Module_Base {
                         </div>
                     <?php endif; ?>
 
+                    <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', $product ); ?>
+
                     <?php if ( 'yes' == $settings['show_sale_badge'] || 'yes' == $settings['show_discount_badge'] || 'yes' == $settings['show_stock_status'] || 'yes' == $settings['show_trending_badge'] || 'yes' == $settings['show_new_badge'] ) : ?>
                     <div class="usk-badge-label-wrapper">
                         <div class="usk-badge-label-content usk-flex">

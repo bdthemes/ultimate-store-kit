@@ -1279,6 +1279,9 @@ class Product_Accordion extends Module_Base
                                             <?php $this->print_price_output($product->get_price_html()); ?>
                                         </div>
                                     <?php endif; ?>
+
+                                    <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', $product ); ?>
+
                                     <?php if ('yes' == $settings['show_description']): ?>
                                         <div class="usk-desc">
                                             <p class="desc">

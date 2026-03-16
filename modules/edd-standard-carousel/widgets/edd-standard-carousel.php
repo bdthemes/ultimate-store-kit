@@ -180,6 +180,9 @@ class EDD_Standard_Carousel extends Module_Base {
                                 </div>
                             <?php
                             endif; ?>
+
+                            <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', get_post() ); ?>
+
                         </div>
                     </div>
                 </div>

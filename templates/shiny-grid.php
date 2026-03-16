@@ -89,6 +89,8 @@ class USK_Shiny_Grid_Template
                             </div>
                         <?php endif; ?>
 
+                        <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', $product ); ?>
+
                         <?php if (isset($settings['show_rating']) ? $settings['show_rating'] : true): ?>
                             <div class="usk-rating">
                                 <span><?php echo wp_kses_post($this->register_global_template_wc_rating($average, $rating_count)); ?></span>

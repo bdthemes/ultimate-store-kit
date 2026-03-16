@@ -179,6 +179,8 @@ class EDD_Beauty_Grid extends Module_Base {
                             <?php
                             endif; ?>
 
+                            <?php do_action( 'ultimate_store_kit_product_grid_item_countdown', get_post() ); ?>
+
                         </div>
                     </div>
                 <?php
