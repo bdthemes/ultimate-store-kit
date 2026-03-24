@@ -47,6 +47,7 @@ const getPageFromHash = () => {
 const App = () => {
   const [activePage, setActivePage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(getPageFromHash());
   const [settings, setSettings] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(adminData.savedSettings || {});
+  const [isProActive, setIsProActive] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(!!adminData.isPro);
   const [saving, setSaving] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [notification, setNotification] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -106,7 +107,7 @@ const App = () => {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Welcome__WEBPACK_IMPORTED_MODULE_4__["default"], {
           widgets: widgets,
           settings: settings,
-          isPro: adminData.isPro
+          isPro: isProActive
         });
       case 'widgets':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_WidgetsPage__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -114,7 +115,7 @@ const App = () => {
           allSettings: settings,
           onSave: saveSettings,
           saving: saving,
-          isPro: adminData.isPro
+          isPro: isProActive
         });
       case 'other-settings':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_OtherSettings__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -123,15 +124,16 @@ const App = () => {
           settings: settings.ultimate_store_kit_other_settings || {},
           onSave: saveSettings,
           saving: saving,
-          isPro: adminData.isPro
+          isPro: isProActive
         });
       case 'get-pro':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_GetPro__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          isPro: adminData.isPro
+          isPro: isProActive
         });
       case 'license':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_License__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          isPro: adminData.isPro
+          isPro: isProActive,
+          onLicenseStatusChange: setIsProActive
         });
       case 'about':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_AboutInfo__WEBPACK_IMPORTED_MODULE_9__["default"], {});
@@ -151,7 +153,7 @@ const App = () => {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
         activePage: activePage,
         onNavigate: setActivePage,
-        isPro: adminData.isPro
+        isPro: isProActive
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "usk-admin-content",
         children: [notification && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
@@ -715,7 +717,8 @@ const getRestHeaders = () => ({
   'X-WP-Nonce': adminData.restNonce
 });
 const License = ({
-  isPro
+  isPro,
+  onLicenseStatusChange
 }) => {
   const initialLicenseData = adminData.licenseData || {};
   const [licenseData, setLicenseData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseData);
@@ -738,7 +741,13 @@ const License = ({
       if (response.success && response.license_data) {
         setLicenseData(response.license_data);
         setLicenseEmail(response.license_data.license_email || '');
+        if (onLicenseStatusChange) {
+          onLicenseStatusChange(true);
+        }
       } else if (response.error_message) {
+        if (onLicenseStatusChange) {
+          onLicenseStatusChange(false);
+        }
         setMessage({
           type: 'error',
           text: response.error_message
@@ -767,12 +776,18 @@ const License = ({
     }).then(res => res.json()).then(response => {
       if (response.success) {
         setLicenseData(response.license_data);
+        if (onLicenseStatusChange) {
+          onLicenseStatusChange(true);
+        }
         setMessage({
           type: 'success',
           text: response.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License activated successfully!', 'ultimate-store-kit')
         });
         setLicenseKey('');
       } else {
+        if (onLicenseStatusChange) {
+          onLicenseStatusChange(false);
+        }
         setMessage({
           type: 'error',
           text: response.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License activation failed.', 'ultimate-store-kit')
@@ -799,6 +814,9 @@ const License = ({
     }).then(res => res.json()).then(response => {
       if (response.success) {
         setLicenseData({});
+        if (onLicenseStatusChange) {
+          onLicenseStatusChange(false);
+        }
         setLicenseEmail('');
         setLicenseKey('');
         setMessage({
@@ -1094,15 +1112,24 @@ const OtherSettings = ({
         className: "usk-settings-group__body",
         children: group.items.map(item => {
           const isProItem = item.widget_type === 'pro';
-          const isDisabled = isProItem && !isPro;
+          const dependency = item.dependency || null;
+          const hasMissingDependency = dependency && (!dependency.isInstalled || !dependency.isActive);
+          const isDisabled = isProItem && !isPro || hasMissingDependency;
           if (item.type === 'checkbox') {
             const isOn = !isDisabled && localSettings[item.name] === 'on';
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "usk-settings-field",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "usk-settings-field__label",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                  children: item.label
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+                  children: [item.label, hasMissingDependency && dependency?.actionUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                      href: dependency.actionUrl,
+                      target: dependency.actionType === 'install' ? '_blank' : undefined,
+                      rel: dependency.actionType === 'install' ? 'noopener noreferrer' : undefined,
+                      children: dependency.actionLabel
+                    })]
+                  }) : null]
                 }), isProItem && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                   className: "usk-widget-card__badge",
                   children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
@@ -1117,6 +1144,9 @@ const OtherSettings = ({
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                   className: "usk-toggle__slider"
                 })]
+              }), hasMissingDependency && dependency?.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "usk-license__form-desc",
+                children: dependency.message
               })]
             }, item.name);
           }
@@ -1711,7 +1741,9 @@ const WidgetsPage = ({
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No widgets found.', 'ultimate-store-kit')
       }), filteredWidgets.map(widget => {
         const isProWidget = widget.widget_type === 'pro';
-        const isDisabled = isProWidget && !isPro;
+        const dependency = widget.dependency || null;
+        const hasMissingDependency = dependency && (!dependency.isInstalled || !dependency.isActive);
+        const isDisabled = isProWidget && !isPro || hasMissingDependency;
         const isActive = !isDisabled && localSettings[widget.name] === 'on';
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: `usk-widget-card ${isActive ? 'usk-widget-card--active' : ''} ${isDisabled ? 'usk-widget-card--disabled' : ''}`,
@@ -1728,7 +1760,15 @@ const WidgetsPage = ({
             className: "usk-widget-card__footer",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "usk-widget-card__links",
-              children: [widget.demo_url && !widget.demo_url.startsWith('#') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              children: [dependency?.actionUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                href: dependency.actionUrl,
+                target: dependency.actionType === 'install' ? '_blank' : undefined,
+                rel: dependency.actionType === 'install' ? 'noopener noreferrer' : undefined,
+                title: dependency.message || dependency.actionLabel,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  className: "dashicons dashicons-admin-plugins"
+                })
+              }), widget.demo_url && !widget.demo_url.startsWith('#') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
                 href: widget.demo_url,
                 target: "_blank",
                 rel: "noopener noreferrer",
@@ -1755,6 +1795,14 @@ const WidgetsPage = ({
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                 className: "usk-toggle__slider"
               })]
+            })]
+          }), hasMissingDependency && dependency?.actionUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "usk-license__form-desc",
+            children: [dependency.message, ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: dependency.actionUrl,
+              target: dependency.actionType === 'install' ? '_blank' : undefined,
+              rel: dependency.actionType === 'install' ? 'noopener noreferrer' : undefined,
+              children: dependency.actionLabel
             })]
           })]
         }, widget.name);

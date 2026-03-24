@@ -74,7 +74,10 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 					<div className="usk-settings-group__body">
 						{group.items.map((item) => {
 							const isProItem = item.widget_type === 'pro';
-							const isDisabled = isProItem && !isPro;
+							const dependency = item.dependency || null;
+							const hasMissingDependency =
+								dependency && (!dependency.isInstalled || !dependency.isActive);
+							const isDisabled = (isProItem && !isPro) || hasMissingDependency;
 
 							if (item.type === 'checkbox') {
 								const isOn =
@@ -86,7 +89,21 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 										className="usk-settings-field"
 									>
 										<div className="usk-settings-field__label">
-											<span>{item.label}</span>
+											<span>
+												{item.label}
+												{hasMissingDependency && dependency?.actionUrl ? (
+													<>
+														{' '}
+														<a
+															href={dependency.actionUrl}
+															target={dependency.actionType === 'install' ? '_blank' : undefined}
+															rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
+														>
+															{dependency.actionLabel}
+														</a>
+													</>
+												) : null}
+											</span>
 											{isProItem && (
 												<span className="usk-widget-card__badge">
 													{__('Pro', 'ultimate-store-kit')}
@@ -107,6 +124,11 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 											/>
 											<span className="usk-toggle__slider"></span>
 										</label>
+										{hasMissingDependency && dependency?.message && (
+											<div className="usk-license__form-desc">
+												{dependency.message}
+											</div>
+										)}
 									</div>
 								);
 							}

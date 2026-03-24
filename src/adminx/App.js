@@ -28,6 +28,7 @@ const getPageFromHash = () => {
 const App = () => {
 	const [activePage, setActivePage] = useState(getPageFromHash());
 	const [settings, setSettings] = useState(adminData.savedSettings || {});
+	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
 
@@ -113,7 +114,7 @@ const App = () => {
 					<Welcome
 						widgets={widgets}
 						settings={settings}
-						isPro={adminData.isPro}
+						isPro={isProActive}
 					/>
 				);
 			case 'widgets':
@@ -123,7 +124,7 @@ const App = () => {
 						allSettings={settings}
 						onSave={saveSettings}
 						saving={saving}
-						isPro={adminData.isPro}
+						isPro={isProActive}
 					/>
 				);
 			case 'other-settings':
@@ -138,13 +139,18 @@ const App = () => {
 						}
 						onSave={saveSettings}
 						saving={saving}
-						isPro={adminData.isPro}
+						isPro={isProActive}
 					/>
 				);
 			case 'get-pro':
-				return <GetPro isPro={adminData.isPro} />;
+				return <GetPro isPro={isProActive} />;
 			case 'license':
-				return <License isPro={adminData.isPro} />;
+				return (
+					<License
+						isPro={isProActive}
+						onLicenseStatusChange={setIsProActive}
+					/>
+				);
 			case 'about':
 				return <AboutInfo />;
 			default:
@@ -159,7 +165,7 @@ const App = () => {
 				<Sidebar
 					activePage={activePage}
 					onNavigate={setActivePage}
-					isPro={adminData.isPro}
+					isPro={isProActive}
 				/>
 				<div className="usk-admin-content">
 					{notification && (

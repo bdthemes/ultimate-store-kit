@@ -107,7 +107,7 @@ class UltimateStoreKit_Settings {
                 'nonce' => wp_create_nonce('ultimate_store_kit_admin_nonce'),
                 'restUrl' => esc_url_raw(rest_url('ultimate-store-kit/v1/license/')),
                 'restNonce' => wp_create_nonce('wp_rest'),
-                'isPro' => function_exists('_is_usk_pro_activated') ? _is_usk_pro_activated() : false,
+                'isPro' => function_exists('usk_license_validation') ? usk_license_validation() : false,
                 'adminUrl' => admin_url(),
                 'licenseData' => apply_filters('ultimate_store_kit_license_data', []),
             ]
@@ -145,7 +145,73 @@ class UltimateStoreKit_Settings {
             return $settings['settings_fields'];
         });
 
+        foreach ($widget_data as $section_key => $section_widgets) {
+            if (!is_array($section_widgets)) {
+                continue;
+            }
+
+            foreach ($section_widgets as $index => $widget) {
+                if (!is_array($widget)) {
+                    continue;
+                }
+
+                $widget_data[$section_key][$index]['dependency'] = $this->get_widget_dependency_data($widget);
+            }
+        }
+
         return $widget_data;
+    }
+
+    private function get_widget_dependency_data($widget) {
+        $plugin_name = !empty($widget['plugin_name']) ? $widget['plugin_name'] : '';
+        $plugin_path = !empty($widget['plugin_path']) ? $widget['plugin_path'] : '';
+        $paid = !empty($widget['paid']) ? $widget['paid'] : '';
+
+        if (empty($plugin_name) || empty($plugin_path)) {
+            return null;
+        }
+
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $installed_plugins = get_plugins();
+        $is_installed = isset($installed_plugins[$plugin_path]);
+        $is_active = $is_installed && is_plugin_active($plugin_path);
+
+        $action_url = '';
+        $action_label = '';
+        $action_type = '';
+        $message = '';
+
+        if (!$is_installed) {
+            $action_type = 'install';
+            $action_label = __('Install Plugin', 'ultimate-store-kit');
+            $message = __('Install the required plugin first, then you can activate this feature.', 'ultimate-store-kit');
+
+            if (!empty($paid)) {
+                $action_url = $paid;
+                $action_label = __('Download Plugin', 'ultimate-store-kit');
+            } else {
+                $action_url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
+            }
+        } elseif (!$is_active) {
+            $action_type = 'activate';
+            $action_label = __('Activate Plugin', 'ultimate-store-kit');
+            $message = __('Activate the required plugin first, then you can activate this feature.', 'ultimate-store-kit');
+            $action_url = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
+        }
+
+        return [
+            'pluginName' => $plugin_name,
+            'pluginPath' => $plugin_path,
+            'isInstalled' => $is_installed,
+            'isActive' => $is_active,
+            'actionUrl' => $action_url,
+            'actionLabel' => $action_label,
+            'actionType' => $action_type,
+            'message' => $message,
+        ];
     }
 
     public function get_saved_settings() {

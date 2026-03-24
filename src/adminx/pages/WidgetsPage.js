@@ -257,7 +257,10 @@ const WidgetsPage = ({
 				)}
 				{filteredWidgets.map((widget) => {
 					const isProWidget = widget.widget_type === 'pro';
-					const isDisabled = isProWidget && !isPro;
+					const dependency = widget.dependency || null;
+					const hasMissingDependency =
+						dependency && (!dependency.isInstalled || !dependency.isActive);
+					const isDisabled = (isProWidget && !isPro) || hasMissingDependency;
 					const isActive =
 						!isDisabled && localSettings[widget.name] === 'on';
 
@@ -278,6 +281,16 @@ const WidgetsPage = ({
 							</div>
 							<div className="usk-widget-card__footer">
 								<div className="usk-widget-card__links">
+									{dependency?.actionUrl && (
+										<a
+											href={dependency.actionUrl}
+											target={dependency.actionType === 'install' ? '_blank' : undefined}
+											rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
+											title={dependency.message || dependency.actionLabel}
+										>
+											<span className="dashicons dashicons-admin-plugins"></span>
+										</a>
+									)}
 									{widget.demo_url &&
 										!widget.demo_url.startsWith('#') && (
 											<a
@@ -318,6 +331,18 @@ const WidgetsPage = ({
 									<span className="usk-toggle__slider"></span>
 								</label>
 							</div>
+							{hasMissingDependency && dependency?.actionUrl && (
+								<div className="usk-license__form-desc">
+									{dependency.message}{' '}
+									<a
+										href={dependency.actionUrl}
+										target={dependency.actionType === 'install' ? '_blank' : undefined}
+										rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
+									>
+										{dependency.actionLabel}
+									</a>
+								</div>
+							)}
 						</div>
 					);
 				})}

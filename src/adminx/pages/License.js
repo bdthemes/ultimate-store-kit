@@ -8,7 +8,7 @@ const getRestHeaders = () => ({
 	'X-WP-Nonce': adminData.restNonce,
 });
 
-const License = ({ isPro }) => {
+const License = ({ isPro, onLicenseStatusChange }) => {
 	const initialLicenseData = adminData.licenseData || {};
 
 	const [licenseData, setLicenseData] = useState(initialLicenseData);
@@ -42,7 +42,13 @@ const License = ({ isPro }) => {
 				if (response.success && response.license_data) {
 					setLicenseData(response.license_data);
 					setLicenseEmail(response.license_data.license_email || '');
+					if (onLicenseStatusChange) {
+						onLicenseStatusChange(true);
+					}
 				} else if (response.error_message) {
+					if (onLicenseStatusChange) {
+						onLicenseStatusChange(false);
+					}
 					setMessage({
 						type: 'error',
 						text: response.error_message,
@@ -81,6 +87,9 @@ const License = ({ isPro }) => {
 			.then((response) => {
 				if (response.success) {
 					setLicenseData(response.license_data);
+					if (onLicenseStatusChange) {
+						onLicenseStatusChange(true);
+					}
 					setMessage({
 						type: 'success',
 						text:
@@ -92,6 +101,9 @@ const License = ({ isPro }) => {
 					});
 					setLicenseKey('');
 				} else {
+					if (onLicenseStatusChange) {
+						onLicenseStatusChange(false);
+					}
 					setMessage({
 						type: 'error',
 						text:
@@ -140,6 +152,9 @@ const License = ({ isPro }) => {
 			.then((response) => {
 				if (response.success) {
 					setLicenseData({});
+					if (onLicenseStatusChange) {
+						onLicenseStatusChange(false);
+					}
 					setLicenseEmail('');
 					setLicenseKey('');
 					setMessage({
