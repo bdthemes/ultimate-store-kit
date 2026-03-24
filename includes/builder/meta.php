@@ -2,12 +2,11 @@
 
 namespace UltimateStoreKit\Includes\Builder;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
 
-use UltimateStoreKit\Includes\Builder\Builder_Template_Helper;
-use \UltimateStoreKit\Base\Singleton;
+use UltimateStoreKit\Traits\Singleton;
 
 class Meta {
 

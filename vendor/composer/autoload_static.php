@@ -7,14 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit494c130bf6c13bd4cc1a277360f4c457
 {
     public static $prefixLengthsPsr4 = array (
-        'b' => 
+        'U' => 
         array (
-            'bdthemes\\ultimatestorekit\\' => 26,
+            'UltimateStoreKit\\' => 17,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'bdthemes\\ultimatestorekit\\' => 
+        'UltimateStoreKit\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),

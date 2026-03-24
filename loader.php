@@ -5,6 +5,7 @@ namespace UltimateStoreKit;
 use Elementor\Plugin;
 use Elementor\Core\Kits\Documents\Kit;
 use UltimateStoreKit\Manager;
+use UltimateStoreKit\Admin\Menu;
 
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
@@ -137,9 +138,9 @@ class Ultimate_Store_Kit_Loader {
 		require_once BDTUSK_PATH . 'templates/shiny-grid.php';
 		require_once BDTUSK_PATH . 'templates/florence-grid.php';
 		require_once BDTUSK_PATH . 'templates/glossy-grid.php';
-		if (class_exists('woocommerce')) {
-			require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
-		}
+		// if (class_exists('woocommerce')) {
+		// 	require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
+		// }
 	}
 
 	/**
@@ -375,7 +376,7 @@ class Ultimate_Store_Kit_Loader {
 	public function init() {
 		if (!defined('BDTUSK_CH') && is_admin()) {
 			require(BDTUSK_ADM_PATH . 'class-settings-api.php');
-			require(BDTUSK_ADM_PATH . 'settings.php');
+			Menu::get_instance();
 
 			if (current_user_can('manage_options')) {
 				require_once BDTUSK_ADMIN_PATH . 'admin-feeds.php';
@@ -392,7 +393,7 @@ class Ultimate_Store_Kit_Loader {
 	 */
 	private function __construct() {
 		// Register class automatically
-		spl_autoload_register([$this, 'autoload']);
+		// spl_autoload_register([$this, 'autoload']);
 		// Include some backend files
 		$this->_includes();
 

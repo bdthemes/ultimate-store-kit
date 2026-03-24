@@ -14,6 +14,14 @@
  * Elementor tested up to: 3.35.6
  */
 
+
+// Check if vendor directory and autoload.php exist
+$ultimate_store_kit_autoload_file = __DIR__ . '/vendor/autoload.php';
+if (file_exists($ultimate_store_kit_autoload_file)) {
+	// Load autoloader (vendor/autoload.php).
+	require_once $ultimate_store_kit_autoload_file;
+}
+
 // Some pre define value for easy use
 define('BDTUSK_VER', '2.9.13');
 define('BDTUSK__FILE__', __FILE__);
