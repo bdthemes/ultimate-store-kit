@@ -105,8 +105,11 @@ class UltimateStoreKit_Settings {
                 'version' => BDTUSK_VER,
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce' => wp_create_nonce('ultimate_store_kit_admin_nonce'),
+                'restUrl' => esc_url_raw(rest_url('ultimate-store-kit/v1/license/')),
+                'restNonce' => wp_create_nonce('wp_rest'),
                 'isPro' => function_exists('_is_usk_pro_activated') ? _is_usk_pro_activated() : false,
                 'adminUrl' => admin_url(),
+                'licenseData' => apply_filters('ultimate_store_kit_license_data', []),
             ]
         );
 

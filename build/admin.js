@@ -700,79 +700,294 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
 
 
+
+const adminData = window.ultimateStoreKitAdminData || {};
+const getRestHeaders = () => ({
+  'Content-Type': 'application/json',
+  'X-WP-Nonce': adminData.restNonce
+});
 const License = ({
   isPro
 }) => {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  const initialLicenseData = adminData.licenseData || {};
+  const [licenseData, setLicenseData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseData);
+  const [licenseKey, setLicenseKey] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [licenseEmail, setLicenseEmail] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseData.license_email || '');
+  const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [message, setMessage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLicenseData.show_message ? {
+    type: 'error',
+    text: initialLicenseData.license_message || ''
+  } : null);
+  const isActivated = licenseData.is_activated || false;
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (!adminData.restUrl) {
+      return;
+    }
+    fetch(`${adminData.restUrl}status`, {
+      method: 'GET',
+      headers: getRestHeaders()
+    }).then(res => res.json()).then(response => {
+      if (response.success && response.license_data) {
+        setLicenseData(response.license_data);
+        setLicenseEmail(response.license_data.license_email || '');
+      } else if (response.error_message) {
+        setMessage({
+          type: 'error',
+          text: response.error_message
+        });
+      }
+    }).catch(() => {});
+  }, []);
+  const handleActivate = e => {
+    e.preventDefault();
+    if (!licenseKey || !licenseEmail) {
+      setMessage({
+        type: 'error',
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please provide both license key and email address.', 'ultimate-store-kit')
+      });
+      return;
+    }
+    setLoading(true);
+    setMessage(null);
+    fetch(`${adminData.restUrl}activate`, {
+      method: 'POST',
+      headers: getRestHeaders(),
+      body: JSON.stringify({
+        license_key: licenseKey,
+        email: licenseEmail
+      })
+    }).then(res => res.json()).then(response => {
+      if (response.success) {
+        setLicenseData(response.license_data);
+        setMessage({
+          type: 'success',
+          text: response.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License activated successfully!', 'ultimate-store-kit')
+        });
+        setLicenseKey('');
+      } else {
+        setMessage({
+          type: 'error',
+          text: response.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License activation failed.', 'ultimate-store-kit')
+        });
+      }
+    }).catch(() => {
+      setMessage({
+        type: 'error',
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('An error occurred. Please try again.', 'ultimate-store-kit')
+      });
+    }).finally(() => {
+      setLoading(false);
+    });
+  };
+  const handleDeactivate = () => {
+    if (!window.confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Are you sure you want to deactivate the license?', 'ultimate-store-kit'))) {
+      return;
+    }
+    setLoading(true);
+    setMessage(null);
+    fetch(`${adminData.restUrl}deactivate`, {
+      method: 'DELETE',
+      headers: getRestHeaders()
+    }).then(res => res.json()).then(response => {
+      if (response.success) {
+        setLicenseData({});
+        setLicenseEmail('');
+        setLicenseKey('');
+        setMessage({
+          type: 'success',
+          text: response.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License deactivated successfully.', 'ultimate-store-kit')
+        });
+      } else {
+        setMessage({
+          type: 'error',
+          text: response.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Failed to deactivate license.', 'ultimate-store-kit')
+        });
+      }
+    }).catch(() => {
+      setMessage({
+        type: 'error',
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('An error occurred. Please try again.', 'ultimate-store-kit')
+      });
+    }).finally(() => {
+      setLoading(false);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "usk-license",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "usk-license__card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
         className: "usk-license__title",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('License', 'ultimate-store-kit')
-      }), isPro ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "usk-license__active",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "usk-license__status",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            className: "dashicons dashicons-yes-alt"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your license is active.', 'ultimate-store-kit')
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thank you for activating the Pro version. You have access to all premium features and priority support.', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-          href: "https://account.bdthemes.com/",
-          target: "_blank",
-          rel: "noopener noreferrer",
-          className: "usk-btn usk-btn--secondary",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Manage License', 'ultimate-store-kit')
+        children: isActivated ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ultimate Store Kit License Info', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate Your License', 'ultimate-store-kit')
+      }), message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: `usk-license__message usk-license__message--${message.type}`,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: message.text
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: () => setMessage(null),
+          className: "usk-license__message-close",
+          children: "\xD7"
         })]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "usk-license__inactive",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "usk-license__status usk-license__status--inactive",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            className: "dashicons dashicons-warning"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('No active license found.', 'ultimate-store-kit')
+      }), isActivated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "usk-license__activated",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+          className: "usk-license__info-list",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: "usk-license__info-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-label",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: `usk-license__info-badge ${licenseData.is_valid ? 'usk-license__info-badge--valid' : 'usk-license__info-badge--invalid'}`,
+              children: licenseData.is_valid ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Valid', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Invalid', 'ultimate-store-kit')
+            })]
+          }), licenseData.license_title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: "usk-license__info-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-label",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Type', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-value",
+              children: licenseData.license_title
+            })]
+          }), licenseData.expire_date && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: "usk-license__info-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-label",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Expires', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+              className: "usk-license__info-value",
+              children: [licenseData.expire_date, licenseData.expire_renew_link && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                href: licenseData.expire_renew_link,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "usk-license__renew-link",
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'ultimate-store-kit')
+              })]
+            })]
+          }), licenseData.support_end && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: "usk-license__info-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-label",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Support Expires', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+              className: "usk-license__info-value",
+              children: [licenseData.support_end, licenseData.support_renew_link && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                href: licenseData.support_renew_link,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "usk-license__renew-link",
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Renew', 'ultimate-store-kit')
+              })]
+            })]
+          }), licenseData.masked_key && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: "usk-license__info-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-label",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Key', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "usk-license__info-value usk-license__info-value--mono",
+              children: licenseData.masked_key
+            })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('To unlock all premium features and get priority support, please purchase and activate a Pro license.', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "usk-license__actions",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "https://storekit.pro/pricing/",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "usk-btn usk-btn--primary",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Get Pro License', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "https://account.bdthemes.com/",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "usk-btn usk-btn--secondary",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Already have a license?', 'ultimate-store-kit')
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: handleDeactivate,
+            disabled: loading,
+            className: "usk-btn usk-btn--outline-red",
+            children: loading ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivating...', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Deactivate License', 'ultimate-store-kit')
+          })
+        })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "usk-license__form-wrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          className: "usk-license__form-desc",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter your license key and registered email to unlock Pro features and receive automatic updates.', 'ultimate-store-kit')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ol", {
+          className: "usk-license__steps",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Log in to your BdThemes account to get your license key.', 'ultimate-store-kit'), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: "https://bdthemes.onfastspring.com/account",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Go to account', 'ultimate-store-kit')
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("If you don't yet have a license key,", 'ultimate-store-kit'), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: "https://storekit.pro/pricing/",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('get Ultimate Store Kit Pro now', 'ultimate-store-kit')
+            }), "."]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Copy the license key from your account and paste it below.', 'ultimate-store-kit')
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+          onSubmit: handleActivate,
+          className: "usk-license__form",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "usk-license__field",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              htmlFor: "usk-license-key",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License Key', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              id: "usk-license-key",
+              value: licenseKey,
+              onChange: e => setLicenseKey(e.target.value),
+              placeholder: "xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx",
+              required: true
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "usk-license__field",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              htmlFor: "usk-license-email",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Email Address', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "email",
+              id: "usk-license-email",
+              value: licenseEmail,
+              onChange: e => setLicenseEmail(e.target.value),
+              placeholder: "example@email.com",
+              required: true
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "usk-license__actions",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              type: "submit",
+              disabled: loading,
+              className: "usk-btn usk-btn--primary",
+              children: loading ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activating...', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate License', 'ultimate-store-kit')
+            }), !isPro && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: "https://storekit.pro/pricing/",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "usk-btn usk-btn--secondary",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get Pro License', 'ultimate-store-kit')
+            })]
           })]
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "usk-license__footer-info",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-        children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ultimate Store Kit Addon made with love by', 'ultimate-store-kit'), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+        children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ultimate Store Kit Addon made with love by', 'ultimate-store-kit'), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           target: "_blank",
           rel: "noopener noreferrer",
           href: "https://bdthemes.com",
           children: "BdThemes"
-        }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Team.', 'ultimate-store-kit')]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('All rights reserved by BdThemes.', 'ultimate-store-kit')
+        }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team.', 'ultimate-store-kit')]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All rights reserved by BdThemes.', 'ultimate-store-kit')
       })]
     })]
   });

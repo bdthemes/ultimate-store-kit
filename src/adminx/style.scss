@@ -985,7 +985,7 @@ $blue: #3b82f6;
 
 // ==================== LICENSE ====================
 .usk-license {
-	max-width: 600px;
+	max-width: 640px;
 
 	&__card {
 		background: $white;
@@ -1002,39 +1002,184 @@ $blue: #3b82f6;
 		margin: 0 0 20px;
 	}
 
-	&__status {
+	// Message bar (success / error)
+	&__message {
 		display: flex;
 		align-items: center;
-		gap: 8px;
-		font-size: 14px;
-		font-weight: 600;
-		margin-bottom: 12px;
-		color: $green;
+		justify-content: space-between;
+		padding: 10px 16px;
+		border-radius: 8px;
+		margin-bottom: 20px;
+		font-size: 13px;
+		font-weight: 500;
+		animation: uskSlideIn 0.3s ease;
 
-		.dashicons {
-			font-size: 20px;
-			width: 20px;
-			height: 20px;
+		&--success {
+			background: #d1fae5;
+			color: #065f46;
+			border: 1px solid #a7f3d0;
 		}
 
-		&--inactive {
-			color: $yellow;
+		&--error {
+			background: #fee2e2;
+			color: #991b1b;
+			border: 1px solid #fecaca;
 		}
 	}
 
-	&__active p,
-	&__inactive p {
+	&__message-close {
+		background: none;
+		border: none;
+		font-size: 18px;
+		cursor: pointer;
+		color: inherit;
+		padding: 0 4px;
+		line-height: 1;
+	}
+
+	// Activated license info list
+	&__info-list {
+		list-style: none;
+		margin: 0 0 24px;
+		padding: 0;
+	}
+
+	&__info-item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 12px 0;
+		border-bottom: 1px solid $gray-100;
+		font-size: 13px;
+
+		&:last-child { border-bottom: none; }
+	}
+
+	&__info-label {
+		font-weight: 600;
+		color: $gray-600;
+	}
+
+	&__info-value {
+		color: $gray-700;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		&--mono {
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+			font-size: 12px;
+			color: $gray-500;
+			letter-spacing: 0.5px;
+		}
+	}
+
+	&__info-badge {
+		font-size: 12px;
+		font-weight: 600;
+		padding: 2px 12px;
+		border-radius: 10px;
+
+		&--valid {
+			background: #d1fae5;
+			color: #065f46;
+		}
+
+		&--invalid {
+			background: #fee2e2;
+			color: #991b1b;
+		}
+	}
+
+	&__renew-link {
+		font-size: 12px;
+		font-weight: 600;
+		color: $green;
+		text-decoration: none;
+		padding: 2px 10px;
+		border: 1px solid $green;
+		border-radius: 4px;
+		transition: all 0.2s;
+
+		&:hover {
+			background: $green;
+			color: $white;
+		}
+	}
+
+	// License form (inactive state)
+	&__form-wrap {
+		margin-top: 0;
+	}
+
+	&__form-desc {
 		color: $gray-500;
 		font-size: 13px;
 		line-height: 1.6;
 		margin: 0 0 16px;
 	}
 
+	&__steps {
+		margin: 0 0 24px;
+		padding-left: 20px;
+		color: $gray-600;
+		font-size: 13px;
+		line-height: 1.8;
+
+		a {
+			color: $green;
+			text-decoration: none;
+			font-weight: 600;
+
+			&:hover { text-decoration: underline; }
+		}
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+
+		label {
+			font-size: 13px;
+			font-weight: 600;
+			color: $gray-700;
+		}
+
+		input {
+			padding: 10px 14px;
+			border: 1px solid $gray-200;
+			border-radius: 6px;
+			font-size: 14px;
+			color: $gray-700;
+			background: $white;
+			transition: all 0.2s;
+			width: 100%;
+			box-sizing: border-box;
+
+			&::placeholder { color: $gray-400; }
+
+			&:focus {
+				outline: none;
+				border-color: $green;
+				box-shadow: 0 0 0 3px rgba($green, 0.12);
+			}
+		}
+	}
+
 	&__actions {
 		display: flex;
 		gap: 8px;
+		margin-top: 4px;
 	}
 
+	// Footer info
 	&__footer-info {
 		text-align: center;
 		padding: 16px;
