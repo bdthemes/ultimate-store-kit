@@ -374,12 +374,7 @@ class Ultimate_Store_Kit_Loader {
 
 	public function init() {
 		if (!defined('BDTUSK_CH') && is_admin()) {
-
-			require(BDTUSK_ADM_PATH . 'admin.php');
-			new Admin();
-
 			require(BDTUSK_ADM_PATH . 'class-settings-api.php');
-			require(BDTUSK_ADM_PATH . 'admin-settings.php');
 			require(BDTUSK_ADM_PATH . 'settings.php');
 
 			if (current_user_can('manage_options')) {
