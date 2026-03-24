@@ -18,6 +18,7 @@ class Menu {
     private function __construct() {
         add_action('admin_menu', [$this, 'register_admin_menu'], 20);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
+        add_action('wp_ajax_ultimate_store_kit_save_settings', [$this, 'save_settings']);
     }
 
     /**
@@ -204,5 +205,40 @@ class Menu {
             'ultimate_store_kit_general_modules'  => get_option('ultimate_store_kit_general_modules', []),
             'ultimate_store_kit_other_settings'   => get_option('ultimate_store_kit_other_settings', []),
         ];
+    }
+
+    public function save_settings() {
+        check_ajax_referer('ultimate_store_kit_admin_nonce', 'nonce');
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Unauthorized');
+            return;
+        }
+
+        $section  = isset($_POST['section']) ? sanitize_text_field($_POST['section']) : '';
+        $settings = isset($_POST['settings']) ? wp_unslash($_POST['settings']) : [];
+
+        $allowed_sections = [
+            'ultimate_store_kit_active_modules',
+            'ultimate_store_kit_edd_modules',
+            'ultimate_store_kit_general_modules',
+            'ultimate_store_kit_other_settings',
+        ];
+
+        if (!in_array($section, $allowed_sections, true)) {
+            wp_send_json_error('Invalid section');
+            return;
+        }
+
+        $sanitized = [];
+        if (is_array($settings)) {
+            foreach ($settings as $key => $value) {
+                $sanitized[sanitize_text_field($key)] = sanitize_text_field($value);
+            }
+        }
+
+        update_option($section, $sanitized);
+
+        wp_send_json_success(['message' => 'Settings saved successfully.']);
     }
 }
