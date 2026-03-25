@@ -1,0 +1,35 @@
+{
+  "name": "bdthemes/ultimate-store-kit",
+  "description": "Ultimate Store Kit – The Complete WooCommerce & EDD Builder for Elementor",
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "ultimate-store-kit",
+    "woocommerce",
+    "edd",
+    "elementor"
+  ],
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "UltimateStoreKit\\": "includes/"
+    }
+  },
+  "authors": [
+    {
+      "name": "BdThemes",
+      "email": "support@bdthemes.com",
+      "homepage": "https://bdthemes.com"
+    }
+  ],
+  "homepage": "https://storekit.pro",
+  "support": {
+    "email": "support@bdthemes.com",
+    "issues": "https://wordpress.org/support/plugin/ultimate-store-kit/"
+  },
+  "require": {
+    "php": ">=7.4"
+  },
+  "minimum-stability": "dev"
+}

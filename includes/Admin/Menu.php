@@ -1,38 +1,23 @@
 <?php
 
-namespace UltimateStoreKit;
+/**
+ * Admin Menu Handler
+ */
 
-if (! defined('ABSPATH')) {
+namespace UltimateStoreKit\Admin;
+
+use UltimateStoreKit\Base\Singleton;
+
+if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Ultimate Store Kit Admin Settings class.
- */
-class UltimateStoreKit_Settings {
-    /**
-     * The single class instance.
-     *
-     * @var $instance
-     */
-    private static $instance = null;
+class Menu {
+    use Singleton;
 
-    /**
-     * Get instance
-     */
-    public static function instance() {
-        if (is_null(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-    /**
-     * UltimateStoreKit_Settings constructor.
-     */
     private function __construct() {
-        add_action('admin_menu', [$this, 'register_admin_menu'], 20);
-        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
+        add_action('admin_menu', [$this, 'register_admin_menu']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
         add_action('wp_ajax_ultimate_store_kit_save_settings', [$this, 'save_settings']);
     }
 
@@ -77,8 +62,7 @@ class UltimateStoreKit_Settings {
         <div class="ultimate-store-kit-admin-root"></div>
 <?php
     }
-
-    public function admin_enqueue_scripts() {
+    public function enqueue_admin_scripts() {
         $screen = get_current_screen();
 
 
@@ -258,6 +242,3 @@ class UltimateStoreKit_Settings {
         wp_send_json_success(['message' => 'Settings saved successfully.']);
     }
 }
-
-
-UltimateStoreKit_Settings::instance();
