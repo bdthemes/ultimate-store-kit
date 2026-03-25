@@ -1324,3 +1324,88 @@ $blue: #3b82f6;
 		}
 	}
 }
+
+// ==================== Pro Promo (Free Version Only) ====================
+.usk-pro-promo {
+	margin-top: 24px;
+	position: relative;
+	opacity: 0.7;
+	pointer-events: none;
+	user-select: none;
+
+	&__banner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background: linear-gradient(135deg, #fef3c7, #fde68a);
+		border: 1px solid #fbbf24;
+		border-radius: 10px;
+		padding: 14px 20px;
+		margin-bottom: 16px;
+		pointer-events: auto;
+		opacity: 1;
+
+		&-content {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		&-text {
+			font-size: 14px;
+			font-weight: 600;
+			color: #92400e;
+		}
+	}
+
+	&__badge {
+		background: linear-gradient(135deg, #f59e0b, #f97316);
+		color: #fff;
+		font-size: 10px;
+		font-weight: 700;
+		padding: 3px 10px;
+		border-radius: 10px;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+	}
+
+	&__group {
+		border-left: 3px solid #fbbf24;
+		position: relative;
+
+		.usk-widget-card__badge {
+			margin-left: 8px;
+		}
+	}
+
+	&__group-desc {
+		font-size: 13px;
+		color: $gray-400;
+		padding: 4px 20px 0;
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	&__field-desc {
+		font-size: 12px;
+		color: $gray-400;
+		margin: 4px 0 0;
+		width: 100%;
+		line-height: 1.4;
+	}
+
+	.usk-settings-group__body {
+		.usk-settings-field {
+			opacity: 0.6;
+		}
+	}
+
+	.usk-toggle__slider {
+		cursor: not-allowed;
+	}
+
+	.usk-settings-field__input,
+	.usk-settings-field__select {
+		cursor: not-allowed;
+	}
+}

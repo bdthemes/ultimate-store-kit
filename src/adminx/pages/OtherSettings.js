@@ -1,5 +1,6 @@
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import ProPromo from '../components/ProPromo';
 
 const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) => {
 	const [localSettings, setLocalSettings] = useState(() => {
@@ -218,6 +219,8 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 						: __('Save Changes', 'ultimate-store-kit')}
 				</button>
 			</div>
+
+			{!isPro && <ProPromo />}
 		</div>
 	);
 };
