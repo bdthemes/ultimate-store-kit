@@ -6,7 +6,7 @@
 
 namespace UltimateStoreKit\Admin;
 
-use UltimateStoreKit\Traits\Singleton;
+use UltimateStoreKit\Base\Singleton;
 
 if (!defined('ABSPATH')) {
     exit;

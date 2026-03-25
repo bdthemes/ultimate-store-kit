@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
 
-use UltimateStoreKit\Traits\Singleton;
+use UltimateStoreKit\Base\Singleton;
 
 class Meta {
 
