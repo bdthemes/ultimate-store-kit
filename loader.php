@@ -138,9 +138,9 @@ class Ultimate_Store_Kit_Loader {
 		require_once BDTUSK_PATH . 'templates/shiny-grid.php';
 		require_once BDTUSK_PATH . 'templates/florence-grid.php';
 		require_once BDTUSK_PATH . 'templates/glossy-grid.php';
-		// if (class_exists('woocommerce')) {
-		// 	require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
-		// }
+		if (class_exists('woocommerce')) {
+			require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
+		}
 	}
 
 	/**
@@ -393,7 +393,7 @@ class Ultimate_Store_Kit_Loader {
 	 */
 	private function __construct() {
 		// Register class automatically
-		// spl_autoload_register([$this, 'autoload']);
+		spl_autoload_register([$this, 'autoload']);
 		// Include some backend files
 		$this->_includes();
 

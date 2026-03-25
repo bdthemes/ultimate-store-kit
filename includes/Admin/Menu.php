@@ -16,7 +16,7 @@ class Menu {
     use Singleton;
 
     private function __construct() {
-        add_action('admin_menu', [$this, 'register_admin_menu'], 20);
+        add_action('admin_menu', [$this, 'register_admin_menu']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
         add_action('wp_ajax_ultimate_store_kit_save_settings', [$this, 'save_settings']);
     }
