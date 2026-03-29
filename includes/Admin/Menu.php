@@ -32,8 +32,8 @@ class Menu {
         }
 
         add_menu_page(
-            esc_html__('Store Kit', 'ultimate-store-kit'),
-            esc_html__('Store Kit', 'ultimate-store-kit'),
+            esc_html__('Ultimate Store Kit', 'ultimate-store-kit'),
+            esc_html__('Ultimate Store Kit', 'ultimate-store-kit'),
             'manage_options',
             'ultimate-store-kit',
             [$this, 'print_admin_page'],

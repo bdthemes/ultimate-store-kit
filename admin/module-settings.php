@@ -452,7 +452,7 @@ class ModuleService {
                     'widget_type'  => 'free',
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
-                    'content_type' => 'woocommerce order thankyou',
+                    'content_type' => 'woocommerce order thank-you',
                     'demo_url'     => 'https://storekit.pro/demo/page-order/',
                     'video_url'    => '',
                 ],
