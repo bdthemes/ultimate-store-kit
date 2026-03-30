@@ -8,10 +8,7 @@ import {
 	fieldLabel,
 	fieldRow,
 	proBadge,
-	toggleInput,
-	toggleKnob,
-	toggleLabel,
-	toggleTrack,
+	Toggle,
 } from '../tw';
 
 const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) => {
@@ -130,22 +127,16 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 													</span>
 												)}
 											</div>
-											<label className={toggleLabel}>
-												<input
-													type="checkbox"
-													className={toggleInput}
-													checked={isOn}
-													disabled={isDisabled}
-													onChange={() =>
-														handleChange(
-															item.name,
-															isOn ? 'off' : 'on'
-														)
-													}
-												/>
-												<span className={toggleTrack} />
-												<span className={toggleKnob} />
-											</label>
+											<Toggle
+											checked={isOn}
+											disabled={isDisabled}
+											onChange={() =>
+												handleChange(
+													item.name,
+													isOn ? 'off' : 'on'
+												)
+											}
+										/>
 										</div>
 										{hasMissingDependency && dependency?.message && (
 											<div className="mt-2 text-[13px] leading-relaxed text-slate-500">

@@ -59,7 +59,7 @@ class Menu {
      */
     public function print_admin_page() {
 ?>
-        <div class="ultimate-store-kit-admin-root -ml-5 font-sans"></div>
+        <div class="ultimate-store-kit-admin-root font-sans"></div>
 <?php
     }
     public function enqueue_admin_scripts() {

@@ -54,7 +54,7 @@ const Welcome = ({ widgets, settings }) => {
 		const percentage =
 			data.total > 0 ? Math.round((data.active / data.total) * 100) : 0;
 		return (
-			<div className="rounded-usk border border-slate-200 bg-white p-4">
+			<div className="rounded-lg border border-solid border-gray-100 bg-white p-4">
 				<h3 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-500">
 					{title}
 				</h3>
@@ -113,7 +113,7 @@ const Welcome = ({ widgets, settings }) => {
 
 	return (
 		<div>
-			<div className="mb-6 grid grid-cols-4 gap-4">
+			<div className="mb-4 grid grid-cols-4 gap-4">
 				<StatCard
 					title={__('All Widgets', 'ultimate-store-kit')}
 					data={stats.all}
@@ -137,8 +137,8 @@ const Welcome = ({ widgets, settings }) => {
 			</div>
 
 			<div className="mb-4 grid grid-cols-2 gap-4">
-				<div className="rounded-usk border border-slate-200 bg-white p-5">
-					<h3 className="mb-2 text-[15px] font-bold text-slate-800">
+				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
+					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Support And Feedback', 'ultimate-store-kit')}
 					</h3>
 					<p className="my-2 text-[13px] leading-relaxed text-slate-500">
@@ -188,8 +188,8 @@ const Welcome = ({ widgets, settings }) => {
 					</div>
 				</div>
 
-				<div className="rounded-usk border border-slate-200 bg-white p-5">
-					<h3 className="mb-2 text-[15px] font-bold text-slate-800">
+				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
+					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('System Requirement', 'ultimate-store-kit')}
 					</h3>
 					<p className="mb-3 text-[13px] leading-relaxed text-slate-500">
@@ -201,19 +201,19 @@ const Welcome = ({ widgets, settings }) => {
 					<div>
 						<div className="flex items-center justify-between border-b border-slate-100 py-2 text-[13px] text-slate-700 last:border-b-0">
 							<span>{__('PHP Version', 'ultimate-store-kit')}</span>
-							<span className="rounded-[10px] bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">
+							<span className="rounded-lg bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">
 								{__('OK', 'ultimate-store-kit')}
 							</span>
 						</div>
 						<div className="flex items-center justify-between border-b border-slate-100 py-2 text-[13px] text-slate-700 last:border-b-0">
 							<span>{__('Memory Limit', 'ultimate-store-kit')}</span>
-							<span className="rounded-[10px] bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">
+							<span className="rounded-lg bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">
 								{__('OK', 'ultimate-store-kit')}
 							</span>
 						</div>
 						<div className="flex items-center justify-between border-b border-slate-100 py-2 text-[13px] text-slate-700 last:border-b-0">
 							<span>{__('Max Execution Time', 'ultimate-store-kit')}</span>
-							<span className="rounded-[10px] bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">
+							<span className="rounded-lg bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">
 								{__('OK', 'ultimate-store-kit')}
 							</span>
 						</div>
@@ -221,9 +221,9 @@ const Welcome = ({ widgets, settings }) => {
 				</div>
 			</div>
 
-			<div className="mb-4 grid grid-cols-2 gap-4">
-				<div className="rounded-usk border border-slate-200 bg-white p-5">
-					<h3 className="mb-2 text-[15px] font-bold text-slate-800">
+			<div className="grid grid-cols-2 gap-4">
+				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
+					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Feedback', 'ultimate-store-kit')}
 					</h3>
 					<p className="my-2 text-[13px] leading-relaxed text-slate-500">
@@ -244,8 +244,8 @@ const Welcome = ({ widgets, settings }) => {
 					</div>
 				</div>
 
-				<div className="rounded-usk border border-slate-200 bg-white p-5">
-					<h3 className="mb-2 text-[15px] font-bold text-slate-800">
+				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
+					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Try Our Other Plugins', 'ultimate-store-kit')}
 					</h3>
 					<p className="my-2 text-[13px] leading-relaxed text-slate-500">

@@ -49,6 +49,14 @@ const App = () => {
 		return () => window.removeEventListener('hashchange', handleHashChange);
 	}, []);
 
+	useEffect(() => {
+		// Pro users don't need Get Pro page; redirect if opened directly.
+		if (isProActive && activePage === 'get-pro') {
+			setActivePage('welcome');
+			window.location.hash = '#welcome';
+		}
+	}, [isProActive, activePage]);
+
 	const saveSettings = useCallback(
 		(section, sectionSettings) => {
 			setSaving(true);
@@ -144,7 +152,15 @@ const App = () => {
 					/>
 				);
 			case 'get-pro':
-				return <GetPro isPro={isProActive} />;
+				return isProActive ? (
+					<Welcome
+						widgets={widgets}
+						settings={settings}
+						isPro={isProActive}
+					/>
+				) : (
+					<GetPro isPro={isProActive} />
+				);
 			case 'license':
 				return (
 					<License
@@ -167,17 +183,20 @@ const App = () => {
 
 	return (
 		<div className={appShell}>
-			<Header
+						<Header
 				version={adminData.version}
 				isPro={isProActive}
 			/>
+			<div className="bg-slate-50">
+
+
 			<div className={bodyRow}>
 				<Sidebar
 					activePage={activePage}
 					onNavigate={setActivePage}
 					isPro={isProActive}
 				/>
-				<div className={mainContent}>
+				<div className={`${mainContent} flex flex-col`}>
 					{notification && (
 						<div
 							className={`${notifBase} ${
@@ -196,9 +215,25 @@ const App = () => {
 							</button>
 						</div>
 					)}
-					{renderPage()}
+					<div className="flex-1">{renderPage()}</div>
 				</div>
 			</div>
+			</div>
+			<footer className="p-5 bg-white py-4 text-center text-sm text-slate-500 rounded-bl-lg rounded-br-lg">
+				{__(
+					'Ultimate Store Kit Addon made with love by',
+					'ultimate-store-kit'
+				)}{' '}
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://bdthemes.com"
+					className="text-uks-brand no-underline hover:underline"
+				>
+					BdThemes
+				</a>
+				. {__('All rights reserved.', 'ultimate-store-kit')}
+			</footer>
 		</div>
 	);
 };

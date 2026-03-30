@@ -80,12 +80,12 @@ const promoSettings = [
 const ProPromo = () => {
 	return (
 		<div className="pointer-events-none relative mt-6 select-none opacity-70">
-			<div className="pointer-events-auto mb-4 flex items-center justify-between rounded-usk border border-amber-400 bg-gradient-to-br from-amber-100 to-amber-200 px-5 py-3.5">
+			<div className="pointer-events-auto mb-4 flex items-center justify-between rounded-usk border border-uks-brand bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-5 py-3.5">
 				<div className="flex items-center gap-2.5">
-					<span className="rounded-[10px] bg-gradient-to-br from-amber-500 to-orange-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+					<span className="rounded-[10px] bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
 						{__('Pro', 'ultimate-store-kit')}
 					</span>
-					<span className="text-sm font-semibold text-amber-900">
+					<span className="text-sm font-semibold text-white/90">
 						{__(
 							'Unlock these premium settings with Ultimate Store Kit Pro',
 							'ultimate-store-kit'
@@ -107,7 +107,7 @@ const ProPromo = () => {
 					key={gi}
 					className="relative mb-4 overflow-hidden rounded-usk border border-slate-200 bg-white"
 				>
-					<div className="border-l-[3px] border-amber-400">
+					<div className="border-l-[3px] border-uks-brand">
 						<h3 className="m-0 flex flex-wrap items-center gap-2 border-b border-slate-200 bg-slate-100 px-5 py-3.5 text-sm font-bold text-slate-800">
 							{group.group}
 							<span className={proBadge}>

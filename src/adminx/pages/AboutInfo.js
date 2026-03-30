@@ -6,8 +6,8 @@ const linkCard = 'font-semibold text-uks-brand no-underline hover:underline';
 
 const AboutInfo = () => {
 	return (
-		<div>
-			<div className="mb-4 rounded-usk border border-slate-200 bg-white p-8 text-center">
+		<div className="space-y-4">
+			<div className="rounded-lg bg-white p-8 text-center border border-solid border-gray-100">
 				<div className="mb-3">
 					<svg
 						width="48"
@@ -44,8 +44,8 @@ const AboutInfo = () => {
 				</p>
 			</div>
 
-			<div className="mb-4 grid grid-cols-2 gap-3">
-				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+			<div className="grid grid-cols-2 gap-3">
+				<div className="rounded-lg bg-white px-5 py-4 border border-solid border-gray-100">
 					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
 						{__('Author', 'ultimate-store-kit')}
 					</h3>
@@ -60,7 +60,7 @@ const AboutInfo = () => {
 						</a>
 					</p>
 				</div>
-				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+				<div className="rounded-lg bg-white px-5 	py-4 border border-solid border-gray-100">
 					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
 						{__('Website', 'ultimate-store-kit')}
 					</h3>
@@ -75,7 +75,7 @@ const AboutInfo = () => {
 						</a>
 					</p>
 				</div>
-				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+				<div className="rounded-lg bg-white px-5 py-4 border border-solid border-gray-100">
 					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
 						{__('Documentation', 'ultimate-store-kit')}
 					</h3>
@@ -90,7 +90,7 @@ const AboutInfo = () => {
 						</a>
 					</p>
 				</div>
-				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+				<div className="rounded-lg bg-white px-5 py-4 border border-solid border-gray-100">
 					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
 						{__('Support', 'ultimate-store-kit')}
 					</h3>
@@ -107,7 +107,7 @@ const AboutInfo = () => {
 				</div>
 			</div>
 
-			<div className="mb-4 rounded-usk border border-slate-200 bg-white p-5">
+			<div className="rounded-lg bg-white p-5 border border-solid border-gray-100">
 				<h3 className="mb-3 text-sm font-bold text-slate-800">
 					{__('Useful Links', 'ultimate-store-kit')}
 				</h3>
@@ -120,37 +120,36 @@ const AboutInfo = () => {
 					].map(([href, label]) => (
 						<li
 							key={href}
-							className="border-b border-slate-100 py-1.5 last:border-b-0"
+							className="border-b border-slate-200 py-2 last:border-b-0"
 						>
 							<a
 								href={href}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-[13px] text-slate-700 no-underline hover:text-uks-brand"
+								className="inline-flex items-center gap-2 text-[13px] text-slate-700 no-underline hover:text-uks-brand"
 							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width={24}
+									height={24}
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth={2}
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									className="h-4 w-4 shrink-0"
+									aria-hidden="true"
+								>
+									<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+									<path d="M15 3h6v6" />
+									<path d="M10 14 21 3" />
+								</svg>
 								{label}
 							</a>
 						</li>
 					))}
 				</ul>
-			</div>
-
-			<div className="p-4 text-center">
-				<p className="m-0 text-xs text-slate-400">
-					{__(
-						'Ultimate Store Kit Addon made with love by',
-						'ultimate-store-kit'
-					)}{' '}
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://bdthemes.com"
-						className="text-uks-brand no-underline"
-					>
-						BdThemes
-					</a>{' '}
-					{__('Team. All rights reserved.', 'ultimate-store-kit')}
-				</p>
 			</div>
 		</div>
 	);

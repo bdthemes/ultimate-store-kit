@@ -197,19 +197,32 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 	};
 
 	return (
-		<div className="max-w-[640px]">
-			<div className="mb-4 rounded-usk border border-slate-200 bg-white p-8">
-				<h2 className="mb-5 text-xl font-bold text-slate-800">
-					{isActivated
-						? __(
-								'Ultimate Store Kit License Info',
-								'ultimate-store-kit'
-							)
-						: __(
-								'Activate Your License',
-								'ultimate-store-kit'
-							)}
-				</h2>
+		<div className="">
+			<div className="mb-4 rounded-lg border border-solid border-gray-100 bg-white p-8">
+				<div className="mb-6 border-0 border-b border-solid border-b-gray-100 pb-4">
+					<h2 className="m-0 mb-1 text-xl font-bold text-slate-800">
+						{isActivated
+							? __(
+									'Ultimate Store Kit License Info',
+									'ultimate-store-kit'
+								)
+							: __(
+									'Activate Your License',
+									'ultimate-store-kit'
+								)}
+					</h2>
+					<p className="m-0 text-[14px] leading-relaxed text-slate-500">
+						{isActivated
+							? __(
+									'Your license is active. View details and manage your subscription below.',
+									'ultimate-store-kit'
+								)
+							: __(
+									'Enter your license key to activate and receive updates & premium support.',
+									'ultimate-store-kit'
+								)}
+					</p>
+				</div>
 
 				{message && (
 					<div
@@ -232,123 +245,115 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 
 				{isActivated ? (
 					<div className="block">
-						<ul className="m-0 mb-6 list-none p-0">
-							<li className="flex items-center justify-between border-b border-slate-100 py-3 text-[13px] last:border-b-0">
-								<span className="font-semibold text-slate-600">
-									{__('Status', 'ultimate-store-kit')}
-								</span>
-								<span
-									className={`rounded-[10px] px-3 py-0.5 text-xs font-semibold ${
-										licenseData.is_valid
-											? 'bg-emerald-100 text-emerald-800'
-											: 'bg-red-100 text-red-900'
-									}`}
-								>
-									{licenseData.is_valid
-										? __(
-												'Valid',
-												'ultimate-store-kit'
-											)
-										: __(
-												'Invalid',
+						<div className="mb-5">
+								<div className="flex flex-col gap-4">
+								   <div className="flex flex-col gap-2 border-0 border-b border-solid border-b-gray-100 pb-4">
+										<span className="text-[14px] font-semibold text-slate-600">
+										{__('Status', 'ultimate-store-kit')}
+									</span>
+									<span
+										className={`inline-flex items-center gap-2 self-start rounded-[10px] px-3 py-1 text-xs font-bold ${
+											licenseData.is_valid
+													? 'border border-emerald-200 bg-emerald-100 text-emerald-800'
+													: 'border border-red-200 bg-red-100 text-red-900'
+										}`}
+									>
+										<svg
+											width="14"
+											height="14"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											strokeWidth="2"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											aria-hidden="true"
+										>
+											{licenseData.is_valid ? (
+												<>
+													<path d="M20 6 9 17l-5-5" />
+												</>
+											) : (
+												<>
+													<path d="M18 6 6 18" />
+													<path d="M6 6l12 12" />
+												</>
+											)}
+										</svg>
+										{licenseData.is_valid
+											? __(
+													'Valid',
+													'ultimate-store-kit'
+												)
+											: __(
+													'Invalid',
+													'ultimate-store-kit'
+												)}
+									</span>
+								</div>
+
+								{licenseData.license_title && (
+									<div className="flex flex-col gap-1 border-0 border-b border-solid border-b-gray-100 pb-4">
+										<span className="text-[14px] font-semibold text-slate-600">
+											{__(
+												'License Type',
 												'ultimate-store-kit'
 											)}
-								</span>
-							</li>
+										</span>
+										<span className="text-[14px] text-slate-800">
+											{licenseData.license_title}
+										</span>
+									</div>
+								)}
 
-							{licenseData.license_title && (
-								<li className="flex items-center justify-between border-b border-slate-100 py-3 text-[13px] last:border-b-0">
-									<span className="font-semibold text-slate-600">
-										{__(
-											'License Type',
-											'ultimate-store-kit'
-										)}
-									</span>
-									<span className="text-slate-700">
-										{licenseData.license_title}
-									</span>
-								</li>
-							)}
+								{licenseData.expire_date && (
+									<div className="flex flex-col gap-1 border-0 border-b border-solid border-b-gray-100 pb-4">
+										<span className="text-[14px] font-semibold text-slate-600">
+											{__(
+												'License Expired on',
+												'ultimate-store-kit'
+											)}
+										</span>
+										<span className="text-[14px] text-slate-800">
+											{licenseData.expire_date}
+										</span>
+									</div>
+								)}
 
-							{licenseData.expire_date && (
-								<li className="flex items-center justify-between border-b border-slate-100 py-3 text-[13px] last:border-b-0">
-									<span className="font-semibold text-slate-600">
-										{__(
-											'License Expires',
-											'ultimate-store-kit'
-										)}
-									</span>
-									<span className="flex items-center gap-2 text-slate-700">
-										{licenseData.expire_date}
-										{licenseData.expire_renew_link && (
-											<a
-												href={
-													licenseData.expire_renew_link
-												}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="rounded border border-uks-brand px-2.5 py-0.5 text-xs font-semibold text-uks-brand no-underline transition-all hover:bg-uks-brand hover:text-white"
-											>
-												{__(
-													'Renew',
-													'ultimate-store-kit'
-												)}
-											</a>
-										)}
-									</span>
-								</li>
-							)}
+								{licenseData.support_end && (
+									<div className="flex flex-col gap-1 border-0 border-b border-solid border-b-gray-100 pb-4">
+										<span className="text-[14px] font-semibold text-slate-600">
+											{__(
+												'Support Expired on',
+												'ultimate-store-kit'
+											)}
+										</span>
+										<span className="text-[14px] text-slate-800">
+											{licenseData.support_end}
+										</span>
+									</div>
+								)}
 
-							{licenseData.support_end && (
-								<li className="flex items-center justify-between border-b border-slate-100 py-3 text-[13px] last:border-b-0">
-									<span className="font-semibold text-slate-600">
-										{__(
-											'Support Expires',
-											'ultimate-store-kit'
-										)}
-									</span>
-									<span className="flex items-center gap-2 text-slate-700">
-										{licenseData.support_end}
-										{licenseData.support_renew_link && (
-											<a
-												href={
-													licenseData.support_renew_link
-												}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="rounded border border-uks-brand px-2.5 py-0.5 text-xs font-semibold text-uks-brand no-underline transition-all hover:bg-uks-brand hover:text-white"
-											>
-												{__(
-													'Renew',
-													'ultimate-store-kit'
-												)}
-											</a>
-										)}
-									</span>
-								</li>
-							)}
+								{licenseData.masked_key && (
+									<div className="flex flex-col gap-2  pb-4">
+										<span className="text-[14px] font-semibold text-slate-600">
+											{__(
+												'Your License Key',
+												'ultimate-store-kit'
+											)}
+										</span>
+										<span className="inline-flex w-fit max-w-full items-center rounded-md border border-slate-200 bg-slate-50 px-3 py-2 font-mono text-[12px] text-slate-700">
+											{licenseData.masked_key}
+										</span>
+									</div>
+								)}
+							</div>
 
-							{licenseData.masked_key && (
-								<li className="flex items-center justify-between border-b border-slate-100 py-3 text-[13px] last:border-b-0">
-									<span className="font-semibold text-slate-600">
-										{__(
-											'License Key',
-											'ultimate-store-kit'
-										)}
-									</span>
-									<span className="font-mono text-xs tracking-wide text-slate-500">
-										{licenseData.masked_key}
-									</span>
-								</li>
-							)}
-						</ul>
-
-						<div className="mt-1 flex gap-2">
 							<button
 								type="button"
 								onClick={handleDeactivate}
 								disabled={loading}
-								className={btnOutlineRed}
+								className="mt-4 inline-flex items-center justify-center rounded-md border border-solid border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 cursor-pointer  transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
 							>
 								{loading
 									? __(
@@ -364,70 +369,13 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 					</div>
 				) : (
 					<div className="mt-0">
-						<p className="mb-4 text-[13px] leading-relaxed text-slate-500">
-							{__(
-								'Enter your license key and registered email to unlock Pro features and receive automatic updates.',
-								'ultimate-store-kit'
-							)}
-						</p>
-
-						<ol className="mb-6 list-decimal pl-5 text-[13px] leading-loose text-slate-600">
-							<li>
-								{__(
-									'Log in to your BdThemes account to get your license key.',
-									'ultimate-store-kit'
-								)}{' '}
-								<a
-									href="https://bdthemes.onfastspring.com/account"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="font-semibold text-uks-brand no-underline hover:underline"
-								>
-									{__(
-										'Go to account',
-										'ultimate-store-kit'
-									)}
-								</a>
-							</li>
-							<li>
-								{__(
-									"If you don't yet have a license key,",
-									'ultimate-store-kit'
-								)}{' '}
-								<a
-									href="https://storekit.pro/pricing/"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="font-semibold text-uks-brand no-underline hover:underline"
-								>
-									{__(
-										'get Ultimate Store Kit Pro now',
-										'ultimate-store-kit'
-									)}
-								</a>
-								.
-							</li>
-							<li>
-								{__(
-									'Copy the license key from your account and paste it below.',
-									'ultimate-store-kit'
-								)}
-							</li>
-						</ol>
-
-						<form
-							onSubmit={handleActivate}
-							className="flex flex-col gap-4"
-						>
+						<form onSubmit={handleActivate} className="flex flex-col gap-5">
 							<div className="flex flex-col gap-1.5">
 								<label
 									htmlFor="usk-license-key"
 									className="text-[13px] font-semibold text-slate-700"
 								>
-									{__(
-										'License Key',
-										'ultimate-store-kit'
-									)}
+									{__('License Code', 'ultimate-store-kit')}
 								</label>
 								<input
 									type="text"
@@ -447,10 +395,7 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 									htmlFor="usk-license-email"
 									className="text-[13px] font-semibold text-slate-700"
 								>
-									{__(
-										'Email Address',
-										'ultimate-store-kit'
-									)}
+									{__('Email Address', 'ultimate-store-kit')}
 								</label>
 								<input
 									type="email"
@@ -465,11 +410,18 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 								/>
 							</div>
 
-							<div className="mt-1 flex gap-2">
+							<p className="m-0 text-[12px] leading-relaxed text-slate-500">
+								{__(
+									'We will send update news of this product by this email address, don\'t worry, we hate spam.',
+									'ultimate-store-kit'
+								)}
+							</p>
+
+							<div className="mt-1 flex items-center gap-3">
 								<button
 									type="submit"
 									disabled={loading}
-									className={btnPrimary}
+									className={`${btnPrimary} rounded-md inline-flex items-center justify-center`}
 								>
 									{loading
 										? __(
@@ -498,30 +450,6 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 						</form>
 					</div>
 				)}
-			</div>
-
-			<div className="p-4 text-center">
-				<p className="my-0.5 text-xs text-slate-400">
-					{__(
-						'Ultimate Store Kit Addon made with love by',
-						'ultimate-store-kit'
-					)}{' '}
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://bdthemes.com"
-						className="text-uks-brand no-underline"
-					>
-						BdThemes
-					</a>{' '}
-					{__('Team.', 'ultimate-store-kit')}
-				</p>
-				<p className="my-0.5 text-xs text-slate-400">
-					{__(
-						'All rights reserved by BdThemes.',
-						'ultimate-store-kit'
-					)}
-				</p>
 			</div>
 		</div>
 	);

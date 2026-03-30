@@ -9,10 +9,7 @@ import {
 	proBadge,
 	selectInput,
 	selectLabel,
-	toggleInput,
-	toggleKnob,
-	toggleLabel,
-	toggleTrack,
+	Toggle,
 } from '../tw';
 
 const getFiltersFromHash = () => {
@@ -175,7 +172,7 @@ const WidgetsPage = ({
 	).length;
 
 	const cardBase =
-		'flex flex-col justify-between gap-3 rounded-usk border border-slate-200 bg-white p-4 transition-all duration-200 hover:shadow-usk';
+		'flex flex-col justify-between gap-3 rounded-lg border border-solid border-gray-200 p-4';
 
 	return (
 		<div>
@@ -191,16 +188,31 @@ const WidgetsPage = ({
 				</div>
 			</div>
 
-			<div className="mb-5 flex flex-wrap items-center gap-3 rounded-usk border border-slate-200 bg-white px-4 py-3">
-				<div className="flex flex-[0_0_220px] items-center gap-1.5 rounded-md border border-slate-200 bg-slate-100 px-2.5">
-					<span className="dashicons dashicons-search h-4 w-4 text-base text-slate-400"></span>
-					<input
-						type="text"
-						className="w-full border-0 bg-transparent py-1.5 text-[13px] text-slate-700 outline-none placeholder:text-slate-400"
-						placeholder={__('Search widgets...', 'ultimate-store-kit')}
-						value={search}
-						onChange={(e) => setSearch(e.target.value)}
-					/>
+			<div className="mb-5 flex flex-wrap items-center gap-3 rounded-lg border border-solid border-gray-100 bg-white px-4 py-3">
+				<div className="relative">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width={24}
+						height={24}
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth={2}
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						className="absolute right-3 top-3 text-gray-400 w-4 h-4 block"
+						>
+						<path d="m21 21-4.34-4.34" />
+						<circle cx={11} cy={11} r={8} />
+						</svg>
+
+						<input
+							type="text"
+							className="w-full border border-solid border-gray-200 bg-transparent py-2.5 pr-10 text-sm text-slate-700 placeholder:text-gray-500 focus:outline-none focus:ring-0 focus:border-uks-brand focus:ring-2 focus:ring-uks-brand/25 rounded-md"
+							placeholder={__('Search widgets...', 'ultimate-store-kit')}
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+						/>
 				</div>
 
 				<div className="flex items-center gap-1.5">
@@ -256,22 +268,47 @@ const WidgetsPage = ({
 				<div className="ml-auto flex gap-1.5">
 					<button
 						type="button"
-						className={`${btnSm} ${btnOutlineGreen}`}
+						className={`${btnSm} !rounded-lg !bg-uks-brand !text-white hover:!bg-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white border-none`}
 						onClick={handleActivateAll}
 					>
+						<svg
+							className="h-4 w-4"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M20 6 9 17l-5-5" />
+						</svg>
 						{__('Activate All', 'ultimate-store-kit')}
 					</button>
 					<button
 						type="button"
-						className={`${btnSm} ${btnOutlineRed}`}
+						className={`${btnSm} !rounded-lg !border !border-[#E20A1D]/25 bg-[#E20A1D]/5 text-uks-brand hover:bg-[#E20A1D]/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
 						onClick={handleDeactivateAll}
 					>
+						<svg
+							className="h-4 w-4"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M18 6 6 18" />
+							<path d="M6 6l12 12" />
+						</svg>
 						{__('Deactivate All', 'ultimate-store-kit')}
 					</button>
 				</div>
 			</div>
 
-			<div className="grid grid-cols-4 gap-3">
+			<div className="grid grid-cols-4 gap-3 bg-white rounded-lg border border-solid border-gray-100 p-5">
 				{filteredWidgets.length === 0 && (
 					<div className="col-span-full py-10 text-center text-sm text-slate-400">
 						{__('No widgets found.', 'ultimate-store-kit')}
@@ -289,12 +326,11 @@ const WidgetsPage = ({
 					return (
 						<div
 							key={widget.name}
-							className={`${cardBase} ${
-								isActive ? 'border-emerald-300 bg-emerald-50' : ''
-							} ${isDisabled ? 'opacity-60' : ''}`}
+							className={`${cardBase} ${isActive ? 'border-emerald-300' : ''
+								} ${isDisabled ? 'opacity-60 cursor-not-allowed bg-slate-100' : ''}`}
 						>
 							<div className="flex items-start justify-between gap-2">
-								<span className="text-[13px] font-semibold leading-snug text-slate-800">
+								<span className="text-base font-semibold leading-snug text-slate-800">
 									{widget.label}
 								</span>
 								{isProWidget && (
@@ -304,16 +340,39 @@ const WidgetsPage = ({
 								)}
 							</div>
 							<div className="flex items-center justify-between">
-								<div className="flex gap-2">
+								<div className="flex gap-2 items-center">
 									{dependency?.actionUrl && (
 										<a
+
 											href={dependency.actionUrl}
 											target={dependency.actionType === 'install' ? '_blank' : undefined}
 											rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
 											title={dependency.message || dependency.actionLabel}
-											className="text-slate-400 transition-colors hover:text-uks-brand"
+											className="text-gray-400 transition-colors hover:text-uks-brand flex items-center gap-1 decoration-none"
+											style={{
+												textDecoration: 'none',
+											}}
 										>
-											<span className="dashicons dashicons-admin-plugins text-base"></span>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width={24}
+												height={24}
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth={2}
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												className="w-4 h-4 block"
+											>
+												<path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
+												<path d="m2 22 3-3" />
+												<path d="M7.5 13.5 10 11" />
+												<path d="M10.5 16.5 13 14" />
+												<path d="m18 3-4 4h6l-4 4" />
+											</svg>
+
+											{__('Install', 'ultimate-store-kit')}
 										</a>
 									)}
 									{widget.demo_url &&
@@ -326,9 +385,28 @@ const WidgetsPage = ({
 													'Demo',
 													'ultimate-store-kit'
 												)}
-												className="text-slate-400 transition-colors hover:text-uks-brand"
+												className="text-gray-400 transition-colors hover:text-uks-brand flex items-center gap-1 decoration-none"
+												style={{
+													textDecoration: 'none',
+												}}
 											>
-												<span className="dashicons dashicons-visibility text-base"></span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width={24}
+													height={24}
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													strokeWidth={2}
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													className="w-4 h-4 block"
+												>
+													<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+													<circle cx={12} cy={12} r={3} />
+												</svg>
+
+												{__('Demo', 'ultimate-store-kit')}
 											</a>
 										)}
 									{widget.video_url && (
@@ -340,25 +418,38 @@ const WidgetsPage = ({
 												'Video',
 												'ultimate-store-kit'
 											)}
-											className="text-slate-400 transition-colors hover:text-uks-brand"
+											className="text-gray-400 transition-colors hover:text-uks-brand flex items-center gap-1 decoration-none"
+
+												style={{
+													textDecoration: 'none',
+												}}
 										>
-											<span className="dashicons dashicons-video-alt3 text-base"></span>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width={24}
+												height={24}
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth={2}
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												className="w-4 h-4 block"
+											>
+												<path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+											</svg>
+
+											{__('Video', 'ultimate-store-kit')}
 										</a>
 									)}
 								</div>
-								<label className={toggleLabel}>
-									<input
-										type="checkbox"
-										className={toggleInput}
-										checked={isActive}
-										disabled={isDisabled}
-										onChange={() =>
-											handleToggle(widget.name)
-										}
-									/>
-									<span className={toggleTrack} />
-									<span className={toggleKnob} />
-								</label>
+								<Toggle
+									checked={isActive}
+									disabled={isDisabled}
+									onChange={() =>
+										handleToggle(widget.name)
+									}
+								/>
 							</div>
 							{hasMissingDependency && dependency?.actionUrl && (
 								<div className="text-[13px] leading-relaxed text-slate-500">
