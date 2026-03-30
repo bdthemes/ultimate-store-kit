@@ -1,5 +1,19 @@
 import { useState, useMemo, useCallback, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import {
+	btnLg,
+	btnOutlineGreen,
+	btnOutlineRed,
+	btnPrimary,
+	btnSm,
+	proBadge,
+	selectInput,
+	selectLabel,
+	toggleInput,
+	toggleKnob,
+	toggleLabel,
+	toggleTrack,
+} from '../tw';
 
 const getFiltersFromHash = () => {
 	const hash = window.location.hash;
@@ -160,35 +174,41 @@ const WidgetsPage = ({
 		(v) => v === 'on'
 	).length;
 
+	const cardBase =
+		'flex flex-col justify-between gap-3 rounded-usk border border-slate-200 bg-white p-4 transition-all duration-200 hover:shadow-usk';
+
 	return (
-		<div className="usk-widgets-page">
-			<div className="usk-widgets-page__header">
-				<h2 className="usk-widgets-page__title">{currentConfig.title}</h2>
-				<div className="usk-widgets-page__meta">
-					<span className="usk-widgets-page__count">
+		<div>
+			<div className="mb-5 flex items-center justify-between">
+				<h2 className="m-0 text-xl font-bold text-slate-800">
+					{currentConfig.title}
+				</h2>
+				<div className="flex items-center gap-2">
+					<span className="rounded-2xl border border-slate-200 bg-white px-3 py-1 text-[13px] text-slate-500">
 						{activeCount} / {widgets.filter((w) => w.type === 'checkbox').length}{' '}
 						{__('Active', 'ultimate-store-kit')}
 					</span>
 				</div>
 			</div>
 
-			<div className="usk-widgets-page__toolbar">
-				<div className="usk-widgets-page__search">
-					<span className="dashicons dashicons-search"></span>
+			<div className="mb-5 flex flex-wrap items-center gap-3 rounded-usk border border-slate-200 bg-white px-4 py-3">
+				<div className="flex flex-[0_0_220px] items-center gap-1.5 rounded-md border border-slate-200 bg-slate-100 px-2.5">
+					<span className="dashicons dashicons-search h-4 w-4 text-base text-slate-400"></span>
 					<input
 						type="text"
+						className="w-full border-0 bg-transparent py-1.5 text-[13px] text-slate-700 outline-none placeholder:text-slate-400"
 						placeholder={__('Search widgets...', 'ultimate-store-kit')}
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</div>
 
-				<div className="usk-widgets-page__filter-group">
-					<label className="usk-select-label">
+				<div className="flex items-center gap-1.5">
+					<label className={selectLabel}>
 						{__('Widget Type:', 'ultimate-store-kit')}
 					</label>
 					<select
-						className="usk-select"
+						className={selectInput}
 						value={widgetType}
 						onChange={(e) => setWidgetType(e.target.value)}
 					>
@@ -198,12 +218,12 @@ const WidgetsPage = ({
 					</select>
 				</div>
 
-				<div className="usk-widgets-page__filter-group">
-					<label className="usk-select-label">
+				<div className="flex items-center gap-1.5">
+					<label className={selectLabel}>
 						{__('Status:', 'ultimate-store-kit')}
 					</label>
 					<select
-						className="usk-select"
+						className={selectInput}
 						value={filter}
 						onChange={(e) => setFilter(e.target.value)}
 					>
@@ -214,12 +234,12 @@ const WidgetsPage = ({
 				</div>
 
 				{contentTypes.length > 0 && (
-					<div className="usk-widgets-page__filter-group">
-						<label className="usk-select-label">
+					<div className="flex items-center gap-1.5">
+						<label className={selectLabel}>
 							{__('Template:', 'ultimate-store-kit')}
 						</label>
 						<select
-							className="usk-select"
+							className={selectInput}
 							value={contentTypeFilter}
 							onChange={(e) => setContentTypeFilter(e.target.value)}
 						>
@@ -233,15 +253,17 @@ const WidgetsPage = ({
 					</div>
 				)}
 
-				<div className="usk-widgets-page__bulk">
+				<div className="ml-auto flex gap-1.5">
 					<button
-						className="usk-btn usk-btn--small usk-btn--outline-green"
+						type="button"
+						className={`${btnSm} ${btnOutlineGreen}`}
 						onClick={handleActivateAll}
 					>
 						{__('Activate All', 'ultimate-store-kit')}
 					</button>
 					<button
-						className="usk-btn usk-btn--small usk-btn--outline-red"
+						type="button"
+						className={`${btnSm} ${btnOutlineRed}`}
 						onClick={handleDeactivateAll}
 					>
 						{__('Deactivate All', 'ultimate-store-kit')}
@@ -249,9 +271,9 @@ const WidgetsPage = ({
 				</div>
 			</div>
 
-			<div className="usk-widgets-grid">
+			<div className="grid grid-cols-4 gap-3">
 				{filteredWidgets.length === 0 && (
-					<div className="usk-widgets-grid__empty">
+					<div className="col-span-full py-10 text-center text-sm text-slate-400">
 						{__('No widgets found.', 'ultimate-store-kit')}
 					</div>
 				)}
@@ -267,28 +289,31 @@ const WidgetsPage = ({
 					return (
 						<div
 							key={widget.name}
-							className={`usk-widget-card ${isActive ? 'usk-widget-card--active' : ''} ${isDisabled ? 'usk-widget-card--disabled' : ''}`}
+							className={`${cardBase} ${
+								isActive ? 'border-emerald-300 bg-emerald-50' : ''
+							} ${isDisabled ? 'opacity-60' : ''}`}
 						>
-							<div className="usk-widget-card__header">
-								<span className="usk-widget-card__name">
+							<div className="flex items-start justify-between gap-2">
+								<span className="text-[13px] font-semibold leading-snug text-slate-800">
 									{widget.label}
 								</span>
 								{isProWidget && (
-									<span className="usk-widget-card__badge">
+									<span className={proBadge}>
 										{__('Pro', 'ultimate-store-kit')}
 									</span>
 								)}
 							</div>
-							<div className="usk-widget-card__footer">
-								<div className="usk-widget-card__links">
+							<div className="flex items-center justify-between">
+								<div className="flex gap-2">
 									{dependency?.actionUrl && (
 										<a
 											href={dependency.actionUrl}
 											target={dependency.actionType === 'install' ? '_blank' : undefined}
 											rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
 											title={dependency.message || dependency.actionLabel}
+											className="text-slate-400 transition-colors hover:text-uks-brand"
 										>
-											<span className="dashicons dashicons-admin-plugins"></span>
+											<span className="dashicons dashicons-admin-plugins text-base"></span>
 										</a>
 									)}
 									{widget.demo_url &&
@@ -301,8 +326,9 @@ const WidgetsPage = ({
 													'Demo',
 													'ultimate-store-kit'
 												)}
+												className="text-slate-400 transition-colors hover:text-uks-brand"
 											>
-												<span className="dashicons dashicons-visibility"></span>
+												<span className="dashicons dashicons-visibility text-base"></span>
 											</a>
 										)}
 									{widget.video_url && (
@@ -314,28 +340,32 @@ const WidgetsPage = ({
 												'Video',
 												'ultimate-store-kit'
 											)}
+											className="text-slate-400 transition-colors hover:text-uks-brand"
 										>
-											<span className="dashicons dashicons-video-alt3"></span>
+											<span className="dashicons dashicons-video-alt3 text-base"></span>
 										</a>
 									)}
 								</div>
-								<label className="usk-toggle">
+								<label className={toggleLabel}>
 									<input
 										type="checkbox"
+										className={toggleInput}
 										checked={isActive}
 										disabled={isDisabled}
 										onChange={() =>
 											handleToggle(widget.name)
 										}
 									/>
-									<span className="usk-toggle__slider"></span>
+									<span className={toggleTrack} />
+									<span className={toggleKnob} />
 								</label>
 							</div>
 							{hasMissingDependency && dependency?.actionUrl && (
-								<div className="usk-license__form-desc">
+								<div className="text-[13px] leading-relaxed text-slate-500">
 									{dependency.message}{' '}
 									<a
 										href={dependency.actionUrl}
+										className="font-semibold text-uks-brand hover:underline"
 										target={dependency.actionType === 'install' ? '_blank' : undefined}
 										rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
 									>
@@ -348,9 +378,10 @@ const WidgetsPage = ({
 				})}
 			</div>
 
-			<div className="usk-widgets-page__footer">
+			<div className="mt-6 flex justify-end pt-4">
 				<button
-					className="usk-btn usk-btn--primary usk-btn--lg"
+					type="button"
+					className={`${btnLg} ${btnPrimary}`}
 					onClick={handleSave}
 					disabled={saving}
 				>

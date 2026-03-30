@@ -2,11 +2,13 @@ import { __ } from '@wordpress/i18n';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
+const linkCard = 'font-semibold text-uks-brand no-underline hover:underline';
+
 const AboutInfo = () => {
 	return (
-		<div className="usk-about">
-			<div className="usk-about__card">
-				<div className="usk-about__logo">
+		<div>
+			<div className="mb-4 rounded-usk border border-slate-200 bg-white p-8 text-center">
+				<div className="mb-3">
 					<svg
 						width="48"
 						height="48"
@@ -28,13 +30,13 @@ const AboutInfo = () => {
 						/>
 					</svg>
 				</div>
-				<h2 className="usk-about__title">
+				<h2 className="mb-2 text-[22px] font-extrabold text-slate-800">
 					{__('Ultimate Store Kit', 'ultimate-store-kit')}
 				</h2>
-				<span className="usk-about__version">
+				<span className="mb-3 inline-block rounded-xl bg-uks-brand px-3 py-0.5 text-xs font-semibold text-white">
 					v{adminData.version || ''}
 				</span>
-				<p className="usk-about__desc">
+				<p className="mx-auto mb-0 max-w-[540px] text-[13px] leading-relaxed text-slate-500">
 					{__(
 						'Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.',
 						'ultimate-store-kit'
@@ -42,50 +44,62 @@ const AboutInfo = () => {
 				</p>
 			</div>
 
-			<div className="usk-about__grid">
-				<div className="usk-about__info-card">
-					<h3>{__('Author', 'ultimate-store-kit')}</h3>
-					<p>
+			<div className="mb-4 grid grid-cols-2 gap-3">
+				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
+						{__('Author', 'ultimate-store-kit')}
+					</h3>
+					<p className="m-0 text-sm">
 						<a
 							href="https://bdthemes.com/"
 							target="_blank"
 							rel="noopener noreferrer"
+							className={linkCard}
 						>
 							BdThemes
 						</a>
 					</p>
 				</div>
-				<div className="usk-about__info-card">
-					<h3>{__('Website', 'ultimate-store-kit')}</h3>
-					<p>
+				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
+						{__('Website', 'ultimate-store-kit')}
+					</h3>
+					<p className="m-0 text-sm">
 						<a
 							href="https://storekit.pro/"
 							target="_blank"
 							rel="noopener noreferrer"
+							className={linkCard}
 						>
 							storekit.pro
 						</a>
 					</p>
 				</div>
-				<div className="usk-about__info-card">
-					<h3>{__('Documentation', 'ultimate-store-kit')}</h3>
-					<p>
+				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
+						{__('Documentation', 'ultimate-store-kit')}
+					</h3>
+					<p className="m-0 text-sm">
 						<a
 							href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/"
 							target="_blank"
 							rel="noopener noreferrer"
+							className={linkCard}
 						>
 							{__('Knowledge Base', 'ultimate-store-kit')}
 						</a>
 					</p>
 				</div>
-				<div className="usk-about__info-card">
-					<h3>{__('Support', 'ultimate-store-kit')}</h3>
-					<p>
+				<div className="rounded-usk border border-slate-200 bg-white px-5 py-4">
+					<h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
+						{__('Support', 'ultimate-store-kit')}
+					</h3>
+					<p className="m-0 text-sm">
 						<a
 							href="https://bdthemes.com/support/"
 							target="_blank"
 							rel="noopener noreferrer"
+							className={linkCard}
 						>
 							{__('Get Support', 'ultimate-store-kit')}
 						</a>
@@ -93,50 +107,36 @@ const AboutInfo = () => {
 				</div>
 			</div>
 
-			<div className="usk-about__links">
-				<h3>{__('Useful Links', 'ultimate-store-kit')}</h3>
-				<ul>
-					<li>
-						<a
-							href="https://www.youtube.com/c/bdthemes"
-							target="_blank"
-							rel="noopener noreferrer"
+			<div className="mb-4 rounded-usk border border-slate-200 bg-white p-5">
+				<h3 className="mb-3 text-sm font-bold text-slate-800">
+					{__('Useful Links', 'ultimate-store-kit')}
+				</h3>
+				<ul className="m-0 list-none p-0">
+					{[
+						['https://www.youtube.com/c/bdthemes', __('Video Tutorials', 'ultimate-store-kit')],
+						['https://feedback.bdthemes.com/b/6vr2250l/feature-requests/', __('Request a Feature', 'ultimate-store-kit')],
+						['https://wordpress.org/plugins/ultimate-store-kit/', __('Rate Us on WordPress.org', 'ultimate-store-kit')],
+						['https://www.facebook.com/groups/developer.developer/', __('Join Our Facebook Community', 'ultimate-store-kit')],
+					].map(([href, label]) => (
+						<li
+							key={href}
+							className="border-b border-slate-100 py-1.5 last:border-b-0"
 						>
-							{__('Video Tutorials', 'ultimate-store-kit')}
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://feedback.bdthemes.com/b/6vr2250l/feature-requests/"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{__('Request a Feature', 'ultimate-store-kit')}
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://wordpress.org/plugins/ultimate-store-kit/"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{__('Rate Us on WordPress.org', 'ultimate-store-kit')}
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.facebook.com/groups/developer.developer/"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{__('Join Our Facebook Community', 'ultimate-store-kit')}
-						</a>
-					</li>
+							<a
+								href={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="text-[13px] text-slate-700 no-underline hover:text-uks-brand"
+							>
+								{label}
+							</a>
+						</li>
+					))}
 				</ul>
 			</div>
 
-			<div className="usk-about__footer">
-				<p>
+			<div className="p-4 text-center">
+				<p className="m-0 text-xs text-slate-400">
 					{__(
 						'Ultimate Store Kit Addon made with love by',
 						'ultimate-store-kit'
@@ -145,6 +145,7 @@ const AboutInfo = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						href="https://bdthemes.com"
+						className="text-uks-brand no-underline"
 					>
 						BdThemes
 					</a>{' '}

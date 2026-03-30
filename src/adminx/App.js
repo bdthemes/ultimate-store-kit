@@ -8,6 +8,7 @@ import OtherSettings from './pages/OtherSettings';
 import GetPro from './pages/GetPro';
 import License from './pages/License';
 import AboutInfo from './pages/AboutInfo';
+import { appShell, bodyRow, mainContent } from './tw';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -158,24 +159,38 @@ const App = () => {
 		}
 	};
 
+	const notifBase =
+		'animate-usk-slide-in mb-4 flex items-center justify-between rounded-lg px-4 py-2.5 text-[13px] font-medium';
+	const notifSuccess =
+		'border border-emerald-200 bg-emerald-100 text-emerald-800';
+	const notifError = 'border border-red-200 bg-red-100 text-red-900';
+
 	return (
-		<div className="usk-admin-app">
-			<Header version={adminData.version} />
-			<div className="usk-admin-body">
+		<div className={appShell}>
+			<Header
+				version={adminData.version}
+				isPro={isProActive}
+			/>
+			<div className={bodyRow}>
 				<Sidebar
 					activePage={activePage}
 					onNavigate={setActivePage}
 					isPro={isProActive}
 				/>
-				<div className="usk-admin-content">
+				<div className={mainContent}>
 					{notification && (
 						<div
-							className={`usk-notification usk-notification--${notification.type}`}
+							className={`${notifBase} ${
+								notification.type === 'success'
+									? notifSuccess
+									: notifError
+							}`}
 						>
 							<span>{notification.message}</span>
 							<button
+								type="button"
 								onClick={() => setNotification(null)}
-								className="usk-notification__close"
+								className="cursor-pointer border-0 bg-transparent px-1 text-lg leading-none text-inherit"
 							>
 								×
 							</button>

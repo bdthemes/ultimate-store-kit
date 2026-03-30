@@ -1,6 +1,18 @@
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import ProPromo from '../components/ProPromo';
+import {
+	btnLg,
+	btnPrimary,
+	fieldControl,
+	fieldLabel,
+	fieldRow,
+	proBadge,
+	toggleInput,
+	toggleKnob,
+	toggleLabel,
+	toggleTrack,
+} from '../tw';
 
 const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) => {
 	const [localSettings, setLocalSettings] = useState(() => {
@@ -62,17 +74,22 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 	const groups = renderGroups();
 
 	return (
-		<div className="usk-other-settings">
-			<div className="usk-other-settings__header">
-				<h2 className="usk-other-settings__title">
+		<div>
+			<div className="mb-5">
+				<h2 className="m-0 text-xl font-bold text-slate-800">
 					{__('Other Settings', 'ultimate-store-kit')}
 				</h2>
 			</div>
 
 			{groups.map((group, gi) => (
-				<div key={gi} className="usk-settings-group">
-					<h3 className="usk-settings-group__title">{group.label}</h3>
-					<div className="usk-settings-group__body">
+				<div
+					key={gi}
+					className="mb-4 overflow-hidden rounded-usk border border-slate-200 bg-white"
+				>
+					<h3 className="m-0 border-b border-slate-200 bg-slate-100 px-5 py-3.5 text-sm font-bold text-slate-800">
+						{group.label}
+					</h3>
+					<div className="px-5 py-2">
 						{group.items.map((item) => {
 							const isProItem = item.widget_type === 'pro';
 							const dependency = item.dependency || null;
@@ -87,46 +104,51 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 								return (
 									<div
 										key={item.name}
-										className="usk-settings-field"
+										className="border-b border-slate-100 py-2.5 last:border-b-0"
 									>
-										<div className="usk-settings-field__label">
-											<span>
-												{item.label}
-												{hasMissingDependency && dependency?.actionUrl ? (
-													<>
-														{' '}
-														<a
-															href={dependency.actionUrl}
-															target={dependency.actionType === 'install' ? '_blank' : undefined}
-															rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
-														>
-															{dependency.actionLabel}
-														</a>
-													</>
-												) : null}
-											</span>
-											{isProItem && (
-												<span className="usk-widget-card__badge">
-													{__('Pro', 'ultimate-store-kit')}
+										<div className="flex items-center justify-between gap-3">
+											<div className={`${fieldLabel} max-w-[70%] flex-wrap`}>
+												<span>
+													{item.label}
+													{hasMissingDependency && dependency?.actionUrl ? (
+														<>
+															{' '}
+															<a
+																href={dependency.actionUrl}
+																target={dependency.actionType === 'install' ? '_blank' : undefined}
+																rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
+																className="font-semibold text-uks-brand hover:underline"
+															>
+																{dependency.actionLabel}
+															</a>
+														</>
+													) : null}
 												</span>
-											)}
+												{isProItem && (
+													<span className={proBadge}>
+														{__('Pro', 'ultimate-store-kit')}
+													</span>
+												)}
+											</div>
+											<label className={toggleLabel}>
+												<input
+													type="checkbox"
+													className={toggleInput}
+													checked={isOn}
+													disabled={isDisabled}
+													onChange={() =>
+														handleChange(
+															item.name,
+															isOn ? 'off' : 'on'
+														)
+													}
+												/>
+												<span className={toggleTrack} />
+												<span className={toggleKnob} />
+											</label>
 										</div>
-										<label className="usk-toggle">
-											<input
-												type="checkbox"
-												checked={isOn}
-												disabled={isDisabled}
-												onChange={() =>
-													handleChange(
-														item.name,
-														isOn ? 'off' : 'on'
-													)
-												}
-											/>
-											<span className="usk-toggle__slider"></span>
-										</label>
 										{hasMissingDependency && dependency?.message && (
-											<div className="usk-license__form-desc">
+											<div className="mt-2 text-[13px] leading-relaxed text-slate-500">
 												{dependency.message}
 											</div>
 										)}
@@ -136,15 +158,12 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 
 							if (item.type === 'select') {
 								return (
-									<div
-										key={item.name}
-										className="usk-settings-field"
-									>
-										<label className="usk-settings-field__label">
+									<div key={item.name} className={fieldRow}>
+										<label className={fieldLabel}>
 											{item.label}
 										</label>
 										<select
-											className="usk-settings-field__select"
+											className={fieldControl}
 											value={
 												localSettings[item.name] || ''
 											}
@@ -177,16 +196,13 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 								item.type === 'text'
 							) {
 								return (
-									<div
-										key={item.name}
-										className="usk-settings-field"
-									>
-										<label className="usk-settings-field__label">
+									<div key={item.name} className={fieldRow}>
+										<label className={fieldLabel}>
 											{item.label}
 										</label>
 										<input
 											type={item.type}
-											className="usk-settings-field__input"
+											className={fieldControl}
 											value={
 												localSettings[item.name] || ''
 											}
@@ -208,9 +224,10 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 				</div>
 			))}
 
-			<div className="usk-widgets-page__footer">
+			<div className="mt-6 flex justify-end pt-4">
 				<button
-					className="usk-btn usk-btn--primary usk-btn--lg"
+					type="button"
+					className={`${btnLg} ${btnPrimary}`}
 					onClick={handleSave}
 					disabled={saving}
 				>
