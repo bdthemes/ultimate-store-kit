@@ -4737,7 +4737,7 @@
     right: clamp(10px, 1vw, 15px);
   }
 }
-.usk-product-reviews {
+.usk-product-reviews .usk-product-reviews-grid {
   grid-gap: 30px;
 }
 .usk-product-reviews .usk-item {
