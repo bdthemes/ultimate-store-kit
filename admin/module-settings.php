@@ -1095,6 +1095,56 @@ class ModuleService {
                     'name' => 'swatches_group_end',
                     'type' => 'end_group',
                 ],
+
+                // Back Order Feature
+                [
+                    'name'      => 'back_order_group_start',
+                    'label'     => esc_html__('Back Order', 'ultimate-store-kit'),
+                    'type'      => 'start_group',
+                    'video_url' => '',
+                ],
+                [
+                    'name'         => 'back-order',
+                    'label'        => esc_html__('Enable', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce product',
+                    'demo_url'     => 'https://storekit.pro/demo/back-order/',
+                    'video_url'    => '',
+                    'parent'       => true,
+                ],
+                [
+                    'name' => 'back_order_group_end',
+                    'type' => 'end_group',
+                ],
+
+                // Pre-Order Feature
+                [
+                    'name'      => 'pre_order_group_start',
+                    'label'     => esc_html__('Pre-Order', 'ultimate-store-kit'),
+                    'type'      => 'start_group',
+                    'video_url' => '',
+                ],
+                [
+                    'name'         => 'pre-order',
+                    'label'        => esc_html__('Enable', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce product',
+                    'demo_url'     => 'https://storekit.pro/demo/pre-order/',
+                    'video_url'    => '',
+                    'parent'       => true,
+                ],
+                [
+                    'name' => 'pre_order_group_end',
+                    'type' => 'end_group',
+                ],
             ]
         ];
 
