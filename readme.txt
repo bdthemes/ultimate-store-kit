@@ -227,6 +227,7 @@ https://youtu.be/9J4zCaDcPnk
 
 = 2.9.XX [XXth March 2026] =
 
+* Added: Pagination support with style controls for the product reviews widget
 * Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
 
 = 2.9.13 [10th March 2026] =
