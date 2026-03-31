@@ -3,7 +3,7 @@
  * Uses inline styles exclusively so WordPress admin CSS cannot
  * override transform/transition via stylesheet specificity.
  */
-const BRAND = '#e20a1d';
+const BRAND = '#00216A';
 const OFF_BG = '#cbd5e1';
 
 // Spring-like easing: fast start, gentle settle

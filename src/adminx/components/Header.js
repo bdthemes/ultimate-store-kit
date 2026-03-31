@@ -1,17 +1,18 @@
 import { __ } from '@wordpress/i18n';
+import { btnPrimary, btnSm, btnSecondary } from '../tw';
 
-const Header = ({ version, isPro }) => {
+const Header = ({ version, isPro, onToggleSidebar, isSidebarOpen, isDesktop }) => {
 	const helpUrl =
 		'https://bdthemes.com/knowledge-base/ultimate-store-kit/';
 	const proUrl = 'https://bdthemes.com/ultimate-store-kit/pricing/';
 
 	return (
-		<div className="sticky top-8 z-[100] border-0 border-b border-solid border-b-gray-100 bg-white px-6 py-4 rounded-tl-lg rounded-tr-lg">
-			<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-				<div className="flex min-w-0 gap-4 items-center">
+		<div className="rounded-tl-lg rounded-tr-lg border-0 border-b border-solid border-b-gray-100 bg-white px-4 py-3 sm:px-6 sm:py-4">
+			<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+				<div className="flex min-w-0 items-center gap-3 sm:gap-4">
 					<div className="flex">
 						<svg
-							className="w-12 h-12 block"
+							className="block h-10 w-10 sm:h-12 sm:w-12"
 							version="1.1"
 							id="Layer_1"
 							xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +53,7 @@ const Header = ({ version, isPro }) => {
 					</div>
 					<div className="flex min-w-0 flex-col gap-1">
 						<div className="flex flex-wrap items-center gap-2">
-							<h1 className="m-0 text-xl font-bold leading-tight text-slate-800">
+							<h1 className="m-0 text-lg font-bold leading-tight text-slate-800 sm:text-xl">
 								{__('Ultimate Store Kit', 'ultimate-store-kit')}
 							</h1>
 							{version ? (
@@ -61,7 +62,7 @@ const Header = ({ version, isPro }) => {
 								</span>
 							) : null}
 						</div>
-						<p className="m-0 max-w-xl text-sm leading-snug text-gray-500">
+						<p className="m-0 max-w-xl text-[13px] leading-snug text-gray-500 sm:text-sm">
 							{__(
 								'Build high-converting WooCommerce stores with Elementor widgets & presets.',
 								'ultimate-store-kit'
@@ -69,18 +70,68 @@ const Header = ({ version, isPro }) => {
 						</p>
 					</div>
 				</div>
-				<div className="flex shrink-0 flex-wrap items-center gap-3 sm:pt-1">
+				<div className="flex shrink-0 flex-wrap items-center gap-2">
+					<button
+						type="button"
+						onClick={(e) => onToggleSidebar?.(e)}
+						className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition-colors hover:border-uks-brand/40 hover:text-uks-brand"
+					style={{ display: isDesktop ? 'none' : 'inline-flex' }}
+						aria-expanded={isSidebarOpen ? 'true' : 'false'}
+						aria-label={__('Open menu', 'ultimate-store-kit')}
+					>
+						{isSidebarOpen ? (
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="h-4 w-4"
+							>
+								<path d="M18 6 6 18" />
+								<path d="m6 6 12 12" />
+							</svg>
+						) : (
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="h-4 w-4"
+							>
+								<path d="M4 6h16" />
+								<path d="M4 12h16" />
+								<path d="M4 18h16" />
+							</svg>
+						)}
+					</button>
 					{!isPro ? (
 						<a
 							href={proUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:border-uks-brand hover:text-uks-brand"
+							className={`${btnSm} ${btnPrimary}`}
 						>
-							<span
-								className="dashicons dashicons-star-filled text-base text-uks-brand"
-								aria-hidden="true"
-							/>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width={24}
+								height={24}
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="w-4 h-4 block"
+							>
+								<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+							</svg>
+
 							{__('Get Pro', 'ultimate-store-kit')}
 						</a>
 					) : null}
@@ -88,13 +139,28 @@ const Header = ({ version, isPro }) => {
 						href={helpUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-1.5 text-sm text-gray-600 transition-colors hover:text-blue-600"
+						className={`${btnSm} ${btnSecondary} flex items-center gap-2 hover:border-uks-brand/40 hover:bg-white hover:text-uks-brand`}
 					>
 						<span
-							className="flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-[11px] font-bold leading-none text-gray-500"
+							className="flex h-4 w-4 items-center justify-center rounded-full border border-current text-inherit"
 							aria-hidden="true"
 						>
-							?
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width={24}
+								height={24}
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="w-4 h-4 block"
+							>
+								<path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+								<path d="M21 16v2a4 4 0 0 1-4 4h-5" />
+							</svg>
+
 						</span>
 						{__('Help & Support', 'ultimate-store-kit')}
 					</a>

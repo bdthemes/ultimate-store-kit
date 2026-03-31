@@ -32,6 +32,8 @@ const App = () => {
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 1024);
 
 	useEffect(() => {
 		if (notification) {
@@ -56,6 +58,35 @@ const App = () => {
 			window.location.hash = '#welcome';
 		}
 	}, [isProActive, activePage]);
+
+	useEffect(() => {
+		setIsSidebarOpen(false);
+	}, [activePage]);
+
+	useEffect(() => {
+		document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, [isSidebarOpen]);
+
+	useEffect(() => {
+		const handleResize = () => {
+			const desktop = window.innerWidth > 1024;
+			setIsDesktop(desktop);
+			if (desktop) {
+				setIsSidebarOpen(false);
+			}
+		};
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
+	const handleToggleSidebar = useCallback((event) => {
+		if (event?.preventDefault) event.preventDefault();
+		if (event?.stopPropagation) event.stopPropagation();
+		setIsSidebarOpen((prev) => !prev);
+	}, []);
 
 	const saveSettings = useCallback(
 		(section, sectionSettings) => {
@@ -183,18 +214,24 @@ const App = () => {
 
 	return (
 		<div className={appShell}>
-						<Header
+			<Header
 				version={adminData.version}
 				isPro={isProActive}
+				isSidebarOpen={isSidebarOpen}
+				isDesktop={isDesktop}
+				onToggleSidebar={handleToggleSidebar}
 			/>
 			<div className="bg-slate-50">
 
 
-			<div className={bodyRow}>
+			<div className={`${bodyRow} flex-col lg:flex-row`}>
 				<Sidebar
 					activePage={activePage}
 					onNavigate={setActivePage}
 					isPro={isProActive}
+					isOpen={isSidebarOpen}
+					isDesktop={isDesktop}
+					onClose={() => setIsSidebarOpen(false)}
 				/>
 				<div className={`${mainContent} flex flex-col`}>
 					{notification && (

@@ -26,8 +26,8 @@ module.exports = {
 			},
 			colors: {
 				uks: {
-					brand: '#e20a1d',
-					'brand-dark': '#b30a15',
+					brand: '#00216A',
+					'brand-dark': '#00216A',
 					dark: '#1a2332',
 					/** ~darken($dark, 3%) for sidebar promo */
 					'dark-deep': '#161e2a',

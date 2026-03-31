@@ -46,7 +46,7 @@ export const fieldRow =
 export const fieldLabel = 'flex items-center gap-2 text-[13px] font-medium text-slate-700';
 
 export const fieldControl =
-	'min-w-[120px] rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-700 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand disabled:cursor-not-allowed disabled:opacity-50';
+	'min-w-[120px] w-full block max-w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-700 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand disabled:cursor-not-allowed disabled:opacity-50';
 
 export const licenseInput =
 	'w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 transition-all duration-200 placeholder:text-slate-400 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand';

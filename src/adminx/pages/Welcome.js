@@ -55,7 +55,7 @@ const Welcome = ({ widgets, settings }) => {
 			data.total > 0 ? Math.round((data.active / data.total) * 100) : 0;
 		return (
 			<div className="rounded-lg border border-solid border-gray-100 bg-white p-4">
-				<h3 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-500">
+				<h3 className="m-0 mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-500">
 					{title}
 				</h3>
 				<div className="flex items-center justify-between gap-3">
@@ -113,7 +113,7 @@ const Welcome = ({ widgets, settings }) => {
 
 	return (
 		<div>
-			<div className="mb-4 grid grid-cols-4 gap-4">
+			<div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
 				<StatCard
 					title={__('All Widgets', 'ultimate-store-kit')}
 					data={stats.all}
@@ -136,7 +136,7 @@ const Welcome = ({ widgets, settings }) => {
 				/>
 			</div>
 
-			<div className="mb-4 grid grid-cols-2 gap-4">
+			<div className="mb-4 grid grid-cols-1 gap-4 xl:grid-cols-2">
 				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
 					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Support And Feedback', 'ultimate-store-kit')}
@@ -221,7 +221,7 @@ const Welcome = ({ widgets, settings }) => {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-2 gap-4">
+			<div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
 				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
 					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Feedback', 'ultimate-store-kit')}

@@ -52,6 +52,8 @@ const App = () => {
   const [isProActive, setIsProActive] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(!!adminData.isPro);
   const [saving, setSaving] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [notification, setNotification] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [isSidebarOpen, setIsSidebarOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isDesktop, setIsDesktop] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(() => window.innerWidth > 1024);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (notification) {
       const timer = setTimeout(() => setNotification(null), 3000);
@@ -72,6 +74,31 @@ const App = () => {
       window.location.hash = '#welcome';
     }
   }, [isProActive, activePage]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setIsSidebarOpen(false);
+  }, [activePage]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSidebarOpen]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleResize = () => {
+      const desktop = window.innerWidth > 1024;
+      setIsDesktop(desktop);
+      if (desktop) {
+        setIsSidebarOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const handleToggleSidebar = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(event => {
+    if (event?.preventDefault) event.preventDefault();
+    if (event?.stopPropagation) event.stopPropagation();
+    setIsSidebarOpen(prev => !prev);
+  }, []);
   const saveSettings = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)((section, sectionSettings) => {
     setSaving(true);
     const formData = new FormData();
@@ -164,15 +191,21 @@ const App = () => {
     className: _tw__WEBPACK_IMPORTED_MODULE_10__.appShell,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
       version: adminData.version,
-      isPro: isProActive
+      isPro: isProActive,
+      isSidebarOpen: isSidebarOpen,
+      isDesktop: isDesktop,
+      onToggleSidebar: handleToggleSidebar
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
       className: "bg-slate-50",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: _tw__WEBPACK_IMPORTED_MODULE_10__.bodyRow,
+        className: `${_tw__WEBPACK_IMPORTED_MODULE_10__.bodyRow} flex-col lg:flex-row`,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
           activePage: activePage,
           onNavigate: setActivePage,
-          isPro: isProActive
+          isPro: isProActive,
+          isOpen: isSidebarOpen,
+          isDesktop: isDesktop,
+          onClose: () => setIsSidebarOpen(false)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
           className: `${_tw__WEBPACK_IMPORTED_MODULE_10__.mainContent} flex flex-col`,
           children: [notification && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
@@ -219,26 +252,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tw__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../tw */ "./src/adminx/tw.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const Header = ({
   version,
-  isPro
+  isPro,
+  onToggleSidebar,
+  isSidebarOpen,
+  isDesktop
 }) => {
   const helpUrl = 'https://bdthemes.com/knowledge-base/ultimate-store-kit/';
   const proUrl = 'https://bdthemes.com/ultimate-store-kit/pricing/';
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "sticky top-8 z-[100] border-0 border-b border-solid border-b-gray-100 bg-white px-6 py-4 rounded-tl-lg rounded-tr-lg",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "flex min-w-0 gap-4 items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "rounded-tl-lg rounded-tr-lg border-0 border-b border-solid border-b-gray-100 bg-white px-4 py-3 sm:px-6 sm:py-4",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "flex min-w-0 items-center gap-3 sm:gap-4",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "flex",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-            className: "w-12 h-12 block",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+            className: "block h-10 w-10 sm:h-12 sm:w-12",
             version: "1.1",
             id: "Layer_1",
             xmlns: "http://www.w3.org/2000/svg",
@@ -250,60 +288,127 @@ const Header = ({
               enableBackground: "new 0 0 500 500"
             },
             xmlSpace: "preserve",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("style", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("style", {
               type: "text/css",
               dangerouslySetInnerHTML: {
                 __html: "\n\t.st0{fill:#E30C1D;enable-background:new    ;}\n\t.st1{fill:#FFFFFF;}\n"
               }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
               className: "st0",
               d: "M473.6,496.4h-447c-12.6,0-22.9-10.2-22.9-22.9v-447c0-12.4,10.2-22.9,22.9-22.9h446.8 c12.6,0,22.9,10.2,22.9,22.9v446.8C496.3,486.3,486.2,496.4,473.6,496.4z"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("g", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
                 className: "st1",
                 d: "M374.3,364l-21.1-157.6c-1.9-14.3-14.2-25-28.6-25c0,0-0.1,0-0.1,0l-143.7,0.7c-14.5,0.1-26.8,11-28.5,25.4 l-18.6,156.9c-1,8.2,1.6,16.4,7.1,22.5s13.3,9.7,21.5,9.7h183.5c8.3,0,16.2-3.6,21.7-9.8C372.9,380.6,375.4,372.3,374.3,364z M186.4,217.1l132.8-0.6l6.4,47.6c-34.1,4.4-61,23.4-78.4,55.7c-8.5,15.8-12.9,31.5-15,41.9h-63L186.4,217.1z M268.1,361.7 c1.9-7.3,5-16.3,9.9-25.3c12-22.3,29.2-34.7,52.2-37.6l8.4,62.9H268.1z"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
                 className: "st1",
                 d: "M212.4,169.2c8.8,0,16-7.2,16-16c0-13.9,11.3-25.3,25.3-25.3c13.9,0,25.3,11.3,25.3,25.3c0,8.8,7.2,16,16,16 s16-7.2,16-16c0-31.6-25.7-57.3-57.3-57.3c-31.6,0-57.3,25.7-57.3,57.3C196.4,162.1,203.6,169.2,212.4,169.2z"
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "flex min-w-0 flex-col gap-1",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "flex flex-wrap items-center gap-2",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-              className: "m-0 text-xl font-bold leading-tight text-slate-800",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+              className: "m-0 text-lg font-bold leading-tight text-slate-800 sm:text-xl",
               children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ultimate Store Kit', 'ultimate-store-kit')
-            }), version ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            }), version ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
               className: "rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-500",
               children: ["v", version]
             }) : null]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "m-0 max-w-xl text-sm leading-snug text-gray-500",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "m-0 max-w-xl text-[13px] leading-snug text-gray-500 sm:text-sm",
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Build high-converting WooCommerce stores with Elementor widgets & presets.', 'ultimate-store-kit')
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "flex shrink-0 flex-wrap items-center gap-3 sm:pt-1",
-        children: [!isPro ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "flex shrink-0 flex-wrap items-center gap-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "button",
+          onClick: e => onToggleSidebar?.(e),
+          className: "inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition-colors hover:border-uks-brand/40 hover:text-uks-brand",
+          style: {
+            display: isDesktop ? 'none' : 'inline-flex'
+          },
+          "aria-expanded": isSidebarOpen ? 'true' : 'false',
+          "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Open menu', 'ultimate-store-kit'),
+          children: isSidebarOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            className: "h-4 w-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M18 6 6 18"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "m6 6 12 12"
+            })]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            className: "h-4 w-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M4 6h16"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M4 12h16"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M4 18h16"
+            })]
+          })
+        }), !isPro ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
           href: proUrl,
           target: "_blank",
           rel: "noopener noreferrer",
-          className: "inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:border-uks-brand hover:text-uks-brand",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            className: "dashicons dashicons-star-filled text-base text-uks-brand",
-            "aria-hidden": "true"
+          className: `${_tw__WEBPACK_IMPORTED_MODULE_1__.btnSm} ${_tw__WEBPACK_IMPORTED_MODULE_1__.btnPrimary}`,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: 24,
+            height: 24,
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            className: "w-4 h-4 block",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
+            })
           }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Get Pro', 'ultimate-store-kit')]
-        }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
           href: helpUrl,
           target: "_blank",
           rel: "noopener noreferrer",
-          className: "inline-flex items-center gap-1.5 text-sm text-gray-600 transition-colors hover:text-blue-600",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            className: "flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-[11px] font-bold leading-none text-gray-500",
+          className: `${_tw__WEBPACK_IMPORTED_MODULE_1__.btnSm} ${_tw__WEBPACK_IMPORTED_MODULE_1__.btnSecondary} flex items-center gap-2 hover:border-uks-brand/40 hover:bg-white hover:text-uks-brand`,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "flex h-4 w-4 items-center justify-center rounded-full border border-current text-inherit",
             "aria-hidden": "true",
-            children: "?"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: 24,
+              height: 24,
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              className: "w-4 h-4 block",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+                d: "M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+                d: "M21 16v2a4 4 0 0 1-4 4h-5"
+              })]
+            })
           }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Help & Support', 'ultimate-store-kit')]
         })]
       })]
@@ -384,7 +489,7 @@ const promoSettings = [{
 }];
 const ProPromo = () => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "pointer-events-none relative mt-6 select-none opacity-70",
+    className: "pointer-events-none relative select-none opacity-70",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "pointer-events-auto mb-4 flex items-center justify-between rounded-usk border border-uks-brand bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-5 py-3.5",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -697,14 +802,17 @@ const Icon = ({
       });
   }
 };
+const getAdminBarHeight = () => document.getElementById('wpadminbar')?.offsetHeight || 0;
 const Sidebar = ({
   activePage,
   onNavigate,
-  isPro
+  isPro,
+  isOpen,
+  isDesktop,
+  onClose
 }) => {
   const [showComingSoon, setShowComingSoon] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "sticky top-[7.5rem] z-[90] flex w-64 shrink-0 flex-col self-stretch justify-between border border-solid border-gray-100 bg-white px-4 py-6 rounded-lg",
+  const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("nav", {
       className: "flex flex-col gap-6",
       "aria-label": "Main",
@@ -721,10 +829,10 @@ const Sidebar = ({
                 type: "button",
                 onClick: () => (() => {
                   onNavigate(item.id);
-                  // Keep URL hash in sync so reload/direct links work.
                   window.location.hash = `#${item.id}`;
+                  onClose();
                 })(),
-                className: `flex items-center w-full cursor-pointer gap-3 rounded-lg border-0 px-3 py-3 text-left text-sm font-medium transition-colors ${isActive ? 'bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] text-white shadow-sm' : 'bg-transparent text-slate-700 hover:bg-gray-100 hover:text-slate-900'}`,
+                className: `flex w-full cursor-pointer items-center gap-3 rounded-lg border-0 px-3 py-3 text-left text-sm font-medium transition-colors ${isActive ? 'bg-uks-brand text-white shadow-sm' : 'bg-transparent text-slate-700 hover:bg-gray-100 hover:text-slate-900'}`,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Icon, {
                   name: item.icon
                 }), item.label]
@@ -734,7 +842,7 @@ const Sidebar = ({
         })]
       }, section.group))
     }), showComingSoon && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "mt-8 rounded-xl bg-slate-100 p-4",
+      className: "mt-6 hidden rounded-xl bg-slate-100 p-4 lg:block lg:mt-8",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "relative ",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
@@ -820,6 +928,78 @@ const Sidebar = ({
       })
     })]
   });
+  if (isDesktop) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      style: {
+        display: 'flex'
+      },
+      className: "w-64 shrink-0 flex-col justify-between self-stretch rounded-lg border border-solid border-gray-100 bg-white px-4 py-6 lg:sticky lg:top-[7.5rem]",
+      children: content
+    });
+  }
+  const adminBarH = getAdminBarHeight();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      style: {
+        display: 'block',
+        position: 'fixed',
+        top: adminBarH,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 99998,
+        backgroundColor: 'rgba(0,0,0,0.3)'
+      },
+      onClick: onClose,
+      "aria-hidden": "true"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      style: {
+        position: 'fixed',
+        left: 0,
+        top: adminBarH,
+        zIndex: 99999,
+        height: `calc(100vh - ${adminBarH}px)`,
+        width: '86vw',
+        maxWidth: '320px',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#fff',
+        padding: '1rem',
+        boxShadow: '4px 0 24px rgba(0,0,0,0.15)',
+        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform 300ms ease-out',
+        pointerEvents: isOpen ? 'auto' : 'none',
+        overflowY: 'auto'
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "mb-3 flex items-center justify-between",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          className: "m-0 text-sm font-bold text-slate-700",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Navigation', 'ultimate-store-kit')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "button",
+          onClick: onClose,
+          className: "inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-slate-200 bg-white text-slate-500 hover:text-slate-700",
+          "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Close menu', 'ultimate-store-kit'),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            className: "h-4 w-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M18 6 6 18"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "m6 6 12 12"
+            })]
+          })
+        })]
+      }), content]
+    })]
+  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sidebar);
 
@@ -843,7 +1023,7 @@ __webpack_require__.r(__webpack_exports__);
  * Uses inline styles exclusively so WordPress admin CSS cannot
  * override transform/transition via stylesheet specificity.
  */
-const BRAND = '#e20a1d';
+const BRAND = '#00216A';
 const OFF_BG = '#cbd5e1';
 
 // Spring-like easing: fast start, gentle settle
@@ -958,138 +1138,310 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const adminData = window.ultimateStoreKitAdminData || {};
-const linkCard = 'font-semibold text-uks-brand no-underline hover:underline';
+const linkStrong = 'font-semibold text-uks-brand no-underline transition hover:underline';
+const InfoCard = ({
+  icon,
+  label,
+  children
+}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  className: "group flex items-center gap-4 rounded-lg border border-solid border-gray-200 bg-white p-4",
+  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-uks-brand/10 text-uks-brand transition group-hover:bg-uks-brand/15",
+    "aria-hidden": "true",
+    children: icon
+  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "min-w-0 flex-1",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      className: "m-0 mb-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "text-sm font-semibold text-slate-800",
+      children: children
+    })]
+  })]
+});
+const UsefulLinkCard = ({
+  icon,
+  title,
+  desc,
+  href
+}) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+  href: href,
+  target: "_blank",
+  rel: "noopener noreferrer",
+  className: "group flex items-center gap-4 rounded-lg border border-solid border-gray-200 bg-white p-4 text-inherit no-underline transition hover:border-uks-brand/25",
+  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-uks-brand/10 text-uks-brand transition group-hover:bg-uks-brand/15",
+    "aria-hidden": "true",
+    children: icon
+  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "min-w-0 flex-1",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "text-sm font-semibold text-slate-800",
+      children: title
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      className: "m-0 mt-0.5 text-[12px] leading-snug text-slate-500",
+      children: desc
+    })]
+  })]
+});
 const AboutInfo = () => {
+  const isPro = Boolean(adminData.isPro);
+  const version = adminData.version || '';
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "space-y-4",
+    className: "space-y-6",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "rounded-lg bg-white p-8 text-center border border-solid border-gray-100",
+      className: "overflow-hidden rounded-usk border border-slate-200 bg-white",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "mb-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-          width: "48",
-          height: "48",
-          viewBox: "0 0 1010 1024",
-          fill: "none",
-          xmlns: "http://www.w3.org/2000/svg",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-            fill: "#10b981",
-            d: "M911.638 879.878l-51.416-503.357c-5.935-56.843-53.595-100.775-111.514-100.775-0.111 0-0.222 0-0.332 0h-472.748c-0.161 0-0.352-0.002-0.545-0.002-58.369 0-106.292 44.717-111.382 101.761l-0.031 0.429-46.017 503.357c-0.293 3.043-0.46 6.58-0.46 10.154 0 62.098 50.324 112.441 112.413 112.472h570.201c62.106-0.108 112.411-50.478 112.411-112.6 0-4.029-0.212-8.008-0.625-11.928l0.042 0.49z"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-            fill: "#ffffff",
-            d: "M229.611 905.585c-0.014 0-0.033 0-0.050 0-7.454 0-13.496-6.043-13.496-13.496 0-0.408 0.017-0.811 0.054-1.208l-0.003 0.052 46.017-503.357c0-7.099 5.755-12.854 12.854-12.854v0h472.894c6.965 0.021 12.697 5.265 13.491 12.019l0.007 0.064 21.594 209.389c-73.984 3.594-140.814 31.559-193.28 75.97l0.472-0.391c-80.208 68.639-113.114 167.101-126.482 233.298z"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-            fill: "#ffffff",
-            d: "M799.808 905.585h-231.369c12.854-48.973 37.661-112.343 88.435-155.532 36.734-30.62 83.98-49.763 135.643-51.407l0.351-0.009 19.666 191.393c0.106 0.618 0.165 1.33 0.165 2.057 0 7.099-5.755 12.854-12.854 12.854-0.014 0-0.026 0-0.040 0h0.002z"
+        className: "bg-white p-4 sm:p-5 border border-solid border-gray-100",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex gap-4 max-w-3xl flex-col items-center text-center sm:flex-row sm:items-start sm:text-left",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+              className: "w-12 h-12 block",
+              version: "1.1",
+              id: "Layer_1",
+              xmlns: "http://www.w3.org/2000/svg",
+              xmlnsXlink: "http://www.w3.org/1999/xlink",
+              x: "0px",
+              y: "0px",
+              viewBox: "0 0 500 500",
+              xmlSpace: "preserve",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("style", {
+                type: "text/css",
+                dangerouslySetInnerHTML: {
+                  __html: "\n\t.st0{fill:#E30C1D;enable-background:new    ;}\n\t.st1{fill:#FFFFFF;}\n"
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                className: "st0",
+                d: "M473.6,496.4h-447c-12.6,0-22.9-10.2-22.9-22.9v-447c0-12.4,10.2-22.9,22.9-22.9h446.8 c12.6,0,22.9,10.2,22.9,22.9v446.8C496.3,486.3,486.2,496.4,473.6,496.4z"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  className: "st1",
+                  d: "M374.3,364l-21.1-157.6c-1.9-14.3-14.2-25-28.6-25c0,0-0.1,0-0.1,0l-143.7,0.7c-14.5,0.1-26.8,11-28.5,25.4 l-18.6,156.9c-1,8.2,1.6,16.4,7.1,22.5s13.3,9.7,21.5,9.7h183.5c8.3,0,16.2-3.6,21.7-9.8C372.9,380.6,375.4,372.3,374.3,364z M186.4,217.1l132.8-0.6l6.4,47.6c-34.1,4.4-61,23.4-78.4,55.7c-8.5,15.8-12.9,31.5-15,41.9h-63L186.4,217.1z M268.1,361.7 c1.9-7.3,5-16.3,9.9-25.3c12-22.3,29.2-34.7,52.2-37.6l8.4,62.9H268.1z"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  className: "st1",
+                  d: "M212.4,169.2c8.8,0,16-7.2,16-16c0-13.9,11.3-25.3,25.3-25.3c13.9,0,25.3,11.3,25.3,25.3c0,8.8,7.2,16,16,16 s16-7.2,16-16c0-31.6-25.7-57.3-57.3-57.3c-31.6,0-57.3,25.7-57.3,57.3C196.4,162.1,203.6,169.2,212.4,169.2z"
+                })]
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "min-w-0 flex-1",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "mb-2 flex flex-wrap items-center justify-center gap-2 sm:justify-start",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+                className: "m-0 text-[22px] font-extrabold leading-none text-slate-900",
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ultimate Store Kit', 'ultimate-store-kit')
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+                className: "inline-flex items-center rounded-full bg-uks-brand px-2.5 py-0.5 text-xs font-semibold text-white",
+                children: ["v", version]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                className: `inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${isPro ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}`,
+                children: isPro ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Pro', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Free', 'ultimate-store-kit')
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              className: "mb-4 text-[13px] leading-relaxed text-slate-600",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+              className: "m-0 flex list-none flex-wrap justify-center gap-3 p-0 sm:justify-start",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+                className: "rounded-full py-1 px-2 border border-solid border-slate-200 bg-white/80 text-xs font-medium text-slate-600",
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Elementor widgets', 'ultimate-store-kit')
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+                className: "rounded-full py-1 px-2 border border-solid border-slate-200 bg-white/80 text-xs font-medium text-slate-600",
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('WooCommerce ready', 'ultimate-store-kit')
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+                className: "rounded-full py-1 px-2 border border-solid border-slate-200 bg-white/80 text-xs font-medium text-slate-600",
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Store-focused UI', 'ultimate-store-kit')
+              })]
+            })]
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-        className: "mb-2 text-[22px] font-extrabold text-slate-800",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ultimate Store Kit', 'ultimate-store-kit')
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-        className: "mb-3 inline-block rounded-xl bg-uks-brand px-3 py-0.5 text-xs font-semibold text-white",
-        children: ["v", adminData.version || '']
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        className: "mx-auto mb-0 max-w-[540px] text-[13px] leading-relaxed text-slate-500",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.', 'ultimate-store-kit')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "grid grid-cols-1 gap-px border-t border-slate-200 sm:grid-cols-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "bg-gray-100 px-4 py-3 text-center sm:text-left",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "m-0 mb-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-400",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Current version', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+            className: "m-0 text-sm font-bold text-slate-800",
+            children: ["v", version]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "bg-gray-100 px-4 py-3 text-center sm:text-left",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "m-0 mb-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-400",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('License', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "m-0 text-sm font-bold text-slate-800",
+            children: isPro ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Pro (active)', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Free', 'ultimate-store-kit')
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "bg-gray-100 px-4 py-3 text-center sm:text-left",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "m-0 mb-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-400",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Built for', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "m-0 text-sm font-bold text-slate-800",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('WordPress + WooCommerce', 'ultimate-store-kit')
+          })]
+        })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "grid grid-cols-2 gap-3",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "rounded-lg bg-white px-5 py-4 border border-solid border-gray-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Author', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "m-0 text-sm",
+      className: "rounded-usk border border-solid border-gray-100 bg-white p-4 sm:p-5",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+        className: "m-0 mb-3 text-base font-bold text-slate-800",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Product & support', 'ultimate-store-kit')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:grid-cols-4",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(InfoCard, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Author', 'ultimate-store-kit'),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+            className: "h-5 w-5",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            viewBox: "0 0 24 24",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+              cx: "12",
+              cy: "7",
+              r: "4"
+            })]
+          }),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: "https://bdthemes.com/",
             target: "_blank",
             rel: "noopener noreferrer",
-            className: linkCard,
+            className: linkStrong,
             children: "BdThemes"
           })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "rounded-lg bg-white px-5 \tpy-4 border border-solid border-gray-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Website', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "m-0 text-sm",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(InfoCard, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Website', 'ultimate-store-kit'),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+            className: "h-5 w-5",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            viewBox: "0 0 24 24",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+              cx: "12",
+              cy: "12",
+              r: "10"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              d: "M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+            })]
+          }),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: "https://storekit.pro/",
             target: "_blank",
             rel: "noopener noreferrer",
-            className: linkCard,
+            className: linkStrong,
             children: "storekit.pro"
           })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "rounded-lg bg-white px-5 py-4 border border-solid border-gray-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Documentation', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "m-0 text-sm",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(InfoCard, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Documentation', 'ultimate-store-kit'),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+            className: "h-5 w-5",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            viewBox: "0 0 24 24",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              d: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              d: "M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+            })]
+          }),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: "https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/",
             target: "_blank",
             rel: "noopener noreferrer",
-            className: linkCard,
+            className: linkStrong,
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Knowledge Base', 'ultimate-store-kit')
           })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "rounded-lg bg-white px-5 py-4 border border-solid border-gray-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Support', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "m-0 text-sm",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(InfoCard, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Support', 'ultimate-store-kit'),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+            className: "h-5 w-5",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            viewBox: "0 0 24 24",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              d: "M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+            })
+          }),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: "https://bdthemes.com/support/",
             target: "_blank",
             rel: "noopener noreferrer",
-            className: linkCard,
+            className: linkStrong,
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Get Support', 'ultimate-store-kit')
           })
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "rounded-lg bg-white p-5 border border-solid border-gray-100",
+      className: "rounded-usk border border-solid border-gray-100 bg-white p-4 sm:p-5",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-        className: "mb-3 text-sm font-bold text-slate-800",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Useful Links', 'ultimate-store-kit')
+        className: "m-0 mb-3 text-base font-bold text-slate-800",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Useful links', 'ultimate-store-kit')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
-        className: "m-0 list-none p-0",
-        children: [['https://www.youtube.com/c/bdthemes', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Video Tutorials', 'ultimate-store-kit')], ['https://feedback.bdthemes.com/b/6vr2250l/feature-requests/', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Request a Feature', 'ultimate-store-kit')], ['https://wordpress.org/plugins/ultimate-store-kit/', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Rate Us on WordPress.org', 'ultimate-store-kit')], ['https://www.facebook.com/groups/developer.developer/', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Join Our Facebook Community', 'ultimate-store-kit')]].map(([href, label]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-          className: "border-b border-slate-200 py-2 last:border-b-0",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        className: "m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 2xl:grid-cols-4",
+        children: [['https://www.youtube.com/c/bdthemes', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Video tutorials', 'ultimate-store-kit'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Step-by-step YouTube tutorials for setup, widgets, and customization.', 'ultimate-store-kit'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+          className: "h-5 w-5",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2",
+          viewBox: "0 0 24 24",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("polygon", {
+            points: "23 7 16 12 23 17 23 7"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+            x: "1",
+            y: "5",
+            width: "15",
+            height: "14",
+            rx: "2",
+            ry: "2"
+          })]
+        })], ['https://feedback.bdthemes.com/b/6vr2250l/feature-requests/', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Request a feature', 'ultimate-store-kit'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Share ideas and vote on what we build next.', 'ultimate-store-kit'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+          className: "h-5 w-5",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2",
+          viewBox: "0 0 24 24",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M12 20h9"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"
+          })]
+        })], ['https://wordpress.org/plugins/ultimate-store-kit/', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Rate us on WordPress.org', 'ultimate-store-kit'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Help others discover the plugin with a review.', 'ultimate-store-kit'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          className: "h-5 w-5",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2",
+          viewBox: "0 0 24 24",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("polygon", {
+            points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          })
+        })], ['https://www.facebook.com/groups/358290584725185', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Facebook community', 'ultimate-store-kit'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Join our Facebook community to connect with other users and the team.', 'ultimate-store-kit'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          className: "h-5 w-5",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2",
+          viewBox: "0 0 24 24",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+          })
+        })]].map(([href, title, desc, icon]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(UsefulLinkCard, {
             href: href,
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "inline-flex items-center gap-2 text-[13px] text-slate-700 no-underline hover:text-uks-brand",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: 24,
-              height: 24,
-              viewBox: "0 0 24 24",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: 2,
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              className: "h-4 w-4 shrink-0",
-              "aria-hidden": "true",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "M15 3h6v6"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "M10 14 21 3"
-              })]
-            }), label]
+            title: title,
+            desc: desc,
+            icon: icon
           })
         }, href))
       })]
@@ -1653,94 +2005,97 @@ const OtherSettings = ({
   };
   const groups = renderGroups();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "mb-5",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-        className: "m-0 text-xl font-bold text-slate-800",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other Settings', 'ultimate-store-kit')
-      })
-    }), groups.map((group, gi) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "mb-4 overflow-hidden rounded-usk border border-slate-200 bg-white",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-        className: "m-0 border-b border-slate-200 bg-slate-100 px-5 py-3.5 text-sm font-bold text-slate-800",
-        children: group.label
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "px-5 py-2",
-        children: group.items.map(item => {
-          const isProItem = item.widget_type === 'pro';
-          const dependency = item.dependency || null;
-          const hasMissingDependency = dependency && (!dependency.isInstalled || !dependency.isActive);
-          const isDisabled = isProItem && !isPro || hasMissingDependency;
-          if (item.type === 'checkbox') {
-            const isOn = !isDisabled && localSettings[item.name] === 'on';
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "border-b border-slate-100 py-2.5 last:border-b-0",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "flex items-center justify-between gap-3",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] items-start gap-4",
+      children: [groups.map((group, gi) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "w-full overflow-hidden rounded-usk border border-solid border-gray-100 bg-white",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          className: "m-0 border-0 border-b border-solid border-b-gray-200  px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-slate-700",
+          children: group.label
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "space-y-5 p-5",
+          children: group.items.map(item => {
+            const isProItem = item.widget_type === 'pro';
+            const dependency = item.dependency || null;
+            const hasMissingDependency = dependency && (!dependency.isInstalled || !dependency.isActive);
+            const isDisabled = isProItem && !isPro || hasMissingDependency;
+            if (item.type === 'checkbox') {
+              const isOn = !isDisabled && localSettings[item.name] === 'on';
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "rounded-lg border border-slate-200 bg-white",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: `${_tw__WEBPACK_IMPORTED_MODULE_3__.fieldLabel} max-w-[70%] flex-wrap`,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                    children: [item.label, hasMissingDependency && dependency?.actionUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-                      children: [' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-                        href: dependency.actionUrl,
-                        target: dependency.actionType === 'install' ? '_blank' : undefined,
-                        rel: dependency.actionType === 'install' ? 'noopener noreferrer' : undefined,
-                        className: "font-semibold text-uks-brand hover:underline",
-                        children: dependency.actionLabel
-                      })]
-                    }) : null]
-                  }), isProItem && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    className: _tw__WEBPACK_IMPORTED_MODULE_3__.proBadge,
+                  className: "flex items-center justify-between gap-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: `${_tw__WEBPACK_IMPORTED_MODULE_3__.fieldLabel} max-w-[70%] flex-wrap`,
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                      children: [item.label, hasMissingDependency && dependency?.actionUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                        children: [' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                          href: dependency.actionUrl,
+                          target: dependency.actionType === 'install' ? '_blank' : undefined,
+                          rel: dependency.actionType === 'install' ? 'noopener noreferrer' : undefined,
+                          className: "font-semibold text-uks-brand hover:underline",
+                          children: dependency.actionLabel
+                        })]
+                      }) : null]
+                    }), isProItem && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                      className: _tw__WEBPACK_IMPORTED_MODULE_3__.proBadge,
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tw__WEBPACK_IMPORTED_MODULE_3__.Toggle, {
+                    checked: isOn,
+                    disabled: isDisabled,
+                    onChange: () => handleChange(item.name, isOn ? 'off' : 'on')
+                  })]
+                }), hasMissingDependency && dependency?.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "mt-2 text-[13px] leading-relaxed text-slate-500",
+                  children: dependency.message
+                })]
+              }, item.name);
+            }
+            if (item.type === 'select') {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "rounded-lg border border-slate-200 bg-white",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                  className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldLabel,
+                  children: [item.label, isProItem && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: `${_tw__WEBPACK_IMPORTED_MODULE_3__.proBadge} ml-2 align-middle`,
                     children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tw__WEBPACK_IMPORTED_MODULE_3__.Toggle, {
-                  checked: isOn,
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
+                  className: `${_tw__WEBPACK_IMPORTED_MODULE_3__.fieldControl} mt-2 block w-full`,
+                  value: localSettings[item.name] || '',
+                  onChange: e => handleChange(item.name, e.target.value),
                   disabled: isDisabled,
-                  onChange: () => handleChange(item.name, isOn ? 'off' : 'on')
+                  children: item.options && Object.entries(item.options).map(([val, lbl]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    value: val,
+                    children: lbl
+                  }, val))
                 })]
-              }), hasMissingDependency && dependency?.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                className: "mt-2 text-[13px] leading-relaxed text-slate-500",
-                children: dependency.message
-              })]
-            }, item.name);
-          }
-          if (item.type === 'select') {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldRow,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldLabel,
-                children: item.label
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
-                className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldControl,
-                value: localSettings[item.name] || '',
-                onChange: e => handleChange(item.name, e.target.value),
-                disabled: isDisabled,
-                children: item.options && Object.entries(item.options).map(([val, lbl]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: val,
-                  children: lbl
-                }, val))
-              })]
-            }, item.name);
-          }
-          if (item.type === 'number' || item.type === 'text') {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldRow,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldLabel,
-                children: item.label
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: item.type,
-                className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldControl,
-                value: localSettings[item.name] || '',
-                onChange: e => handleChange(item.name, e.target.value),
-                disabled: isDisabled
-              })]
-            }, item.name);
-          }
-          return null;
-        })
-      })]
-    }, gi)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              }, item.name);
+            }
+            if (item.type === 'number' || item.type === 'text') {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "rounded-lg border border-slate-200 bg-white",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                  className: _tw__WEBPACK_IMPORTED_MODULE_3__.fieldLabel,
+                  children: [item.label, isProItem && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                    className: `${_tw__WEBPACK_IMPORTED_MODULE_3__.proBadge} ml-2 align-middle`,
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  type: item.type,
+                  className: `${_tw__WEBPACK_IMPORTED_MODULE_3__.fieldControl} mt-2 block w-full`,
+                  value: localSettings[item.name] || '',
+                  onChange: e => handleChange(item.name, e.target.value),
+                  disabled: isDisabled
+                })]
+              }, item.name);
+            }
+            return null;
+          })
+        })]
+      }, gi)), !isPro && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ProPromo__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "mt-6 flex justify-end pt-4",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         type: "button",
@@ -1749,7 +2104,7 @@ const OtherSettings = ({
         disabled: saving,
         children: saving ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Saving...', 'ultimate-store-kit') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Save Changes', 'ultimate-store-kit')
       })
-    }), !isPro && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ProPromo__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+    })]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OtherSettings);
@@ -1828,7 +2183,7 @@ const Welcome = ({
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "rounded-lg border border-solid border-gray-100 bg-white p-4",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
-        className: "mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-500",
+        className: "m-0 mb-3 text-[13px] font-semibold uppercase tracking-wide text-slate-500",
         children: title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "flex items-center justify-between gap-3",
@@ -1891,7 +2246,7 @@ const Welcome = ({
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "mb-4 grid grid-cols-4 gap-4",
+      className: "mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(StatCard, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All Widgets', 'ultimate-store-kit'),
         data: stats.all,
@@ -1910,7 +2265,7 @@ const Welcome = ({
         color: "#3b82f6"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "mb-4 grid grid-cols-2 gap-4",
+      className: "mb-4 grid grid-cols-1 gap-4 xl:grid-cols-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "rounded-lg border border-solid border-gray-100 bg-white p-5",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
@@ -1983,7 +2338,7 @@ const Welcome = ({
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "grid grid-cols-2 gap-4",
+      className: "grid grid-cols-1 gap-4 xl:grid-cols-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "rounded-lg border border-solid border-gray-100 bg-white p-5",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
@@ -2202,105 +2557,105 @@ const WidgetsPage = ({
   const cardBase = 'flex flex-col justify-between gap-3 rounded-lg border border-solid border-gray-200 p-4';
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "mb-5 flex items-center justify-between",
+      className: "mb-5 flex flex-wrap items-center justify-between gap-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
         className: "m-0 text-xl font-bold text-slate-800",
         children: currentConfig.title
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "flex items-center gap-2",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-          className: "rounded-2xl border border-slate-200 bg-white px-3 py-1 text-[13px] text-slate-500",
-          children: [activeCount, " / ", widgets.filter(w => w.type === 'checkbox').length, ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Active', 'ultimate-store-kit')]
-        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        className: "rounded-2xl border border-slate-200 bg-white px-3 py-1 text-[13px] text-slate-500",
+        children: [activeCount, " / ", widgets.filter(w => w.type === 'checkbox').length, ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Active', 'ultimate-store-kit')]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "mb-5 flex flex-wrap items-center gap-3 rounded-lg border border-solid border-gray-100 bg-white px-4 py-3",
+      className: "mb-5 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-solid border-gray-100 bg-white px-4 py-3",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "relative",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
-          xmlns: "http://www.w3.org/2000/svg",
-          width: 24,
-          height: 24,
-          viewBox: "0 0 24 24",
-          fill: "none",
-          stroke: "currentColor",
-          strokeWidth: 2,
-          strokeLinecap: "round",
-          strokeLinejoin: "round",
-          className: "absolute right-3 top-3 text-gray-400 w-4 h-4 block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
-            d: "m21 21-4.34-4.34"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("circle", {
-            cx: 11,
-            cy: 11,
-            r: 8
+        className: "flex flex-wrap items-center gap-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "relative",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: 24,
+            height: 24,
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            className: "absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 block text-gray-400",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
+              d: "m21 21-4.34-4.34"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("circle", {
+              cx: 11,
+              cy: 11,
+              r: 8
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: "block w-full rounded-md border border-solid border-gray-200 bg-transparent py-2.5 pr-10 pl-3 text-sm text-slate-700 placeholder:text-gray-500 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand/25 sm:w-48",
+            placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search widgets...', 'ultimate-store-kit'),
+            value: search,
+            onChange: e => setSearch(e.target.value)
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "text",
-          className: "w-full border border-solid border-gray-200 bg-transparent py-2.5 pr-10 text-sm text-slate-700 placeholder:text-gray-500 focus:outline-none focus:ring-0 focus:border-uks-brand focus:ring-2 focus:ring-uks-brand/25 rounded-md",
-          placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search widgets...', 'ultimate-store-kit'),
-          value: search,
-          onChange: e => setSearch(e.target.value)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "flex items-center gap-1.5",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widget Type:', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
+            value: widgetType,
+            onChange: e => setWidgetType(e.target.value),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "wc",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "edd",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "other",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other', 'ultimate-store-kit')
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "flex items-center gap-1.5",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status:', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
+            value: filter,
+            onChange: e => setFilter(e.target.value),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "all",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "free",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free', 'ultimate-store-kit')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "pro",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
+            })]
+          })]
+        }), contentTypes.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "flex items-center gap-1.5",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Template:', 'ultimate-store-kit')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
+            value: contentTypeFilter,
+            onChange: e => setContentTypeFilter(e.target.value),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "all",
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All Templates', 'ultimate-store-kit')
+            }), contentTypes.map(type => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: type,
+              children: type.charAt(0).toUpperCase() + type.slice(1)
+            }, type))]
+          })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex items-center gap-1.5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-          className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widget Type:', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
-          value: widgetType,
-          onChange: e => setWidgetType(e.target.value),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "wc",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "edd",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "other",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other', 'ultimate-store-kit')
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex items-center gap-1.5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-          className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Status:', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
-          value: filter,
-          onChange: e => setFilter(e.target.value),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "all",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "free",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "pro",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro', 'ultimate-store-kit')
-          })]
-        })]
-      }), contentTypes.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex items-center gap-1.5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-          className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Template:', 'ultimate-store-kit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
-          value: contentTypeFilter,
-          onChange: e => setContentTypeFilter(e.target.value),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "all",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('All Templates', 'ultimate-store-kit')
-          }), contentTypes.map(type => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: type,
-            children: type.charAt(0).toUpperCase() + type.slice(1)
-          }, type))]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "ml-auto flex gap-1.5",
+        className: "flex flex-wrap items-center gap-1.5",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
           type: "button",
           className: `${_tw__WEBPACK_IMPORTED_MODULE_2__.btnSm} !rounded-lg !bg-uks-brand !text-white hover:!bg-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white border-none`,
@@ -2320,7 +2675,7 @@ const WidgetsPage = ({
           }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate All', 'ultimate-store-kit')]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
           type: "button",
-          className: `${_tw__WEBPACK_IMPORTED_MODULE_2__.btnSm} !rounded-lg !border !border-[#E20A1D]/25 bg-[#E20A1D]/5 text-uks-brand hover:bg-[#E20A1D]/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`,
+          className: `${_tw__WEBPACK_IMPORTED_MODULE_2__.btnSm} !rounded-lg !border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`,
           onClick: handleDeactivateAll,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
             className: "h-4 w-4",
@@ -2340,7 +2695,7 @@ const WidgetsPage = ({
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "grid grid-cols-4 gap-3 bg-white rounded-lg border border-solid border-gray-100 p-5",
+      className: "grid grid-cols-1 gap-3 rounded-lg border border-solid border-gray-100 bg-white p-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4",
       children: [filteredWidgets.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "col-span-full py-10 text-center text-sm text-slate-400",
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No widgets found.', 'ultimate-store-kit')
@@ -2551,7 +2906,7 @@ const selectLabel = 'whitespace-nowrap text-xs font-semibold text-slate-600';
 const selectInput = 'min-w-[140px] cursor-pointer rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-700 transition-all duration-200 hover:border-slate-300 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand';
 const fieldRow = 'flex items-center justify-between border-b border-slate-100 py-2.5 last:border-b-0';
 const fieldLabel = 'flex items-center gap-2 text-[13px] font-medium text-slate-700';
-const fieldControl = 'min-w-[120px] rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-700 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand disabled:cursor-not-allowed disabled:opacity-50';
+const fieldControl = 'min-w-[120px] w-full block max-w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-700 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand disabled:cursor-not-allowed disabled:opacity-50';
 const licenseInput = 'w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 transition-all duration-200 placeholder:text-slate-400 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand';
 
 /* Toggle — self-contained React component; avoids WP admin CSS overrides on peer/transform */

@@ -79,7 +79,7 @@ const promoSettings = [
 
 const ProPromo = () => {
 	return (
-		<div className="pointer-events-none relative mt-6 select-none opacity-70">
+		<div className="pointer-events-none relative select-none opacity-70">
 			<div className="pointer-events-auto mb-4 flex items-center justify-between rounded-usk border border-uks-brand bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-5 py-3.5">
 				<div className="flex items-center gap-2.5">
 					<span className="rounded-[10px] bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">

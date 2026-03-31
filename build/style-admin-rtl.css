@@ -3,6 +3,34 @@
   \**********************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /* Tailwind-only admin bundle — utilities/components generated from class names in src/adminx */
+.container{
+    width: 100%
+}
+@media (min-width: 640px){
+    .container{
+        max-width: 640px
+    }
+}
+@media (min-width: 768px){
+    .container{
+        max-width: 768px
+    }
+}
+@media (min-width: 1024px){
+    .container{
+        max-width: 1024px
+    }
+}
+@media (min-width: 1280px){
+    .container{
+        max-width: 1280px
+    }
+}
+@media (min-width: 1536px){
+    .container{
+        max-width: 1536px
+    }
+}
 .ultimate-store-kit-admin-root .sr-only{
     position: absolute;
     width: 1px;
@@ -19,6 +47,9 @@
 }
 .ultimate-store-kit-admin-root .pointer-events-auto{
     pointer-events: auto
+}
+.ultimate-store-kit-admin-root .fixed{
+    position: fixed
 }
 .ultimate-store-kit-admin-root .absolute{
     position: absolute
@@ -38,6 +69,18 @@
 .ultimate-store-kit-admin-root .left-\[3px\]{
     right: 3px
 }
+.ultimate-store-kit-admin-root .right-1{
+    left: 0.25rem
+}
+.ultimate-store-kit-admin-root .right-3{
+    left: 0.75rem
+}
+.ultimate-store-kit-admin-root .top-1{
+    top: 0.25rem
+}
+.ultimate-store-kit-admin-root .top-3{
+    top: 0.75rem
+}
 .ultimate-store-kit-admin-root .top-8{
     top: 2rem
 }
@@ -50,35 +93,8 @@
 .ultimate-store-kit-admin-root .top-0{
     top: 0px
 }
-.ultimate-store-kit-admin-root .left-3{
-    right: 0.75rem
-}
 .ultimate-store-kit-admin-root .top-1\/2{
     top: 50%
-}
-.ultimate-store-kit-admin-root .top-3{
-    top: 0.75rem
-}
-.ultimate-store-kit-admin-root .right-3{
-    left: 0.75rem
-}
-.ultimate-store-kit-admin-root .-top-2{
-    top: -0.5rem
-}
-.ultimate-store-kit-admin-root .right-2{
-    left: 0.5rem
-}
-.ultimate-store-kit-admin-root .top-2{
-    top: 0.5rem
-}
-.ultimate-store-kit-admin-root .top-4{
-    top: 1rem
-}
-.ultimate-store-kit-admin-root .top-1{
-    top: 0.25rem
-}
-.ultimate-store-kit-admin-root .right-1{
-    left: 0.25rem
 }
 .ultimate-store-kit-admin-root .z-\[100\]{
     z-index: 100
@@ -88,6 +104,12 @@
 }
 .ultimate-store-kit-admin-root .z-\[90\]{
     z-index: 90
+}
+.ultimate-store-kit-admin-root .z-\[98\]{
+    z-index: 98
+}
+.ultimate-store-kit-admin-root .z-\[99\]{
+    z-index: 99
 }
 .ultimate-store-kit-admin-root .col-span-full{
     grid-column: 1 / -1
@@ -102,10 +124,6 @@
     margin-right: auto;
     margin-left: auto
 }
-.ultimate-store-kit-admin-root .my-0\.5{
-    margin-top: 0.125rem;
-    margin-bottom: 0.125rem
-}
 .ultimate-store-kit-admin-root .my-2{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem
@@ -118,6 +136,9 @@
 }
 .ultimate-store-kit-admin-root .mb-2{
     margin-bottom: 0.5rem
+}
+.ultimate-store-kit-admin-root .mb-2\.5{
+    margin-bottom: 0.625rem
 }
 .ultimate-store-kit-admin-root .mb-3{
     margin-bottom: 0.75rem
@@ -143,14 +164,17 @@
 .ultimate-store-kit-admin-root .mt-1{
     margin-top: 0.25rem
 }
-.ultimate-store-kit-admin-root .mt-1\.5{
-    margin-top: 0.375rem
-}
 .ultimate-store-kit-admin-root .mt-2{
     margin-top: 0.5rem
 }
+.ultimate-store-kit-admin-root .mt-2\.5{
+    margin-top: 0.625rem
+}
 .ultimate-store-kit-admin-root .mt-3{
     margin-top: 0.75rem
+}
+.ultimate-store-kit-admin-root .mt-4{
+    margin-top: 1rem
 }
 .ultimate-store-kit-admin-root .mt-6{
     margin-top: 1.5rem
@@ -158,20 +182,14 @@
 .ultimate-store-kit-admin-root .mt-8{
     margin-top: 2rem
 }
-.ultimate-store-kit-admin-root .mt-4{
-    margin-top: 1rem
+.ultimate-store-kit-admin-root .ml-2{
+    margin-right: 0.5rem
+}
+.ultimate-store-kit-admin-root .mb-0\.5{
+    margin-bottom: 0.125rem
 }
 .ultimate-store-kit-admin-root .mt-0\.5{
     margin-top: 0.125rem
-}
-.ultimate-store-kit-admin-root .mb-2\.5{
-    margin-bottom: 0.625rem
-}
-.ultimate-store-kit-admin-root .mr-1{
-    margin-left: 0.25rem
-}
-.ultimate-store-kit-admin-root .mt-2\.5{
-    margin-top: 0.625rem
 }
 .ultimate-store-kit-admin-root .block{
     display: block
@@ -191,17 +209,20 @@
 .ultimate-store-kit-admin-root .grid{
     display: grid
 }
-.ultimate-store-kit-admin-root .h-11{
-    height: 2.75rem
+.ultimate-store-kit-admin-root .hidden{
+    display: none
+}
+.ultimate-store-kit-admin-root .h-1\.5{
+    height: 0.375rem
+}
+.ultimate-store-kit-admin-root .h-12{
+    height: 3rem
 }
 .ultimate-store-kit-admin-root .h-4{
     height: 1rem
 }
 .ultimate-store-kit-admin-root .h-5{
     height: 1.25rem
-}
-.ultimate-store-kit-admin-root .h-6{
-    height: 1.5rem
 }
 .ultimate-store-kit-admin-root .h-8{
     height: 2rem
@@ -215,32 +236,32 @@
 .ultimate-store-kit-admin-root .h-full{
     height: 100%
 }
-.ultimate-store-kit-admin-root .h-10{
-    height: 2.5rem
+.ultimate-store-kit-admin-root .h-11{
+    height: 2.75rem
 }
 .ultimate-store-kit-admin-root .h-14{
     height: 3.5rem
 }
-.ultimate-store-kit-admin-root .h-12{
-    height: 3rem
+.ultimate-store-kit-admin-root .h-10{
+    height: 2.5rem
 }
-.ultimate-store-kit-admin-root .h-1\.5{
-    height: 0.375rem
+.ultimate-store-kit-admin-root .h-20{
+    height: 5rem
 }
-.ultimate-store-kit-admin-root .h-3\.5{
-    height: 0.875rem
+.ultimate-store-kit-admin-root .h-\[10px\]{
+    height: 10px
+}
+.ultimate-store-kit-admin-root .h-9{
+    height: 2.25rem
 }
 .ultimate-store-kit-admin-root .min-h-\[calc\(100vh-100px\)\]{
     min-height: calc(100vh - 100px)
 }
-.ultimate-store-kit-admin-root .min-h-\[40px\]{
-    min-height: 40px
+.ultimate-store-kit-admin-root .w-1\.5{
+    width: 0.375rem
 }
 .ultimate-store-kit-admin-root .w-10{
     width: 2.5rem
-}
-.ultimate-store-kit-admin-root .w-11{
-    width: 2.75rem
 }
 .ultimate-store-kit-admin-root .w-12{
     width: 3rem
@@ -251,30 +272,42 @@
 .ultimate-store-kit-admin-root .w-5{
     width: 1.25rem
 }
-.ultimate-store-kit-admin-root .w-6{
-    width: 1.5rem
-}
 .ultimate-store-kit-admin-root .w-64{
     width: 16rem
 }
 .ultimate-store-kit-admin-root .w-\[60px\]{
     width: 60px
 }
-.ultimate-store-kit-admin-root .w-full{
-    width: 100%
-}
-.ultimate-store-kit-admin-root .w-14{
-    width: 3.5rem
-}
 .ultimate-store-kit-admin-root .w-fit{
     width: -moz-fit-content;
     width: fit-content
 }
-.ultimate-store-kit-admin-root .w-1\.5{
-    width: 0.375rem
+.ultimate-store-kit-admin-root .w-full{
+    width: 100%
 }
-.ultimate-store-kit-admin-root .w-3\.5{
-    width: 0.875rem
+.ultimate-store-kit-admin-root .w-11{
+    width: 2.75rem
+}
+.ultimate-store-kit-admin-root .w-14{
+    width: 3.5rem
+}
+.ultimate-store-kit-admin-root .w-20{
+    width: 5rem
+}
+.ultimate-store-kit-admin-root .w-\[10px\]{
+    width: 10px
+}
+.ultimate-store-kit-admin-root .w-9{
+    width: 2.25rem
+}
+.ultimate-store-kit-admin-root .w-8{
+    width: 2rem
+}
+.ultimate-store-kit-admin-root .w-\[86vw\]{
+    width: 86vw
+}
+.ultimate-store-kit-admin-root .w-52{
+    width: 13rem
 }
 .ultimate-store-kit-admin-root .min-w-0{
     min-width: 0px
@@ -288,36 +321,41 @@
 .ultimate-store-kit-admin-root .max-w-\[540px\]{
     max-width: 540px
 }
-.ultimate-store-kit-admin-root .max-w-\[640px\]{
-    max-width: 640px
-}
 .ultimate-store-kit-admin-root .max-w-\[70\%\]{
     max-width: 70%
-}
-.ultimate-store-kit-admin-root .max-w-xl{
-    max-width: 36rem
 }
 .ultimate-store-kit-admin-root .max-w-full{
     max-width: 100%
 }
+.ultimate-store-kit-admin-root .max-w-xl{
+    max-width: 36rem
+}
+.ultimate-store-kit-admin-root .max-w-3xl{
+    max-width: 48rem
+}
+.ultimate-store-kit-admin-root .max-w-\[320px\]{
+    max-width: 320px
+}
 .ultimate-store-kit-admin-root .flex-1{
     flex: 1 1 0%
-}
-.ultimate-store-kit-admin-root .flex-\[0_0_220px\]{
-    flex: 0 0 220px
-}
-.ultimate-store-kit-admin-root .flex-\[0_0_240px\]{
-    flex: 0 0 240px
 }
 .ultimate-store-kit-admin-root .shrink-0{
     flex-shrink: 0
 }
-.ultimate-store-kit-admin-root .-translate-y-1\/2{
-    --tw-translate-y: -50%;
+.ultimate-store-kit-admin-root .-translate-x-\[110\%\]{
+    --tw-translate-x: -110%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
-.ultimate-store-kit-admin-root .rotate-\[8deg\]{
-    --tw-rotate: 8deg;
+.ultimate-store-kit-admin-root .translate-x-0{
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.ultimate-store-kit-admin-root .-translate-x-full{
+    --tw-translate-x: -100%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.ultimate-store-kit-admin-root .-translate-y-1\/2{
+    --tw-translate-y: -50%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 .ultimate-store-kit-admin-root .transform{
@@ -347,14 +385,11 @@
        -moz-user-select: none;
             user-select: none
 }
-.ultimate-store-kit-admin-root .list-decimal{
-    list-style-type: decimal
+.ultimate-store-kit-admin-root .resize{
+    resize: both
 }
 .ultimate-store-kit-admin-root .list-none{
     list-style-type: none
-}
-.ultimate-store-kit-admin-root .list-disc{
-    list-style-type: disc
 }
 .ultimate-store-kit-admin-root .grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr))
@@ -367,6 +402,21 @@
 }
 .ultimate-store-kit-admin-root .grid-cols-\[repeat\(auto-fill\2c minmax\(220px\2c 1fr\)\)\]{
     grid-template-columns: repeat(auto-fill,minmax(220px,1fr))
+}
+.ultimate-store-kit-admin-root .grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+.ultimate-store-kit-admin-root .grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+}
+.ultimate-store-kit-admin-root .grid-cols-\[repeat\(auto-fit\2c minmax\(420px\2c 1fr\)\)\]{
+    grid-template-columns: repeat(auto-fit,minmax(420px,1fr))
+}
+.ultimate-store-kit-admin-root .grid-cols-\[repeat\(auto-fit\2c minmax\(320px\2c 1fr\)\)\]{
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr))
+}
+.ultimate-store-kit-admin-root .grid-cols-\[repeat\(auto-fit\2c minmax\(200px\2c 1fr\)\)\]{
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr))
 }
 .ultimate-store-kit-admin-root .flex-col{
     flex-direction: column
@@ -416,20 +466,20 @@
 .ultimate-store-kit-admin-root .gap-6{
     gap: 1.5rem
 }
+.ultimate-store-kit-admin-root .gap-px{
+    gap: 1px
+}
+.ultimate-store-kit-admin-root .gap-x-4{
+    -moz-column-gap: 1rem;
+         column-gap: 1rem
+}
+.ultimate-store-kit-admin-root .gap-y-2{
+    row-gap: 0.5rem
+}
 .ultimate-store-kit-admin-root :is(.space-y-1 > :not([hidden]) ~ :not([hidden])){
     --tw-space-y-reverse: 0;
     margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
-}
-.ultimate-store-kit-admin-root :is(.space-y-2 > :not([hidden]) ~ :not([hidden])){
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
-}
-.ultimate-store-kit-admin-root :is(.space-y-2\.5 > :not([hidden]) ~ :not([hidden])){
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0.625rem * var(--tw-space-y-reverse))
 }
 .ultimate-store-kit-admin-root :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])){
     --tw-space-y-reverse: 0;
@@ -440,6 +490,26 @@
     --tw-space-y-reverse: 0;
     margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+}
+.ultimate-store-kit-admin-root :is(.space-y-3 > :not([hidden]) ~ :not([hidden])){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.75rem * var(--tw-space-y-reverse))
+}
+.ultimate-store-kit-admin-root :is(.space-y-2 > :not([hidden]) ~ :not([hidden])){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+}
+.ultimate-store-kit-admin-root :is(.space-y-5 > :not([hidden]) ~ :not([hidden])){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.25rem * var(--tw-space-y-reverse))
+}
+.ultimate-store-kit-admin-root :is(.space-y-6 > :not([hidden]) ~ :not([hidden])){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
 }
 .ultimate-store-kit-admin-root .self-start{
     align-self: flex-start
@@ -453,8 +523,8 @@
 .ultimate-store-kit-admin-root .whitespace-nowrap{
     white-space: nowrap
 }
-.ultimate-store-kit-admin-root .rounded{
-    border-radius: 0.25rem
+.ultimate-store-kit-admin-root .\!rounded-lg{
+    border-radius: 0.5rem !important
 }
 .ultimate-store-kit-admin-root .rounded-2xl{
     border-radius: 1rem
@@ -477,8 +547,11 @@
 .ultimate-store-kit-admin-root .rounded-xl{
     border-radius: 0.75rem
 }
-.ultimate-store-kit-admin-root .\!rounded-lg{
-    border-radius: 0.5rem !important
+.ultimate-store-kit-admin-root .rounded-bl-lg{
+    border-bottom-right-radius: 0.5rem
+}
+.ultimate-store-kit-admin-root .rounded-br-lg{
+    border-bottom-left-radius: 0.5rem
 }
 .ultimate-store-kit-admin-root .rounded-tl-lg{
     border-top-right-radius: 0.5rem
@@ -486,29 +559,14 @@
 .ultimate-store-kit-admin-root .rounded-tr-lg{
     border-top-left-radius: 0.5rem
 }
-.ultimate-store-kit-admin-root .rounded-tl-2xl{
-    border-top-right-radius: 1rem
-}
-.ultimate-store-kit-admin-root .rounded-tr-2xl{
-    border-top-left-radius: 1rem
-}
-.ultimate-store-kit-admin-root .rounded-bl-lg{
-    border-bottom-right-radius: 0.5rem
-}
-.ultimate-store-kit-admin-root .rounded-br-lg{
-    border-bottom-left-radius: 0.5rem
+.ultimate-store-kit-admin-root .\!border{
+    border-width: 1px !important
 }
 .ultimate-store-kit-admin-root .border{
     border-width: 1px
 }
 .ultimate-store-kit-admin-root .border-0{
     border-width: 0px
-}
-.ultimate-store-kit-admin-root .\!border-0{
-    border-width: 0px !important
-}
-.ultimate-store-kit-admin-root .\!border{
-    border-width: 1px !important
 }
 .ultimate-store-kit-admin-root .border-b{
     border-bottom-width: 1px
@@ -519,21 +577,14 @@
 .ultimate-store-kit-admin-root .border-t{
     border-top-width: 1px
 }
-.ultimate-store-kit-admin-root .border-s{
-    border-inline-start-width: 1px
-}
 .ultimate-store-kit-admin-root .border-solid{
     border-style: solid
-}
-.ultimate-store-kit-admin-root .border-dashed{
-    border-style: dashed
 }
 .ultimate-store-kit-admin-root .border-none{
     border-style: none
 }
-.ultimate-store-kit-admin-root .border-amber-400{
-    --tw-border-opacity: 1;
-    border-color: rgb(251 191 36 / var(--tw-border-opacity, 1))
+.ultimate-store-kit-admin-root .\!border-\[\#E20A1D\]\/25{
+    border-color: rgb(226 10 29 / 0.25) !important
 }
 .ultimate-store-kit-admin-root .border-emerald-200{
     --tw-border-opacity: 1;
@@ -596,62 +647,43 @@
 }
 .ultimate-store-kit-admin-root .border-uks-brand{
     --tw-border-opacity: 1;
-    border-color: rgb(226 10 29 / var(--tw-border-opacity, 1))
+    border-color: rgb(0 33 106 / var(--tw-border-opacity, 1))
 }
 .ultimate-store-kit-admin-root .border-violet-500{
     --tw-border-opacity: 1;
     border-color: rgb(139 92 246 / var(--tw-border-opacity, 1))
 }
-.ultimate-store-kit-admin-root .\!border-\[\#E20A1D\]\/25{
-    border-color: rgb(226 10 29 / 0.25) !important
+.ultimate-store-kit-admin-root .\!border-uks-brand\/25{
+    border-color: rgb(0 33 106 / 0.25) !important
 }
-.ultimate-store-kit-admin-root .\!border-uks-brand{
-    --tw-border-opacity: 1 !important;
-    border-color: rgb(226 10 29 / var(--tw-border-opacity, 1)) !important
+.ultimate-store-kit-admin-root .border-uks-brand\/25{
+    border-color: rgb(0 33 106 / 0.25)
 }
-.ultimate-store-kit-admin-root .border-\[\#9db8ff\]{
-    --tw-border-opacity: 1;
-    border-color: rgb(157 184 255 / var(--tw-border-opacity, 1))
-}
-.ultimate-store-kit-admin-root .border-b-gray-200{
-    --tw-border-opacity: 1;
-    border-bottom-color: rgb(229 231 235 / var(--tw-border-opacity, 1))
+.ultimate-store-kit-admin-root .border-current{
+    border-color: currentColor
 }
 .ultimate-store-kit-admin-root .border-b-gray-100{
     --tw-border-opacity: 1;
     border-bottom-color: rgb(243 244 246 / var(--tw-border-opacity, 1))
 }
-.ultimate-store-kit-admin-root .border-b-slate-200{
+.ultimate-store-kit-admin-root .border-b-gray-200{
     --tw-border-opacity: 1;
-    border-bottom-color: rgb(226 232 240 / var(--tw-border-opacity, 1))
+    border-bottom-color: rgb(229 231 235 / var(--tw-border-opacity, 1))
 }
-.ultimate-store-kit-admin-root .bg-blue-500{
-    --tw-bg-opacity: 1;
-    background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1))
+.ultimate-store-kit-admin-root .\!bg-uks-brand{
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(0 33 106 / var(--tw-bg-opacity, 1)) !important
 }
-.ultimate-store-kit-admin-root .bg-blue-600{
-    --tw-bg-opacity: 1;
-    background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1))
+.ultimate-store-kit-admin-root .bg-\[\#E20A1D\]\/5{
+    background-color: rgb(226 10 29 / 0.05)
 }
 .ultimate-store-kit-admin-root .bg-emerald-100{
     --tw-bg-opacity: 1;
     background-color: rgb(209 250 229 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .bg-emerald-50{
-    --tw-bg-opacity: 1;
-    background-color: rgb(236 253 245 / var(--tw-bg-opacity, 1))
-}
-.ultimate-store-kit-admin-root .bg-emerald-500{
-    --tw-bg-opacity: 1;
-    background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1))
-}
 .ultimate-store-kit-admin-root .bg-gray-100{
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
-}
-.ultimate-store-kit-admin-root .bg-gray-50{
-    --tw-bg-opacity: 1;
-    background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
 }
 .ultimate-store-kit-admin-root .bg-indigo-500{
     --tw-bg-opacity: 1;
@@ -698,7 +730,7 @@
 }
 .ultimate-store-kit-admin-root .bg-uks-brand{
     --tw-bg-opacity: 1;
-    background-color: rgb(226 10 29 / var(--tw-bg-opacity, 1))
+    background-color: rgb(0 33 106 / var(--tw-bg-opacity, 1))
 }
 .ultimate-store-kit-admin-root .bg-violet-500{
     --tw-bg-opacity: 1;
@@ -708,102 +740,52 @@
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .bg-\[\#E20A1D\]\/5{
-    background-color: rgb(226 10 29 / 0.05)
+.ultimate-store-kit-admin-root .bg-uks-brand\/5{
+    background-color: rgb(0 33 106 / 0.05)
+}
+.ultimate-store-kit-admin-root .bg-slate-50\/40{
+    background-color: rgb(248 250 252 / 0.4)
+}
+.ultimate-store-kit-admin-root .bg-slate-50\/90{
+    background-color: rgb(248 250 252 / 0.9)
+}
+.ultimate-store-kit-admin-root .bg-uks-brand\/10{
+    background-color: rgb(0 33 106 / 0.1)
+}
+.ultimate-store-kit-admin-root .bg-white\/80{
+    background-color: rgb(255 255 255 / 0.8)
 }
 .ultimate-store-kit-admin-root .bg-gray-200{
     --tw-bg-opacity: 1;
     background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .bg-slate-400{
+.ultimate-store-kit-admin-root .bg-gray-50{
     --tw-bg-opacity: 1;
-    background-color: rgb(148 163 184 / var(--tw-bg-opacity, 1))
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .bg-white\/80{
-    background-color: rgb(255 255 255 / 0.8)
-}
-.ultimate-store-kit-admin-root .bg-\[\#2f5be7\]{
-    --tw-bg-opacity: 1;
-    background-color: rgb(47 91 231 / var(--tw-bg-opacity, 1))
-}
-.ultimate-store-kit-admin-root .bg-\[\#eaf1ff\]{
-    --tw-bg-opacity: 1;
-    background-color: rgb(234 241 255 / var(--tw-bg-opacity, 1))
-}
-.ultimate-store-kit-admin-root .bg-slate-50\/80{
-    background-color: rgb(248 250 252 / 0.8)
-}
-.ultimate-store-kit-admin-root .\!bg-uks-brand{
-    --tw-bg-opacity: 1 !important;
-    background-color: rgb(226 10 29 / var(--tw-bg-opacity, 1)) !important
-}
-.ultimate-store-kit-admin-root .bg-gradient-to-br{
-    background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))
+.ultimate-store-kit-admin-root .bg-black\/30{
+    background-color: rgb(0 0 0 / 0.3)
 }
 .ultimate-store-kit-admin-root .bg-\[linear-gradient\(313deg\2c \#E62A3F_0\%\2c \#00216A_100\%\)\]{
     background-image: linear-gradient(-313deg,#E62A3F 0%,#00216A 100%)
 }
-.ultimate-store-kit-admin-root .\!bg-\[linear-gradient\(313deg\2c \#E62A3F_0\%\2c \#00216A_100\%\)\]{
-    background-image: linear-gradient(-313deg,#E62A3F 0%,#00216A 100%) !important
+.ultimate-store-kit-admin-root .bg-gradient-to-br{
+    background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))
 }
-.ultimate-store-kit-admin-root .bg-gradient-to-r{
-    background-image: linear-gradient(to left, var(--tw-gradient-stops))
-}
-.ultimate-store-kit-admin-root .from-amber-100{
-    --tw-gradient-from: #fef3c7 var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(254 243 199 / 0) var(--tw-gradient-to-position);
+.ultimate-store-kit-admin-root .from-uks-brand\/\[0\.08\]{
+    --tw-gradient-from: rgb(0 33 106 / 0.08) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(0 33 106 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
 }
-.ultimate-store-kit-admin-root .from-amber-500{
-    --tw-gradient-from: #f59e0b var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(245 158 11 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+.ultimate-store-kit-admin-root .via-white{
+    --tw-gradient-to: rgb(255 255 255 / 0)  var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), #fff var(--tw-gradient-via-position), var(--tw-gradient-to)
 }
-.ultimate-store-kit-admin-root .from-slate-50{
-    --tw-gradient-from: #f8fafc var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(248 250 252 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+.ultimate-store-kit-admin-root .to-slate-50{
+    --tw-gradient-to: #f8fafc var(--tw-gradient-to-position)
 }
-.ultimate-store-kit-admin-root .from-\[\#fff5f6\]{
-    --tw-gradient-from: #fff5f6 var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(255 245 246 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
-}
-.ultimate-store-kit-admin-root .from-\[\#fff7f8\]{
-    --tw-gradient-from: #fff7f8 var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(255 247 248 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
-}
-.ultimate-store-kit-admin-root .from-emerald-500{
-    --tw-gradient-from: #10b981 var(--tw-gradient-from-position);
-    --tw-gradient-to: rgb(16 185 129 / 0) var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
-}
-.ultimate-store-kit-admin-root .via-\[\#f8f7ff\]{
-    --tw-gradient-to: rgb(248 247 255 / 0)  var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), #f8f7ff var(--tw-gradient-via-position), var(--tw-gradient-to)
-}
-.ultimate-store-kit-admin-root .via-\[\#f9f8ff\]{
-    --tw-gradient-to: rgb(249 248 255 / 0)  var(--tw-gradient-to-position);
-    --tw-gradient-stops: var(--tw-gradient-from), #f9f8ff var(--tw-gradient-via-position), var(--tw-gradient-to)
-}
-.ultimate-store-kit-admin-root .to-amber-200{
-    --tw-gradient-to: #fde68a var(--tw-gradient-to-position)
-}
-.ultimate-store-kit-admin-root .to-orange-500{
-    --tw-gradient-to: #f97316 var(--tw-gradient-to-position)
-}
-.ultimate-store-kit-admin-root .to-white{
-    --tw-gradient-to: #fff var(--tw-gradient-to-position)
-}
-.ultimate-store-kit-admin-root .to-\[\#f3f7ff\]{
-    --tw-gradient-to: #f3f7ff var(--tw-gradient-to-position)
-}
-.ultimate-store-kit-admin-root .to-\[\#f5f8ff\]{
-    --tw-gradient-to: #f5f8ff var(--tw-gradient-to-position)
-}
-.ultimate-store-kit-admin-root .to-green-400{
-    --tw-gradient-to: #4ade80 var(--tw-gradient-to-position)
+.ultimate-store-kit-admin-root .fill-uks-brand{
+    fill: #00216A
 }
 .ultimate-store-kit-admin-root .p-0{
     padding: 0px
@@ -826,14 +808,11 @@
 .ultimate-store-kit-admin-root .p-8{
     padding: 2rem
 }
-.ultimate-store-kit-admin-root .p-3{
-    padding: 0.75rem
-}
 .ultimate-store-kit-admin-root .p-3\.5{
     padding: 0.875rem
 }
-.ultimate-store-kit-admin-root .p-2{
-    padding: 0.5rem
+.ultimate-store-kit-admin-root .p-3{
+    padding: 0.75rem
 }
 .ultimate-store-kit-admin-root .px-1{
     padding-right: 0.25rem;
@@ -911,12 +890,15 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem
 }
-.ultimate-store-kit-admin-root .py-0{
-    padding-top: 0px;
-    padding-bottom: 0px
+.ultimate-store-kit-admin-root .py-8{
+    padding-top: 2rem;
+    padding-bottom: 2rem
 }
-.ultimate-store-kit-admin-root .pl-5{
-    padding-right: 1.25rem
+.ultimate-store-kit-admin-root .pb-4{
+    padding-bottom: 1rem
+}
+.ultimate-store-kit-admin-root .pr-10{
+    padding-left: 2.5rem
 }
 .ultimate-store-kit-admin-root .pt-1{
     padding-top: 0.25rem
@@ -927,26 +909,20 @@
 .ultimate-store-kit-admin-root .pt-4{
     padding-top: 1rem
 }
-.ultimate-store-kit-admin-root .pl-10{
-    padding-right: 2.5rem
+.ultimate-store-kit-admin-root .pl-6{
+    padding-right: 1.5rem
 }
-.ultimate-store-kit-admin-root .pr-10{
-    padding-left: 2.5rem
-}
-.ultimate-store-kit-admin-root .pb-4{
-    padding-bottom: 1rem
-}
-.ultimate-store-kit-admin-root .pl-4{
-    padding-right: 1rem
-}
-.ultimate-store-kit-admin-root .pt-2{
-    padding-top: 0.5rem
+.ultimate-store-kit-admin-root .pl-3{
+    padding-right: 0.75rem
 }
 .ultimate-store-kit-admin-root .text-left{
     text-align: right
 }
 .ultimate-store-kit-admin-root .text-center{
     text-align: center
+}
+.ultimate-store-kit-admin-root .align-middle{
+    vertical-align: middle
 }
 .ultimate-store-kit-admin-root .font-mono{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
@@ -960,11 +936,14 @@
 .ultimate-store-kit-admin-root .text-\[11px\]{
     font-size: 11px
 }
+.ultimate-store-kit-admin-root .text-\[12px\]{
+    font-size: 12px
+}
 .ultimate-store-kit-admin-root .text-\[13px\]{
     font-size: 13px
 }
-.ultimate-store-kit-admin-root .text-\[15px\]{
-    font-size: 15px
+.ultimate-store-kit-admin-root .text-\[14px\]{
+    font-size: 14px
 }
 .ultimate-store-kit-admin-root .text-\[22px\]{
     font-size: 22px
@@ -989,15 +968,6 @@
     font-size: 0.75rem;
     line-height: 1rem
 }
-.ultimate-store-kit-admin-root .text-\[12px\]{
-    font-size: 12px
-}
-.ultimate-store-kit-admin-root .text-\[16px\]{
-    font-size: 16px
-}
-.ultimate-store-kit-admin-root .text-\[14px\]{
-    font-size: 14px
-}
 .ultimate-store-kit-admin-root .font-bold{
     font-weight: 700
 }
@@ -1013,9 +983,6 @@
 .ultimate-store-kit-admin-root .uppercase{
     text-transform: uppercase
 }
-.ultimate-store-kit-admin-root .leading-loose{
-    line-height: 2
-}
 .ultimate-store-kit-admin-root .leading-none{
     line-height: 1
 }
@@ -1028,6 +995,9 @@
 .ultimate-store-kit-admin-root .leading-tight{
     line-height: 1.25
 }
+.ultimate-store-kit-admin-root .leading-normal{
+    line-height: 1.5
+}
 .ultimate-store-kit-admin-root .tracking-wide{
     letter-spacing: 0.025em
 }
@@ -1037,19 +1007,9 @@
 .ultimate-store-kit-admin-root .tracking-wider{
     letter-spacing: 0.05em
 }
-.ultimate-store-kit-admin-root .tracking-\[0\.12em\]{
-    letter-spacing: 0.12em
-}
-.ultimate-store-kit-admin-root .tracking-\[0\.08em\]{
-    letter-spacing: 0.08em
-}
-.ultimate-store-kit-admin-root .text-amber-500{
-    --tw-text-opacity: 1;
-    color: rgb(245 158 11 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .text-amber-900{
-    --tw-text-opacity: 1;
-    color: rgb(120 53 15 / var(--tw-text-opacity, 1))
+.ultimate-store-kit-admin-root .\!text-white{
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important
 }
 .ultimate-store-kit-admin-root .text-emerald-800{
     --tw-text-opacity: 1;
@@ -1066,6 +1026,10 @@
 .ultimate-store-kit-admin-root .text-gray-600{
     --tw-text-opacity: 1;
     color: rgb(75 85 99 / var(--tw-text-opacity, 1))
+}
+.ultimate-store-kit-admin-root .text-gray-700{
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity, 1))
 }
 .ultimate-store-kit-admin-root .text-inherit{
     color: inherit
@@ -1100,7 +1064,7 @@
 }
 .ultimate-store-kit-admin-root .text-uks-brand{
     --tw-text-opacity: 1;
-    color: rgb(226 10 29 / var(--tw-text-opacity, 1))
+    color: rgb(0 33 106 / var(--tw-text-opacity, 1))
 }
 .ultimate-store-kit-admin-root .text-white{
     --tw-text-opacity: 1;
@@ -1109,21 +1073,9 @@
 .ultimate-store-kit-admin-root .text-white\/90{
     color: rgb(255 255 255 / 0.9)
 }
-.ultimate-store-kit-admin-root .\!text-white{
-    --tw-text-opacity: 1 !important;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important
-}
-.ultimate-store-kit-admin-root .text-gray-700{
+.ultimate-store-kit-admin-root .text-slate-900{
     --tw-text-opacity: 1;
-    color: rgb(55 65 81 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .text-\[\#1f46a8\]{
-    --tw-text-opacity: 1;
-    color: rgb(31 70 168 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .text-emerald-600{
-    --tw-text-opacity: 1;
-    color: rgb(5 150 105 / var(--tw-text-opacity, 1))
+    color: rgb(15 23 42 / var(--tw-text-opacity, 1))
 }
 .ultimate-store-kit-admin-root .no-underline{
     text-decoration-line: none
@@ -1134,30 +1086,42 @@
 .ultimate-store-kit-admin-root .opacity-70{
     opacity: 0.7
 }
-.ultimate-store-kit-admin-root .opacity-80{
-    opacity: 0.8
+.ultimate-store-kit-admin-root .opacity-0{
+    opacity: 0
+}
+.ultimate-store-kit-admin-root .opacity-100{
+    opacity: 1
 }
 .ultimate-store-kit-admin-root .shadow-sm{
     --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
-.ultimate-store-kit-admin-root .shadow-\[0_10px_24px_rgba\(15\2c 23\2c 42\2c 0\.07\)\]{
-    --tw-shadow: 0 10px 24px rgba(15,23,42,0.07);
-    --tw-shadow-colored: 0 10px 24px var(--tw-shadow-color);
+.ultimate-store-kit-admin-root .shadow-usk{
+    --tw-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --tw-shadow-colored: 0 2px 8px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
-.ultimate-store-kit-admin-root .shadow-md{
-    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+.ultimate-store-kit-admin-root .shadow-xl{
+    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
-.ultimate-store-kit-admin-root .outline-none{
-    outline: 2px solid transparent;
-    outline-offset: 2px
+.ultimate-store-kit-admin-root .ring-1{
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
+}
+.ultimate-store-kit-admin-root .ring-slate-200\/80{
+    --tw-ring-color: rgb(226 232 240 / 0.8)
 }
 .ultimate-store-kit-admin-root .filter{
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+.ultimate-store-kit-admin-root .transition{
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms
 }
 .ultimate-store-kit-admin-root .transition-all{
     transition-property: all;
@@ -1174,32 +1138,22 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms
 }
-.ultimate-store-kit-admin-root .transition{
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+.ultimate-store-kit-admin-root .transition-opacity{
+    transition-property: opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms
 }
 .ultimate-store-kit-admin-root .duration-200{
     transition-duration: 200ms
 }
+.ultimate-store-kit-admin-root .duration-300{
+    transition-duration: 300ms
+}
 .ultimate-store-kit-admin-root .ease-in-out{
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 }
-.ultimate-store-kit-admin-root .placeholder\:text-slate-400::-moz-placeholder{
-    --tw-text-opacity: 1;
-    color: rgb(148 163 184 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .placeholder\:text-slate-400::placeholder{
-    --tw-text-opacity: 1;
-    color: rgb(148 163 184 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .placeholder\:text-gray-400::-moz-placeholder{
-    --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .placeholder\:text-gray-400::placeholder{
-    --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1))
+.ultimate-store-kit-admin-root .ease-out{
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
 }
 .ultimate-store-kit-admin-root .placeholder\:text-gray-500::-moz-placeholder{
     --tw-text-opacity: 1;
@@ -1209,6 +1163,14 @@
     --tw-text-opacity: 1;
     color: rgb(107 114 128 / var(--tw-text-opacity, 1))
 }
+.ultimate-store-kit-admin-root .placeholder\:text-slate-400::-moz-placeholder{
+    --tw-text-opacity: 1;
+    color: rgb(148 163 184 / var(--tw-text-opacity, 1))
+}
+.ultimate-store-kit-admin-root .placeholder\:text-slate-400::placeholder{
+    --tw-text-opacity: 1;
+    color: rgb(148 163 184 / var(--tw-text-opacity, 1))
+}
 .ultimate-store-kit-admin-root .last\:border-b-0:last-child{
     border-bottom-width: 0px
 }
@@ -1216,33 +1178,40 @@
     --tw-bg-opacity: 1;
     background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .focus-within\:border-uks-brand:focus-within{
-    --tw-border-opacity: 1;
-    border-color: rgb(226 10 29 / var(--tw-border-opacity, 1))
-}
-.ultimate-store-kit-admin-root .focus-within\:ring-2:focus-within{
-    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
-}
-.ultimate-store-kit-admin-root .focus-within\:ring-uks-brand\/25:focus-within{
-    --tw-ring-color: rgb(226 10 29 / 0.25)
-}
-.ultimate-store-kit-admin-root .hover\:border-blue-300:hover{
-    --tw-border-opacity: 1;
-    border-color: rgb(147 197 253 / var(--tw-border-opacity, 1))
-}
 .ultimate-store-kit-admin-root .hover\:border-slate-300:hover{
     --tw-border-opacity: 1;
     border-color: rgb(203 213 225 / var(--tw-border-opacity, 1))
 }
 .ultimate-store-kit-admin-root .hover\:border-uks-brand:hover{
     --tw-border-opacity: 1;
-    border-color: rgb(226 10 29 / var(--tw-border-opacity, 1))
+    border-color: rgb(0 33 106 / var(--tw-border-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:border-uks-brand\/25:hover{
+    border-color: rgb(0 33 106 / 0.25)
+}
+.ultimate-store-kit-admin-root .hover\:border-uks-brand\/35:hover{
+    border-color: rgb(0 33 106 / 0.35)
+}
+.ultimate-store-kit-admin-root .hover\:border-uks-brand\/30:hover{
+    border-color: rgb(0 33 106 / 0.3)
+}
+.ultimate-store-kit-admin-root .hover\:border-uks-brand\/40:hover{
+    border-color: rgb(0 33 106 / 0.4)
+}
+.ultimate-store-kit-admin-root .hover\:\!bg-uks-brand-dark:hover{
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(0 33 106 / var(--tw-bg-opacity, 1)) !important
+}
+.ultimate-store-kit-admin-root .hover\:bg-\[\#E20A1D\]\/10:hover{
+    background-color: rgb(226 10 29 / 0.1)
 }
 .ultimate-store-kit-admin-root .hover\:bg-gray-100:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:bg-gray-200:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1))
 }
 .ultimate-store-kit-admin-root .hover\:bg-red-500:hover{
     --tw-bg-opacity: 1;
@@ -1252,62 +1221,31 @@
     --tw-bg-opacity: 1;
     background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .hover\:bg-uks-brand:hover{
-    --tw-bg-opacity: 1;
-    background-color: rgb(226 10 29 / var(--tw-bg-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:bg-uks-brand-dark:hover{
-    --tw-bg-opacity: 1;
-    background-color: rgb(179 10 21 / var(--tw-bg-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:bg-\[\#E20A1D\]\/5:hover{
-    background-color: rgb(226 10 29 / 0.05)
-}
-.ultimate-store-kit-admin-root .hover\:bg-\[\#E20A1D\]\/10:hover{
-    background-color: rgb(226 10 29 / 0.1)
-}
 .ultimate-store-kit-admin-root .hover\:bg-slate-50:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(248 250 252 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .hover\:bg-gray-200:hover{
+.ultimate-store-kit-admin-root .hover\:bg-uks-brand:hover{
     --tw-bg-opacity: 1;
-    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1))
+    background-color: rgb(0 33 106 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .hover\:bg-\[\#254bcb\]:hover{
+.ultimate-store-kit-admin-root .hover\:bg-uks-brand-dark:hover{
     --tw-bg-opacity: 1;
-    background-color: rgb(37 75 203 / var(--tw-bg-opacity, 1))
+    background-color: rgb(0 33 106 / var(--tw-bg-opacity, 1))
 }
-.ultimate-store-kit-admin-root .hover\:\!bg-uks-brand-dark:hover{
-    --tw-bg-opacity: 1 !important;
-    background-color: rgb(179 10 21 / var(--tw-bg-opacity, 1)) !important
+.ultimate-store-kit-admin-root .hover\:bg-uks-brand\/10:hover{
+    background-color: rgb(0 33 106 / 0.1)
 }
-.ultimate-store-kit-admin-root .hover\:\!bg-\[linear-gradient\(313deg\2c \#E62A3F_0\%\2c \#00216A_100\%\)\]:hover{
-    background-image: linear-gradient(-313deg,#E62A3F 0%,#00216A 100%) !important
+.ultimate-store-kit-admin-root .hover\:bg-white:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:bg-uks-brand\/15:hover{
+    background-color: rgb(0 33 106 / 0.15)
 }
 .ultimate-store-kit-admin-root .hover\:text-blue-600:hover{
     --tw-text-opacity: 1;
     color: rgb(37 99 235 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:text-slate-800:hover{
-    --tw-text-opacity: 1;
-    color: rgb(30 41 59 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:text-uks-brand:hover{
-    --tw-text-opacity: 1;
-    color: rgb(226 10 29 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:text-white:hover{
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:text-slate-900:hover{
-    --tw-text-opacity: 1;
-    color: rgb(15 23 42 / var(--tw-text-opacity, 1))
-}
-.ultimate-store-kit-admin-root .hover\:text-uks-brand-dark:hover{
-    --tw-text-opacity: 1;
-    color: rgb(179 10 21 / var(--tw-text-opacity, 1))
 }
 .ultimate-store-kit-admin-root .hover\:text-gray-800:hover{
     --tw-text-opacity: 1;
@@ -1317,48 +1255,66 @@
     --tw-text-opacity: 1;
     color: rgb(71 85 105 / var(--tw-text-opacity, 1))
 }
+.ultimate-store-kit-admin-root .hover\:text-slate-900:hover{
+    --tw-text-opacity: 1;
+    color: rgb(15 23 42 / var(--tw-text-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:text-uks-brand:hover{
+    --tw-text-opacity: 1;
+    color: rgb(0 33 106 / var(--tw-text-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:text-uks-brand-dark:hover{
+    --tw-text-opacity: 1;
+    color: rgb(0 33 106 / var(--tw-text-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:text-white:hover{
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+}
+.ultimate-store-kit-admin-root .hover\:text-slate-700:hover{
+    --tw-text-opacity: 1;
+    color: rgb(51 65 85 / var(--tw-text-opacity, 1))
+}
 .ultimate-store-kit-admin-root .hover\:underline:hover{
     text-decoration-line: underline
 }
 .ultimate-store-kit-admin-root .hover\:opacity-90:hover{
     opacity: 0.9
 }
-.ultimate-store-kit-admin-root .hover\:\!opacity-95:hover{
-    opacity: 0.95 !important
+.ultimate-store-kit-admin-root .hover\:shadow-md:hover{
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
-.ultimate-store-kit-admin-root .hover\:shadow-usk:hover{
-    --tw-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    --tw-shadow-colored: 0 2px 8px var(--tw-shadow-color);
+.ultimate-store-kit-admin-root .hover\:shadow-sm:hover{
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 .ultimate-store-kit-admin-root .focus\:border-uks-brand:focus{
     --tw-border-opacity: 1;
-    border-color: rgb(226 10 29 / var(--tw-border-opacity, 1))
+    border-color: rgb(0 33 106 / var(--tw-border-opacity, 1))
 }
 .ultimate-store-kit-admin-root .focus\:outline-none:focus{
     outline: 2px solid transparent;
     outline-offset: 2px
-}
-.ultimate-store-kit-admin-root .focus\:ring-2:focus{
-    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
 }
 .ultimate-store-kit-admin-root .focus\:ring-0:focus{
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
 }
-.ultimate-store-kit-admin-root .focus\:ring-emerald-500:focus{
-    --tw-ring-opacity: 1;
-    --tw-ring-color: rgb(16 185 129 / var(--tw-ring-opacity, 1))
+.ultimate-store-kit-admin-root .focus\:ring-2:focus{
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
 }
 .ultimate-store-kit-admin-root .focus\:ring-uks-brand:focus{
     --tw-ring-opacity: 1;
-    --tw-ring-color: rgb(226 10 29 / var(--tw-ring-opacity, 1))
+    --tw-ring-color: rgb(0 33 106 / var(--tw-ring-opacity, 1))
 }
 .ultimate-store-kit-admin-root .focus\:ring-uks-brand\/25:focus{
-    --tw-ring-color: rgb(226 10 29 / 0.25)
+    --tw-ring-color: rgb(0 33 106 / 0.25)
 }
 .ultimate-store-kit-admin-root .focus\:ring-offset-2:focus{
     --tw-ring-offset-width: 2px
@@ -1375,28 +1331,212 @@
 .ultimate-store-kit-admin-root .disabled\:opacity-60:disabled{
     opacity: 0.6
 }
+.ultimate-store-kit-admin-root :is(.group:hover .group-hover\:bg-uks-brand\/15){
+    background-color: rgb(0 33 106 / 0.15)
+}
 .ultimate-store-kit-admin-root :is(.peer:checked ~ .peer-checked\:translate-x-\[18px\]){
     --tw-translate-x: 18px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 .ultimate-store-kit-admin-root :is(.peer:checked ~ .peer-checked\:bg-uks-brand){
     --tw-bg-opacity: 1;
-    background-color: rgb(226 10 29 / var(--tw-bg-opacity, 1))
+    background-color: rgb(0 33 106 / var(--tw-bg-opacity, 1))
 }
 .ultimate-store-kit-admin-root :is(.peer:disabled ~ .peer-disabled\:opacity-50){
     opacity: 0.5
 }
 @media (min-width: 640px){
+    .ultimate-store-kit-admin-root .sm\:mb-0{
+        margin-bottom: 0px
+    }
+    .ultimate-store-kit-admin-root .sm\:mr-8{
+        margin-left: 2rem
+    }
+    .ultimate-store-kit-admin-root .sm\:h-12{
+        height: 3rem
+    }
+    .ultimate-store-kit-admin-root .sm\:w-12{
+        width: 3rem
+    }
+    .ultimate-store-kit-admin-root .sm\:w-48{
+        width: 12rem
+    }
+    .ultimate-store-kit-admin-root .sm\:flex-none{
+        flex: none
+    }
+    .ultimate-store-kit-admin-root .sm\:grid-cols-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .sm\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .sm\:grid-cols-4{
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
     .ultimate-store-kit-admin-root .sm\:flex-row{
         flex-direction: row
     }
     .ultimate-store-kit-admin-root .sm\:items-start{
         align-items: flex-start
     }
+    .ultimate-store-kit-admin-root .sm\:items-center{
+        align-items: center
+    }
+    .ultimate-store-kit-admin-root .sm\:justify-start{
+        justify-content: flex-start
+    }
     .ultimate-store-kit-admin-root .sm\:justify-between{
         justify-content: space-between
     }
+    .ultimate-store-kit-admin-root .sm\:gap-4{
+        gap: 1rem
+    }
+    .ultimate-store-kit-admin-root .sm\:p-6{
+        padding: 1.5rem
+    }
+    .ultimate-store-kit-admin-root .sm\:p-5{
+        padding: 1.25rem
+    }
+    .ultimate-store-kit-admin-root .sm\:px-10{
+        padding-right: 2.5rem;
+        padding-left: 2.5rem
+    }
+    .ultimate-store-kit-admin-root .sm\:px-6{
+        padding-right: 1.5rem;
+        padding-left: 1.5rem
+    }
+    .ultimate-store-kit-admin-root .sm\:py-4{
+        padding-top: 1rem;
+        padding-bottom: 1rem
+    }
     .ultimate-store-kit-admin-root .sm\:pt-1{
         padding-top: 0.25rem
+    }
+    .ultimate-store-kit-admin-root .sm\:text-left{
+        text-align: right
+    }
+    .ultimate-store-kit-admin-root .sm\:text-sm{
+        font-size: 0.875rem;
+        line-height: 1.25rem
+    }
+    .ultimate-store-kit-admin-root .sm\:text-xl{
+        font-size: 1.25rem;
+        line-height: 1.75rem
+    }
+}
+@media (min-width: 768px){
+    .ultimate-store-kit-admin-root .md\:col-span-2{
+        grid-column: span 2 / span 2
+    }
+    .ultimate-store-kit-admin-root .md\:grid-cols-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .md\:gap-5{
+        gap: 1.25rem
+    }
+}
+@media (min-width: 1024px){
+    .ultimate-store-kit-admin-root .lg\:pointer-events-auto{
+        pointer-events: auto
+    }
+    .ultimate-store-kit-admin-root .lg\:static{
+        position: static
+    }
+    .ultimate-store-kit-admin-root .lg\:sticky{
+        position: sticky
+    }
+    .ultimate-store-kit-admin-root .lg\:top-\[7\.5rem\]{
+        top: 7.5rem
+    }
+    .ultimate-store-kit-admin-root .lg\:z-\[90\]{
+        z-index: 90
+    }
+    .ultimate-store-kit-admin-root .lg\:mt-8{
+        margin-top: 2rem
+    }
+    .ultimate-store-kit-admin-root .lg\:block{
+        display: block
+    }
+    .ultimate-store-kit-admin-root .lg\:flex{
+        display: flex
+    }
+    .ultimate-store-kit-admin-root .lg\:hidden{
+        display: none
+    }
+    .ultimate-store-kit-admin-root .lg\:h-auto{
+        height: auto
+    }
+    .ultimate-store-kit-admin-root .lg\:w-1\/2{
+        width: 50%
+    }
+    .ultimate-store-kit-admin-root .lg\:w-64{
+        width: 16rem
+    }
+    .ultimate-store-kit-admin-root .lg\:max-w-none{
+        max-width: none
+    }
+    .ultimate-store-kit-admin-root .lg\:translate-x-0{
+        --tw-translate-x: 0px;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+    }
+    .ultimate-store-kit-admin-root .lg\:grid-cols-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .lg\:grid-cols-4{
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .lg\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .lg\:flex-row{
+        flex-direction: row
+    }
+    .ultimate-store-kit-admin-root .lg\:flex-wrap{
+        flex-wrap: wrap
+    }
+    .ultimate-store-kit-admin-root .lg\:self-stretch{
+        align-self: stretch
+    }
+    .ultimate-store-kit-admin-root .lg\:rounded-lg{
+        border-radius: 0.5rem
+    }
+    .ultimate-store-kit-admin-root .lg\:border{
+        border-width: 1px
+    }
+    .ultimate-store-kit-admin-root .lg\:border-solid{
+        border-style: solid
+    }
+    .ultimate-store-kit-admin-root .lg\:border-gray-100{
+        --tw-border-opacity: 1;
+        border-color: rgb(243 244 246 / var(--tw-border-opacity, 1))
+    }
+    .ultimate-store-kit-admin-root .lg\:py-6{
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem
+    }
+    .ultimate-store-kit-admin-root .lg\:px-4{
+        padding-right: 1rem;
+        padding-left: 1rem
+    }
+    .ultimate-store-kit-admin-root .lg\:shadow-none{
+        --tw-shadow: 0 0 #0000;
+        --tw-shadow-colored: 0 0 #0000;
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+    }
+}
+@media (min-width: 1280px){
+    .ultimate-store-kit-admin-root .xl\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .xl\:grid-cols-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+    .ultimate-store-kit-admin-root .xl\:grid-cols-4{
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
+}
+@media (min-width: 1536px){
+    .ultimate-store-kit-admin-root .\32xl\:grid-cols-4{
+        grid-template-columns: repeat(4, minmax(0, 1fr))
     }
 }
