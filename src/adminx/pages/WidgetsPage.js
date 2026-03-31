@@ -200,7 +200,7 @@ const WidgetsPage = ({
 						strokeWidth={2}
 						strokeLinecap="round"
 						strokeLinejoin="round"
-						className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 block text-gray-400"
+						className="absolute right-3 top-3 h-4 w-4 block text-gray-400"
 					>
 						<path d="m21 21-4.34-4.34" />
 						<circle cx={11} cy={11} r={8} />
