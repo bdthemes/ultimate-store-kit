@@ -8,7 +8,7 @@ const widgetTypeItems = [
 	},
 	{
 		id: 'edd',
-		label: __('EDD Widgets', 'ultimate-store-kit'),
+		label: __('Easy Digital Downloads Widgets', 'ultimate-store-kit'),
 		icon: 'edd',
 	},
 	{

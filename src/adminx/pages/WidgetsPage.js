@@ -30,7 +30,7 @@ const WidgetsPage = ({
 			key: 'ultimate_store_kit_active_modules',
 		},
 		edd: {
-			title: __('EDD Widgets', 'ultimate-store-kit'),
+			title: __('Easy Digital Downloads Widgets', 'ultimate-store-kit'),
 			key: 'ultimate_store_kit_edd_modules',
 		},
 		other: {

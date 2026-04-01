@@ -2726,7 +2726,7 @@ const WidgetsPage = ({
       key: 'ultimate_store_kit_active_modules'
     },
     edd: {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD Widgets', 'ultimate-store-kit'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Easy Digital Downloads Widgets', 'ultimate-store-kit'),
       key: 'ultimate_store_kit_edd_modules'
     },
     other: {
