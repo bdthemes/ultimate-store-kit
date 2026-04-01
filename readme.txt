@@ -232,6 +232,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.9.14 [31st March 2026] =
 
 * Added: Pagination support with style controls for the product reviews widget
+* Added: New control to show or hide the shipping form and made widget texts dynamic in the page checkout widget
 * Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
 * Updated: Made compatible with Elementor version 4.0.0
 
