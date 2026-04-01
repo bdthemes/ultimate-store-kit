@@ -3,9 +3,20 @@
  */
 const { resolve } = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+const pluginsWithAdminCssName = defaultConfig.plugins.map((plugin) => {
+	if (plugin instanceof MiniCssExtractPlugin) {
+		// Single entry `admin` — fixed name matches includes/Admin/Menu.php (avoid style-[name] resolving to ./style-admin paths).
+		return new MiniCssExtractPlugin({
+			filename: 'style-admin.css',
+		});
+	}
+	return plugin;
+});
 
 const newConfig = {
 	...defaultConfig,
@@ -25,9 +36,9 @@ const newConfig = {
 		chunkFilename: '[name].js',
 	},
 
-	// Force React production build
+	// Force React production build; keep CSS filename as style-admin.css (see includes/Admin/Menu.php)
 	plugins: [
-		...defaultConfig.plugins,
+		...pluginsWithAdminCssName,
 		// Explicitly define NODE_ENV as production to ensure React production build
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),

@@ -1,5 +1,16 @@
 import { useState, useMemo, useCallback, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import {
+	btnLg,
+	btnOutlineGreen,
+	btnOutlineRed,
+	btnPrimary,
+	btnSm,
+	proBadge,
+	selectInput,
+	selectLabel,
+	Toggle,
+} from '../tw';
 
 const getFiltersFromHash = () => {
 	const hash = window.location.hash;
@@ -160,35 +171,55 @@ const WidgetsPage = ({
 		(v) => v === 'on'
 	).length;
 
-	return (
-		<div className="usk-widgets-page">
-			<div className="usk-widgets-page__header">
-				<h2 className="usk-widgets-page__title">{currentConfig.title}</h2>
-				<div className="usk-widgets-page__meta">
-					<span className="usk-widgets-page__count">
-						{activeCount} / {widgets.filter((w) => w.type === 'checkbox').length}{' '}
-						{__('Active', 'ultimate-store-kit')}
-					</span>
-				</div>
-			</div>
+	const cardBase =
+		'flex flex-col justify-between gap-3 rounded-lg border border-solid border-gray-200 p-4';
 
-			<div className="usk-widgets-page__toolbar">
-				<div className="usk-widgets-page__search">
-					<span className="dashicons dashicons-search"></span>
+	return (
+		<div>
+		<div className="mb-5 flex flex-wrap items-center justify-between gap-2">
+			<h2 className="m-0 text-xl font-bold text-slate-800">
+				{currentConfig.title}
+			</h2>
+			<span className="rounded-2xl border border-slate-200 bg-white px-3 py-1 text-[13px] text-slate-500">
+				{activeCount} / {widgets.filter((w) => w.type === 'checkbox').length}{' '}
+				{__('Active', 'ultimate-store-kit')}
+			</span>
+		</div>
+
+		<div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-solid border-gray-100 bg-white px-4 py-3">
+			{/* Filters group — wraps on small screens */}
+			<div className="flex flex-wrap items-center gap-3">
+				<div className="relative">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width={24}
+						height={24}
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth={2}
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						className="absolute right-3 top-3 h-4 w-4 block text-gray-400"
+					>
+						<path d="m21 21-4.34-4.34" />
+						<circle cx={11} cy={11} r={8} />
+					</svg>
 					<input
 						type="text"
+						className="block w-full rounded-md border border-solid border-gray-200 bg-transparent py-2.5 pr-10 pl-3 text-sm text-slate-700 placeholder:text-gray-500 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand/25 sm:w-48"
 						placeholder={__('Search widgets...', 'ultimate-store-kit')}
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</div>
 
-				<div className="usk-widgets-page__filter-group">
-					<label className="usk-select-label">
+				<div className="flex items-center gap-1.5">
+					<label className={selectLabel}>
 						{__('Widget Type:', 'ultimate-store-kit')}
 					</label>
 					<select
-						className="usk-select"
+						className={selectInput}
 						value={widgetType}
 						onChange={(e) => setWidgetType(e.target.value)}
 					>
@@ -198,12 +229,12 @@ const WidgetsPage = ({
 					</select>
 				</div>
 
-				<div className="usk-widgets-page__filter-group">
-					<label className="usk-select-label">
+				<div className="flex items-center gap-1.5">
+					<label className={selectLabel}>
 						{__('Status:', 'ultimate-store-kit')}
 					</label>
 					<select
-						className="usk-select"
+						className={selectInput}
 						value={filter}
 						onChange={(e) => setFilter(e.target.value)}
 					>
@@ -214,12 +245,12 @@ const WidgetsPage = ({
 				</div>
 
 				{contentTypes.length > 0 && (
-					<div className="usk-widgets-page__filter-group">
-						<label className="usk-select-label">
+					<div className="flex items-center gap-1.5">
+						<label className={selectLabel}>
 							{__('Template:', 'ultimate-store-kit')}
 						</label>
 						<select
-							className="usk-select"
+							className={selectInput}
 							value={contentTypeFilter}
 							onChange={(e) => setContentTypeFilter(e.target.value)}
 						>
@@ -232,26 +263,55 @@ const WidgetsPage = ({
 						</select>
 					</div>
 				)}
-
-				<div className="usk-widgets-page__bulk">
-					<button
-						className="usk-btn usk-btn--small usk-btn--outline-green"
-						onClick={handleActivateAll}
-					>
-						{__('Activate All', 'ultimate-store-kit')}
-					</button>
-					<button
-						className="usk-btn usk-btn--small usk-btn--outline-red"
-						onClick={handleDeactivateAll}
-					>
-						{__('Deactivate All', 'ultimate-store-kit')}
-					</button>
-				</div>
 			</div>
 
-			<div className="usk-widgets-grid">
+			{/* Action buttons — always pinned to the right, never wrap */}
+			<div className="flex flex-wrap items-center gap-1.5">
+				<button
+					type="button"
+					className={`${btnSm} !rounded-lg !bg-uks-brand !text-white hover:!bg-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white border-none`}
+					onClick={handleActivateAll}
+				>
+					<svg
+						className="h-4 w-4"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M20 6 9 17l-5-5" />
+					</svg>
+					{__('Activate All', 'ultimate-store-kit')}
+				</button>
+				<button
+					type="button"
+					className={`${btnSm} !rounded-lg !border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
+					onClick={handleDeactivateAll}
+				>
+					<svg
+						className="h-4 w-4"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M18 6 6 18" />
+						<path d="M6 6l12 12" />
+					</svg>
+					{__('Deactivate All', 'ultimate-store-kit')}
+				</button>
+			</div>
+		</div>
+
+			<div className="grid grid-cols-1 gap-3 rounded-lg border border-solid border-gray-100 bg-white p-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 				{filteredWidgets.length === 0 && (
-					<div className="usk-widgets-grid__empty">
+					<div className="col-span-full py-10 text-center text-sm text-slate-400">
 						{__('No widgets found.', 'ultimate-store-kit')}
 					</div>
 				)}
@@ -267,28 +327,53 @@ const WidgetsPage = ({
 					return (
 						<div
 							key={widget.name}
-							className={`usk-widget-card ${isActive ? 'usk-widget-card--active' : ''} ${isDisabled ? 'usk-widget-card--disabled' : ''}`}
+							className={`${cardBase} ${isActive ? 'border-emerald-300' : ''
+								} ${isDisabled ? 'opacity-60 cursor-not-allowed bg-slate-100' : ''}`}
 						>
-							<div className="usk-widget-card__header">
-								<span className="usk-widget-card__name">
+							<div className="flex items-start justify-between gap-2">
+								<span className="text-base font-semibold leading-snug text-slate-800">
 									{widget.label}
 								</span>
 								{isProWidget && (
-									<span className="usk-widget-card__badge">
+									<span className={proBadge}>
 										{__('Pro', 'ultimate-store-kit')}
 									</span>
 								)}
 							</div>
-							<div className="usk-widget-card__footer">
-								<div className="usk-widget-card__links">
+							<div className="flex items-center justify-between">
+								<div className="flex gap-2 items-center">
 									{dependency?.actionUrl && (
 										<a
+
 											href={dependency.actionUrl}
 											target={dependency.actionType === 'install' ? '_blank' : undefined}
 											rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
 											title={dependency.message || dependency.actionLabel}
+											className="text-gray-400 transition-colors hover:text-uks-brand flex items-center gap-1 decoration-none"
+											style={{
+												textDecoration: 'none',
+											}}
 										>
-											<span className="dashicons dashicons-admin-plugins"></span>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width={24}
+												height={24}
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth={2}
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												className="w-4 h-4 block"
+											>
+												<path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
+												<path d="m2 22 3-3" />
+												<path d="M7.5 13.5 10 11" />
+												<path d="M10.5 16.5 13 14" />
+												<path d="m18 3-4 4h6l-4 4" />
+											</svg>
+
+											{__('Install', 'ultimate-store-kit')}
 										</a>
 									)}
 									{widget.demo_url &&
@@ -301,8 +386,28 @@ const WidgetsPage = ({
 													'Demo',
 													'ultimate-store-kit'
 												)}
+												className="text-gray-400 transition-colors hover:text-uks-brand flex items-center gap-1 decoration-none"
+												style={{
+													textDecoration: 'none',
+												}}
 											>
-												<span className="dashicons dashicons-visibility"></span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width={24}
+													height={24}
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													strokeWidth={2}
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													className="w-4 h-4 block"
+												>
+													<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+													<circle cx={12} cy={12} r={3} />
+												</svg>
+
+												{__('Demo', 'ultimate-store-kit')}
 											</a>
 										)}
 									{widget.video_url && (
@@ -314,28 +419,45 @@ const WidgetsPage = ({
 												'Video',
 												'ultimate-store-kit'
 											)}
+											className="text-gray-400 transition-colors hover:text-uks-brand flex items-center gap-1 decoration-none"
+
+												style={{
+													textDecoration: 'none',
+												}}
 										>
-											<span className="dashicons dashicons-video-alt3"></span>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width={24}
+												height={24}
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth={2}
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												className="w-4 h-4 block"
+											>
+												<path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+											</svg>
+
+											{__('Video', 'ultimate-store-kit')}
 										</a>
 									)}
 								</div>
-								<label className="usk-toggle">
-									<input
-										type="checkbox"
-										checked={isActive}
-										disabled={isDisabled}
-										onChange={() =>
-											handleToggle(widget.name)
-										}
-									/>
-									<span className="usk-toggle__slider"></span>
-								</label>
+								<Toggle
+									checked={isActive}
+									disabled={isDisabled}
+									onChange={() =>
+										handleToggle(widget.name)
+									}
+								/>
 							</div>
 							{hasMissingDependency && dependency?.actionUrl && (
-								<div className="usk-license__form-desc">
+								<div className="text-[13px] leading-relaxed text-slate-500">
 									{dependency.message}{' '}
 									<a
 										href={dependency.actionUrl}
+										className="font-semibold text-uks-brand hover:underline"
 										target={dependency.actionType === 'install' ? '_blank' : undefined}
 										rel={dependency.actionType === 'install' ? 'noopener noreferrer' : undefined}
 									>
@@ -348,9 +470,10 @@ const WidgetsPage = ({
 				})}
 			</div>
 
-			<div className="usk-widgets-page__footer">
+			<div className="mt-6 flex justify-end pt-4">
 				<button
-					className="usk-btn usk-btn--primary usk-btn--lg"
+					type="button"
+					className={`${btnLg} ${btnPrimary}`}
 					onClick={handleSave}
 					disabled={saving}
 				>

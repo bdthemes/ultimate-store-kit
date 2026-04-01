@@ -8,6 +8,7 @@ import OtherSettings from './pages/OtherSettings';
 import GetPro from './pages/GetPro';
 import License from './pages/License';
 import AboutInfo from './pages/AboutInfo';
+import { appShell, bodyRow, mainContent } from './tw';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -31,6 +32,8 @@ const App = () => {
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 1024);
 
 	useEffect(() => {
 		if (notification) {
@@ -46,6 +49,43 @@ const App = () => {
 
 		window.addEventListener('hashchange', handleHashChange);
 		return () => window.removeEventListener('hashchange', handleHashChange);
+	}, []);
+
+	useEffect(() => {
+		// Pro users don't need Get Pro page; redirect if opened directly.
+		if (isProActive && activePage === 'get-pro') {
+			setActivePage('welcome');
+			window.location.hash = '#welcome';
+		}
+	}, [isProActive, activePage]);
+
+	useEffect(() => {
+		setIsSidebarOpen(false);
+	}, [activePage]);
+
+	useEffect(() => {
+		document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, [isSidebarOpen]);
+
+	useEffect(() => {
+		const handleResize = () => {
+			const desktop = window.innerWidth > 1024;
+			setIsDesktop(desktop);
+			if (desktop) {
+				setIsSidebarOpen(false);
+			}
+		};
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
+	const handleToggleSidebar = useCallback((event) => {
+		if (event?.preventDefault) event.preventDefault();
+		if (event?.stopPropagation) event.stopPropagation();
+		setIsSidebarOpen((prev) => !prev);
 	}, []);
 
 	const saveSettings = useCallback(
@@ -143,7 +183,15 @@ const App = () => {
 					/>
 				);
 			case 'get-pro':
-				return <GetPro isPro={isProActive} />;
+				return isProActive ? (
+					<Welcome
+						widgets={widgets}
+						settings={settings}
+						isPro={isProActive}
+					/>
+				) : (
+					<GetPro isPro={isProActive} />
+				);
 			case 'license':
 				return (
 					<License
@@ -158,32 +206,71 @@ const App = () => {
 		}
 	};
 
+	const notifBase =
+		'animate-usk-slide-in mb-4 flex items-center justify-between rounded-lg px-4 py-2.5 text-[13px] font-medium';
+	const notifSuccess =
+		'border border-emerald-200 bg-emerald-100 text-emerald-800';
+	const notifError = 'border border-red-200 bg-red-100 text-red-900';
+
 	return (
-		<div className="usk-admin-app">
-			<Header version={adminData.version} />
-			<div className="usk-admin-body">
+		<div className={appShell}>
+			<Header
+				version={adminData.version}
+				isPro={isProActive}
+				isSidebarOpen={isSidebarOpen}
+				isDesktop={isDesktop}
+				onToggleSidebar={handleToggleSidebar}
+			/>
+			<div className="bg-slate-50">
+
+
+			<div className={`${bodyRow} flex-col lg:flex-row`}>
 				<Sidebar
 					activePage={activePage}
 					onNavigate={setActivePage}
 					isPro={isProActive}
+					isOpen={isSidebarOpen}
+					isDesktop={isDesktop}
+					onClose={() => setIsSidebarOpen(false)}
 				/>
-				<div className="usk-admin-content">
+				<div className={`${mainContent} flex flex-col`}>
 					{notification && (
 						<div
-							className={`usk-notification usk-notification--${notification.type}`}
+							className={`${notifBase} ${
+								notification.type === 'success'
+									? notifSuccess
+									: notifError
+							}`}
 						>
 							<span>{notification.message}</span>
 							<button
+								type="button"
 								onClick={() => setNotification(null)}
-								className="usk-notification__close"
+								className="cursor-pointer border-0 bg-transparent px-1 text-lg leading-none text-inherit"
 							>
 								×
 							</button>
 						</div>
 					)}
-					{renderPage()}
+					<div className="flex-1">{renderPage()}</div>
 				</div>
 			</div>
+			</div>
+			<footer className="p-5 bg-white py-4 text-center text-sm text-slate-500 rounded-bl-lg rounded-br-lg">
+				{__(
+					'Ultimate Store Kit Addon made with love by',
+					'ultimate-store-kit'
+				)}{' '}
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://bdthemes.com"
+					className="text-uks-brand no-underline hover:underline"
+				>
+					BdThemes
+				</a>
+				. {__('All rights reserved.', 'ultimate-store-kit')}
+			</footer>
 		</div>
 	);
 };

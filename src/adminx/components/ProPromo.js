@@ -1,4 +1,5 @@
 import { __ } from '@wordpress/i18n';
+import { btnPrimary, btnSm, fieldControl, fieldLabel, fieldRow, proBadge } from '../tw';
 
 const promoSettings = [
 	{
@@ -78,13 +79,13 @@ const promoSettings = [
 
 const ProPromo = () => {
 	return (
-		<div className="usk-pro-promo">
-			<div className="usk-pro-promo__banner">
-				<div className="usk-pro-promo__banner-content">
-					<span className="usk-pro-promo__badge">
+		<div className="pointer-events-none relative select-none opacity-70">
+			<div className="pointer-events-auto mb-4 flex items-center justify-between rounded-usk border border-uks-brand bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-5 py-3.5">
+				<div className="flex items-center gap-2.5">
+					<span className="rounded-[10px] bg-[linear-gradient(313deg,#E62A3F_0%,#00216A_100%)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
 						{__('Pro', 'ultimate-store-kit')}
 					</span>
-					<span className="usk-pro-promo__banner-text">
+					<span className="text-sm font-semibold text-white/90">
 						{__(
 							'Unlock these premium settings with Ultimate Store Kit Pro',
 							'ultimate-store-kit'
@@ -95,7 +96,7 @@ const ProPromo = () => {
 					href="https://bdthemes.com/ultimate-store-kit/"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="usk-btn usk-btn--primary usk-btn--sm"
+					className={`${btnSm} ${btnPrimary}`}
 				>
 					{__('Get Pro', 'ultimate-store-kit')}
 				</a>
@@ -104,143 +105,121 @@ const ProPromo = () => {
 			{promoSettings.map((group, gi) => (
 				<div
 					key={gi}
-					className="usk-settings-group usk-pro-promo__group"
+					className="relative mb-4 overflow-hidden rounded-usk border border-slate-200 bg-white"
 				>
-					<h3 className="usk-settings-group__title">
-						{group.group}
-						<span className="usk-widget-card__badge">
-							{__('Pro', 'ultimate-store-kit')}
-						</span>
-					</h3>
-					{group.description && (
-						<p className="usk-pro-promo__group-desc">
-							{group.description}
-						</p>
-					)}
-					<div className="usk-settings-group__body">
-						{group.fields.map((field) => {
-							if (field.type === 'checkbox') {
-								return (
-									<div
-										key={field.name}
-										className="usk-settings-field"
-									>
-										<div className="usk-settings-field__label">
-											<span>{field.label}</span>
+					<div className="border-l-[3px] border-uks-brand">
+						<h3 className="m-0 flex flex-wrap items-center gap-2 border-b border-slate-200 bg-slate-100 px-5 py-3.5 text-sm font-bold text-slate-800">
+							{group.group}
+							<span className={proBadge}>
+								{__('Pro', 'ultimate-store-kit')}
+							</span>
+						</h3>
+						{group.description && (
+							<p className="m-0 px-5 pt-1 text-[13px] leading-relaxed text-slate-400">
+								{group.description}
+							</p>
+						)}
+						<div className="px-5 py-2 opacity-60">
+							{group.fields.map((field) => {
+								if (field.type === 'checkbox') {
+									return (
+										<div
+											key={field.name}
+											className={`${fieldRow} flex-wrap`}
+										>
+											<div className={fieldLabel}>
+												<span>{field.label}</span>
+											</div>
+											<div className="h-[22px] w-10 rounded-full bg-slate-200" />
+											{field.description && (
+												<p className="mt-1 w-full text-xs leading-snug text-slate-400">
+													{field.description}
+												</p>
+											)}
 										</div>
-										<label className="usk-toggle">
-											<input
-												type="checkbox"
-												checked={false}
+									);
+								}
+
+								if (field.type === 'select') {
+									return (
+										<div key={field.name} className={fieldRow}>
+											<label className={fieldLabel}>
+												{field.label}
+											</label>
+											<select
+												className={`${fieldControl} cursor-not-allowed opacity-60`}
 												disabled
+												defaultValue={
+													Object.keys(
+														field.options
+													)[0]
+												}
+											>
+												{Object.entries(
+													field.options
+												).map(([val, lbl]) => (
+													<option
+														key={val}
+														value={val}
+													>
+														{lbl}
+													</option>
+												))}
+											</select>
+										</div>
+									);
+								}
+
+								if (field.type === 'color') {
+									return (
+										<div key={field.name} className={fieldRow}>
+											<label className={fieldLabel}>
+												{field.label}
+											</label>
+											<input
+												type="color"
+												disabled
+												value={field.value || '#000000'}
+												readOnly
+												className="h-8 w-12 cursor-not-allowed rounded-md border border-slate-200 p-0.5 opacity-60"
+											/>
+										</div>
+									);
+								}
+
+								if (
+									field.type === 'number' ||
+									field.type === 'text'
+								) {
+									return (
+										<div key={field.name} className={fieldRow}>
+											<label className={fieldLabel}>
+												{field.label}
+											</label>
+											<input
+												type={field.type}
+												className={`${fieldControl} cursor-not-allowed opacity-60`}
+												disabled
+												placeholder={
+													field.placeholder || ''
+												}
+												defaultValue={
+													field.value || ''
+												}
 												readOnly
 											/>
-											<span className="usk-toggle__slider"></span>
-										</label>
-										{field.description && (
-											<p className="usk-pro-promo__field-desc">
-												{field.description}
-											</p>
-										)}
-									</div>
-								);
-							}
+											{field.description && (
+												<p className="mt-1 w-full text-xs leading-snug text-slate-400">
+													{field.description}
+												</p>
+											)}
+										</div>
+									);
+								}
 
-							if (field.type === 'select') {
-								return (
-									<div
-										key={field.name}
-										className="usk-settings-field"
-									>
-										<label className="usk-settings-field__label">
-											{field.label}
-										</label>
-										<select
-											className="usk-settings-field__select"
-											disabled
-											defaultValue={
-												Object.keys(
-													field.options
-												)[0]
-											}
-										>
-											{Object.entries(
-												field.options
-											).map(([val, lbl]) => (
-												<option
-													key={val}
-													value={val}
-												>
-													{lbl}
-												</option>
-											))}
-										</select>
-									</div>
-								);
-							}
-
-							if (field.type === 'color') {
-								return (
-									<div
-										key={field.name}
-										className="usk-settings-field"
-									>
-										<label className="usk-settings-field__label">
-											{field.label}
-										</label>
-										<input
-											type="color"
-											disabled
-											value={field.value || '#000000'}
-											readOnly
-											style={{
-												width: 48,
-												height: 32,
-												padding: 2,
-												border: '1px solid #e2e8f0',
-												borderRadius: 6,
-												cursor: 'not-allowed',
-											}}
-										/>
-									</div>
-								);
-							}
-
-							if (
-								field.type === 'number' ||
-								field.type === 'text'
-							) {
-								return (
-									<div
-										key={field.name}
-										className="usk-settings-field"
-									>
-										<label className="usk-settings-field__label">
-											{field.label}
-										</label>
-										<input
-											type={field.type}
-											className="usk-settings-field__input"
-											disabled
-											placeholder={
-												field.placeholder || ''
-											}
-											defaultValue={
-												field.value || ''
-											}
-											readOnly
-										/>
-										{field.description && (
-											<p className="usk-pro-promo__field-desc">
-												{field.description}
-											</p>
-										)}
-									</div>
-								);
-							}
-
-							return null;
-						})}
+								return null;
+							})}
+						</div>
 					</div>
 				</div>
 			))}

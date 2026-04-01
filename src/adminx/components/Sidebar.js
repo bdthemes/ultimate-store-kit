@@ -1,13 +1,14 @@
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const navItems = [
 	{
-		group: __('DASHBOARD', 'ultimate-store-kit'),
+		group: __('Dashboard', 'ultimate-store-kit'),
 		items: [
 			{
 				id: 'welcome',
 				label: __('Welcome', 'ultimate-store-kit'),
-				icon: 'dashicons-admin-home',
+				icon: 'home',
 			},
 		],
 	},
@@ -17,95 +18,378 @@ const navItems = [
 			{
 				id: 'widgets',
 				label: __('Widgets', 'ultimate-store-kit'),
-				icon: 'dashicons-screenoptions',
+				icon: 'grid',
 			},
 		],
 	},
 	{
-		group: __('SETTINGS', 'ultimate-store-kit'),
+		group: __('Settings', 'ultimate-store-kit'),
 		items: [
 			{
 				id: 'other-settings',
 				label: __('Other Settings', 'ultimate-store-kit'),
-				icon: 'dashicons-admin-generic',
-			},
-		],
-	},
-	{
-		group: __('SUPPORT', 'ultimate-store-kit'),
-		items: [
-			{
-				id: 'get-pro',
-				label: __('Get Pro', 'ultimate-store-kit'),
-				icon: 'dashicons-star-filled',
+				icon: 'settings',
 			},
 			{
 				id: 'license',
 				label: __('License', 'ultimate-store-kit'),
-				icon: 'dashicons-admin-network',
+				icon: 'badge',
+			},
+		],
+	},
+	{
+		group: __('Support', 'ultimate-store-kit'),
+		items: [
+			{
+				id: 'get-pro',
+				label: __('Get Pro', 'ultimate-store-kit'),
+				icon: 'star',
 			},
 			{
 				id: 'about',
 				label: __('About & Info', 'ultimate-store-kit'),
-				icon: 'dashicons-info',
+				icon: 'info',
 			},
 		],
 	},
 ];
 
-const Sidebar = ({ activePage, onNavigate, isPro }) => {
-	const handleNavigate = (pageId) => {
-		window.location.hash = pageId;
-	};
+const groupHeadingClass =
+	'mb-3 px-2 text-xs font-semibold uppercase tracking-widest text-gray-400';
 
-	return (
-		<div className="usk-admin-sidebar">
-			<nav className="usk-admin-sidebar__nav">
-				{navItems.map((group) => (
-					<div key={group.group} className="usk-admin-sidebar__group">
-						{/* <div className="usk-admin-sidebar__group-label">
-							{group.group}
-						</div> */}
-						<ul className="usk-admin-sidebar__list">
-							{group.items.map((item) => {
-								if (item.id === 'get-pro' && isPro) {
-									return null;
-								}
-								return (
-									<li key={item.id}>
-										<a
-											href={`#${item.id}`}
-											className={`usk-admin-sidebar__item ${activePage === item.id ? 'usk-admin-sidebar__item--active' : ''}`}
-											onClick={(e) => {
-												e.preventDefault();
-												handleNavigate(item.id);
-											}}
-										>
-											<span
-												className={`dashicons ${item.icon}`}
-											></span>
-											<span>{item.label}</span>
-										</a>
-									</li>
-								);
-							})}
+const Icon = ({ name }) => {
+	const common = 'h-5 w-5 block color-current';
+	switch (name) {
+		case 'home':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+					<path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+				</svg>
+
+			);
+		case 'grid':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<rect width={7} height={9} x={3} y={3} rx={1} />
+					<rect width={7} height={5} x={14} y={3} rx={1} />
+					<rect width={7} height={9} x={14} y={12} rx={1} />
+					<rect width={7} height={5} x={3} y={16} rx={1} />
+				</svg>
+
+			);
+		case 'settings':
+			return (
+				<svg
+
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+					<circle cx={12} cy={12} r={3} />
+				</svg>
+
+			);
+		case 'badge':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+					<circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+				</svg>
+
+			);
+		case 'star':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+				</svg>
+
+			);
+		case 'info':
+		default:
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<circle cx={12} cy={12} r={10} />
+					<path d="M12 16v-4" />
+					<path d="M12 8h.01" />
+				</svg>
+
+			);
+	}
+};
+
+const getAdminBarHeight = () =>
+	document.getElementById('wpadminbar')?.offsetHeight || 0;
+
+const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose }) => {
+	const [showComingSoon, setShowComingSoon] = useState(true);
+	const content = (
+		<>
+			<nav className="flex flex-col gap-6" aria-label="Main">
+				{navItems.map((section) => (
+					<div key={section.group}>
+						<p className={`m-0 ${groupHeadingClass}`}>
+							{section.group}
+						</p>
+						<ul className="m-0 list-none space-y-1 p-0">
+							{section.items
+								.filter((item) => !(isPro && item.id === 'get-pro'))
+								.map((item) => {
+									const isActive = activePage === item.id;
+									return (
+										<li key={item.id}>
+											<button
+												type="button"
+												onClick={() =>
+													(() => {
+														onNavigate(item.id);
+														window.location.hash = `#${item.id}`;
+														onClose();
+													})()
+												}
+												className={`flex w-full cursor-pointer items-center gap-3 rounded-lg border-0 px-3 py-3 text-left text-sm font-medium transition-colors ${
+													isActive
+														? 'bg-uks-brand text-white shadow-sm'
+														: 'bg-transparent text-slate-700 hover:bg-gray-100 hover:text-slate-900'
+												}`}
+											>
+												<Icon name={item.icon} />
+												{item.label}
+											</button>
+										</li>
+									);
+								})}
 						</ul>
 					</div>
 				))}
 			</nav>
+			{showComingSoon && (
+				<div className="mt-6 hidden rounded-xl bg-slate-100 p-4 lg:block lg:mt-8">
+					<div className="relative ">
+						<button
+							type="button"
+							onClick={() => setShowComingSoon(false)}
+							className="absolute right-1 top-1 inline-flex cursor-pointer items-center justify-center border-0 bg-transparent text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+							aria-label={__('Close', 'ultimate-store-kit')}
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width={24}
+								height={24}
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="w-4 h-4 block"
+							>
+								<path d="M18 6 6 18" />
+								<path d="m6 6 12 12" />
+							</svg>
 
-			<div className="usk-admin-sidebar__promo">
-				<div className="usk-admin-sidebar__promo-badge">
-					{__('Coming Soon', 'ultimate-store-kit')}
+						</button>
+						<span className="mb-2.5 text-base font-bold text-slate-800 flex items-center gap-2">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width={24}
+								height={24}
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="w-5 h-5"
+							>
+								<path d="M12 2v4" />
+								<path d="m16.2 7.8 2.9-2.9" />
+								<path d="M18 12h4" />
+								<path d="m16.2 16.2 2.9 2.9" />
+								<path d="M12 18v4" />
+								<path d="m4.9 19.1 2.9-2.9" />
+								<path d="M2 12h4" />
+								<path d="m4.9 4.9 2.9 2.9" />
+							</svg>
+							{__('Coming soon', 'ultimate-store-kit')}
+						</span>
+						<p className="m-0 text-[12px] leading-relaxed text-slate-600">
+							{__(
+								'New items planned for upcoming updates:',
+								'ultimate-store-kit'
+							)}
+						</p>
+						<ul className="mt-2.5 m-0 space-y-1.5 p-0 text-[12px] text-slate-600">
+							<li className="flex items-start gap-2">
+								<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
+								{__('7+ WooCommerce widgets', 'ultimate-store-kit')}
+							</li>
+							<li className="flex items-start gap-2">
+								<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
+								{__('Template-based presets', 'ultimate-store-kit')}
+							</li>
+							<li className="flex items-start gap-2">
+								<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
+								{__('Performance-focused improvements', 'ultimate-store-kit')}
+							</li>
+						</ul>
+						<button
+							onClick={() =>
+								window.open(
+									'https://feedback.bdthemes.com/b/6vr2250l/feature-requests',
+									'_blank'
+								)
+							}
+							type="button"
+							className="mt-3 inline-flex cursor-pointer items-center rounded-lg border border-uks-brand bg-white px-3 py-1.5 text-[12px] font-semibold text-uks-brand transition-colors hover:bg-uks-brand hover:text-white"
+						>
+							{__('See roadmap', 'ultimate-store-kit')}
+						</button>
+					</div>
 				</div>
-				<ul className="usk-admin-sidebar__promo-list">
-					<li>{__('Advanced Search & Filters', 'ultimate-store-kit')}</li>
-					<li>{__('Analytics Dashboard', 'ultimate-store-kit')}</li>
-					<li>{__('User Reviews & Ratings', 'ultimate-store-kit')}</li>
-					<li>{__('WooCommerce Integration', 'ultimate-store-kit')}</li>
-				</ul>
+			)}
+		</>
+	);
+
+	if (isDesktop) {
+		return (
+			<div style={{ display: 'flex' }} className="w-64 shrink-0 flex-col justify-between self-stretch rounded-lg border border-solid border-gray-100 bg-white px-4 py-6 lg:sticky lg:top-[7.5rem]">
+				{content}
 			</div>
-		</div>
+		);
+	}
+
+	const adminBarH = getAdminBarHeight();
+
+	return (
+		<>
+			{isOpen && (
+				<div
+					style={{
+						display: 'block',
+						position: 'fixed',
+						top: adminBarH,
+						left: 0,
+						right: 0,
+						bottom: 0,
+						zIndex: 99998,
+						backgroundColor: 'rgba(0,0,0,0.3)',
+					}}
+					onClick={onClose}
+					aria-hidden="true"
+				/>
+			)}
+			<div
+				style={{
+					position: 'fixed',
+					left: 0,
+					top: adminBarH,
+					zIndex: 99999,
+					height: `calc(100vh - ${adminBarH}px)`,
+					width: '86vw',
+					maxWidth: '320px',
+					display: 'flex',
+					flexDirection: 'column',
+					backgroundColor: '#fff',
+					padding: '1rem',
+					boxShadow: '4px 0 24px rgba(0,0,0,0.15)',
+					transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+					transition: 'transform 300ms ease-out',
+					pointerEvents: isOpen ? 'auto' : 'none',
+					overflowY: 'auto',
+				}}
+			>
+				<div className="mb-3 flex items-center justify-between">
+					<p className="m-0 text-sm font-bold text-slate-700">
+						{__('Navigation', 'ultimate-store-kit')}
+					</p>
+					<button
+						type="button"
+						onClick={onClose}
+						className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-slate-200 bg-white text-slate-500 hover:text-slate-700"
+						aria-label={__('Close menu', 'ultimate-store-kit')}
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth={2}
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							className="h-4 w-4"
+						>
+							<path d="M18 6 6 18" />
+							<path d="m6 6 12 12" />
+						</svg>
+					</button>
+				</div>
+				{content}
+			</div>
+		</>
 	);
 };
 
