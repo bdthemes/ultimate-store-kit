@@ -3,7 +3,7 @@ import { btnPrimary, btnSm, fieldControl, fieldLabel, fieldRow, proBadge } from 
 
 const promoSettings = [
 	{
-		group: __('Sales Controls', 'ultimate-store-kit'),
+		group: __('Sales Notifications', 'ultimate-store-kit'),
 		description: __(
 			'Configure flash sale banners, countdown timers, and promotional badges for your store.',
 			'ultimate-store-kit'

@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import ProPromo from '../components/ProPromo';
 import { btnLg, btnPrimary, fieldControl, fieldLabel, proBadge, Toggle } from '../tw';
 
-const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) => {
+const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro, activeGroup }) => {
 	const [localSettings, setLocalSettings] = useState(() => {
 		const initial = {};
 		widgets.forEach((w) => {
@@ -60,7 +60,10 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 		return groups;
 	};
 
-	const groups = renderGroups();
+	const allGroups = renderGroups();
+	const groups = activeGroup
+		? allGroups.filter((g) => g.label === activeGroup)
+		: allGroups;
 
 	return (
 		<div>
@@ -218,7 +221,7 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro }) =>
 						</div>
 					</div>
 				))}
-				{!isPro && <ProPromo />}
+				{!isPro && !activeGroup && <ProPromo />}
 			</div>
 			<div className="mt-6 flex justify-end pt-4">
 				<button

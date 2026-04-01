@@ -12,6 +12,22 @@ import { appShell, bodyRow, mainContent } from './tw';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
+const slugify = (label) =>
+	label.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+const getSettingsGroups = () => {
+	const widgets = adminData.widgets?.ultimate_store_kit_other_settings || [];
+	const groups = [];
+	widgets.forEach((w) => {
+		if (w.type === 'start_group') {
+			groups.push({ id: `settings-${slugify(w.label)}`, label: w.label });
+		}
+	});
+	return groups;
+};
+
+const settingsGroups = getSettingsGroups();
+
 const getPageFromHash = () => {
 	const hash = window.location.hash.replace('#', '');
 	const pageName = hash.split('?')[0];
@@ -21,10 +37,10 @@ const getPageFromHash = () => {
 		'woocommerce-widgets',
 		'edd-widgets',
 		'other-widgets',
-		'other-settings',
 		'get-pro',
 		'license',
 		'about',
+		...settingsGroups.map((g) => g.id),
 	];
 	return validPages.includes(pageName) ? pageName : 'welcome';
 };
@@ -180,21 +196,6 @@ const App = () => {
 						widgetType={widgetTypeMap[activePage]}
 					/>
 				);
-			case 'other-settings':
-				return (
-					<OtherSettings
-						widgets={
-							widgets.ultimate_store_kit_other_settings || []
-						}
-						section="ultimate_store_kit_other_settings"
-						settings={
-							settings.ultimate_store_kit_other_settings || {}
-						}
-						onSave={saveSettings}
-						saving={saving}
-						isPro={isProActive}
-					/>
-				);
 			case 'get-pro':
 				return isProActive ? (
 					<Welcome
@@ -214,8 +215,23 @@ const App = () => {
 				);
 			case 'about':
 				return <AboutInfo />;
-			default:
+			default: {
+				const settingsGroup = settingsGroups.find((g) => g.id === activePage);
+				if (settingsGroup) {
+					return (
+						<OtherSettings
+							widgets={widgets.ultimate_store_kit_other_settings || []}
+							section="ultimate_store_kit_other_settings"
+							settings={settings.ultimate_store_kit_other_settings || {}}
+							onSave={saveSettings}
+							saving={saving}
+							isPro={isProActive}
+							activeGroup={settingsGroup.label}
+						/>
+					);
+				}
 				return <Welcome widgets={widgets} settings={settings} />;
+			}
 		}
 	};
 
@@ -235,8 +251,6 @@ const App = () => {
 				onToggleSidebar={handleToggleSidebar}
 			/>
 			<div className="bg-slate-50">
-
-
 			<div className={`${bodyRow} flex-col lg:flex-row`}>
 				<Sidebar
 					activePage={activePage}
@@ -245,6 +259,7 @@ const App = () => {
 					isOpen={isSidebarOpen}
 					isDesktop={isDesktop}
 					onClose={() => setIsSidebarOpen(false)}
+					settingsGroups={settingsGroups}
 				/>
 				<div className={`${mainContent} flex flex-col`}>
 					{notification && (

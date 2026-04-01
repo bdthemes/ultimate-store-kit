@@ -2,66 +2,60 @@ import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const navItems = [
-	{
-		group: __('Dashboard', 'ultimate-store-kit'),
-		items: [
-			{
-				id: 'welcome',
-				label: __('Welcome', 'ultimate-store-kit'),
-				icon: 'home',
-			},
-		],
-	},
-	{
-		group: __('Widgets', 'ultimate-store-kit'),
-		items: [
-			{
-				id: 'woocommerce-widgets',
-				label: __('WooCommerce', 'ultimate-store-kit'),
-				icon: 'woocommerce',
-			},
-			{
-				id: 'edd-widgets',
-				label: __('EDD', 'ultimate-store-kit'),
-				icon: 'edd',
-			},
-			{
-				id: 'other-widgets',
-				label: __('Others', 'ultimate-store-kit'),
-				icon: 'other',
-			},
-		],
-	},
-	{
-		group: __('Settings', 'ultimate-store-kit'),
-		items: [
-			{
-				id: 'other-settings',
-				label: __('Other Settings', 'ultimate-store-kit'),
-				icon: 'settings',
-			},
-			{
-				id: 'license',
-				label: __('License', 'ultimate-store-kit'),
-				icon: 'badge',
-			},
-		],
-	},
-	{
-		group: __('Support', 'ultimate-store-kit'),
-		items: [
-			{
-				id: 'get-pro',
-				label: __('Get Pro', 'ultimate-store-kit'),
-				icon: 'star',
-			},
-			{
-				id: 'about',
-				label: __('About & Info', 'ultimate-store-kit'),
-				icon: 'info',
-			},
-		],
-	},
+  {
+    group: __("Dashboard", "ultimate-store-kit"),
+    items: [
+      {
+        id: "welcome",
+        label: __("Welcome", "ultimate-store-kit"),
+        icon: "home",
+      },
+    ],
+  },
+  {
+    group: __("Widgets", "ultimate-store-kit"),
+    items: [
+      {
+        id: "woocommerce-widgets",
+        label: __("WooCommerce", "ultimate-store-kit"),
+        icon: "woocommerce",
+      },
+      {
+        id: "edd-widgets",
+        label: __("EDD", "ultimate-store-kit"),
+        icon: "edd",
+      },
+      {
+        id: "other-widgets",
+        label: __("Others", "ultimate-store-kit"),
+        icon: "other",
+      },
+    ],
+  },
+  {
+    group: __("Modules", "ultimate-store-kit"),
+    items: [],
+  },
+  {
+    group: __("Support", "ultimate-store-kit"),
+    items: [
+      {
+        id: "get-pro",
+        label: __("Get Pro", "ultimate-store-kit"),
+        icon: "star",
+      },
+      {
+      	id: 'license',
+      	label: __('License', 'ultimate-store-kit'),
+      	icon: 'badge',
+      },
+      {
+        id: "about",
+        label: __("About & Info", "ultimate-store-kit"),
+        icon: "info",
+      },
+    ],
+  },
 ];
 
 const groupHeadingClass =
@@ -253,13 +247,27 @@ const Icon = ({ name }) => {
 const getAdminBarHeight = () =>
 	document.getElementById('wpadminbar')?.offsetHeight || 0;
 
-const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose }) => {
+const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose, settingsGroups = [] }) => {
 	const [showComingSoon, setShowComingSoon] = useState(true);
+
+	const buildSections = () => {
+		return navItems.map((section) => {
+			if (section.group === __('Modules', 'ultimate-store-kit')) {
+				const dynamicItems = settingsGroups.map((g) => ({
+					id: g.id,
+					label: g.label,
+					icon: 'settings',
+				}));
+				return { ...section, items: [...dynamicItems, ...section.items] };
+			}
+			return section;
+		});
+	};
 
 	const content = (
 		<>
 			<nav className="flex flex-col gap-6" aria-label="Main">
-				{navItems.map((section) => (
+				{buildSections().map((section) => (
 					<div key={section.group}>
 						<p className={`m-0 ${groupHeadingClass}`}>
 							{section.group}
@@ -268,13 +276,13 @@ const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose }) 
 							{section.items
 								.filter((item) => !(isPro && item.id === 'get-pro'))
 								.map((item) => {
-									const isActive = window.location.hash.includes(item.id);
+									const isActive = activePage === item.id;
 									return (
 										<li key={item.id}>
 											<button
 												type="button"
 												onClick={() => {
-													onNavigate(item.id.split('?')[0]);
+													onNavigate(item.id);
 													window.location.hash = `#${item.id}`;
 													onClose();
 												}}
