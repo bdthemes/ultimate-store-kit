@@ -43,7 +43,7 @@ const adminData = window.ultimateStoreKitAdminData || {};
 const getPageFromHash = () => {
   const hash = window.location.hash.replace('#', '');
   const pageName = hash.split('?')[0];
-  const validPages = ['welcome', 'widgets', 'other-settings', 'get-pro', 'license', 'about'];
+  const validPages = ['welcome', 'widgets', 'woocommerce-widgets', 'edd-widgets', 'other-widgets', 'other-settings', 'get-pro', 'license', 'about'];
   return validPages.includes(pageName) ? pageName : 'welcome';
 };
 const App = () => {
@@ -146,12 +146,22 @@ const App = () => {
           isPro: isProActive
         });
       case 'widgets':
+      case 'woocommerce-widgets':
+      case 'edd-widgets':
+      case 'other-widgets':
+        const widgetTypeMap = {
+          'woocommerce-widgets': 'wc',
+          'edd-widgets': 'edd',
+          'other-widgets': 'other',
+          'widgets': 'wc'
+        };
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_WidgetsPage__WEBPACK_IMPORTED_MODULE_5__["default"], {
           allWidgets: widgets,
           allSettings: settings,
           onSave: saveSettings,
           saving: saving,
-          isPro: isProActive
+          isPro: isProActive,
+          widgetType: widgetTypeMap[activePage]
         });
       case 'other-settings':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_OtherSettings__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -631,9 +641,17 @@ const navItems = [{
 }, {
   group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widgets', 'ultimate-store-kit'),
   items: [{
-    id: 'widgets',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widgets', 'ultimate-store-kit'),
-    icon: 'grid'
+    id: 'woocommerce-widgets',
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce', 'ultimate-store-kit'),
+    icon: 'woocommerce'
+  }, {
+    id: 'edd-widgets',
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD', 'ultimate-store-kit'),
+    icon: 'edd'
+  }, {
+    id: 'other-widgets',
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Others', 'ultimate-store-kit'),
+    icon: 'other'
   }]
 }, {
   group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'ultimate-store-kit'),
@@ -777,6 +795,88 @@ const Icon = ({
           d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
         })
       });
+    case 'woocommerce':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: 24,
+        height: 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        className: common,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("circle", {
+          cx: 9,
+          cy: 9,
+          r: 2
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M20 11.5v-1a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M4 15h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M22 15h-4"
+        })]
+      });
+    case 'edd':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: 24,
+        height: 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        className: common,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "m7.5 4.21 4.5 2.6 4.5-2.6"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M12 17.5V12"
+        })]
+      });
+    case 'other':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: 24,
+        height: 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        className: common,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 9,
+          x: 3,
+          y: 3,
+          rx: 1
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 5,
+          x: 14,
+          y: 3,
+          rx: 1
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 9,
+          x: 14,
+          y: 12,
+          rx: 1
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 5,
+          x: 3,
+          y: 16,
+          rx: 1
+        })]
+      });
     case 'info':
     default:
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
@@ -823,15 +923,15 @@ const Sidebar = ({
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
           className: "m-0 list-none space-y-1 p-0",
           children: section.items.filter(item => !(isPro && item.id === 'get-pro')).map(item => {
-            const isActive = activePage === item.id;
+            const isActive = window.location.hash.includes(item.id);
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
                 type: "button",
-                onClick: () => (() => {
-                  onNavigate(item.id);
+                onClick: () => {
+                  onNavigate(item.id.split('?')[0]);
                   window.location.hash = `#${item.id}`;
                   onClose();
-                })(),
+                },
                 className: `flex w-full cursor-pointer items-center gap-3 rounded-lg border-0 px-3 py-3 text-left text-sm font-medium transition-colors ${isActive ? 'bg-uks-brand text-white shadow-sm' : 'bg-transparent text-slate-700 hover:bg-gray-100 hover:text-slate-900'}`,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Icon, {
                   name: item.icon
@@ -2609,28 +2709,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getFiltersFromHash = () => {
-  const hash = window.location.hash;
-  const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
-  return {
-    widgetType: params.get('type') || 'wc',
-    search: params.get('search') || '',
-    filter: params.get('status') || 'all',
-    contentTypeFilter: params.get('template') || 'all'
-  };
-};
 const WidgetsPage = ({
   allWidgets,
   allSettings,
   onSave,
   saving,
-  isPro
+  isPro,
+  widgetType = 'wc'
 }) => {
-  const initialFilters = getFiltersFromHash();
-  const [widgetType, setWidgetType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.widgetType);
-  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.search);
-  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.filter);
-  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.contentTypeFilter);
+  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
+  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
   const widgetTypeConfig = {
     wc: {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce Widgets', 'ultimate-store-kit'),
@@ -2661,17 +2750,10 @@ const WidgetsPage = ({
     return initial;
   });
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const params = new URLSearchParams();
-    if (widgetType !== 'wc') params.set('type', widgetType);
-    if (search) params.set('search', search);
-    if (filter !== 'all') params.set('status', filter);
-    if (contentTypeFilter !== 'all') params.set('template', contentTypeFilter);
-    const queryString = params.toString();
-    const newHash = queryString ? `#widgets?${queryString}` : '#widgets';
-    if (window.location.hash !== newHash) {
-      window.history.replaceState(null, '', newHash);
-    }
-  }, [widgetType, search, filter, contentTypeFilter]);
+    setSearch('');
+    setFilter('all');
+    setContentTypeFilter('all');
+  }, [widgetType]);
   const contentTypes = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     const types = new Set();
     widgets.forEach(w => {
@@ -2776,26 +2858,6 @@ const WidgetsPage = ({
             placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search widgets...', 'ultimate-store-kit'),
             value: search,
             onChange: e => setSearch(e.target.value)
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "flex items-center gap-1.5",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widget Type:', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
-            value: widgetType,
-            onChange: e => setWidgetType(e.target.value),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "wc",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce', 'ultimate-store-kit')
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "edd",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD', 'ultimate-store-kit')
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "other",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other', 'ultimate-store-kit')
-            })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "flex items-center gap-1.5",

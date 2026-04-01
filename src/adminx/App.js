@@ -18,6 +18,9 @@ const getPageFromHash = () => {
 	const validPages = [
 		'welcome',
 		'widgets',
+		'woocommerce-widgets',
+		'edd-widgets',
+		'other-widgets',
 		'other-settings',
 		'get-pro',
 		'license',
@@ -158,6 +161,15 @@ const App = () => {
 					/>
 				);
 			case 'widgets':
+			case 'woocommerce-widgets':
+			case 'edd-widgets':
+			case 'other-widgets':
+				const widgetTypeMap = {
+					'woocommerce-widgets': 'wc',
+					'edd-widgets': 'edd',
+					'other-widgets': 'other',
+					'widgets': 'wc'
+				};
 				return (
 					<WidgetsPage
 						allWidgets={widgets}
@@ -165,6 +177,7 @@ const App = () => {
 						onSave={saveSettings}
 						saving={saving}
 						isPro={isProActive}
+						widgetType={widgetTypeMap[activePage]}
 					/>
 				);
 			case 'other-settings':

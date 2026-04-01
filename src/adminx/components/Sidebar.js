@@ -16,9 +16,19 @@ const navItems = [
 		group: __('Widgets', 'ultimate-store-kit'),
 		items: [
 			{
-				id: 'widgets',
-				label: __('Widgets', 'ultimate-store-kit'),
-				icon: 'grid',
+				id: 'woocommerce-widgets',
+				label: __('WooCommerce', 'ultimate-store-kit'),
+				icon: 'woocommerce',
+			},
+			{
+				id: 'edd-widgets',
+				label: __('EDD', 'ultimate-store-kit'),
+				icon: 'edd',
+			},
+			{
+				id: 'other-widgets',
+				label: __('Others', 'ultimate-store-kit'),
+				icon: 'other',
 			},
 		],
 	},
@@ -157,6 +167,65 @@ const Icon = ({ name }) => {
 				</svg>
 
 			);
+		case 'woocommerce':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<circle cx={9} cy={9} r={2} />
+					<path d="M20 11.5v-1a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h2" />
+					<path d="M4 15h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2" />
+					<path d="M22 15h-4" />
+				</svg>
+			);
+		case 'edd':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+					<path d="m7.5 4.21 4.5 2.6 4.5-2.6" />
+					<path d="M12 17.5V12" />
+				</svg>
+			);
+		case 'other':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={24}
+					height={24}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth={2}
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className={common}
+				>
+					<rect width={7} height={9} x={3} y={3} rx={1} />
+					<rect width={7} height={5} x={14} y={3} rx={1} />
+					<rect width={7} height={9} x={14} y={12} rx={1} />
+					<rect width={7} height={5} x={3} y={16} rx={1} />
+				</svg>
+			);
 		case 'info':
 		default:
 			return (
@@ -186,6 +255,7 @@ const getAdminBarHeight = () =>
 
 const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose }) => {
 	const [showComingSoon, setShowComingSoon] = useState(true);
+
 	const content = (
 		<>
 			<nav className="flex flex-col gap-6" aria-label="Main">
@@ -198,18 +268,16 @@ const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose }) 
 							{section.items
 								.filter((item) => !(isPro && item.id === 'get-pro'))
 								.map((item) => {
-									const isActive = activePage === item.id;
+									const isActive = window.location.hash.includes(item.id);
 									return (
 										<li key={item.id}>
 											<button
 												type="button"
-												onClick={() =>
-													(() => {
-														onNavigate(item.id);
-														window.location.hash = `#${item.id}`;
-														onClose();
-													})()
-												}
+												onClick={() => {
+													onNavigate(item.id.split('?')[0]);
+													window.location.hash = `#${item.id}`;
+													onClose();
+												}}
 												className={`flex w-full cursor-pointer items-center gap-3 rounded-lg border-0 px-3 py-3 text-left text-sm font-medium transition-colors ${
 													isActive
 														? 'bg-uks-brand text-white shadow-sm'
