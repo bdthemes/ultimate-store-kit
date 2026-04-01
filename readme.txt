@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 2.9.13
+Stable tag: 3.0.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 6.9
@@ -32,7 +32,7 @@ With 80+ advanced widgets and a powerful template builder, you can create stunni
 
 ✅ **Personalized User Accounts** – Create a better shopping experience with custom account page designs.
 
-✅ **More Checkout Customization** – Optimize the checkout process to improve conversions. 
+✅ **More Checkout Customization** – Optimize the checkout process to improve conversions.
 
 ✅ **SEO & Speed Optimized** – Ensures fast performance and higher search rankings.
 
@@ -56,107 +56,107 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 
 = WooCommerce 🚾 =
 
-* [Florence Carousel](https://storekit.pro/demo/florence-carousel/) - Showcase WooCommerce products in an engaging carousel view.  
-* [Florence Grid](https://storekit.pro/demo/florence-grid/) - Display products in a stylish grid layout for better visibility.  
-* [Glossy Carousel](https://storekit.pro/demo/glossy-carousel/) - Elegant carousel for displaying featured products.  
-* [Glossy Grid](https://storekit.pro/demo/glossy-grid/) - Showcase products in a clean and modern grid design.  
-* [Heaven Slider](https://storekit.pro/demo/heaven-slider/) - Add a sleek slider to display product highlights.  
-* [Mentor Slider](https://storekit.pro/demo/mentor-slider/) - Create advanced sliders for your WooCommerce products.  
-* [Mini Cart](https://storekit.pro/demo/mini-cart/) - Enhance user experience with a stylish mini cart widget.  
-* [Product Accordion](https://storekit.pro/demo/product-accordion/) - Display product details in an organized accordion style.  
-* [Product Category](https://storekit.pro/demo/product-category/) - Showcase product categories with customizable layouts.  
-* [Product Image Accordion](https://storekit.pro/demo/product-image-accordion/) - Add interactive accordion effects to product images.  
-* [Product List](https://storekit.pro/demo/product-list/) - List WooCommerce products in an elegant and structured format.  
-* [Product Reviews](https://storekit.pro/demo/product-reviews/) - Highlight customer reviews to build trust.  
-* [Product Review Carousel](https://storekit.pro/demo/product-review-carousel/) - Display reviews in a dynamic carousel.  
-* [Product Table](https://storekit.pro/demo/product-table/) - Organize and showcase products in a sortable table layout.  
-* [Shiny Carousel](https://storekit.pro/demo/shiny-carousel/) - Add a sleek and shiny carousel to your WooCommerce store.  
-* [Shiny Grid](https://storekit.pro/demo/shiny-carousel/) - Present products in an appealing grid format.  
-* [Showcase Slider](https://storekit.pro/demo/showcase-slider/) - Highlight featured products with a customizable slider.  
-* [Sub Category](https://storekit.pro/demo/sub-category/) - Display subcategories for better product navigation.  
-* [Sub Category Carousel](https://storekit.pro/demo/sub-category-carousel/) - Showcase subcategories in an interactive carousel.  
-* [Product Category Carousel](https://storekit.pro/demo/product-category-carousel/) - Add a carousel for product categories to enhance browsing.  
-* [Page Cart](https://storekit.pro/demo/page-cart/) - Customize the WooCommerce cart page for better user experience.  
-* [Page Checkout](https://storekit.pro/demo/page-checkout/) - Design an optimized and user-friendly checkout page.  
-* [Page My Account](https://storekit.pro/demo/page-my-account/) - Personalize the "My Account" page for customers.  
-* [Page Order](https://storekit.pro/demo/page-order/) - Simplify and enhance the order tracking experience.  
-* [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.  
-* [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.  
+* [Florence Carousel](https://storekit.pro/demo/florence-carousel/) - Showcase WooCommerce products in an engaging carousel view.
+* [Florence Grid](https://storekit.pro/demo/florence-grid/) - Display products in a stylish grid layout for better visibility.
+* [Glossy Carousel](https://storekit.pro/demo/glossy-carousel/) - Elegant carousel for displaying featured products.
+* [Glossy Grid](https://storekit.pro/demo/glossy-grid/) - Showcase products in a clean and modern grid design.
+* [Heaven Slider](https://storekit.pro/demo/heaven-slider/) - Add a sleek slider to display product highlights.
+* [Mentor Slider](https://storekit.pro/demo/mentor-slider/) - Create advanced sliders for your WooCommerce products.
+* [Mini Cart](https://storekit.pro/demo/mini-cart/) - Enhance user experience with a stylish mini cart widget.
+* [Product Accordion](https://storekit.pro/demo/product-accordion/) - Display product details in an organized accordion style.
+* [Product Category](https://storekit.pro/demo/product-category/) - Showcase product categories with customizable layouts.
+* [Product Image Accordion](https://storekit.pro/demo/product-image-accordion/) - Add interactive accordion effects to product images.
+* [Product List](https://storekit.pro/demo/product-list/) - List WooCommerce products in an elegant and structured format.
+* [Product Reviews](https://storekit.pro/demo/product-reviews/) - Highlight customer reviews to build trust.
+* [Product Review Carousel](https://storekit.pro/demo/product-review-carousel/) - Display reviews in a dynamic carousel.
+* [Product Table](https://storekit.pro/demo/product-table/) - Organize and showcase products in a sortable table layout.
+* [Shiny Carousel](https://storekit.pro/demo/shiny-carousel/) - Add a sleek and shiny carousel to your WooCommerce store.
+* [Shiny Grid](https://storekit.pro/demo/shiny-carousel/) - Present products in an appealing grid format.
+* [Showcase Slider](https://storekit.pro/demo/showcase-slider/) - Highlight featured products with a customizable slider.
+* [Sub Category](https://storekit.pro/demo/sub-category/) - Display subcategories for better product navigation.
+* [Sub Category Carousel](https://storekit.pro/demo/sub-category-carousel/) - Showcase subcategories in an interactive carousel.
+* [Product Category Carousel](https://storekit.pro/demo/product-category-carousel/) - Add a carousel for product categories to enhance browsing.
+* [Page Cart](https://storekit.pro/demo/page-cart/) - Customize the WooCommerce cart page for better user experience.
+* [Page Checkout](https://storekit.pro/demo/page-checkout/) - Design an optimized and user-friendly checkout page.
+* [Page My Account](https://storekit.pro/demo/page-my-account/) - Personalize the "My Account" page for customers.
+* [Page Order](https://storekit.pro/demo/page-order/) - Simplify and enhance the order tracking experience.
+* [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.
+* [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.
 * [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
 * [Variation Swatches](https://storekit.pro/demo/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
-* [EDD Beauty Carousel](https://storekit.pro/demo/edd-beauty-carousel/) - Display digital products in a visually appealing carousel format.  
-* [EDD Beauty Grid](https://storekit.pro/demo/edd-beauty-grid/) - Showcase digital products in a clean and modern grid layout.  
-* [EDD Category Carousel](https://storekit.pro/demo/edd-category-carousel/) - Highlight EDD product categories in an interactive carousel.  
-* [EDD Category Grid](https://storekit.pro/demo/edd-category-grid/) - Organize and display categories in a stylish grid view.  
-* [EDD Classic Carousel](https://storekit.pro/demo/edd-classic-carousel/) - Add a traditional carousel for EDD products with classic styling.  
-* [EDD Classic Grid](https://storekit.pro/demo/edd-classic-grid/) - Present digital products in a structured classic grid format.  
-* [EDD Standard Carousel](https://storekit.pro/demo/edd-standard-carousel/) - Showcase EDD products in a simple yet elegant carousel design.  
-* [EDD Standard Grid](https://storekit.pro/demo/edd-standard-grid/) - Arrange digital products neatly in a standard grid view.  
-* [EDD Trendy Carousel](https://storekit.pro/demo/edd-trendy-carousel/) - Add a trendy carousel to make digital products stand out.  
-* [EDD Trendy Grid](https://storekit.pro/demo/edd-trendy-grid/) - Showcase products with a fresh and trendy grid layout.  
+* [EDD Beauty Carousel](https://storekit.pro/demo/edd-beauty-carousel/) - Display digital products in a visually appealing carousel format.
+* [EDD Beauty Grid](https://storekit.pro/demo/edd-beauty-grid/) - Showcase digital products in a clean and modern grid layout.
+* [EDD Category Carousel](https://storekit.pro/demo/edd-category-carousel/) - Highlight EDD product categories in an interactive carousel.
+* [EDD Category Grid](https://storekit.pro/demo/edd-category-grid/) - Organize and display categories in a stylish grid view.
+* [EDD Classic Carousel](https://storekit.pro/demo/edd-classic-carousel/) - Add a traditional carousel for EDD products with classic styling.
+* [EDD Classic Grid](https://storekit.pro/demo/edd-classic-grid/) - Present digital products in a structured classic grid format.
+* [EDD Standard Carousel](https://storekit.pro/demo/edd-standard-carousel/) - Showcase EDD products in a simple yet elegant carousel design.
+* [EDD Standard Grid](https://storekit.pro/demo/edd-standard-grid/) - Arrange digital products neatly in a standard grid view.
+* [EDD Trendy Carousel](https://storekit.pro/demo/edd-trendy-carousel/) - Add a trendy carousel to make digital products stand out.
+* [EDD Trendy Grid](https://storekit.pro/demo/edd-trendy-grid/) - Showcase products with a fresh and trendy grid layout.
 
 = Others 🌅 =
 
-* [Brand Grid](https://storekit.pro/demo/brand-grid/) - Display brand logos in an organized and responsive grid layout.  
-* [Brand Carousel](https://storekit.pro/demo/brand-carousel/) - Showcase brand logos in an interactive and rotating carousel.  
-* [Featured Box](https://storekit.pro/demo/featured-box/) - Highlight key features or services with customizable featured boxes.  
-* [Info List](https://storekit.pro/demo/info-list/) - Present information in a clean and well-structured list format.  
-* [QR Code](https://storekit.pro/demo/qr-code/) - Generate and display QR codes for quick sharing or scanning.  
-* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners to your store for announcements, promotions, or highlights.  
+* [Brand Grid](https://storekit.pro/demo/brand-grid/) - Display brand logos in an organized and responsive grid layout.
+* [Brand Carousel](https://storekit.pro/demo/brand-carousel/) - Showcase brand logos in an interactive and rotating carousel.
+* [Featured Box](https://storekit.pro/demo/featured-box/) - Highlight key features or services with customizable featured boxes.
+* [Info List](https://storekit.pro/demo/info-list/) - Present information in a clean and well-structured list format.
+* [QR Code](https://storekit.pro/demo/qr-code/) - Generate and display QR codes for quick sharing or scanning.
+* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners to your store for announcements, promotions, or highlights.
 
 == Pro version Widgets 🔥 ==
 
 = WooCommerce 🚾 =
 
-* [Account Address](https://storekit.pro/demo/account-address/) - Display and manage customer account addresses seamlessly.  
-* [Account Dashboard](https://storekit.pro/demo/account-dashboard/) - Create a user-friendly dashboard for customer accounts.  
-* [Account Details](https://storekit.pro/demo/account-details/) - Allow customers to update personal account details easily.  
-* [Account Downloads](https://storekit.pro/demo/account-downloads/) - Display downloadable products for customer accounts.  
-* [Account Login-form](https://storekit.pro/demo/account-login-form/) - Add a simple and secure login form for customers.  
-* [Account Logout](https://storekit.pro/demo/account-logout/) - Provide a straightforward logout option for users.  
-* [Account Navigation](https://storekit.pro/demo/account-navigation/) - Enhance account navigation for better user experience.  
-* [Account Order-details](https://storekit.pro/demo/account-order-details/) - Display detailed information about customer orders.  
-* [Account Orders](https://storekit.pro/demo/account-orders/) - List all customer orders in a clean and accessible layout.  
-* [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Create a registration form for new users.  
-* [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Add a fully functional "Add to Cart" button to your store.  
-* [Additional Information](https://storekit.pro/demo/additional-information/) - Display extra product details with this widget.  
-* [Compare Button](https://storekit.pro/demo/compare-button/) - Add a comparison button to products for better decision-making.  
-* [Compare Products](https://storekit.pro/demo/compare-products/) - Enable side-by-side comparison of multiple products.  
-* [Checkout Additional Info](https://storekit.pro/demo/checkout-additional-info/) - Collect additional customer info during checkout.  
-* [Checkout Billing Address](https://storekit.pro/demo/checkout-billing-address/) - Capture detailed billing information securely.  
-* [Checkout Coupon Form](https://storekit.pro/demo/checkout-coupon-form/) - Add a coupon form to your checkout process.  
-* [Checkout Login Form](https://storekit.pro/demo/checkout-login-form/) - Allow users to log in directly from the checkout page.  
-* [Checkout Order Review](https://storekit.pro/demo/checkout-order-review/) - Display a summary of the order before payment.  
-* [Checkout Payment](https://storekit.pro/demo/checkout-payment/) - Customize and display payment options during checkout.  
-* [Checkout Shipping Form](https://storekit.pro/demo/checkout-shipping-form/) - Add a shipping form for user details during checkout.  
-* [Checkout Shipping Methods](https://storekit.pro/demo/checkout-shipping-methods/) - List all available shipping methods for selection.  
-* [Product Description](https://storekit.pro/demo/product-description/) - Display detailed product descriptions attractively.  
-* [Product Image](https://storekit.pro/demo/product-image/) - Showcase product images in a visually appealing way.  
-* [Product Meta](https://storekit.pro/demo/product-meta/) - Display product metadata like SKU and categories.  
-* [Product Price](https://storekit.pro/demo/product-price/) - Highlight product pricing in a customizable style.  
-* [Product Rating](https://storekit.pro/demo/product-rating/) - Show star ratings for individual products.  
-* [Product Related](https://storekit.pro/demo/product-related/) - Display related products to boost cross-selling.  
-* [Product Stock](https://storekit.pro/demo/product-stock/) - Highlight product stock status dynamically.  
-* [Product Tabs](https://storekit.pro/demo/product-tabs/) - Organize product information into collapsible tabs.  
-* [Product Title](https://storekit.pro/demo/product-title/) - Customize and display product titles effectively.  
-* [Thankyou Order](https://storekit.pro/demo/thankyou-order/) - Customize the thank-you page for completed orders.  
-* [Thankyou Order Confirmation](https://storekit.pro/demo/thankyou-order-confirmation/) - Display detailed order confirmation information.  
-* [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Show customer address on the thank-you page.  
-* [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Provide a detailed order summary on the thank-you page.  
-* [Wishlist Button](https://storekit.pro/demo/wishlist-button/) - Add a button for customers to save products to their wishlist.  
-* [Wishlist Products](https://storekit.pro/demo/wishlist-products/) - Display saved products in an organized wishlist layout.  
+* [Account Address](https://storekit.pro/demo/account-address/) - Display and manage customer account addresses seamlessly.
+* [Account Dashboard](https://storekit.pro/demo/account-dashboard/) - Create a user-friendly dashboard for customer accounts.
+* [Account Details](https://storekit.pro/demo/account-details/) - Allow customers to update personal account details easily.
+* [Account Downloads](https://storekit.pro/demo/account-downloads/) - Display downloadable products for customer accounts.
+* [Account Login-form](https://storekit.pro/demo/account-login-form/) - Add a simple and secure login form for customers.
+* [Account Logout](https://storekit.pro/demo/account-logout/) - Provide a straightforward logout option for users.
+* [Account Navigation](https://storekit.pro/demo/account-navigation/) - Enhance account navigation for better user experience.
+* [Account Order-details](https://storekit.pro/demo/account-order-details/) - Display detailed information about customer orders.
+* [Account Orders](https://storekit.pro/demo/account-orders/) - List all customer orders in a clean and accessible layout.
+* [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Create a registration form for new users.
+* [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Add a fully functional "Add to Cart" button to your store.
+* [Additional Information](https://storekit.pro/demo/additional-information/) - Display extra product details with this widget.
+* [Compare Button](https://storekit.pro/demo/compare-button/) - Add a comparison button to products for better decision-making.
+* [Compare Products](https://storekit.pro/demo/compare-products/) - Enable side-by-side comparison of multiple products.
+* [Checkout Additional Info](https://storekit.pro/demo/checkout-additional-info/) - Collect additional customer info during checkout.
+* [Checkout Billing Address](https://storekit.pro/demo/checkout-billing-address/) - Capture detailed billing information securely.
+* [Checkout Coupon Form](https://storekit.pro/demo/checkout-coupon-form/) - Add a coupon form to your checkout process.
+* [Checkout Login Form](https://storekit.pro/demo/checkout-login-form/) - Allow users to log in directly from the checkout page.
+* [Checkout Order Review](https://storekit.pro/demo/checkout-order-review/) - Display a summary of the order before payment.
+* [Checkout Payment](https://storekit.pro/demo/checkout-payment/) - Customize and display payment options during checkout.
+* [Checkout Shipping Form](https://storekit.pro/demo/checkout-shipping-form/) - Add a shipping form for user details during checkout.
+* [Checkout Shipping Methods](https://storekit.pro/demo/checkout-shipping-methods/) - List all available shipping methods for selection.
+* [Product Description](https://storekit.pro/demo/product-description/) - Display detailed product descriptions attractively.
+* [Product Image](https://storekit.pro/demo/product-image/) - Showcase product images in a visually appealing way.
+* [Product Meta](https://storekit.pro/demo/product-meta/) - Display product metadata like SKU and categories.
+* [Product Price](https://storekit.pro/demo/product-price/) - Highlight product pricing in a customizable style.
+* [Product Rating](https://storekit.pro/demo/product-rating/) - Show star ratings for individual products.
+* [Product Related](https://storekit.pro/demo/product-related/) - Display related products to boost cross-selling.
+* [Product Stock](https://storekit.pro/demo/product-stock/) - Highlight product stock status dynamically.
+* [Product Tabs](https://storekit.pro/demo/product-tabs/) - Organize product information into collapsible tabs.
+* [Product Title](https://storekit.pro/demo/product-title/) - Customize and display product titles effectively.
+* [Thankyou Order](https://storekit.pro/demo/thankyou-order/) - Customize the thank-you page for completed orders.
+* [Thankyou Order Confirmation](https://storekit.pro/demo/thankyou-order-confirmation/) - Display detailed order confirmation information.
+* [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Show customer address on the thank-you page.
+* [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Provide a detailed order summary on the thank-you page.
+* [Wishlist Button](https://storekit.pro/demo/wishlist-button/) - Add a button for customers to save products to their wishlist.
+* [Wishlist Products](https://storekit.pro/demo/wishlist-products/) - Display saved products in an organized wishlist layout.
 
 = Easy Digital Downloads 💲 =
 
-* [EDD Product Reviews](https://storekit.pro/demo/edd-product-reviews/) - Enable customers to leave reviews on digital products for better feedback.  
-* [EDD Product Review Carousel](https://storekit.pro/demo/edd-product-review-carousel/) - Display customer reviews dynamically in an attractive carousel format.  
+* [EDD Product Reviews](https://storekit.pro/demo/edd-product-reviews/) - Enable customers to leave reviews on digital products for better feedback.
+* [EDD Product Review Carousel](https://storekit.pro/demo/edd-product-review-carousel/) - Display customer reviews dynamically in an attractive carousel format.
 
 = Others 🌅 =
 
-* [Breadcrumbs](https://storekit.pro/demo/breadcrumbs/) - Add easy navigation paths to improve user experience and site structure.  
+* [Breadcrumbs](https://storekit.pro/demo/breadcrumbs/) - Add easy navigation paths to improve user experience and site structure.
 
 More widgets & extensions are coming soon...
 
@@ -318,7 +318,7 @@ https://youtu.be/9J4zCaDcPnk
 = 2.8.8 [4th November 2025] =
 
 * Fixed: Action button design issue fixed in edd classic carousel widget
-* Fixed: Corrected wrong control name and border type condition logic issue fixed 
+* Fixed: Corrected wrong control name and border type condition logic issue fixed
 
 = 2.8.7 [16th October 2025] =
 
@@ -424,7 +424,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Offcanvas shows on page loading issue fixed in Mini Cart widget
 * Fixed: Security issue fixed
 * Updated: Only one plugin DCI notice will show at a time
-* Fixed: Product price color, view cart & checkout button background issue fixed in mini cart widget 
+* Fixed: Product price color, view cart & checkout button background issue fixed in mini cart widget
 * Added: [Mentor Slider](https://youtu.be/qO4BSo8OTkA) video tutorial added
 * Updated: Query updated
 
