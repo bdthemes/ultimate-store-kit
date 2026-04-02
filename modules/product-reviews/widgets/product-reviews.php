@@ -6,10 +6,10 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Classes\Utils;
+use UltimateStoreKit\Traits\Global_Widget_Controls;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -17,6 +17,12 @@ if (!defined('ABSPATH')) {
 // Exit if accessed directly
 
 class Product_Reviews extends Module_Base {
+    use Global_Widget_Controls;
+
+    /**
+     * @var \WP_Comment_Query|null
+     */
+    private $_comments_query = null;
 
     public function get_name()
     {
@@ -85,7 +91,7 @@ class Product_Reviews extends Module_Base {
                     '6' => '6',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-reviews' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .usk-product-reviews-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
 
                 ],
             ]
@@ -96,7 +102,7 @@ class Product_Reviews extends Module_Base {
                 'label' => esc_html__('Gap', 'ultimate-store-kit'),
                 'type' => Controls_Manager::SLIDER,
                 'selectors' => [
-                    '{{WRAPPER}} .usk-product-reviews' => 'grid-gap: {{SIZE}}px;',
+                    '{{WRAPPER}} .usk-product-reviews-grid' => 'grid-gap: {{SIZE}}px;',
                 ],
             ]
         );
@@ -245,6 +251,14 @@ class Product_Reviews extends Module_Base {
                 'condition' => [
                     'show_review_text' => 'yes',
                 ],
+            ]
+        );
+        $this->add_control(
+            'show_pagination',
+            [
+                'label'     => esc_html__('Pagination', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SWITCHER,
+                'separator' => 'before',
             ]
         );
         $this->end_controls_section();
@@ -680,6 +694,72 @@ class Product_Reviews extends Module_Base {
         $this->end_popover();
 
         $this->end_controls_section();
+
+        $this->register_global_controls_grid_pagination();
+    }
+
+    /**
+     * Total product reviews matching query (not affected by LIMIT/OFFSET of the list query).
+     */
+    private function get_reviews_total_count() {
+        $settings = $this->get_settings_for_display();
+        return (int) get_comments([
+            'type'      => 'review',
+            'status'    => $settings['status'],
+            'post_type' => 'product',
+            'count'     => true,
+        ]);
+    }
+
+    private function get_reviews_max_num_pages() {
+        $settings    = $this->get_settings_for_display();
+        $per_page    = max(1, (int) ($settings['items_limit']['size'] ?? 6));
+        $base_offset = isset($settings['offset']) && $settings['offset'] !== '' ? absint($settings['offset']) : 0;
+        $total       = $this->get_reviews_total_count();
+        $available   = max(0, $total - $base_offset);
+        return max(1, (int) ceil($available / $per_page));
+    }
+
+    private function get_reviews_paged() {
+        return max(1, absint(get_query_var('paged')), absint(get_query_var('page')));
+    }
+
+    /**
+     * Object compatible with ultimate_store_kit_post_pagination() (expects max_num_pages).
+     */
+    private function get_comment_pagination_query() {
+        $q                  = new \stdClass();
+        $q->max_num_pages = $this->get_reviews_max_num_pages();
+
+        return $q;
+    }
+
+    private function query_reviews() {
+        $settings    = $this->get_settings_for_display();
+        $per_page    = isset($settings['items_limit']['size']) ? (int) $settings['items_limit']['size'] : 6;
+        $base_offset = isset($settings['offset']) && $settings['offset'] !== '' ? absint($settings['offset']) : 0;
+
+        if (!empty($settings['show_pagination'])) {
+            $paged  = $this->get_reviews_paged();
+            $number = max(1, $per_page);
+            $offset = $base_offset + ($paged - 1) * $number;
+        } else {
+            $number = $per_page;
+            $offset = $base_offset;
+        }
+
+        $query_args = [
+            'type'      => 'review',
+            'order'     => $settings['review_order'],
+            'status'    => $settings['status'],
+            'orderby'   => $settings['orderby'],
+            'number'    => $number,
+            'offset'    => $offset,
+            'post_type' => 'product',
+        ];
+
+        $this->_comments_query = new \WP_Comment_Query();
+        $this->_comments_query->query($query_args);
     }
 
     public function render_image() {
@@ -694,18 +774,8 @@ class Product_Reviews extends Module_Base {
     }
     public function render_loop_item() {
         $settings = $this->get_settings_for_display();
-        $query_args = [
-            'type' => 'review',
-            'order' => $settings['review_order'],
-            'status' => $settings['status'],
-            'orderby' => $settings['orderby'],
-            'number' => $settings['items_limit']['size'],
-            'offset' => $settings['offset'],
-            'post_type' => 'product',
-        ];
-
-        $comments_query = new \WP_Comment_Query;
-        $comments = $comments_query->query($query_args);
+        $this->query_reviews();
+        $comments = $this->_comments_query ? $this->_comments_query->comments : [];
         if ($comments) {
             foreach ($comments as $index => $comment):
                 $product_id = $comment->comment_post_ID;
@@ -771,9 +841,17 @@ class Product_Reviews extends Module_Base {
     }
 
     protected function render() {
+        $settings = $this->get_settings_for_display();
         ?>
         <div class="usk-product-reviews">
-            <?php $this->render_loop_item();?>
+            <div class="usk-product-reviews-grid">
+                <?php $this->render_loop_item(); ?>
+            </div>
+            <?php if (!empty($settings['show_pagination'])) { ?>
+            <div class="usk-pagination">
+                <?php ultimate_store_kit_post_pagination($this->get_comment_pagination_query()); ?>
+            </div>
+            <?php } ?>
         </div>
         <?php
     }

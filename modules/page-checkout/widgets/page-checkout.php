@@ -65,7 +65,88 @@ class Page_Checkout extends Module_Base
     }
     protected function register_controls()
     {
+        $this->start_controls_section(
+            'section_checkout_general',
+            [
+                'label' => esc_html__('Layout', 'ultimate-store-kit'),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
+        $this->add_control(
+            'show_shipping_form',
+            [
+                'label'        => esc_html__( 'Shipping Form', 'ultimate-store-kit' ) . BDTUSK_NC,
+                'type'         => Controls_Manager::SWITCHER,
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_texts_translation',
+            [
+                'label'     => esc_html__( 'All String Translations', 'ultimate-store-kit' ),
+                'type'      => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'text_billing_details_heading',
+            [
+                'label'       => esc_html__( 'Billing Details', 'ultimate-store-kit' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Billing details', 'ultimate-store-kit' ),
+                'dynamic'     => [ 'active' => true ],
+            ]
+        );
+
+        $this->add_control(
+            'text_billing_shipping_heading',
+            [
+                'label'       => esc_html__( 'Billing+Shipping', 'ultimate-store-kit' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Billing and Shipping', 'ultimate-store-kit' ),
+                'dynamic'     => [ 'active' => true ],
+            ]
+        );
+
+        $this->add_control(
+            'text_ship_to_different_address',
+            [
+                'label'       => esc_html__( 'Shipping Toggle', 'ultimate-store-kit' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Ship to a different address?', 'ultimate-store-kit' ),
+                'dynamic'     => [ 'active' => true ],
+                'condition'   => [
+                    'show_shipping_form' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'text_order_review_heading',
+            [
+                'label'       => esc_html__( 'Order Review', 'ultimate-store-kit' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Your order', 'ultimate-store-kit' ),
+                'dynamic'     => [ 'active' => true ],
+            ]
+        );
+
+        $this->add_control(
+            'text_create_account',
+            [
+                'label'       => esc_html__( 'Create Account', 'ultimate-store-kit' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Create an account?', 'ultimate-store-kit' ),
+                'dynamic'     => [ 'active' => true ],
+            ]
+        );
+
+        $this->end_controls_section();
 
         $this->start_controls_section(
             'section_checkout_shipping_form_container',
@@ -881,7 +962,7 @@ class Page_Checkout extends Module_Base
         <?php
 
     }
-    public function checkout_shipping_form()
+    public function checkout_shipping_form( $settings )
     {
         $checkout = WC()->checkout();
         if (Plugin::instance()->editor->is_edit_mode()) {
@@ -898,7 +979,14 @@ class Page_Checkout extends Module_Base
                             <input id="ship-to-different-address-checkbox"
                                 class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> type="checkbox"
                                 name="ship_to_different_address" value="1" />
-                            <span><?php esc_html_e('Ship to a different address?', 'ultimate-store-kit'); ?></span>
+                            <span>
+                                <?php
+                                $label = !empty($settings['text_ship_to_different_address'])
+                                    ? $settings['text_ship_to_different_address']
+                                    : __('Ship to a different address?', 'ultimate-store-kit');
+                                echo esc_html($label);
+                                ?>
+                            </span>
                         </label>
                     </h3>
                     <div class="shipping_address">
@@ -917,9 +1005,8 @@ class Page_Checkout extends Module_Base
         </div>
         <?php
     }
-    protected function checkout_billing_address()
+    protected function checkout_billing_address( $settings )
     {
-        $settings = $this->get_settings_for_display();
         $checkout = WC()->checkout(); ?>
 
         <div class="usk-checkout-billing-address">
@@ -927,10 +1014,21 @@ class Page_Checkout extends Module_Base
 
                 <?php if (wc_ship_to_billing_address_only() && WC()->cart->needs_shipping()): ?>
                     <h3 class="usk-checkout-billing-address-header">
-                        <?php esc_html_e('Billing &amp; Shipping', 'ultimate-store-kit'); ?>
+                        <?php
+                        $heading = !empty($settings['text_billing_shipping_heading'])
+                            ? $settings['text_billing_shipping_heading']
+                            : __('Billing & Shipping', 'ultimate-store-kit');
+                        echo esc_html($heading);
+                        ?>
                     </h3>
                 <?php else: ?>
-                    <h3 class="usk-checkout-billing-address-header"><?php esc_html_e('Billing details', 'ultimate-store-kit'); ?>
+                    <h3 class="usk-checkout-billing-address-header">
+                        <?php
+                        $heading = !empty($settings['text_billing_details_heading'])
+                            ? $settings['text_billing_details_heading']
+                            : __('Billing details', 'ultimate-store-kit');
+                        echo esc_html($heading);
+                        ?>
                     </h3>
                 <?php endif; ?>
                 <?php do_action('woocommerce_before_checkout_billing_form', $checkout); ?>
@@ -956,7 +1054,14 @@ class Page_Checkout extends Module_Base
                                 <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
                                     id="createaccount" <?php checked((true === $checkout->get_value('createaccount') || (true === apply_filters('woocommerce_create_account_default_checked', false))), true); ?>
                                     type="checkbox" name="createaccount" value="1" />
-                                <span><?php esc_html_e('Create an account?', 'ultimate-store-kit'); ?></span>
+                                <span>
+                                    <?php
+                                    $label = !empty($settings['text_create_account'])
+                                        ? $settings['text_create_account']
+                                        : __('Create an account?', 'ultimate-store-kit');
+                                    echo esc_html($label);
+                                    ?>
+                                </span>
                             </label>
                         </p>
 
@@ -982,11 +1087,17 @@ class Page_Checkout extends Module_Base
         <?php
     }
 
-    public function checkout_order_review()
+    public function checkout_order_review( $settings )
     {
         ?>
         <div class="usk-checkout-order-review">
-            <h3 id="order_review_heading" class="order_review_heading"><?php esc_html_e('Your order', 'ultimate-store-kit'); ?>
+            <h3 id="order_review_heading" class="order_review_heading">
+                <?php
+                $heading = !empty($settings['text_order_review_heading'])
+                    ? $settings['text_order_review_heading']
+                    : __('Your order', 'ultimate-store-kit');
+                echo esc_html($heading);
+                ?>
             </h3>
             <div id="order_review" class="woocommerce-checkout-review-order">
                 <?php do_action('woocommerce_checkout_before_order_review'); ?>
@@ -1013,15 +1124,20 @@ class Page_Checkout extends Module_Base
             WC()->initialize_cart();
         }
 
+        $settings = $this->get_settings_for_display();
         ?>
 
         <div class="usk-page-checkout">
             <div class="usk-checkout-address-wrapper">
-                <?php $this->checkout_billing_address(); ?>
-                <?php $this->checkout_shipping_form(); ?>
+                <?php $this->checkout_billing_address( $settings ); ?>
+                <?php
+                if (!empty($settings['show_shipping_form']) && $settings['show_shipping_form'] === 'yes') {
+                    $this->checkout_shipping_form( $settings );
+                }
+                ?>
             </div>
             <div class="usk-checkout-details-wrapper">
-                <?php $this->checkout_order_review(); ?>
+                <?php $this->checkout_order_review( $settings ); ?>
                 <?php $this->checkout_payment_methods(); ?>
             </div>
         </div>
