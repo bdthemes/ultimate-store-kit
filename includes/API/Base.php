@@ -29,6 +29,8 @@ abstract class Base {
      *   'path'     => '/settings',
      *   'methods'  => 'POST',
      *   'callback' => [$this, 'method_name'],
+     *   'args'     => [],                        // optional
+     *   'permission_callback' => callable,        // optional, defaults to check_admin_permission
      * ]
      */
     abstract protected function get_routes();
@@ -38,11 +40,17 @@ abstract class Base {
      */
     public function register_routes() {
         foreach ($this->get_routes() as $route) {
-            register_rest_route($this->get_namespace(), $route['path'], [
+            $config = [
                 'methods'             => $route['methods'] ?? 'POST',
                 'callback'            => $route['callback'],
-                'permission_callback' => [$this, 'check_admin_permission'],
-            ]);
+                'permission_callback' => $route['permission_callback'] ?? [$this, 'check_admin_permission'],
+            ];
+
+            if (!empty($route['args'])) {
+                $config['args'] = $route['args'];
+            }
+
+            register_rest_route($this->get_namespace(), $route['path'], $config);
         }
     }
 
