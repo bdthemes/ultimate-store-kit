@@ -78,11 +78,11 @@ class Dashboard {
             return;
         }
 
-        $asset_data = $this->get_asset_file('build/admin');
+        $asset_data = $this->get_asset_file('assets/admin');
 
         wp_enqueue_script(
             'ultimate-store-kit-admin',
-            BDTUSK_BUILD_URL . 'admin.js',
+            BDTUSK_ASSETS_URL . 'admin/admin.js',
             $asset_data['dependencies'],
             $asset_data['version'],
             true
@@ -105,7 +105,7 @@ class Dashboard {
 
         wp_enqueue_style(
             'ultimate-store-kit-admin',
-            BDTUSK_BUILD_URL . 'style-admin.css',
+            BDTUSK_ASSETS_URL . 'admin/style-admin.css',
             [],
             $asset_data['version']
         );
