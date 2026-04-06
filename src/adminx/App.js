@@ -9,6 +9,7 @@ import GetPro from './pages/GetPro';
 import License from './pages/License';
 import AboutInfo from './pages/AboutInfo';
 import { appShell, bodyRow, mainContent } from './tw';
+import Toast from './components/Toast';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -235,14 +236,9 @@ const App = () => {
 		}
 	};
 
-	const notifBase =
-		'animate-usk-slide-in mb-4 flex items-center justify-between rounded-lg px-4 py-2.5 text-[13px] font-medium';
-	const notifSuccess =
-		'border border-emerald-200 bg-emerald-100 text-emerald-800';
-	const notifError = 'border border-red-200 bg-red-100 text-red-900';
-
 	return (
 		<div className={appShell}>
+			<Toast notification={notification} onDismiss={() => setNotification(null)} />
 			<Header
 				version={adminData.version}
 				isPro={isProActive}
@@ -262,24 +258,6 @@ const App = () => {
 					settingsGroups={settingsGroups}
 				/>
 				<div className={`${mainContent} flex flex-col`}>
-					{notification && (
-						<div
-							className={`${notifBase} ${
-								notification.type === 'success'
-									? notifSuccess
-									: notifError
-							}`}
-						>
-							<span>{notification.message}</span>
-							<button
-								type="button"
-								onClick={() => setNotification(null)}
-								className="cursor-pointer border-0 bg-transparent px-1 text-lg leading-none text-inherit"
-							>
-								×
-							</button>
-						</div>
-					)}
 					<div className="flex-1">{renderPage()}</div>
 				</div>
 			</div>
