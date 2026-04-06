@@ -5,7 +5,7 @@ namespace UltimateStoreKit;
 use Elementor\Plugin;
 use Elementor\Core\Kits\Documents\Kit;
 use UltimateStoreKit\Manager;
-use UltimateStoreKit\Admin\Menu;
+use UltimateStoreKit\Admin\Dashboard;
 
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
@@ -376,7 +376,7 @@ class Ultimate_Store_Kit_Loader {
 	public function init() {
 		if (!defined('BDTUSK_CH') && is_admin()) {
 			require(BDTUSK_ADM_PATH . 'class-settings-api.php');
-			Menu::get_instance();
+			Dashboard::get_instance();
 
 			if (current_user_can('manage_options')) {
 				require_once BDTUSK_ADMIN_PATH . 'admin-feeds.php';

@@ -306,19 +306,19 @@ function ultimate_store_kit_post_pagination($wp_query) {
 		$links[] = $paged + 1;
 	}
 
-	echo '<ul class="usk-pagination" aria-label="' . esc_attr__( 'Pagination', 'ultimate-store-kit' ) . '">' . "\n";
+	echo '<ul class="usk-pagination" aria-label="' . esc_attr__('Pagination', 'ultimate-store-kit') . '">' . "\n";
 
 	/** Previous Post Link */
 
-	if ( $paged > 1 ) {
-		$prev_link = get_pagenum_link( $paged - 1 );
+	if ($paged > 1) {
+		$prev_link = get_pagenum_link($paged - 1);
 		printf(
 			'<li class="usk-pagination-previous">
-				<a href="%s" aria-label="' . esc_attr__( 'Previous Page', 'ultimate-store-kit' ) . '">
+				<a href="%s" aria-label="' . esc_attr__('Previous Page', 'ultimate-store-kit') . '">
 					<span class="usk-icon-arrow-left-5" aria-hidden="true"></span>
 				</a>
 			</li>' . "\n",
-			esc_url( $prev_link )
+			esc_url($prev_link)
 		);
 	}
 
@@ -339,7 +339,8 @@ function ultimate_store_kit_post_pagination($wp_query) {
 
 	foreach ((array) $links as $link) {
 		$class = $paged == $link ? ' class="usk-active"' : '';
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+		printf(
+			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
 			wp_kses_post($class),
 			esc_url(get_pagenum_link($link)),
 			esc_html($link)
@@ -355,7 +356,8 @@ function ultimate_store_kit_post_pagination($wp_query) {
 		}
 
 		$class = $paged == $max ? ' class="usk-active"' : '';
-		printf('<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
+		printf(
+			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
 			wp_kses_post($class),
 			esc_url(get_pagenum_link($max)),
 			esc_html($max)
@@ -364,15 +366,15 @@ function ultimate_store_kit_post_pagination($wp_query) {
 
 	/** Next Post Link */
 
-	if ( $paged < $max ) {
-		$next_link = get_pagenum_link( $paged + 1 );
+	if ($paged < $max) {
+		$next_link = get_pagenum_link($paged + 1);
 		printf(
 			'<li class="usk-pagination-next">
-				<a href="%s" aria-label="' . esc_attr__( 'Next Page', 'ultimate-store-kit' ) . '">
+				<a href="%s" aria-label="' . esc_attr__('Next Page', 'ultimate-store-kit') . '">
 					<span class="usk-icon-arrow-right-5" aria-hidden="true"></span>
 				</a>
 			</li>' . "\n",
-			esc_url( $next_link )
+			esc_url($next_link)
 		);
 	}
 
@@ -415,7 +417,7 @@ function ultimate_store_kit_post_pagination__new($wp_query) {
 		$current_url = remove_query_arg(['paged', 'page', 'product-page'], $current_url);
 	}
 
-	echo '<ul class="usk-pagination" aria-label="' . esc_attr__( 'Pagination', 'ultimate-store-kit' ) . '">' . "\n";
+	echo '<ul class="usk-pagination" aria-label="' . esc_attr__('Pagination', 'ultimate-store-kit') . '">' . "\n";
 
 	/** Previous Post Link */
 	if ($paged > 1) {
@@ -425,7 +427,7 @@ function ultimate_store_kit_post_pagination__new($wp_query) {
 		}
 		$class = $paged == $prev_page ? ' class="current"' : '';
 		printf(
-			'<li%s><a href="%s" target="_self" aria-label="' . esc_attr__( 'Previous Page', 'ultimate-store-kit' ) . '">%s</a></li>' . "\n",
+			'<li%s><a href="%s" target="_self" aria-label="' . esc_attr__('Previous Page', 'ultimate-store-kit') . '">%s</a></li>' . "\n",
 			wp_kses_post($class),
 			esc_url(add_query_arg('product-page', $prev_page, $current_url)),
 			'<span class="usk-icon-arrow-left-5"></span>'
@@ -479,7 +481,7 @@ function ultimate_store_kit_post_pagination__new($wp_query) {
 			return;
 		}
 		printf(
-			'<li%s><a href="%s" target="_self" aria-label="' . esc_attr__( 'Next Page', 'ultimate-store-kit' ) . '">%s</a></li>' . "\n",
+			'<li%s><a href="%s" target="_self" aria-label="' . esc_attr__('Next Page', 'ultimate-store-kit') . '">%s</a></li>' . "\n",
 			wp_kses_post($class),
 			esc_url(add_query_arg('product-page', $next_page, $current_url)),
 			'<span class="usk-icon-arrow-right-5"></span>'
@@ -998,8 +1000,8 @@ function ultimate_store_kit_parse_csv($csv, $delimiter = ';', $header = true) {
 	return '<table>' . $html . '</tbody></table>';
 }
 
-function ultimate_store_kit_dashboard_link($suffix = '#welcome') {
-	return add_query_arg(['page' => 'ultimate_store_kit_options' . $suffix], admin_url('admin.php'));
+function ultimate_store_kit_dashboard_link($suffix = '') {
+	return add_query_arg(['page' => 'ultimate-store-kit' . $suffix], admin_url('admin.php'));
 }
 
 /**
@@ -1407,24 +1409,24 @@ add_action('wp_ajax_usk_get_variation_image', 'usk_ajax_variation_image_update')
 add_action('wp_ajax_nopriv_usk_get_variation_image', 'usk_ajax_variation_image_update');
 
 // Start: Add to cart quantity buttons conversion
-if ( ! function_exists( 'usk_display_quantity_minus' ) ) {
+if (! function_exists('usk_display_quantity_minus')) {
 	function usk_display_quantity_minus() {
-		if ( ! is_product() ) return;
+		if (! is_product()) return;
 		echo '<button type="button" class="bdt-add-to-cart-qty-minus" ><i class="usk-icon-minus3"></i></button>';
 	}
 }
 
-if ( ! function_exists( 'usk_display_quantity_plus' ) ) {	
+if (! function_exists('usk_display_quantity_plus')) {
 	function usk_display_quantity_plus() {
-		if ( ! is_product() ) return;
+		if (! is_product()) return;
 		echo '<button type="button" class="bdt-add-to-cart-qty-plus" ><i class="usk-icon-plus3"></i></button>';
 	}
 }
 
-if ( ! function_exists( 'usk_add_cart_quantity_plus_minus' ) ) {
+if (! function_exists('usk_add_cart_quantity_plus_minus')) {
 	function usk_add_cart_quantity_plus_minus() {
 
-	echo '<style>
+		echo '<style>
 		input[type="number"]::-webkit-outer-spin-button,
 		input[type="number"]::-webkit-inner-spin-button {
 			-webkit-appearance: none;
@@ -1433,10 +1435,10 @@ if ( ! function_exists( 'usk_add_cart_quantity_plus_minus' ) ) {
 
 		input[type="number"] {
 			-moz-appearance: textfield; /* Firefox */
-		}		
+		}
 	</style>';
 
-	wc_enqueue_js( "
+		wc_enqueue_js("
 		$(document).off('click.bdtQtyHandler'); // Remove previous handler
 		$(document).on('click.bdtQtyHandler', 'button.bdt-add-to-cart-qty-plus, button.bdt-add-to-cart-qty-minus', function(e) {
 			e.preventDefault();
@@ -1456,19 +1458,19 @@ if ( ! function_exists( 'usk_add_cart_quantity_plus_minus' ) ) {
 	}
 }
 
-if ( ! function_exists( 'usk_setup_quantity_buttons' ) ) {
+if (! function_exists('usk_setup_quantity_buttons')) {
 	function usk_setup_quantity_buttons() {
-		if ( function_exists( 'is_product' ) ) {
+		if (function_exists('is_product')) {
 			// Remove the default version
-			remove_all_actions( 'woocommerce_before_quantity_input_field' );
-			remove_all_actions( 'woocommerce_after_quantity_input_field' );
-			remove_all_actions( 'woocommerce_before_single_product' );
-		
+			remove_all_actions('woocommerce_before_quantity_input_field');
+			remove_all_actions('woocommerce_after_quantity_input_field');
+			remove_all_actions('woocommerce_before_single_product');
+
 			// Add our version
-			add_action( 'woocommerce_before_quantity_input_field', 'usk_display_quantity_minus' );
-			add_action( 'woocommerce_after_quantity_input_field', 'usk_display_quantity_plus' );
-			add_action( 'woocommerce_after_single_product', 'usk_add_cart_quantity_plus_minus' );
-		}		
+			add_action('woocommerce_before_quantity_input_field', 'usk_display_quantity_minus');
+			add_action('woocommerce_after_quantity_input_field', 'usk_display_quantity_plus');
+			add_action('woocommerce_after_single_product', 'usk_add_cart_quantity_plus_minus');
+		}
 	}
 }
 // End: Add to cart quantity buttons conversion

@@ -12,12 +12,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Menu {
+class Dashboard {
     use Singleton;
 
     private function __construct() {
         add_action('admin_menu', [$this, 'register_admin_menu']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
+        add_filter('plugin_action_links_' . BDTUSK_PBNAME, [$this, 'plugin_action_meta']);
     }
 
     /**
@@ -202,5 +203,13 @@ class Menu {
             'ultimate_store_kit_general_modules'  => get_option('ultimate_store_kit_general_modules', []),
             'ultimate_store_kit_other_settings'   => get_option('ultimate_store_kit_other_settings', []),
         ];
+    }
+
+    public function plugin_action_meta($links) {
+
+        $links = array_merge([sprintf('<a href="%s">%s</a>', ultimate_store_kit_dashboard_link('#welcome'), esc_html__('Settings', 'ultimate-store-kit'))], $links);
+
+
+        return $links;
     }
 }
