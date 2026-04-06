@@ -1,6 +1,23 @@
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+const proModulePlaceholders = [
+  {
+    id: 'currency-switcher',
+    label: __('Currency Switcher', 'ultimate-store-kit'),
+    icon: 'settings',
+    badge: 'Pro',
+    proPlaceholder: true,
+  },
+  {
+    id: 'variation-swatches',
+    label: __('Variation Swatches', 'ultimate-store-kit'),
+    icon: 'settings',
+    badge: 'Pro',
+    proPlaceholder: true,
+  },
+];
+
 const navItems = [
   {
     group: __("Dashboard", "ultimate-store-kit"),
@@ -258,7 +275,9 @@ const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose, se
 					label: g.label,
 					icon: 'settings',
 				}));
-				return { ...section, items: [...dynamicItems, ...section.items] };
+				// When pro is NOT active, show placeholder module items with Pro badge
+				const placeholders = isPro ? [] : proModulePlaceholders;
+				return { ...section, items: [...dynamicItems, ...placeholders, ...section.items] };
 			}
 			return section;
 		});
@@ -293,7 +312,23 @@ const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose, se
 												}`}
 											>
 												<Icon name={item.icon} />
-												{item.label}
+												<span className="flex-1">{item.label}</span>
+												{item.badge && (
+													<span
+														className="shrink-0 whitespace-nowrap rounded-md border border-solid px-1.5 py-0.5 text-[9px] font-bold"
+														style={{
+															borderColor: isActive
+																? 'rgba(255,255,255,0.4)'
+																: '#e5e7eb',
+															color: isActive ? '#fff' : '#6b7280',
+															background: isActive
+																? 'rgba(255,255,255,0.18)'
+																: 'transparent',
+														}}
+													>
+														{item.badge}
+													</span>
+												)}
 											</button>
 										</li>
 									);

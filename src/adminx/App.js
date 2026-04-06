@@ -8,6 +8,7 @@ import OtherSettings from './pages/OtherSettings';
 import GetPro from './pages/GetPro';
 import License from './pages/License';
 import AboutInfo from './pages/AboutInfo';
+import ProModulePlaceholder from './pages/ProModulePlaceholder';
 import { appShell, bodyRow, mainContent } from './tw';
 import Toast from './components/Toast';
 
@@ -29,6 +30,8 @@ const getSettingsGroups = () => {
 
 const settingsGroups = getSettingsGroups();
 
+const proModuleIds = ['currency-switcher', 'variation-swatches'];
+
 const getPageFromHash = () => {
 	const hash = window.location.hash.replace('#', '');
 	const pageName = hash.split('?')[0];
@@ -42,6 +45,7 @@ const getPageFromHash = () => {
 		'license',
 		'about',
 		...settingsGroups.map((g) => g.id),
+		...proModuleIds,
 	];
 	return validPages.includes(pageName) ? pageName : 'welcome';
 };
@@ -203,6 +207,12 @@ const App = () => {
 				);
 			case 'about':
 				return <AboutInfo />;
+			case 'currency-switcher':
+			case 'variation-swatches':
+				if (!isProActive) {
+					return <ProModulePlaceholder moduleId={activePage} />;
+				}
+				return null;
 			default: {
 				const settingsGroup = settingsGroups.find((g) => g.id === activePage);
 				if (settingsGroup) {
