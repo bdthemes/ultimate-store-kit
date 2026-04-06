@@ -7,13 +7,15 @@
  * Loaded unconditionally so REST requests work outside is_admin().
  */
 
-namespace UltimateStoreKit\Admin;
+namespace UltimateStoreKit\API;
+
+use UltimateStoreKit\API\Base;
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-class Admin_REST_Settings extends Admin_REST_Base {
+class Settings extends Base {
 
     private static $instance = null;
 

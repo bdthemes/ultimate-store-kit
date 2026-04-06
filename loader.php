@@ -401,7 +401,7 @@ class Ultimate_Store_Kit_Loader {
 		$this->setup_hooks();
 
 		// Register REST API routes unconditionally (outside is_admin)
-		\UltimateStoreKit\Admin\Admin_REST_Settings::get_instance();
+		\UltimateStoreKit\API\Settings::get_instance();
 
 		add_action('init', [$this, 'init']);
 	}

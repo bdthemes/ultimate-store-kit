@@ -6,13 +6,13 @@
  * Shared by both core and pro plugins to avoid redundant REST API code.
  */
 
-namespace UltimateStoreKit\Admin;
+namespace UltimateStoreKit\API;
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-abstract class Admin_REST_Base {
+abstract class Base {
 
     public function __construct() {
         add_action('rest_api_init', [$this, 'register_routes']);
