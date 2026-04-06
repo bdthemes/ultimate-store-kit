@@ -104,7 +104,7 @@ class Ultimate_Store_Kit_Loader {
 	 */
 	private function _includes() {
 
-		require_once BDTUSK_ADMIN_PATH . 'module-settings.php';
+		// require_once BDTUSK_ADMIN_PATH . 'module-settings.php';
 		// ========================
 		// Helper for global usec
 		//==========================
@@ -375,16 +375,7 @@ class Ultimate_Store_Kit_Loader {
 
 	public function init() {
 		if (!defined('BDTUSK_CH') && is_admin()) {
-			require(BDTUSK_ADM_PATH . 'class-settings-api.php');
 			Dashboard::get_instance();
-
-			if (current_user_can('manage_options')) {
-				require_once BDTUSK_ADMIN_PATH . 'admin-feeds.php';
-			}
-
-			// Biggopti class
-			require_once BDTUSK_ADM_PATH . 'admin-biggopti.php';
-			require_once BDTUSK_ADM_PATH . 'admin-api-biggopti.php';
 		}
 	}
 

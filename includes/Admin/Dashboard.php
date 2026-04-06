@@ -7,6 +7,8 @@
 namespace UltimateStoreKit\Admin;
 
 use UltimateStoreKit\Base\Singleton;
+use UltimateStoreKit\Admin\Feeds;
+use UltimateStoreKit\Admin\Biggopties;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -19,6 +21,12 @@ class Dashboard {
         add_action('admin_menu', [$this, 'register_admin_menu']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
         add_filter('plugin_action_links_' . BDTUSK_PBNAME, [$this, 'plugin_action_meta']);
+        add_action('admin_init', [$this, 'init']);
+    }
+
+    public function init() {
+        Feeds::get_instance();
+        Biggopties::get_instance();
     }
 
     /**
