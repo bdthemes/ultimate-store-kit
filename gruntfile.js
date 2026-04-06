@@ -17,21 +17,9 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "src/admin/images/",
-                        src: "**",
-                        dest: "admin/assets/images/",
-                    },
-                    {
-                        expand: true,
                         cwd: "src/vendor/css/",
                         src: "**",
                         dest: "assets/vendor/css",
-                    },
-                    {
-                        expand: true,
-                        cwd: "src/admin/css/",
-                        src: ["bdt-uikit.css"],
-                        dest: "admin/assets/css/",
                     },
                 ],
             },
@@ -150,13 +138,6 @@ module.exports = function (grunt) {
                     mangle: true,
                 },
                 files: [
-                    {
-                        expand: true,
-                        cwd: "src/admin/js/",
-                        src: "*.js",
-                        dest: "admin/assets/js/",
-                        ext: ".min.js",
-                    },
                     {
                         expand: true,
                         cwd: "src/js/widgets/",

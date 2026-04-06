@@ -22,7 +22,7 @@ const newConfig = {
 	...defaultConfig,
 	...{
 		entry: {
-			admin: resolve(process.cwd(), 'src/admin', 'index.js'),
+			admin: resolve(process.cwd(), 'src/admin', 'dashboard.js'),
 		},
 	},
 
