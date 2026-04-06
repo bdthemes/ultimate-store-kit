@@ -36,7 +36,25 @@ jQuery(document).ready(function ($) {
             $('.ultimate-store-kit-biggopti').filter(function () { return ($(this).data('display-id') || $(this).attr('data-display-id') || '') === displayId; }).fadeTo(50, 0, function () { $(this).slideUp(50, function () { $(this).remove(); }); });
         });
     });
-    
+
+        // Delegate to capture dynamically injected biggopties as well
+    $(document).on('click', '.ultimate-store-kit-biggopti.is-dismissible .bdt-biggopti-dismiss', function () {
+        $this = $(this).parents('.ultimate-store-kit-biggopti');
+        var $id = $this.attr('id') || '';
+        var $time = $this.attr('dismissible-time') || '';
+        var $meta = $this.attr('dismissible-meta') || '';
+        $.ajax({
+            url: (window.UltimateStoreKitBiggoptiConfig && UltimateStoreKitBiggoptiConfig.ajaxurl) ? UltimateStoreKitBiggoptiConfig.ajaxurl : (typeof ajaxurl !== 'undefined' ? ajaxurl : ''),
+            type: 'POST',
+            data: {
+                action: 'ultimate-store-kit-biggopties',
+                id: $id,
+                meta: $meta,
+                time: $time,
+                _wpnonce: UltimateStoreKitBiggoptiConfig.nonce,
+            }
+        });
+    });
     /**
      * Initialize countdown timers for API biggopties
      * This function finds all countdown elements and starts the countdown timer
@@ -48,12 +66,12 @@ jQuery(document).ready(function ($) {
             var $timer = $countdown.find('.countdown-timer');
             var endDate = $countdown.data('end-date');
             var timezone = $countdown.data('timezone');
-            
+
             // Skip if no end date or timer element found
             if (!endDate || !$timer.length) {
                 return;
             }
-            
+
             /**
              * Update the countdown display
              * Calculates time remaining and formats it for display
@@ -62,25 +80,25 @@ jQuery(document).ready(function ($) {
                 var endTime = new Date(endDate + ' ' + timezone).getTime();
                 var now = new Date().getTime();
                 var distance = endTime - now;
-                
+
                 // If countdown has expired, hide the countdown
                 if (distance < 0) {
                     $countdown.hide();
                     return;
                 }
-                
+
                 // Calculate time units
                 var days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
+
                 // Add leading zeros
                 days = days < 10 ? "0" + days : days;
-                hours = hours < 10 ? "0" + hours : hours; 
+                hours = hours < 10 ? "0" + hours : hours;
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
-                
+
                 // Build countdown text with wrapped numbers and labels
                 var countdownText = "";
                 if (days > 0) {
@@ -88,26 +106,26 @@ jQuery(document).ready(function ($) {
                 }
                 // Always show hours (even if 00) for consistent layout
                 countdownText += '<div class="countdown-item"><span class="number">' + hours + '</span><span class="label">hrs</span></div><span class="separator"></span>';
-                
+
                 countdownText += '<div class="countdown-item"><span class="number">' + minutes + '</span><span class="label">min</span></div><span class="separator"></span>';
-                
+
                 countdownText += '<div class="countdown-item"><span class="number">' + seconds + '</span><span class="label">sec</span></div>';
-                
+
                 // Update the timer display
                 $timer.html(countdownText);
             }
-            
+
             // Initial update to show countdown immediately
             updateCountdown();
-            
+
             // Set up interval to update countdown every second
             setInterval(updateCountdown, 1000);
         });
     }
-    
+
     // Initialize countdown on page load
     initAPIBiggoptiCountdown();
-    
+
     // Re-initialize countdown when new biggopties are added (for dynamic content)
     // This ensures countdown works even if biggopties are loaded after page load
     jQuery(document).on('DOMNodeInserted', '.bdt-biggopti-countdown', function() {
@@ -189,14 +207,14 @@ jQuery(document).ready(function ($) {
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;');
         };
-    
+
         var imageUrl = item.feed_image || '';
         var link = item.link || '#';
         var displayId = item.display_id || item.id || 'default';
         var feedId = 'bdt-admin-api-feed-' + displayId;
-    
+
         if (!imageUrl) return '';
-    
+
         return `
             <div id="${esc(feedId)}" class="bdt-dashboard-feed">
                 <a href="${esc(link)}" target="_blank" rel="noopener noreferrer">

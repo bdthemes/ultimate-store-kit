@@ -1,5 +1,5 @@
 /**
- * Shared Tailwind class strings for adminx (no @apply in SCSS).
+ * Shared Tailwind class strings for admin (no @apply in SCSS).
  * Specificity scope: tailwind.config.js `important` = `.ultimate-store-kit-admin-root` (PHP wrapper).
  */
 

@@ -20,6 +20,7 @@ class Biggopties {
 		// AJAX endpoint to fetch API biggopties on demand (after page load)
 		add_action('wp_ajax_usk_fetch_api_biggopties', [$this, 'ajax_fetch_api_biggopties']);
 		add_action('wp_ajax_usk_admin_api_biggopti_dismiss', [$this, 'usk_admin_api_biggopti_dismiss']);
+		add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
 	}
 
 	/**
@@ -67,6 +68,15 @@ class Biggopties {
 		}
 
 		wp_send_json_error();
+	}
+
+	/**
+	 * Enqueue admin scripts
+	 */
+	public function enqueue_admin_scripts() {
+		wp_enqueue_style('usk-admin-biggopti', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-biggopti.css', [], BDTUSK_VER);
+		wp_enqueue_style('bdt-admin-api-biggopti', BDTUSK_ADMIN_URL . 'assets/css/usk-admin-api-biggopti.css', [], BDTUSK_VER);
+		wp_enqueue_style('bdt-product-feed', BDTUSK_ADMIN_URL . 'assets/css/usk-product-feed.css', [], BDTUSK_VER);
 	}
 
 	/**
