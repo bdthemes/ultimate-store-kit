@@ -1039,63 +1039,7 @@ class ModuleService {
                     'video_url'    => '',
                 ]
             ],
-            'ultimate_store_kit_other_settings' => [
-
-                [
-                    'name'      => 'swatches_group_start',
-                    'label'     => esc_html__('Variation Swatches', 'ultimate-store-kit'),
-                    //'desc'      => __('<a href="#" target="_blank">Doc Link</a>', 'ultimate-store-kit'),
-                    'type'      => 'start_group',
-                    'video_url' => '',
-                ],
-                [
-                    'name'         => 'variation-swatches',
-                    'label'        => esc_html__('Enable', 'ultimate-store-kit'),
-                    'type'         => 'checkbox',
-                    'default'      => "off",
-                    'widget_type'  => 'pro',
-                    'plugin_name'  => 'woocommerce',
-                    'plugin_path'  => 'woocommerce/woocommerce.php',
-                    'content_type' => 'woocommerce product',
-                    'demo_url'     => 'https://storekit.pro/demo/variation-swatches/',
-                    'video_url'    => '',
-                    'parent'       => true,
-                ],
-                [
-                    'name'              => 'usk_variation_swatches_shape',
-                    'label'             => esc_html__('Shape', 'ultimate-store-kit'),
-                    'type'              => 'select',
-                    'default'           => 'round',
-                    'options'           => [
-                        'round' => esc_html__('Default', 'ultimate-store-kit'),
-                        'square' => esc_html__('Square', 'ultimate-store-kit'),
-                        'rounded' => esc_html__('Rounded', 'ultimate-store-kit'),
-                    ],
-                ],
-
-                [
-                    'name'              => 'usk_variation_swatches_tooltip',
-                    'label'             => esc_html__('Tooltip', 'ultimate-store-kit'),
-                    'type'              => 'select',
-                    'default'           => 'yes',
-                    'options'           => [
-                        'yes' => esc_html__('Default', 'ultimate-store-kit'),
-                        'no' => esc_html__('No', 'ultimate-store-kit'),
-                    ],
-                ],
-
-                [
-                    'name'              => 'usk_variation_swatches_size',
-                    'label'             => esc_html__('Size', 'ultimate-store-kit'),
-                    'type'              => 'number',
-                    'default'           => '26',
-
-                ],
-                [
-                    'name' => 'swatches_group_end',
-                    'type' => 'end_group',
-                ],
-            ]
+            'ultimate_store_kit_other_settings' => []
         ];
 
         $settings                    = [];
