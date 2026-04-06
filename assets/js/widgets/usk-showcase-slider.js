@@ -1,1 +1,34 @@
-!function(){"use strict";var e=function(e,n){var t=e.find(".usk-showcase-slider");if(!t.length)return;var o=t.find(".swiper-carousel"),r=t.data("settings");const i=elementorFrontend.utils.swiper;!async function(){await new i(o,r),r.pauseOnHover&&n(o).hover(function(){this.swiper.autoplay.stop()},function(){this.swiper.autoplay.start()})}()};jQuery(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/usk-showcase-slider.default",e)})}(jQuery,window.elementorFrontend);
+/******/ (() => { // webpackBootstrap
+/*!***********************************************!*\
+  !*** ./src/js/widgets/usk-showcase-slider.js ***!
+  \***********************************************/
+(function ($, elementor) {
+  "use strict";
+  var ShowcaseSlider = function ($scope, $) {
+    var $gridCarousel = $scope.find(".usk-showcase-slider");
+    if (!$gridCarousel.length) {
+      return;
+    }
+    var $gridCarouselContainer = $gridCarousel.find(".swiper-carousel");
+    var $settings = $gridCarousel.data("settings");
+    const Swiper = elementorFrontend.utils.swiper;
+    initSwiper();
+    async function initSwiper() {
+      var swiper = await new Swiper($gridCarouselContainer, $settings); // this is an example
+      if ($settings.pauseOnHover) {
+        $($gridCarouselContainer).hover(function () {
+          this.swiper.autoplay.stop();
+        }, function () {
+          this.swiper.autoplay.start();
+        });
+      }
+    }
+    ;
+  };
+  jQuery(window).on("elementor/frontend/init", function () {
+    elementorFrontend.hooks.addAction("frontend/element_ready/usk-showcase-slider.default", ShowcaseSlider);
+  });
+})(jQuery, window.elementorFrontend);
+/******/ })()
+;
+//# sourceMappingURL=usk-showcase-slider.js.map

@@ -1,1 +1,83 @@
-.usk-product-list .usk-list-wrap{gap:clamp(20px,2vw,30px)}.usk-product-list .usk-item{position:relative;padding:clamp(10px,1vw,15px);border:1px solid #d5d8dc;border-radius:8px}.usk-product-list .usk-item-box{height:100%}.usk-product-list .usk-image-wrap{width:clamp(100px,10vw,170px);min-width:clamp(100px,10vw,170px);height:100%;border-radius:8px;overflow:hidden}.usk-product-list .usk-image-wrap img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}.usk-product-list .usk-content{height:100%;width:100%;padding:clamp(10px,1.5vw,20px)}.usk-product-list .title{font-size:clamp(18px,1vw,24px);font-weight:700;line-height:1.4;margin-top:0;margin-bottom:clamp(10px,1vw,15px);color:inherit}.usk-product-list .title .usk-title{color:#2b2d42;transition:all .3s cubic-bezier(0.18, 0.43, 0.58, 1)}.usk-product-list .title .usk-title:hover{color:#d90429}.usk-product-list .usk-item .usk-rating{display:inline-flex;margin-bottom:clamp(10px,1vw,15px)}.usk-product-list .usk-item .usk-rating .star-rating{margin-top:0}.usk-product-list .usk-price{color:#ff2e00;font-weight:500;font-size:clamp(12px,1vw,14px)}.usk-product-list .usk-price del{color:#abafb4}.usk-product-list .usk-price ins{text-decoration:none;padding-left:10px}.usk-product-list .usk-badge-label-wrapper{margin-top:clamp(10px,1vw,15px)}.usk-product-list .usk-badge{border-radius:4px}@media(min-width: 768px){.usk-product-list .usk-badge-label-wrapper{position:absolute;top:clamp(10px,1vw,15px);right:clamp(10px,1vw,15px)}}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[8].use[3]!./src/scss/widgets/product-list.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.usk-product-list .usk-list-wrap {
+  gap: clamp(20px, 2vw, 30px);
+}
+.usk-product-list .usk-item {
+  position: relative;
+  padding: clamp(10px, 1vw, 15px);
+  border: 1px solid #d5d8dc;
+  border-radius: 8px;
+}
+.usk-product-list .usk-item-box {
+  height: 100%;
+}
+.usk-product-list .usk-image-wrap {
+  width: clamp(100px, 10vw, 170px);
+  min-width: clamp(100px, 10vw, 170px);
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.usk-product-list .usk-image-wrap img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.usk-product-list .usk-content {
+  height: 100%;
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 20px);
+}
+.usk-product-list .title {
+  font-size: clamp(18px, 1vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: clamp(10px, 1vw, 15px);
+  color: inherit;
+}
+.usk-product-list .title .usk-title {
+  color: #2b2d42;
+  transition: all 0.3s cubic-bezier(0.18, 0.43, 0.58, 1);
+}
+.usk-product-list .title .usk-title:hover {
+  color: #d90429;
+}
+.usk-product-list .usk-item .usk-rating {
+  display: inline-flex;
+  margin-bottom: clamp(10px, 1vw, 15px);
+}
+.usk-product-list .usk-item .usk-rating .star-rating {
+  margin-top: 0;
+}
+.usk-product-list .usk-price {
+  color: #ff2e00;
+  font-weight: 500;
+  font-size: clamp(12px, 1vw, 14px);
+}
+.usk-product-list .usk-price del {
+  color: #abafb4;
+}
+.usk-product-list .usk-price ins {
+  text-decoration: none;
+  padding-left: 10px;
+}
+.usk-product-list .usk-badge-label-wrapper {
+  margin-top: clamp(10px, 1vw, 15px);
+}
+.usk-product-list .usk-badge {
+  border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  .usk-product-list .usk-badge-label-wrapper {
+    position: absolute;
+    top: clamp(10px, 1vw, 15px);
+    right: clamp(10px, 1vw, 15px);
+  }
+}
+
+/*# sourceMappingURL=product-list.css.map*/

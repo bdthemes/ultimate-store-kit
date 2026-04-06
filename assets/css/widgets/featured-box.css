@@ -1,1 +1,180 @@
-:root{--usk-fb-text: #2b2d42;--usk-fb-accent: #d90429;--usk-fb-light: #fff;--usk-fb-padding: 40px;--usk-fb-gap: 8px;--usk-fb-btn-padding: 10px 35px;--usk-fb-badge-padding: 5px 10px;--usk-fb-transition: 0.3s ease-in-out}.usk-featured-box{position:relative;width:100%;height:100%}.usk-featured-box .usk-item{position:relative;width:100%;height:100%;overflow:hidden}.usk-featured-box .usk-image-wrap{position:absolute;inset:0;background:center/cover no-repeat;transform:scale(1);transition:transform var(--usk-fb-transition);z-index:1}.usk-featured-box:hover .usk-image-wrap{transform:scale(1.1)}.usk-featured-box .usk-content{position:absolute;padding:var(--usk-fb-padding);inset-inline:0;z-index:2}.usk-featured-box .usk-meta,.usk-featured-box .usk-title a,.usk-featured-box .usk-text{color:var(--usk-fb-text);position:relative}.usk-featured-box .usk-meta,.usk-featured-box .usk-title a{text-decoration:none;transition:color var(--usk-fb-transition);display:inline-block}.usk-featured-box .usk-meta:hover,.usk-featured-box .usk-title a:hover{color:var(--usk-fb-accent)}.usk-featured-box .usk-meta{font-size:12px;font-weight:500;text-transform:uppercase;margin-bottom:var(--usk-fb-gap)}.usk-featured-box .usk-title{margin:0 0 var(--usk-fb-gap);font-size:32px;font-weight:700;text-transform:capitalize;line-height:1.2}.usk-featured-box .usk-text{font-size:16px;margin-bottom:20px;line-height:1.6}.usk-featured-box .usk-text p{margin:0}.usk-featured-box .usk-link-btn{position:relative;transform:translate(var(--usk-button-x-offset, 0), var(--usk-button-y-offset, 0)) rotate(var(--usk-button-rotate, 0));z-index:2}.usk-featured-box .usk-link-btn a{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:var(--usk-fb-btn-padding);border-radius:40px;color:var(--usk-fb-accent);font-size:12px;font-weight:700;text-decoration:none;text-transform:capitalize;overflow:hidden;transition:color var(--usk-fb-transition);min-width:120px}.usk-featured-box .usk-link-btn a span{position:relative;z-index:1}.usk-featured-box .usk-link-btn a::before{content:"";position:absolute;inset:0;width:0;background-color:var(--usk-fb-accent);transition:width var(--usk-fb-transition)}.usk-featured-box .usk-link-btn a:hover{color:var(--usk-fb-light)}.usk-featured-box .usk-link-btn a:hover::before{width:100%}.usk-featured-box.usk-fb-content-position-top .usk-content{top:0}.usk-featured-box.usk-fb-content-position-center .usk-content{top:50%;transform:translateY(-50%)}.usk-featured-box.usk-fb-content-position-bottom .usk-content{bottom:0}.usk-featured-box .usk-badge{position:absolute;padding:var(--usk-fb-badge-padding);background-color:var(--usk-fb-accent);color:var(--usk-fb-light);font-size:12px;font-weight:700;text-transform:uppercase;transform:translate(var(--usk-badge-x-offset, 0), var(--usk-badge-y-offset, 0)) rotate(var(--usk-badge-rotate, 0));z-index:3}.usk-featured-box-wrapper-link{position:absolute;inset:0;z-index:4;cursor:pointer}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[8].use[3]!./src/scss/widgets/featured-box.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  /* Theme colors */
+  --usk-fb-text: #2b2d42; /* Main text color */
+  --usk-fb-accent: #d90429; /* Accent color for hover/badge */
+  --usk-fb-light: #fff; /* Light text color */
+  /* Spacing and sizing */
+  --usk-fb-padding: 40px;
+  --usk-fb-gap: 8px;
+  --usk-fb-btn-padding: 10px 35px;
+  --usk-fb-badge-padding: 5px 10px;
+  /* Animation */
+  --usk-fb-transition: 0.3s ease-in-out;
+}
+
+/* Base layout and positioning */
+.usk-featured-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.usk-featured-box .usk-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Image handling */
+.usk-featured-box .usk-image-wrap {
+  position: absolute;
+  inset: 0;
+  background: center/cover no-repeat;
+  transform: scale(1);
+  transition: transform var(--usk-fb-transition);
+  z-index: 1;
+}
+
+.usk-featured-box:hover .usk-image-wrap {
+  transform: scale(1.1);
+}
+
+/* Content layout */
+.usk-featured-box .usk-content {
+  position: absolute;
+  padding: var(--usk-fb-padding);
+  inset-inline: 0;
+  z-index: 2;
+}
+
+/* Typography */
+.usk-featured-box .usk-meta,
+.usk-featured-box .usk-title a,
+.usk-featured-box .usk-text {
+  color: var(--usk-fb-text);
+  position: relative;
+}
+
+.usk-featured-box .usk-meta,
+.usk-featured-box .usk-title a {
+  text-decoration: none;
+  transition: color var(--usk-fb-transition);
+  display: inline-block;
+}
+
+.usk-featured-box .usk-meta:hover,
+.usk-featured-box .usk-title a:hover {
+  color: var(--usk-fb-accent);
+}
+
+.usk-featured-box .usk-meta {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: var(--usk-fb-gap);
+}
+
+.usk-featured-box .usk-title {
+  margin: 0 0 var(--usk-fb-gap);
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 1.2;
+}
+
+.usk-featured-box .usk-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.usk-featured-box .usk-text p {
+  margin: 0;
+}
+
+/* Button styling */
+.usk-featured-box .usk-link-btn {
+  position: relative;
+  transform: translate(var(--usk-button-x-offset, 0), var(--usk-button-y-offset, 0)) rotate(var(--usk-button-rotate, 0));
+  z-index: 2;
+}
+
+.usk-featured-box .usk-link-btn a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--usk-fb-btn-padding);
+  border-radius: 40px;
+  color: var(--usk-fb-accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: capitalize;
+  overflow: hidden;
+  transition: color var(--usk-fb-transition);
+  min-width: 120px;
+}
+
+.usk-featured-box .usk-link-btn a span {
+  position: relative;
+  z-index: 1;
+}
+
+.usk-featured-box .usk-link-btn a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background-color: var(--usk-fb-accent);
+  transition: width var(--usk-fb-transition);
+}
+
+.usk-featured-box .usk-link-btn a:hover {
+  color: var(--usk-fb-light);
+}
+
+.usk-featured-box .usk-link-btn a:hover::before {
+  width: 100%;
+}
+
+/* Content positioning variants */
+.usk-featured-box.usk-fb-content-position-top .usk-content {
+  top: 0;
+}
+
+.usk-featured-box.usk-fb-content-position-center .usk-content {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.usk-featured-box.usk-fb-content-position-bottom .usk-content {
+  bottom: 0;
+}
+
+/* Badge styling */
+.usk-featured-box .usk-badge {
+  position: absolute;
+  padding: var(--usk-fb-badge-padding);
+  background-color: var(--usk-fb-accent);
+  color: var(--usk-fb-light);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: translate(var(--usk-badge-x-offset, 0), var(--usk-badge-y-offset, 0)) rotate(var(--usk-badge-rotate, 0));
+  z-index: 3;
+}
+
+/* Wrapper link */
+.usk-featured-box-wrapper-link {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=featured-box.css.map*/

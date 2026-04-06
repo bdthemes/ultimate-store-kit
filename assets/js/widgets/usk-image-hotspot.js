@@ -1,1 +1,50 @@
-!function(){"use strict";var t=function(t,e){var n=t.find(".usk-image-hotspot"),i=n.data("settings");if(n.length){if("slider"===i.image_hotspot_layout){var o=n.find(".usk-image-hotspot-thumbs");const s=elementorFrontend.utils.swiper;async function a(){var t=await new s(o,i),e=n.find(".usk-image-hotspot-main");await new s(e,{slidesPerView:1,effect:i.sliderEffect,fadeEffect:{crossFade:!0},thumbs:{swiper:t}})}a()}n.find(".bdt-tippy-tooltip").each(function(t){tippy(this,{allowHTML:!0,interactive:!0,theme:"bdt-tippy-"+i.id,appendTo:document.body})})}};jQuery(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/usk-image-hotspot.default",t)})}(jQuery,window.elementorFrontend);
+/******/ (() => { // webpackBootstrap
+/*!*********************************************!*\
+  !*** ./src/js/widgets/usk-image-hotspot.js ***!
+  \*********************************************/
+(function ($, elementor) {
+  'use strict';
+
+  var widgetImageHotspot = function ($scope, $) {
+    var $imageHotspot = $scope.find('.usk-image-hotspot'),
+      $settings = $imageHotspot.data('settings');
+    if (!$imageHotspot.length) {
+      return;
+    }
+    if ($settings.image_hotspot_layout === 'slider') {
+      var $thumbs = $imageHotspot.find('.usk-image-hotspot-thumbs');
+      const Swiper = elementorFrontend.utils.swiper;
+      initSwiper();
+      async function initSwiper() {
+        var sliderThumbs = await new Swiper($thumbs, $settings);
+        var $imageHotspotContainer = $imageHotspot.find('.usk-image-hotspot-main');
+        var mainSlider = await new Swiper($imageHotspotContainer, {
+          slidesPerView: 1,
+          effect: $settings.sliderEffect,
+          fadeEffect: {
+            crossFade: true
+          },
+          thumbs: {
+            swiper: sliderThumbs
+          }
+        });
+      }
+      ;
+    }
+    var $tooltip = $imageHotspot.find('.bdt-tippy-tooltip');
+    $tooltip.each(function (index) {
+      tippy(this, {
+        allowHTML: true,
+        interactive: true,
+        theme: 'bdt-tippy-' + $settings.id,
+        appendTo: document.body
+      });
+    });
+  };
+  jQuery(window).on('elementor/frontend/init', function () {
+    elementorFrontend.hooks.addAction('frontend/element_ready/usk-image-hotspot.default', widgetImageHotspot);
+  });
+})(jQuery, window.elementorFrontend);
+/******/ })()
+;
+//# sourceMappingURL=usk-image-hotspot.js.map

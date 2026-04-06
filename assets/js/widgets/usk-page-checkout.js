@@ -1,1 +1,48 @@
-(()=>{var e;e=jQuery,window.elementorFrontend,e(window).on("elementor/frontend/init",function(){let n,t=elementorModules.frontend.handlers.Base;n=t.extend({bindEvents:function(){this.run()},run:function(n){this.findElement(".elementor-widget").get(0),jQuery(this.$element).hasClass("elementor-section")&&this.$element.get(0),this.$element.find(".usk-page-checkout").length&&{$checkout_form:e(".usk-page-checkout"),init:function(){this.$checkout_form.on("change","#ship-to-different-address input",this.ship_to_different_address),this.$checkout_form.find("#ship-to-different-address input").trigger("change")},ship_to_different_address:function(){e("div.shipping_address").hide(),e(this).is(":checked")&&e("div.shipping_address").slideDown()}}.init()}}),elementorFrontend.hooks.addAction("frontend/element_ready/usk-page-checkout.default",function(e){elementorFrontend.elementsHandler.addHandler(n,{$element:e})})})})();
+/******/ (() => { // webpackBootstrap
+/*!*********************************************!*\
+  !*** ./src/js/widgets/usk-page-checkout.js ***!
+  \*********************************************/
+;
+(function ($, elementor) {
+  $(window).on('elementor/frontend/init', function () {
+    let ModuleHandler = elementorModules.frontend.handlers.Base,
+      ShippingForm;
+    ShippingForm = ModuleHandler.extend({
+      bindEvents: function () {
+        this.run();
+      },
+      run: function (key) {
+        var element = this.findElement('.elementor-widget').get(0);
+        if (jQuery(this.$element).hasClass('elementor-section')) {
+          element = this.$element.get(0);
+        }
+        var $container = this.$element.find(".usk-page-checkout");
+        if (!$container.length) {
+          return;
+        }
+        var usk_shipping_form = {
+          $checkout_form: $('.usk-page-checkout'),
+          init: function () {
+            this.$checkout_form.on('change', '#ship-to-different-address input', this.ship_to_different_address);
+            this.$checkout_form.find('#ship-to-different-address input').trigger('change');
+          },
+          ship_to_different_address: function () {
+            $('div.shipping_address').hide();
+            if ($(this).is(':checked')) {
+              $('div.shipping_address').slideDown();
+            }
+          }
+        };
+        usk_shipping_form.init();
+      }
+    });
+    elementorFrontend.hooks.addAction('frontend/element_ready/usk-page-checkout.default', function ($scope) {
+      elementorFrontend.elementsHandler.addHandler(ShippingForm, {
+        $element: $scope
+      });
+    });
+  });
+})(jQuery, window.elementorFrontend);
+/******/ })()
+;
+//# sourceMappingURL=usk-page-checkout.js.map

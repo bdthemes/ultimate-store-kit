@@ -1365,7 +1365,7 @@ function usk_has_variation_swatches_support() {
  */
 function usk_load_variation_swatches_assets() {
 	// Always load the grid variations script for variation support
-	wp_register_script('usk-grid-variations', BDTUSK_ASSETS_URL . 'js/modules/usk-grid-variations.min.js', ['jquery'], BDTUSK_VER, true);
+	wp_register_script('usk-grid-variations', BDTUSK_ASSETS_URL . 'js/modules/usk-grid-variations.js', ['jquery'], BDTUSK_VER, true);
 	wp_localize_script('usk-grid-variations', 'usk_vars', array(
 		'ajax_url' => admin_url('admin-ajax.php'),
 		'nonce' => wp_create_nonce('usk_variations')

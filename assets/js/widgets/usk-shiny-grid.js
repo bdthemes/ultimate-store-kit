@@ -1,1 +1,165 @@
-!function(t){"use strict";function a(a){a.find('*[data-filter="yes"]').each(function(){const a=t(this);t(".tab-option").off("click").on("click",function(){const a=t(this).data("grid-column");var o;localStorage.setItem("usk_grid_data",a),(o=t(this)).closest(".usk-grid-header").find("li").removeClass("usk-tabs-active"),o.parent().addClass("usk-tabs-active"),function(t,a){const o="usk-list-2"!==a?"usk-grid usk-grid-layout":"usk-grid usk-list-layout";t.closest(".usk-grid-header").parent().find(".usk-grid").removeClass().addClass(o+" "+a)}(t(this),a)}),function(a){const o=localStorage.getItem("usk_grid_data");if(o){const e=t("[data-grid-column='"+o+"']");if(e.length){e.parent().addClass("usk-tabs-active");const t="usk-list-2"!==o?"usk-grid usk-grid-layout":"usk-grid usk-list-layout";a.find(".usk-grid").removeClass().addClass(t+" "+o)}}}(a)})}t(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/usk-shiny-grid.default",a),elementorFrontend.hooks.addAction("frontend/element_ready/usk-glossy-grid.default",a),elementorFrontend.hooks.addAction("frontend/element_ready/usk-florence-grid.default",a),t(document.body).off("click.uskVariationAddToCart",".usk-button.product_type_variation.add_to_cart_button"),t(document.body).off("click",".add_to_cart_button"),t(".usk-button.product_type_variation.add_to_cart_button").each(function(){t(this).attr("href","javascript:void(0)"),t(this).attr("data-prevent_redirect","true")}),t(document.body).on("click.uskVariationAddToCart",".usk-button.product_type_variation.add_to_cart_button",function(a){a.preventDefault(),a.stopPropagation(),a.stopImmediatePropagation();const o=t(this);o.attr("href","javascript:void(0)");const e=o.data("product_id"),r=o.data("variation_id");if(!e||!r)return console.log("Missing product ID or variation ID"),!1;const n={product_id:e,variation_id:r,quantity:1};return t.each(o[0].attributes,function(t,a){if(a.name.startsWith("data-attribute_")){const t=a.name.substring(5);n[t]=a.value}}),o.addClass("loading"),t.ajax({type:"POST",url:usk_ajax_config.ajax_url,data:{action:"usk_add_to_cart",nonce:usk_ajax_config.nonce,...n},success:function(a){if(o.removeClass("loading"),a.success){a.fragments&&t.each(a.fragments,function(a,o){t(a).replaceWith(o)}),t(document.body).trigger("wc_fragment_refresh"),t(document.body).trigger("added_to_cart",[a.fragments,a.cart_hash,o]);const e=t('<div class="usk-cart-success-message">Product added to cart! ✓</div>');o.closest(".usk-item").append(e),setTimeout(function(){e.fadeOut(300,function(){t(this).remove()})},2e3)}else console.error("Error adding to cart:",a),alert(a.message||"Error adding product to cart")},error:function(){o.removeClass("loading"),alert("Error occurred while adding to cart. Please try again.")},complete:function(){o.attr("href","javascript:void(0)")}}),!1}),t(document.body).on("wc_fragments_refreshed wc_fragments_loaded added_to_cart",function(){t(".usk-button.product_type_variation.add_to_cart_button").each(function(){t(this).attr("href","javascript:void(0)"),t(this).attr("data-prevent_redirect","true")})})})}(jQuery,window.elementorFrontend);
+/******/ (() => { // webpackBootstrap
+/*!******************************************!*\
+  !*** ./src/js/widgets/usk-shiny-grid.js ***!
+  \******************************************/
+(function ($, elementor) {
+  "use strict";
+
+  // ===== GRID FILTER FUNCTIONALITY =====
+  function setupGridFilter($scope) {
+    $scope.find('*[data-filter="yes"]').each(function () {
+      const $element = $(this);
+      setupTabClickHandlers();
+      loadSavedGridLayout($element);
+    });
+  }
+  function setupTabClickHandlers() {
+    $(".tab-option").off("click").on("click", function () {
+      const gridColumn = $(this).data("grid-column");
+      localStorage.setItem("usk_grid_data", gridColumn);
+      updateActiveTab($(this));
+      updateGridLayout($(this), gridColumn);
+    });
+  }
+  function updateActiveTab($clickedTab) {
+    const $header = $clickedTab.closest(".usk-grid-header");
+    $header.find("li").removeClass("usk-tabs-active");
+    $clickedTab.parent().addClass("usk-tabs-active");
+  }
+  function updateGridLayout($clickedTab, gridColumn) {
+    const $grid = $clickedTab.closest(".usk-grid-header").parent().find(".usk-grid");
+    const baseClass = gridColumn !== "usk-list-2" ? "usk-grid usk-grid-layout" : "usk-grid usk-list-layout";
+    $grid.removeClass().addClass(baseClass + " " + gridColumn);
+  }
+  function loadSavedGridLayout($element) {
+    const savedGridData = localStorage.getItem("usk_grid_data");
+    if (savedGridData) {
+      const $tab = $("[data-grid-column='" + savedGridData + "']");
+      if ($tab.length) {
+        $tab.parent().addClass("usk-tabs-active");
+        const baseClass = savedGridData !== "usk-list-2" ? "usk-grid usk-grid-layout" : "usk-grid usk-list-layout";
+        $element.find(".usk-grid").removeClass().addClass(baseClass + " " + savedGridData);
+      }
+    }
+  }
+
+  // ===== ELEMENTOR INTEGRATION =====
+  $(window).on("elementor/frontend/init", function () {
+    // Register widgets
+    elementorFrontend.hooks.addAction("frontend/element_ready/usk-shiny-grid.default", setupGridFilter);
+    elementorFrontend.hooks.addAction("frontend/element_ready/usk-glossy-grid.default", setupGridFilter);
+    elementorFrontend.hooks.addAction("frontend/element_ready/usk-florence-grid.default", setupGridFilter);
+
+    // Setup add to cart handling for variations
+    setupVariationAddToCart();
+  });
+
+  // Handle variation add to cart
+  function setupVariationAddToCart() {
+    // Remove any existing handlers to prevent duplicates
+    $(document.body).off('click.uskVariationAddToCart', '.usk-button.product_type_variation.add_to_cart_button');
+
+    // Remove WooCommerce's default click handler that might be causing redirects
+    $(document.body).off('click', '.add_to_cart_button');
+
+    // Remove href attributes from all variation buttons to prevent default browser navigation
+    $('.usk-button.product_type_variation.add_to_cart_button').each(function () {
+      $(this).attr('href', 'javascript:void(0)');
+      $(this).attr('data-prevent_redirect', 'true');
+    });
+
+    // Add handler for variation add to cart buttons
+    $(document.body).on('click.uskVariationAddToCart', '.usk-button.product_type_variation.add_to_cart_button', function (e) {
+      // Always prevent default action to avoid redirect
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      const $button = $(this);
+
+      // Remove href to prevent any chance of redirect
+      $button.attr('href', 'javascript:void(0)');
+      const productId = $button.data('product_id');
+      const variationId = $button.data('variation_id');
+      if (!productId || !variationId) {
+        console.log('Missing product ID or variation ID');
+        return false; // Don't proceed without required data
+      }
+
+      // Prepare data for AJAX add to cart
+      const data = {
+        product_id: productId,
+        variation_id: variationId,
+        quantity: 1
+      };
+
+      // Add all attributes
+      $.each($button[0].attributes, function (i, attr) {
+        if (attr.name.startsWith('data-attribute_')) {
+          const attrName = attr.name.substring(5); // Remove 'data-'
+          data[attrName] = attr.value;
+        }
+      });
+
+      // Add the loading class
+      $button.addClass('loading');
+
+      // Send AJAX request
+      $.ajax({
+        type: 'POST',
+        url: usk_ajax_config.ajax_url,
+        data: {
+          action: 'usk_add_to_cart',
+          nonce: usk_ajax_config.nonce,
+          ...data
+        },
+        success: function (response) {
+          $button.removeClass('loading');
+          if (response.success) {
+            // Update fragments
+            if (response.fragments) {
+              $.each(response.fragments, function (key, value) {
+                $(key).replaceWith(value);
+              });
+            }
+
+            // Trigger events for WC compatibility
+            $(document.body).trigger('wc_fragment_refresh');
+            $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
+
+            // Show success message
+            const $notification = $('<div class="usk-cart-success-message">Product added to cart! ✓</div>');
+            $button.closest(".usk-item").append($notification);
+            setTimeout(function () {
+              $notification.fadeOut(300, function () {
+                $(this).remove();
+              });
+            }, 2000);
+          } else {
+            console.error('Error adding to cart:', response);
+            alert(response.message || 'Error adding product to cart');
+          }
+        },
+        error: function () {
+          $button.removeClass('loading');
+          alert('Error occurred while adding to cart. Please try again.');
+        },
+        complete: function () {
+          // Ensure the href is still void to prevent any redirects
+          $button.attr('href', 'javascript:void(0)');
+        }
+      });
+      return false;
+    });
+
+    // Also handle any dynamically added buttons
+    $(document.body).on('wc_fragments_refreshed wc_fragments_loaded added_to_cart', function () {
+      $('.usk-button.product_type_variation.add_to_cart_button').each(function () {
+        $(this).attr('href', 'javascript:void(0)');
+        $(this).attr('data-prevent_redirect', 'true');
+      });
+    });
+  }
+})(jQuery, window.elementorFrontend);
+/******/ })()
+;
+//# sourceMappingURL=usk-shiny-grid.js.map

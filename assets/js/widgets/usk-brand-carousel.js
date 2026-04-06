@@ -1,1 +1,34 @@
-!function(){"use strict";var n=function(n,e){var t=n.find(".usk-brand-carousel");if(!t.length)return;var o=t.find(".swiper-carousel"),r=t.find(".usk-carousel").data("settings");const i=elementorFrontend.utils.swiper;!async function(){await new i(o,r),r.pauseOnHover&&e(o).hover(function(){this.swiper.autoplay.stop()},function(){this.swiper.autoplay.start()})}()};jQuery(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/usk-brand-carousel.default",n)})}(jQuery,window.elementorFrontend);
+/******/ (() => { // webpackBootstrap
+/*!**********************************************!*\
+  !*** ./src/js/widgets/usk-brand-carousel.js ***!
+  \**********************************************/
+(function ($, elementor) {
+  "use strict";
+  var BrandCarousel = function ($scope, $) {
+    var $gridCarousel = $scope.find(".usk-brand-carousel");
+    if (!$gridCarousel.length) {
+      return;
+    }
+    var $gridCarouselContainer = $gridCarousel.find(".swiper-carousel");
+    var $settings = $gridCarousel.find('.usk-carousel').data("settings");
+    const Swiper = elementorFrontend.utils.swiper;
+    initSwiper();
+    async function initSwiper() {
+      var swiper = await new Swiper($gridCarouselContainer, $settings); // this is an example
+      if ($settings.pauseOnHover) {
+        $($gridCarouselContainer).hover(function () {
+          this.swiper.autoplay.stop();
+        }, function () {
+          this.swiper.autoplay.start();
+        });
+      }
+    }
+    ;
+  };
+  jQuery(window).on("elementor/frontend/init", function () {
+    elementorFrontend.hooks.addAction("frontend/element_ready/usk-brand-carousel.default", BrandCarousel);
+  });
+})(jQuery, window.elementorFrontend);
+/******/ })()
+;
+//# sourceMappingURL=usk-brand-carousel.js.map

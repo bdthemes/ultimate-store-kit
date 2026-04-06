@@ -1,1 +1,20 @@
-!function(){"use strict";var n=function(n,o){n.find(".usk-product-accordion").each(function(){var n=o(this)[0];new Accordion(n)})};jQuery(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/usk-product-accordion.default",n)})}(jQuery,window.elementorFrontend);
+/******/ (() => { // webpackBootstrap
+/*!*************************************************!*\
+  !*** ./src/js/widgets/usk-product-accordion.js ***!
+  \*************************************************/
+(function ($, elementor) {
+  "use strict";
+
+  var ProductAccordion = function ($scope, $) {
+    $scope.find(".usk-product-accordion").each(function () {
+      var AccordionContainer = $(this)[0];
+      new Accordion(AccordionContainer);
+    });
+  };
+  jQuery(window).on("elementor/frontend/init", function () {
+    elementorFrontend.hooks.addAction("frontend/element_ready/usk-product-accordion.default", ProductAccordion);
+  });
+})(jQuery, window.elementorFrontend);
+/******/ })()
+;
+//# sourceMappingURL=usk-product-accordion.js.map
