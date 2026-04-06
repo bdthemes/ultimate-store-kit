@@ -12,29 +12,17 @@ import {
 	Toggle,
 } from '../tw';
 
-const getFiltersFromHash = () => {
-	const hash = window.location.hash;
-	const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
-	return {
-		widgetType: params.get('type') || 'wc',
-		search: params.get('search') || '',
-		filter: params.get('status') || 'all',
-		contentTypeFilter: params.get('template') || 'all',
-	};
-};
-
 const WidgetsPage = ({
 	allWidgets,
 	allSettings,
 	onSave,
 	saving,
 	isPro,
+	widgetType = 'wc',
 }) => {
-	const initialFilters = getFiltersFromHash();
-	const [widgetType, setWidgetType] = useState(initialFilters.widgetType);
-	const [search, setSearch] = useState(initialFilters.search);
-	const [filter, setFilter] = useState(initialFilters.filter);
-	const [contentTypeFilter, setContentTypeFilter] = useState(initialFilters.contentTypeFilter);
+	const [search, setSearch] = useState('');
+	const [filter, setFilter] = useState('all');
+	const [contentTypeFilter, setContentTypeFilter] = useState('all');
 
 	const widgetTypeConfig = {
 		wc: {
@@ -42,7 +30,7 @@ const WidgetsPage = ({
 			key: 'ultimate_store_kit_active_modules',
 		},
 		edd: {
-			title: __('EDD Widgets', 'ultimate-store-kit'),
+			title: __('Easy Digital Downloads Widgets', 'ultimate-store-kit'),
 			key: 'ultimate_store_kit_edd_modules',
 		},
 		other: {
@@ -72,19 +60,10 @@ const WidgetsPage = ({
 	});
 
 	useEffect(() => {
-		const params = new URLSearchParams();
-		if (widgetType !== 'wc') params.set('type', widgetType);
-		if (search) params.set('search', search);
-		if (filter !== 'all') params.set('status', filter);
-		if (contentTypeFilter !== 'all') params.set('template', contentTypeFilter);
-
-		const queryString = params.toString();
-		const newHash = queryString ? `#widgets?${queryString}` : '#widgets';
-
-		if (window.location.hash !== newHash) {
-			window.history.replaceState(null, '', newHash);
-		}
-	}, [widgetType, search, filter, contentTypeFilter]);
+		setSearch('');
+		setFilter('all');
+		setContentTypeFilter('all');
+	}, [widgetType]);
 
 	const contentTypes = useMemo(() => {
 		const types = new Set();
@@ -212,21 +191,6 @@ const WidgetsPage = ({
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
 					/>
-				</div>
-
-				<div className="flex items-center gap-1.5">
-					<label className={selectLabel}>
-						{__('Widget Type:', 'ultimate-store-kit')}
-					</label>
-					<select
-						className={selectInput}
-						value={widgetType}
-						onChange={(e) => setWidgetType(e.target.value)}
-					>
-						<option value="wc">{__('WooCommerce', 'ultimate-store-kit')}</option>
-						<option value="edd">{__('EDD', 'ultimate-store-kit')}</option>
-						<option value="other">{__('Other', 'ultimate-store-kit')}</option>
-					</select>
 				</div>
 
 				<div className="flex items-center gap-1.5">

@@ -40,10 +40,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const adminData = window.ultimateStoreKitAdminData || {};
+const slugify = label => label.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+const getSettingsGroups = () => {
+  const widgets = adminData.widgets?.ultimate_store_kit_other_settings || [];
+  const groups = [];
+  widgets.forEach(w => {
+    if (w.type === 'start_group') {
+      groups.push({
+        id: `settings-${slugify(w.label)}`,
+        label: w.label
+      });
+    }
+  });
+  return groups;
+};
+const settingsGroups = getSettingsGroups();
 const getPageFromHash = () => {
   const hash = window.location.hash.replace('#', '');
   const pageName = hash.split('?')[0];
-  const validPages = ['welcome', 'widgets', 'other-settings', 'get-pro', 'license', 'about'];
+  const validPages = ['welcome', 'widgets', 'woocommerce-widgets', 'edd-widgets', 'other-widgets', 'get-pro', 'license', 'about', ...settingsGroups.map(g => g.id)];
   return validPages.includes(pageName) ? pageName : 'welcome';
 };
 const App = () => {
@@ -146,21 +161,22 @@ const App = () => {
           isPro: isProActive
         });
       case 'widgets':
+      case 'woocommerce-widgets':
+      case 'edd-widgets':
+      case 'other-widgets':
+        const widgetTypeMap = {
+          'woocommerce-widgets': 'wc',
+          'edd-widgets': 'edd',
+          'other-widgets': 'other',
+          'widgets': 'wc'
+        };
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_WidgetsPage__WEBPACK_IMPORTED_MODULE_5__["default"], {
           allWidgets: widgets,
           allSettings: settings,
           onSave: saveSettings,
           saving: saving,
-          isPro: isProActive
-        });
-      case 'other-settings':
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_OtherSettings__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          widgets: widgets.ultimate_store_kit_other_settings || [],
-          section: "ultimate_store_kit_other_settings",
-          settings: settings.ultimate_store_kit_other_settings || {},
-          onSave: saveSettings,
-          saving: saving,
-          isPro: isProActive
+          isPro: isProActive,
+          widgetType: widgetTypeMap[activePage]
         });
       case 'get-pro':
         return isProActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Welcome__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -178,10 +194,24 @@ const App = () => {
       case 'about':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_AboutInfo__WEBPACK_IMPORTED_MODULE_9__["default"], {});
       default:
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Welcome__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          widgets: widgets,
-          settings: settings
-        });
+        {
+          const settingsGroup = settingsGroups.find(g => g.id === activePage);
+          if (settingsGroup) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_OtherSettings__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              widgets: widgets.ultimate_store_kit_other_settings || [],
+              section: "ultimate_store_kit_other_settings",
+              settings: settings.ultimate_store_kit_other_settings || {},
+              onSave: saveSettings,
+              saving: saving,
+              isPro: isProActive,
+              activeGroup: settingsGroup.label
+            });
+          }
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Welcome__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            widgets: widgets,
+            settings: settings
+          });
+        }
     }
   };
   const notifBase = 'animate-usk-slide-in mb-4 flex items-center justify-between rounded-lg px-4 py-2.5 text-[13px] font-medium';
@@ -205,7 +235,8 @@ const App = () => {
           isPro: isProActive,
           isOpen: isSidebarOpen,
           isDesktop: isDesktop,
-          onClose: () => setIsSidebarOpen(false)
+          onClose: () => setIsSidebarOpen(false),
+          settingsGroups: settingsGroups
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
           className: `${_tw__WEBPACK_IMPORTED_MODULE_10__.mainContent} flex flex-col`,
           children: [notification && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
@@ -438,7 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const promoSettings = [{
-  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sales Controls', 'ultimate-store-kit'),
+  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sales Notifications', 'ultimate-store-kit'),
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Configure flash sale banners, countdown timers, and promotional badges for your store.', 'ultimate-store-kit'),
   fields: [{
     name: 'enable_flash_sale',
@@ -622,40 +653,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const navItems = [{
-  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dashboard', 'ultimate-store-kit'),
+  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Dashboard", "ultimate-store-kit"),
   items: [{
-    id: 'welcome',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Welcome', 'ultimate-store-kit'),
-    icon: 'home'
+    id: "welcome",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Welcome", "ultimate-store-kit"),
+    icon: "home"
   }]
 }, {
-  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widgets', 'ultimate-store-kit'),
+  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Widgets", "ultimate-store-kit"),
   items: [{
-    id: 'widgets',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widgets', 'ultimate-store-kit'),
-    icon: 'grid'
+    id: "woocommerce-widgets",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WooCommerce", "ultimate-store-kit"),
+    icon: "woocommerce"
+  }, {
+    id: "edd-widgets",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("EDD", "ultimate-store-kit"),
+    icon: "edd"
+  }, {
+    id: "other-widgets",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Others", "ultimate-store-kit"),
+    icon: "other"
   }]
 }, {
-  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'ultimate-store-kit'),
+  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Modules", "ultimate-store-kit"),
+  items: []
+}, {
+  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Support", "ultimate-store-kit"),
   items: [{
-    id: 'other-settings',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other Settings', 'ultimate-store-kit'),
-    icon: 'settings'
+    id: "get-pro",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Get Pro", "ultimate-store-kit"),
+    icon: "star"
   }, {
     id: 'license',
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('License', 'ultimate-store-kit'),
     icon: 'badge'
-  }]
-}, {
-  group: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Support', 'ultimate-store-kit'),
-  items: [{
-    id: 'get-pro',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Get Pro', 'ultimate-store-kit'),
-    icon: 'star'
   }, {
-    id: 'about',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('About & Info', 'ultimate-store-kit'),
-    icon: 'info'
+    id: "about",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("About & Info", "ultimate-store-kit"),
+    icon: "info"
   }]
 }];
 const groupHeadingClass = 'mb-3 px-2 text-xs font-semibold uppercase tracking-widest text-gray-400';
@@ -777,6 +812,88 @@ const Icon = ({
           d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
         })
       });
+    case 'woocommerce':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: 24,
+        height: 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        className: common,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("circle", {
+          cx: 9,
+          cy: 9,
+          r: 2
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M20 11.5v-1a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M4 15h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M22 15h-4"
+        })]
+      });
+    case 'edd':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: 24,
+        height: 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        className: common,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "m7.5 4.21 4.5 2.6 4.5-2.6"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M12 17.5V12"
+        })]
+      });
+    case 'other':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: 24,
+        height: 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        className: common,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 9,
+          x: 3,
+          y: 3,
+          rx: 1
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 5,
+          x: 14,
+          y: 3,
+          rx: 1
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 9,
+          x: 14,
+          y: 12,
+          rx: 1
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+          width: 7,
+          height: 5,
+          x: 3,
+          y: 16,
+          rx: 1
+        })]
+      });
     case 'info':
     default:
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
@@ -809,14 +926,31 @@ const Sidebar = ({
   isPro,
   isOpen,
   isDesktop,
-  onClose
+  onClose,
+  settingsGroups = []
 }) => {
   const [showComingSoon, setShowComingSoon] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const buildSections = () => {
+    return navItems.map(section => {
+      if (section.group === (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Modules', 'ultimate-store-kit')) {
+        const dynamicItems = settingsGroups.map(g => ({
+          id: g.id,
+          label: g.label,
+          icon: 'settings'
+        }));
+        return {
+          ...section,
+          items: [...dynamicItems, ...section.items]
+        };
+      }
+      return section;
+    });
+  };
   const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("nav", {
       className: "flex flex-col gap-6",
       "aria-label": "Main",
-      children: navItems.map(section => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: buildSections().map(section => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: `m-0 ${groupHeadingClass}`,
           children: section.group
@@ -827,11 +961,11 @@ const Sidebar = ({
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
                 type: "button",
-                onClick: () => (() => {
+                onClick: () => {
                   onNavigate(item.id);
                   window.location.hash = `#${item.id}`;
                   onClose();
-                })(),
+                },
                 className: `flex w-full cursor-pointer items-center gap-3 rounded-lg border-0 px-3 py-3 text-left text-sm font-medium transition-colors ${isActive ? 'bg-uks-brand text-white shadow-sm' : 'bg-transparent text-slate-700 hover:bg-gray-100 hover:text-slate-900'}`,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Icon, {
                   name: item.icon
@@ -2129,7 +2263,8 @@ const OtherSettings = ({
   settings,
   onSave,
   saving,
-  isPro
+  isPro,
+  activeGroup
 }) => {
   const [localSettings, setLocalSettings] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(() => {
     const initial = {};
@@ -2184,7 +2319,8 @@ const OtherSettings = ({
     });
     return groups;
   };
-  const groups = renderGroups();
+  const allGroups = renderGroups();
+  const groups = activeGroup ? allGroups.filter(g => g.label === activeGroup) : allGroups;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] items-start gap-4",
@@ -2275,7 +2411,7 @@ const OtherSettings = ({
             return null;
           })
         })]
-      }, gi)), !isPro && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ProPromo__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+      }, gi)), !isPro && !activeGroup && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ProPromo__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "mt-6 flex justify-end pt-4",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
@@ -2609,35 +2745,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const getFiltersFromHash = () => {
-  const hash = window.location.hash;
-  const params = new URLSearchParams(hash.includes('?') ? hash.split('?')[1] : '');
-  return {
-    widgetType: params.get('type') || 'wc',
-    search: params.get('search') || '',
-    filter: params.get('status') || 'all',
-    contentTypeFilter: params.get('template') || 'all'
-  };
-};
 const WidgetsPage = ({
   allWidgets,
   allSettings,
   onSave,
   saving,
-  isPro
+  isPro,
+  widgetType = 'wc'
 }) => {
-  const initialFilters = getFiltersFromHash();
-  const [widgetType, setWidgetType] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.widgetType);
-  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.search);
-  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.filter);
-  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilters.contentTypeFilter);
+  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [filter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
+  const [contentTypeFilter, setContentTypeFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('all');
   const widgetTypeConfig = {
     wc: {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce Widgets', 'ultimate-store-kit'),
       key: 'ultimate_store_kit_active_modules'
     },
     edd: {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD Widgets', 'ultimate-store-kit'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Easy Digital Downloads Widgets', 'ultimate-store-kit'),
       key: 'ultimate_store_kit_edd_modules'
     },
     other: {
@@ -2661,17 +2786,10 @@ const WidgetsPage = ({
     return initial;
   });
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const params = new URLSearchParams();
-    if (widgetType !== 'wc') params.set('type', widgetType);
-    if (search) params.set('search', search);
-    if (filter !== 'all') params.set('status', filter);
-    if (contentTypeFilter !== 'all') params.set('template', contentTypeFilter);
-    const queryString = params.toString();
-    const newHash = queryString ? `#widgets?${queryString}` : '#widgets';
-    if (window.location.hash !== newHash) {
-      window.history.replaceState(null, '', newHash);
-    }
-  }, [widgetType, search, filter, contentTypeFilter]);
+    setSearch('');
+    setFilter('all');
+    setContentTypeFilter('all');
+  }, [widgetType]);
   const contentTypes = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     const types = new Set();
     widgets.forEach(w => {
@@ -2776,26 +2894,6 @@ const WidgetsPage = ({
             placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search widgets...', 'ultimate-store-kit'),
             value: search,
             onChange: e => setSearch(e.target.value)
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "flex items-center gap-1.5",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectLabel,
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Widget Type:', 'ultimate-store-kit')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-            className: _tw__WEBPACK_IMPORTED_MODULE_2__.selectInput,
-            value: widgetType,
-            onChange: e => setWidgetType(e.target.value),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "wc",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce', 'ultimate-store-kit')
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "edd",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('EDD', 'ultimate-store-kit')
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "other",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Other', 'ultimate-store-kit')
-            })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "flex items-center gap-1.5",
