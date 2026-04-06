@@ -112,42 +112,29 @@ const App = () => {
 		(section, sectionSettings) => {
 			setSaving(true);
 
-			const formData = new FormData();
-			formData.append('action', 'ultimate_store_kit_save_settings');
-			formData.append('nonce', adminData.nonce);
-			formData.append('section', section);
-
-			Object.keys(sectionSettings).forEach((key) => {
-				formData.append(`settings[${key}]`, sectionSettings[key]);
-			});
-
-			fetch(adminData.ajaxUrl, {
+			fetch(adminData.restUrl + 'settings', {
 				method: 'POST',
-				body: formData,
+				headers: {
+					'Content-Type': 'application/json',
+					'X-WP-Nonce': adminData.restNonce,
+				},
+				body: JSON.stringify({ section, settings: sectionSettings }),
 			})
-				.then((res) => res.json())
-				.then((response) => {
-					if (response.success) {
-						setSettings((prev) => ({
-							...prev,
-							[section]: sectionSettings,
-						}));
-						setNotification({
-							type: 'success',
-							message: __(
-								'Settings saved successfully.',
-								'ultimate-store-kit'
-							),
-						});
-					} else {
-						setNotification({
-							type: 'error',
-							message: __(
-								'Failed to save settings.',
-								'ultimate-store-kit'
-							),
-						});
-					}
+				.then((res) => {
+					if (!res.ok) throw res;
+					return res.json();
+				})
+				.then((data) => {
+					setSettings((prev) => ({
+						...prev,
+						[section]: sectionSettings,
+					}));
+					setNotification({
+						type: 'success',
+						message:
+							data?.message ||
+							__('Settings saved successfully.', 'ultimate-store-kit'),
+					});
 				})
 				.catch(() => {
 					setNotification({
@@ -162,7 +149,7 @@ const App = () => {
 					setSaving(false);
 				});
 		},
-		[adminData.ajaxUrl, adminData.nonce]
+		[]
 	);
 
 	const renderPage = () => {
