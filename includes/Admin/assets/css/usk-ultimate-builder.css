@@ -171,7 +171,56 @@ body.post-type-usk-template-builder .row-actions span.inline {
   background: #D90429;
 }
 
+/* Template Status Switcher */
+.usk-template-status-switcher-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.usk-template-status-switcher-wrap .usk-switcher-status-text {
+  font-size: 12px;
+  color: #6d7882;
+  font-weight: 500;
+}
+
+.usk-template-status-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 52px;
+  height: 28px;
+  background: #cecece;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.usk-template-status-switcher.usk-active {
+  background: #EF233C;
+}
+
+.usk-template-status-switcher .usk-switcher-slider {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  left: 3px;
+  top: 3px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.usk-template-status-switcher.usk-active .usk-switcher-slider {
+  transform: translateX(24px);
+}
+
 @media (min-width: 768px) {
+  .usk-template-status-switcher-wrap {
+    margin-bottom: 12px;
+  }
   #ultimate-builder-kit-builder-modal-wrapper {
     width: 82%;
   }
@@ -205,6 +254,9 @@ body.post-type-usk-template-builder .row-actions span.inline {
   }
 }
 @media (min-width: 1024px) {
+  .usk-template-status-switcher-wrap {
+    margin-bottom: 20px;
+  }
   #ultimate-builder-kit-builder-modal-wrapper {
     width: 79%;
   }
