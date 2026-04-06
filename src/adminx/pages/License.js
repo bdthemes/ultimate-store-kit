@@ -37,7 +37,7 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 			return;
 		}
 
-		fetch(`${adminData.restUrl}status`, {
+		fetch(`${adminData.restUrl}license/status`, {
 			method: 'GET',
 			headers: getRestHeaders(),
 		})
@@ -79,7 +79,7 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 		setLoading(true);
 		setMessage(null);
 
-		fetch(`${adminData.restUrl}activate`, {
+		fetch(`${adminData.restUrl}license/activate`, {
 			method: 'POST',
 			headers: getRestHeaders(),
 			body: JSON.stringify({
@@ -148,7 +148,7 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 		setLoading(true);
 		setMessage(null);
 
-		fetch(`${adminData.restUrl}deactivate`, {
+		fetch(`${adminData.restUrl}license/deactivate`, {
 			method: 'DELETE',
 			headers: getRestHeaders(),
 		})
