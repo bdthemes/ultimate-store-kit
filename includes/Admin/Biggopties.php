@@ -77,6 +77,36 @@ class Biggopties {
 		wp_enqueue_style('usk-admin-biggopti', BDTUSK_ASSETS_URL . 'admin/others/css/admin-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('bdt-admin-api-biggopti', BDTUSK_ASSETS_URL . 'admin/others/css/admin-api-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('bdt-product-feed', BDTUSK_ASSETS_URL . 'admin/others/css/product-feed.css', [], BDTUSK_VER);
+		wp_enqueue_script('usk-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/biggopti.js', ['jquery'], BDTUSK_VER, true);
+		wp_enqueue_script('usk-admin-api-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/admin-api-biggopti.js', ['jquery'], BDTUSK_VER, true);
+
+		$dismissals = get_option('bdt_biggopti_dismissals', []);
+		$dismissed_display_ids = [];
+		$prefix = 'bdt-admin-biggopti-api-biggopti-';
+		foreach (array_keys($dismissals) as $key) {
+			if (strpos($key, $prefix) === 0) {
+				$dismissed_display_ids[] = substr($key, strlen($prefix));
+			} else {
+				$dismissed_display_ids[] = $key;
+			}
+		}
+
+		$current_sector = '';
+		if (isset($_GET['page']) && $_GET['page'] === 'ultimate_store_kit_options') {
+			$current_sector = 'plugin_dashboard';
+		}
+
+		$script_config = [
+			'ajaxurl'				=> admin_url('admin-ajax.php'),
+			'nonce'					=> wp_create_nonce('ultimate-store-kit'),
+			'isPro'             	=> function_exists('usk_license_validation') && usk_license_validation(),
+			'assetsUrl'         	=> defined('BDTUSK_ASSETS_URL') ? BDTUSK_ASSETS_URL : '',
+			'dismissedDisplayIds'	=> $dismissed_display_ids,
+			'currentSector'      	=> $current_sector,
+		];
+
+		wp_localize_script('usk-biggopti', 'UltimateStoreKitBiggoptiConfig', $script_config);
+		wp_localize_script('usk-admin-api-biggopti', 'UltimateStoreKitAdminApiBiggoptiConfig', $script_config);
 	}
 
 	/**
