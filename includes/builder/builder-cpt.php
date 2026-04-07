@@ -178,10 +178,10 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 		<select name="type" id="type">
 			<option value="all" <?php
 								selected('all', $selected); ?>><?php
-												esc_html_e(
-													'Template Type ',
-													'ultimate-store-kit'
-												); ?></option>
+																esc_html_e(
+																	'Template Type ',
+																	'ultimate-store-kit'
+																); ?></option>
 			<?php
 			$templates = Builder_Template_Helper::templateForSelectDropdown();
 			// It is single
@@ -193,7 +193,7 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			?>
 					<option value="<?php
 									echo esc_attr($selectValue) ?>"><?php
-														echo wp_kses_post($item) ?></option>
+																	echo wp_kses_post($item) ?></option>
 					<?php
 				endforeach;
 			}
@@ -209,15 +209,15 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 					?>
 						<optgroup label="<?php
 											echo esc_attr($label) ?>"><?php
-													foreach ($items as $key => $item) :
-														$itemValue = "{$keys}_$key"
-													?>
+																		foreach ($items as $key => $item) :
+																			$itemValue = "{$keys}_$key"
+																		?>
 								<option value="<?php
-														echo esc_attr($itemValue) ?>" <?php
-																selected($key, $selected); ?>><?php
-																	echo wp_kses_post($item) ?></option>
+																			echo esc_attr($itemValue) ?>" <?php
+																											selected($key, $selected); ?>><?php
+																																			echo wp_kses_post($item) ?></option>
 							<?php
-													endforeach;
+																		endforeach;
 							?>
 						</optgroup>
 			<?php
@@ -389,8 +389,8 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			$screen = get_current_screen();
 
 			if (is_object($screen) && Meta::POST_TYPE == $screen->post_type) {
-				wp_enqueue_style('ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'css/ultimate-builder.css', [], BDTUSK_VER);
-				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'js/ultimate-builder.js', ['jquery'], BDTUSK_VER);
+				wp_enqueue_style('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/css/ultimate-builder.css', [], BDTUSK_VER);
+				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/js/ultimate-builder.js', ['jquery'], BDTUSK_VER);
 
 				wp_localize_script('ultimate-store-kit-builder', 'UltimateStoreKitConfigBuilder', [
 					'ajaxurl' => admin_url('admin-ajax.php'),
