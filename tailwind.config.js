@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/admin/**/*.{js,jsx}'],
+	content: [
+		'./src/admin/**/*.{js,jsx}',
+		'../ultimate-store-kit-pro/src/admin/**/*.{js,jsx}',
+	],
 
 	// Scope utilities under the WP admin mount node (see Menu.php). Do NOT use the same
 	// class as the element that also carries Tailwind utilities — important: '.foo' emits
