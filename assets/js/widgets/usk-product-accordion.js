@@ -1,0 +1,1 @@
+!function(){"use strict";var n=function(n,o){n.find(".usk-product-accordion").each(function(){var n=o(this)[0];new Accordion(n)})};jQuery(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/usk-product-accordion.default",n)})}(jQuery,window.elementorFrontend);
