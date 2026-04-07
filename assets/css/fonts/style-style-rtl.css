@@ -1,0 +1,1139 @@
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[8].use[3]!./src/scss/fonts/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+  font-family: "ultimate-store-kit";
+  src: url("fonts/ultimate-store-kit.woff2?7tkcr6") format("woff2"), url("fonts/ultimate-store-kit.ttf?7tkcr6") format("truetype"), url("fonts/ultimate-store-kit.woff?7tkcr6") format("woff"), url("fonts/ultimate-store-kit.svg?7tkcr6#ultimate-store-kit") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^=usk-icon-], [class*=" usk-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "ultimate-store-kit" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.usk-icon-mobile-menu:before {
+  content: "\e9c7";
+}
+
+.usk-icon-marquee:before {
+  content: "\e9c5";
+}
+
+.usk-icon-variation-swatches:before {
+  content: "\e900";
+}
+
+.usk-icon-call-for-price:before {
+  content: "\e9ba";
+}
+
+.usk-icon-image-hotspot:before {
+  content: "\e9b9";
+}
+
+.usk-icon-compare-products:before {
+  content: "\e9a3";
+}
+
+.usk-icon-wishlist-button:before {
+  content: "\e9a4";
+}
+
+.usk-icon-wishlist-products:before {
+  content: "\e9b5";
+}
+
+.usk-icon-product-category-carousel:before {
+  content: "\e99c";
+}
+
+.usk-icon-page-my-account:before {
+  content: "\e9a1";
+}
+
+.usk-icon-page-single:before {
+  content: "\e9a2";
+}
+
+.usk-icon-page-order:before {
+  content: "\e95c";
+}
+
+.usk-icon-page-checkout:before {
+  content: "\e97f";
+}
+
+.usk-icon-additional-information:before {
+  content: "\e95b";
+}
+
+.usk-icon-mentor-slider:before {
+  content: "\e957";
+}
+
+.usk-icon-account-details:before {
+  content: "\e9a5";
+}
+
+.usk-icon-account-downloads:before {
+  content: "\e9a6";
+}
+
+.usk-icon-account-login-form:before {
+  content: "\e9a7";
+}
+
+.usk-icon-checkout-additional-info:before {
+  content: "\e9a8";
+}
+
+.usk-icon-checkout-order-review:before {
+  content: "\e9a9";
+}
+
+.usk-icon-edd-product-review-carousel:before {
+  content: "\e9aa";
+}
+
+.usk-icon-edd-product-reviews:before {
+  content: "\e9ab";
+}
+
+.usk-icon-product-image:before {
+  content: "\e9ac";
+}
+
+.usk-icon-thankyou-order:before {
+  content: "\e9ae";
+}
+
+.usk-icon-thankyou-order-confirmation:before {
+  content: "\e9b0";
+}
+
+.usk-icon-thankyou-order-customer-address:before {
+  content: "\e9b1";
+}
+
+.usk-icon-thankyou-order-details:before {
+  content: "\e9b4";
+}
+
+.usk-icon-account-address:before {
+  content: "\e980";
+}
+
+.usk-icon-account-dashboard:before {
+  content: "\e981";
+}
+
+.usk-icon-account-download:before {
+  content: "\e982";
+}
+
+.usk-icon-account-login:before {
+  content: "\e983";
+}
+
+.usk-icon-account-logout:before {
+  content: "\e984";
+}
+
+.usk-icon-account-navigation:before {
+  content: "\e985";
+}
+
+.usk-icon-account-order-details:before {
+  content: "\e986";
+}
+
+.usk-icon-account-orders:before {
+  content: "\e987";
+}
+
+.usk-icon-account-registration-form:before {
+  content: "\e988";
+}
+
+.usk-icon-page-cart:before {
+  content: "\e989";
+}
+
+.usk-icon-checkout-additional-Info:before {
+  content: "\e998";
+}
+
+.usk-icon-checkout-billing-address:before {
+  content: "\e999";
+}
+
+.usk-icon-checkout-coupon-form:before {
+  content: "\e99a";
+}
+
+.usk-icon-checkout-login-form:before {
+  content: "\e99b";
+}
+
+.usk-icon-checkout-payment:before {
+  content: "\e99d";
+}
+
+.usk-icon-checkout-shipping-form:before {
+  content: "\e99e";
+}
+
+.usk-icon-checkout-shipping-methods:before {
+  content: "\e99f";
+}
+
+.usk-icon-qr-code:before {
+  content: "\e9a0";
+}
+
+.usk-icon-edd-trendy-carousel:before {
+  content: "\e950";
+}
+
+.usk-icon-edd-trendy-grid:before {
+  content: "\e976";
+}
+
+.usk-icon-edd-standard-carousel:before {
+  content: "\e977";
+}
+
+.usk-icon-edd-standard-grid:before {
+  content: "\e978";
+}
+
+.usk-icon-edd-classic-carousel:before {
+  content: "\e979";
+}
+
+.usk-icon-edd-classic-grid:before {
+  content: "\e97a";
+}
+
+.usk-icon-edd-beauty-carousel:before {
+  content: "\e97b";
+}
+
+.usk-icon-edd-beauty-grid:before {
+  content: "\e97c";
+}
+
+.usk-icon-product-review-carousel:before {
+  content: "\e98a";
+}
+
+.usk-icon-sub-category-carousel:before {
+  content: "\e98b";
+}
+
+.usk-icon-mini-cart:before {
+  content: "\e98c";
+}
+
+.usk-icon-edd-product:before {
+  content: "\e98d";
+}
+
+.usk-icon-edd-product-carousel:before {
+  content: "\e98e";
+}
+
+.usk-icon-edd-category-carousel:before {
+  content: "\e98f";
+}
+
+.usk-icon-edd-category-grid:before {
+  content: "\e990";
+}
+
+.usk-icon-heaven-slider:before {
+  content: "\e991";
+}
+
+.usk-icon-info-list:before {
+  content: "\e992";
+}
+
+.usk-icon-featured-box:before {
+  content: "\e993";
+}
+
+.usk-icon-brand-grid:before {
+  content: "\e994";
+}
+
+.usk-icon-brand-carousel:before {
+  content: "\e995";
+}
+
+.usk-icon-sub-category:before {
+  content: "\e996";
+}
+
+.usk-icon-showcase-slider:before {
+  content: "\e974";
+}
+
+.usk-icon-florence-carousel:before {
+  content: "\e975";
+}
+
+.usk-icon-breadcrumbs:before {
+  content: "\e958";
+}
+
+.usk-icon-compare:before {
+  content: "\e959";
+}
+
+.usk-icon-compare-button:before {
+  content: "\e95a";
+}
+
+.usk-icon-product-filters:before {
+  content: "\e95d";
+}
+
+.usk-icon-florence-grid:before {
+  content: "\e95e";
+}
+
+.usk-icon-glossy-carousel:before {
+  content: "\e95f";
+}
+
+.usk-icon-glossy-grid:before {
+  content: "\e960";
+}
+
+.usk-icon-product-meta:before {
+  content: "\e962";
+}
+
+.usk-icon-product-accordion:before {
+  content: "\e963";
+}
+
+.usk-icon-product-category:before {
+  content: "\e964";
+}
+
+.usk-icon-product-gallery:before {
+  content: "\e965";
+}
+
+.usk-icon-product-image-accordion:before {
+  content: "\e966";
+}
+
+.usk-icon-product-list:before {
+  content: "\e967";
+}
+
+.usk-icon-product-reviews:before {
+  content: "\e968";
+}
+
+.usk-icon-product-table:before {
+  content: "\e969";
+}
+
+.usk-icon-product-rating:before {
+  content: "\e96a";
+}
+
+.usk-icon-recently-view-product:before {
+  content: "\e96b";
+}
+
+.usk-icon-shiny-carousel:before {
+  content: "\e96c";
+}
+
+.usk-icon-shiny-grid:before {
+  content: "\e96d";
+}
+
+.usk-icon-short-description:before {
+  content: "\e96e";
+}
+
+.usk-icon-product-related:before {
+  content: "\e96f";
+}
+
+.usk-icon-product-tabs:before {
+  content: "\e970";
+}
+
+.usk-icon-product-stock:before {
+  content: "\e971";
+}
+
+.usk-icon-product-title:before {
+  content: "\e972";
+}
+
+.usk-icon-up-sells:before {
+  content: "\e973";
+}
+
+.usk-icon-add-to-cart:before {
+  content: "\e902";
+}
+
+.usk-icon-product-description:before {
+  content: "\e94d";
+}
+
+.usk-icon-product-images:before {
+  content: "\e94e";
+}
+
+.usk-icon-product-price:before {
+  content: "\e94f";
+}
+
+.usk-icon-arrow-left-0:before {
+  content: "\e97d";
+}
+
+.usk-icon-arrow-right-0:before {
+  content: "\e97e";
+}
+
+.usk-icon-arrow-left-1:before {
+  content: "\e917";
+}
+
+.usk-icon-arrow-right-1:before {
+  content: "\e925";
+}
+
+.usk-icon-arrow-left-2:before {
+  content: "\e918";
+}
+
+.usk-icon-arrow-right-2:before {
+  content: "\e926";
+}
+
+.usk-icon-arrow-left-3:before {
+  content: "\e919";
+}
+
+.usk-icon-arrow-right-3:before {
+  content: "\e927";
+}
+
+.usk-icon-arrow-left-4:before {
+  content: "\e91a";
+}
+
+.usk-icon-arrow-right-4:before {
+  content: "\e928";
+}
+
+.usk-icon-arrow-left-5:before {
+  content: "\e943";
+}
+
+.usk-icon-arrow-right-5:before {
+  content: "\e944";
+}
+
+.usk-icon-arrow-left-6:before {
+  content: "\e945";
+}
+
+.usk-icon-arrow-right-6:before {
+  content: "\e946";
+}
+
+.usk-icon-arrow-left-7:before {
+  content: "\e949";
+}
+
+.usk-icon-arrow-right-7:before {
+  content: "\e94a";
+}
+
+.usk-icon-arrow-left-8:before {
+  content: "\e91e";
+}
+
+.usk-icon-arrow-right-8:before {
+  content: "\e92c";
+}
+
+.usk-icon-arrow-left-9:before {
+  content: "\e91f";
+}
+
+.usk-icon-arrow-right-9:before {
+  content: "\e92d";
+}
+
+.usk-icon-arrow-left-10:before {
+  content: "\e920";
+}
+
+.usk-icon-arrow-right-10:before {
+  content: "\e92e";
+}
+
+.usk-icon-arrow-left-11:before {
+  content: "\e921";
+}
+
+.usk-icon-arrow-right-11:before {
+  content: "\e92f";
+}
+
+.usk-icon-arrow-left-12:before {
+  content: "\e94b";
+}
+
+.usk-icon-arrow-right-12:before {
+  content: "\e94c";
+}
+
+.usk-icon-arrow-left-13:before {
+  content: "\e922";
+}
+
+.usk-icon-arrow-right-13:before {
+  content: "\e930";
+}
+
+.usk-icon-arrow-left-14:before {
+  content: "\e91d";
+}
+
+.usk-icon-arrow-right-14:before {
+  content: "\e92b";
+}
+
+.usk-icon-arrow-left-15:before {
+  content: "\e923";
+}
+
+.usk-icon-arrow-right-15:before {
+  content: "\e931";
+}
+
+.usk-icon-arrow-left-16:before {
+  content: "\e924";
+}
+
+.usk-icon-arrow-right-16:before {
+  content: "\e932";
+}
+
+.usk-icon-arrow-left-17:before {
+  content: "\e91c";
+}
+
+.usk-icon-arrow-right-17:before {
+  content: "\e92a";
+}
+
+.usk-icon-arrow-left-18:before {
+  content: "\e91b";
+}
+
+.usk-icon-arrow-right-18:before {
+  content: "\e929";
+}
+
+.usk-icon-arrow-up-1:before {
+  content: "\e933";
+}
+
+.usk-icon-arrow-down-1:before {
+  content: "\e910";
+}
+
+.usk-icon-arrow-up-2:before {
+  content: "\e934";
+}
+
+.usk-icon-arrow-down-2:before {
+  content: "\e911";
+}
+
+.usk-icon-arrow-up-3:before {
+  content: "\e935";
+}
+
+.usk-icon-arrow-down-3:before {
+  content: "\e912";
+}
+
+.usk-icon-arrow-up-4:before {
+  content: "\e936";
+}
+
+.usk-icon-arrow-down-4:before {
+  content: "\e913";
+}
+
+.usk-icon-arrow-up-5:before {
+  content: "\e937";
+}
+
+.usk-icon-arrow-down-5:before {
+  content: "\e915";
+}
+
+.usk-icon-arrow-up-7:before {
+  content: "\e938";
+}
+
+.usk-icon-arrow-down-7:before {
+  content: "\e916";
+}
+
+.usk-icon-arrow-up-8:before {
+  content: "\e939";
+}
+
+.usk-icon-arrow-down-8:before {
+  content: "\e947";
+}
+
+.usk-icon-arrow-left-circle-1:before {
+  content: "\e93b";
+}
+
+.usk-icon-arrow-right-circle-1:before {
+  content: "\e93f";
+}
+
+.usk-icon-arrow-left-circle-2:before {
+  content: "\e93c";
+}
+
+.usk-icon-arrow-right-circle-2:before {
+  content: "\e940";
+}
+
+.usk-icon-arrow-left-circle-3:before {
+  content: "\e93d";
+}
+
+.usk-icon-arrow-right-circle-3:before {
+  content: "\e941";
+}
+
+.usk-icon-arrow-left-circle-4:before {
+  content: "\e93a";
+}
+
+.usk-icon-arrow-right-circle-4:before {
+  content: "\e93e";
+}
+
+.usk-icon-arrow-left-square-1:before {
+  content: "\e948";
+}
+
+.usk-icon-arrow-right-square-1:before {
+  content: "\e942";
+}
+
+.usk-icon-x:before {
+  content: "\e9b6";
+}
+
+.usk-icon-twitter:before {
+  content: "\e9b6";
+}
+
+.usk-icon-meneame:before {
+  content: "\e906";
+}
+
+.usk-icon-moimir:before {
+  content: "\e904";
+}
+
+.usk-icon-instapaper:before {
+  content: "\e905";
+}
+
+.usk-icon-surfingbird:before {
+  content: "\e907";
+}
+
+.usk-icon-livejournal:before {
+  content: "\e90a";
+}
+
+.usk-icon-baidu:before {
+  content: "\e9bc";
+}
+
+.usk-icon-line:before {
+  content: "\e9bd";
+}
+
+.usk-icon-twitter1:before {
+  content: "\f099";
+}
+
+.usk-icon-linkedin:before {
+  content: "\f0e1";
+}
+
+.usk-icon-github:before {
+  content: "\f113";
+}
+
+.usk-icon-youtube:before {
+  content: "\f167";
+}
+
+.usk-icon-xing:before {
+  content: "\f168";
+}
+
+.usk-icon-instagram:before {
+  content: "\f16d";
+}
+
+.usk-icon-tumblr:before {
+  content: "\f173";
+}
+
+.usk-icon-apple:before {
+  content: "\f179";
+}
+
+.usk-icon-android:before {
+  content: "\f17b";
+}
+
+.usk-icon-dribbble:before {
+  content: "\f17d";
+}
+
+.usk-icon-skype:before {
+  content: "\f17e";
+}
+
+.usk-icon-vk:before {
+  content: "\f189";
+}
+
+.usk-icon-weibo:before {
+  content: "\f18a";
+}
+
+.usk-icon-renren:before {
+  content: "\f18b";
+}
+
+.usk-icon-wordpress:before {
+  content: "\f19a";
+}
+
+.usk-icon-google:before {
+  content: "\f1a0";
+}
+
+.usk-icon-delicious:before {
+  content: "\f1a5";
+}
+
+.usk-icon-digg:before {
+  content: "\f1a6";
+}
+
+.usk-icon-soundcloud:before {
+  content: "\f1be";
+}
+
+.usk-icon-wechat:before {
+  content: "\f1d7";
+}
+
+.usk-icon-pinterest:before {
+  content: "\f231";
+}
+
+.usk-icon-whatsapp:before {
+  content: "\f232";
+}
+
+.usk-icon-odnoklassniki:before {
+  content: "\f263";
+}
+
+.usk-icon-pocket:before {
+  content: "\f265";
+}
+
+.usk-icon-safari:before {
+  content: "\f267";
+}
+
+.usk-icon-chrome:before {
+  content: "\f268";
+}
+
+.usk-icon-firefox:before {
+  content: "\f269";
+}
+
+.usk-icon-opera:before {
+  content: "\f26a";
+}
+
+.usk-icon-ie:before {
+  content: "\f26b";
+}
+
+.usk-icon-vimeo:before {
+  content: "\f27d";
+}
+
+.usk-icon-reddit:before {
+  content: "\f281";
+}
+
+.usk-icon-edge:before {
+  content: "\f282";
+}
+
+.usk-icon-blogger:before {
+  content: "\f37d";
+}
+
+.usk-icon-facebook:before {
+  content: "\f39e";
+}
+
+.usk-icon-messenger:before {
+  content: "\f39f";
+}
+
+.usk-icon-googleplay:before {
+  content: "\f3ab";
+}
+
+.usk-icon-mix:before {
+  content: "\f3cb";
+}
+
+.usk-icon-telegram:before {
+  content: "\f3fe";
+}
+
+.usk-icon-uikit:before {
+  content: "\f403";
+}
+
+.usk-icon-viber:before {
+  content: "\f409";
+}
+
+.usk-icon-flipboard:before {
+  content: "\f44d";
+}
+
+.usk-icon-buffer:before {
+  content: "\f837";
+}
+
+.usk-icon-evernote:before {
+  content: "\f839";
+}
+
+.usk-icon-buffer1:before {
+  content: "\e9be";
+}
+
+.usk-icon-liveinternet:before {
+  content: "\e903";
+}
+
+.usk-icon-viber1:before {
+  content: "\e9bf";
+}
+
+.usk-icon-evernote1:before {
+  content: "\e9c0";
+}
+
+.usk-icon-blogger1:before {
+  content: "\f37e";
+}
+
+.usk-icon-coin:before {
+  content: "\e9c6";
+}
+
+.usk-icon-credit-card:before {
+  content: "\e9c2";
+}
+
+.usk-icon-shopping-bag:before {
+  content: "\e9c3";
+}
+
+.usk-icon-truck:before {
+  content: "\e9c4";
+}
+
+.usk-icon-user:before {
+  content: "\f007";
+}
+
+.usk-icon-eye:before {
+  content: "\f06e";
+}
+
+.usk-icon-preview:before {
+  content: "\f06e";
+}
+
+.usk-icon-eye-blocked:before {
+  content: "\e9c1";
+}
+
+.usk-icon-email:before {
+  content: "\f0e0";
+}
+
+.usk-icon-edit:before {
+  content: "\e914";
+}
+
+.usk-icon-video-player:before {
+  content: "\e961";
+}
+
+.usk-icon-tutorial:before {
+  content: "\e961";
+}
+
+.usk-icon-post:before {
+  content: "\e9ad";
+}
+
+.usk-icon-picture:before {
+  content: "\e9af";
+}
+
+.usk-icon-music:before {
+  content: "\e9b2";
+}
+
+.usk-icon-video:before {
+  content: "\e9b3";
+}
+
+.usk-icon-code:before {
+  content: "\e9bb";
+}
+
+.usk-icon-location:before {
+  content: "\ea3d";
+}
+
+.usk-icon-clock:before {
+  content: "\ea4f";
+}
+
+.usk-icon-calendar:before {
+  content: "\ea5f";
+}
+
+.usk-icon-bubble:before {
+  content: "\eac7";
+}
+
+.usk-icon-bubbles:before {
+  content: "\eac9";
+}
+
+.usk-icon-quote:before {
+  content: "\eae1";
+}
+
+.usk-icon-spinner:before {
+  content: "\eb23";
+}
+
+.usk-icon-loading:before {
+  content: "\eb23";
+}
+
+.usk-icon-spinner-2:before {
+  content: "\eb2a";
+}
+
+.usk-icon-enlarge:before {
+  content: "\eb3c";
+}
+
+.usk-icon-lock:before {
+  content: "\eb51";
+}
+
+.usk-icon-menu:before {
+  content: "\ec71";
+}
+
+.usk-icon-website:before {
+  content: "\ec98";
+}
+
+.usk-icon-url:before {
+  content: "\ec98";
+}
+
+.usk-icon-link:before {
+  content: "\ec9f";
+}
+
+.usk-icon-star-empty:before {
+  content: "\ece0";
+}
+
+.usk-icon-star-half:before {
+  content: "\ece1";
+}
+
+.usk-icon-star-full:before {
+  content: "\ece2";
+}
+
+.usk-icon-heart-full:before {
+  content: "\ecec";
+}
+
+.usk-icon-heart-empty:before {
+  content: "\eced";
+}
+
+.usk-icon-gallery:before {
+  content: "\ed3f";
+}
+
+.usk-icon-question:before {
+  content: "\ed55";
+}
+
+.usk-icon-plus3:before {
+  content: "\ed5d";
+}
+
+.usk-icon-minus3:before {
+  content: "\ed5e";
+}
+
+.usk-icon-checkmark:before {
+  content: "\ed71";
+}
+
+.usk-icon-new-tab:before {
+  content: "\eec9";
+}
+
+.usk-icon-behance:before {
+  content: "\ef07";
+}
+
+.usk-icon-yelp:before {
+  content: "\ef36";
+}
+
+.usk-icon-cart:before {
+  content: "\e9b7";
+}
+
+.usk-icon-close:before {
+  content: "\e9b8";
+}
+
+.usk-icon-ultimate-store-kit:before {
+  content: "\e997";
+}
+
+.usk-icon-grid-list:before {
+  content: "\e951";
+}
+
+.usk-icon-grid-2:before {
+  content: "\e952";
+}
+
+.usk-icon-grid-3:before {
+  content: "\e953";
+}
+
+.usk-icon-grid-4:before {
+  content: "\e954";
+}
+
+.usk-icon-grid-5:before {
+  content: "\e955";
+}
+
+.usk-icon-grid-6:before {
+  content: "\e956";
+}
+
+.usk-icon-hexagon-zigzag:before {
+  content: "\e90f";
+}
+
+.usk-icon-bulge-rectangle:before {
+  content: "\e90e";
+}
+
+.usk-icon-hexagon-radius2:before {
+  content: "\e90d";
+}
+
+.usk-icon-hexagon:before {
+  content: "\e90c";
+}
+
+.usk-icon-hexagon-radius:before {
+  content: "\e604";
+}
+
+.usk-icon-g2:before {
+  content: "\e90b";
+}
+
+.usk-icon-plus-2:before {
+  content: "\e908";
+}
+
+.usk-icon-plus:before {
+  content: "\e909";
+}
+
+.usk-icon-search:before {
+  content: "\e901";
+}

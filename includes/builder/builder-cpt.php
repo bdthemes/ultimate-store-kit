@@ -389,8 +389,8 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			$screen = get_current_screen();
 
 			if (is_object($screen) && Meta::POST_TYPE == $screen->post_type) {
-				wp_enqueue_style('ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'css/usk-ultimate-builder.css', [], BDTUSK_VER);
-				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'js/ultimate-builder.min.js', ['jquery'], BDTUSK_VER);
+				wp_enqueue_style('ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'css/ultimate-builder.css', [], BDTUSK_VER);
+				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ADM_ASSETS_URL . 'js/ultimate-builder.js', ['jquery'], BDTUSK_VER);
 
 				wp_localize_script('ultimate-store-kit-builder', 'UltimateStoreKitConfigBuilder', [
 					'ajaxurl' => admin_url('admin-ajax.php'),

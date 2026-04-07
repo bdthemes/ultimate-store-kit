@@ -1,0 +1,370 @@
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[8].use[3]!./src/scss/widgets/mini-cart.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
+/* Mini Cart - Modern Shopping Cart Widget */
+:root {
+  /* Colors */
+  --usk-minicart-dark: #1a1b1e;
+  --usk-minicart-text: #4a4b4d;
+  --usk-minicart-muted: #737578;
+  --usk-minicart-accent: #ff4747;
+  --usk-minicart-border: #ebedf0;
+  --usk-minicart-bg: #f8f9fa;
+  --usk-minicart-white: #ffffff;
+  --usk-minicart-overlay: rgba(0, 0, 0, 0.5);
+  --usk-minicart-shadow: rgba(0, 0, 0, 0.08);
+  --usk-minicart-hover: rgba(248, 249, 250, 0.9);
+  /* Typography */
+  --usk-minicart-title-size: 18px;
+  --usk-minicart-text-size: 14px;
+  --usk-minicart-price-size: 15px;
+  --usk-minicart-icon-size: 24px;
+  --usk-minicart-badge-size: 12px;
+  /* Layout */
+  --usk-minicart-header-height: 70px;
+  --usk-minicart-footer-height: 208px;
+  --usk-minicart-padding: 24px;
+  --usk-minicart-gap: 12px;
+  --usk-minicart-thumb-size: 80px;
+  --usk-minicart-radius: 8px;
+  --usk-minicart-btn-radius: 6px;
+  /* Animation */
+  --usk-minicart-transition: all 0.25s ease-in-out;
+  --usk-minicart-scale: scale(0.98);
+}
+
+/* Base Layout */
+.usk-mini-cart {
+  z-index: 99999 !important;
+  min-height: 1px;
+  position: fixed !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+}
+
+.usk-mini-cart.toolslide .ts-content-container {
+  background-color: var(--usk-minicart-white);
+  box-shadow: 0 8px 30px var(--usk-minicart-shadow);
+  border-radius: var(--usk-minicart-radius);
+}
+
+/* Toggle Button */
+.usk-mini-cart #toggle-menu-button {
+  width: 110px;
+  height: 44px;
+  line-height: 44px;
+  cursor: pointer;
+  text-align: center;
+  background: var(--usk-minicart-bg);
+  font-size: var(--usk-minicart-text-size);
+  font-weight: 600;
+  color: var(--usk-minicart-text);
+  border-radius: var(--usk-minicart-btn-radius);
+  transition: var(--usk-minicart-transition);
+}
+
+.usk-mini-cart #toggle-menu-button:hover {
+  color: var(--usk-minicart-white);
+  background-color: var(--usk-minicart-accent);
+  transform: var(--usk-minicart-scale);
+}
+
+/* Header */
+.usk-mini-cart .usk-widget-title {
+  border-bottom: 1px solid var(--usk-minicart-border);
+  font-size: var(--usk-minicart-title-size);
+  font-weight: 700;
+  color: var(--usk-minicart-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: var(--usk-minicart-header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--usk-minicart-padding);
+}
+
+/* Subtotal */
+.usk-mini-cart .usk-mini-cart-subtotal {
+  padding: var(--usk-minicart-padding);
+  border-bottom: 1px solid var(--usk-minicart-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--usk-minicart-bg);
+}
+
+.usk-mini-cart .usk-mini-cart-subtotal strong {
+  font-size: var(--usk-minicart-text-size);
+  font-weight: 600;
+  color: var(--usk-minicart-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.usk-mini-cart .usk-mini-cart-subtotal .woocommerce-Price-amount.amount {
+  font-size: var(--usk-minicart-price-size);
+  font-weight: 700;
+  color: var(--usk-minicart-accent);
+}
+
+/* Product Item */
+.usk-mini-cart .usk-mini-cart-product-item {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: var(--usk-minicart-gap);
+  border-bottom: 1px solid var(--usk-minicart-border);
+  transition: var(--usk-minicart-transition);
+}
+
+.usk-mini-cart .usk-mini-cart-product-item:hover {
+  background-color: var(--usk-minicart-hover);
+}
+
+.usk-mini-cart .usk-mini-cart-product-thumbnail {
+  width: var(--usk-minicart-thumb-size);
+  height: var(--usk-minicart-thumb-size);
+  border-radius: var(--usk-minicart-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.usk-mini-cart .usk-mini-cart-product-thumbnail img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--usk-minicart-transition);
+}
+
+.usk-mini-cart .usk-mini-cart-product-item:hover .usk-mini-cart-product-thumbnail img {
+  transform: var(--usk-minicart-scale);
+}
+
+/* Product Content */
+.usk-mini-cart .usk-mini-cart-content-wrap {
+  flex: 1;
+  padding: 0 var(--usk-minicart-gap);
+}
+
+.usk-mini-cart .usk-mini-cart-product-name {
+  margin-bottom: 8px;
+}
+
+.usk-mini-cart .usk-mini-cart-product-name a {
+  font-size: var(--usk-minicart-text-size);
+  color: var(--usk-minicart-dark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--usk-minicart-transition);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.usk-mini-cart .usk-mini-cart-product-name a:hover {
+  color: var(--usk-minicart-accent);
+}
+
+.usk-mini-cart .usk-mini-cart-product-price {
+  font-size: var(--usk-minicart-price-size);
+  font-weight: 700;
+  color: var(--usk-minicart-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usk-mini-cart .usk-mini-cart-product-price bdi {
+  color: var(--usk-minicart-accent);
+}
+
+/* Remove Button */
+.usk-mini-cart .usk-mini-cart-product-remove {
+  padding: var(--usk-minicart-gap);
+}
+
+.usk-mini-cart .usk-mini-cart-product-remove a {
+  color: var(--usk-minicart-muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--usk-minicart-transition);
+  background: var(--usk-minicart-bg);
+}
+
+.usk-mini-cart .usk-mini-cart-product-remove a:hover {
+  background-color: var(--usk-minicart-accent);
+  color: var(--usk-minicart-white);
+  transform: var(--usk-minicart-scale);
+}
+
+.usk-mini-cart .usk-mini-cart-product-remove a i {
+  font-size: 16px;
+  transition: var(--usk-minicart-transition);
+}
+
+/* Products List */
+.usk-mini-cart .usk-mini-cart-products {
+  max-height: calc(100vh - var(--usk-minicart-header-height) - var(--usk-minicart-footer-height));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.usk-mini-cart .usk-mini-cart-products::-webkit-scrollbar {
+  width: 4px;
+}
+
+.usk-mini-cart .usk-mini-cart-products::-webkit-scrollbar-track {
+  background: var(--usk-minicart-bg);
+}
+
+.usk-mini-cart .usk-mini-cart-products::-webkit-scrollbar-thumb {
+  background: var(--usk-minicart-muted);
+  border-radius: 10px;
+}
+
+/* Footer Buttons */
+.usk-mini-cart .usk-mini-cart-footer-buttons {
+  display: flex;
+  flex-direction: column;
+  padding: var(--usk-minicart-padding);
+  gap: var(--usk-minicart-gap);
+}
+
+.usk-mini-cart .usk-mini-cart-footer-buttons a {
+  font-size: var(--usk-minicart-text-size);
+  text-align: center;
+  padding: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-radius: var(--usk-minicart-btn-radius);
+  transition: var(--usk-minicart-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.usk-mini-cart .usk-mini-cart-footer-buttons a:hover {
+  transform: var(--usk-minicart-scale);
+}
+
+.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-view-cart {
+  background: var(--usk-minicart-dark);
+  color: var(--usk-minicart-white);
+  text-transform: uppercase;
+}
+
+.usk-mini-cart .usk-mini-cart-footer-buttons .bdt-button-checkout {
+  background: var(--usk-minicart-accent);
+  color: var(--usk-minicart-white);
+  text-transform: uppercase;
+}
+
+/* Footer Content */
+.usk-mini-cart .usk-mini-cart-content-footer {
+  background: var(--usk-minicart-white);
+  border-top: 1px solid var(--usk-minicart-border);
+  padding-top: var(--usk-minicart-gap);
+}
+
+/* Cart Button */
+.usk-mini-cart-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--usk-minicart-gap);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: var(--usk-minicart-btn-radius);
+  background: var(--usk-minicart-bg);
+  transition: var(--usk-minicart-transition);
+}
+
+.usk-mini-cart-inner:hover {
+  background: var(--usk-minicart-border);
+}
+
+.usk-mini-cart-inner .woocommerce-Price-amount.amount {
+  font-size: var(--usk-minicart-text-size);
+  color: var(--usk-minicart-dark);
+  font-weight: 600;
+}
+
+.usk-mini-cart-inner .usk-mini-cart-button-icon {
+  position: relative;
+}
+
+.usk-mini-cart-inner .usk-cart-icon {
+  font-size: var(--usk-minicart-icon-size);
+  color: var(--usk-minicart-dark);
+}
+
+.usk-mini-cart-inner .usk-cart-badge {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  font-size: var(--usk-minicart-badge-size);
+  background: var(--usk-minicart-accent);
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--usk-minicart-white);
+  padding: 0 6px;
+}
+
+/* Overlay */
+.usk-mini-cart-opened {
+  background: var(--usk-minicart-overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  transition: var(--usk-minicart-transition);
+}
+
+/* Empty Cart State */
+.usk-mini-cart .cart-empty {
+  padding: var(--usk-minicart-padding);
+  text-align: center;
+  color: var(--usk-minicart-muted);
+  font-size: var(--usk-minicart-text-size);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  :root {
+    --usk-minicart-padding: 16px;
+    --usk-minicart-gap: 8px;
+    --usk-minicart-thumb-size: 60px;
+  }
+  .usk-mini-cart .usk-mini-cart-product-name a {
+    font-size: 13px;
+  }
+  .usk-mini-cart .usk-mini-cart-product-price {
+    font-size: 14px;
+  }
+}
+.elementor-widget-usk-mini-cart .usk-mini-cart-price-amount {
+  display: none;
+}
+
+.elementor-widget-usk-mini-cart.wc-cart-price--yes .usk-mini-cart-price-amount {
+  display: block;
+}
+
+.elementor-widget-usk-mini-cart .usk-cart-icon {
+  display: none;
+}
+
+.elementor-widget-usk-mini-cart.wc-cart-icon--yes .usk-cart-icon {
+  display: block;
+}
