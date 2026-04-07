@@ -188,9 +188,9 @@ class Ultimate_Store_Kit_Loader {
 	 * @return [type] [description]
 	 */
 	public function register_site_scripts() {
-		wp_register_script('datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.min.js', [], '1.0.0', true);
-		wp_register_script('micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.min.js', [], '1.0.0', true);
-		wp_register_script('usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/usk-accordion.min.js', [], '1.0.0', true);
+		wp_register_script('datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.js', [], '1.0.0', true);
+		wp_register_script('micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.js', [], '1.0.0', true);
+		wp_register_script('usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/accordion.js', [], '1.0.0', true);
 
 		if (ultimate_store_kit_is_widget_enabled('image-hotspot')) {
 			wp_register_script('popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', ['jquery'], null, true);
@@ -200,11 +200,11 @@ class Ultimate_Store_Kit_Loader {
 
 	public function register_site_styles() {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
-		wp_register_style('usk-all-styles', BDTUSK_URL . 'assets/css/usk-all-styles' . $direction_suffix . '.css', [], BDTUSK_VER);
-		wp_register_style('usk-font', BDTUSK_URL . 'assets/css/usk-font' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_register_style('usk-all-styles', BDTUSK_URL . 'assets/css/all-styles' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_register_style('usk-font', BDTUSK_URL . 'assets/css/font' . $direction_suffix . '.css', [], BDTUSK_VER);
 
 		if (ultimate_store_kit_is_widget_enabled('image-hotspot')) {
-			wp_register_style('tippy', BDTUSK_URL . 'assets/css/usk-tippy' . $direction_suffix . '.css', [], BDTUSK_VER);
+			wp_register_style('tippy', BDTUSK_URL . 'assets/css/tippy' . $direction_suffix . '.css', [], BDTUSK_VER);
 		}
 	}
 
@@ -216,7 +216,7 @@ class Ultimate_Store_Kit_Loader {
 
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
-		wp_register_style('usk-site', BDTUSK_ASSETS_URL . 'css/usk-site' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_register_style('usk-site', BDTUSK_ASSETS_URL . 'css/site' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_register_style('slick-modal', BDTUSK_ASSETS_URL . 'vendor/css/slickmodal.css', [], BDTUSK_VER);
 		wp_register_style('toolslide-css', BDTUSK_ASSETS_URL . 'vendor/css/toolslide.css', [], BDTUSK_VER);
 
@@ -232,10 +232,10 @@ class Ultimate_Store_Kit_Loader {
 	 */
 	public function enqueue_site_scripts() {
 
-		wp_register_script('usk-core', BDTUSK_ASSETS_URL . 'js/usk-core.min.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
-		wp_register_script('usk-site', BDTUSK_ASSETS_URL . 'js/usk-site.min.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
-		wp_register_script('slick-modal', BDTUSK_ASSETS_URL . 'vendor/js/jquery.slickmodal.min.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
-		wp_register_script('toolslide-js', BDTUSK_ASSETS_URL . 'vendor/js/toolslide.min.js', [], BDTUSK_VER, true); // tooltip file should be separate
+		wp_register_script('usk-core', BDTUSK_ASSETS_URL . 'js/core.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
+		wp_register_script('usk-site', BDTUSK_ASSETS_URL . 'js/site.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
+		wp_register_script('slick-modal', BDTUSK_ASSETS_URL . 'vendor/js/jquery.slickmodal.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
+		wp_register_script('toolslide-js', BDTUSK_ASSETS_URL . 'vendor/js/toolslide.js', [], BDTUSK_VER, true); // tooltip file should be separate
 
 		wp_enqueue_script('usk-core');
 		// wp_enqueue_script('usk-site');
@@ -249,7 +249,7 @@ class Ultimate_Store_Kit_Loader {
 
 	public function enqueue_editor_scripts() {
 
-		wp_register_script('usk-editor', BDTUSK_ASSETS_URL . 'js/usk-editor.min.js', ['backbone-marionette', 'elementor-common-modules', 'elementor-editor-modules',], BDTUSK_VER, true);
+		wp_register_script('usk-editor', BDTUSK_ASSETS_URL . 'js/editor.js', ['backbone-marionette', 'elementor-common-modules', 'elementor-editor-modules',], BDTUSK_VER, true);
 
 		wp_enqueue_script('usk-editor');
 
@@ -273,15 +273,15 @@ class Ultimate_Store_Kit_Loader {
 	}
 
 	public function enqueue_admin_scripts() {
-		wp_register_script('usk-admin', BDTUSK_ASSETS_URL . 'js/usk-admin.min.js', ['jquery'], BDTUSK_VER, true);
+		wp_register_script('usk-admin', BDTUSK_ASSETS_URL . 'js/admin.js', ['jquery'], BDTUSK_VER, true);
 		wp_enqueue_script('usk-admin');
 	}
 
 	public function enqueue_editor_styles() {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
-		wp_register_style('usk-editor', BDTUSK_ASSETS_URL . 'css/usk-editor' . $direction_suffix . '.css', [], BDTUSK_VER);
-		wp_register_style('usk-font', BDTUSK_ASSETS_URL . 'css/usk-font' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_register_style('usk-editor', BDTUSK_ASSETS_URL . 'css/editor' . $direction_suffix . '.css', [], BDTUSK_VER);
+		wp_register_style('usk-font', BDTUSK_ASSETS_URL . 'css/font' . $direction_suffix . '.css', [], BDTUSK_VER);
 
 		wp_enqueue_style('usk-editor');
 		wp_enqueue_style('usk-font');
