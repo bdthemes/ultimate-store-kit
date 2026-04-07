@@ -21,6 +21,8 @@ function findFiles(dir, ext) {
 	for (const item of items) {
 		const fullPath = join(dir, item.name);
 		if (item.isDirectory()) {
+			// Skip src/scss/components folder
+			if (fullPath.includes('src/scss/components')) continue;
 			results.push(...findFiles(fullPath, ext));
 		} else if (item.name.endsWith(ext) && !item.name.startsWith('_')) {
 			results.push(fullPath);
