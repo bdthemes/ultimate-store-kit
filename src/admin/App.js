@@ -54,6 +54,7 @@ const App = () => {
 	const [activePage, setActivePage] = useState(getPageFromHash());
 	const [settings, setSettings] = useState(adminData.savedSettings || {});
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
+	const isProPluginActive = !!adminData.isProPluginActive;
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -249,6 +250,7 @@ const App = () => {
 					activePage={activePage}
 					onNavigate={setActivePage}
 					isPro={isProActive}
+					isProPluginActive={isProPluginActive}
 					isOpen={isSidebarOpen}
 					isDesktop={isDesktop}
 					onClose={() => setIsSidebarOpen(false)}

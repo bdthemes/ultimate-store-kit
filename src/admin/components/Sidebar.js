@@ -317,7 +317,7 @@ const Icon = ({ name }) => {
 const getAdminBarHeight = () =>
 	document.getElementById('wpadminbar')?.offsetHeight || 0;
 
-const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose, settingsGroups = [] }) => {
+const Sidebar = ({ activePage, onNavigate, isPro, isProPluginActive, isOpen, isDesktop, onClose, settingsGroups = [] }) => {
 	const [showComingSoon, setShowComingSoon] = useState(true);
 
 	const buildSections = () => {
@@ -329,7 +329,7 @@ const Sidebar = ({ activePage, onNavigate, isPro, isOpen, isDesktop, onClose, se
 					icon: getModuleSidebarIcon(g),
 				}));
 				// When pro is NOT active, show placeholder module items with Pro badge
-				const placeholders = isPro ? [] : proModulePlaceholders;
+				const placeholders = (isPro || isProPluginActive) ? [] : proModulePlaceholders;
 				return { ...section, items: [...dynamicItems, ...placeholders, ...section.items] };
 			}
 			return section;
