@@ -3,7 +3,7 @@ package-lock.json
 assets/scss/.DS_Store
 ultimate-store-kit.zip
 /node_modules
-/build
+/assets
 *.zip
 ultimate-store-kit
 .cursorrules
