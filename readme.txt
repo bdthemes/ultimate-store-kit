@@ -225,6 +225,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 3.0.0 [7th April 2026] =
+
+* Improved: Refactored core system architecture for enhanced performance and maintainability
+* Improved: Redesigned admin dashboard with modernized UI components and streamlined user experience
+
 = 2.9.15 [31st March 2026] =
 
 * Updated: System improved
