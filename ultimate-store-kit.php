@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Store Kit
  * Plugin URI: https://bdthemes.com/ultimate-store-kit/
  * Description: Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.
- * Version: 2.9.15
+ * Version: 3.0.0
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-store-kit
@@ -14,8 +14,16 @@
  * Elementor tested up to: 4.0.0
  */
 
+
+// Check if vendor directory and autoload.php exist
+$ultimate_store_kit_autoload_file = __DIR__ . '/vendor/autoload.php';
+if (file_exists($ultimate_store_kit_autoload_file)) {
+	// Load autoloader (vendor/autoload.php).
+	require_once $ultimate_store_kit_autoload_file;
+}
+
 // Some pre define value for easy use
-define('BDTUSK_VER', '2.9.15');
+define('BDTUSK_VER', '3.0.0');
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
@@ -29,7 +37,8 @@ define('BDTUSK_ASSETS_URL', BDTUSK_URL . 'assets/');
 define('BDTUSK_ASSETS_PATH', BDTUSK_PATH . 'assets/');
 define('BDTUSK_MODULES_URL', BDTUSK_URL . 'modules/');
 define('BDTUSK_ADM_PATH', BDTUSK_PATH . 'admin/');
-define('BDTUSK_ADM_ASSETS_URL', BDTUSK_URL . 'admin/assets/');
+define('BDTUSK_ADM_ASSETS_URL', BDTUSK_URL . 'includes/Admin/assets/');
+define('BDTUSK_BUILD_URL', BDTUSK_URL . 'build/');
 
 define('BDTUSK_TITLE', 'Ultimate Store Kit');
 

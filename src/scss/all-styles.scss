@@ -1,6 +1,6 @@
-@import "./elementor";
-@import "./overrides";
-@import "./editor";
-@import "./font";
+@import "./components/elementor";
+@import "./components/overrides";
+@import "./components/tippy";
 @import "./widgets/widget";
-@import "./tippy";
+@import "./font";
+@import "./editor";

@@ -1,9 +1,9 @@
-@import "./overrides";
-@import "./tooltip.scss";
-@import "./star.scss";
-@import "./modal.scss";
-@import "./elementor.scss";
-@import "./edd-single-page-support";
+@import "./components/overrides";
+@import "./components/tooltip";
+@import "./components/star";
+@import "./components/modal";
+@import "./components/elementor";
+@import "./components/edd-single-page-support";
 //Common Css
 *,
 *::before,
@@ -699,7 +699,7 @@
     }
   }
 
-  
+
 
   .swiper-horizontal + .swiper-pagination-progressbar,
   .swiper-vertical
