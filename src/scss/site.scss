@@ -217,7 +217,7 @@
 }
 
 .usk-sub-category,
-.usk-product-reviews {
+.usk-product-reviews-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 }
@@ -566,7 +566,7 @@
   }
 
   .usk-sub-category,
-  .usk-product-reviews,
+  .usk-product-reviews-grid,
   .usk-css-grid .usk-grid-layout {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -584,7 +584,7 @@
   }
 
   .usk-sub-category,
-  .usk-product-reviews {
+  .usk-product-reviews-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }

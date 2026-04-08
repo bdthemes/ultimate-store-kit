@@ -68,11 +68,13 @@
 					</select>
 					<label for="fname">Name your template</label>
 					<input type="text" name="template_name" id="template_name" placeholder="Enter template name">
-					<select name="template_status" id="template_status">
-						<option value="">select</option>
-						<option value="1">Active</option>
-						<option value="0">Inactive</option>
-					</select>
+					<div class="usk-template-status-switcher-wrap">
+						<input type="hidden" name="template_status" id="template_status" value="1">
+						<div class="usk-template-status-switcher usk-active" id="template_status_switcher" role="switch" aria-checked="true" tabindex="0">
+							<span class="usk-switcher-slider"></span>
+						</div>
+						<span class="usk-switcher-status-text"><?php esc_html_e( 'Active', 'ultimate-store-kit' ); ?></span>
+					</div>
 					<input class="usk-modal-submit-btn" type="submit" value="Create Template">
 				</form>
 			</div>

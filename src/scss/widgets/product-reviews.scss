@@ -1,5 +1,7 @@
 .usk-product-reviews {
-    grid-gap: 30px;
+    .usk-product-reviews-grid {
+        grid-gap: 30px;
+    }
 
     .usk-item {
         padding: clamp(20px, 2vw, 30px);
