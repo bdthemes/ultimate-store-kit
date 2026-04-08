@@ -5,11 +5,11 @@ Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, w
 Stable tag: 3.0.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.9
+Tested up to: 6.9.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.35.6
+Elementor tested up to: 4.0.0
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -224,6 +224,17 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 2.9.15 [31st March 2026] =
+
+* Updated: System improved
+
+= 2.9.14 [31st March 2026] =
+
+* Added: Pagination support with style controls for the product reviews widget
+* Added: New control to show or hide the shipping form and made widget texts dynamic in the page checkout widget
+* Fixed: Query controls Include/Exclude By Terms dropdown now hides taxonomy terms with no posts (only terms that have at least one post are shown)
+* Updated: Made compatible with Elementor version 4.0.0
 
 = 2.9.13 [10th March 2026] =
 
