@@ -55,6 +55,7 @@ const App = () => {
 	const [settings, setSettings] = useState(adminData.savedSettings || {});
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
 	const isProPluginActive = !!adminData.isProPluginActive;
+	const hasProAdminModules = isProPluginActive;
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -210,7 +211,7 @@ const App = () => {
 				return <AboutInfo />;
 			case 'currency-switcher':
 			case 'variation-swatches':
-				if (!isProActive) {
+				if (!hasProAdminModules) {
 					return <ProModulePlaceholder moduleId={activePage} />;
 				}
 				return null;

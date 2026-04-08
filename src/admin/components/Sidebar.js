@@ -328,8 +328,9 @@ const Sidebar = ({ activePage, onNavigate, isPro, isProPluginActive, isOpen, isD
 					label: g.label,
 					icon: getModuleSidebarIcon(g),
 				}));
-				// When pro is NOT active, show placeholder module items with Pro badge
-				const placeholders = (isPro || isProPluginActive) ? [] : proModulePlaceholders;
+				// Keep module links visible when Pro is installed but the license is inactive.
+				// The Pro plugin can still render its admin pages from the hash route.
+				const placeholders = isPro ? [] : proModulePlaceholders;
 				return { ...section, items: [...dynamicItems, ...placeholders, ...section.items] };
 			}
 			return section;
