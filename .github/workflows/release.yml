@@ -1,4 +1,4 @@
-name: Publish Release
+name: Publish Ultimate Store Kit Release
 
 on:
     push:
@@ -9,32 +9,41 @@ permissions:
     contents: write
 
 jobs:
-    release-pro:
-        runs-on: ubuntu-latest
+  release-free:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v3
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Create ultimate-store-kit directory and move files
-              run: |
-                  mkdir -p ultimate-store-kit &&
-                  find . -maxdepth 1 -not -name 'ultimate-store-kit' -exec mv {} ultimate-store-kit \;
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-            - name: Archive release
-              uses: thedoctor0/zip-release@0.7.6
-              with:
-                  filename: 'ultimate-store-kit.zip'
-                  exclusions: "/*node_modules/* /*src/* /*scss/* /*gruntfile.js /*package.json /*package-lock.json /*sync.ffs_db /*.idea/* /*.DS_Store /*.gitignore /*.github/* /*.git/* /*LICENSE /*.eslintrc /*.gitattributes /*.prettierrc"
-            - name: Display release
-              run: ls -a
+      - name: Set Up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, curl, zip
+          tools: wp-cli
 
-            - name: Create Release
-              uses: ncipollo/release-action@v1.14.0
-              with:
-                  artifacts: './ultimate-store-kit.zip'
-                  token: ${{ secrets.TOKEN }}
-                  removeArtifacts: true
-                  allowUpdates: true
-                  makeLatest: true
-                  tag: ${{ github.ref_name }}
-                  generateReleaseNotes: false
+      - name: Install NPM Dependencies
+        run: npm ci
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Build Release Package
+        run: npm run publish
+
+      - name: Publish GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "./ultimate-store-kit.zip"
+          token: ${{ secrets.TOKEN }}
+          removeArtifacts: true
+          allowUpdates: true
+          makeLatest: true
+          tag: ${{ github.ref_name }}
