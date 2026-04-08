@@ -184,13 +184,13 @@ class Dashboard {
                 $action_url = $paid;
                 $action_label = __('Download Plugin', 'ultimate-store-kit');
             } else {
-                $action_url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_name), 'install-plugin_' . $plugin_name);
+                $action_url = admin_url('update.php?action=install-plugin&plugin=' . urlencode($plugin_name) . '&_wpnonce=' . wp_create_nonce('install-plugin_' . $plugin_name));
             }
         } elseif (!$is_active) {
             $action_type = 'activate';
             $action_label = __('Activate Plugin', 'ultimate-store-kit');
             $message = __('Activate the required plugin first, then you can activate this feature.', 'ultimate-store-kit');
-            $action_url = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin_path);
+            $action_url = admin_url('plugins.php?action=activate&plugin=' . urlencode($plugin_path) . '&plugin_status=all&paged=1&s&_wpnonce=' . wp_create_nonce('activate-plugin_' . $plugin_path));
         }
 
         return [
