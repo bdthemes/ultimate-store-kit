@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 
 class Module extends Ultimate_Store_Kit_Module_Base {
 	public static function is_active() {
-		return class_exists('woocommerce');
+		return class_exists('Easy_Digital_Downloads');
 	}
 
 	public function get_name() {
