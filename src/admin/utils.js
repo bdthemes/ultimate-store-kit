@@ -116,7 +116,8 @@ const buildSidebarSections = ({
 	settingsGroups = [],
 }) => {
 	const sections = getNavItems();
-	const placeholders = isPro ? [] : getPlaceholderModules();
+	const placeholders = getPlaceholderModules();
+	const placeholderIds = placeholders.map((p) => p.id);
 
 	return sections.map((section) => {
 		if (section.id === 'modules') {
@@ -125,9 +126,24 @@ const buildSidebarSections = ({
 				label: group.label,
 				icon: getModuleSidebarIcon(group),
 			}));
+
+			if (isPro) {
+				// Licensed: show real pro module items (injected via filters),
+				// hide placeholder duplicates.
+				return {
+					...section,
+					items: [...dynamicItems, ...section.items],
+				};
+			}
+
+			// Not licensed: show placeholders, filter out any filter-injected
+			// items whose IDs overlap with placeholders to avoid duplicates.
+			const filtered = section.items.filter(
+				(item) => !placeholderIds.includes(item.id)
+			);
 			return {
 				...section,
-				items: [...dynamicItems, ...placeholders, ...section.items],
+				items: [...dynamicItems, ...placeholders, ...filtered],
 			};
 		}
 		return section;
