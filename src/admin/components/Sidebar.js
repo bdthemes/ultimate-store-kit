@@ -1,4 +1,3 @@
-import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const proModulePlaceholders = [
@@ -318,8 +317,6 @@ const getAdminBarHeight = () =>
 	document.getElementById('wpadminbar')?.offsetHeight || 0;
 
 const Sidebar = ({ activePage, onNavigate, isPro, isProPluginActive, isOpen, isDesktop, onClose, settingsGroups = [] }) => {
-	const [showComingSoon, setShowComingSoon] = useState(true);
-
 	const buildSections = () => {
 		return navItems.map((section) => {
 			if (section.group === __('Modules', 'ultimate-store-kit')) {
@@ -390,33 +387,8 @@ const Sidebar = ({ activePage, onNavigate, isPro, isProPluginActive, isOpen, isD
 					</div>
 				))}
 			</nav>
-			{showComingSoon && (
-				<div className="mt-6 hidden rounded-xl bg-slate-100 p-4 lg:block lg:mt-8">
-					<div className="relative ">
-						<button
-							type="button"
-							onClick={() => setShowComingSoon(false)}
-							className="absolute right-1 top-1 inline-flex cursor-pointer items-center justify-center border-0 bg-transparent text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
-							aria-label={__('Close', 'ultimate-store-kit')}
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width={24}
-								height={24}
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth={2}
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								className="w-4 h-4 block"
-							>
-								<path d="M18 6 6 18" />
-								<path d="m6 6 12 12" />
-							</svg>
-
-						</button>
-						<span className="mb-2.5 text-base font-bold text-slate-800 flex items-center gap-2">
+			<div className="mt-6 hidden rounded-xl bg-slate-100 p-4 lg:block lg:mt-8">
+						<span className="mb-2.5 flex items-center gap-2 text-base font-bold text-slate-800">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width={24}
@@ -472,15 +444,13 @@ const Sidebar = ({ activePage, onNavigate, isPro, isProPluginActive, isOpen, isD
 						>
 							{__('See roadmap', 'ultimate-store-kit')}
 						</button>
-					</div>
 				</div>
-			)}
 		</>
 	);
 
 	if (isDesktop) {
 		return (
-			<div style={{ display: 'flex' }} className="w-64 shrink-0 flex-col justify-between self-stretch rounded-lg border border-solid border-gray-100 bg-white px-4 py-6 lg:sticky lg:top-[7.5rem]">
+			<div style={{ display: 'flex' }} className=" w-60 2xl:w-64  shrink-0 flex-col justify-between self-stretch rounded-lg border border-solid border-gray-100 bg-white px-4 py-6 lg:sticky lg:top-[7.5rem]">
 				{content}
 			</div>
 		);
