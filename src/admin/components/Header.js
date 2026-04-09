@@ -3,8 +3,8 @@ import { btnPrimary, btnSm, btnSecondary } from '../tw';
 
 const Header = ({ version, isPro, onToggleSidebar, isSidebarOpen, isDesktop }) => {
 	const helpUrl =
-		'https://bdthemes.com/knowledge-base/ultimate-store-kit/';
-	const proUrl = 'https://bdthemes.com/ultimate-store-kit/pricing/';
+		'https://bdthemes.com/support/';
+	const proUrl = 'https://storekit.pro/pricing/';
 
 	return (
 		<div className="rounded-tl-lg rounded-tr-lg border-0 border-b border-solid border-b-gray-100 bg-white px-4 py-3 sm:px-6 sm:py-4">
