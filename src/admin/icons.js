@@ -249,6 +249,14 @@ export const FacebookIcon = ({ className = 'h-5 w-5' }) => (
 		<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
 	</svg>
 );
+export const LiveVisitorCountIcon = ({ className = 'h-5 w-5' }) => (
+	<svg {...baseProps} className={className} viewBox="0 0 24 24">
+		<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+		<circle cx="9" cy="7" r="4" />
+		<path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+		<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+	</svg>
+);
 
 export const adminIconMap = {
 	home: HomeIcon,
@@ -262,4 +270,5 @@ export const adminIconMap = {
 	edd: EddIcon,
 	other: GridIcon,
 	info: InfoIcon,
+	'live-visitor-count': LiveVisitorCountIcon,
 };

@@ -18,6 +18,14 @@ const defaultPlaceholders = [
 		badge: 'Pro',
 		proPlaceholder: true,
 	},
+	{
+		id: 'live-visitor-count',
+		label: __('Live Visitor Count', 'ultimate-store-kit'),
+		description: __('Display live visitor count on product pages to create urgency.', 'ultimate-store-kit'),
+		icon: 'live-visitor-count',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
 ];
 
 const getPlaceholderModules = () =>
@@ -71,11 +79,6 @@ const navItems = [
 				icon: 'star',
 			},
 			{
-				id: 'license',
-				label: __('License', 'ultimate-store-kit'),
-				icon: 'badge',
-			},
-			{
 				id: 'about',
 				label: __('About & Info', 'ultimate-store-kit'),
 				icon: 'info',
@@ -96,6 +99,9 @@ const getModuleSidebarIcon = (group) => {
 	}
 	if (haystack.includes('swatch') || haystack.includes('variation')) {
 		return 'variation-swatches';
+	}
+	if (haystack.includes('visitor') || haystack.includes('live')) {
+		return 'live-visitor-count';
 	}
 	return 'grid';
 };

@@ -7,7 +7,6 @@ import Welcome from './pages/Welcome';
 import WidgetsPage from './pages/WidgetsPage';
 import OtherSettings from './pages/OtherSettings';
 import GetPro from './pages/GetPro';
-import License from './pages/License';
 import AboutInfo from './pages/AboutInfo';
 import ProModulePlaceholder from './pages/ProModulePlaceholder';
 import { appShell, bodyRow, mainContent } from './tw';
@@ -47,7 +46,6 @@ const getPageFromHash = () => {
 		'edd-widgets',
 		'other-widgets',
 		'get-pro',
-		'license',
 		'about',
 		...settingsGroups.map((g) => g.id),
 		...placeholderIds,
@@ -227,13 +225,6 @@ const App = () => {
 					/>
 				) : (
 					<GetPro isPro={isProActive} />
-				);
-			case 'license':
-				return (
-					<License
-						isPro={isProActive}
-						onLicenseStatusChange={setIsProActive}
-					/>
 				);
 			case 'about':
 				return <AboutInfo />;
