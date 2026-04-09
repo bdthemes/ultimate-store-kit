@@ -40,33 +40,35 @@ const Toggle = ({ checked, onChange, disabled }) => {
 		willChange: 'transform',
 	};
 
+	const labelStyle = {
+		position: 'relative',
+		display: 'inline-flex',
+		alignItems: 'center',
+		width: 40,
+		height: 22,
+		cursor: disabled ? 'not-allowed' : 'pointer',
+		flexShrink: 0,
+		userSelect: 'none',
+	};
+
+	const inputStyle = {
+		position: 'absolute',
+		opacity: 0,
+		width: 0,
+		height: 0,
+		margin: 0,
+		padding: 0,
+		pointerEvents: 'none',
+	};
+
 	return (
-		<label
-			style={{
-				position: 'relative',
-				display: 'inline-flex',
-				alignItems: 'center',
-				width: 40,
-				height: 22,
-				cursor: disabled ? 'not-allowed' : 'pointer',
-				flexShrink: 0,
-				userSelect: 'none',
-			}}
-		>
+		<label style={labelStyle}>
 			<input
 				type="checkbox"
 				checked={checked}
 				disabled={disabled}
 				onChange={onChange}
-				style={{
-					position: 'absolute',
-					opacity: 0,
-					width: 0,
-					height: 0,
-					margin: 0,
-					padding: 0,
-					pointerEvents: 'none',
-				}}
+				style={inputStyle}
 			/>
 			<span style={trackStyle} />
 			<span style={knobStyle} />

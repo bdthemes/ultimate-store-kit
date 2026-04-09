@@ -1,6 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { btnPrimary, btnSm, fieldControl, fieldLabel, fieldRow, proBadge } from '../tw';
 
+const PRO_URL = 'https://bdthemes.com/ultimate-store-kit/';
+
 const promoSettings = [
 	{
 		group: __('Sales Notifications', 'ultimate-store-kit'),
@@ -92,12 +94,7 @@ const ProPromo = () => {
 						)}
 					</span>
 				</div>
-				<a
-					href="https://bdthemes.com/ultimate-store-kit/"
-					target="_blank"
-					rel="noopener noreferrer"
-					className={`${btnSm} ${btnPrimary}`}
-				>
+				<a href={PRO_URL} target="_blank" rel="noopener noreferrer" className={`${btnSm} ${btnPrimary}`}>
 					{__('Get Pro', 'ultimate-store-kit')}
 				</a>
 			</div>
@@ -141,6 +138,7 @@ const ProPromo = () => {
 								}
 
 								if (field.type === 'select') {
+									const defaultValue = Object.keys(field.options)[0];
 									return (
 										<div key={field.name} className={fieldRow}>
 											<label className={fieldLabel}>
@@ -149,11 +147,7 @@ const ProPromo = () => {
 											<select
 												className={`${fieldControl} cursor-not-allowed opacity-60`}
 												disabled
-												defaultValue={
-													Object.keys(
-														field.options
-													)[0]
-												}
+												defaultValue={defaultValue}
 											>
 												{Object.entries(
 													field.options

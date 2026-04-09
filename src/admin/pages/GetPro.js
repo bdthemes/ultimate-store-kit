@@ -1,4 +1,5 @@
 import { __ } from '@wordpress/i18n';
+import { CheckIcon, CloseIcon, FilledStarIcon } from '../icons';
 import { btnLg, btnPrimary } from '../tw';
 
 const features = [
@@ -70,32 +71,12 @@ const highlights = [
 	},
 ];
 
-const StarIcon = ({ className = 'h-3.5 w-3.5' }) => (
-	<svg className={className} viewBox="0 0 24 24" fill="currentColor">
-		<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-	</svg>
-);
-
-const CheckIcon = () => (
-	<svg className="mx-auto h-[18px] w-[18px] text-uks-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-		<path d="M20 6 9 17l-5-5" />
-	</svg>
-);
-
-const CrossIcon = () => (
-	<svg className="mx-auto h-[18px] w-[18px] text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-		<path d="M18 6 6 18M6 6l12 12" />
-	</svg>
-);
-
 const GetPro = ({ isPro }) => {
 	if (isPro) {
 		return (
 			<div className="rounded-usk border border-slate-200 bg-white p-6 text-center sm:p-10">
 				<div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
-					<svg className="h-7 w-7 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-						<path d="M20 6 9 17l-5-5" />
-					</svg>
+					<CheckIcon className="h-7 w-7 text-emerald-600" />
 				</div>
 				<h2 className="m-0 mb-2 text-xl font-bold text-slate-800">
 					{__('You already have Pro!', 'ultimate-store-kit')}
@@ -127,7 +108,7 @@ const GetPro = ({ isPro }) => {
 				</div>
 				<div className="flex w-20 items-center justify-center border-l border-uks-brand/30 bg-uks-brand py-3 sm:w-28 sm:py-3.5 lg:w-36">
 					<span className="inline-flex items-center gap-1 text-[11px] font-bold text-white sm:gap-1.5 sm:text-[12px]">
-						<StarIcon className="h-3 w-3" />
+						<FilledStarIcon className="h-3 w-3" />
 						{__('Pro', 'ultimate-store-kit')}
 					</span>
 				</div>
@@ -150,10 +131,18 @@ const GetPro = ({ isPro }) => {
 						)}
 					</div>
 					<div className={`flex w-20 shrink-0 items-center justify-center border-l py-3 sm:w-28 sm:py-3.5 lg:w-36 ${i % 2 === 1 ? 'border-gray-100 bg-slate-50/50' : 'border-gray-50 bg-white'}`}>
-						{f.free ? <CheckIcon /> : <CrossIcon />}
+						{f.free ? (
+							<CheckIcon className="mx-auto h-[18px] w-[18px] text-uks-brand" />
+						) : (
+							<CloseIcon className="mx-auto h-[18px] w-[18px] text-slate-300" />
+						)}
 					</div>
 					<div className="flex w-20 shrink-0 items-center justify-center border-l border-uks-brand/20 bg-uks-brand/[0.07] py-3 sm:w-28 sm:py-3.5 lg:w-36">
-						{f.pro ? <CheckIcon /> : <CrossIcon />}
+						{f.pro ? (
+							<CheckIcon className="mx-auto h-[18px] w-[18px] text-uks-brand" />
+						) : (
+							<CloseIcon className="mx-auto h-[18px] w-[18px] text-slate-300" />
+						)}
 					</div>
 				</div>
 			))}
@@ -191,20 +180,20 @@ const GetPro = ({ isPro }) => {
 					rel="noopener noreferrer"
 					className={`${btnLg} ${btnPrimary} gap-2`}
 				>
-					<StarIcon className="h-4 w-4" />
+					<FilledStarIcon className="h-4 w-4" />
 					{__('Upgrade to Pro — View Pricing', 'ultimate-store-kit')}
 				</a>
 				<div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] text-slate-400">
 					<span className="flex items-center gap-1">
-						<svg className="h-3.5 w-3.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+						<CheckIcon className="h-3.5 w-3.5 text-emerald-500" />
 						{__('30-day money-back', 'ultimate-store-kit')}
 					</span>
 					<span className="flex items-center gap-1">
-						<svg className="h-3.5 w-3.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+						<CheckIcon className="h-3.5 w-3.5 text-emerald-500" />
 						{__('Cancel anytime', 'ultimate-store-kit')}
 					</span>
 					<span className="flex items-center gap-1">
-						<svg className="h-3.5 w-3.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+						<CheckIcon className="h-3.5 w-3.5 text-emerald-500" />
 						{__('Instant access', 'ultimate-store-kit')}
 					</span>
 				</div>

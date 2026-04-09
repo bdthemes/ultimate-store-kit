@@ -1,6 +1,7 @@
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { btnOutlineRed, btnPrimary, btnSecondary, licenseInput } from '../tw';
+import { CheckIcon, CloseIcon } from '../icons';
+import { btnPrimary, btnSecondary, licenseInput } from '../tw';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -258,28 +259,11 @@ const License = ({ isPro, onLicenseStatusChange }) => {
 													: 'border border-red-200 bg-red-100 text-red-900'
 										}`}
 									>
-										<svg
-											width="14"
-											height="14"
-											viewBox="0 0 24 24"
-											fill="none"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											aria-hidden="true"
-										>
-											{licenseData.is_valid ? (
-												<>
-													<path d="M20 6 9 17l-5-5" />
-												</>
-											) : (
-												<>
-													<path d="M18 6 6 18" />
-													<path d="M6 6l12 12" />
-												</>
-											)}
-										</svg>
+										{licenseData.is_valid ? (
+											<CheckIcon className="h-[14px] w-[14px]" />
+										) : (
+											<CloseIcon className="h-[14px] w-[14px]" />
+										)}
 										{licenseData.is_valid
 											? __(
 													'Valid',

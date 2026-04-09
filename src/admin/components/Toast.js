@@ -8,8 +8,9 @@ import { createPortal } from '@wordpress/element';
 const Toast = ({ notification, onDismiss }) => {
 	if (!notification) return null;
 
-	const typeClass =
-		notification.type === 'success' ? 'usk-toast--success' : 'usk-toast--error';
+	const typeClass = notification.type === 'success'
+		? 'usk-toast--success'
+		: 'usk-toast--error';
 
 	return createPortal(
 		<div className="usk-toast-wrap">

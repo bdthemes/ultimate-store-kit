@@ -1,9 +1,15 @@
 import { useState, useMemo, useCallback, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
+	CheckIcon,
+	CloseIcon,
+	EyeIcon,
+	LinkPluginIcon,
+	PlayIcon,
+	SearchIcon,
+} from '../icons';
+import {
 	btnLg,
-	btnOutlineGreen,
-	btnOutlineRed,
 	btnPrimary,
 	btnSm,
 	proBadge,
@@ -169,21 +175,7 @@ const WidgetsPage = ({
 			{/* Filters group — wraps on small screens */}
 			<div className="flex flex-wrap items-center gap-3">
 				<div className="relative">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width={24}
-						height={24}
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						strokeWidth={2}
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						className="absolute right-3 top-3 h-4 w-4 block text-gray-400"
-					>
-						<path d="m21 21-4.34-4.34" />
-						<circle cx={11} cy={11} r={8} />
-					</svg>
+					<SearchIcon className="absolute right-3 top-3 h-4 w-4 block text-gray-400" />
 					<input
 						type="text"
 						className="block w-full rounded-md border border-solid border-gray-200 bg-transparent py-2.5 pr-10 pl-3 text-sm text-slate-700 placeholder:text-gray-500 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand/25 sm:w-48"
@@ -236,18 +228,7 @@ const WidgetsPage = ({
 					className={`${btnSm} !rounded-lg !bg-uks-brand !text-white hover:!bg-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white border-none`}
 					onClick={handleActivateAll}
 				>
-					<svg
-						className="h-4 w-4"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						aria-hidden="true"
-					>
-						<path d="M20 6 9 17l-5-5" />
-					</svg>
+					<CheckIcon className="h-4 w-4" />
 					{__('Activate All', 'ultimate-store-kit')}
 				</button>
 				<button
@@ -255,19 +236,7 @@ const WidgetsPage = ({
 					className={`${btnSm} !rounded-lg !border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
 					onClick={handleDeactivateAll}
 				>
-					<svg
-						className="h-4 w-4"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						aria-hidden="true"
-					>
-						<path d="M18 6 6 18" />
-						<path d="M6 6l12 12" />
-					</svg>
+					<CloseIcon className="h-4 w-4" />
 					{__('Deactivate All', 'ultimate-store-kit')}
 				</button>
 			</div>
@@ -318,24 +287,7 @@ const WidgetsPage = ({
 												textDecoration: 'none',
 											}}
 										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width={24}
-												height={24}
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												strokeWidth={2}
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												className="w-4 h-4 block"
-											>
-												<path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
-												<path d="m2 22 3-3" />
-												<path d="M7.5 13.5 10 11" />
-												<path d="M10.5 16.5 13 14" />
-												<path d="m18 3-4 4h6l-4 4" />
-											</svg>
+											<LinkPluginIcon className="w-4 h-4 block" />
 
 											{__('Install', 'ultimate-store-kit')}
 										</a>
@@ -355,21 +307,7 @@ const WidgetsPage = ({
 													textDecoration: 'none',
 												}}
 											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width={24}
-													height={24}
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													strokeWidth={2}
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													className="w-4 h-4 block"
-												>
-													<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-													<circle cx={12} cy={12} r={3} />
-												</svg>
+												<EyeIcon className="w-4 h-4 block" />
 
 												{__('Demo', 'ultimate-store-kit')}
 											</a>
@@ -389,20 +327,7 @@ const WidgetsPage = ({
 													textDecoration: 'none',
 												}}
 										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width={24}
-												height={24}
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												strokeWidth={2}
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												className="w-4 h-4 block"
-											>
-												<path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
-											</svg>
+											<PlayIcon className="w-4 h-4 block" />
 
 											{__('Video', 'ultimate-store-kit')}
 										</a>
