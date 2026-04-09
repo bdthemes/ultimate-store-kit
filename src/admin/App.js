@@ -72,6 +72,16 @@ const App = () => {
 		return () => removeAction('usk.admin.notify', 'usk-core');
 	}, []);
 
+	// Listen for license activation/deactivation from Pro's LicensePage
+	useEffect(() => {
+		const handleLicenseChanged = (active) => {
+			setIsProActive(active);
+			window.ultimateStoreKitAdminData.isPro = active;
+		};
+		addAction('usk.admin.licenseChanged', 'usk-core', handleLicenseChanged);
+		return () => removeAction('usk.admin.licenseChanged', 'usk-core');
+	}, []);
+
 	useEffect(() => {
 		if (notification) {
 			const timer = setTimeout(() => setNotification(null), 3000);
@@ -180,6 +190,14 @@ const App = () => {
 		// Check pro-registered pages first
 		const proPages = applyFilters('usk.admin.pages', {});
 		if (proPages[activePage]) {
+			// If user doesn't have an active license, show placeholder for module pages
+			if (!isProActive) {
+				const placeholders = getPlaceholderModules();
+				const placeholder = placeholders.find((p) => p.id === activePage);
+				if (placeholder) {
+					return <ProModulePlaceholder module={placeholder} />;
+				}
+			}
 			const ProPageComponent = proPages[activePage];
 			return <ProPageComponent />;
 		}
