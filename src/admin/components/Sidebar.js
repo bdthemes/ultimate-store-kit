@@ -1,4 +1,3 @@
-import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import Icon from './Icon';
 import { CloseIcon, SparklesIcon } from '../icons';
@@ -17,7 +16,6 @@ const Sidebar = ({
 	onClose,
 	settingsGroups = [],
 }) => {
-	const [showComingSoon, setShowComingSoon] = useState(true);
 	const sections = buildSidebarSections({
 		isPro,
 		settingsGroups,
@@ -75,56 +73,44 @@ const Sidebar = ({
 					</div>
 				))}
 			</nav>
-			{showComingSoon && (
-				<div className="mt-6 hidden rounded-xl bg-slate-100 p-4 lg:block lg:mt-8">
-					<div className="relative">
-						<button
-							type="button"
-							onClick={() => setShowComingSoon(false)}
-							className="absolute right-1 top-1 inline-flex cursor-pointer items-center justify-center border-0 bg-transparent text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
-							aria-label={__('Close', 'ultimate-store-kit')}
-						>
-							<CloseIcon className="w-4 h-4 block" />
-						</button>
-						<span className="mb-2.5 flex items-center gap-2 text-base font-bold text-slate-800">
-							<SparklesIcon className="w-5 h-5" />
-							{__('Coming soon', 'ultimate-store-kit')}
-						</span>
-						<p className="m-0 text-[12px] leading-relaxed text-slate-600">
-							{__(
-								'New items planned for upcoming updates:',
-								'ultimate-store-kit'
-							)}
-						</p>
-						<ul className="mt-2.5 m-0 space-y-1.5 p-0 text-[12px] text-slate-600">
-							<li className="flex items-start gap-2">
-								<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
-								{__('7+ WooCommerce widgets', 'ultimate-store-kit')}
-							</li>
-							<li className="flex items-start gap-2">
-								<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
-								{__('Template-based presets', 'ultimate-store-kit')}
-							</li>
-							<li className="flex items-start gap-2">
-								<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
-								{__('Performance-focused improvements', 'ultimate-store-kit')}
-							</li>
-						</ul>
-						<button
-							onClick={() =>
-								window.open(
-									'https://feedback.bdthemes.com/b/6vr2250l/feature-requests',
-									'_blank'
-								)
-							}
-							type="button"
-							className="mt-3 inline-flex cursor-pointer items-center rounded-lg border border-uks-brand bg-white px-3 py-1.5 text-[12px] font-semibold text-uks-brand transition-colors hover:bg-uks-brand hover:text-white"
-						>
-							{__('See roadmap', 'ultimate-store-kit')}
-						</button>
-					</div>
-				</div>
-			)}
+			<div className="mt-6 hidden rounded-xl bg-slate-100 p-4 lg:block lg:mt-8">
+				<span className="mb-2.5 flex items-center gap-2 text-base font-bold text-slate-800">
+					<SparklesIcon className="w-5 h-5" />
+					{__('Coming soon', 'ultimate-store-kit')}
+				</span>
+				<p className="m-0 text-[12px] leading-relaxed text-slate-600">
+					{__(
+						'New items planned for upcoming updates:',
+						'ultimate-store-kit'
+					)}
+				</p>
+				<ul className="mt-2.5 m-0 space-y-1.5 p-0 text-[12px] text-slate-600">
+					<li className="flex items-start gap-2">
+						<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
+						{__('7+ WooCommerce widgets', 'ultimate-store-kit')}
+					</li>
+					<li className="flex items-start gap-2">
+						<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
+						{__('Template-based presets', 'ultimate-store-kit')}
+					</li>
+					<li className="flex items-start gap-2">
+						<span className="mt-1 h-1.5 w-1.5 rounded-full bg-uks-brand" />
+						{__('Performance-focused improvements', 'ultimate-store-kit')}
+					</li>
+				</ul>
+				<button
+					onClick={() =>
+						window.open(
+							'https://feedback.bdthemes.com/b/6vr2250l/feature-requests',
+							'_blank'
+						)
+					}
+					type="button"
+					className="mt-3 inline-flex cursor-pointer items-center rounded-lg border border-uks-brand bg-white px-3 py-1.5 text-[12px] font-semibold text-uks-brand transition-colors hover:bg-uks-brand hover:text-white"
+				>
+					{__('See roadmap', 'ultimate-store-kit')}
+				</button>
+			</div>
 		</>
 	);
 

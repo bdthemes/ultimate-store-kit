@@ -89,10 +89,15 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		// Pro users don't need Get Pro page; redirect if opened directly.
-		if (isProActive && activePage === 'get-pro') {
-			setActivePage('welcome');
-			window.location.hash = '#welcome';
+		// When pro plugin is installed, Get Pro is replaced by License.
+		// Redirect stale get-pro links to license (if registered) or welcome.
+		if (activePage === 'get-pro') {
+			const proPages = applyFilters('usk.admin.pages', {});
+			if (proPages.license || isProActive) {
+				const target = proPages.license ? 'license' : 'welcome';
+				setActivePage(target);
+				window.location.hash = `#${target}`;
+			}
 		}
 	}, [isProActive, activePage]);
 

@@ -48,17 +48,22 @@ const Header = ({ version, isPro, onToggleSidebar, isSidebarOpen, isDesktop }) =
 							<MenuIcon className="h-4 w-4" />
 						)}
 					</button>
-					{!isPro ? (
-						<a
-							href={PRO_URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							className={`${btnSm} ${btnPrimary}`}
-						>
-							<StarIcon className="w-4 h-4 block" />
-							{__('Get Pro', 'ultimate-store-kit')}
-						</a>
-					) : null}
+					{(() => {
+						// Hide "Get Pro" when pro plugin is installed (License page takes over)
+						const proPages = applyFilters('usk.admin.pages', {});
+						if (isPro || proPages.license) return null;
+						return (
+							<a
+								href={PRO_URL}
+								target="_blank"
+								rel="noopener noreferrer"
+								className={`${btnSm} ${btnPrimary}`}
+							>
+								<StarIcon className="w-4 h-4 block" />
+								{__('Get Pro', 'ultimate-store-kit')}
+							</a>
+						);
+					})()}
 					{(() => {
 						const HeaderExtra = applyFilters('usk.admin.headerExtra', null);
 						return HeaderExtra ? <HeaderExtra /> : null;
