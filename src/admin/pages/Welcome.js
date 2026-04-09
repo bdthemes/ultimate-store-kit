@@ -1,5 +1,6 @@
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 import WelcomeStatCard from '../components/WelcomeStatCard';
 import {
 	btnEp,
@@ -75,6 +76,11 @@ const Welcome = ({ widgets, settings }) => {
 					color="#3b82f6"
 				/>
 			</div>
+
+			{(() => {
+				const WelcomeExtra = applyFilters('usk.admin.welcomeExtra', null);
+				return WelcomeExtra ? <WelcomeExtra /> : null;
+			})()}
 
 			<div className="mb-4 grid grid-cols-1 gap-4 xl:grid-cols-2">
 				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">

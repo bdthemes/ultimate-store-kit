@@ -1,5 +1,6 @@
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 import ProPromo from '../components/ProPromo';
 import { btnLg, btnPrimary, fieldControl, fieldLabel, proBadge, Toggle } from '../tw';
 
@@ -222,6 +223,10 @@ const OtherSettings = ({ widgets, section, settings, onSave, saving, isPro, acti
 					</div>
 				))}
 				{!isPro && !activeGroup && <ProPromo />}
+				{(() => {
+					const SettingsExtra = applyFilters('usk.admin.settingsExtra', null);
+					return SettingsExtra ? <SettingsExtra activeGroup={activeGroup} /> : null;
+				})()}
 			</div>
 			<div className="mt-6 flex justify-end pt-4">
 				<button

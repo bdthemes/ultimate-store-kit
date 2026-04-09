@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from '@wordpress/element';
+import { applyFilters, addAction, removeAction } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -6,11 +7,11 @@ import Welcome from './pages/Welcome';
 import WidgetsPage from './pages/WidgetsPage';
 import OtherSettings from './pages/OtherSettings';
 import GetPro from './pages/GetPro';
-import License from './pages/License';
 import AboutInfo from './pages/AboutInfo';
 import ProModulePlaceholder from './pages/ProModulePlaceholder';
 import { appShell, bodyRow, mainContent } from './tw';
 import Toast from './components/Toast';
+import { getPlaceholderModules } from './utils';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -30,23 +31,28 @@ const getSettingsGroups = () => {
 
 const settingsGroups = getSettingsGroups();
 
-const proModuleIds = ['currency-switcher', 'variation-swatches'];
-
 const getPageFromHash = () => {
 	const hash = window.location.hash.replace('#', '');
 	const pageName = hash.split('?')[0];
-	const validPages = [
+
+	const placeholderIds = getPlaceholderModules().map((p) => p.id);
+	const proPages = applyFilters('usk.admin.pages', {});
+	const proPageIds = Object.keys(proPages);
+
+	const corePages = [
 		'welcome',
 		'widgets',
 		'woocommerce-widgets',
 		'edd-widgets',
 		'other-widgets',
 		'get-pro',
-		'license',
 		'about',
 		...settingsGroups.map((g) => g.id),
-		...proModuleIds,
+		...placeholderIds,
+		...proPageIds,
 	];
+
+	const validPages = applyFilters('usk.admin.validPages', corePages);
 	return validPages.includes(pageName) ? pageName : 'welcome';
 };
 
@@ -54,11 +60,17 @@ const App = () => {
 	const [activePage, setActivePage] = useState(getPageFromHash());
 	const [settings, setSettings] = useState(adminData.savedSettings || {});
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
-	const isProPluginActive = !!adminData.isProPluginActive;
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 1024);
+
+	// Allow pro (or any extension) to trigger toasts via doAction('usk.admin.notify', {...})
+	useEffect(() => {
+		const handleNotify = (data) => setNotification(data);
+		addAction('usk.admin.notify', 'usk-core', handleNotify);
+		return () => removeAction('usk.admin.notify', 'usk-core');
+	}, []);
 
 	useEffect(() => {
 		if (notification) {
@@ -77,10 +89,15 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		// Pro users don't need Get Pro page; redirect if opened directly.
-		if (isProActive && activePage === 'get-pro') {
-			setActivePage('welcome');
-			window.location.hash = '#welcome';
+		// When pro plugin is installed, Get Pro is replaced by License.
+		// Redirect stale get-pro links to license (if registered) or welcome.
+		if (activePage === 'get-pro') {
+			const proPages = applyFilters('usk.admin.pages', {});
+			if (proPages.license || isProActive) {
+				const target = proPages.license ? 'license' : 'welcome';
+				setActivePage(target);
+				window.location.hash = `#${target}`;
+			}
 		}
 	}, [isProActive, activePage]);
 
@@ -160,6 +177,20 @@ const App = () => {
 	const renderPage = () => {
 		const widgets = adminData.widgets || {};
 
+		// Check pro-registered pages first
+		const proPages = applyFilters('usk.admin.pages', {});
+		if (proPages[activePage]) {
+			const ProPageComponent = proPages[activePage];
+			return <ProPageComponent />;
+		}
+
+		// Check placeholder modules (upsell for non-pro users)
+		const placeholders = getPlaceholderModules();
+		const placeholder = placeholders.find((p) => p.id === activePage);
+		if (placeholder) {
+			return <ProModulePlaceholder module={placeholder} />;
+		}
+
 		switch (activePage) {
 			case 'welcome':
 				return (
@@ -172,7 +203,7 @@ const App = () => {
 			case 'widgets':
 			case 'woocommerce-widgets':
 			case 'edd-widgets':
-			case 'other-widgets':
+			case 'other-widgets': {
 				const widgetTypeMap = {
 					'woocommerce-widgets': 'wc',
 					'edd-widgets': 'edd',
@@ -189,6 +220,7 @@ const App = () => {
 						widgetType={widgetTypeMap[activePage]}
 					/>
 				);
+			}
 			case 'get-pro':
 				return isProActive ? (
 					<Welcome
@@ -199,21 +231,8 @@ const App = () => {
 				) : (
 					<GetPro isPro={isProActive} />
 				);
-			case 'license':
-				return (
-					<License
-						isPro={isProActive}
-						onLicenseStatusChange={setIsProActive}
-					/>
-				);
 			case 'about':
 				return <AboutInfo />;
-			case 'currency-switcher':
-			case 'variation-swatches':
-				if (!isProActive) {
-					return <ProModulePlaceholder moduleId={activePage} />;
-				}
-				return null;
 			default: {
 				const settingsGroup = settingsGroups.find((g) => g.id === activePage);
 				if (settingsGroup) {
@@ -250,7 +269,6 @@ const App = () => {
 					activePage={activePage}
 					onNavigate={setActivePage}
 					isPro={isProActive}
-					isProPluginActive={isProPluginActive}
 					isOpen={isSidebarOpen}
 					isDesktop={isDesktop}
 					onClose={() => setIsSidebarOpen(false)}

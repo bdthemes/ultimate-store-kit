@@ -1,28 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { GridIcon, LockIcon, StarIcon } from '../icons';
 
-const moduleInfo = {
-	'currency-switcher': {
-		title: __('Currency Switcher', 'ultimate-store-kit'),
-		description: __(
-			'Enable to allow currency switching on your store.',
-			'ultimate-store-kit'
-		),
-	},
-	'variation-swatches': {
-		title: __('Variation Swatches', 'ultimate-store-kit'),
-		description: __(
-			'Enable to display product variation swatches on your store.',
-			'ultimate-store-kit'
-		),
-	},
-};
-
-const ProModulePlaceholder = ({ moduleId }) => {
-	const info = moduleInfo[moduleId] || {
-		title: moduleId,
-		description: '',
-	};
+const ProModulePlaceholder = ({ module }) => {
+	const title = module?.label || module?.id || '';
+	const description = module?.description || '';
 
 	return (
 		<div>
@@ -33,9 +14,11 @@ const ProModulePlaceholder = ({ moduleId }) => {
 					</div>
 					<div>
 						<h3 className="m-0 text-base font-semibold text-slate-800">
-							{info.title}
+							{title}
 						</h3>
-						<p className="m-0 text-sm text-slate-500">{info.description}</p>
+						{description && (
+							<p className="m-0 text-sm text-slate-500">{description}</p>
+						)}
 					</div>
 				</div>
 
@@ -77,4 +60,3 @@ const ProModulePlaceholder = ({ moduleId }) => {
 };
 
 export default ProModulePlaceholder;
-

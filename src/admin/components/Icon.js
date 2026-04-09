@@ -1,7 +1,9 @@
+import { applyFilters } from '@wordpress/hooks';
 import { adminIconMap } from '../icons';
 
 const Icon = ({ name }) => {
-	const Component = adminIconMap[name] || adminIconMap.info;
+	const iconMap = applyFilters('usk.admin.iconMap', adminIconMap);
+	const Component = iconMap[name] || iconMap.info;
 	return <Component />;
 };
 
