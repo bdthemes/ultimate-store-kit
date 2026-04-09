@@ -1,4 +1,5 @@
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
 import { btnPrimary, btnSm, btnSecondary } from '../tw';
 import { CloseIcon, MenuIcon, StarIcon, SupportIcon, UskLogo } from '../icons';
 
@@ -55,10 +56,13 @@ const Header = ({ version, isPro, onToggleSidebar, isSidebarOpen, isDesktop }) =
 							className={`${btnSm} ${btnPrimary}`}
 						>
 							<StarIcon className="w-4 h-4 block" />
-
 							{__('Get Pro', 'ultimate-store-kit')}
 						</a>
 					) : null}
+					{(() => {
+						const HeaderExtra = applyFilters('usk.admin.headerExtra', null);
+						return HeaderExtra ? <HeaderExtra /> : null;
+					})()}
 					<a
 						href={HELP_URL}
 						target="_blank"
@@ -70,7 +74,6 @@ const Header = ({ version, isPro, onToggleSidebar, isSidebarOpen, isDesktop }) =
 							aria-hidden="true"
 						>
 							<SupportIcon className="w-4 h-4 block" />
-
 						</span>
 						{__('Help & Support', 'ultimate-store-kit')}
 					</a>

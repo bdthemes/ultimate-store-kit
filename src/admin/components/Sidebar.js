@@ -6,14 +6,12 @@ import {
 	buildSidebarSections,
 	getAdminBarHeight,
 	groupHeadingClass,
-	navItems,
 } from '../utils';
 
 const Sidebar = ({
 	activePage,
 	onNavigate,
 	isPro,
-	isProPluginActive,
 	isOpen,
 	isDesktop,
 	onClose,
@@ -21,9 +19,7 @@ const Sidebar = ({
 }) => {
 	const [showComingSoon, setShowComingSoon] = useState(true);
 	const sections = buildSidebarSections({
-		items: navItems,
 		isPro,
-		isProPluginActive,
 		settingsGroups,
 	});
 
