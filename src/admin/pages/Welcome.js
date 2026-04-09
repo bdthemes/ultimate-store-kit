@@ -15,7 +15,7 @@ import {
 
 const linkInline = 'font-semibold text-uks-brand hover:underline';
 
-const Welcome = ({ widgets, settings }) => {
+const Welcome = ({ widgets, settings, isPro = false }) => {
 	const stats = useMemo(() => {
 		const wcWidgets = widgets.ultimate_store_kit_active_modules || [];
 		const eddWidgets = widgets.ultimate_store_kit_edd_modules || [];
@@ -30,6 +30,10 @@ const Welcome = ({ widgets, settings }) => {
 			let inactive = 0;
 			widgetList.forEach((w) => {
 				if (w.type !== 'checkbox') return;
+				if (!isPro && w.widget_type === 'pro') {
+					inactive++;
+					return;
+				}
 				const val = savedSettings[w.name];
 				const isOn =
 					val !== undefined ? val === 'on' : w.default === 'on';
@@ -50,7 +54,7 @@ const Welcome = ({ widgets, settings }) => {
 		};
 
 		return { all, wc, edd, other };
-	}, [widgets, settings]);
+	}, [widgets, settings, isPro]);
 
 	return (
 		<div>
