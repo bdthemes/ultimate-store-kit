@@ -2,6 +2,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
 import WelcomeStatCard from '../components/WelcomeStatCard';
+import { isWidgetEffectivelyOn } from '../utils';
 import {
 	btnEp,
 	btnPg,
@@ -35,10 +36,11 @@ const Welcome = ({ widgets, settings, isPro = false }) => {
 					return;
 				}
 				const val = savedSettings[w.name];
-				const isOn =
-					val !== undefined ? val === 'on' : w.default === 'on';
-				if (isOn) active++;
-				else inactive++;
+				if (isWidgetEffectivelyOn(w, val, isPro)) {
+					active++;
+				} else {
+					inactive++;
+				}
 			});
 			return { active, inactive, total: active + inactive };
 		};

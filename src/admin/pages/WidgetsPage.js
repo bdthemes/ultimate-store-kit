@@ -17,6 +17,7 @@ import {
 	selectLabel,
 	Toggle,
 } from '../tw';
+import { isWidgetEffectivelyOn } from '../utils';
 
 const WidgetsPage = ({
 	allWidgets,
@@ -125,6 +126,8 @@ const WidgetsPage = ({
 			const updated = { ...prev };
 			filteredWidgets.forEach((w) => {
 				if (w.widget_type === 'pro' && !isPro) return;
+				const dep = w.dependency;
+				if (dep && (!dep.isInstalled || !dep.isActive)) return;
 				updated[w.name] = 'on';
 			});
 			return updated;
@@ -152,9 +155,13 @@ const WidgetsPage = ({
 		onSave(currentConfig.key, currentSettings);
 	};
 
-	const activeCount = Object.values(localSettings).filter(
-		(v) => v === 'on'
-	).length;
+	const activeCount = useMemo(() => {
+		return widgets.filter(
+			(w) =>
+				w.type === 'checkbox' &&
+				isWidgetEffectivelyOn(w, localSettings[w.name], isPro)
+		).length;
+	}, [widgets, localSettings, isPro]);
 
 	const cardBase =
 		'flex flex-col justify-between gap-3 rounded-lg border border-solid border-gray-200 p-4';
@@ -254,8 +261,11 @@ const WidgetsPage = ({
 					const hasMissingDependency =
 						dependency && (!dependency.isInstalled || !dependency.isActive);
 					const isDisabled = (isProWidget && !isPro) || hasMissingDependency;
-					const isActive =
-						!isDisabled && localSettings[widget.name] === 'on';
+					const isActive = isWidgetEffectivelyOn(
+						widget,
+						localSettings[widget.name],
+						isPro
+					);
 
 					return (
 						<div

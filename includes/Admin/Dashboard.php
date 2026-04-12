@@ -162,7 +162,7 @@ class Dashboard {
             return null;
         }
 
-        if (!function_exists('get_plugins')) {
+        if (!function_exists('get_plugins') || !function_exists('is_plugin_active')) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 

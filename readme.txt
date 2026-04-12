@@ -5,7 +5,7 @@ Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, w
 Stable tag: 3.0.0
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 6.9.4
+Tested up to: 7.0
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
@@ -225,7 +225,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 3.0.0 [7th April 2026] =
+= 3.0.0 [12th April 2026] =
 
 * Improved: Refactored core system architecture for enhanced performance and maintainability
 * Improved: Redesigned admin dashboard with modernized UI components and streamlined user experience

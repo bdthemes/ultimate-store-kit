@@ -1,6 +1,29 @@
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
 
+/**
+ * Whether a widget counts as enabled in the admin (saved "on" plus Pro license
+ * and required plugin active — same rules as the widget cards).
+ *
+ * @param {object} widget      Widget definition from PHP (may include dependency).
+ * @param {string|undefined} savedValue Value from settings for this widget key.
+ * @param {boolean} isPro      Licensed Pro user.
+ * @returns {boolean}
+ */
+export const isWidgetEffectivelyOn = (widget, savedValue, isPro) => {
+	if (widget.widget_type === 'pro' && !isPro) {
+		return false;
+	}
+	const dep = widget.dependency;
+	if (dep && (!dep.isInstalled || !dep.isActive)) {
+		return false;
+	}
+	if (savedValue !== undefined && savedValue !== null) {
+		return savedValue === 'on';
+	}
+	return widget.default === 'on';
+};
+
 const defaultPlaceholders = [
 	{
 		id: 'currency-switcher',
