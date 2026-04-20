@@ -5,9 +5,11 @@ module.exports = {
 		'../ultimate-store-kit-pro/src/admin/**/*.{js,jsx}',
 	],
 
-	// Scope utilities under the WP admin mount node (see Menu.php). Do NOT use the same
-	// class as the element that also carries Tailwind utilities — important: '.foo' emits
-	// `.foo .utility` (descendant), so utilities on `.foo` itself would never match.
+	// Scope utilities under the WP admin mount node (see Dashboard.php). `important` as a
+	// selector emits `.ultimate-store-kit-admin-root .w-full { … }` (descendant), NOT chained.
+	// So width/height/flex utilities on the SAME element as `ultimate-store-kit-admin-root`
+	// never match — put Tailwind classes only on descendants, or use a wrapper with
+	// `display: contents` around portaled UI (see OfferEditor).
 	important: '.ultimate-store-kit-admin-root',
 
 	corePlugins: {
@@ -50,12 +52,29 @@ module.exports = {
 					from: { opacity: '0', transform: 'translateY(-8px)' },
 					to: { opacity: '1', transform: 'translateY(0)' },
 				},
+				/** Offer editor drawer (slides in from right) */
+				offerDrawerSlide: {
+					from: { transform: 'translateX(100%)' },
+					to: { transform: 'translateX(0)' },
+				},
 			},
 			animation: {
 				'usk-slide-in': 'uskSlideIn 0.3s ease',
+				'offer-drawer': 'offerDrawerSlide 200ms ease-out',
 			},
 		},
 	},
 
 	plugins: [],
+
+	// Pro admin JSX (../ultimate-store-kit-pro/...) is in `content`, but arbitrary utilities
+	// are easy to miss after edits if the free admin CSS isn’t rebuilt — keep critical layout classes emitted.
+	safelist: [
+		'w-[400px]',
+		'min-w-[400px]',
+		'max-w-[400px]',
+		'w-[min(1200px,100vw)]',
+		'max-w-[min(1200px,100vw)]',
+		'z-[159000]',
+	],
 };
