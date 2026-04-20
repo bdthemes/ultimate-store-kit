@@ -1,6 +1,9 @@
 /**
  * Shared Tailwind class strings for admin (no @apply in SCSS).
- * Specificity scope: tailwind.config.js `important` = `.ultimate-store-kit-admin-root` (PHP wrapper).
+ * Scope: tailwind.config.js `important` = `.ultimate-store-kit-admin-root` → utilities compile as
+ * `.ultimate-store-kit-admin-root .w-full { … }`. Never put `w-*` / `min-w-*` / `max-w-*` (or other
+ * Tailwind utilities) on the same element as `ultimate-store-kit-admin-root`; use a child or
+ * `display: contents` wrapper (see OfferEditor portal).
  */
 
 export const appShell =
