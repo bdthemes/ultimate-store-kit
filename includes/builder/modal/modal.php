@@ -4,7 +4,7 @@
 			<div class="usk-modal-logo-wrap">
 				<img class="usk-modal-logo" src="<?php echo esc_attr( BDTUSK_ADM_ASSETS_URL . '/images/logo.svg' ) ?>"
 					alt="">
-				<span class="usk-logo-text">New Template</span>
+				<span class="usk-logo-text"><?php esc_html_e( 'New Template', 'ultimate-store-kit' ); ?></span>
 			</div>
 			<div class="usk-modal-close-button">
 				<a href="javascript:void(0)">
@@ -14,21 +14,33 @@
 		</div>
 		<div class="usk-template-modal-main-wrap">
 			<div class="usk-modal-content-wrap">
-				<h3 class="usk-modal-title">Templates Help You <span>Work Efficiently</span>
+				<h3 class="usk-modal-title">
+					<?php
+					echo wp_kses(
+						sprintf(
+							/* translators: 1: Opening span tag, 2: Closing span tag. */
+							__( 'Templates Help You %1$sWork Efficiently%2$s', 'ultimate-store-kit' ),
+							'<span>',
+							'</span>'
+						),
+						[
+							'span' => [],
+						]
+					);
+					?>
 				</h3>
-				<div class="usk-modal-desc">Use templates to create the
-					different pieces of your site, and reuse them
-					with one click whenever needed.
+				<div class="usk-modal-desc">
+					<?php esc_html_e( 'Use templates to create the different pieces of your site, and reuse them with one click whenever needed.', 'ultimate-store-kit' ); ?>
 				</div>
 			</div>
 			<div class="usk-modal-form-wrap">
 				<form class="usk-modal-form" method="post">
 					<input type="hidden" name="template_id" value="" class="template_id" />
 					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('usk-builder'); ?>" />
-					<div class="usk-form-title">Choose Template Type</div>
-					<label for="template_type">Select the type of template you want to work on</label>
+					<div class="usk-form-title"><?php esc_html_e( 'Choose Template Type', 'ultimate-store-kit' ); ?></div>
+					<label for="template_type"><?php esc_html_e( 'Select the type of template you want to work on', 'ultimate-store-kit' ); ?></label>
 					<select name="template_type" id="template_type">
-						<option value="">select</option>
+						<option value=""><?php esc_html_e( 'select', 'ultimate-store-kit' ); ?></option>
 						<?php
 
 						$templates = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::templateForSelectDropdown();
@@ -66,8 +78,8 @@
 						}
 						?>
 					</select>
-					<label for="fname">Name your template</label>
-					<input type="text" name="template_name" id="template_name" placeholder="Enter template name">
+					<label for="fname"><?php esc_html_e( 'Name your template', 'ultimate-store-kit' ); ?></label>
+					<input type="text" name="template_name" id="template_name" placeholder="<?php echo esc_attr__( 'Enter template name', 'ultimate-store-kit' ); ?>">
 					<div class="usk-template-status-switcher-wrap">
 						<input type="hidden" name="template_status" id="template_status" value="1">
 						<div class="usk-template-status-switcher usk-active" id="template_status_switcher" role="switch" aria-checked="true" tabindex="0">
@@ -75,7 +87,7 @@
 						</div>
 						<span class="usk-switcher-status-text"><?php esc_html_e( 'Active', 'ultimate-store-kit' ); ?></span>
 					</div>
-					<input class="usk-modal-submit-btn" type="submit" value="Create Template">
+					<input class="usk-modal-submit-btn" type="submit" value="<?php echo esc_attr__( 'Create Template', 'ultimate-store-kit' ); ?>">
 				</form>
 			</div>
 		</div>

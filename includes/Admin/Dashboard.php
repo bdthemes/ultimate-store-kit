@@ -88,6 +88,8 @@ class Dashboard {
             true
         );
 
+        wp_set_script_translations('ultimate-store-kit-admin', 'ultimate-store-kit');
+
         wp_localize_script(
             'ultimate-store-kit-admin',
             'ultimateStoreKitAdminData',

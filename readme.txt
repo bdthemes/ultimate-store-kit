@@ -229,6 +229,8 @@ https://youtu.be/9J4zCaDcPnk
 
 * Improved: Refactored core system architecture for enhanced performance and maintainability
 * Improved: Redesigned admin dashboard with modernized UI components and streamlined user experience
+* Fixed: Template builder modal strings are now properly translatable
+* Fixed: Admin dashboard script translations now load correctly for the ultimate-store-kit-admin script
 
 = 2.9.15 [31st March 2026] =
 
