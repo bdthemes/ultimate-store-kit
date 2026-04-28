@@ -49,6 +49,14 @@ const defaultPlaceholders = [
 		badge: 'Pro',
 		proPlaceholder: true,
 	},
+	{
+		id: 'pdf-invoice',
+		label: __('PDF Invoice', 'ultimate-store-kit'),
+		description: __('Generate and download professional PDF invoices from customer orders.', 'ultimate-store-kit'),
+		icon: 'pdf-invoice',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
 ];
 
 const getPlaceholderModules = () =>
