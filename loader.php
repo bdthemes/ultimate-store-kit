@@ -332,7 +332,7 @@ class Ultimate_Store_Kit_Loader {
 		 */
 		$reflection = new \ReflectionClass($elementor->elements_manager);
 		$property = $reflection->getProperty('categories');
-		$property->setAccessible(true);
+		// $property->setAccessible(true);
 		$property->setValue($elementor->elements_manager, $merged_categories);
 
 
