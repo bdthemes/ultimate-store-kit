@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    var __ = wp.i18n.__;
 
     /* ===================================
        Start Admin API BIGGOPTI
@@ -351,7 +352,7 @@ jQuery(document).ready(function ($) {
     /* ===================================
        Submenu Promotion Menu (shares API data with biggopties)
        =================================== */
-    var FALLBACK = { sub_title: 'Go Pro', link: 'https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_store_kit' };
+    var FALLBACK = { sub_title: __('Go Pro', 'ultimate-store-kit'), link: 'https://bdthemes.com/deals/?utm_source=WordPress_org&utm_medium=bfcm_cta&utm_campaign=ultimate_store_kit' };
 
     function getFirstValidPromo(data) {
         var list = data && data['ultimate-store-kit'];

@@ -78,7 +78,8 @@ class Biggopties {
 		wp_enqueue_style('bdt-admin-api-biggopti', BDTUSK_ASSETS_URL . 'admin/others/css/admin-api-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('bdt-product-feed', BDTUSK_ASSETS_URL . 'admin/others/css/product-feed.css', [], BDTUSK_VER);
 		wp_enqueue_script('usk-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/biggopti.js', ['jquery'], BDTUSK_VER, true);
-		wp_enqueue_script('usk-admin-api-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/admin-api-biggopti.js', ['jquery'], BDTUSK_VER, true);
+		wp_enqueue_script('usk-admin-api-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/admin-api-biggopti.js', ['jquery', 'wp-i18n'], BDTUSK_VER, true);
+		wp_set_script_translations('usk-admin-api-biggopti', 'ultimate-store-kit');
 
 		$dismissals = get_option('bdt_biggopti_dismissals', []);
 		$dismissed_display_ids = [];

@@ -1,5 +1,6 @@
 !function ($) {
     "use strict";
+    var __ = wp.i18n.__;
 
     function showModal() {
         $('#ultimate-builder-kit-builder-modal').show();
@@ -28,12 +29,21 @@
     }
 
     function setTemplateStatusSwitcher(value) {
-        var isActive = value == 1;
-        $('#template_status').val(isActive ? '1' : '0');
-        $('#template_status_switcher')
-            .toggleClass('usk-active', isActive)
-            .attr('aria-checked', isActive);
-        $('.usk-switcher-status-text').text(isActive ? 'Active' : 'Inactive');
+        var isActive = String(value) === '1';
+        var $modal = $('#ultimate-builder-kit-builder-modal');
+        var $switcher = $modal.find('#usk_template_status_switcher');
+        var $statusInput = $modal.find('#usk_template_status');
+
+        $statusInput.val(isActive ? '1' : '0');
+
+        if (isActive) {
+            $switcher.addClass('usk-active');
+        } else {
+            $switcher.removeClass('usk-active');
+        }
+
+        $switcher.attr('aria-checked', isActive ? 'true' : 'false');
+        $modal.find('.usk-switcher-status-text').text(isActive ? __('Active', 'ultimate-store-kit') : __('Inactive', 'ultimate-store-kit'));
     }
 
     $(document).on('click', '#ultimate-builder-kit-builder-modal .usk-modal-close-button', function (e) {
@@ -43,7 +53,7 @@
     $(document).on('click', 'body.post-type-usk-template-builder a.page-title-action', function (e) {
         e.preventDefault();
         resetModalForm();
-        setSubmitBtn('Create Template');
+        setSubmitBtn(__('Create Template', 'ultimate-store-kit'));
         showModal();
     })
 
@@ -80,7 +90,7 @@
         e.preventDefault();
         removeError();
         resetModalForm();
-        setSubmitBtn('Update Template');
+        setSubmitBtn(__('Update Template', 'ultimate-store-kit'));
 
         $.ajax({
             url: ajaxurl,
@@ -103,7 +113,7 @@
             error: function (errorThrown) {
                 console.log(errorThrown);
                 if (errorThrown.status == 422 || errorThrown.status == 403) {
-                    alert('Permission denied or invalid request');
+                    alert(__('Permission denied or invalid request', 'ultimate-store-kit'));
                 }
             }
         });
@@ -111,14 +121,16 @@
     });
 
     $(document).ready(function () {
-        $('#template_status_switcher').on('click', function () {
-            var $input = $('#template_status');
-            var isActive = $input.val() == '1';
+        $('#ultimate-builder-kit-builder-modal').on('click', '#usk_template_status_switcher', function () {
+            var $input = $('#usk_template_status');
+            var isActive = $input.val() === '1';
             setTemplateStatusSwitcher(isActive ? 0 : 1);
-        }).on('keydown', function (e) {
+        }).on('keydown', '#usk_template_status_switcher', function (e) {
             if (e.key === ' ' || e.key === 'Enter') {
                 e.preventDefault();
-                $(this).click();
+                var $input = $('#usk_template_status');
+                var isActive = $input.val() === '1';
+                setTemplateStatusSwitcher(isActive ? 0 : 1);
             }
         });
     });
