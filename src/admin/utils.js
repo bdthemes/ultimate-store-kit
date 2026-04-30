@@ -49,6 +49,14 @@ const defaultPlaceholders = [
 		badge: 'Pro',
 		proPlaceholder: true,
 	},
+	{
+		id: 'upsell-cross-sell',
+		label: __('Upsell & Cross-Sell', 'ultimate-store-kit'),
+		description: __('Display upsell and cross-sell products on product pages to increase sales.', 'ultimate-store-kit'),
+		icon: 'upsell-cross-sell',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
 ];
 
 const getPlaceholderModules = () =>

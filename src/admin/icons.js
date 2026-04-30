@@ -258,6 +258,24 @@ export const LiveVisitorCountIcon = ({ className = 'h-5 w-5' }) => (
 	</svg>
 );
 
+const UpsellCrossSellIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="h-5 w-5 block color-current"
+  >
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <path d="M16 10a4 4 0 0 1-8 0" />
+  </svg>
+);
 export const adminIconMap = {
 	home: HomeIcon,
 	grid: GridIcon,
@@ -271,4 +289,5 @@ export const adminIconMap = {
 	other: GridIcon,
 	info: InfoIcon,
 	'live-visitor-count': LiveVisitorCountIcon,
+	'upsell-cross-sell': UpsellCrossSellIcon,
 };
