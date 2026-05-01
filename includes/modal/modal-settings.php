@@ -9,26 +9,26 @@ final class usk_Modal {
         add_action('wp_footer', [$this, 'usk_render_data']);
     }
     public function usk_get_kit_setting($setting_id) {
-        global $usk_modal_settings;
+        global $ultimate_store_kit_modal_settings;
         $return = '';
-        if (!isset($usk_modal_settings['kit_settings'])) {
+        if (!isset($ultimate_store_kit_modal_settings['kit_settings'])) {
             $active_kit_id = Plugin::$instance->kits_manager->get_active_id();
             $kit = Plugin::$instance->documents->get($active_kit_id, false);
 
             // Check if kit exists and is a valid object before getting settings
             if ($kit && !is_wp_error($kit)) {
-                $usk_modal_settings['kit_settings'] = $kit->get_settings();
+                $ultimate_store_kit_modal_settings['kit_settings'] = $kit->get_settings();
             } else {
                 // Fallback if kit is not available
-                $usk_modal_settings['kit_settings'] = [];
+                $ultimate_store_kit_modal_settings['kit_settings'] = [];
             }
         }
 
-        if (isset($usk_modal_settings['kit_settings'][$setting_id])) {
-            $return = $usk_modal_settings['kit_settings'][$setting_id];
+        if (isset($ultimate_store_kit_modal_settings['kit_settings'][$setting_id])) {
+            $return = $ultimate_store_kit_modal_settings['kit_settings'][$setting_id];
         }
 
-        return apply_filters('usk_modal_settings' . $setting_id, $return);
+        return apply_filters('ultimate_store_kit_modal_settings' . $setting_id, $return);
     }
     public function usk_render_data() {
         $modal_width_desktop = $this->usk_get_kit_setting('modal_width');

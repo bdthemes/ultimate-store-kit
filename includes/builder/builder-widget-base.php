@@ -35,7 +35,7 @@ abstract class Builder_Widget_Base extends Widget_Base {
 			$result = true;
 		}
 
-		return apply_filters('ultimate-store-kit-builder/in-elementor', $result);
+		return apply_filters('ultimate_store_kit_builder/in-elementor', $result);
 	}
 
 	protected function is_ultimate_builder_editor() {

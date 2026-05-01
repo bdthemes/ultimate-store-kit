@@ -36,38 +36,37 @@
 			<div class="usk-modal-form-wrap">
 				<form class="usk-modal-form" method="post">
 					<input type="hidden" name="template_id" value="" class="template_id" />
-					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('usk-builder'); ?>" />
+					<input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('usk-builder')); ?>" />
 					<div class="usk-form-title"><?php esc_html_e( 'Choose Template Type', 'ultimate-store-kit' ); ?></div>
 					<label for="template_type"><?php esc_html_e( 'Select the type of template you want to work on', 'ultimate-store-kit' ); ?></label>
 					<select name="template_type" id="template_type">
 						<option value=""><?php esc_html_e( 'select', 'ultimate-store-kit' ); ?></option>
 						<?php
-
-						$templates = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::templateForSelectDropdown();
-						$separator = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::separator();
+						$ultimate_store_kit_templates = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::templateForSelectDropdown();
+						$ultimate_store_kit_separator = \UltimateStoreKit\Includes\Builder\Builder_Template_Helper::separator();
 
 						// It is single
-						if ( count( $templates ) == 1 ) {
-							$templateKey = array_key_last( $templates );
-							$template    = $templates[ $templateKey ];
-							foreach ( $template as $key => $item ) :
-								$selectValue = "{$templateKey}{$separator}{$key}";
+						if ( count( $ultimate_store_kit_templates ) == 1 ) {
+							$ultimate_store_kit_template_key = array_key_last( $ultimate_store_kit_templates );
+							$ultimate_store_kit_template     = $ultimate_store_kit_templates[ $ultimate_store_kit_template_key ];
+							foreach ( $ultimate_store_kit_template as $ultimate_store_kit_key => $ultimate_store_kit_item ) :
+								$ultimate_store_kit_select_value = "{$ultimate_store_kit_template_key}{$ultimate_store_kit_separator}{$ultimate_store_kit_key}";
 								?>
-								<option value="<?php echo esc_attr( $selectValue ) ?>"><?php echo esc_attr( $item ) ?></option>
+								<option value="<?php echo esc_attr( $ultimate_store_kit_select_value ) ?>"><?php echo esc_attr( $ultimate_store_kit_item ) ?></option>
 								<?php
 							endforeach;
 						}
 
-						if ( count( $templates ) > 1 ) {
-							foreach ( $templates as $keys => $items ) :
-								$label = ucwords( str_replace( [ '-', '_' ], [ ' ' ], $keys ) );
-								if ( is_array( $items ) ) {
+						if ( count( $ultimate_store_kit_templates ) > 1 ) {
+							foreach ( $ultimate_store_kit_templates as $ultimate_store_kit_keys => $ultimate_store_kit_items ) :
+								$ultimate_store_kit_label = ucwords( str_replace( [ '-', '_' ], [ ' ' ], $ultimate_store_kit_keys ) );
+								if ( is_array( $ultimate_store_kit_items ) ) {
 									?>
-									<optgroup label="<?php echo esc_attr( $label ) ?>"><?php
-									   foreach ( $items as $key => $item ) :
-										   $itemValue = "{$keys}{$separator}{$key}"
+									<optgroup label="<?php echo esc_attr( $ultimate_store_kit_label ) ?>"><?php
+									   foreach ( $ultimate_store_kit_items as $ultimate_store_kit_key => $ultimate_store_kit_item ) :
+										   $ultimate_store_kit_item_value = "{$ultimate_store_kit_keys}{$ultimate_store_kit_separator}{$ultimate_store_kit_key}"
 										   	?>
-											<option value="<?php echo esc_attr( $itemValue ) ?>"><?php echo esc_attr( $item ) ?></option>
+											<option value="<?php echo esc_attr( $ultimate_store_kit_item_value ) ?>"><?php echo esc_attr( $ultimate_store_kit_item ) ?></option>
 											<?php
 									   endforeach;
 									   ?>

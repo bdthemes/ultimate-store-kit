@@ -193,8 +193,8 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_script('usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/accordion.js', [], '1.0.0', true);
 
 		if (ultimate_store_kit_is_widget_enabled('image-hotspot')) {
-			wp_register_script('popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', ['jquery'], null, true);
-			wp_register_script('tippyjs', BDTUSK_ASSETS_URL . 'vendor/js/tippy.all.min.js', ['jquery'], null, true);
+			wp_register_script('popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', ['jquery'], BDTUSK_VER, true);
+			wp_register_script('tippyjs', BDTUSK_ASSETS_URL . 'vendor/js/tippy.all.min.js', ['jquery'], BDTUSK_VER, true);
 		}
 	}
 
@@ -244,6 +244,7 @@ class Ultimate_Store_Kit_Loader {
 
 		wp_localize_script('usk-core', 'ultimate_store_kit_ajax_config', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('ultimate-store-kit'),
 		));
 	}
 
@@ -254,12 +255,12 @@ class Ultimate_Store_Kit_Loader {
 		wp_enqueue_script('usk-editor');
 
 		$_is_usk_pro_activated = false;
-		if (function_exists('usk_license_validation') && true === usk_license_validation()) {
+		if (function_exists('ultimate_store_kit_license_validation') && true === ultimate_store_kit_license_validation()) {
 			$_is_usk_pro_activated = true;
 		}
 
 		$localize_data = [
-			'pro_installed' => _is_usk_pro_activated(),
+			'pro_installed' => ultimate_store_kit_is_pro_activated(),
 			'pro_license_activated' => $_is_usk_pro_activated,
 			'promotional_widgets' => [],
 		];

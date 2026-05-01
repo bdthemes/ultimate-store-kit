@@ -107,6 +107,7 @@ class Product_List extends Module_Base {
             [
                 'name'    => 'image',
                 'label'   => esc_html__('Image Size', 'ultimate-store-kit'),
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['custom'],
                 'default' => 'full',
             ]
@@ -356,6 +357,7 @@ class Product_List extends Module_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'image_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'  => [
                     'shadow_position',
                 ],

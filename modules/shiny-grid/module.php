@@ -56,6 +56,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     public function __construct() {
         parent::__construct();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && \is_admin()) {
             \add_action('init', [$this, 'register_wc_hooks'], 5);
         }
@@ -95,7 +96,10 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     }
 
     public function ultimate_store_kit_wc_product_quick_view_content() {
-        $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
+        if (!check_ajax_referer('usk-quick-view-modal-sc', 'nonce', false)) {
+            return;
+        }
+        $product_id = isset($_POST['product_id']) ? sanitize_text_field(wp_unslash($_POST['product_id'])) : '';
         ultimate_store_kit_wc_product_quick_view_content($product_id);
     }
 
@@ -190,7 +194,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
                 if (!empty($cart_error)) {
                     \wc_clear_notices();
-                    $error_message = \strip_tags($cart_error[0]['notice']);
+                    $error_message = \wp_strip_all_tags($cart_error[0]['notice']);
                 }
 
                 \wp_send_json_error([
@@ -211,6 +215,9 @@ class Module extends Ultimate_Store_Kit_Module_Base {
      * AJAX handler to get available variations for a product
      */
     public function usk_get_available_variations() {
+        if (!\check_ajax_referer('usk_add_to_cart', 'nonce', false)) {
+            return;
+        }
         if (!isset($_POST['product_id'])) {
             \wp_send_json_error(['message' => 'Invalid product ID']);
             return;

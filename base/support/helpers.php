@@ -2,14 +2,15 @@
 
 use UltimateStoreKit\Base\Support\Optional;
 
-if (!function_exists('dd')) {
+if (!function_exists('ultimate_store_kit_dd')) {
 
     /**
      * dump & die.
      */
-    function dd($x) {
+    function ultimate_store_kit_dd($x) {
         echo '<pre>';
         if (is_array($x) || is_object($x)) {
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
             print_r($x);
         } else {
             echo wp_kses_post($x);
@@ -19,7 +20,7 @@ if (!function_exists('dd')) {
     }
 }
 
-if (! function_exists('optional')) {
+if (! function_exists('ultimate_store_kit_optional')) {
     /**
      * Provide access to optional objects.
      *
@@ -27,7 +28,7 @@ if (! function_exists('optional')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function optional($value = null, ?callable $callback = null) {
+    function ultimate_store_kit_optional($value = null, ?callable $callback = null) {
         if (is_null($callback)) {
             return new Optional($value);
         } elseif (! is_null($value)) {
@@ -37,7 +38,7 @@ if (! function_exists('optional')) {
 }
 
 
-if (! function_exists('array_except')) {
+if (! function_exists('ultimate_store_kit_array_except')) {
     /**
      * Provide access to optional objects.
      *
@@ -45,7 +46,7 @@ if (! function_exists('array_except')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function array_except($array, $keys) {
+    function ultimate_store_kit_array_except($array, $keys) {
 
         $original = &$array;
 

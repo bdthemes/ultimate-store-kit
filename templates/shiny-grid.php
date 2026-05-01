@@ -207,7 +207,7 @@ class USK_Shiny_Grid_Template
         }
 
         // Output the button
-        echo \apply_filters(
+        echo wp_kses_post(\apply_filters(
             'woocommerce_loop_add_to_cart_link',
             sprintf(
                 '<a href="%s" data-quantity="%s" class="%s" %s>%s <i class="button-icon usk-icon-arrow-right-8"></i></a>',
@@ -219,7 +219,7 @@ class USK_Shiny_Grid_Template
             ),
             $product,
             $args
-        );
+        ));
     }
     public function render_add_to_cart_button($product, $settings)
     {
@@ -386,7 +386,7 @@ class USK_Shiny_Grid_Template
         }
 
         // Check if sequential mode is enabled
-        $sequential = \apply_filters('usk_sequential_variations', isset($settings['show_variation_sequential']) && $settings['show_variation_sequential'] === 'yes');
+        $sequential = \apply_filters('ultimate_store_kit_sequential_variations', isset($settings['show_variation_sequential']) && $settings['show_variation_sequential'] === 'yes');
 
         // If Pro version with swatches is active, use that functionality
         if ($this->has_swatches_support() && function_exists('apply_filters')) {
@@ -411,9 +411,9 @@ class USK_Shiny_Grid_Template
         }
 
         // Add sequential data attribute if enabled
-        $sequential_attr = $sequential ? ' data-sequential="true"' : '';
+        $sequential_attr = $sequential ? 'true' : 'false';
 
-        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true"' . $sequential_attr . '>';
+        echo '<div class="usk-variations-container" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true" data-sequential="' . esc_attr($sequential_attr) . '">';
 
         foreach ($attributes as $attribute_name => $options) {
             if (empty($options)) {
@@ -477,9 +477,9 @@ class USK_Shiny_Grid_Template
         }
 
         // Add sequential data attribute if enabled
-        $sequential_attr = $sequential ? ' data-sequential="true"' : '';
+        $sequential_attr = $sequential ? 'true' : 'false';
 
-        echo '<div class="usk-variations-container usk-pro-swatches" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true"' . $sequential_attr . '>';
+        echo '<div class="usk-variations-container usk-pro-swatches" data-product-id="' . esc_attr($product_id) . '" data-variations-reset="true" data-sequential="' . esc_attr($sequential_attr) . '">';
 
         // Loop through each product attribute
         foreach ($attributes as $attribute_name => $options) {
@@ -495,8 +495,10 @@ class USK_Shiny_Grid_Template
                 'product' => $product,
                 'attribute' => $attribute_name,
                 'name' => 'attribute_' . sanitize_title($attribute_name),
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended
                 'selected' => isset($_REQUEST['attribute_' . sanitize_title($attribute_name)])
-                    ? wc_clean(wp_unslash($_REQUEST['attribute_' . sanitize_title($attribute_name)]))
+                    // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+                    ? sanitize_text_field(wp_unslash($_REQUEST['attribute_' . sanitize_title($attribute_name)]))
                     : $product->get_variation_default_attribute($attribute_name)
             );
 
@@ -516,9 +518,9 @@ class USK_Shiny_Grid_Template
             if (class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches')) {
                 $swatches = \UltimateStoreKitPro\VariationSwatches\Swatches::instance();
                 $swatches_html = $swatches->swatches_html($dropdown_html, $args);
-                echo $swatches_html;
+                echo wp_kses_post($swatches_html);
             } else {
-                echo $dropdown_html;
+                echo wp_kses_post($dropdown_html);
             }
 
             echo '</div>'; // Close .usk-variation-group

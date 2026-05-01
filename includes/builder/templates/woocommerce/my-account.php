@@ -28,7 +28,7 @@ get_header('shop');
  */
 
 if (class_exists('Elementor\Plugin')) {
-    echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+    echo wp_kses_post( Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false ) );
 }
 ?>
 

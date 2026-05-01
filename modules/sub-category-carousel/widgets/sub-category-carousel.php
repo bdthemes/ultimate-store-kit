@@ -137,6 +137,7 @@ class Sub_Category_Carousel extends Module_Base {
             [
                 'name'    => 'category_thumbnail',
                 'label'   => esc_html__('Image Size', 'ultimate-store-kit'),
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['custom'],
                 'default' => 'medium',
             ]
@@ -795,6 +796,7 @@ class Sub_Category_Carousel extends Module_Base {
             $args['include'] = $settings['cats_include_by_id'];
         }
         if (isset($settings['cats_exclude_by_id']) && !empty($settings['cats_exclude_by_id'])) {
+            // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
             $args['exclude'] = $settings['cats_exclude_by_id'];
         }
         // print_r($args);
@@ -809,7 +811,7 @@ class Sub_Category_Carousel extends Module_Base {
                         ],
                         'data-settings' => [
                             wp_json_encode(array_filter([
-                                "autoplay"              => ("yes" == $settings["thumbs_autoplay"]) ? ["delay" => $settings["thumbs_autoplay_speed"] + $index += rand(500, 1500)] : false,
+                                "autoplay"              => ("yes" == $settings["thumbs_autoplay"]) ? ["delay" => $settings["thumbs_autoplay_speed"] + $index += wp_rand(500, 1500)] : false,
                                 "loop"                  => ($settings["thumbs_loop"] == "yes") ? true : false,
                                 "speed"                 => $settings["thumbs_slide_speed"]["size"],
                                 "fadeEffect"          => [ 'crossFade' => true ],
@@ -880,7 +882,7 @@ class Sub_Category_Carousel extends Module_Base {
                                 <?php printf(
                                     '<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i></a>',
                                      /* translators: %s: Category name */ 
-                                    sprintf(esc_html__('All %s', 'ultimate-store-kit'), $category->name),
+                                    sprintf(esc_html__('All %s', 'ultimate-store-kit'), esc_html($category->name)),
                                     esc_url(get_term_link($category->term_id, 'product_cat'))
                                 ); ?>
                             </div>

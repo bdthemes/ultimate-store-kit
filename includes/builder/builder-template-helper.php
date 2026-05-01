@@ -9,6 +9,7 @@ class Builder_Template_Helper {
 			return true;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_REQUEST[ Meta::POST_TYPE ] ) ) {
 			return true;
 		}

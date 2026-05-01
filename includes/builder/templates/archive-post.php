@@ -22,11 +22,11 @@ use UltimateStoreKit\Builder\Builder_Integration;
 
 get_header();
 
-do_action('ultimate-store-kit-builder/woocommerce/before-main-content');
+do_action('ultimate_store_kit_builder/woocommerce/before-main-content');
 
 if (class_exists('Elementor\Plugin')) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
+	echo wp_kses_post(Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false));
 }
 
-do_action('ultimate-store-kit-builder/woocommerce/after-main-content');
+do_action('ultimate_store_kit_builder/woocommerce/after-main-content');
 get_footer();

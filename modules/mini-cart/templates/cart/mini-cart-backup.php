@@ -106,7 +106,7 @@ defined( 'ABSPATH' ) || exit;
 								<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
 							</div>
 							<div>
-								<?php echo WC()->cart->get_cart_subtotal(); ?>
+								<?php echo wp_kses_post(WC()->cart->get_cart_subtotal()); ?>
 							</div>
 						</div>
 						<div class="usk-mini-cart-footer-buttons">

@@ -32,14 +32,14 @@ get_header('shop');
 do_action('woocommerce_before_single_product');
 
 if (post_password_required()) {
-    echo get_the_password_form(); // WPCS: XSS ok.
+    echo wp_kses_post(get_the_password_form()); // WPCS: XSS ok.
     return;
 }
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
     <?php
     if (class_exists('Elementor\Plugin')) {
-        echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
+        echo wp_kses_post(Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false));
     }
     ?>
 </div>

@@ -51,6 +51,7 @@ trait Global_Widget_Controls
             [
                 'name' => 'image',
                 'label' => esc_html__('Image Size', 'ultimate-store-kit'),
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['custom'],
                 'default' => 'medium_large',
             ]
@@ -500,6 +501,7 @@ trait Global_Widget_Controls
             Group_Control_Background::get_type(),
             [
                 'name' => 'columns_filter_background',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a',
             ]
@@ -585,6 +587,7 @@ trait Global_Widget_Controls
             Group_Control_Background::get_type(),
             [
                 'name' => 'columns_filter_hover_background',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list a:hover',
             ]
@@ -614,6 +617,7 @@ trait Global_Widget_Controls
             Group_Control_Background::get_type(),
             [
                 'name' => 'columns_filter_active_background',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-grid-tabs-list.usk-tabs-active a',
             ]
@@ -927,6 +931,7 @@ trait Global_Widget_Controls
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'image_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'shadow_position',
                 ],
@@ -973,6 +978,7 @@ trait Global_Widget_Controls
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'image_hover_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'shadow_position',
                 ],

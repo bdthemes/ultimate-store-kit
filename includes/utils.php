@@ -11,7 +11,7 @@ class Utils
 
 	public static function get_site_domain()
 	{
-		return str_ireplace('www.', '', parse_url(home_url(), PHP_URL_HOST));
+		return str_ireplace('www.', '', wp_parse_url(home_url(), PHP_URL_HOST));
 	}
 
 	public static function readable_num($size)

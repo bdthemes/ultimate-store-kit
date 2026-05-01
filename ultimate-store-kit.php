@@ -50,14 +50,15 @@ define('BDTUSK_TITLE', 'Ultimate Store Kit');
 
 if (! function_exists('bdthemes_ultimate_store_kit_load_textdomain')) {
 	function bdthemes_ultimate_store_kit_load_textdomain() {
+		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 		load_plugin_textdomain('ultimate-store-kit', false, basename(dirname(__FILE__)) . '/languages');
 	}
 	add_action('init', 'bdthemes_ultimate_store_kit_load_textdomain');
 }
 
-if (! function_exists('_is_usk_pro_installed')) {
+if (! function_exists('ultimate_store_kit_is_pro_installed')) {
 
-	function _is_usk_pro_installed() {
+	function ultimate_store_kit_is_pro_installed() {
 
 		if (! function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -70,9 +71,9 @@ if (! function_exists('_is_usk_pro_installed')) {
 	}
 }
 
-if (! function_exists('_is_usk_pro_activated')) {
+if (! function_exists('ultimate_store_kit_is_pro_activated')) {
 
-	function _is_usk_pro_activated() {
+	function ultimate_store_kit_is_pro_activated() {
 
 		if (! function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -92,11 +93,11 @@ if (! function_exists('_is_usk_pro_activated')) {
 // Helper function here
 require(dirname(__FILE__) . '/includes/helper.php');
 
-if (! _is_usk_pro_activated()) {
+if (! ultimate_store_kit_is_pro_activated()) {
 	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
 }
 
-if (function_exists('usk_license_validation') && true !== usk_license_validation()) {
+if (function_exists('ultimate_store_kit_license_validation') && true !== ultimate_store_kit_license_validation()) {
 	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
 }
 
@@ -139,7 +140,7 @@ function bdthemes_ultimate_store_kit_fail_load() {
 
 	$plugin = 'elementor/elementor.php';
 
-	if (_is_dep_plugin_installed($plugin)) {
+	if (ultimate_store_kit_is_dep_plugin_installed($plugin)) {
 		if (! current_user_can('activate_plugins')) {
 			return;
 		}
@@ -169,7 +170,7 @@ function bdthemes_ultimate_store_kit_dependencies_plugin_fail_load() {
 
 	$plugin = 'woocommerce/woocommerce.php';
 
-	if (_is_dep_plugin_installed($plugin)) {
+	if (ultimate_store_kit_is_dep_plugin_installed($plugin)) {
 		if (! current_user_can('activate_plugins')) {
 			return;
 		}
@@ -188,12 +189,12 @@ function bdthemes_ultimate_store_kit_dependencies_plugin_fail_load() {
 	printf('<div class="error">%1$s</div>', wp_kses_post($admin_message));
 }
 
-if (! function_exists('_is_dep_plugin_installed')) {
+if (! function_exists('ultimate_store_kit_is_dep_plugin_installed')) {
 
 	/**
 	 * @plug_slug string plugins slug which you want to check installed or not
 	 */
-	function _is_dep_plugin_installed($plugin_slug) {
+	function ultimate_store_kit_is_dep_plugin_installed($plugin_slug) {
 		$file_path         = $plugin_slug;
 		$installed_plugins = get_plugins();
 

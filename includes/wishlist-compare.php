@@ -31,6 +31,8 @@ final class WishlistCompare {
 	}
 
 	public function usk_add_to_wishlist() {
+		check_ajax_referer( 'ultimate-store-kit', 'security' );
+
 		$response = [ 
 			'status'  => 0,
 			'message' => __( 'Unauthorized!', 'ultimate-store-kit' ),
@@ -41,7 +43,7 @@ final class WishlistCompare {
 			wp_send_json( $response );
 		}
 
-		$product_id = isset( $_POST['product_id'] ) ? sanitize_text_field( $_POST['product_id'] ) : '';
+		$product_id = isset( $_POST['product_id'] ) ? sanitize_text_field( wp_unslash( $_POST['product_id'] ) ) : '';
 
 		$user_id  = get_current_user_id();
 		$wishlist = ultimate_store_kit_get_wishlist( $user_id );
@@ -96,6 +98,8 @@ final class WishlistCompare {
 	//=========COMPARE PRODUCTS=============
 	//======================================
 	public function usk_add_to_compare_products() {
+		check_ajax_referer( 'ultimate-store-kit', 'security' );
+
 		$response = [ 
 			'status'  => 0,
 			'message' => __( 'Unauthorized!', 'ultimate-store-kit' ),
@@ -107,7 +111,7 @@ final class WishlistCompare {
 		}
 
 		$user_id          = get_current_user_id();
-		$compare_products = usk_get_compare_products( $user_id );
+		$compare_products = ultimate_store_kit_get_compare_products( $user_id );
 
 		// count compare products
 		if ( is_array( $compare_products ) ) {
@@ -116,7 +120,7 @@ final class WishlistCompare {
 
 		//add to compare products
 		$response['action'] = 'added';
-		$compare_products[] = $_POST['product_id'];
+		$compare_products[] = sanitize_text_field( wp_unslash( $_POST['product_id'] ) );
 
 		$compare_products = array_unique( $compare_products );
 
@@ -139,6 +143,8 @@ final class WishlistCompare {
 		}
 	}
 	public function usk_remove_from_compare_products() {
+		check_ajax_referer( 'ultimate-store-kit', 'security' );
+
 		$response = [ 
 			'status'  => 0,
 			'message' => __( 'Unauthorized!', 'ultimate-store-kit' ),
@@ -148,10 +154,12 @@ final class WishlistCompare {
 			wp_send_json( $response );
 		}
 		$user_id          = get_current_user_id();
-		$compare_products = usk_get_compare_products( $user_id );
+		$compare_products = ultimate_store_kit_get_compare_products( $user_id );
+
+		$product_id = sanitize_text_field( wp_unslash( $_POST['product_id'] ) );
 
 		//add remove from compare products
-		if ( ( $key = array_search( $_POST['product_id'], $compare_products ) ) !== false ) {
+		if ( ( $key = array_search( $product_id, $compare_products ) ) !== false ) {
 			$response['action'] = 'removed';
 			unset( $compare_products[ $key ] );
 		}

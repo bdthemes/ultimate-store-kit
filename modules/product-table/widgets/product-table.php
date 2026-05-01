@@ -1093,6 +1093,7 @@ class Product_Table extends Module_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'    => 'image_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'shadow_position',
                 ],
@@ -1859,10 +1860,13 @@ class Product_Table extends Module_Base {
             'post_status'         => 'publish',
             'posts_per_page'      => $settings['posts_per_page'],
             'ignore_sticky_posts' => 1,
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
             'meta_query'          => [],
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
             'tax_query'           => ['relation' => 'AND'],
             'paged'               => $paged,
             //'order'               => $settings['order'],
+            // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
             'post__not_in'        => $exclude_products,
         );
 
@@ -1874,11 +1878,13 @@ class Product_Table extends Module_Base {
                 'taxonomy'           => 'product_cat',
                 'field'              => 'slug',
                 'terms'              => $settings['product_categories'],
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
                 'post__not_in'       => $exclude_products,
             ];
         }
 
         if ('yes' == $settings['hide_free']) {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
             $query_args['meta_query'][] = [
                 'key'     => '_price',
                 'value'   => 0,
@@ -1888,6 +1894,7 @@ class Product_Table extends Module_Base {
         }
 
         if ('yes' == $settings['hide_out_stock']) {
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
             $query_args['tax_query'][] = [
                 [
                     'taxonomy' => 'product_visibility',

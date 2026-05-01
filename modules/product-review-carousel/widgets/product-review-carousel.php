@@ -405,6 +405,7 @@ class Product_Review_Carousel extends Module_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'image_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'shadow_position',
                 ],
@@ -766,13 +767,7 @@ class Product_Review_Carousel extends Module_Base {
                                 <i class="usk-rating-icon usk-icon-star-full"></i>
                             </span>
                             <span class="usk-rating-text">
-                                <?php 
-                                printf(
-                                    /* translators: %s is the average rating number */
-                                    esc_html__('%s', 'ultimate-store-kit'),
-                                    esc_html(floor($product->get_average_rating()))
-                                ); 
-                                ?>
+                                <?php echo esc_html(floor($product->get_average_rating())); ?>
                             </span>
                         </div>
                     <?php endif; ?>

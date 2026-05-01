@@ -197,6 +197,8 @@ class EDD_Category_Carousel extends Module_Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'category_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude' => ['custom'],
 				'default' => 'medium',
 				'condition' => [
@@ -607,6 +609,8 @@ class EDD_Category_Carousel extends Module_Base {
 			[
 				'name'     => 'category_typography',
 				'label'    => esc_html__('Typography', 'ultimate-store-kit'),
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude' => ['line_height'],
 				'selector' => '{{WRAPPER}} .usk-edd-category-carousel .edd-item .edd-content .title',
 			]
@@ -769,6 +773,7 @@ class EDD_Category_Carousel extends Module_Base {
 					$args['include'] = $settings['cats_include_by_id'];
 				}
 				if (isset($settings['cats_exclude_by_id']) && !empty($settings['cats_exclude_by_id'])) {
+					// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 					$args['exclude'] = $settings['cats_exclude_by_id'];
 				}
 				break;
@@ -781,7 +786,7 @@ class EDD_Category_Carousel extends Module_Base {
 				$args['parent'] = 0;
 				break;
 		}
-		$categories = get_terms('download_category', $args);
+		$categories = get_terms(array_merge(['taxonomy' => 'download_category'], $args));
 		return $categories;
 	}
 	public function render_image() {

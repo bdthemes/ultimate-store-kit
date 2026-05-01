@@ -41,7 +41,7 @@ class Builder_Integration {
 				'127.0.0.1'
 			]);
 
-			$current_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field($_SERVER['HTTP_HOST']) : '';
+			$current_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])) : '';
 
 			foreach ($demo_hosts as $host) {
 				if (strpos($current_host, $host) !== false) {
@@ -55,6 +55,7 @@ class Builder_Integration {
 		// Add filter to enable demo mode for preview URLs
 		add_filter('ultimate_store_kit/preview/use_demo_bypass', function ($use_demo) {
 			// Enable demo bypass in Elementor editor
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if (isset($_GET['action']) && $_GET['action'] === 'elementor') {
 				return true;
 			}
@@ -163,6 +164,7 @@ class Builder_Integration {
 
 	public function my_custom_fonts() {
 		if (is_admin() && Plugin::instance()->editor->is_edit_mode()) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if (isset($_REQUEST['usk-template'])) {
 				wp_register_style('usk-template-builder-hide-preview-btn-inline', false); // phpcs:ignore
 				wp_enqueue_style('usk-template-builder-hide-preview-btn-inline');
@@ -272,8 +274,10 @@ class Builder_Integration {
 	protected function setFrontendTemplate($template) {
 
 		if (get_post_type() == 'product') {
+			// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 			global $product;
 			$product = wc_get_product();
+			// phpcs:enable
 		}
 
 		if (defined('ELEMENTOR_PATH')) {
@@ -461,7 +465,7 @@ class Builder_Integration {
 
 		// Regular template retrieval
 		$templateId = Builder_Template_Helper::getTemplate($slug, $postType);
-		$this->current_template_id = apply_filters('ultimate-store-kit-builder/custom-shop-template', $templateId);
+		$this->current_template_id = apply_filters('ultimate_store_kit_builder/custom-shop-template', $templateId);
 
 		return $this->current_template_id;
 	}

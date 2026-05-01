@@ -70,9 +70,9 @@ if ( ! function_exists( 'ultimate_store_kit_render_mini_cart_item' ) ) {
 		<?php
 	}
 
-$cart_items = WC()->cart->get_cart();
+$ultimate_store_kit_cart_items = WC()->cart->get_cart();
 
-if ( empty( $cart_items ) ) { ?>
+if ( empty( $ultimate_store_kit_cart_items ) ) { ?>
 	<div class="woocommerce-mini-cart__empty-message">
 		<?php esc_attr_e( 'No products in the cart.', 'ultimate-store-kit' ); ?>
 	</div>
@@ -80,8 +80,8 @@ if ( empty( $cart_items ) ) { ?>
 	<div class="usk-mini-cart-products woocommerce-mini-cart cart woocommerce-cart-form__contents">
 		<?php
 		do_action( 'woocommerce_before_mini_cart_contents' );
-		foreach ( $cart_items as $cart_item_key => $cart_item ) {
-			ultimate_store_kit_render_mini_cart_item( $cart_item_key, $cart_item );
+		foreach ( $ultimate_store_kit_cart_items as $ultimate_store_kit_cart_item_key => $ultimate_store_kit_cart_item ) {
+			ultimate_store_kit_render_mini_cart_item( $ultimate_store_kit_cart_item_key, $ultimate_store_kit_cart_item );
 		}
 		do_action( 'woocommerce_mini_cart_contents' );
 		?>
@@ -93,7 +93,7 @@ if ( empty( $cart_items ) ) { ?>
 					<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
 				</div>
 				<div>
-					<?php echo WC()->cart->get_cart_subtotal(); ?>
+					<?php echo wp_kses_post(WC()->cart->get_cart_subtotal()); ?>
 				</div>
 			</div>
 			<div class="usk-mini-cart-footer-buttons">

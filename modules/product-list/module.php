@@ -44,6 +44,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
         parent::__construct();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && is_admin()) {
             add_action('init', [$this, 'register_wc_hooks'], 5);
         }
@@ -65,9 +66,8 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     }
 
     public function ultimate_store_kit_wc_product_quick_view_content() {
-
-        $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
-
+        check_ajax_referer('usk-quick-view-modal-sc', 'nonce');
+        $product_id = isset($_POST['product_id']) ? sanitize_text_field(wp_unslash($_POST['product_id'])) : '';
         ultimate_store_kit_wc_product_quick_view_content($product_id);
     }
 

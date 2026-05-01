@@ -271,6 +271,7 @@ class Up_Sells extends Module_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'image_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'  => [
                     'shadow_position',
                 ],
@@ -317,6 +318,7 @@ class Up_Sells extends Module_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'image_hover_shadow',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'  => [
                     'shadow_position',
                 ],
