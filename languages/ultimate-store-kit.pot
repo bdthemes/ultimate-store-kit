@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Store Kit 3.0.0\n"
+"Project-Id-Version: Ultimate Store Kit 3.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-store-kit\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-08T06:06:15+00:00\n"
+"POT-Creation-Date: 2026-04-30T09:34:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-store-kit\n"
@@ -56,27 +56,27 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: includes/Admin/Dashboard.php:180
+#: includes/Admin/Dashboard.php:182
 msgid "Install Plugin"
 msgstr ""
 
-#: includes/Admin/Dashboard.php:181
+#: includes/Admin/Dashboard.php:183
 msgid "Install the required plugin first, then you can activate this feature."
 msgstr ""
 
-#: includes/Admin/Dashboard.php:185
+#: includes/Admin/Dashboard.php:187
 msgid "Download Plugin"
 msgstr ""
 
-#: includes/Admin/Dashboard.php:191
+#: includes/Admin/Dashboard.php:193
 msgid "Activate Plugin"
 msgstr ""
 
-#: includes/Admin/Dashboard.php:192
+#: includes/Admin/Dashboard.php:194
 msgid "Activate the required plugin first, then you can activate this feature."
 msgstr ""
 
-#: includes/Admin/Dashboard.php:219
+#: includes/Admin/Dashboard.php:221
 #: modules/mini-cart/widgets/mini-cart.php:84
 #: modules/sub-category/widgets/sub-category.php:669
 #: traits/global-widget-controls.php:208
@@ -571,6 +571,7 @@ msgid "Add New Template"
 msgstr ""
 
 #: includes/builder/builder-cpt.php:423
+#: includes/builder/modal/modal.php:7
 msgid "New Template"
 msgstr ""
 
@@ -621,7 +622,37 @@ msgstr ""
 msgid "Apply & Preview"
 msgstr ""
 
-#: includes/builder/modal/modal.php:76
+#. translators: 1: Opening span tag, 2: Closing span tag.
+#: includes/builder/modal/modal.php:22
+#, php-format
+msgid "Templates Help You %1$sWork Efficiently%2$s"
+msgstr ""
+
+#: includes/builder/modal/modal.php:33
+msgid "Use templates to create the different pieces of your site, and reuse them with one click whenever needed."
+msgstr ""
+
+#: includes/builder/modal/modal.php:40
+msgid "Choose Template Type"
+msgstr ""
+
+#: includes/builder/modal/modal.php:41
+msgid "Select the type of template you want to work on"
+msgstr ""
+
+#: includes/builder/modal/modal.php:43
+msgid "select"
+msgstr ""
+
+#: includes/builder/modal/modal.php:81
+msgid "Name your template"
+msgstr ""
+
+#: includes/builder/modal/modal.php:82
+msgid "Enter template name"
+msgstr ""
+
+#: includes/builder/modal/modal.php:88
 #: includes/modal/modal-controls.php:400
 #: modules/heaven-slider/widgets/heaven-slider.php:1033
 #: modules/image-hotspot/widgets/image-hotspot.php:653
@@ -641,6 +672,10 @@ msgstr ""
 #: traits/global-widget-controls.php:4480
 #: assets/admin/admin.js:1
 msgid "Active"
+msgstr ""
+
+#: includes/builder/modal/modal.php:90
+msgid "Create Template"
 msgstr ""
 
 #: includes/class-pro-widget-map.php:32
@@ -5135,7 +5170,6 @@ msgid "Total"
 msgstr ""
 
 #: modules/page-cart/widgets/page-cart.php:1534
-#: assets/admin/admin.js:1
 msgid "Close"
 msgstr ""
 
@@ -5669,7 +5703,6 @@ msgstr ""
 
 #: modules/product-review-carousel/widgets/product-review-carousel.php:200
 #: modules/product-reviews/widgets/product-reviews.php:186
-#: assets/admin/admin.js:1
 msgid "Status"
 msgstr ""
 
@@ -6460,6 +6493,30 @@ msgid "Currency Switcher"
 msgstr ""
 
 #: assets/admin/admin.js:1
+msgid "Enable to allow currency switching on your store."
+msgstr ""
+
+#: assets/admin/admin.js:1
+msgid "Enable to display product variation swatches on your store."
+msgstr ""
+
+#: assets/admin/admin.js:1
+msgid "Live Visitor Count"
+msgstr ""
+
+#: assets/admin/admin.js:1
+msgid "Display live visitor count on product pages to create urgency."
+msgstr ""
+
+#: assets/admin/admin.js:1
+msgid "Upsell & Cross-Sell"
+msgstr ""
+
+#: assets/admin/admin.js:1
+msgid "Display upsell and cross-sell products on product pages to increase sales."
+msgstr ""
+
+#: assets/admin/admin.js:1
 msgid "Dashboard"
 msgstr ""
 
@@ -6485,10 +6542,6 @@ msgstr ""
 
 #: assets/admin/admin.js:1
 msgid "Support"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License"
 msgstr ""
 
 #: assets/admin/admin.js:1
@@ -6896,106 +6949,6 @@ msgid "Instant access"
 msgstr ""
 
 #: assets/admin/admin.js:1
-msgid "Ultimate Store Kit License Info"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Activate Your License"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Your license is active. View details and manage your subscription below."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Enter your license key to activate and receive updates & premium support."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Valid"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Invalid"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License Type"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License Expired on"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Support Expired on"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Your License Key"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Are you sure you want to deactivate the license?"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License deactivated successfully."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Failed to deactivate license."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "An error occurred. Please try again."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Deactivating..."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Deactivate License"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License activated successfully!"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License activation failed."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Please provide both license key and email address."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "License Code"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Email Address"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "We will send update news of this product by this email address, don't worry, we hate spam."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Activating..."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Activate License"
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Get Pro License"
-msgstr ""
-
-#: assets/admin/admin.js:1
 msgid "Elementor widgets"
 msgstr ""
 
@@ -7009,6 +6962,10 @@ msgstr ""
 
 #: assets/admin/admin.js:1
 msgid "Current version"
+msgstr ""
+
+#: assets/admin/admin.js:1
+msgid "License"
 msgstr ""
 
 #: assets/admin/admin.js:1
@@ -7072,15 +7029,7 @@ msgid "Join our Facebook community to connect with other users and the team."
 msgstr ""
 
 #: assets/admin/admin.js:1
-msgid "Enable to allow currency switching on your store."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Enable to display product variation swatches on your store."
-msgstr ""
-
-#: assets/admin/admin.js:1
-msgid "Pro feature"
+msgid "Requires Pro license"
 msgstr ""
 
 #: assets/admin/admin.js:1

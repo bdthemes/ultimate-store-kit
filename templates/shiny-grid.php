@@ -61,7 +61,7 @@ class USK_Shiny_Grid_Template
                             <div class="usk-category"><?php echo wp_kses_post($categories); ?></div>
                         <?php endif; ?>
 
-                        <?php if ( isset($settings['show_title']) && 'yes' === $settings['show_title'] ) {
+                        <?php if (isset($settings['show_title']) ? $settings['show_title'] : true) :
                             printf(
                                 '<%1$s class="title"><a href="%2$s" class="usk-title" aria-label="%4$s">%3$s</a></%1$s>',
                                 esc_attr( Utils::get_valid_html_tag( isset( $settings['title_tags'] ) ? $settings['title_tags'] : 'h3' ) ),
@@ -69,8 +69,7 @@ class USK_Shiny_Grid_Template
                                 esc_html( $product->get_title() ),
                                 esc_attr( sprintf( 'View details for %s', $product->get_title() ) )
                             );
-                            ?>  
-                        <?php } ?>
+                        endif; ?>
 
                         <?php if (
                             (isset($settings['show_excerpt']) ? $settings['show_excerpt'] : true)
