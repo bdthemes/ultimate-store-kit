@@ -137,6 +137,7 @@ class QR_Code extends Module_Base {
 
     protected function get_last_order_id() {
         global $wpdb;
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_col(
             "
         SELECT MAX(ID) FROM {$wpdb->prefix}posts

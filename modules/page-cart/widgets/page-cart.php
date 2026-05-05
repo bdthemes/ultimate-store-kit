@@ -156,6 +156,7 @@ class Page_Cart extends Module_Base {
 				'label'    => esc_html__( 'Background', 'ultimate-store-kit' ),
 				'types'    => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .usk-page-cart .woocommerce-cart-form .shop_table th',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude'  => [ 
 					'image'
 				]
@@ -1647,7 +1648,7 @@ class Page_Cart extends Module_Base {
 												);
 											}
 
-											echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $item, $values ); // PHPCS: XSS ok.
+											echo wp_kses_post( apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $item, $values ) ); // PHPCS: XSS ok.
 							
 											?>
 										</td>

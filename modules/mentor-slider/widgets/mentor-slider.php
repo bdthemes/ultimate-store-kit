@@ -116,6 +116,7 @@ class Mentor_Slider extends Module_Base {
             [
                 'name'    => 'image',
                 'label'   => esc_html__('Image Size', 'ultimate-store-kit'),
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['custom'],
                 'default' => 'full',
             ]

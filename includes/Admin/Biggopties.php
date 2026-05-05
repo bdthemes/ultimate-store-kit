@@ -27,10 +27,10 @@ class Biggopties {
 	 * Dismiss Admin API Biggopti.
 	 */
 	public function usk_admin_api_biggopti_dismiss() {
-		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
-		$display_id = (isset($_POST['display_id'])) ? sanitize_text_field($_POST['display_id']) : '';
-		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
-		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
+		$nonce      = (isset($_POST['_wpnonce'])) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
+		$display_id = (isset($_POST['display_id'])) ? sanitize_text_field(wp_unslash($_POST['display_id'])) : '';
+		$id         = (isset($_POST['id'])) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
+		$meta       = (isset($_POST['meta'])) ? sanitize_text_field(wp_unslash($_POST['meta'])) : '';
 
 		if (! wp_verify_nonce($nonce, 'ultimate-store-kit')) {
 			wp_send_json_error();
@@ -92,6 +92,7 @@ class Biggopties {
 		}
 
 		$current_sector = '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if (isset($_GET['page']) && $_GET['page'] === 'ultimate_store_kit_options') {
 			$current_sector = 'plugin_dashboard';
 		}
@@ -99,7 +100,7 @@ class Biggopties {
 		$script_config = [
 			'ajaxurl'				=> admin_url('admin-ajax.php'),
 			'nonce'					=> wp_create_nonce('ultimate-store-kit'),
-			'isPro'             	=> function_exists('usk_license_validation') && usk_license_validation(),
+			'isPro'             	=> function_exists('ultimate_store_kit_license_validation') && ultimate_store_kit_license_validation(),
 			'assetsUrl'         	=> defined('BDTUSK_ASSETS_URL') ? BDTUSK_ASSETS_URL : '',
 			'dismissedDisplayIds'	=> $dismissed_display_ids,
 			'currentSector'      	=> $current_sector,
@@ -212,7 +213,7 @@ class Biggopties {
 	private function is_biggopti_compatible_with_plugin($biggopti) {
 		// Get current plugin info
 		$current_plugin_slug = $this->get_current_plugin_slug();
-		$is_pro_active = function_exists('_is_usk_pro_activated') ? _is_usk_pro_activated() : false;
+		$is_pro_active = function_exists('ultimate_store_kit_is_pro_activated') ? ultimate_store_kit_is_pro_activated() : false;
 		$is_lite_active = $current_plugin_slug === 'ultimate-store-kit';
 		$is_pro_plugin = $current_plugin_slug === 'ultimate-store-kit-pro';
 
@@ -302,7 +303,7 @@ class Biggopties {
 		}
 
 ?>
-		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . $background_style . '"' : ''; ?>>
+		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . esc_attr($background_style) . '"' : ''; ?>>
 
 
 			<?php $title = (isset($biggopti->title) && !empty($biggopti->title)) ? $biggopti->title : ''; ?>
@@ -376,7 +377,7 @@ class Biggopties {
 	 * AJAX: Build and return API biggopties HTML for dynamic injection
 	 */
 	public function ajax_fetch_api_biggopties() {
-		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : '';
+		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
 		if (!wp_verify_nonce($nonce, 'ultimate-store-kit')) {
 			wp_send_json_error(['message' => 'invalid_nonce']);
 		}
@@ -386,7 +387,7 @@ class Biggopties {
 		}
 
 		// Don't show biggopties on plugin/theme install and upload pages
-		$current_url = isset($_POST['current_url']) ? sanitize_text_field($_POST['current_url']) : '';
+		$current_url = isset($_POST['current_url']) ? sanitize_text_field(wp_unslash($_POST['current_url'])) : '';
 
 		if (!empty($current_url)) {
 			$excluded_patterns = [
@@ -443,10 +444,10 @@ class Biggopties {
 	 * Dismiss Biggopti.
 	 */
 	public function dismiss() {
-		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
-		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
-		$time = (isset($_POST['time'])) ? esc_attr($_POST['time']) : '';
-		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
+		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
+		$id    = (isset($_POST['id'])) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
+		$time  = (isset($_POST['time'])) ? sanitize_text_field(wp_unslash($_POST['time'])) : '';
+		$meta  = (isset($_POST['meta'])) ? sanitize_text_field(wp_unslash($_POST['meta'])) : '';
 
 		if (! wp_verify_nonce($nonce, 'ultimate-store-kit')) {
 			wp_send_json_error();

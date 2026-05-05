@@ -199,6 +199,8 @@ class Brand_Carousel extends Module_Base {
 				'name'      => 'thumbnail',
 				'default'   => 'medium',
 				'separator' => 'before',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude'   => ['custom']
 			]
 		);

@@ -604,6 +604,7 @@ trait Group_Control_Query
 
 		switch ($source) {
 			case 'sale':
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 				$args['meta_query'] = [
 					[
 						'key'     => '_sale_price',
@@ -613,6 +614,7 @@ trait Group_Control_Query
 				];
 				break;
 			case 'featured':
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				$args['tax_query'] = [
 					[
 						'taxonomy' => 'product_visibility',
@@ -821,6 +823,7 @@ trait Group_Control_Query
 
 		// Manual Selection
 		if (in_array('manual_selection', $exclude_by) && !empty($settings['posts_exclude_ids'])) {
+			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 			$args['post__not_in'] = $settings['posts_exclude_ids'];
 		}
 
@@ -919,7 +922,8 @@ trait Group_Control_Query
 		}
 		
 		$page             = max(1, get_query_var('paged'), get_query_var('page'));
-		$page             = absint(empty($_GET['product-page']) ? $page : $_GET['product-page']);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page             = absint(empty($_GET['product-page']) ? $page : wp_unslash($_GET['product-page']));
 		$paged            = absint($page);
 
 		$args = [
@@ -943,10 +947,12 @@ trait Group_Control_Query
 		if (!empty($settings['product_orderby'])) {
 			switch ($settings['product_orderby']) {
 				case 'price':
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 					$args['meta_key'] = '_price';
 					$args['orderby'] = 'meta_value_num';
 					break;
 				case 'sales':
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 					$args['meta_key'] = 'total_sales';
 					$args['orderby'] = 'meta_value_num';
 					break;

@@ -269,6 +269,7 @@ class Product_Category extends Module_Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'      => 'image_thumbnail',
+				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				'exclude'   => ['custom',],
 				'default'   => 'large',
 				'condition' => [
@@ -1050,6 +1051,7 @@ class Product_Category extends Module_Base {
 					$args['include'] = $settings['cats_include_by_id'];
 				}
 				if (isset($settings['cats_exclude_by_id']) && !empty($settings['cats_exclude_by_id'])) {
+					// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 					$args['exclude'] = $settings['cats_exclude_by_id'];
 				}
 				break;
@@ -1062,7 +1064,7 @@ class Product_Category extends Module_Base {
 				$args['parent'] = 0;
 				break;
 		}
-		$categories = get_terms('product_cat', $args);
+		$categories = get_terms(array_merge(['taxonomy' => 'product_cat'], $args));
 		return $categories;
 	}
 	public function render_loop_item() {

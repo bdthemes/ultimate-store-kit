@@ -802,6 +802,7 @@ class Page_Order extends Module_Base
                 'name' => 'order_again_button_background',
                 'label' => __('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'fields_options' => [
                     'background' => [
@@ -903,6 +904,7 @@ class Page_Order extends Module_Base
             [
                 'name' => 'order_again_button_hover_background',
                 'label' => __('Background', 'ultimate-store-kit'),
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .usk-page-order .woocommerce-order-details .order-again .button:hover',
             ]
@@ -1034,11 +1036,13 @@ class Page_Order extends Module_Base
     {
         global $wpdb;
         $statuses = array_keys(wc_get_order_statuses());
-        $statuses = implode("','", $statuses);
-        $results = $wpdb->get_col("
-        SELECT MAX(ID) FROM {$wpdb->prefix}posts
-        WHERE post_type LIKE 'shop_order'
-        AND post_status IN ('$statuses')");
+        $placeholders = implode(',', array_fill(0, count($statuses), '%s'));
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $results = $wpdb->get_col($wpdb->prepare("
+            SELECT MAX(ID) FROM {$wpdb->prefix}posts
+            WHERE post_type = 'shop_order'
+            AND post_status IN ($placeholders)", $statuses));
+        // phpcs:enable
         return reset($results);
     }
 
@@ -1058,7 +1062,7 @@ class Page_Order extends Module_Base
                     echo esc_html__('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'ultimate-store-kit');
                     ?>
                 <?php else:
-                    echo wp_kses_post(apply_filters('woocommerce_thankyou_order_received_text', esc_html__($order_received_text, 'ultimate-store-kit'), $order));
+                    echo wp_kses_post(apply_filters('woocommerce_thankyou_order_received_text', $order_received_text, $order));
                 endif; ?>
             </p>
         </div>

@@ -43,7 +43,7 @@ class Dynamic_Select_Input_Module {
 	 * get Ajax Data
 	 */
 	public function getSelectInputData() {
-		$nonce = isset($_POST['security']) ? sanitize_text_field($_POST['security']) : '';
+		$nonce = isset($_POST['security']) ? sanitize_text_field(wp_unslash($_POST['security'])) : '';
 
 		try {
 			if (!wp_verify_nonce($nonce, 'usk_dynamic_select')) {
@@ -54,7 +54,7 @@ class Dynamic_Select_Input_Module {
 				throw new Exception('Unauthorized request');
 			}
 
-			$query = isset($_POST['query']) ? sanitize_text_field($_POST['query']) : '';
+			$query = isset($_POST['query']) ? sanitize_text_field(wp_unslash($_POST['query'])) : '';
 
 			switch ($query) {
 				case 'posts':
@@ -102,7 +102,8 @@ class Dynamic_Select_Input_Module {
 	 * @return string
 	 */
 	protected function getPostType() {
-		return isset($_POST['post_type']) ? sanitize_text_field($_POST['post_type']) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		return isset($_POST['post_type']) ? sanitize_text_field(wp_unslash($_POST['post_type'])) : '';
 	}
 
 	/**
@@ -116,7 +117,8 @@ class Dynamic_Select_Input_Module {
 	 * @return string
 	 */
 	protected function getSearchQuery() {
-		return isset($_POST['search_text']) ? sanitize_text_field($_POST['search_text']) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		return isset($_POST['search_text']) ? sanitize_text_field(wp_unslash($_POST['search_text'])) : '';
 	}
 
 	/**
@@ -124,7 +126,8 @@ class Dynamic_Select_Input_Module {
 	 */
 	protected function getselecedIds() {
 
-		return isset($_POST['ids']) ? sanitize_text_field($_POST['ids']) : [];
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		return isset($_POST['ids']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['ids'])) : [];
 	}
 
 

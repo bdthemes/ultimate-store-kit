@@ -503,6 +503,7 @@ class Image_Hotspot extends Module_Base {
                 'name' => 'hotspot_background',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'image',
                 ],
@@ -616,6 +617,7 @@ class Image_Hotspot extends Module_Base {
                 'name' => 'hotspot_background_hover',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'image',
                 ],
@@ -677,6 +679,7 @@ class Image_Hotspot extends Module_Base {
                 'name' => 'hotspot_background_active',
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'types' => ['classic', 'gradient'],
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => [
                     'image',
                 ],
@@ -2675,7 +2678,7 @@ class Image_Hotspot extends Module_Base {
                             }
 
         ?>
-                <div <?php echo $this->get_render_attribute_string('marker'); ?>>
+                <div <?php $this->print_render_attribute_string('marker'); ?>>
                     <div class="usk-thumbs-box">
                         <?php if ($settings['hotspot_type'] == 'image') : ?>
                             <?php $this->render_thumbs_image(); ?>

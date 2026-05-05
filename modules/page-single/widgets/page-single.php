@@ -361,6 +361,7 @@ class Page_Single extends Module_Base {
                 'types' => [
                     'classic', 'gradient'
                 ],
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'fields_options' => [
                     'background' => [
@@ -491,6 +492,7 @@ class Page_Single extends Module_Base {
             [
                 'name' => 'add_to_cart_hover_background',
                 'label' => __('Background', 'ultimate-store-kit'),
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .woocommerce div.product form.cart .button:hover, {{WRAPPER}} .elementor-button:focus',
             ]
@@ -551,6 +553,7 @@ class Page_Single extends Module_Base {
             Group_Control_Background::get_type(),
             [
                 'name'     => 'qty_fields_background',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'  => ['image'],
                 'selector' => '{{WRAPPER}} .quantity input[type=number]',
             ]
@@ -1132,6 +1135,7 @@ class Page_Single extends Module_Base {
                 'name'      => 'variation_background',
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .usk-page-single .variations select, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'   => ['image'],
             ]
         );
@@ -1261,6 +1265,7 @@ class Page_Single extends Module_Base {
                 'name'      => 'variation_background_hover',
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .usk-page-single .variations select:hover, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item:hover',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'   => ['image'],
             ]
         );
@@ -1310,6 +1315,7 @@ class Page_Single extends Module_Base {
                 'name'      => 'variation_background_active',
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .usk-page-single .variations select:focus, {{WRAPPER}} .usk-page-single .variations .usk-variation-swatches__item.selected',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'   => ['image'],
             ]
         );
@@ -1372,6 +1378,7 @@ class Page_Single extends Module_Base {
                 'name'      => 'quantity_plus_minus_background',
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .usk-page-single .quantity button',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'   => ['image'],
             ]
         );
@@ -1446,6 +1453,7 @@ class Page_Single extends Module_Base {
                 'name'      => 'quantity_plus_minus_hover_background',
                 'types'     => ['classic', 'gradient'],
                 'selector'  => '{{WRAPPER}} .usk-page-single .quantity button:hover',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude'   => ['image'],
             ]
         );

@@ -39,7 +39,7 @@ if (! defined('BDTUSK_NAME')) {
 	define('BDTUSK_NAME', 'Ultimate Store Kit');
 }
 
-if (_is_usk_pro_activated()) {
+if (ultimate_store_kit_is_pro_activated()) {
 	if (! defined('BDTUSK_PC')) {
 		define('BDTUSK_PC', '');
 	} // pro control badge
@@ -382,7 +382,8 @@ function ultimate_store_kit_post_pagination($wp_query) {
 }
 function ultimate_store_kit_post_pagination__new($wp_query) {
 	$page  = max(1, get_query_var('paged'), get_query_var('page'));
-	$page  = absint(empty($_GET['product-page']) ? $page : $_GET['product-page']);
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$page  = absint(empty($_GET['product-page']) ? $page : wp_unslash($_GET['product-page']));
 	$paged = absint($page);
 
 	/** Stop execution if there's only 1 page */
@@ -694,7 +695,7 @@ function ultimate_store_kit_get_only_parent_cats($taxonomy = 'category') {
 
 	$parent_categories = ['none' => __('None', 'ultimate-store-kit')];
 	$args              = ['parent' => 0];
-	$parent_cats       = get_terms($taxonomy, $args);
+	$parent_cats       = get_terms(array_merge(['taxonomy' => $taxonomy], $args));
 
 	foreach ($parent_cats as $parent_cat) {
 		// Ensure $parent_cat is an object, not an array
@@ -1026,7 +1027,7 @@ function ultimate_store_kit_custom_excerpt($limit = 25, $strip_shortcode = false
 	return wpautop($output);
 }
 
-function usk_get_order_options() {
+function ultimate_store_kit_get_order_options() {
 	$options = [
 		'title'              => __('Title', 'ultimate-store-kit'),
 		'ID'                 => __('ID', 'ultimate-store-kit'),
@@ -1038,7 +1039,7 @@ function usk_get_order_options() {
 		'_wc_average_rating' => __('Top Rated', 'ultimate-store-kit'),
 	];
 
-	return apply_filters('usk_order_options', $options);
+	return apply_filters('ultimate_store_kit_order_options', $options);
 }
 
 //wishlist
@@ -1047,7 +1048,8 @@ function ultimate_store_kit_get_wishlist($user_id = 0) {
 	$_wishlist     = [];
 
 	if (isset($_COOKIE[$_wishlist_key])) {
-		$cookie_data  = stripslashes($_COOKIE[$_wishlist_key]);
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$cookie_data  = wp_unslash($_COOKIE[$_wishlist_key]);
 		$decoded_data = json_decode($cookie_data, true);
 
 		if (json_last_error() === JSON_ERROR_NONE && is_array($decoded_data)) {
@@ -1058,7 +1060,7 @@ function ultimate_store_kit_get_wishlist($user_id = 0) {
 	return apply_filters('ultimate_store_kit_wishlist', array_unique($_wishlist));
 }
 
-function usk_get_taxonomies() {
+function ultimate_store_kit_get_taxonomies() {
 	$taxonomy_list = get_object_taxonomies('product');
 	$taxonomies    = [
 		'search'  => 'Search',
@@ -1103,7 +1105,9 @@ function ultimate_store_kit_hide_on_class($selectors) {
 }
 
 function ultimate_store_kit_wc_product_quick_view_content($product_id) {
-	wp_verify_nonce('ajax-usk-quick-view-nonce', 'usk-quick-view-modal-sc');
+	if (!check_ajax_referer('usk-quick-view-modal-sc', 'nonce', false)) {
+		return;
+	}
 	global $woocommerce;
 	global $post;
 
@@ -1184,7 +1188,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 				function initializeWooCommerce() {
 					// Initialize WooCommerce add to cart functionality
 					var wc_add_to_cart_variation_params = {
-						"ajax_url": "<?php echo admin_url('admin-ajax.php'); ?>",
+						"ajax_url": "<?php echo esc_url(admin_url('admin-ajax.php')); ?>",
 						"i18n_view_cart": "<?php echo esc_js(__('View cart', 'ultimate-store-kit')); ?>",
 						"cart_url": "<?php echo esc_url(wc_get_cart_url()); ?>",
 						"is_cart": "<?php echo is_cart() ? '1' : '0'; ?>",
@@ -1275,10 +1279,10 @@ function ultimate_store_kit_quick_view_product_images() {
 /**
  * License Validation
  */
-if (! function_exists('usk_license_validation')) {
-	function usk_license_validation() {
+if (! function_exists('ultimate_store_kit_license_validation')) {
+	function ultimate_store_kit_license_validation() {
 
-		if (function_exists('_is_usk_pro_activated') && false === _is_usk_pro_activated()) {
+		if (function_exists('ultimate_store_kit_is_pro_activated') && false === ultimate_store_kit_is_pro_activated()) {
 			return false;
 		}
 
@@ -1295,16 +1299,15 @@ if (! function_exists('usk_license_validation')) {
 
 
 
-function usk_get_compare_products($user_id = 0) {
+function ultimate_store_kit_get_compare_products($user_id = 0) {
 	$_compare_products_key = '_ultimate_store_kit_compare_products';
 	$_compare_products     = [];
 	if ($user_id != 0) {
 		$_compare_products = get_user_meta($user_id, $_compare_products_key, true) ?: [];
 	} elseif (isset($_COOKIE[$_compare_products_key])) {
-		//$_compare_products = unserialize(stripslashes($_COOKIE[sanitize_text_field($_compare_products_key)]));
-
-		$cookie_value      = sanitize_text_field($_COOKIE[$_compare_products_key]);
-		$_compare_products = json_decode(stripslashes($cookie_value), true);
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$cookie_value      = wp_unslash($_COOKIE[$_compare_products_key]);
+		$_compare_products = json_decode($cookie_value, true);
 
 		// Check if JSON decoding failed
 		if (! is_array($_compare_products)) {
@@ -1315,10 +1318,10 @@ function usk_get_compare_products($user_id = 0) {
 	return apply_filters('ultimate_store_kit_compare_products', array_unique($_compare_products));
 }
 
-function usk_get_compare_products_count() {
+function ultimate_store_kit_get_compare_products_count() {
 	$count    = 0;
 	$user_id  = get_current_user_id();
-	$products = usk_get_compare_products($user_id);
+	$products = ultimate_store_kit_get_compare_products($user_id);
 	if (is_array($products)) {
 		$count = count($products);
 	}
@@ -1356,14 +1359,14 @@ if (! function_exists('ultimate_store_kit_is_compare_product_page')) {
  *
  * @return bool
  */
-function usk_has_variation_swatches_support() {
+function ultimate_store_kit_has_variation_swatches_support() {
 	return class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches');
 }
 
 /**
  * Helper function to load variation swatches scripts and styles
  */
-function usk_load_variation_swatches_assets() {
+function ultimate_store_kit_load_variation_swatches_assets() {
 	// Always load the grid variations script for variation support
 	wp_register_script('usk-grid-variations', BDTUSK_ASSETS_URL . 'js/modules/grid-variations.js', ['jquery'], BDTUSK_VER, true);
 	wp_localize_script('usk-grid-variations', 'usk_vars', array(
@@ -1371,10 +1374,12 @@ function usk_load_variation_swatches_assets() {
 		'nonce' => wp_create_nonce('usk_variations')
 	));
 }
-add_action('wp_enqueue_scripts', 'usk_load_variation_swatches_assets', 20);
+add_action('wp_enqueue_scripts', 'ultimate_store_kit_load_variation_swatches_assets', 20);
 
 // Hook into AJAX variation selection to update product image
-function usk_ajax_variation_image_update() {
+function ultimate_store_kit_ajax_variation_image_update() {
+	check_ajax_referer('usk_variations', 'nonce');
+
 	if (!isset($_POST['variation_id']) || !isset($_POST['product_id'])) {
 		wp_send_json_error('Missing required parameters');
 		return;
@@ -1405,26 +1410,26 @@ function usk_ajax_variation_image_update() {
 
 	wp_send_json_success(array('image_url' => $image_url));
 }
-add_action('wp_ajax_usk_get_variation_image', 'usk_ajax_variation_image_update');
-add_action('wp_ajax_nopriv_usk_get_variation_image', 'usk_ajax_variation_image_update');
+add_action('wp_ajax_ultimate_store_kit_get_variation_image', 'ultimate_store_kit_ajax_variation_image_update');
+add_action('wp_ajax_nopriv_ultimate_store_kit_get_variation_image', 'ultimate_store_kit_ajax_variation_image_update');
 
 // Start: Add to cart quantity buttons conversion
-if (! function_exists('usk_display_quantity_minus')) {
-	function usk_display_quantity_minus() {
+if (! function_exists('ultimate_store_kit_display_quantity_minus')) {
+	function ultimate_store_kit_display_quantity_minus() {
 		if (! is_product()) return;
 		echo '<button type="button" class="bdt-add-to-cart-qty-minus" ><i class="usk-icon-minus3"></i></button>';
 	}
 }
 
-if (! function_exists('usk_display_quantity_plus')) {
-	function usk_display_quantity_plus() {
+if (! function_exists('ultimate_store_kit_display_quantity_plus')) {
+	function ultimate_store_kit_display_quantity_plus() {
 		if (! is_product()) return;
 		echo '<button type="button" class="bdt-add-to-cart-qty-plus" ><i class="usk-icon-plus3"></i></button>';
 	}
 }
 
-if (! function_exists('usk_add_cart_quantity_plus_minus')) {
-	function usk_add_cart_quantity_plus_minus() {
+if (! function_exists('ultimate_store_kit_add_cart_quantity_plus_minus')) {
+	function ultimate_store_kit_add_cart_quantity_plus_minus() {
 
 		echo '<style>
 		input[type="number"]::-webkit-outer-spin-button,
@@ -1458,8 +1463,8 @@ if (! function_exists('usk_add_cart_quantity_plus_minus')) {
 	}
 }
 
-if (! function_exists('usk_setup_quantity_buttons')) {
-	function usk_setup_quantity_buttons() {
+if (! function_exists('ultimate_store_kit_setup_quantity_buttons')) {
+	function ultimate_store_kit_setup_quantity_buttons() {
 		if (function_exists('is_product')) {
 			// Remove the default version
 			remove_all_actions('woocommerce_before_quantity_input_field');
@@ -1467,9 +1472,9 @@ if (! function_exists('usk_setup_quantity_buttons')) {
 			remove_all_actions('woocommerce_before_single_product');
 
 			// Add our version
-			add_action('woocommerce_before_quantity_input_field', 'usk_display_quantity_minus');
-			add_action('woocommerce_after_quantity_input_field', 'usk_display_quantity_plus');
-			add_action('woocommerce_after_single_product', 'usk_add_cart_quantity_plus_minus');
+			add_action('woocommerce_before_quantity_input_field', 'ultimate_store_kit_display_quantity_minus');
+			add_action('woocommerce_after_quantity_input_field', 'ultimate_store_kit_display_quantity_plus');
+			add_action('woocommerce_after_single_product', 'ultimate_store_kit_add_cart_quantity_plus_minus');
 		}
 	}
 }

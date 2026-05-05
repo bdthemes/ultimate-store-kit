@@ -1187,6 +1187,7 @@ class Featured_Box extends Module_Base {
             Group_Control_Background::get_type(),
             [
                 'name' => 'badge_background',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge',
             ]
@@ -1369,6 +1370,7 @@ class Featured_Box extends Module_Base {
             Group_Control_Background::get_type(),
             [
                 'name' => 'badge_hover_background',
+                // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .usk-featured-box .usk-badge:hover',
             ]
