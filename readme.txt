@@ -225,6 +225,11 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 3.0.X [XXth April 2026] =
+
+Fixed: Added translation support for hard-coded admin js labels using wp-i18n and wp_set_script_translations()
+Fixed: Prevented template builder status switcher conflicts with Element Pack Pro by properly scoping modal switcher IDs and handlers
+
 = 3.0.1 [28th April 2026] =
 
 * Fixed: Template builder modal strings are now properly translatable

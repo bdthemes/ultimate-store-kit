@@ -81,8 +81,8 @@
 					<label for="fname"><?php esc_html_e( 'Name your template', 'ultimate-store-kit' ); ?></label>
 					<input type="text" name="template_name" id="template_name" placeholder="<?php echo esc_attr__( 'Enter template name', 'ultimate-store-kit' ); ?>">
 					<div class="usk-template-status-switcher-wrap">
-						<input type="hidden" name="template_status" id="template_status" value="1">
-						<div class="usk-template-status-switcher usk-active" id="template_status_switcher" role="switch" aria-checked="true" tabindex="0">
+						<input type="hidden" name="template_status" id="usk_template_status" value="1">
+						<div class="usk-template-status-switcher usk-active" id="usk_template_status_switcher" role="switch" aria-checked="true" tabindex="0">
 							<span class="usk-switcher-slider"></span>
 						</div>
 						<span class="usk-switcher-status-text"><?php esc_html_e( 'Active', 'ultimate-store-kit' ); ?></span>
