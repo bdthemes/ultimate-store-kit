@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 7.0
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 4.0.3
+Elementor tested up to: 4.0.6
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -225,7 +225,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 3.0.X [XXth April 2026] =
+= 3.0.2 [6th May 2026] =
 
 Fixed: Added translation support for hard-coded admin js labels using wp-i18n and wp_set_script_translations()
 Fixed: Prevented template builder status switcher conflicts with Element Pack Pro by properly scoping modal switcher IDs and handlers
