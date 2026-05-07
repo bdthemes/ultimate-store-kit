@@ -30,8 +30,8 @@ class Page_Cart extends Module_Base {
 	}
 
 	// public function show_in_panel() {
-    //     return get_post_type() === 'usk-template-builder' || get_post_type() === 'elementor_library' || get_post_type() === 'product';
-    // }
+	//     return get_post_type() !== 'page';
+	// }
 
 	public function get_style_depends() {
 		if ( $this->usk_is_edit_mode() ) {
