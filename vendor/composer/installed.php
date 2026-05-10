@@ -3,7 +3,7 @@
         'name' => 'bdthemes/ultimate-store-kit',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '32a4b6c27a2eaddf8f7338f1d301a4f9751aad64',
+        'reference' => 'b2ea6bb02540aa8203ddb8a18184da25797590b0',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'bdthemes/ultimate-store-kit' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '32a4b6c27a2eaddf8f7338f1d301a4f9751aad64',
+            'reference' => 'b2ea6bb02540aa8203ddb8a18184da25797590b0',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
