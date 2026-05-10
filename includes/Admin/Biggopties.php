@@ -74,7 +74,6 @@ class Biggopties {
 	 * Enqueue admin scripts
 	 */
 	public function enqueue_admin_scripts() {
-		wp_enqueue_style('usk-admin-biggopti', BDTUSK_ASSETS_URL . 'admin/others/css/admin-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('bdt-admin-api-biggopti', BDTUSK_ASSETS_URL . 'admin/others/css/admin-api-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('bdt-product-feed', BDTUSK_ASSETS_URL . 'admin/others/css/product-feed.css', [], BDTUSK_VER);
 		wp_enqueue_script('usk-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/biggopti.js', ['jquery'], BDTUSK_VER, true);
