@@ -109,7 +109,7 @@ class Image_Hotspot extends Module_Base {
             [
                 'label'   => __('Image', 'ultimate-store-kit'),
                 'type'    => Controls_Manager::MEDIA,
-                'dynamic' => [ 'active' => true ],
+                'dynamic' => ['active' => true],
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
@@ -2413,6 +2413,11 @@ class Image_Hotspot extends Module_Base {
         $gallery_thumbs = $product->get_gallery_image_ids();
         $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $thumbnail_size);
 
+        // if product image is empty, use placeholder
+        if (empty($product_image)) {
+            $product_image = wc_placeholder_img_src('full');
+        }
+
         if ($gallery_thumbs) {
             foreach ($gallery_thumbs as $key => $gallery_thumb) {
                 if ($key == 0) :
@@ -2549,7 +2554,7 @@ class Image_Hotspot extends Module_Base {
                     <div class="usk-content-inner">
                         <?php if ('yes' == $settings['show_category']) : ?>
                             <div class="usk-category">
-                                <?php echo wp_kses_post( wc_get_product_category_list( $product->get_id(), ' ' ) ); ?>
+                                <?php echo wp_kses_post(wc_get_product_category_list($product->get_id(), ' ')); ?>
                             </div>
                         <?php endif; ?>
                         <?php if ('yes' == $settings['show_title']) : ?>
@@ -2609,6 +2614,11 @@ class Image_Hotspot extends Module_Base {
                     global $product;
                     $settings = $this->get_settings_for_display();
                     $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['thumbnail_size']);
+
+                    // if product image is empty, use placeholder
+                    if (empty($product_image)) {
+                        $product_image = wc_placeholder_img_src('full');
+                    }
         ?>
         <div class="usk-image-wrap">
             <img class="usk-img" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
