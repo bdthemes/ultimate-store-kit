@@ -232,7 +232,11 @@ const WidgetsPage = ({
 			<div className="flex flex-wrap items-center gap-1.5">
 				<button
 					type="button"
-					className={`${btnSm} !rounded-lg !bg-uks-brand !text-white hover:!bg-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white border-none`}
+					className={`${btnSm} !rounded-lg ${
+						activeCount > 0
+							? '!bg-uks-brand !text-white hover:!bg-uks-brand-dark border-none'
+							: '!border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark'
+					} focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
 					onClick={handleActivateAll}
 				>
 					<CheckIcon className="h-4 w-4" />
@@ -240,7 +244,11 @@ const WidgetsPage = ({
 				</button>
 				<button
 					type="button"
-					className={`${btnSm} !rounded-lg !border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
+					className={`${btnSm} !rounded-lg ${
+						activeCount === 0
+							? '!bg-uks-brand !text-white hover:!bg-uks-brand-dark border-none'
+							: '!border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark'
+					} focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
 					onClick={handleDeactivateAll}
 				>
 					<CloseIcon className="h-4 w-4" />
