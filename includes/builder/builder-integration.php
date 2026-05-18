@@ -129,20 +129,10 @@ class Builder_Integration {
 			$template_url = wc_get_checkout_url();
 		}
 
-		elseif ($template_slug === 'myaccount' || strpos($template_slug, 'myaccount-') === 0) {
+		elseif ($template_slug === 'myaccount'
+			|| $template_slug === 'login'
+			|| strpos($template_slug, 'myaccount-') === 0) {
 			$template_url = get_permalink(wc_get_page_id('myaccount'));
-		}
-
-		elseif ($template_slug === 'login') {
-			$template_url = get_permalink(wc_get_page_id('myaccount'));
-		}
-
-		elseif ($template_slug === 'register') {
-			$template_url = add_query_arg(
-				'action',
-				'register',
-				get_permalink(wc_get_page_id('myaccount'))
-			);
 		}
 
 		elseif ($template_slug === 'order-received') {
@@ -352,24 +342,16 @@ class Builder_Integration {
 
 			$endpoint_match = array_intersect_key($wp->query_vars, $query_vars);
 
-			// Logged-out visitors landing on /my-account/ (no endpoint) should
-			// see the Login or Register template instead of the Dashboard one.
-			// WC renders both forms on the same URL, so intent is decided by
-			// the `action` query arg (matches WC's own form-login.php behaviour)
-			// and can be overridden via filter.
+			// Logged-out visitors landing on /my-account/ (no endpoint) see the
+			// single Login & Register template, which is responsible for both
+			// authentication flows. WooCommerce's own form-login.php renders
+			// the login and registration forms on the same URL, so one
+			// template covers both intents.
 			if ( ! is_user_logged_in() && empty($endpoint_match) ) {
-				$auth_intent = ( isset($_GET['action']) && 'register' === $_GET['action'] )
-					? 'register'
-					: 'login';
-
-				$auth_intent = apply_filters('ultimate_store_kit/account/auth_intent', $auth_intent);
-
-				if ( in_array($auth_intent, ['login', 'register'], true)
-					&& ( $custom_template = $this->get_template_id($auth_intent, 'account') ) ) {
-
+				if ( $custom_template = $this->get_template_id('login', 'account') ) {
 					$this->current_template_id = $custom_template;
 
-					if ( $newTemplate = $this->getTemplatePath("woocommerce/{$auth_intent}") ) {
+					if ( $newTemplate = $this->getTemplatePath('woocommerce/login') ) {
 						return $newTemplate;
 					}
 

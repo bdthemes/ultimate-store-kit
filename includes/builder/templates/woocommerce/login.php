@@ -1,10 +1,13 @@
 <?php
 /**
- * Login page wrapper for the Ultimate Store Kit builder.
+ * Login & Register page wrapper for the Ultimate Store Kit builder.
  *
  * Loaded by Builder_Integration::setFrontendTemplate() when a logged-out
  * visitor lands on the My Account page and the site has an enabled
- * `account|login` template.
+ * `account|login` template. A single template handles both authentication
+ * flows because WooCommerce's own form-login.php renders the login and
+ * registration forms on the same URL — there is no separate /register/
+ * endpoint in WooCommerce.
  *
  * @package UltimateStoreKit
  * @version 1.0.0

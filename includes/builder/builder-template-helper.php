@@ -31,8 +31,7 @@ class Builder_Template_Helper {
 		];
 
 		$my_account = [ 
-			'login'        => 'Login',
-			'register'     => 'Register',
+			'login'        => 'Login & Register',
 			'myaccount'    => 'Dashboard',
 			'orders'       => 'Orders',
 			'downloads'    => 'Downloads',
