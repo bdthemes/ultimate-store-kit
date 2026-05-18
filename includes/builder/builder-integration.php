@@ -133,6 +133,18 @@ class Builder_Integration {
 			$template_url = get_permalink(wc_get_page_id('myaccount'));
 		}
 
+		elseif ($template_slug === 'login') {
+			$template_url = get_permalink(wc_get_page_id('myaccount'));
+		}
+
+		elseif ($template_slug === 'register') {
+			$template_url = add_query_arg(
+				'action',
+				'register',
+				get_permalink(wc_get_page_id('myaccount'))
+			);
+		}
+
 		elseif ($template_slug === 'order-received') {
 			$orders = wc_get_orders(['limit' => 1]);
 			if (!empty($orders)) {
@@ -338,7 +350,34 @@ class Builder_Integration {
 			 */
 			$query_vars['wishlist'] = 'wishlist';
 
-			if ($endpoint = array_intersect_key($wp->query_vars, $query_vars)) {
+			$endpoint_match = array_intersect_key($wp->query_vars, $query_vars);
+
+			// Logged-out visitors landing on /my-account/ (no endpoint) should
+			// see the Login or Register template instead of the Dashboard one.
+			// WC renders both forms on the same URL, so intent is decided by
+			// the `action` query arg (matches WC's own form-login.php behaviour)
+			// and can be overridden via filter.
+			if ( ! is_user_logged_in() && empty($endpoint_match) ) {
+				$auth_intent = ( isset($_GET['action']) && 'register' === $_GET['action'] )
+					? 'register'
+					: 'login';
+
+				$auth_intent = apply_filters('ultimate_store_kit/account/auth_intent', $auth_intent);
+
+				if ( in_array($auth_intent, ['login', 'register'], true)
+					&& ( $custom_template = $this->get_template_id($auth_intent, 'account') ) ) {
+
+					$this->current_template_id = $custom_template;
+
+					if ( $newTemplate = $this->getTemplatePath("woocommerce/{$auth_intent}") ) {
+						return $newTemplate;
+					}
+
+					return $this->getTemplatePath('woocommerce/my-account', $template);
+				}
+			}
+
+			if ($endpoint = $endpoint_match) {
 				$endpoint = array_key_first($endpoint);
 
 				if ($endpoint && $custom_template = $this->get_template_id($endpoint, 'account')) {
