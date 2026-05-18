@@ -129,7 +129,9 @@ class Builder_Integration {
 			$template_url = wc_get_checkout_url();
 		}
 
-		elseif ($template_slug === 'myaccount' || strpos($template_slug, 'myaccount-') === 0) {
+		elseif ($template_slug === 'myaccount'
+			|| $template_slug === 'login'
+			|| strpos($template_slug, 'myaccount-') === 0) {
 			$template_url = get_permalink(wc_get_page_id('myaccount'));
 		}
 
@@ -338,7 +340,26 @@ class Builder_Integration {
 			 */
 			$query_vars['wishlist'] = 'wishlist';
 
-			if ($endpoint = array_intersect_key($wp->query_vars, $query_vars)) {
+			$endpoint_match = array_intersect_key($wp->query_vars, $query_vars);
+
+			// Logged-out visitors landing on /my-account/ (no endpoint) see the
+			// single Login & Register template, which is responsible for both
+			// authentication flows. WooCommerce's own form-login.php renders
+			// the login and registration forms on the same URL, so one
+			// template covers both intents.
+			if ( ! is_user_logged_in() && empty($endpoint_match) ) {
+				if ( $custom_template = $this->get_template_id('login', 'account') ) {
+					$this->current_template_id = $custom_template;
+
+					if ( $newTemplate = $this->getTemplatePath('woocommerce/login') ) {
+						return $newTemplate;
+					}
+
+					return $this->getTemplatePath('woocommerce/my-account', $template);
+				}
+			}
+
+			if ($endpoint = $endpoint_match) {
 				$endpoint = array_key_first($endpoint);
 
 				if ($endpoint && $custom_template = $this->get_template_id($endpoint, 'account')) {

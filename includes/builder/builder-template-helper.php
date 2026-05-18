@@ -31,6 +31,7 @@ class Builder_Template_Helper {
 		];
 
 		$my_account = [ 
+			'login'        => 'Login & Register',
 			'myaccount'    => 'Dashboard',
 			'orders'       => 'Orders',
 			'downloads'    => 'Downloads',
@@ -40,10 +41,25 @@ class Builder_Template_Helper {
 			'logout'       => 'Customer Logout',
 		];
 
+		// Endpoints that belong to the order/checkout flow rather than the
+		// authenticated account area. Everything else from WC()->query is treated
+		// as an account screen so the dropdown grouping matches the routing in
+		// Builder_Integration::setFrontendTemplate(), which looks endpoint
+		// templates up under the `account` post-type group.
+		$order_flow_endpoints = apply_filters(
+			'ultimate_store_kit_builder_order_flow_endpoints',
+			[ 'order-pay', 'order-received' ]
+		);
+
 		if ( $wcItems = WC()->query->get_query_vars() ) {
-			array_walk( $wcItems, function ($item, $key) use (&$shop_item) {
-				$shop_item[ $key ] = ucwords( str_replace( '-', ' ', $key ) );
-			} );
+			foreach ( $wcItems as $key => $item ) {
+				$label = ucwords( str_replace( '-', ' ', $key ) );
+				if ( in_array( $key, $order_flow_endpoints, true ) ) {
+					$shop_item[ $key ] = $label;
+				} else {
+					$my_account[ $key ] = $label;
+				}
+			}
 		}
 
 		$product = [ 
