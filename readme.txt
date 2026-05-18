@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 7.0
@@ -224,6 +224,15 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 3.0.3 [18th May 2026] =
+
+* Added: Login page template added to the template builder for WooCommerce
+* Improved: Biggopti dashboard UI and CSS refined for a cleaner experience
+* Fixed: Template builder widgets not showing in the Elementor editor panel (page cart, page checkout, page order, page single)
+* Fixed: Activate and deactivate button issue resolved in the widgets page
+* Fixed: Heaven slider, image hotspot, mentor slider and showcase slider widget feedback issues
+* Fixed: Florence grid, glossy grid and shiny grid template feedback issues
 
 = 3.0.2 [6th May 2026] =
 
