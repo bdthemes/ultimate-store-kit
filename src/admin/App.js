@@ -282,7 +282,7 @@ const App = () => {
 				onToggleSidebar={handleToggleSidebar}
 			/>
 			<div className="bg-slate-50">
-			<div className={`${bodyRow} flex-col lg:flex-row`}>
+			<div className={`${bodyRow}`}>
 				<Sidebar
 					activePage={activePage}
 					onNavigate={setActivePage}
