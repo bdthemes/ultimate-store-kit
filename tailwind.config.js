@@ -76,5 +76,12 @@ module.exports = {
 		'w-[min(1200px,100vw)]',
 		'max-w-[min(1200px,100vw)]',
 		'z-[159000]',
+		'sm:grid-cols-2',
+		'sm:grid-cols-3',
+		'lg:grid-cols-2',
+		'lg:grid-cols-3',
+		'xl:grid-cols-2',
+		'xl:grid-cols-4',
+		'2xl:grid-cols-4',
 	],
 };
