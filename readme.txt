@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 7.0
@@ -224,6 +224,11 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 3.0.4 [20th May 2026] =
+
+* Improved: Made compatible with Ultimate Store Kit Pro plugin
+* Fixed: Admin dashboard layout and responsive grid display when running free and Pro plugins together
 
 = 3.0.3 [18th May 2026] =
 
