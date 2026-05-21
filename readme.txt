@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.4
+Stable tag: 3.0.5
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 7.0
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 4.0.6
+Elementor tested up to: 4.0.9
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -224,6 +224,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 3.0.5 [21st May 2026] =
+
+* Updated: Made compatible with WordPress version 7.0
 
 = 3.0.4 [20th May 2026] =
 
