@@ -16,8 +16,7 @@ if (!defined('ABSPATH')) {
 
 // Exit if accessed directly
 
-class Glossy_Grid extends Module_Base
-{
+class Glossy_Grid extends Module_Base {
     use Global_Widget_Controls;
     use Global_Widget_Template;
     use Group_Control_Query;
@@ -27,33 +26,27 @@ class Glossy_Grid extends Module_Base
      * @var \WP_Query
      */
     private $_query = null;
-    public function get_name()
-    {
+    public function get_name() {
         return 'usk-glossy-grid';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return esc_html__('Glossy Grid', 'ultimate-store-kit');
     }
 
-    public function get_icon()
-    {
+    public function get_icon() {
         return 'usk-widget-icon usk-icon-glossy-grid';
     }
 
-    public function get_categories()
-    {
+    public function get_categories() {
         return ['ultimate-store-kit'];
     }
 
-    public function get_keywords()
-    {
+    public function get_keywords() {
         return ['product', 'product-grid', 'table', 'wc'];
     }
 
-    public function get_style_depends()
-    {
+    public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
@@ -61,8 +54,7 @@ class Glossy_Grid extends Module_Base
         }
     }
 
-    public function get_script_depends()
-    {
+    public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['micromodal', 'usk-site'];
         } else {
@@ -70,21 +62,17 @@ class Glossy_Grid extends Module_Base
         }
     }
 
-    public function get_custom_help_url()
-    {
+    public function get_custom_help_url() {
         return 'https://youtu.be/H-EwEpbeXFA';
     }
 
-    public function get_query()
-    {
+    public function get_query() {
         return $this->_query;
     }
-    public function has_widget_inner_wrapper(): bool
-    {
+    public function has_widget_inner_wrapper(): bool {
         return !\Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
     }
-    protected function register_controls()
-    {
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_woocommerce_layout',
@@ -276,8 +264,7 @@ class Glossy_Grid extends Module_Base
         $this->register_global_controls_grid_pagination();
     }
 
-    public function render_header()
-    {
+    public function render_header() {
         $settings = $this->get_settings_for_display();
         $this->add_render_attribute(
             'usk-glossy-grid',
@@ -293,30 +280,28 @@ class Glossy_Grid extends Module_Base
                 ]
             ]
         );
-        ?>
+?>
         <div class="ultimate-store-kit">
             <div <?php $this->print_render_attribute_string('usk-glossy-grid'); ?>>
                 <?php $this->template_grid_columns(); ?>
-                <?php
-    }
-    public function render_footer()
-    {
-        ?>
+            <?php
+        }
+        public function render_footer() {
+            ?>
             </div>
         </div>
         <?php
-    }
-    public function render_loop_item()
-    {
-        $settings = $this->get_settings_for_display();
-        $this->query_product();
-        $wp_query = $this->get_query();
-        if ($settings['layout_style'] === 'grid') {
-            $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-grid-layout']);
-        } else {
-            $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout']);
         }
-        if ($wp_query->have_posts()): ?>
+        public function render_loop_item() {
+            $settings = $this->get_settings_for_display();
+            $this->query_product();
+            $wp_query = $this->get_query();
+            if ($settings['layout_style'] === 'grid') {
+                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-grid-layout']);
+            } else {
+                $this->add_render_attribute('usk-grid', 'class', ['usk-grid', 'usk-list-layout']);
+            }
+            if ($wp_query->have_posts()): ?>
             <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
                 <?php while ($wp_query->have_posts()):
                     $wp_query->the_post();
@@ -327,45 +312,42 @@ class Glossy_Grid extends Module_Base
             </div>
             <?php
 
-            if ($settings['show_pagination']):
-                ultimate_store_kit_post_pagination($wp_query);
+                if ($settings['show_pagination']):
+                    ultimate_store_kit_post_pagination($wp_query);
+                endif;
+                wp_reset_postdata();
+            else:
+                echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
             endif;
-            wp_reset_postdata();
-        else:
-            echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
-        endif;
-    }
-
-    public function render()
-    {
-        $this->render_header();
-        $this->render_loop_item();
-        $this->render_footer();
-    }
-    public function query_product()
-    {
-        $default = $this->getGroupControlQueryArgs();
-        $this->_query = $this->build_query_from_args($default);
-    }
-    protected function template_grid_columns()
-    {
-        $settings = $this->get_settings_for_display();
-        $this->query_product();
-        $wp_query = $this->get_query();
-        if (get_query_var('paged')) {
-            $paged = get_query_var('paged');
-        } elseif (get_query_var('page')) {
-            $paged = get_query_var('page');
-        } else {
-            $paged = 1;
         }
-        $args = array(
-            'total' => $wp_query->found_posts,
-            'per_page' => $settings['product_limit'],
-            'current' => $paged,
-            'orderedby' => $wp_query->get('orderby'),
-        );
-        if ($settings['show_tab'] == 'yes'): ?>
+
+        public function render() {
+            $this->render_header();
+            $this->render_loop_item();
+            $this->render_footer();
+        }
+        public function query_product() {
+            $default = $this->getGroupControlQueryArgs();
+            $this->_query = $this->build_query_from_args($default);
+        }
+        protected function template_grid_columns() {
+            $settings = $this->get_settings_for_display();
+            $this->query_product();
+            $wp_query = $this->get_query();
+            if (get_query_var('paged')) {
+                $paged = get_query_var('paged');
+            } elseif (get_query_var('page')) {
+                $paged = get_query_var('page');
+            } else {
+                $paged = 1;
+            }
+            $args = array(
+                'total' => $wp_query->found_posts,
+                'per_page' => $settings['product_limit'],
+                'current' => $paged,
+                'orderedby' => $wp_query->get('orderby'),
+            );
+            if ($settings['show_tab'] == 'yes'): ?>
             <div class="usk-grid-header usk-visible@l">
                 <?php if (($settings['show_result_count'] == 'yes')):
                     wc_get_template('loop/result-count.php', $args);
@@ -373,6 +355,6 @@ class Glossy_Grid extends Module_Base
                 ?>
                 <?php $this->register_templates_grid_columns_markup($settings); ?>
             </div>
-        <?php endif;
+<?php endif;
+        }
     }
-}
