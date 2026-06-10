@@ -105,13 +105,9 @@ class Builder_Integration {
 			if (!empty($product_tags) && !is_wp_error($product_tags)) {
 				$template_url = get_term_link($product_tags[0]);
 			}
-		}
-
-		elseif ($template_slug === 'shop' || $template_slug === 'archive') {
+		} elseif ($template_slug === 'shop' || $template_slug === 'archive') {
 			$template_url = get_permalink(wc_get_page_id('shop'));
-		}
-
-		elseif ($template_slug === 'single' && $post_type === 'product') {
+		} elseif ($template_slug === 'single' && $post_type === 'product') {
 			$page_settings_manager = \Elementor\Core\Settings\Manager::get_settings_managers('page');
 			$page_settings_model = $page_settings_manager->get_model($post_id);
 			$sample_product = $page_settings_model->get_settings('usk_builder_sample_post_id');
@@ -119,23 +115,17 @@ class Builder_Integration {
 			$template_url = !empty($sample_product) ?
 				get_permalink($sample_product) :
 				$this->get_default_product_url();
-		}
-
-		elseif ($template_slug === 'cart') {
+		} elseif ($template_slug === 'cart') {
 			$template_url = wc_get_cart_url();
-		}
-
-		elseif ($template_slug === 'checkout') {
+		} elseif ($template_slug === 'checkout') {
 			$template_url = wc_get_checkout_url();
-		}
-
-		elseif ($template_slug === 'myaccount'
+		} elseif (
+			$template_slug === 'myaccount'
 			|| $template_slug === 'login'
-			|| strpos($template_slug, 'myaccount-') === 0) {
+			|| strpos($template_slug, 'myaccount-') === 0
+		) {
 			$template_url = get_permalink(wc_get_page_id('myaccount'));
-		}
-
-		elseif ($template_slug === 'order-received') {
+		} elseif ($template_slug === 'order-received') {
 			$orders = wc_get_orders(['limit' => 1]);
 			if (!empty($orders)) {
 				$order = $orders[0];
@@ -286,27 +276,28 @@ class Builder_Integration {
 			}
 		}
 
-		
+
 		if (is_post_type_archive('product') || is_page(wc_get_page_id('shop')) || is_product_taxonomy()) {
 			$template_type = 'shop';
-			
+
 			if (is_tax('product_cat')) {
 				$template_type = 'category';
 			} elseif (is_tax('product_tag')) {
 				$template_type = 'tag';
 			}
-			
+
 			if ($custom_template = $this->get_template_id($template_type)) {
 				$this->current_template_id = $custom_template;
 				return $this->getTemplatePath('woocommerce/archive-product', $template);
 			}
 		}
-		
 
-		if (is_cart()) {
-			if ($custom_template = $this->get_template_id('cart', 'product')) {
-				$this->current_template_id = $custom_template;
-				return $this->getTemplatePath('woocommerce/cart', $template);
+
+		if ( is_cart() ) {
+			$cart_template = $this->resolve_cart_template( $template );
+
+			if ( $cart_template ) {
+				return $cart_template;
 			}
 		}
 
@@ -347,11 +338,11 @@ class Builder_Integration {
 			// authentication flows. WooCommerce's own form-login.php renders
 			// the login and registration forms on the same URL, so one
 			// template covers both intents.
-			if ( ! is_user_logged_in() && empty($endpoint_match) ) {
-				if ( $custom_template = $this->get_template_id('login', 'account') ) {
+			if (! is_user_logged_in() && empty($endpoint_match)) {
+				if ($custom_template = $this->get_template_id('login', 'account')) {
 					$this->current_template_id = $custom_template;
 
-					if ( $newTemplate = $this->getTemplatePath('woocommerce/login') ) {
+					if ($newTemplate = $this->getTemplatePath('woocommerce/login')) {
 						return $newTemplate;
 					}
 
@@ -511,20 +502,37 @@ class Builder_Integration {
 	}
 
 	/**
+	 * Resolve the plugin cart template for WooCommerce cart requests.
+	 *
+	 * @param string $template Default WordPress template path.
+	 * @return string|false
+	 */
+	protected function resolve_cart_template( $template ) {
+		if ( ! Cart_Render::is_available() ) {
+			return false;
+		}
+
+		$custom_template           = $this->get_template_id( 'cart', 'product' );
+		$this->current_template_id = $custom_template ? absint( $custom_template ) : null;
+
+		return $this->getTemplatePath( 'woocommerce/cart', $template );
+	}
+
+	/**
 	 * Get default product URL with proper error checking
 	 *
 	 * @return string
 	 */
 	protected function get_default_product_url() {
 		$products = wc_get_products(['status' => 'publish', 'limit' => 1]);
-		
+
 		if (!empty($products) && isset($products[0]) && is_object($products[0])) {
 			$product = $products[0];
 			if (method_exists($product, 'get_id')) {
 				return get_permalink($product->get_id());
 			}
 		}
-		
+
 		// Fallback to shop page if no products found
 		return get_permalink(wc_get_page_id('shop'));
 	}
