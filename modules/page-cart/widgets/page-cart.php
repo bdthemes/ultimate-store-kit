@@ -13,8 +13,27 @@ if ( ! defined( 'ABSPATH' ) )
 
 class Page_Cart extends Module_Base {
 
+	public const WIDGET_NAME = 'usk-page-cart';
+
 	public function get_name() {
-		return 'usk-page-cart';
+		return self::WIDGET_NAME;
+	}
+
+	/**
+	 * Default widget settings for editor and cart-page fallback render.
+	 */
+	public static function get_default_settings() {
+		return [
+			'show_image'    => 'yes',
+			'show_title'    => 'yes',
+			'show_price'    => 'yes',
+			'show_quantity' => 'yes',
+			'show_subtotal' => 'yes',
+		];
+	}
+
+	public static function get_frontend_style_handles() {
+		return [ 'usk-font', 'usk-page-cart' ];
 	}
 
 	public function get_title() {
@@ -36,18 +55,39 @@ class Page_Cart extends Module_Base {
 	public function get_style_depends() {
 		if ( $this->usk_is_edit_mode() ) {
 			return [ 'usk-all-styles' ];
-		} else {
-			return [ 'usk-font', 'usk-page-cart' ];
 		}
+
+		return self::get_frontend_style_handles();
 	}
 	public function get_keywords() {
 		return [ 'page', 'cart' ];
 	}
 
 	public function has_widget_inner_wrapper(): bool {
-			return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+		return ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+	}
+
+	protected function is_dynamic_content(): bool {
+		return true;
+	}
+
+	protected function count_visible_columns( array $settings ) {
+		$count = 1;
+
+		foreach ( array_keys( self::get_default_settings() ) as $setting_key ) {
+			if ( ! empty( $settings[ $setting_key ] ) && 'yes' === $settings[ $setting_key ] ) {
+				++$count;
+			}
 		}
-		protected function register_controls() {
+
+		return $count;
+	}
+
+	protected function is_column_visible( array $settings, $key ) {
+		return ! empty( $settings[ $key ] ) && 'yes' === $settings[ $key ];
+	}
+
+	protected function register_controls() {
 
 		$this->start_controls_section(
 			'section_cart_layout',
@@ -1514,72 +1554,86 @@ class Page_Cart extends Module_Base {
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		global $woocommerce;
 
 		if ( is_null( WC()->cart ) ) {
 			wc_load_cart();
 		}
 
-		$items = $woocommerce->cart->get_cart();
+		$cart = WC()->cart;
+
+		if ( ! $cart ) {
+			return;
+		}
+
+		$items         = $cart->get_cart();
+		$column_count  = $this->count_visible_columns( $settings );
+		$show_image    = $this->is_column_visible( $settings, 'show_image' );
+		$show_title    = $this->is_column_visible( $settings, 'show_title' );
+		$show_price    = $this->is_column_visible( $settings, 'show_price' );
+		$show_quantity = $this->is_column_visible( $settings, 'show_quantity' );
+		$show_subtotal = $this->is_column_visible( $settings, 'show_subtotal' );
 
 		?>
 
 		<div class="usk-page-cart">
 			<div class="woocommerce">
-				<div class="woocommerce-notices-wrapper"></div>
+				<div class="woocommerce-notices-wrapper">
+					<?php woocommerce_output_all_notices(); ?>
+				</div>
+				<?php if ( $cart->is_empty() ) : ?>
+					<?php wc_get_template( 'cart/cart-empty.php' ); ?>
+				<?php else : ?>
 				<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 					<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
 						<thead>
 							<tr>
 								<th><?php esc_html_e( 'Close', 'ultimate-store-kit' ); ?></th>
 
-								<?php if ( $settings['show_image'] == 'yes' ) : ?>
+								<?php if ( $show_image ) : ?>
 									<th><?php esc_html_e( 'Image', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
-								<?php if ( $settings['show_title'] == 'yes' ) : ?>
+								<?php if ( $show_title ) : ?>
 									<th><?php esc_html_e( 'Product Title', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
-								<?php if ( $settings['show_price'] == 'yes' ) : ?>
+								<?php if ( $show_price ) : ?>
 									<th><?php esc_html_e( 'Price', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
-								<?php if ( $settings['show_quantity'] == 'yes' ) : ?>
+								<?php if ( $show_quantity ) : ?>
 									<th><?php esc_html_e( 'Quantity', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 
-								<?php if ( $settings['show_subtotal'] == 'yes' ) : ?>
+								<?php if ( $show_subtotal ) : ?>
 									<th><?php esc_html_e( 'Subtotal', 'ultimate-store-kit' ); ?></th>
 								<?php endif; ?>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
-							$product_names = array();
 							foreach ( $items as $item => $values ) {
+								$_product = apply_filters( 'woocommerce_cart_item_product', $values['data'], $values, $item );
 
-								$_product = wc_get_product( $values['data']->get_id() );
-								// $_product2   = apply_filters( 'woocommerce_cart_item_product', $values['data'], $values, $item );
-								// Retrieve WC_Product object from the product-id:
-								$_woo_product = wc_get_product( $values['product_id'] );
+								if ( ! $_product || ! $_product->exists() || $values['quantity'] <= 0 ) {
+									continue;
+								}
 
-								// Get SKU from the WC_Product object:
-								$product_names['sku'] = $_woo_product->get_sku();
-								$product_permalink    = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $values ) : '', $values, $item );
+								$product_sku       = $_product->get_sku();
+								$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $values ) : '', $values, $item );
 								?>
 
 								<tr>
 									<td class="usk-product-remove"
 										data-title="<?php esc_html_e( 'Remove', 'ultimate-store-kit' ); ?>">
 										<a href="<?php echo esc_url( wc_get_cart_remove_url( $item ) ); ?>" class="remove"
-											aria-label="Remove this item"
-											data-product_id="<?php echo esc_html( $values['product_id'] ); ?>"
-											data-product_sku="<?php echo esc_html( $product_names['sku'] ); ?>">
+											aria-label="<?php esc_attr_e( 'Remove this item', 'ultimate-store-kit' ); ?>"
+											data-product_id="<?php echo esc_attr( $values['product_id'] ); ?>"
+											data-product_sku="<?php echo esc_attr( $product_sku ); ?>">
 											<i class="usk-icon-close"></i>
 										</a>
 									</td>
-									<?php if ( $settings['show_image'] == 'yes' ) : ?>
+									<?php if ( $show_image ) : ?>
 										<td class="usk-product-image"
 											data-title="<?php esc_html_e( 'Image', 'ultimate-store-kit' ); ?>">
 											<?php
@@ -1594,11 +1648,10 @@ class Page_Cart extends Module_Base {
 										</td>
 									<?php endif; ?>
 
-									<?php if ( $settings['show_title'] == 'yes' ) : ?>
+									<?php if ( $show_title ) : ?>
 										<td class="usk-product-title"
 											data-title="<?php esc_html_e( 'Product Title', 'ultimate-store-kit' ); ?>">
 											<?php
-											// echo $_product->get_title();
 											if ( ! $product_permalink ) {
 												echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $values, $item ) . '&nbsp;' );
 											} else {
@@ -1618,7 +1671,7 @@ class Page_Cart extends Module_Base {
 										</td>
 									<?php endif; ?>
 
-									<?php if ( $settings['show_price'] == 'yes' ) : ?>
+									<?php if ( $show_price ) : ?>
 										<td class="usk-product-price" data-title="<?php esc_attr_e( 'Price', 'ultimate-store-kit' ); ?>">
 											<?php
 											echo wp_kses_post( apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $values, $item ) ); // PHPCS: XSS ok.
@@ -1626,7 +1679,7 @@ class Page_Cart extends Module_Base {
 										</td>
 									<?php endif; ?>
 
-									<?php if ( $settings['show_quantity'] == 'yes' ) : ?>
+									<?php if ( $show_quantity ) : ?>
 										<td class="usk-product-quantity"
 											data-title="<?php esc_html_e( 'Quantity', 'ultimate-store-kit' ); ?>">
 											<?php
@@ -1653,7 +1706,7 @@ class Page_Cart extends Module_Base {
 										</td>
 									<?php endif; ?>
 
-									<?php if ( $settings['show_subtotal'] == 'yes' ) : ?>
+									<?php if ( $show_subtotal ) : ?>
 										<td class="usk-product-subtotal"
 											data-title="<?php esc_html_e( 'Subtotal', 'ultimate-store-kit' ); ?>">
 											<?php
@@ -1669,7 +1722,7 @@ class Page_Cart extends Module_Base {
 
 							?>
 							<tr>
-								<td colspan="6" class="actions">
+								<td colspan="<?php echo esc_attr( (string) $column_count ); ?>" class="actions">
 									<?php if ( wc_coupons_enabled() ) { ?>
 										<div class="coupon">
 											<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'ultimate-store-kit' ); ?></label>
@@ -1707,6 +1760,7 @@ class Page_Cart extends Module_Base {
 					do_action( 'woocommerce_cart_collaterals' );
 					?>
 				</div>
+				<?php endif; ?>
 
 			</div>
 		</div>

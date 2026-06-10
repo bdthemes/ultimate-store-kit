@@ -248,13 +248,11 @@
 
     // Each time quantity in the cart changes, trigger update
     // cart option
-    jQuery("div.woocommerce").on("change", ".qty", function () {
-        // Make sure the button is enabled before triggering the event
-        // otherwise this won't work.
-        jQuery("[name='update_cart']").prop("disabled", false);
-        jQuery("[name='update_cart']").trigger("click");
+    jQuery(".usk-page-cart div.woocommerce").on("change", ".qty", function () {
+        var $form = jQuery(this).closest(".woocommerce-cart-form");
+        var $updateButton = $form.find("[name='update_cart']");
+
+        $updateButton.prop("disabled", false);
+        $updateButton.trigger("click");
     });
-    // $(document).ready(function () {
-    //     $(".woocommerce-notices-wrapper").not(".usk-page-cart .woocommerce-notices-wrapper").remove();
-    // });
 })(jQuery, window.elementorFrontend);
