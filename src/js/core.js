@@ -179,13 +179,13 @@
                     $this.attr({
                         href: $redirect_url,
                     });
-                } 
+                }
                 // else {
                 //     $this.attr({
                 //         href: "javascript:void(0);",
                 //         "aria-label": response.message,
                 //     });
-                // } 
+                // }
             },
             error: function (response) {
                 console.log(response);
