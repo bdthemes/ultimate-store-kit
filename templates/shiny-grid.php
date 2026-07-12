@@ -319,7 +319,7 @@ class USK_Shiny_Grid_Template {
                 <img
                     class="img"
                     src="<?php echo esc_url($product_image); ?>"
-                    alt="<?php echo esc_html(get_the_title()); ?>">
+                    alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
             <?php $this->render_add_to_cart_button($product, $settings); ?>
 

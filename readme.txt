@@ -225,6 +225,13 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 3.0.X [XXth July 2026] =
+
+* Fixed: Product text now falls back to the full description when the short description is empty
+* Fixed: Text Style visibility now correctly follows the text toggle in the mentor slider widget
+* Fixed: Pause on hover now appears only when autoplay is enabled
+* Fixed: Improved output escaping and attribute sanitization in the shiny grid widget
+
 = 3.0.6 [12th July 2026] =
 
 * Updated: Made compatible with WordPress version 7.0.1

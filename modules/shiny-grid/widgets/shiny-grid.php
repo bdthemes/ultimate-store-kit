@@ -270,7 +270,11 @@ class Shiny_Grid extends Module_Base {
     public function render_header() {
         $settings = $this->get_settings_for_display();
         $this->add_render_attribute('usk-shiny-grid', 'class', 'usk-shiny-grid usk-grid-carousel usk-css-grid', true);
-        $this->add_render_attribute('usk-shiny-grid', 'data-filter', [$settings['show_tab']]);
+        $this->add_render_attribute(
+            'usk-shiny-grid',
+            'data-filter',
+            ('yes' === ($settings['show_tab'] ?? '')) ? 'yes' : ''
+        );
 
 ?>
         <div class="ultimate-store-kit">
@@ -296,7 +300,7 @@ class Shiny_Grid extends Module_Base {
             }
 
             if ($wp_query->have_posts()) { ?>
-            <div <?php $this->print_render_attribute_string('usk-grid'); ?>">
+            <div <?php $this->print_render_attribute_string('usk-grid'); ?>>
                 <?php while ($wp_query->have_posts()):
                     $wp_query->the_post();
                     global $product;
@@ -342,11 +346,18 @@ class Shiny_Grid extends Module_Base {
                 $paged = 1;
             }
 
+            $orderedby = $wp_query->get('orderby');
+            if (is_array($orderedby)) {
+                $orderedby = implode(' ', array_map('sanitize_key', $orderedby));
+            } else {
+                $orderedby = sanitize_key((string) $orderedby);
+            }
+
             $args = array(
-                'total' => $wp_query->found_posts,
-                'per_page' => $settings['product_limit'],
-                'current' => $paged,
-                'orderedby' => $wp_query->get('orderby'),
+                'total'    => (int) $wp_query->found_posts,
+                'per_page' => absint($settings['product_limit'] ?? 0),
+                'current'  => max(1, absint($paged)),
+                'orderedby' => $orderedby,
             );
             if ($settings['show_tab'] == 'yes'): ?>
             <div class="usk-grid-header usk-visible@l">
