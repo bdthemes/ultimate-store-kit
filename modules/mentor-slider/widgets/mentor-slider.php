@@ -449,8 +449,11 @@ class Mentor_Slider extends Module_Base {
         $this->add_control(
             'pauseonhover',
             [
-                'label' => esc_html__('Pause on Hover', 'ultimate-store-kit'),
-                'type'  => Controls_Manager::SWITCHER,
+                'label'     => esc_html__('Pause on Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SWITCHER,
+                'condition' => [
+                    'autoplay' => 'yes',
+                ],
             ]
         );
 
@@ -722,8 +725,11 @@ class Mentor_Slider extends Module_Base {
         $this->start_controls_section(
             'section_style_text',
             [
-                'label' => esc_html__('Text', 'ultimate-store-kit'),
-                'tab'   => Controls_Manager::TAB_STYLE,
+                'label'     => esc_html__('Text', 'ultimate-store-kit'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_excerpt' => 'yes',
+                ],
             ]
         );
 
@@ -1820,11 +1826,17 @@ class Mentor_Slider extends Module_Base {
                                 );
                             endif; ?>
 
-                            <?php if ('yes' == $settings['show_excerpt']) : ?>
-                                <div class="usk-text" data-swiper-parallax-X="-150">
-                                    <?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...')); ?>
+                            <?php if ('yes' == $settings['show_excerpt']) :
+                                $excerpt = $product->get_short_description();
+                                if (empty($excerpt)) {
+                                    $excerpt = $product->get_description();
+                                }
+                                if (! empty($excerpt)) : ?>
+                                <div class="usk-text" data-swiper-parallax-x="-150">
+                                    <?php echo wp_kses_post(wp_trim_words($excerpt, $settings['excerpt_limit'], '...')); ?>
                                 </div>
-                            <?php endif; ?>
+                            <?php endif;
+                            endif; ?>
 
                             <?php if (('yes' == $settings['show_price'])) : ?>
                                 <div class="usk-price" data-swiper-parallax-X="-200">
