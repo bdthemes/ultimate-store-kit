@@ -231,6 +231,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Text Style visibility now correctly follows the text toggle in the mentor slider widget
 * Fixed: Pause on hover now appears only when autoplay is enabled
 * Fixed: Improved output escaping and attribute sanitization in the shiny grid widget
+* Updated: Security improved
 
 = 3.0.6 [12th July 2026] =
 

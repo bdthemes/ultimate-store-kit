@@ -2187,7 +2187,7 @@ class Product_Table extends Module_Base {
             ?>
             <div <?php $this->print_render_attribute_string('product_image_wrapper'); ?>>
                 <a <?php $this->print_render_attribute_string('product_image'); ?>>
-                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), 'thumbnail')); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), 'thumbnail')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                 </a>
             </div>
         <?php

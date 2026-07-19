@@ -767,7 +767,7 @@ class Product_Reviews extends Module_Base {
         $settings = $this->get_settings_for_display();?>
         <div class="usk-avatar-img">
             <a href="#">
-                <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
         </div>
         <?php
