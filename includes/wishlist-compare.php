@@ -17,6 +17,9 @@ final class WishlistCompare {
 		add_action('wp_ajax_usk_add_to_wishlist', [$this, 'usk_add_to_wishlist']);
 		add_action('wp_ajax_nopriv_usk_add_to_wishlist', [$this, 'usk_add_to_wishlist']);
 
+		add_action('wp_ajax_usk_remove_wishlist', [$this, 'usk_remove_wishlist']);
+		add_action('wp_ajax_nopriv_usk_remove_wishlist', [$this, 'usk_remove_wishlist']);
+
 		add_action('wp_ajax_usk_add_to_compare_products', [$this, 'usk_add_to_compare_products']);
 		add_action('wp_ajax_nopriv_usk_add_to_compare_products', [$this, 'usk_add_to_compare_products']);
 
@@ -30,7 +33,26 @@ final class WishlistCompare {
 		// add_action('init', [$this, 'usk_add_rewrite_flash_rules_endpoint']);
 	}
 
+	/**
+	 * CSRF check for the wishlist/compare endpoints.
+	 *
+	 * A logged-out visitor's list lives entirely in their own cookie, and their
+	 * pages are routinely served from a full-page cache where an embedded nonce
+	 * would already be stale — enforcing one there breaks the feature without
+	 * protecting any server-side state. A logged-in request writes to user meta,
+	 * so that path gets the check.
+	 */
+	private function verify_request() {
+		if (! is_user_logged_in()) {
+			return;
+		}
+
+		check_ajax_referer('usk_wishlist_compare', 'nonce');
+	}
+
 	public function usk_add_to_wishlist() {
+		$this->verify_request();
+
 		$response = [
 			'status'  => 0,
 			'message' => __('Unauthorized!', 'ultimate-store-kit'),
@@ -41,7 +63,7 @@ final class WishlistCompare {
 			wp_send_json($response);
 		}
 
-		$product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
+		$product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
 
 		$user_id  = get_current_user_id();
 		$wishlist = ultimate_store_kit_get_wishlist($user_id);
@@ -53,6 +75,18 @@ final class WishlistCompare {
 			$response['count']  = --$wishlistCounter;
 			unset($wishlist[$key]);
 		} else {
+			// Only gate additions. A removal just drops an id the visitor already
+			// holds, so it must keep working even if the product was since unpublished.
+			if (! usk_is_public_product($product_id)) {
+				$response['message'] = __('Invalid product!', 'ultimate-store-kit');
+				wp_send_json($response);
+			}
+
+			if ($wishlistCounter >= usk_get_list_item_limit()) {
+				$response['message'] = __('Wishlist is full!', 'ultimate-store-kit');
+				wp_send_json($response);
+			}
+
 			$response['action'] = 'added';
 			$response['count']  = ++$wishlistCounter;
 			$wishlist[]         = $product_id;
@@ -75,27 +109,16 @@ final class WishlistCompare {
 		}
 	}
 
-	public function ultimate_store_kit_set_wishlist($wishlist, $user_id = 0) {
-		$_wishlist_key     = '_ultimate_store_kit_wishlist';
-		$user_id           = get_current_user_id();
-		$existing_wishlist = ultimate_store_kit_get_wishlist($user_id);
+	/**
+	 * Remove a single product from the wishlist.
+	 *
+	 * Deliberately idempotent rather than a toggle: the remove control is bound by
+	 * more than one script, so a click can fire this twice. A toggle would remove
+	 * the product and then immediately put it back.
+	 */
+	public function usk_remove_wishlist() {
+		$this->verify_request();
 
-		$wishlist = array_unique(array_merge($existing_wishlist, $wishlist));
-
-		setcookie($_wishlist_key, json_encode($wishlist), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
-	}
-
-	public function get_compare_product_page_id() {
-		if ($comparePage = ultimate_store_kit_compare_product_page()) {
-			return $comparePage->ID;
-		}
-	}
-
-
-	//======================================
-	//=========COMPARE PRODUCTS=============
-	//======================================
-	public function usk_add_to_compare_products() {
 		$response = [
 			'status'  => 0,
 			'message' => __('Unauthorized!', 'ultimate-store-kit'),
@@ -106,17 +129,94 @@ final class WishlistCompare {
 			wp_send_json($response);
 		}
 
+		$product_id = absint($_POST['product_id']);
+		$user_id    = get_current_user_id();
+		$wishlist   = ultimate_store_kit_get_wishlist($user_id);
+
+		if (($key = array_search($product_id, $wishlist)) !== false) {
+			unset($wishlist[$key]);
+		}
+
+		$this->ultimate_store_kit_set_wishlist($wishlist, $user_id);
+
+		// Report the post-condition, not what this particular call changed, so a
+		// duplicate request still tells the UI the row is gone.
+		$response['status']  = 1;
+		$response['action']  = 'removed';
+		$response['count']   = count($wishlist);
+		$response['message'] = __('Wishlist item removed!', 'ultimate-store-kit');
+
+		wp_send_json($response);
+	}
+
+	/**
+	 * Persist the wishlist.
+	 *
+	 * @param array $wishlist Full list to store — this replaces what is stored.
+	 * @param int   $user_id  Unused; kept for signature compatibility. The wishlist
+	 *                        is cookie-backed for every visitor, logged in or not.
+	 */
+	public function ultimate_store_kit_set_wishlist($wishlist, $user_id = 0) {
+		$_wishlist_key = '_ultimate_store_kit_wishlist';
+
+		// Straight write, not a merge. This previously merged the incoming list back
+		// into the stored one, which silently undid every removal — nothing could
+		// ever leave a wishlist. Reindexed because unset() leaves a gap, and a gapped
+		// array json_encodes to an object that the getter then discards.
+		$wishlist = array_values(array_unique($wishlist));
+
+		setcookie($_wishlist_key, wp_json_encode($wishlist), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
+	}
+
+	public function get_compare_product_page_id() {
+		// ultimate_store_kit_compare_product_page() already returns an int post id.
+		// Reading ->ID off it warned under PHP 8 and evaluated to null, so the
+		// "Added" response never carried a compare page URL.
+		return ultimate_store_kit_compare_product_page();
+	}
+
+
+	//======================================
+	//=========COMPARE PRODUCTS=============
+	//======================================
+	public function usk_add_to_compare_products() {
+		$this->verify_request();
+
+		$response = [
+			'status'  => 0,
+			'message' => __('Unauthorized!', 'ultimate-store-kit'),
+		];
+
+		if (! isset($_POST['product_id'])) {
+			$response['message'] = __('No product selected!', 'ultimate-store-kit');
+			wp_send_json($response);
+		}
+
+		$product_id = absint($_POST['product_id']);
+
+		if (! usk_is_public_product($product_id)) {
+			$response['message'] = __('Invalid product!', 'ultimate-store-kit');
+			wp_send_json($response);
+		}
+
 		$user_id          = get_current_user_id();
 		$compare_products = usk_get_compare_products($user_id);
 
-		// count compare products
-		if (is_array($compare_products)) {
-			$response['count'] = count($compare_products) + 1;
+		if (! is_array($compare_products)) {
+			$compare_products = [];
 		}
+
+		if (count($compare_products) >= usk_get_list_item_limit() && ! in_array($product_id, $compare_products)) {
+			$response['message'] = __('Compare list is full!', 'ultimate-store-kit');
+			wp_send_json($response);
+		}
+
+		// count compare products
+		$response['count'] = count($compare_products) + 1;
 
 		//add to compare products
 		$response['action'] = 'added';
-		$compare_products[] = $_POST['product_id'];
+		$compare_products[] = $product_id;
 
 		$compare_products = array_unique($compare_products);
 
@@ -139,6 +239,8 @@ final class WishlistCompare {
 		}
 	}
 	public function usk_remove_from_compare_products() {
+		$this->verify_request();
+
 		$response = [
 			'status'  => 0,
 			'message' => __('Unauthorized!', 'ultimate-store-kit'),
@@ -147,15 +249,19 @@ final class WishlistCompare {
 			$response['message'] = __('No product selected!', 'ultimate-store-kit');
 			wp_send_json($response);
 		}
+		$product_id       = absint($_POST['product_id']);
 		$user_id          = get_current_user_id();
 		$compare_products = usk_get_compare_products($user_id);
 
 		//add remove from compare products
-		if (($key = array_search($_POST['product_id'], $compare_products)) !== false) {
+		if (($key = array_search($product_id, $compare_products)) !== false) {
 			$response['action'] = 'removed';
 			unset($compare_products[$key]);
 		}
-		$compare_products = array_unique($compare_products);
+
+		// Reindex: unset() leaves a gap, and a gapped array json_encodes to an
+		// object, which breaks the cookie read back in usk_get_compare_products().
+		$compare_products = array_values(array_unique($compare_products));
 
 		// update compare_products
 		$this->ultimate_store_kit_set_compare_products($compare_products, $user_id);

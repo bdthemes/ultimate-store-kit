@@ -244,6 +244,8 @@ class Ultimate_Store_Kit_Loader {
 
 		wp_localize_script('usk-core', 'ultimate_store_kit_ajax_config', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
+			// Only consumed for logged-in requests — see WishlistCompare::verify_request().
+			'nonce'   => wp_create_nonce('usk_wishlist_compare'),
 		));
 	}
 
