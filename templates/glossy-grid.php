@@ -124,9 +124,9 @@ class USK_Glossy_Grid_Template {
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
                 <img class="img image-default" src="<?php echo esc_url($product_image); ?>"
-                    alt="<?php echo esc_html(get_the_title()); ?>">
+                    alt="<?php echo esc_attr(get_the_title()); ?>">
                 <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>"
-                    alt="<?php echo esc_html(get_the_title()); ?>">
+                    alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column usk-flex-bottom">

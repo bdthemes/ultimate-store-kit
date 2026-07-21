@@ -224,6 +224,20 @@ class Module extends Ultimate_Store_Kit_Module_Base {
             return;
         }
 
+        // Only expose variations of products the requester is allowed to see.
+        // wc_get_product() ignores post status, so private/draft/pending products
+        // would otherwise be readable by anyone hitting this endpoint.
+        if ('publish' !== $product->get_status() && !\current_user_can('read_post', $product_id)) {
+            \wp_send_json_error(['message' => 'Product not available'], 404);
+            return;
+        }
+
+        // Never leak variation data (prices, SKUs, stock) out of a protected product.
+        if (\post_password_required($product_id)) {
+            \wp_send_json_error(['message' => 'Product not available'], 403);
+            return;
+        }
+
         // Get all available variations
         $available_variations = $product->get_available_variations();
 

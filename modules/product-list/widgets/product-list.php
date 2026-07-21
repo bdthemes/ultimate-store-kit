@@ -412,7 +412,7 @@ class Product_List extends Module_Base {
         ?>
         <div class="usk-image-wrap usk-flex">
             <a href="<?php echo esc_url($product->get_permalink()); ?>">
-                <img class="img image-default" src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img image-default" src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
         </div>
         <?php

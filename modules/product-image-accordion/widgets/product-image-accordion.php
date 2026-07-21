@@ -293,7 +293,7 @@ class Product_Image_Accordion extends Module_Base {
                         <div class="usk-image-wrap">
                             <div class="usk-image">
                                 <a href="#">
-                                    <img class="usk-img" src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                                    <img class="usk-img" src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                 </a>
                             </div>
                         </div>

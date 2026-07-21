@@ -2430,8 +2430,8 @@ class Image_Hotspot extends Module_Base {
         ?>
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
-                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
             <?php $this->render_add_to_cart(); ?>
             <div class="usk-shoping">
@@ -2501,7 +2501,7 @@ class Image_Hotspot extends Module_Base {
                     $placeholder_image_src = \Elementor\Utils::get_placeholder_image_src();
                     $image_src             = wp_get_attachment_image_src($settings['hotspot_image']['id'], $image_size);
                     if (! $image_src) {
-                        printf('<img src="%1$s" alt="%2$s">', esc_url($placeholder_image_src), esc_html(get_the_title()));
+                        printf('<img src="%1$s" alt="%2$s">', esc_url($placeholder_image_src), esc_attr(get_the_title()));
                     } else {
                         print(wp_get_attachment_image(
                             $settings['hotspot_image']['id'],
@@ -2509,7 +2509,7 @@ class Image_Hotspot extends Module_Base {
                             false,
                             [
 
-                                'alt' => esc_html(get_the_title())
+                                'alt' => esc_attr(get_the_title())
                             ]
                         ));
                     }
@@ -2621,7 +2621,7 @@ class Image_Hotspot extends Module_Base {
                     }
         ?>
         <div class="usk-image-wrap">
-            <img class="usk-img" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+            <img class="usk-img" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
         </div>
         <?php
                 }

@@ -233,6 +233,7 @@ https://youtu.be/9J4zCaDcPnk
 * Fixed: Improved output escaping and attribute sanitization in the shiny grid widget
 * Fixed: Broken hover action button layout in the EDD beauty grid widget
 * Fixed: Improved alt attribute escaping in the EDD beauty grid widget
+* Fixed: Security vulnerability patched ( Thanks to Bao - BlueRock )
 
 = 3.0.6 [12th July 2026] =
 

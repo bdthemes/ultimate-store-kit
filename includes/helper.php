@@ -1265,6 +1265,58 @@ if (! function_exists('usk_license_validation')) {
 
 
 
+if (! function_exists('usk_is_public_product')) {
+	/**
+	 * Whether a product id may be read or acted on by the current request.
+	 *
+	 * wc_get_product() resolves an id regardless of post status, so any endpoint
+	 * reachable by untrusted users must run the id through here before it reads
+	 * product data or stores the id against the visitor.
+	 *
+	 * @param mixed $product_id Raw product id, typically straight off $_POST.
+	 * @return bool
+	 */
+	function usk_is_public_product($product_id) {
+		$product_id = absint($product_id);
+
+		// Fail closed when WooCommerce is absent — helper.php also loads on EDD-only sites.
+		if (! $product_id || ! function_exists('wc_get_product')) {
+			return false;
+		}
+
+		$product = wc_get_product($product_id);
+
+		if (! $product) {
+			return false;
+		}
+
+		// Private, draft, pending and trashed products stay invisible unless the
+		// current user could read the post anyway (shop managers, the editor).
+		if ('publish' !== $product->get_status() && ! current_user_can('read_post', $product_id)) {
+			return false;
+		}
+
+		if (post_password_required($product_id)) {
+			return false;
+		}
+
+		return true;
+	}
+}
+
+/**
+ * Maximum number of items kept in a wishlist or compare list.
+ *
+ * Both lists are written from unauthenticated endpoints, so they need an upper
+ * bound — a cookie that outgrows ~4KB is silently dropped by the browser, and an
+ * unbounded list against a logged-in user means unbounded user meta.
+ */
+if (! function_exists('usk_get_list_item_limit')) {
+	function usk_get_list_item_limit() {
+		return (int) apply_filters('ultimate_store_kit_list_item_limit', 50);
+	}
+}
+
 function usk_get_compare_products($user_id = 0) {
 	$_compare_products_key = '_ultimate_store_kit_compare_products';
 	$_compare_products     = [];
@@ -1359,6 +1411,31 @@ function usk_ajax_variation_image_update() {
 		return;
 	}
 
+	// wc_get_product() ignores post status, so guard the parent product the same way
+	// the variations endpoint does before exposing anything about it.
+	$parent = wc_get_product($product_id);
+	if (!$parent) {
+		wp_send_json_error('Invalid product');
+		return;
+	}
+
+	if ('publish' !== $parent->get_status() && !current_user_can('read_post', $product_id)) {
+		wp_send_json_error('Product not available', 404);
+		return;
+	}
+
+	if (post_password_required($product_id)) {
+		wp_send_json_error('Product not available', 403);
+		return;
+	}
+
+	// The variation must actually belong to the product that passed the check above,
+	// otherwise the parent id is just a public decoy for an arbitrary variation.
+	if ($variation->get_parent_id() !== $product_id) {
+		wp_send_json_error('Invalid variation');
+		return;
+	}
+
 	$image_id = $variation->get_image_id();
 	$image_url = '';
 
@@ -1366,7 +1443,6 @@ function usk_ajax_variation_image_update() {
 		$image_url = wp_get_attachment_image_url($image_id, 'woocommerce_thumbnail');
 	} else {
 		// If variation has no image, use the parent product image
-		$parent = wc_get_product($product_id);
 		$parent_image_id = $parent->get_image_id();
 		if ($parent_image_id) {
 			$image_url = wp_get_attachment_image_url($parent_image_id, 'woocommerce_thumbnail');

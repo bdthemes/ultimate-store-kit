@@ -42,8 +42,9 @@
     $.ajax({
       url: ultimate_store_kit_ajax_config.ajaxurl,
       data: {
-        action: "usk_add_to_wishlist",
+        action: "usk_remove_wishlist",
         product_id: $product_id,
+        nonce: ultimate_store_kit_ajax_config.nonce,
       },
       type: "POST",
       dataType: "JSON",
