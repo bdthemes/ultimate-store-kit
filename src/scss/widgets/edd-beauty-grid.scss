@@ -56,7 +56,9 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		display: inline-flex;
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
 		align-items: center;
 		margin: 0 20px;
 		text-align: center;
@@ -66,6 +68,10 @@
 
 		.edd_purchase_submit_wrapper {
 			padding: 0;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
 		}
 
 		a,
@@ -93,6 +99,10 @@
 		.usk-details-button a:hover {
 			color: #000;
 			background-color: #fff;
+		}
+
+		span.edd-cart-ajax-alert {
+			display: none;
 		}
 
 		input[type=submit] {
