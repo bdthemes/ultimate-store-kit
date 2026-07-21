@@ -1056,7 +1056,7 @@ class Heaven_Slider extends Module_Base {
         }
 ?>
         <div class="usk-image-wrap">
-            <img class="usk-img" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+            <img class="usk-img" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
         </div>
     <?php
     }
@@ -1116,11 +1116,11 @@ class Heaven_Slider extends Module_Base {
                 <?php if ($settings['show_arrows']): ?>
                     <div class="usk-navigation-wrap" style="direction:ltr;">
                         <div class="usk-nav-btn usk-button-next">
-                            <i class="usk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+                            <i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
                                 aria-hidden="true"></i>
                         </div>
                         <div class="usk-nav-btn usk-button-prev">
-                            <i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+                            <i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
                                 aria-hidden="true"></i>
                         </div>
                     </div>

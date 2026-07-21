@@ -1263,7 +1263,7 @@ class Showcase_Slider extends Module_Base {
         }
 ?>
         <div class="usk-image-wrap">
-            <img class="usk-image" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+            <img class="usk-image" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             <div class="usk-shoping">
                 <?php
                 $this->register_global_template_add_to_wishlist($tooltip_position, $settings);

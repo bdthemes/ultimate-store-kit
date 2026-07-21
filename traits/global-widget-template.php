@@ -105,8 +105,8 @@ trait Global_Widget_Template
 		<?php if (isset($settings['show_wishlist']) ? $settings['show_wishlist'] : true): ?>
 			<a href="<?php echo esc_url($redirect_url); ?>"
 				class="usk-action-btn ajax_add_to_wishlist usk-shoping-icon-wishlist usk-btn usk-wishlist<?php echo esc_attr($selected); ?>"
-				data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_html($tooltip); ?>"
-				data-aria_label="<?php echo esc_html__('View Wishlist', 'ultimate-store-kit'); ?>"
+				data-product_id="<?php echo absint($product_id); ?>" aria-label="<?php echo esc_attr($tooltip); ?>"
+				data-aria_label="<?php echo esc_attr__('View Wishlist', 'ultimate-store-kit'); ?>"
 				data-redirect_url="<?php echo esc_url(wc_get_account_endpoint_url('wishlist')); ?>"
 				data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
 				<i class="icon usk-icon-heart-full"></i>
@@ -149,8 +149,8 @@ trait Global_Widget_Template
 			<a href="<?php echo esc_url($compare_page_link); ?>"
 				class="usk-action-btn ajax_add_to_compare usk-compare <?php echo esc_attr($selected); ?>"
 				data-product_id="<?php echo esc_attr($product_id); ?>"
-				data-redirect_url="<?php echo esc_url($compare_redirect_link); ?>" aria-label="<?php echo esc_html($tooltip); ?>"
-				data-aria_label="<?php echo esc_html__('View Compare', 'ultimate-store-kit'); ?>"
+				data-redirect_url="<?php echo esc_url($compare_redirect_link); ?>" aria-label="<?php echo esc_attr($tooltip); ?>"
+				data-aria_label="<?php echo esc_attr__('View Compare', 'ultimate-store-kit'); ?>"
 				data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
 				<i class="icon usk-icon-compare"></i>
 			</a>
@@ -169,7 +169,7 @@ trait Global_Widget_Template
 			?>
 			<a class="usk-action-btn usk-shoping-icon-quickview quick_view usk-view usk-btn" href="javascript:void(0)"
 				data-id="<?php echo absint($product_id); ?>"
-				aria-label="<?php echo esc_html__('Quick View', 'ultimate-store-kit'); ?>"
+				aria-label="<?php echo esc_attr__('Quick View', 'ultimate-store-kit'); ?>"
 				data-microtip-position="<?php echo esc_attr($tooltip_position); ?>" role="tooltip">
 				<i class="icon usk-icon-preview"></i>
 			</a>
@@ -261,13 +261,13 @@ trait Global_Widget_Template
 
 		if ('arrows' == $settings['navigation']): ?>
 			<div style="direction: ltr;"
-				class="usk-position-z-index usk-position-<?php echo esc_html($settings['arrows_position'] . $hide_arrow_on_mobile); ?>">
+				class="usk-position-z-index usk-position-<?php echo esc_attr($settings['arrows_position'] . $hide_arrow_on_mobile); ?>">
 				<div class="usk-arrows-container usk-slidenav-container">
 					<a href="" class="usk-navigation-prev usk-slidenav-previous usk-icon usk-slidenav">
-						<i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
+						<i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 					</a>
 					<a href="" class="usk-navigation-next usk-slidenav-next usk-icon usk-slidenav">
-						<i class="usk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+						<i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 							aria-hidden="true"></i>
 					</a>
 				</div>
@@ -279,7 +279,7 @@ trait Global_Widget_Template
 		$settings = $this->get_settings_for_display();
 
 		if ('dots' == $settings['navigation'] or 'arrows-fraction' == $settings['navigation']): ?>
-			<div class="usk-position-z-index usk-position-<?php echo esc_html($settings['dots_position']); ?>">
+			<div class="usk-position-z-index usk-position-<?php echo esc_attr($settings['dots_position']); ?>">
 				<div class="usk-dots-container">
 					<div class="swiper-pagination"></div>
 				</div>
@@ -287,7 +287,7 @@ trait Global_Widget_Template
 
 		<?php elseif ('progressbar' == $settings['navigation']): ?>
 			<div
-				class="swiper-pagination usk-position-z-index usk-position-<?php echo esc_html($settings['progress_position']); ?>">
+				class="swiper-pagination usk-position-z-index usk-position-<?php echo esc_attr($settings['progress_position']); ?>">
 			</div>
 		<?php endif;
 	}
@@ -297,13 +297,13 @@ trait Global_Widget_Template
 		$hide_arrow_on_mobile = $settings['hide_arrow_on_mobile'] ? 'usk-visible@m usk-flex' : 'usk-flex';
 
 		?>
-		<div class="usk-position-z-index usk-position-<?php echo esc_html($settings['both_position']); ?>">
+		<div class="usk-position-z-index usk-position-<?php echo esc_attr($settings['both_position']); ?>">
 			<div class="usk-arrows-dots-container usk-slidenav-container ">
 
 				<div class="usk-flex usk-flex-middle">
-					<div class="<?php echo esc_html($hide_arrow_on_mobile); ?>">
+					<div class="<?php echo esc_attr($hide_arrow_on_mobile); ?>">
 						<a href="" class="usk-navigation-prev usk-slidenav-previous usk-icon usk-slidenav">
-							<i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+							<i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 								aria-hidden="true"></i>
 						</a>
 					</div>
@@ -312,9 +312,9 @@ trait Global_Widget_Template
 						<div class="swiper-pagination"></div>
 					<?php endif; ?>
 
-					<div class="<?php echo esc_html($hide_arrow_on_mobile); ?>">
+					<div class="<?php echo esc_attr($hide_arrow_on_mobile); ?>">
 						<a href="" class="usk-navigation-next usk-slidenav-next usk-icon usk-slidenav">
-							<i class="usk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+							<i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 								aria-hidden="true"></i>
 						</a>
 					</div>
@@ -328,13 +328,13 @@ trait Global_Widget_Template
 	{
 		$settings = $this->get_settings_for_display();
 		$hide_arrow_on_mobile = $settings['hide_arrow_on_mobile'] ? 'usk-visible@m' : ''; ?>
-		<div class="usk-position-z-index usk-position-<?php echo esc_html($settings['arrows_fraction_position']); ?>">
+		<div class="usk-position-z-index usk-position-<?php echo esc_attr($settings['arrows_fraction_position']); ?>">
 			<div class="usk-arrows-fraction-container usk-slidenav-container ">
 
 				<div class="usk-flex usk-flex-middle">
-					<div class="<?php echo esc_html($hide_arrow_on_mobile); ?>">
+					<div class="<?php echo esc_attr($hide_arrow_on_mobile); ?>">
 						<a href="" class="usk-navigation-prev usk-slidenav-previous usk-icon usk-slidenav">
-							<i class="usk-icon-arrow-left-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+							<i class="usk-icon-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 								aria-hidden="true"></i>
 						</a>
 					</div>
@@ -343,9 +343,9 @@ trait Global_Widget_Template
 						<div class="swiper-pagination"></div>
 					<?php endif; ?>
 
-					<div class="<?php echo esc_html($hide_arrow_on_mobile); ?>">
+					<div class="<?php echo esc_attr($hide_arrow_on_mobile); ?>">
 						<a href="" class="usk-navigation-next usk-slidenav-next usk-icon usk-slidenav">
-							<i class="usk-icon-arrow-right-<?php echo esc_html($settings['nav_arrows_icon']); ?>"
+							<i class="usk-icon-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>"
 								aria-hidden="true"></i>
 						</a>
 					</div>
@@ -487,7 +487,7 @@ trait Global_Widget_Template
 		<div class="ultimate-store-kit">
 			<div <?php $this->print_render_attribute_string('usk-carousel-wrapper'); ?>>
 				<div <?php $this->print_render_attribute_string('carousel'); ?>>
-					<div <?php echo wp_kses_post($this->get_render_attribute_string('swiper')); ?>>
+					<div <?php $this->print_render_attribute_string('swiper'); ?>>
 						<div class="swiper-wrapper">
 							<?php
 	}
