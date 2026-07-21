@@ -2,14 +2,14 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.6
+Stable tag: 3.0.7
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 7.0.1
+Tested up to: 7.0.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.1.4
+Elementor tested up to: 4.2.0
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -225,7 +225,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 3.0.X [XXth July 2026] =
+= 3.0.7 [21st July 2026] =
 
 * Fixed: Product text now falls back to the full description when the short description is empty
 * Fixed: Text Style visibility now correctly follows the text toggle in the mentor slider widget
