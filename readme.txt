@@ -225,6 +225,10 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
+= 3.0.X [XXst July 2026] =
+
+* Added: Tooltip text color and background styling controls added in the action button style section for product grid and carousel widgets
+
 = 3.0.7 [21st July 2026] =
 
 * Fixed: Product text now falls back to the full description when the short description is empty
