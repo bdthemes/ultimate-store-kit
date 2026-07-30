@@ -42,7 +42,7 @@ Take full control of your WooCommerce store or EDD store with Ultimate Store Kit
 
 
 ###USEFUL LINKS 👇###
-**[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
+**[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
 
 https://youtu.be/EI21j-CU9t4?si=1eFri9BweVmQfnbN
 

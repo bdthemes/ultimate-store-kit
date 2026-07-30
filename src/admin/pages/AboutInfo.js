@@ -169,7 +169,7 @@ const AboutInfo = () => {
 						icon={<BookIcon />}
 					>
 						<a
-							href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/"
+							href="https://bdthemes.com/knowledge-base/ultimate-store-kit/"
 							target="_blank"
 							rel="noopener noreferrer"
 							className={linkStrong}
