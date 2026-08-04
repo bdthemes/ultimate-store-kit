@@ -125,7 +125,7 @@ const Welcome = ({ widgets, settings, isPro = false }) => {
 							className={btnPrimary}
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/"
+							href="https://bdthemes.com/knowledge-base/ultimate-store-kit/"
 						>
 							{__('Knowledge Base', 'ultimate-store-kit')}
 						</a>
