@@ -1406,8 +1406,8 @@ class Featured_Box extends Module_Base {
             printf(
                 '<%1$s class="usk-title"><a %2$s title="%3$s">%3$s</a></%1$s>', 
                 esc_attr( Utils::get_valid_html_tag($settings['title_tag']) ), 
-                wp_kses_post($this->get_render_attribute_string('title-link')), 
-                wp_kses_post($settings['title'])
+                $this->get_render_attribute_string('title-link'), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                esc_attr($settings['title'])
             );
         }
     }

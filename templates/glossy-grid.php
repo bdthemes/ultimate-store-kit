@@ -13,8 +13,7 @@ use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Classes\Utils;
 
 
-class USK_Glossy_Grid_Template
-{
+class USK_Glossy_Grid_Template {
     use Global_Widget_Template;
     /**
      * Target widget settings
@@ -29,8 +28,7 @@ class USK_Glossy_Grid_Template
      * @param array $settings Widget settings
      * @param string $widget_name Widget name
      */
-    public function __construct($settings = [], $widget_name = '')
-    {
+    public function __construct($settings = [], $widget_name = '') {
         $this->target_widget_settings = $settings;
         $this->target_widget_name = $widget_name;
     }
@@ -41,8 +39,7 @@ class USK_Glossy_Grid_Template
      * @param WC_Product $product The product object to render
      * @param array $settings The widget settings
      */
-    public function render_glossy_grid_item($product, $settings)
-    {
+    public function render_glossy_grid_item($product, $settings) {
         if (!$product) {
             return;
         }
@@ -57,7 +54,7 @@ class USK_Glossy_Grid_Template
         $classes .= $show_rating ? ' usk-have-rating' : '';
         $title_tags = isset($settings['title_tags']) ? $settings['title_tags'] : 'h3';
 
-        ?>
+?>
         <div class="<?php echo esc_attr($classes); ?>" data-product-id="<?php echo esc_attr($product_id); ?>">
             <div class="usk-item-box">
                 <?php $this->render_product_image($product, $settings); ?>
@@ -66,10 +63,10 @@ class USK_Glossy_Grid_Template
                         <?php if (isset($settings['show_title']) ? $settings['show_title'] : true):
                             printf(
                                 '<%1$s class="title"><a href="%2$s" class="usk-title" aria-label="%4$s">%3$s</a></%1$s>',
-                                esc_attr( Utils::get_valid_html_tag( $title_tags ) ),
-                                esc_url( $product->get_permalink() ),
-                                esc_html( $product->get_title() ),
-                                esc_attr( sprintf( 'View details for %s', $product->get_title() ) )
+                                esc_attr(Utils::get_valid_html_tag($title_tags)),
+                                esc_url($product->get_permalink()),
+                                esc_html($product->get_title()),
+                                esc_attr(sprintf('View details for %s', $product->get_title()))
                             );
                         endif; ?>
                         <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()): ?>
@@ -95,20 +92,25 @@ class USK_Glossy_Grid_Template
                 </div>
             </div>
         </div>
-        <?php
+    <?php
     }
     /**
      * Render product image with hover effect and action buttons
      *
      * @param WC_Product $product The product object
      */
-    public function render_product_image($product, $settings)
-    {
+    public function render_product_image($product, $settings) {
         if (!$product) {
             return;
         }
         $gallery_thumbs = $product->get_gallery_image_ids();
         $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), isset($settings['image_size']) ? $settings['image_size'] : 'full');
+
+        // if product image is empty, use placeholder
+        if (empty($product_image)) {
+            $product_image = wc_placeholder_img_src('full');
+        }
+
         if ($gallery_thumbs) {
             foreach ($gallery_thumbs as $key => $gallery_thumb) {
                 if ($key == 0):
@@ -118,13 +120,13 @@ class USK_Glossy_Grid_Template
         } else {
             $gallery_image_link = wp_get_attachment_image_url(get_post_thumbnail_id(), isset($settings['image_size']) ? $settings['image_size'] : 'full');
         }
-        ?>
+    ?>
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
                 <img class="img image-default" src="<?php echo esc_url($product_image); ?>"
-                    alt="<?php echo esc_html(get_the_title()); ?>">
+                    alt="<?php echo esc_attr(get_the_title()); ?>">
                 <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>"
-                    alt="<?php echo esc_html(get_the_title()); ?>">
+                    alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
             <div class="usk-badge-label-wrapper">
                 <div class="usk-badge-label-content usk-flex usk-flex-column usk-flex-bottom">
@@ -132,11 +134,10 @@ class USK_Glossy_Grid_Template
                 </div>
             </div>
         </div>
-        <?php
+<?php
     }
 
-    public function print_price_output($output)
-    {
+    public function print_price_output($output) {
         $tags = [
             'del' => ['aria-hidden' => []],
             'span' => ['class' => []],

@@ -1,15 +1,15 @@
 === Ultimate Store Kit - Addon For WooCommerce, EDD and Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, sohanurrahman, muhammadasik, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.1
+Stable tag: 3.0.7
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 7.0
+Tested up to: 7.0.2
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Elementor requires at least: 3.28
-Elementor tested up to: 4.0.3
+Elementor requires at least: 4.0.0
+Elementor tested up to: 4.2.0
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -42,7 +42,7 @@ Take full control of your WooCommerce store or EDD store with Ultimate Store Kit
 
 
 ###USEFUL LINKS 👇###
-**[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
+**[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
 
 https://youtu.be/EI21j-CU9t4?si=1eFri9BweVmQfnbN
 
@@ -224,6 +224,47 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 3.0.X [XXst July 2026] =
+
+* Added: Tooltip text color and background styling controls added in the action button style section for product grid and carousel widgets
+
+= 3.0.7 [21st July 2026] =
+
+* Fixed: Product text now falls back to the full description when the short description is empty
+* Fixed: Text Style visibility now correctly follows the text toggle in the mentor slider widget
+* Fixed: Pause on hover now appears only when autoplay is enabled
+* Fixed: Improved output escaping and attribute sanitization in the shiny grid widget
+* Fixed: Broken hover action button layout in the EDD beauty grid widget
+* Fixed: Improved alt attribute escaping in the EDD beauty grid widget
+* Fixed: Security vulnerability patched ( Thanks to Bao - BlueRock )
+
+= 3.0.6 [12th July 2026] =
+
+* Updated: Made compatible with WordPress version 7.0.1
+
+= 3.0.5 [21st May 2026] =
+
+* Updated: Made compatible with WordPress version 7.0
+
+= 3.0.4 [20th May 2026] =
+
+* Improved: Made compatible with Ultimate Store Kit Pro plugin
+* Fixed: Admin dashboard layout and responsive grid display when running free and Pro plugins together
+
+= 3.0.3 [18th May 2026] =
+
+* Added: Login page template added to the template builder for WooCommerce
+* Improved: Biggopti dashboard UI and CSS refined for a cleaner experience
+* Fixed: Template builder widgets not showing in the Elementor editor panel (page cart, page checkout, page order, page single)
+* Fixed: Activate and deactivate button issue resolved in the widgets page
+* Fixed: Heaven slider, image hotspot, mentor slider and showcase slider widget feedback issues
+* Fixed: Florence grid, glossy grid and shiny grid template feedback issues
+
+= 3.0.2 [6th May 2026] =
+
+Fixed: Added translation support for hard-coded admin js labels using wp-i18n and wp_set_script_translations()
+Fixed: Prevented template builder status switcher conflicts with Element Pack Pro by properly scoping modal switcher IDs and handlers
 
 = 3.0.1 [28th April 2026] =
 

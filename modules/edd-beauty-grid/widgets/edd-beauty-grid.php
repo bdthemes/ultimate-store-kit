@@ -128,12 +128,15 @@ class EDD_Beauty_Grid extends Module_Base {
                         <div class="usk-edd-beauty-grid-image-wrapper">
                             <div class="usk-edd-beauty-grid-image">
                                 <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                                    <img src="<?php echo esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size'])); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                 </a>
                                 <div class="usk-action-button">
                                     <?php if (function_exists('edd_price')) { ?>
                                         <?php if (!edd_has_variable_prices(get_the_ID())) { ?>
-                                            <?php echo esc_url(edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button')); ?>
+                                            <?php
+                                            // EDD generates escaped purchase form markup; wp_kses_post() strips required form/button tags.
+                                            echo edd_get_purchase_link(get_the_ID(), 'Add to Cart', 'button'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                            ?>
                                         <?php } ?>
                                     <?php } ?>
                                     <div class="usk-details-button">

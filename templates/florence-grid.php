@@ -65,16 +65,16 @@ class USK_Florence_Grid_Template {
                     <div class="usk-content-inner">
                         <?php if ($categories && (isset($settings['show_category']) ? $settings['show_category'] : true)) : ?>
                             <div class="usk-category">
-                                <?php echo wp_kses_post( wc_get_product_category_list( $product->get_id(), ' ' ) ); ?>
+                                <?php echo wp_kses_post(wc_get_product_category_list($product->get_id(), ' ')); ?>
                             </div>
                         <?php endif; ?>
                         <?php if (isset($settings['show_title']) ? $settings['show_title'] : true) :
                             printf(
                                 '<%1$s class="title"><a href="%2$s" class="usk-title" aria-label="%4$s">%3$s</a></%1$s>',
-                                esc_attr( Utils::get_valid_html_tag( $title_tags ) ),
-                                esc_url( $product->get_permalink() ),
-                                esc_html( $product->get_title() ),
-                                esc_attr( sprintf( 'View details for %s', $product->get_title() ) )
+                                esc_attr(Utils::get_valid_html_tag($title_tags)),
+                                esc_url($product->get_permalink()),
+                                esc_html($product->get_title()),
+                                esc_attr(sprintf('View details for %s', $product->get_title()))
                             );
                         endif; ?>
                         <?php if (isset($settings['show_price']) ? $settings['show_price'] : true && $product->get_price_html()) : ?>
@@ -106,6 +106,11 @@ class USK_Florence_Grid_Template {
         $tooltip_position = 'left';
         $gallery_thumbs = $product->get_gallery_image_ids();
         $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), isset($settings['image_size']) ? $settings['image_size'] : 'full');
+
+        // if product image is empty, use placeholder
+        if (empty($product_image)) {
+            $product_image = wc_placeholder_img_src('full');
+        }
         if ($gallery_thumbs) {
             foreach ($gallery_thumbs as $key => $gallery_thumb) {
                 if ($key == 0) :
@@ -118,8 +123,8 @@ class USK_Florence_Grid_Template {
     ?>
         <div class="usk-image">
             <a href="<?php echo esc_url(get_permalink()); ?>">
-                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
-                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+                <img class="img image-default" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                <img class="img image-hover" src="<?php echo esc_url($gallery_image_link); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
             <div class="usk-shoping">
                 <?php

@@ -441,23 +441,20 @@
     a {
       font-size: clamp(10px, 1vw, 12px);
       color: #858890;
-      //   border: 1px solid #c0c9dd;
       text-transform: uppercase;
       font-weight: 500;
       display: inline-block;
-      //   padding: 4px 6px;
       transition: all 0.3s ease;
       line-height: 1;
 
       &:hover {
         color: #2b2d42;
-        // background: #2b2d42;
-        // border-color: #2b2d42;
       }
     }
   }
 
   .usk-title {
+    font-size: 20px;
     margin-bottom: 10px;
     display: block;
     color: #2b2d42;

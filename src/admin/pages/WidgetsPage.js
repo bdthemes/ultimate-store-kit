@@ -11,7 +11,6 @@ import {
 import {
 	btnLg,
 	btnPrimary,
-	btnSm,
 	proBadge,
 	selectInput,
 	selectLabel,
@@ -166,6 +165,10 @@ const WidgetsPage = ({
 	const cardBase =
 		'flex flex-col justify-between gap-3 rounded-lg border border-solid border-gray-200 p-4';
 
+	const toolbarControl = 'h-9 min-h-9 py-0 text-[13px] leading-none';
+	const toolbarBtn =
+		'inline-flex h-9 min-h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-md border px-3 py-0 text-[13px] font-semibold leading-none no-underline transition-all duration-200';
+
 	return (
 		<div>
 		<div className="mb-5 flex flex-wrap items-center justify-between gap-2">
@@ -182,10 +185,10 @@ const WidgetsPage = ({
 			{/* Filters group — wraps on small screens */}
 			<div className="flex flex-wrap items-center gap-3">
 				<div className="relative">
-					<SearchIcon className="absolute right-3 top-3 h-4 w-4 block text-gray-400" />
+					<SearchIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 block text-gray-400" />
 					<input
 						type="text"
-						className="block w-full rounded-md border border-solid border-gray-200 bg-transparent py-2.5 pr-10 pl-3 text-sm text-slate-700 placeholder:text-gray-500 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand/25 sm:w-48"
+						className={`${toolbarControl} block w-full rounded-md border border-solid border-gray-200 bg-transparent pr-10 pl-3 text-slate-700 placeholder:text-gray-500 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand/25 sm:w-48`}
 						placeholder={__('Search widgets...', 'ultimate-store-kit')}
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
@@ -197,7 +200,7 @@ const WidgetsPage = ({
 						{__('Status:', 'ultimate-store-kit')}
 					</label>
 					<select
-						className={selectInput}
+						className={`${selectInput} ${toolbarControl}`}
 						value={filter}
 						onChange={(e) => setFilter(e.target.value)}
 					>
@@ -213,7 +216,7 @@ const WidgetsPage = ({
 							{__('Template:', 'ultimate-store-kit')}
 						</label>
 						<select
-							className={selectInput}
+							className={`${selectInput} ${toolbarControl}`}
 							value={contentTypeFilter}
 							onChange={(e) => setContentTypeFilter(e.target.value)}
 						>
@@ -232,18 +235,26 @@ const WidgetsPage = ({
 			<div className="flex flex-wrap items-center gap-1.5">
 				<button
 					type="button"
-					className={`${btnSm} !rounded-lg !bg-uks-brand !text-white hover:!bg-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white border-none`}
+					className={`${toolbarBtn} ${
+						activeCount > 0
+							? '!bg-uks-brand !text-white hover:!bg-uks-brand-dark border-none'
+							: '!border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark'
+					} focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
 					onClick={handleActivateAll}
 				>
-					<CheckIcon className="h-4 w-4" />
+					<CheckIcon className="h-3.5 w-3.5" />
 					{__('Activate All', 'ultimate-store-kit')}
 				</button>
 				<button
 					type="button"
-					className={`${btnSm} !rounded-lg !border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
+					className={`${toolbarBtn} ${
+						activeCount === 0
+							? '!bg-uks-brand !text-white hover:!bg-uks-brand-dark border-none'
+							: '!border !border-uks-brand/25 bg-uks-brand/5 text-uks-brand hover:bg-uks-brand/10 hover:text-uks-brand-dark'
+					} focus:outline-none focus:ring-2 focus:ring-uks-brand focus:ring-offset-2 focus:ring-offset-white`}
 					onClick={handleDeactivateAll}
 				>
-					<CloseIcon className="h-4 w-4" />
+					<CloseIcon className="h-3.5 w-3.5" />
 					{__('Deactivate All', 'ultimate-store-kit')}
 				</button>
 			</div>

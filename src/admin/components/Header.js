@@ -8,7 +8,7 @@ const PRO_URL = 'https://storekit.pro/pricing/';
 
 const Header = ({ version, isPro, onToggleSidebar, isSidebarOpen, isDesktop }) => {
 	return (
-		<div className="rounded-tl-lg rounded-tr-lg border-0 border-b border-solid border-b-gray-100 bg-white px-4 py-3 sm:px-6 sm:py-4">
+		<div className="rounded-tl-lg rounded-tr-lg border-0 border-b border-solid border-b-gray-100 bg-white px-5 py-5">
 			<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 				<div className="flex min-w-0 items-center gap-3 sm:gap-4">
 					<div className="flex">

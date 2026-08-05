@@ -61,12 +61,12 @@ const AboutInfo = () => {
 		<div className="space-y-6">
 			<div className="overflow-hidden rounded-usk border border-slate-200 bg-white">
 				<div className="bg-white p-4 sm:p-5 border border-solid border-gray-100">
-					<div className="flex gap-4 max-w-3xl flex-col items-center text-center sm:flex-row sm:items-start sm:text-left">
+					<div className="flex max-w-3xl flex-col items-start gap-4 text-left sm:flex-row">
 						<div className="">
 							<UskLogo className="w-12 h-12 block" />
 						</div>
 						<div className="min-w-0 flex-1">
-							<div className="mb-2 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+							<div className="mb-2 flex flex-wrap items-center justify-start gap-2">
 								<h3 className="m-0 text-[22px] font-extrabold leading-none text-slate-900">
 									{__('Ultimate Store Kit', 'ultimate-store-kit')}
 								</h3>
@@ -90,7 +90,7 @@ const AboutInfo = () => {
 									'ultimate-store-kit'
 								)}
 							</p>
-							<ul className="m-0 flex list-none flex-wrap justify-center gap-3 p-0 sm:justify-start">
+							<ul className="m-0 flex list-none flex-wrap justify-start gap-3 p-0">
 								<li className="rounded-full py-1 px-2 border border-solid border-slate-200 bg-white/80 text-xs font-medium text-slate-600">
 									{__('Elementor widgets', 'ultimate-store-kit')}
 								</li>
@@ -169,7 +169,7 @@ const AboutInfo = () => {
 						icon={<BookIcon />}
 					>
 						<a
-							href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/"
+							href="https://bdthemes.com/knowledge-base/ultimate-store-kit/"
 							target="_blank"
 							rel="noopener noreferrer"
 							className={linkStrong}

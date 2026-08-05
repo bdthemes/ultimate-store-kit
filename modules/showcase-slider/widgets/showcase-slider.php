@@ -22,8 +22,7 @@ if (!defined('ABSPATH')) {
 
 // Exit if accessed directly
 
-class Showcase_Slider extends Module_Base
-{
+class Showcase_Slider extends Module_Base {
     use Global_Widget_Controls;
     use Global_Widget_Template;
     use Group_Control_Query;
@@ -32,33 +31,27 @@ class Showcase_Slider extends Module_Base
      * @var \WP_Query
      */
     private $_query = null;
-    public function get_name()
-    {
+    public function get_name() {
         return 'usk-showcase-slider';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return esc_html__('Showcase Slider', 'ultimate-store-kit');
     }
 
-    public function get_icon()
-    {
+    public function get_icon() {
         return 'usk-widget-icon usk-icon-showcase-slider';
     }
 
-    public function get_categories()
-    {
+    public function get_categories() {
         return ['ultimate-store-kit'];
     }
 
-    public function get_keywords()
-    {
+    public function get_keywords() {
         return ['product', 'product slider', 'showcase slider', 'wc', 'carousel'];
     }
 
-    public function get_script_depends()
-    {
+    public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['swiper', 'micromodal', 'usk-site'];
         } else {
@@ -66,8 +59,7 @@ class Showcase_Slider extends Module_Base
         }
     }
 
-    public function get_style_depends()
-    {
+    public function get_style_depends() {
         if ($this->usk_is_edit_mode()) {
             return ['swiper', 'usk-all-styles'];
         } else {
@@ -78,17 +70,14 @@ class Showcase_Slider extends Module_Base
     // public function get_custom_help_url() {
     //     return 'https://youtu.be/3VkvEpVaNAM';
     // }
-    public function get_query()
-    {
+    public function get_query() {
         return $this->_query;
     }
 
-    public function has_widget_inner_wrapper(): bool
-    {
+    public function has_widget_inner_wrapper(): bool {
         return !\Elementor\Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
     }
-    protected function register_controls()
-    {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_woocommerce_layout',
             [
@@ -771,9 +760,9 @@ class Showcase_Slider extends Module_Base
         $this->add_responsive_control(
             'button_padding',
             [
-                'label'      => esc_html__( 'Padding', 'ultimate-store-kit' ) . BDTUSK_NC,
+                'label'      => esc_html__('Padding', 'ultimate-store-kit') . BDTUSK_NC,
                 'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
+                'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
                     '{{WRAPPER}} .usk-showcase-slider .usk-button, {{WRAPPER}} .usk-showcase-slider .added_to_cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -930,7 +919,7 @@ class Showcase_Slider extends Module_Base
         $this->start_controls_section(
             'style_action_btn',
             [
-                'label'      => esc_html__( 'Action Button', 'ultimate-store-kit' ),
+                'label'      => esc_html__('Action Button', 'ultimate-store-kit'),
                 'tab'        => Controls_Manager::TAB_STYLE,
                 'conditions' => [
                     'relation' => 'or',
@@ -953,7 +942,7 @@ class Showcase_Slider extends Module_Base
                         ],
                     ],
                 ],
-            ]         
+            ]
         );
 
         $this->add_group_control(
@@ -1262,15 +1251,19 @@ class Showcase_Slider extends Module_Base
         $this->register_global_controls_navigation_style();
     }
 
-    public function render_image()
-    {
+    public function render_image() {
         $tooltip_position = 'top';
         global $product;
         $settings = $this->get_settings_for_display();
         $product_image = wp_get_attachment_image_url(get_post_thumbnail_id(), $settings['image_size']);
-        ?>
+
+        // if product image is empty, use placeholder
+        if (empty($product_image)) {
+            $product_image = wc_placeholder_img_src('full');
+        }
+?>
         <div class="usk-image-wrap">
-            <img class="usk-image" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_html(get_the_title()); ?>">
+            <img class="usk-image" src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             <div class="usk-shoping">
                 <?php
                 $this->register_global_template_add_to_wishlist($tooltip_position, $settings);
@@ -1282,8 +1275,7 @@ class Showcase_Slider extends Module_Base
         </div>
         <?php
     }
-    public function render_add_to_cart()
-    {
+    public function render_add_to_cart() {
         global $product;
         $settings = $this->get_settings_for_display();
         if ('yes' == $settings['show_cart']): ?>
@@ -1325,12 +1317,10 @@ class Showcase_Slider extends Module_Base
                     $product,
                     $args
                 ));
-            }
-            ; ?>
+            }; ?>
         <?php endif;
     }
-    public function render_slider_header()
-    {
+    public function render_slider_header() {
         $settings = $this->get_settings_for_display();
         $this->add_render_attribute('slider', 'class', ['usk-showcase-slider']);
         $id = 'ultimate-store-kit-' . $this->get_id();
@@ -1423,12 +1413,11 @@ class Showcase_Slider extends Module_Base
             <div <?php $this->print_render_attribute_string('slider'); ?>>
                 <div <?php $this->print_render_attribute_string('swiper'); ?>>
                     <div class="swiper-wrapper">
-                        <?php
-    }
-    public function render_slider_footer()
-    {
-        $settings = $this->get_settings_for_display();
-        ?>
+                    <?php
+                }
+                public function render_slider_footer() {
+                    $settings = $this->get_settings_for_display();
+                    ?>
                     </div>
                     <?php if ('yes' === $settings['show_scrollbar']): ?>
                         <div class="swiper-scrollbar"></div>
@@ -1458,39 +1447,37 @@ class Showcase_Slider extends Module_Base
                 <?php endif; ?>
             </div>
             <?php
-    }
-    public function print_price_output($output)
-    {
-        $tags = [
-            'del' => ['aria-hidden' => []],
-            'span' => ['class' => []],
-            'bdi' => [],
-            'ins' => [],
-        ];
+                }
+                public function print_price_output($output) {
+                    $tags = [
+                        'del' => ['aria-hidden' => []],
+                        'span' => ['class' => []],
+                        'bdi' => [],
+                        'ins' => [],
+                    ];
 
-        if (isset($output)) {
-            echo wp_kses($output, $tags);
-        }
-    }
+                    if (isset($output)) {
+                        echo wp_kses($output, $tags);
+                    }
+                }
 
-    public function render_loop_item()
-    {
-        $settings = $this->get_settings_for_display();
-        $id = 'usk-wc-product-' . $this->get_id();
-        $modal_id = wp_unique_id('modal-id-');
+                public function render_loop_item() {
+                    $settings = $this->get_settings_for_display();
+                    $id = 'usk-wc-product-' . $this->get_id();
+                    $modal_id = wp_unique_id('modal-id-');
 
-        // $wp_query = $this->render_query();
-        $this->query_product();
-        $wp_query = $this->get_query();
-        if ($wp_query->have_posts()) { ?>
+                    // $wp_query = $this->render_query();
+                    $this->query_product();
+                    $wp_query = $this->get_query();
+                    if ($wp_query->have_posts()) { ?>
                 <?php while ($wp_query->have_posts()):
-                    $wp_query->the_post();
-                    global $product;
-                    $rating_count = $product->get_rating_count();
-                    $average = $product->get_average_rating();
-                    $have_rating = ('yes' === $settings['show_rating']) ? 'usk-have-rating' : '';
+                            $wp_query->the_post();
+                            global $product;
+                            $rating_count = $product->get_rating_count();
+                            $average = $product->get_average_rating();
+                            $have_rating = ('yes' === $settings['show_rating']) ? 'usk-have-rating' : '';
 
-                    ?>
+                ?>
                     <div class="swiper-slide usk-item <?php echo esc_attr($have_rating); ?>">
                         <?php $this->render_image(); ?>
                         <div class="usk-badge-label-wrapper">
@@ -1506,9 +1493,9 @@ class Showcase_Slider extends Module_Base
                                 <?php if ('yes' == $settings['show_title']):
                                     printf(
                                         '<%1$s class="title"><a href="%2$s" class="usk-title">%3$s</a></%1$s>',
-                                        esc_attr( Utils::get_valid_html_tag( $settings['title_tags'] ) ),
-                                        esc_url( $product->get_permalink() ),
-                                        esc_html( $product->get_title() )
+                                        esc_attr(Utils::get_valid_html_tag($settings['title_tags'])),
+                                        esc_url($product->get_permalink()),
+                                        esc_html($product->get_title())
                                     );
                                 endif; ?>
 
@@ -1529,22 +1516,20 @@ class Showcase_Slider extends Module_Base
                         </div>
                     </div>
                     <!-- </div> -->
-                <?php endwhile;
-                wp_reset_postdata();
-        } else {
-            echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
-        }
-    }
+    <?php endwhile;
+                        wp_reset_postdata();
+                    } else {
+                        echo '<div class="usk-alert-warning" usk-alert>' . esc_html__('Ops! There no product to display.', 'ultimate-store-kit') . '</div>';
+                    }
+                }
 
-    public function render()
-    {
-        $this->render_slider_header();
-        $this->render_loop_item();
-        $this->render_slider_footer();
-    }
-    public function query_product()
-    {
-        $default = $this->getGroupControlQueryArgs();
-        $this->_query = $this->build_query_from_args($default);
-    }
-}
+                public function render() {
+                    $this->render_slider_header();
+                    $this->render_loop_item();
+                    $this->render_slider_footer();
+                }
+                public function query_product() {
+                    $default = $this->getGroupControlQueryArgs();
+                    $this->_query = $this->build_query_from_args($default);
+                }
+            }

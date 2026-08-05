@@ -2158,6 +2158,46 @@ trait Global_Widget_Controls
             $this->end_controls_tab();
         endif;
         $this->end_controls_tabs();
+
+        $this->add_control(
+            'heading_action_btn_tooltip',
+            [
+                'label' => esc_html__('Tooltip', 'ultimate-store-kit') . BDTUSK_NC,
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'action_btn_tooltip_text_color',
+            [
+                'label' => esc_html__('Text Color', 'ultimate-store-kit'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping' => '--usk-microtip-color: {{VALUE}};',
+                    '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping [role~="tooltip"]::after' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'action_btn_tooltip_background',
+                'label' => esc_html__('Background', 'ultimate-store-kit'),
+                'types' => ['classic', 'gradient'],
+                'exclude' => ['image'],
+                'selector' => '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping [role~="tooltip"]::after',
+                'fields_options' => [
+                    'color' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .' . $this->get_name() . ' .usk-shoping' => '--usk-microtip-bg: {{VALUE}};',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
     protected function register_global_controls_grid_pagination()
@@ -4155,8 +4195,11 @@ trait Global_Widget_Controls
         $this->add_control(
             'pauseonhover',
             [
-                'label' => esc_html__('Pause on Hover', 'ultimate-store-kit'),
-                'type' => Controls_Manager::SWITCHER,
+                'label'     => esc_html__('Pause on Hover', 'ultimate-store-kit'),
+                'type'      => Controls_Manager::SWITCHER,
+                'condition' => [
+                    'autoplay' => 'yes',
+                ],
             ]
         );
 

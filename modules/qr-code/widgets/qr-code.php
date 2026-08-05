@@ -158,6 +158,6 @@ class QR_Code extends Module_Base {
         $size    = (!empty($settings['qr_code_dimesion_size']) ? $settings['qr_code_dimesion_size'] : 150);
         $dimension = $size . 'x' . $size;
         $image_src = sprintf('//api.qrserver.com/v1/create-qr-code/?size=%s&ecc=L&qzone=1&data=%s', $dimension, urlencode($product_url));
-        printf('<div class="usk-qrcode"><img src="%1$s" alt="%2$s"></div>', esc_url($image_src), esc_html(get_the_title($product_id)));
+        printf('<div class="usk-qrcode"><img src="%1$s" alt="%2$s"></div>', esc_url($image_src), esc_attr(get_the_title($product_id)));
     }
 }

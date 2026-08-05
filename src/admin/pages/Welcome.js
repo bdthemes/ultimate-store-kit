@@ -88,7 +88,7 @@ const Welcome = ({ widgets, settings, isPro = false }) => {
 				return WelcomeExtra ? <WelcomeExtra /> : null;
 			})()}
 
-			<div className="mb-4 grid grid-cols-1 gap-4 xl:grid-cols-2">
+			<div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
 					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Support And Feedback', 'ultimate-store-kit')}
@@ -125,7 +125,7 @@ const Welcome = ({ widgets, settings, isPro = false }) => {
 							className={btnPrimary}
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://bdthemes.com/all-knowledge-base-of-ultimate-store-kit/"
+							href="https://bdthemes.com/knowledge-base/ultimate-store-kit/"
 						>
 							{__('Knowledge Base', 'ultimate-store-kit')}
 						</a>
@@ -173,7 +173,7 @@ const Welcome = ({ widgets, settings, isPro = false }) => {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<div className="rounded-lg border border-solid border-gray-100 bg-white p-5">
 					<h3 className="m-0 mb-2 text-base font-bold text-slate-800">
 						{__('Feedback', 'ultimate-store-kit')}
