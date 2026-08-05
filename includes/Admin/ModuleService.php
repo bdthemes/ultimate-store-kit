@@ -165,6 +165,18 @@ class ModuleService {
                     'video_url'    => '',
                 ],
                 [
+                    'name'         => 'avatar',
+                    'label'        => esc_html__('User Avatar', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce account',
+                    'demo_url'     => 'https://storekit.pro/demo/user-avatar/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'breadcrumbs',
                     'label'        => esc_html__('Breadcrumbs (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',
@@ -1069,7 +1081,7 @@ class ModuleService {
         if (!isset($options[$module_id])) {
             if (file_exists($module_path . $module_id . '/module.info.php')) {
                 $module_data = require $module_path . $module_id . '/module.info.php';
-                return $module_data['default_activation'];
+                return isset($module_data['default_activation']) ? $module_data['default_activation'] : false;
             }
         } else {
             return $options[$module_id] == 'on';
