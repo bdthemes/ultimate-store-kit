@@ -228,6 +228,9 @@ https://youtu.be/9J4zCaDcPnk
 = 3.0.X [XXst July 2026] =
 
 * Added: Tooltip text color and background styling controls added in the action button style section for product grid and carousel widgets
+* Fixed: Security issue where data returned by the promotions API could be injected as script into the WordPress admin area
+* Fixed: Promotion links and images are now restricted to http(s) and mailto addresses
+* Updated: Security improved
 
 = 3.0.7 [21st July 2026] =
 
