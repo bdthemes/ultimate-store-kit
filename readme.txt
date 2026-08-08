@@ -1,15 +1,15 @@
 === Ultimate Store Kit - Addon For WooCommerce, EDD and Elementor ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, syedfarhanreza, shmusuf, arafatakashakku, shamim496
+Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
-Tested up to: 7.0.2
+Tested up to: 7.0.3
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.2.0
+Elementor tested up to: 4.2.2
 
 WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
 
@@ -225,7 +225,7 @@ https://youtu.be/9J4zCaDcPnk
 
 == Changelog ==
 
-= 3.0.X [XXst July 2026] =
+= 3.0.8 [8th August 2026] =
 
 * Added: Tooltip text color and background styling controls added in the action button style section for product grid and carousel widgets
 * Fixed: Security issue where data returned by the promotions API could be injected as script into the WordPress admin area
