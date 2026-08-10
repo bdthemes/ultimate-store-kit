@@ -19,66 +19,15 @@ class Biggopties {
 
 		// AJAX endpoint to fetch API biggopties on demand (after page load)
 		add_action('wp_ajax_usk_fetch_api_biggopties', [$this, 'ajax_fetch_api_biggopties']);
-		add_action('wp_ajax_usk_admin_api_biggopti_dismiss', [$this, 'usk_admin_api_biggopti_dismiss']);
 		add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
-	}
-
-	/**
-	 * Dismiss Admin API Biggopti.
-	 */
-	public function usk_admin_api_biggopti_dismiss() {
-		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
-		$display_id = (isset($_POST['display_id'])) ? sanitize_text_field($_POST['display_id']) : '';
-		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
-		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
-
-		if (! wp_verify_nonce($nonce, 'ultimate-store-kit')) {
-			wp_send_json_error();
-		}
-
-		if (! current_user_can('manage_options')) {
-			wp_send_json_error();
-		}
-
-		// Prefer display_id; fallback: extract from id (bdt-admin-api-biggopti-{display_id})
-		if (empty($display_id) && !empty($id)) {
-			$prefix = 'bdt-admin-api-biggopti-';
-			if (strpos($id, $prefix) === 0) {
-				$display_id = substr($id, strlen($prefix));
-			} else {
-				$display_id = $id;
-			}
-		}
-
-		/**
-		 * Valid inputs?
-		 */
-		if (!empty($display_id)) {
-			if ('user' === $meta) {
-				$user_key = 'bdt-admin-api-biggopti-' . $display_id;
-				update_user_meta(get_current_user_id(), $user_key, true);
-			} else {
-				// Save to options table only - display_id based, no end-time expiration
-				$dismissals_option = get_option('bdt_biggopti_dismissals', []);
-				$dismissals_option[$display_id] = ['dismissed_at' => time()];
-				update_option('bdt_biggopti_dismissals', $dismissals_option, false);
-			}
-
-			wp_send_json_success();
-		}
-
-		wp_send_json_error();
 	}
 
 	/**
 	 * Enqueue admin scripts
 	 */
 	public function enqueue_admin_scripts() {
-		wp_enqueue_style('bdt-admin-api-biggopti', BDTUSK_ASSETS_URL . 'admin/others/css/admin-api-biggopti.css', [], BDTUSK_VER);
 		wp_enqueue_style('bdt-product-feed', BDTUSK_ASSETS_URL . 'admin/others/css/product-feed.css', [], BDTUSK_VER);
 		wp_enqueue_script('usk-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/biggopti.js', ['jquery'], BDTUSK_VER, true);
-		wp_enqueue_script('usk-admin-api-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/admin-api-biggopti.js', ['jquery', 'wp-i18n'], BDTUSK_VER, true);
-		wp_set_script_translations('usk-admin-api-biggopti', 'ultimate-store-kit');
 
 		$dismissals = get_option('bdt_biggopti_dismissals', []);
 		$dismissed_display_ids = [];
@@ -106,7 +55,6 @@ class Biggopties {
 		];
 
 		wp_localize_script('usk-biggopti', 'UltimateStoreKitBiggoptiConfig', $script_config);
-		wp_localize_script('usk-admin-api-biggopti', 'UltimateStoreKitAdminApiBiggoptiConfig', $script_config);
 	}
 
 	/**

@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.8
+Stable tag: 3.0.9
 Requires PHP: 7.0.0
 Requires at least: 5.0.0
 Tested up to: 7.0.3
@@ -224,6 +224,10 @@ https://youtu.be/9J4zCaDcPnk
 
 
 == Changelog ==
+
+= 3.0.9 [10th August 2026] =
+
+* Updated: Admin API Biggopti removed
 
 = 3.0.8 [8th August 2026] =
 
