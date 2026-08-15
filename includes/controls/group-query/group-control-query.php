@@ -9,6 +9,9 @@ if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+// phpcs:disable WordPress.DB.SlowDBQuery -- meta_query / tax_query / meta_key are the documented way to express these widget filters. Removing them means fetching every post and filtering in PHP, which is strictly slower.
+
 trait Group_Control_Query
 {
 
@@ -919,6 +922,7 @@ trait Group_Control_Query
 		}
 		
 		$page             = max(1, get_query_var('paged'), get_query_var('page'));
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Pagination number off a public archive URL; cast to int and used only to page a query.
 		$page             = absint(empty($_GET['product-page']) ? $page : $_GET['product-page']);
 		$paged            = absint($page);
 

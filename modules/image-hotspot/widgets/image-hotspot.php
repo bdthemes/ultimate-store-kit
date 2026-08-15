@@ -13,6 +13,8 @@ use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 // use Elementor\Utils;]
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
@@ -2685,7 +2687,7 @@ class Image_Hotspot extends Module_Base {
                             }
 
         ?>
-                <div <?php echo $this->get_render_attribute_string('marker'); ?>>
+                <div <?php echo $this->get_render_attribute_string('marker'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor escapes render attributes. ?>>
                     <div class="usk-thumbs-box">
                         <?php if ($settings['hotspot_type'] == 'image') : ?>
                             <?php $this->render_thumbs_image(); ?>

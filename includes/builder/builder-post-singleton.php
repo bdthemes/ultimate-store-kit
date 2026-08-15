@@ -2,6 +2,10 @@
 
 namespace UltimateStoreKit\Includes\Builder;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
 use  UltimateStoreKit\Base\Singleton;
 
 class Builder_Post_Singleton {
@@ -16,7 +20,7 @@ class Builder_Post_Singleton {
 
         $meta = get_post_meta($postId);
 
-        $templateMeta = optional($meta)[Meta::TEMPLATE_TYPE];
+        $templateMeta = usk_optional($meta)[Meta::TEMPLATE_TYPE];
 
         if (!isset($templateMeta[0])) {
             return;

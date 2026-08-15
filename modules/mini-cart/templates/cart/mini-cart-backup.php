@@ -106,7 +106,7 @@ defined( 'ABSPATH' ) || exit;
 								<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
 							</div>
 							<div>
-								<?php echo WC()->cart->get_cart_subtotal(); ?>
+								<?php echo WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce returns a formatted price as markup. ?>
 							</div>
 						</div>
 						<div class="usk-mini-cart-footer-buttons">

@@ -14,6 +14,8 @@ use UltimateStoreKit\Traits\Global_Widget_Controls;
 if (!defined('ABSPATH')) {
     exit;
 }
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 // Exit if accessed directly
 
 class Product_Reviews extends Module_Base {
@@ -815,13 +817,7 @@ class Product_Reviews extends Module_Base {
                                 <i class="usk-rating-icon usk-icon-star-full"></i>
                             </span>
                             <span class="usk-rating-text">
-                                <?php 
-                                printf(
-                                    /* translators: %s is the average rating number */
-                                    esc_html__('%s', 'ultimate-store-kit'),
-                                    esc_html(floor($product->get_average_rating()))
-                                ); 
-                                ?>
+                                <?php echo esc_html(floor($product->get_average_rating())); ?>
                             </span>
                         </div>
                     <?php endif;?>

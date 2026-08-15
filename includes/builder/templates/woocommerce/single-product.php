@@ -32,14 +32,14 @@ get_header('shop');
 do_action('woocommerce_before_single_product');
 
 if (post_password_required()) {
-    echo get_the_password_form(); // WPCS: XSS ok.
+    echo get_the_password_form(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WordPress core returns the password form as markup.
     return;
 }
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
     <?php
     if (class_exists('Elementor\Plugin')) {
-        echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
+        echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor renders and escapes the builder content itself.
     }
     ?>
 </div>

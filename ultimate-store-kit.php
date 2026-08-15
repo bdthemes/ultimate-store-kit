@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Ultimate Store Kit
- * Plugin URI: https://bdthemes.com/ultimate-store-kit/
+ * Plugin URI: https://storekit.pro/
  * Description: Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.
  * Version: 3.0.10
  * Author: BdThemes
@@ -14,6 +14,13 @@
  * Elementor tested up to: 4.2.2
  */
 
+
+
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
 
 // Check if vendor directory and autoload.php exist
 $ultimate_store_kit_autoload_file = __DIR__ . '/vendor/autoload.php';
@@ -41,19 +48,6 @@ define('BDTUSK_ADM_ASSETS_URL', BDTUSK_URL . 'includes/Admin/assets/');
 define('BDTUSK_BUILD_URL', BDTUSK_URL . 'build/');
 
 define('BDTUSK_TITLE', 'Ultimate Store Kit');
-
-/**
- * Loads translations
- *
- * @return void
- */
-
-if (! function_exists('bdthemes_ultimate_store_kit_load_textdomain')) {
-	function bdthemes_ultimate_store_kit_load_textdomain() {
-		load_plugin_textdomain('ultimate-store-kit', false, basename(dirname(__FILE__)) . '/languages');
-	}
-	add_action('init', 'bdthemes_ultimate_store_kit_load_textdomain');
-}
 
 if (! function_exists('_is_usk_pro_installed')) {
 

@@ -137,12 +137,11 @@ class QR_Code extends Module_Base {
 
     protected function get_last_order_id() {
         global $wpdb;
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Editor-preview helper; picks the newest product once per preview render.
         $results = $wpdb->get_col(
-            "
-        SELECT MAX(ID) FROM {$wpdb->prefix}posts
-        WHERE post_type LIKE 'product'
-        AND post_status = 'publish'"
+            "SELECT MAX(ID) FROM {$wpdb->posts} WHERE post_type = 'product' AND post_status = 'publish'"
         );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         return reset($results);
     }
 

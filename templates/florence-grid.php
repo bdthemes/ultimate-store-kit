@@ -9,6 +9,10 @@
 
 namespace UltimateStoreKit\Templates;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
 use UltimateStoreKit\Traits\Global_Widget_Template;
 use UltimateStoreKit\Classes\Utils;
 

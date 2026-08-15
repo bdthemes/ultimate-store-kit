@@ -46,14 +46,20 @@ class Builder_Cpt {
 
 		$postType = Meta::POST_TYPE;
 
-		$query = $wpdb->get_results("SELECT {$wpdb->posts}.ID,{$wpdb->posts}.post_type, {$wpdb->posts}.post_status, {$wpdb->postmeta}.meta_value as template_type
-FROM $wpdb->posts
-    LEFT JOIN $wpdb->postmeta
-        ON {$wpdb->postmeta}.post_id = {$wpdb->posts}.ID
-WHERE 1=1
-AND {$wpdb->posts}.post_type ='{$postType}'
-AND {$wpdb->postmeta}.meta_key ='_ultimate_store_kit_template_type'
-ORDER BY {$wpdb->posts}.post_date DESC");
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Rebuilds the template cache; this is the call that populates it.
+		$query = $wpdb->get_results($wpdb->prepare(
+			"SELECT {$wpdb->posts}.ID, {$wpdb->posts}.post_type, {$wpdb->posts}.post_status, {$wpdb->postmeta}.meta_value as template_type
+			FROM {$wpdb->posts}
+			LEFT JOIN {$wpdb->postmeta}
+				ON {$wpdb->postmeta}.post_id = {$wpdb->posts}.ID
+			WHERE 1=1
+			AND {$wpdb->posts}.post_type = %s
+			AND {$wpdb->postmeta}.meta_key = %s
+			ORDER BY {$wpdb->posts}.post_date DESC",
+			$postType,
+			'_ultimate_store_kit_template_type'
+		));
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 		foreach ($query as $q) {
 			if (! $q->template_type) {
@@ -157,8 +163,10 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 		switch ($column) {
 			case 'template_type':
 				$postType = Builder_Template_Helper::getTemplatePostTypeByIndex($templateType);
-				$postTypeLabel = isset($postType->name) ? ' <strong>-- ' . ucwords($postType->name) . '</strong>' : '';
-				echo Builder_Template_Helper::getTemplateByIndex($templateType) . $postTypeLabel;
+				echo esc_html(Builder_Template_Helper::getTemplateByIndex($templateType));
+				if (isset($postType->name)) {
+					echo ' <strong>-- ' . esc_html(ucwords($postType->name)) . '</strong>';
+				}
 				break;
 			case 'is_enabled':
 				echo (Builder_Template_Helper::getTemplateId($templateType) == $post_id ? 'Active' : 'Inactive');
@@ -173,7 +181,8 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			return;
 		}
 
-		$selected = isset($_GET['type']) ? sanitize_key($_GET['type']) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Repopulates the admin list-table filter dropdown; nothing is written.
+		$selected = isset($_GET['type']) ? sanitize_key(wp_unslash($_GET['type'])) : '';
 ?>
 		<select name="type" id="type">
 			<option value="all" <?php
@@ -236,6 +245,7 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			return;
 		}
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.DB.SlowDBQuery -- Admin list-table filter; the value only narrows the query that is already running.
 		if (
 			'edit.php' == $pagenow
 			&& isset($_GET['type'])
@@ -243,9 +253,10 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			&& $_GET['type'] != 'all'
 		) {
 			$query->query_vars['meta_key']     = Meta::TEMPLATE_TYPE;
-			$query->query_vars['meta_value']   = sanitize_key($_GET['type']);
+			$query->query_vars['meta_value']   = sanitize_key(wp_unslash($_GET['type']));
 			$query->query_vars['meta_compare'] = '=';
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.DB.SlowDBQuery
 	}
 
 
@@ -255,17 +266,31 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			wp_send_json_error(['success' => false, 'errors_arr' => ['permission' => 'Permission denied']], 403);
 		}
 
-		parse_str($_POST['data'], $data);
+		$data = [];
+		// The form arrives as one serialized string, so it is unslashed before parsing
+		// and every field is sanitized individually below — parse_str itself does not
+		// sanitize anything.
+		if (isset($_POST['data'])) {
+			parse_str(wp_unslash($_POST['data']), $data); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Serialized form string; every parsed field is sanitized individually below.
+		}
 
-		if (! wp_verify_nonce($data['nonce'], 'usk-builder')) {
+		$nonce = isset($data['nonce']) ? sanitize_text_field($data['nonce']) : '';
+
+		if (! wp_verify_nonce($nonce, 'usk-builder')) {
 			wp_send_json_error(['success' => false, 'errors_arr' => ['nonce' => 'Invalid nonce']], 403);
 		}
 
-		$templateId = isset($data['template_id']) ? trim($data['template_id']) : '';
-		$name       = isset($data['template_name']) ? trim($data['template_name']) : '';
-		$type       = isset($data['template_type']) ? trim($data['template_type']) : '';
-		$editWith   = isset($data['edit_with']) ? trim($data['edit_with']) : 'elementor'; //gutenberg
+		$templateId = isset($data['template_id']) ? absint($data['template_id']) : 0;
+		$name       = isset($data['template_name']) ? sanitize_text_field($data['template_name']) : '';
+		$type       = isset($data['template_type']) ? sanitize_key($data['template_type']) : '';
+		$editWith   = isset($data['edit_with']) ? sanitize_key($data['edit_with']) : 'elementor'; //gutenberg
 		$isEnabled  = (isset($data['template_status']) && $data['template_status']) == 1 ? 1 : 0;
+
+		// Only these two editors are ever handled below, and the value ends up in a
+		// redirect URL, so anything else falls back to the default.
+		if (! in_array($editWith, ['elementor', 'gutenberg'], true)) {
+			$editWith = 'elementor';
+		}
 
 		$errors = [];
 
@@ -352,7 +377,9 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 			wp_send_json_error(['success' => false, 'errors_arr' => ['permission' => 'Permission denied']], 403);
 		}
 
-		if (! wp_verify_nonce($_REQUEST['nonce'], 'ultimate_store_kit_builder_nonce')) {
+		$nonce = isset($_REQUEST['nonce']) ? sanitize_text_field(wp_unslash($_REQUEST['nonce'])) : '';
+
+		if (! wp_verify_nonce($nonce, 'ultimate_store_kit_builder_nonce')) {
 			wp_send_json_error(['success' => false, 'errors_arr' => ['nonce' => 'Invalid nonce']], 403);
 		}
 
@@ -390,7 +417,7 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 
 			if (is_object($screen) && Meta::POST_TYPE == $screen->post_type) {
 				wp_enqueue_style('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/css/ultimate-builder.css', [], BDTUSK_VER);
-				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/js/ultimate-builder.js', ['jquery', 'wp-i18n'], BDTUSK_VER);
+				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/js/ultimate-builder.js', ['jquery', 'wp-i18n'], BDTUSK_VER, true);
 				wp_set_script_translations('ultimate-store-kit-builder', 'ultimate-store-kit');
 
 				wp_localize_script('ultimate-store-kit-builder', 'UltimateStoreKitConfigBuilder', [
@@ -467,8 +494,10 @@ ORDER BY {$wpdb->posts}.post_date DESC");
 	 * Simple fix for WPML and Elementor integration
 	 */
 	public function fix_wpml_elementor_data() {
-		if (isset($_REQUEST['post']) && get_post_type($_REQUEST['post']) === Meta::POST_TYPE) {
-			$post_id = (int) $_REQUEST['post'];
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reads the post being edited so WPML/Elementor metadata can be normalised.
+		$post_id = isset($_REQUEST['post']) ? absint($_REQUEST['post']) : 0;
+
+		if ($post_id && get_post_type($post_id) === Meta::POST_TYPE) {
 			$meta_data = get_post_meta($post_id, '_elementor_data', true);
 
 			// If metadata exists but is in array format, convert it to JSON string

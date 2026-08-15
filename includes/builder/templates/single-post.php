@@ -18,6 +18,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 use UltimateStoreKit\Builder\Builder_Integration;
 
 get_header();
@@ -25,7 +27,7 @@ get_header();
 do_action('ultimate-store-kit-builder/woocommerce/before-main-content');
 
 if (class_exists('Elementor\Plugin')) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false);
+	echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor renders and escapes the builder content itself.
 }
 
 do_action('ultimate-store-kit-builder/woocommerce/after-main-content');
