@@ -16,6 +16,17 @@ class Feeds {
 	private $settings;
 
 	/**
+	 * Max seconds to wait for a remote feed. Kept short so a slow or dead
+	 * endpoint can never stall the admin dashboard into a gateway timeout.
+	 */
+	const REQUEST_TIMEOUT = 5;
+
+	/**
+	 * How long to skip remote requests after a failure.
+	 */
+	const FAILURE_BACKOFF = HOUR_IN_SECONDS;
+
+	/**
 	 * Static variable to track if the feed has been displayed
 	 */
 	private static $feed_displayed = false;
@@ -86,15 +97,22 @@ class Feeds {
 		$feeds = $this->get_remote_feeds_data();
 		if (is_array($feeds)) {
 			foreach ($feeds as $feed) {
+				if (! is_object($feed)) {
+					continue;
+				}
+
+				$demo_link = isset($feed->demo_link) ? $feed->demo_link : '';
+				$image     = isset($feed->image) ? $feed->image : '';
+				$content   = isset($feed->content) ? $feed->content : '';
 ?>
 				<div class="activity-block">
-					<a href="<?php echo esc_url($feed->demo_link); ?>" target="_blank" style="margin-bottom:10px; display: inline-block;">
-						<img src="<?php echo esc_url($feed->image); ?>" style="width:100%;min-height:240px;">
+					<a href="<?php echo esc_url($demo_link); ?>" target="_blank" style="margin-bottom:10px; display: inline-block;">
+						<img src="<?php echo esc_url($image); ?>" style="width:100%;min-height:240px;">
 					</a>
 					<p>
-						<?php echo wp_kses_post(wp_trim_words(wp_strip_all_tags($feed->content), 50)); ?>
-						<a href="<?php echo esc_url($feed->demo_link); ?>" target="_blank">
-							<?php esc_html_e('Learn more...', $this->settings['text_domain']); ?>
+						<?php echo wp_kses_post(wp_trim_words(wp_strip_all_tags($content), 50)); ?>
+						<a href="<?php echo esc_url($demo_link); ?>" target="_blank">
+							<?php esc_html_e('Learn more...', 'ultimate-store-kit'); ?>
 						</a>
 					</p>
 				</div>
@@ -114,27 +132,67 @@ class Feeds {
 		$cached_data   = get_transient($transient_key);
 
 		if (! empty($cached_data)) {
-			return json_decode($cached_data);
+			$decoded = json_decode($cached_data);
+			return is_array($decoded) ? $decoded : [];
+		}
+
+		/**
+		 * A recent request already failed, so don't block the dashboard again.
+		 * Serve the last known good response until the backoff expires.
+		 */
+		if (get_transient($transient_key . '_failed')) {
+			return $this->get_fallback_feeds_data();
 		}
 
 		$response = wp_remote_get(
 			$this->settings['remote_feed_link'],
 			array(
-				'timeout' => 30,
+				'timeout' => self::REQUEST_TIMEOUT,
 				'headers' => array(
 					'Accept' => 'application/json',
 				),
 			)
 		);
 
-		if (is_wp_error($response)) {
-			return [];
+		if (is_wp_error($response) || 200 !== (int) wp_remote_retrieve_response_code($response)) {
+			set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
+			return $this->get_fallback_feeds_data();
 		}
 
 		$response_body = wp_remote_retrieve_body($response);
+		$decoded       = json_decode($response_body);
+
+		if (! is_array($decoded)) {
+			set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
+			return $this->get_fallback_feeds_data();
+		}
+
 		set_transient($transient_key, $response_body, 6 * HOUR_IN_SECONDS);
 
-		return json_decode($response_body);
+		/**
+		 * Keep a copy outside the transient so the widget still has something
+		 * to show while the remote endpoint is unreachable.
+		 */
+		update_option($transient_key . '_fallback', $response_body, false);
+
+		return $decoded;
+	}
+
+	/**
+	 * Get the last successfully fetched feeds, if any.
+	 *
+	 * @return array
+	 */
+	private function get_fallback_feeds_data() {
+		$fallback = get_option($this->settings['transient_key'] . '_fallback');
+
+		if (empty($fallback)) {
+			return [];
+		}
+
+		$decoded = json_decode($fallback);
+
+		return is_array($decoded) ? $decoded : [];
 	}
 
 	/**
@@ -151,13 +209,25 @@ class Feeds {
 			 * Decode as associative array
 			 */
 			$rss_items = json_decode($cached_data, true);
+
+			if (! is_array($rss_items)) {
+				$rss_items = [];
+			}
+		} elseif (get_transient($transient_key . '_failed')) {
+			/**
+			 * A recent fetch failed, so skip the blocking request entirely.
+			 */
+			$rss_items = [];
 		} else {
 			include_once ABSPATH . WPINC . '/feed.php';
 
+			add_action('wp_feed_options', [$this, 'set_feed_timeout']);
 			$rss = fetch_feed($this->settings['feed_link']);
+			remove_action('wp_feed_options', [$this, 'set_feed_timeout']);
 
 			if (is_wp_error($rss)) {
-				return '<li>' . esc_html__('Items Not Found', $this->settings['text_domain']) . '.</li>';
+				set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
+				return '<li>' . esc_html__('Items Not Found', 'ultimate-store-kit') . '.</li>';
 			}
 
 			$maxitems  = $rss->get_item_quantity(5);
@@ -223,6 +293,16 @@ class Feeds {
 		</p>
 <?php
 		return ob_get_clean();
+	}
+
+	/**
+	 * Keep SimplePie's socket timeout in line with our own limit.
+	 *
+	 * @param object $feed SimplePie instance.
+	 * @return void
+	 */
+	public function set_feed_timeout($feed) {
+		$feed->set_timeout(self::REQUEST_TIMEOUT);
 	}
 
 	/**

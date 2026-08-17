@@ -10,6 +10,21 @@ use UltimateStoreKit\Base\Singleton;
 class Biggopties {
 	use Singleton;
 
+	/**
+	 * Max seconds to wait for the remote API.
+	 */
+	const REQUEST_TIMEOUT = 5;
+
+	/**
+	 * How long to skip remote requests after a failure.
+	 */
+	const FAILURE_BACKOFF = HOUR_IN_SECONDS;
+
+	/**
+	 * How long a successful response stays cached.
+	 */
+	const CACHE_LIFETIME = HOUR_IN_SECONDS;
+
 	private static $biggopties = [];
 
 	public function __construct() {
@@ -64,24 +79,56 @@ class Biggopties {
 	 */
 	private function get_api_biggopties_data() {
 		// API endpoint for biggopties - you can change this to your actual endpoint
-		$api_url = 'https://api.sigmative.io/prod/store/api/biggopti/api-data-records';
+		$api_url       = '';
+		$transient_key = 'bdt_usk_biggopties_api';
+
+		$cached_data = get_transient($transient_key);
+
+		if (! empty($cached_data)) {
+			$biggopties = json_decode($cached_data);
+			return $this->extract_biggopties($biggopties);
+		}
+
+		/**
+		 * A recent request failed, so don't retry on every admin page load.
+		 */
+		if (get_transient($transient_key . '_failed')) {
+			return [];
+		}
 
 		$response = wp_remote_get($api_url, [
-			'timeout' => 30,
+			'timeout' => self::REQUEST_TIMEOUT,
 			'headers' => [
 				'Accept' => 'application/json',
 			],
 		]);
 
-		if (is_wp_error($response)) {
+		if (is_wp_error($response) || 200 !== (int) wp_remote_retrieve_response_code($response)) {
+			set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
 			return [];
 		}
-
-		$response_code = wp_remote_retrieve_response_code($response);
 
 		$response_body = wp_remote_retrieve_body($response);
 
 		$biggopties = json_decode($response_body);
+
+		if (null === $biggopties) {
+			set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
+			return [];
+		}
+
+		set_transient($transient_key, $response_body, self::CACHE_LIFETIME);
+
+		return $this->extract_biggopties($biggopties);
+	}
+
+	/**
+	 * Pull this plugin's records out of the decoded API payload.
+	 *
+	 * @param mixed $biggopties Decoded API response.
+	 * @return array
+	 */
+	private function extract_biggopties($biggopties) {
 
 		if (isset($biggopties) && isset($biggopties->{'ultimate-store-kit'})) {
 			$data = $biggopties->{'ultimate-store-kit'};
