@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 // namespace UltimateStoreKit\Modules\MiniCart\Templates\Cart;
 
 defined( 'ABSPATH' ) || exit;
@@ -93,7 +95,7 @@ if ( empty( $cart_items ) ) { ?>
 					<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
 				</div>
 				<div>
-					<?php echo WC()->cart->get_cart_subtotal(); ?>
+					<?php echo WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce returns a formatted price as markup. ?>
 				</div>
 			</div>
 			<div class="usk-mini-cart-footer-buttons">

@@ -56,6 +56,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     public function __construct() {
         parent::__construct();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check on which editor screen is loading; nothing is written.
         if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && \is_admin()) {
             \add_action('init', [$this, 'register_wc_hooks'], 5);
         }
@@ -95,7 +96,8 @@ class Module extends Ultimate_Store_Kit_Module_Base {
     }
 
     public function ultimate_store_kit_wc_product_quick_view_content() {
-        $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only public endpoint; ultimate_store_kit_wc_product_quick_view_content() rejects any product the visitor could not already view.
+        $product_id = isset($_POST['product_id']) ? absint(wp_unslash($_POST['product_id'])) : 0;
         ultimate_store_kit_wc_product_quick_view_content($product_id);
     }
 
@@ -190,7 +192,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
                 if (!empty($cart_error)) {
                     \wc_clear_notices();
-                    $error_message = \strip_tags($cart_error[0]['notice']);
+                    $error_message = \wp_strip_all_tags($cart_error[0]['notice']);
                 }
 
                 \wp_send_json_error([
@@ -211,12 +213,17 @@ class Module extends Ultimate_Store_Kit_Module_Base {
      * AJAX handler to get available variations for a product
      */
     public function usk_get_available_variations() {
+        // Read-only endpoint returning the variation data already rendered on the
+        // shop page; gated on the product below rather than on a nonce, which
+        // cannot survive full-page caching for logged-out visitors.
+        // phpcs:disable WordPress.Security.NonceVerification.Missing
         if (!isset($_POST['product_id'])) {
             \wp_send_json_error(['message' => 'Invalid product ID']);
             return;
         }
 
         $product_id = \absint($_POST['product_id']);
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
         $product = \wc_get_product($product_id);
 
         if (!$product || !$product->is_type('variable')) {

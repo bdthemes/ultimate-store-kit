@@ -9,6 +9,8 @@
     use Elementor\Group_Control_Typography;
     use UltimateStoreKit\Base\Module_Base;
 
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
     if ( !defined( 'ABSPATH' ) ) {
     exit;
     }
@@ -1014,13 +1016,27 @@
 
     protected function get_last_order_id() {
         global $wpdb;
+
         $statuses = array_keys( wc_get_order_statuses() );
-        $statuses = implode( "','", $statuses );
-        $results  = $wpdb->get_col( "
-        SELECT MAX(ID) FROM {$wpdb->prefix}posts
-        WHERE post_type LIKE 'shop_order'
-        AND post_status IN ('$statuses')" );
-        return reset( $results );
+
+        if ( empty( $statuses ) ) {
+            return 0;
+        }
+
+        // The status list is variable-length, so the placeholders are generated from
+        // its count; every value itself still goes through prepare().
+        $placeholders = implode( ', ', array_fill( 0, count( $statuses ), '%s' ) );
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Editor-preview helper run once per preview render. $placeholders is a generated run of %s, never data; the values are bound by prepare().
+        $results = $wpdb->get_col(
+            $wpdb->prepare(
+                "SELECT MAX(ID) FROM {$wpdb->posts} WHERE post_type = 'shop_order' AND post_status IN ({$placeholders})",
+                $statuses
+            )
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+
+        return $results ? reset( $results ) : 0;
     }
 
     public function order_thank_you( $order ) {
@@ -1039,7 +1055,7 @@
                                 echo esc_html__( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'ultimate-store-kit' );
                         ?>
                 <?php else:
-                                echo wp_kses_post( apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( $order_received_text, 'ultimate-store-kit' ), $order ) );
+                                echo wp_kses_post( apply_filters( 'woocommerce_thankyou_order_received_text', esc_html( $order_received_text ), $order ) );
                         endif; ?>
             </p>
         </div>

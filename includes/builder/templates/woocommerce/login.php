@@ -15,6 +15,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 use UltimateStoreKit\Builder\Builder_Integration;
 
 get_header('shop');
@@ -50,7 +52,7 @@ if ($usk_template_id && class_exists('Elementor\Plugin')) {
 do_action('woocommerce_before_customer_login_form');
 
 if ($usk_has_content) {
-	echo Elementor\Plugin::instance()->frontend->get_builder_content($usk_template_id, false);
+	echo Elementor\Plugin::instance()->frontend->get_builder_content($usk_template_id, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor renders and escapes the builder content itself.
 } else {
 	// Fallback to WC's stock login/register form so the page is never empty.
 	wc_get_template('myaccount/form-login.php');

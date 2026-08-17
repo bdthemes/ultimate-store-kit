@@ -50,6 +50,10 @@ final class WishlistCompare {
 		check_ajax_referer('usk_wishlist_compare', 'nonce');
 	}
 
+	// Every handler below calls verify_request() first, which PHPCS cannot follow.
+	// See its docblock for why the logged-out path is deliberately exempt.
+	// phpcs:disable WordPress.Security.NonceVerification.Missing
+
 	public function usk_add_to_wishlist() {
 		$this->verify_request();
 
@@ -283,6 +287,8 @@ final class WishlistCompare {
 			setcookie($_compare_products_key, json_encode($compare_products), time() + MONTH_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
 		}
 	}
+
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
 }
 
 new WishlistCompare();

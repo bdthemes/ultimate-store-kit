@@ -1244,7 +1244,7 @@ class Mini_Cart extends Module_Base {
 					<?php if ( $settings['show_price_amount'] === 'yes' ) : ?>
 						<span class="usk-cart-button-text">
 							<span class="usk-mini-cart-price-amount">
-								<?php echo WC()->cart->get_cart_subtotal(); ?>
+								<?php echo WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce returns a formatted price as markup. ?>
 							</span>
 						</span>
 					<?php endif; ?>
@@ -1296,7 +1296,7 @@ class Mini_Cart extends Module_Base {
 												<strong><?php echo esc_html__( 'Subtotal', 'ultimate-store-kit' ); ?>:</strong>
 											</div>
 											<div>
-												<?php echo WC()->cart->get_cart_subtotal(); ?>
+												<?php echo WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce returns a formatted price as markup. ?>
 											</div>
 										</div>
 										<div class="usk-mini-cart-footer-buttons">

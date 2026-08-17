@@ -1,5 +1,9 @@
 <?php
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
 use Elementor\TemplateLibrary\Source_Local;
 
 class Ultimate_Store_Kit_Activator {

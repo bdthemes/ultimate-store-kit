@@ -2,6 +2,10 @@
 
 namespace UltimateStoreKit\Includes\Builder;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
 class Builder_Template_Helper {
 
 	public static function isTemplateEditMode() {
@@ -9,6 +13,7 @@ class Builder_Template_Helper {
 			return true;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check on whether a builder template is being edited.
 		if ( isset( $_REQUEST[ Meta::POST_TYPE ] ) ) {
 			return true;
 		}

@@ -42,6 +42,7 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
         parent::__construct();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check on which editor screen is loading; nothing is written.
         if (!empty($_REQUEST['action']) && 'elementor' === $_REQUEST['action'] && is_admin()) {
             add_action('init', [$this, 'register_wc_hooks'], 5);
         }
@@ -64,7 +65,8 @@ class Module extends Ultimate_Store_Kit_Module_Base {
 
     public function ultimate_store_kit_wc_product_quick_view_content() {
 
-        $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only public endpoint; ultimate_store_kit_wc_product_quick_view_content() rejects any product the visitor could not already view.
+        $product_id = isset($_POST['product_id']) ? absint(wp_unslash($_POST['product_id'])) : 0;
 
         ultimate_store_kit_wc_product_quick_view_content($product_id);
     }

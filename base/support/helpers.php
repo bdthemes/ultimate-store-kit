@@ -1,86 +1,31 @@
 <?php
 
-use UltimateStoreKit\Base\Support\Optional;
-
-if (!function_exists('dd')) {
-
-    /**
-     * dump & die.
-     */
-    function dd($x) {
-        echo '<pre>';
-        if (is_array($x) || is_object($x)) {
-            print_r($x);
-        } else {
-            echo wp_kses_post($x);
-        }
-        echo '</pre>';
-        exit;
-    }
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
 }
 
-if (! function_exists('optional')) {
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
+use UltimateStoreKit\Base\Support\Optional;
+
+if (! function_exists('usk_optional')) {
     /**
      * Provide access to optional objects.
+     *
+     * Named usk_optional() rather than optional(): the unprefixed name is the
+     * Laravel helper, which any plugin bundling illuminate/support also declares.
+     * Behind a function_exists() guard the first declaration wins, so an
+     * unprefixed version would silently hand this plugin a foreign Optional class.
      *
      * @param  mixed  $value
      * @param  callable|null  $callback
      * @return mixed
      */
-    function optional($value = null, ?callable $callback = null) {
+    function usk_optional($value = null, ?callable $callback = null) {
         if (is_null($callback)) {
             return new Optional($value);
         } elseif (! is_null($value)) {
             return $callback($value);
         }
-    }
-}
-
-
-if (! function_exists('array_except')) {
-    /**
-     * Provide access to optional objects.
-     *
-     * @param  mixed  $value
-     * @param  callable|null  $callback
-     * @return mixed
-     */
-    function array_except($array, $keys) {
-
-        $original = &$array;
-
-        $keys = (array) $keys;
-
-        if (count($keys) === 0) {
-            return;
-        }
-
-        foreach ($keys as $key) {
-            // if the exact key exists in the top-level, remove it
-            if (array_key_exists($key, $array)) {
-                unset($array[$key]);
-
-                continue;
-            }
-
-            $parts = explode('.', $key);
-
-            // clean up before each pass
-            $array = &$original;
-
-            while (count($parts) > 1) {
-                $part = array_shift($parts);
-
-                if (isset($array[$part]) && is_array($array[$part])) {
-                    $array = &$array[$part];
-                } else {
-                    continue 2;
-                }
-            }
-
-            unset($array[array_shift($parts)]);
-        }
-
-        return $array;
     }
 }

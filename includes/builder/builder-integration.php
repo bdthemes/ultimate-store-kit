@@ -2,6 +2,12 @@
 
 namespace UltimateStoreKit\Builder;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 if (! defined('WPINC')) {
 	die;
 }
@@ -41,7 +47,7 @@ class Builder_Integration {
 				'127.0.0.1'
 			]);
 
-			$current_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field($_SERVER['HTTP_HOST']) : '';
+			$current_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])) : '';
 
 			foreach ($demo_hosts as $host) {
 				if (strpos($current_host, $host) !== false) {
@@ -55,6 +61,7 @@ class Builder_Integration {
 		// Add filter to enable demo mode for preview URLs
 		add_filter('ultimate_store_kit/preview/use_demo_bypass', function ($use_demo) {
 			// Enable demo bypass in Elementor editor
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check on whether the Elementor editor is loading.
 			if (isset($_GET['action']) && $_GET['action'] === 'elementor') {
 				return true;
 			}
@@ -155,6 +162,7 @@ class Builder_Integration {
 
 	public function my_custom_fonts() {
 		if (is_admin() && Plugin::instance()->editor->is_edit_mode()) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check on whether a builder template is open; only enqueues a style.
 			if (isset($_REQUEST['usk-template'])) {
 				wp_register_style('usk-template-builder-hide-preview-btn-inline', false); // phpcs:ignore
 				wp_enqueue_style('usk-template-builder-hide-preview-btn-inline');
@@ -194,7 +202,7 @@ class Builder_Integration {
 		}
 		$meta = get_post_meta($post->ID);
 
-		$templateMeta = optional($meta)[Meta::TEMPLATE_TYPE];
+		$templateMeta = usk_optional($meta)[Meta::TEMPLATE_TYPE];
 		if (! isset($templateMeta[0])) {
 			return;
 		}

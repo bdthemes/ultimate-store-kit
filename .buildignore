@@ -5,9 +5,6 @@
 .browserslistrc
 .eslintignore
 .eslintrc.js
-src
-package.json
-package-lock.json
 .gitattributes
 gruntfile.js
 node_modules

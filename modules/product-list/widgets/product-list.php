@@ -12,6 +12,8 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use UltimateStoreKit\traits\Global_Widget_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 // use UltimateStoreKit\traits\Global_Swiper_Template;
 use UltimateStoreKit\Includes\Controls\GroupQuery\Group_Control_Query;
 use UltimateStoreKit\Classes\Utils;

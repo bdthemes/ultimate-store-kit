@@ -11,6 +11,8 @@ use Elementor\Group_Control_Border;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 class Up_Sells extends Module_Base
 {
 

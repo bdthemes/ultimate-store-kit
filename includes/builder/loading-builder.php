@@ -1,4 +1,8 @@
 <?php
+
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
 require_once 'meta.php';
 require_once 'builder-cpt.php';
 require_once 'cart-render.php';
