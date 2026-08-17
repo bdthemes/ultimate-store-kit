@@ -2,9 +2,9 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor, woocommerce, elementor addons, woocommerce builder, edd
-Stable tag: 3.0.10
+Stable tag: 3.1.0
 Requires PHP: 7.0
-Requires at least: 5.1
+Requires at least: 6.8
 Tested up to: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -276,6 +276,10 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 * Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
 
 == Changelog ==
+
+= 3.1.0 [17th August 2026] =
+
+* Fixed: Admin dashboard could hang and return a gateway timeout when the remote news feed server was slow or unreachable
 
 = 3.0.10 [12th August 2026] =
 
