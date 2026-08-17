@@ -1,13 +1,13 @@
-=== Ultimate Store Kit - Addon For WooCommerce, EDD and Elementor ===
+=== Ultimate Store Kit ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
-Donate link: http://bdthemes.com/
-Tags: elementor, elementor addons, woocommerce builder, woocommerce elementor, woocommerce product, woocommerce design, woocommerce widgets, EDD, cart
-Stable tag: 3.0.9
-Requires PHP: 7.0.0
-Requires at least: 5.0.0
-Tested up to: 7.0.3
+Donate link: https://bdthemes.com/
+Tags: elementor, woocommerce, elementor addons, woocommerce builder, edd
+Stable tag: 3.0.10
+Requires PHP: 7.0
+Requires at least: 5.1
+Tested up to: 7.0
 License: GPL3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
 Elementor tested up to: 4.2.2
 
@@ -223,7 +223,63 @@ e.g.
 https://youtu.be/9J4zCaDcPnk
 
 
+== External services ==
+
+This plugin relies on the external services listed below. Each entry explains what the service is, what data leaves your site, and when.
+
+**BdThemes product feed — dashboard.bdthemes.io**
+
+What it is: an endpoint operated by BdThemes that returns the current product announcements shown in the "BdThemes News & Updates" widget on the WordPress dashboard.
+What is sent and when: your site requests `https://dashboard.bdthemes.io/wp-json/bdthemes/v1/product-feed/` when a logged-in administrator opens the WordPress dashboard and the cached copy of the feed is more than six hours old. The request carries only the product category being asked for. No personal data, site content, licence key or URL is included. The response is cached in your site's transients for six hours.
+Provided by BdThemes: terms of use https://bdthemes.com/terms-of-use/ , privacy policy https://bdthemes.com/privacy-policy/
+
+**BdThemes blog feed — bdthemes.com**
+
+What it is: the public RSS feed of the BdThemes blog, listed underneath the product announcements in the same dashboard widget.
+What is sent and when: your site requests `https://bdthemes.com/feed` under the same conditions as above — administrator opens the dashboard, cached copy older than six hours. Nothing but the feed request itself is sent, and the result is cached for six hours.
+Provided by BdThemes: terms of use https://bdthemes.com/terms-of-use/ , privacy policy https://bdthemes.com/privacy-policy/
+
+**QR code images — api.qrserver.com (goQR.me)**
+
+What it is: a QR code image API. The QR Code widget renders its code as an image served by this API rather than generating the image locally.
+What is sent and when: the widget outputs an `<img>` tag pointing at `https://api.qrserver.com/v1/create-qr-code/`, so the request is made by the visitor's browser every time a page containing a QR Code widget is displayed. The URL carries the permalink of the product the code points at, and — if the widget's "cart URL" option is enabled — the add-to-cart query string for that product. As with any third-party image, the visitor's browser also reveals its own IP address and user agent to that service. Nothing else is sent. This request only happens on pages where you have placed the QR Code widget.
+Provided by goQR.me: terms of use https://goqr.me/legal/ , privacy policy https://goqr.me/privacy-safety-security/
+
+== Source code and build process ==
+
+This plugin ships no obfuscated code. The human-readable sources for every compiled or minified asset are included in the plugin package under `/src`, alongside the build configuration used to produce them:
+
+* `/src/js` — front-end and editor scripts, built to `/assets/js`
+* `/src/admin` — the admin dashboard app (React/`@wordpress/element`), built to `/assets/admin`
+* `/src/scss` — stylesheets, built to `/assets/css`
+* `/src/vendor` — bundled third-party libraries, copied to `/assets/vendor`
+
+Build tooling: [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts) (webpack), Tailwind CSS and PostCSS. The configuration lives in `package.json`, `webpack.config.js`, `postcss.config.js` and `tailwind.config.js`, all of which are included in the package.
+
+To regenerate the compiled assets from source:
+
+1. `npm install`
+2. `npm run build` (or `npm start` for a watching development build)
+
+The compiled output is written to `/assets` and is the only thing the plugin loads at runtime.
+
+**Bundled third-party libraries**
+
+The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Where a library was obtained in a pre-minified form upstream, that is noted:
+
+* DataTables 1.10.21 — https://datatables.net/ — MIT
+* Accordion 3.1.1 — https://github.com/michu2k/Accordion — MIT
+* MicroModal — https://micromodal.vercel.app/ — MIT
+* Toolslide — https://github.com/ihor-basov/toolslide — MIT
+* Popper — https://popper.js.org/ — MIT (distributed upstream as `popper.min.js`)
+* Tippy.js 6.3.1 — https://atomiks.github.io/tippyjs/ — MIT (distributed upstream as `tippy.all.min.js`)
+* Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
+
 == Changelog ==
+
+= 3.0.10 [12th August 2026] =
+
+* Updated: System improved
 
 = 3.0.9 [10th August 2026] =
 

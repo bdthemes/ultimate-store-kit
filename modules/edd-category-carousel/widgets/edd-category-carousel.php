@@ -19,6 +19,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 class EDD_Category_Carousel extends Module_Base {
 	use Global_Widget_Controls;
 	use Global_Terms_Query_Controls;
@@ -781,7 +783,8 @@ class EDD_Category_Carousel extends Module_Base {
 				$args['parent'] = 0;
 				break;
 		}
-		$categories = get_terms('download_category', $args);
+		$args['taxonomy'] = 'download_category';
+		$categories       = get_terms($args);
 		return $categories;
 	}
 	public function render_image() {

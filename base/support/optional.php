@@ -2,6 +2,10 @@
 
 namespace UltimateStoreKit\Base\Support;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
 use ArrayAccess;
 use ArrayObject;
 

@@ -1,3 +1,4 @@
+<?php if (! defined('ABSPATH')) exit; // Exit if accessed directly ?>
 <div class="usk-modal-overlay" id="ultimate-builder-kit-builder-modal" style="display: none">
 	<div id="ultimate-builder-kit-builder-modal-wrapper">
 		<div class="usk-template-modal-header">
@@ -16,6 +17,8 @@
 			<div class="usk-modal-content-wrap">
 				<h3 class="usk-modal-title">
 					<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 					echo wp_kses(
 						sprintf(
 							/* translators: 1: Opening span tag, 2: Closing span tag. */
@@ -36,7 +39,7 @@
 			<div class="usk-modal-form-wrap">
 				<form class="usk-modal-form" method="post">
 					<input type="hidden" name="template_id" value="" class="template_id" />
-					<input type="hidden" name="nonce" value="<?php echo wp_create_nonce('usk-builder'); ?>" />
+					<input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('usk-builder')); ?>" />
 					<div class="usk-form-title"><?php esc_html_e( 'Choose Template Type', 'ultimate-store-kit' ); ?></div>
 					<label for="template_type"><?php esc_html_e( 'Select the type of template you want to work on', 'ultimate-store-kit' ); ?></label>
 					<select name="template_type" id="template_type">

@@ -2,6 +2,10 @@
 
 namespace UltimateStoreKit\Admin;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
 use UltimateStoreKit\Base\Singleton;
 
 /**
@@ -27,6 +31,13 @@ class Biggopties {
 
 	private static $biggopties = [];
 
+	/**
+	 * Every notice id this plugin renders starts with this. The dismiss handler
+	 * writes the id straight into a transient / user-meta key, so it will only
+	 * accept keys that carry the prefix.
+	 */
+	const DISMISS_KEY_PREFIX = 'bdt-admin-biggopti-';
+
 	public function __construct() {
 
 		// add_action('admin_notices', [$this, 'show_biggopties']);
@@ -46,7 +57,7 @@ class Biggopties {
 
 		$dismissals = get_option('bdt_biggopti_dismissals', []);
 		$dismissed_display_ids = [];
-		$prefix = 'bdt-admin-biggopti-api-biggopti-';
+		$prefix = self::DISMISS_KEY_PREFIX . 'api-biggopti-';
 		foreach (array_keys($dismissals) as $key) {
 			if (strpos($key, $prefix) === 0) {
 				$dismissed_display_ids[] = substr($key, strlen($prefix));
@@ -56,6 +67,7 @@ class Biggopties {
 		}
 
 		$current_sector = '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check of which admin screen is showing.
 		if (isset($_GET['page']) && $_GET['page'] === 'ultimate_store_kit_options') {
 			$current_sector = 'plugin_dashboard';
 		}
@@ -288,16 +300,16 @@ class Biggopties {
 		$wrapper_classes = 'bdt-biggopti-wrapper';
 
 		if (isset($biggopti->background_color) && !empty($biggopti->background_color)) {
-			$background_style .= 'background-color: ' . esc_attr($biggopti->background_color) . ';';
+			$background_style .= 'background-color: ' . sanitize_text_field($biggopti->background_color) . ';';
 		}
 
 		if (isset($biggopti->image) && !empty($biggopti->image)) {
-			$background_style .= 'background-image: url(' . esc_url($biggopti->image) . ');';
+			$background_style .= 'background-image: url(' . esc_url_raw($biggopti->image) . ');';
 			$wrapper_classes .= ' has-background-image';
 		}
 
 ?>
-		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . $background_style . '"' : ''; ?>>
+		<div class="<?php echo esc_attr($wrapper_classes); ?>" <?php echo $background_style ? 'style="' . esc_attr($background_style) . '"' : ''; ?>>
 
 
 			<?php $title = (isset($biggopti->title) && !empty($biggopti->title)) ? $biggopti->title : ''; ?>
@@ -371,7 +383,7 @@ class Biggopties {
 	 * AJAX: Build and return API biggopties HTML for dynamic injection
 	 */
 	public function ajax_fetch_api_biggopties() {
-		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : '';
+		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
 		if (!wp_verify_nonce($nonce, 'ultimate-store-kit')) {
 			wp_send_json_error(['message' => 'invalid_nonce']);
 		}
@@ -381,7 +393,7 @@ class Biggopties {
 		}
 
 		// Don't show biggopties on plugin/theme install and upload pages
-		$current_url = isset($_POST['current_url']) ? sanitize_text_field($_POST['current_url']) : '';
+		$current_url = isset($_POST['current_url']) ? sanitize_text_field(wp_unslash($_POST['current_url'])) : '';
 
 		if (!empty($current_url)) {
 			$excluded_patterns = [
@@ -438,10 +450,13 @@ class Biggopties {
 	 * Dismiss Biggopti.
 	 */
 	public function dismiss() {
-		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field($_POST['_wpnonce']) : '';
-		$id   = (isset($_POST['id'])) ? esc_attr($_POST['id']) : '';
-		$time = (isset($_POST['time'])) ? esc_attr($_POST['time']) : '';
-		$meta = (isset($_POST['meta'])) ? esc_attr($_POST['meta']) : '';
+		$nonce = (isset($_POST['_wpnonce'])) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : '';
+		// Not sanitize_key(): the id is echoed back from the notice markup and has to
+		// match the key show_biggopties() reads verbatim, so it is validated below
+		// rather than rewritten here.
+		$id   = (isset($_POST['id'])) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
+		$time = (isset($_POST['time'])) ? absint(wp_unslash($_POST['time'])) : 0;
+		$meta = (isset($_POST['meta'])) ? sanitize_key(wp_unslash($_POST['meta'])) : '';
 
 		if (! wp_verify_nonce($nonce, 'ultimate-store-kit')) {
 			wp_send_json_error();
@@ -450,6 +465,19 @@ class Biggopties {
 		if (! current_user_can('manage_options')) {
 			wp_send_json_error();
 		}
+
+		/**
+		 * The id becomes a transient or user-meta key, so it has to be one of ours.
+		 * Every notice rendered by show_biggopties() carries this prefix; anything
+		 * else is a request to write a key this handler has no business writing.
+		 */
+		if (! preg_match('/^' . preg_quote(self::DISMISS_KEY_PREFIX, '/') . '[A-Za-z0-9_.-]{1,120}$/', $id)) {
+			wp_send_json_error();
+		}
+
+		// Likewise the lifetime is request-supplied — keep it inside a sane window
+		// so a dismissal cannot be made effectively permanent.
+		$time = min(max($time, MINUTE_IN_SECONDS), YEAR_IN_SECONDS);
 
 		/**
 		 * Valid inputs?
@@ -521,10 +549,10 @@ class Biggopties {
 			}
 
 			// Biggopti ID.
-			$biggopti_id    = 'bdt-admin-biggopti-' . $biggopti['id'];
+			$biggopti_id    = self::DISMISS_KEY_PREFIX . $biggopti['id'];
 			$biggopti['id'] = $biggopti_id;
 			if (!isset($biggopti['id'])) {
-				$biggopti_id    = 'bdt-admin-biggopti-' . $biggopti['id'];
+				$biggopti_id    = self::DISMISS_KEY_PREFIX . $biggopti['id'];
 				$biggopti['id'] = $biggopti_id;
 			} else {
 				$biggopti_id = $biggopti['id'];

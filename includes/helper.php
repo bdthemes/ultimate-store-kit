@@ -1,5 +1,11 @@
 <?php
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 use UltimateStoreKit\Ultimate_Store_Kit_Loader;
 use Elementor\Plugin;
 
@@ -404,11 +410,11 @@ function ultimate_store_kit_post_pagination($wp_query, $args = []) {
 	}
 
 	if (! in_array(1, $links, true)) {
-		$class = (1 === $paged) ? ' class="usk-active"' : '';
+		$class = (1 === $paged) ? 'usk-active' : '';
 
 		printf(
-			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
-			$class,
+			'<li class="%s"><a href="%s" target="_self">%s</a></li>' . "\n",
+			esc_attr($class),
 			esc_url(ultimate_store_kit_get_pagination_link(1, $query_arg, $current_url)),
 			esc_html('1')
 		);
@@ -421,11 +427,11 @@ function ultimate_store_kit_post_pagination($wp_query, $args = []) {
 	sort($links);
 
 	foreach ($links as $link) {
-		$class = ($paged === (int) $link) ? ' class="usk-active"' : '';
+		$class = ($paged === (int) $link) ? 'usk-active' : '';
 
 		printf(
-			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
-			$class,
+			'<li class="%s"><a href="%s" target="_self">%s</a></li>' . "\n",
+			esc_attr($class),
 			esc_url(ultimate_store_kit_get_pagination_link($link, $query_arg, $current_url)),
 			esc_html($link)
 		);
@@ -436,11 +442,11 @@ function ultimate_store_kit_post_pagination($wp_query, $args = []) {
 			echo '<li class="usk-pagination-dot-dot"><span>...</span></li>' . "\n";
 		}
 
-		$class = ($paged === $max) ? ' class="usk-active"' : '';
+		$class = ($paged === $max) ? 'usk-active' : '';
 
 		printf(
-			'<li%s><a href="%s" target="_self">%s</a></li>' . "\n",
-			$class,
+			'<li class="%s"><a href="%s" target="_self">%s</a></li>' . "\n",
+			esc_attr($class),
 			esc_url(ultimate_store_kit_get_pagination_link($max, $query_arg, $current_url)),
 			esc_html($max)
 		);
@@ -663,8 +669,8 @@ function ultimate_store_kit_get_category($taxonomy = 'product_cat') {
 function ultimate_store_kit_get_only_parent_cats($taxonomy = 'category') {
 
 	$parent_categories = ['none' => __('None', 'ultimate-store-kit')];
-	$args              = ['parent' => 0];
-	$parent_cats       = get_terms($taxonomy, $args);
+	$args              = ['taxonomy' => $taxonomy, 'parent' => 0];
+	$parent_cats       = get_terms($args);
 
 	foreach ($parent_cats as $parent_cat) {
 		// Ensure $parent_cat is an object, not an array
@@ -1017,11 +1023,13 @@ function ultimate_store_kit_get_wishlist($user_id = 0) {
 	$_wishlist     = [];
 
 	if (isset($_COOKIE[$_wishlist_key])) {
-		$cookie_data  = stripslashes($_COOKIE[$_wishlist_key]);
+		// The cookie is visitor-controlled, so it is sanitized before decoding and
+		// every decoded entry is forced to a product id — nothing else is kept.
+		$cookie_data  = sanitize_text_field(wp_unslash($_COOKIE[$_wishlist_key]));
 		$decoded_data = json_decode($cookie_data, true);
 
 		if (json_last_error() === JSON_ERROR_NONE && is_array($decoded_data)) {
-			$_wishlist = $decoded_data;
+			$_wishlist = array_values(array_filter(array_map('absint', array_filter($decoded_data, 'is_scalar'))));
 		}
 	}
 
@@ -1073,7 +1081,15 @@ function ultimate_store_kit_hide_on_class($selectors) {
 }
 
 function ultimate_store_kit_wc_product_quick_view_content($product_id) {
-	wp_verify_nonce('ajax-usk-quick-view-nonce', 'usk-quick-view-modal-sc');
+	// This renders on an unauthenticated endpoint, so the gate is on the product
+	// rather than on a nonce: nothing is written, and only a product the visitor
+	// could already open on the shop is allowed through. The previous
+	// wp_verify_nonce() call here had its arguments reversed and its result
+	// discarded, so it checked nothing.
+	if (! usk_is_public_product($product_id)) {
+		return;
+	}
+
 	global $woocommerce;
 	global $post;
 
@@ -1154,7 +1170,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 				function initializeWooCommerce() {
 					// Initialize WooCommerce add to cart functionality
 					var wc_add_to_cart_variation_params = {
-						"ajax_url": "<?php echo admin_url('admin-ajax.php'); ?>",
+						"ajax_url": "<?php echo esc_url(admin_url('admin-ajax.php')); ?>",
 						"i18n_view_cart": "<?php echo esc_js(__('View cart', 'ultimate-store-kit')); ?>",
 						"cart_url": "<?php echo esc_url(wc_get_cart_url()); ?>",
 						"is_cart": "<?php echo is_cart() ? '1' : '0'; ?>",
@@ -1323,14 +1339,16 @@ function usk_get_compare_products($user_id = 0) {
 	if ($user_id != 0) {
 		$_compare_products = get_user_meta($user_id, $_compare_products_key, true) ?: [];
 	} elseif (isset($_COOKIE[$_compare_products_key])) {
-		//$_compare_products = unserialize(stripslashes($_COOKIE[sanitize_text_field($_compare_products_key)]));
-
-		$cookie_value      = sanitize_text_field($_COOKIE[$_compare_products_key]);
-		$_compare_products = json_decode(stripslashes($cookie_value), true);
+		// Same treatment as the wishlist cookie: sanitize the visitor-supplied value
+		// before decoding, then keep nothing but product ids.
+		$cookie_value      = sanitize_text_field(wp_unslash($_COOKIE[$_compare_products_key]));
+		$_compare_products = json_decode($cookie_value, true);
 
 		// Check if JSON decoding failed
 		if (! is_array($_compare_products)) {
 			$_compare_products = [];
+		} else {
+			$_compare_products = array_values(array_filter(array_map('absint', array_filter($_compare_products, 'is_scalar'))));
 		}
 	}
 
@@ -1397,6 +1415,10 @@ add_action('wp_enqueue_scripts', 'usk_load_variation_swatches_assets', 20);
 
 // Hook into AJAX variation selection to update product image
 function usk_ajax_variation_image_update() {
+	// Public read-only endpoint returning a public product image. A nonce cannot
+	// survive full-page caching for logged-out visitors, so authorisation is
+	// enforced on the product itself further down instead.
+	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	if (!isset($_POST['variation_id']) || !isset($_POST['product_id'])) {
 		wp_send_json_error('Missing required parameters');
 		return;
@@ -1404,6 +1426,7 @@ function usk_ajax_variation_image_update() {
 
 	$variation_id = absint($_POST['variation_id']);
 	$product_id = absint($_POST['product_id']);
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 	$variation = wc_get_product($variation_id);
 	if (!$variation) {

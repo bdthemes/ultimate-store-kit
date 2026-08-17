@@ -26,7 +26,7 @@ get_header('shop');
 if (class_exists('Elementor\Plugin')) {
 ?>
 	<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
-		<?php echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false); ?>
+		<?php echo Elementor\Plugin::instance()->frontend->get_builder_content(Builder_Integration::instance()->current_template_id, false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor renders and escapes the builder content itself. ?>
 	</form>
 <?php
 }

@@ -8,6 +8,8 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 // use Elementor\Utils;
 use UltimateStoreKit\Base\Module_Base;
 use UltimateStoreKit\Traits\Global_Terms_Query_Controls;
@@ -794,7 +796,7 @@ class Sub_Category extends Module_Base {
                         ],
                         'data-settings' => [
                             wp_json_encode(array_filter([
-                                "autoplay"              => ("yes" == $settings["thumbs_autoplay"]) ? ["delay" => $settings["thumbs_autoplay_speed"] + $index += rand(500, 1500)] : false,
+                                "autoplay"              => ("yes" == $settings["thumbs_autoplay"]) ? ["delay" => $settings["thumbs_autoplay_speed"] + $index += wp_rand(500, 1500)] : false,
                                 "loop"                  => ($settings["thumbs_loop"] == "yes") ? true : false,
                                 "speed"                 => $settings["thumbs_slide_speed"]["size"],
                                 "fadeEffect"          => ['crossFade' => true],
@@ -866,7 +868,7 @@ class Sub_Category extends Module_Base {
                                 printf(
                                     '<a href="%2$s"><span>%1$s</span><i class="usk-icon-arrow-right-8"></i></a>',
                                     /* translators: %s: Category name */
-                                    sprintf(esc_html__('All %s', 'ultimate-store-kit'), $category->name),
+                                    sprintf(esc_html__('All %s', 'ultimate-store-kit'), esc_html($category->name)),
                                     esc_url(get_term_link($category->term_id, 'product_cat'))
                                 );
                                 ?>

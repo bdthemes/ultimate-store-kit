@@ -15,16 +15,16 @@ use UltimateStoreKit\Traits\Global_Widget_Controls;
 use UltimateStoreKit\Traits\Global_Terms_Query_Controls;
 use UltimateStoreKit\traits\Global_Widget_Template;
 
-
 if (!defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
+
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
 
 class Product_Category_Carousel extends Module_Base {
 	use Global_Widget_Controls;
 	use Global_Terms_Query_Controls;
 	use Global_Widget_Template;
-
 
 	// private $_query = null;
 
@@ -373,7 +373,6 @@ class Product_Category_Carousel extends Module_Base {
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 		$this->end_controls_section();
-
 
 		$this->start_controls_section(
 			'section_style_image',
@@ -1015,7 +1014,6 @@ class Product_Category_Carousel extends Module_Base {
 			'hide_empty' => isset($settings['hide_empty']) && ($settings['hide_empty'] == 'yes') ? 1 : 0,
 		];
 
-
 		switch ($settings['display_category']) {
 			case 'all':
 				if (isset($settings['cats_include_by_id']) && !empty($settings['cats_include_by_id'])) {
@@ -1034,7 +1032,8 @@ class Product_Category_Carousel extends Module_Base {
 				$args['parent'] = 0;
 				break;
 		}
-		$categories = get_terms('product_cat', $args);
+		$args['taxonomy'] = 'product_cat';
+		$categories       = get_terms($args);
 		return $categories;
 	}
 	public function render_loop_item() {

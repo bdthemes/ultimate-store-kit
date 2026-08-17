@@ -2,6 +2,12 @@
 
 namespace UltimateStoreKit;
 
+if (! defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+
 use Elementor\Plugin;
 
 final class usk_Modal {

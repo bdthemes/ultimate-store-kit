@@ -14,6 +14,8 @@ use UltimateStoreKit\Base\Module_Base;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 // class Add_To_Cart extends Widget_Button {
 class Page_Single extends Module_Base {
 

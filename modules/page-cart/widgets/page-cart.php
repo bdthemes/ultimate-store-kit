@@ -8,6 +8,8 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams -- WordPressVIPMinimum targets the VIP platform, not the plugin directory. These exclusionary parameters come from a widget's own "exclude" control: the list is whatever the site owner picked in Elementor, applied to a bounded result set, not an unbounded catalogue scan.
+
 if ( ! defined( 'ABSPATH' ) )
 	exit; // Exit if accessed directly
 
@@ -1700,7 +1702,7 @@ class Page_Cart extends Module_Base {
 												);
 											}
 
-											echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $item, $values ); // PHPCS: XSS ok.
+											echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $item, $values ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Returns the quantity input markup; WooCommerce core echoes this same filter unescaped.
 							
 											?>
 										</td>

@@ -28,7 +28,7 @@ get_header('shop');
  */
 
 if (class_exists('Elementor\Plugin')) {
-    echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false );
+    echo Elementor\Plugin::instance()->frontend->get_builder_content( Builder_Integration::instance()->current_template_id, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor renders and escapes the builder content itself.
 }
 ?>
 
