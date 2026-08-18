@@ -39,7 +39,6 @@ class Feeds {
 			'feed_title'       => 'BdThemes News & Updates',
 			'transient_key'    => 'bdthemes_product_feeds',
 			'feed_link'        => 'https://bdthemes.com/feed',
-			'remote_feed_link' => 'https://dashboard.bdthemes.io/wp-json/bdthemes/v1/product-feed/?product_category=element-pack',
 			'text_domain'      => 'ultimate-store-kit',
 			'footer_links'     => [
 				[
@@ -94,106 +93,9 @@ class Feeds {
 	 * Display RSS Feeds Content
 	 */
 	public function display_rss_feeds_content() {
-		$feeds = $this->get_remote_feeds_data();
-		if (is_array($feeds)) {
-			foreach ($feeds as $feed) {
-				if (! is_object($feed)) {
-					continue;
-				}
-
-				$demo_link = isset($feed->demo_link) ? $feed->demo_link : '';
-				$image     = isset($feed->image) ? $feed->image : '';
-				$content   = isset($feed->content) ? $feed->content : '';
-?>
-				<div class="activity-block">
-					<a href="<?php echo esc_url($demo_link); ?>" target="_blank" style="margin-bottom:10px; display: inline-block;">
-						<img src="<?php echo esc_url($image); ?>" style="width:100%;min-height:240px;">
-					</a>
-					<p>
-						<?php echo wp_kses_post(wp_trim_words(wp_strip_all_tags($content), 50)); ?>
-						<a href="<?php echo esc_url($demo_link); ?>" target="_blank">
-							<?php esc_html_e('Learn more...', 'ultimate-store-kit'); ?>
-						</a>
-					</p>
-				</div>
-		<?php
-			}
-		}
 		echo wp_kses_post($this->get_rss_posts_data());
 	}
 
-	/**
-	 * Get Remote Feeds Data
-	 *
-	 * @return array|mixed
-	 */
-	private function get_remote_feeds_data() {
-		$transient_key = $this->settings['transient_key'];
-		$cached_data   = get_transient($transient_key);
-
-		if (! empty($cached_data)) {
-			$decoded = json_decode($cached_data);
-			return is_array($decoded) ? $decoded : [];
-		}
-
-		/**
-		 * A recent request already failed, so don't block the dashboard again.
-		 * Serve the last known good response until the backoff expires.
-		 */
-		if (get_transient($transient_key . '_failed')) {
-			return $this->get_fallback_feeds_data();
-		}
-
-		$response = wp_remote_get(
-			$this->settings['remote_feed_link'],
-			array(
-				'timeout' => self::REQUEST_TIMEOUT,
-				'headers' => array(
-					'Accept' => 'application/json',
-				),
-			)
-		);
-
-		if (is_wp_error($response) || 200 !== (int) wp_remote_retrieve_response_code($response)) {
-			set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
-			return $this->get_fallback_feeds_data();
-		}
-
-		$response_body = wp_remote_retrieve_body($response);
-		$decoded       = json_decode($response_body);
-
-		if (! is_array($decoded)) {
-			set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
-			return $this->get_fallback_feeds_data();
-		}
-
-		set_transient($transient_key, $response_body, 6 * HOUR_IN_SECONDS);
-
-		/**
-		 * Keep a copy outside the transient so the widget still has something
-		 * to show while the remote endpoint is unreachable.
-		 */
-		update_option($transient_key . '_fallback', $response_body, false);
-
-		return $decoded;
-	}
-
-	/**
-	 * Get the last successfully fetched feeds, if any.
-	 *
-	 * @return array
-	 */
-	private function get_fallback_feeds_data() {
-		$fallback = get_option($this->settings['transient_key'] . '_fallback');
-
-		if (empty($fallback)) {
-			return [];
-		}
-
-		$decoded = json_decode($fallback);
-
-		return is_array($decoded) ? $decoded : [];
-	}
 
 	/**
 	 * Get RSS Posts Data
