@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor, woocommerce, elementor addons, woocommerce builder, edd
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 Requires PHP: 7.0
 Requires at least: 6.8
 Tested up to: 7.0
@@ -276,6 +276,10 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 * Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
 
 == Changelog ==
+
+= 3.1.1 [18th August 2026] =
+
+* Removed: Deprecated BdThemes product-feed remote endpoint (returned an empty response) and its unused fetch code
 
 = 3.1.0 [17th August 2026] =
 
