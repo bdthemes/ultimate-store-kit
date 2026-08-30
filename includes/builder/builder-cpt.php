@@ -282,7 +282,9 @@ class Builder_Cpt {
 
 		$templateId = isset($data['template_id']) ? absint($data['template_id']) : 0;
 		$name       = isset($data['template_name']) ? sanitize_text_field($data['template_name']) : '';
-		$type       = isset($data['template_type']) ? sanitize_key($data['template_type']) : '';
+		$type       = isset($data['template_type'])
+			? implode(Builder_Template_Helper::separator(), array_map('sanitize_key', explode(Builder_Template_Helper::separator(), $data['template_type'])))
+			: '';
 		$editWith   = isset($data['edit_with']) ? sanitize_key($data['edit_with']) : 'elementor'; //gutenberg
 		$isEnabled  = (isset($data['template_status']) && $data['template_status']) == 1 ? 1 : 0;
 
