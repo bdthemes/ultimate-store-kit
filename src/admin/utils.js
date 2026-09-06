@@ -50,6 +50,14 @@ const defaultPlaceholders = [
 		proPlaceholder: true,
 	},
 	{
+		id: 'sales-notification',
+		label: __('Sales Notification', 'ultimate-store-kit'),
+		description: __('Show recent purchases as a floating popup to build social proof.', 'ultimate-store-kit'),
+		icon: 'sales-notification',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
+	{
 		id: 'upsell-cross-sell',
 		label: __('Upsell & Cross-Sell', 'ultimate-store-kit'),
 		description: __('Display upsell and cross-sell products on product pages to increase sales.', 'ultimate-store-kit'),
@@ -133,6 +141,9 @@ const getModuleSidebarIcon = (group) => {
 	}
 	if (haystack.includes('visitor') || haystack.includes('live')) {
 		return 'live-visitor-count';
+	}
+	if (haystack.includes('sales-notification') || haystack.includes('notification')) {
+		return 'sales-notification';
 	}
 	return 'grid';
 };
