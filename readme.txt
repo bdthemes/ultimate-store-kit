@@ -272,6 +272,7 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 * Fixed: Template Builder could not create a template. Saving failed because the template type value was having its separator stripped, so no type was ever recognised as valid
 * Fixed: Filtering the Template Items list by template type returned no results, and the selected type was not kept in the filter dropdown
+* Fixed: The search icon in the admin widgets toolbar sat below the centre of the search field
 
 * Security: Removed a template-preview bypass that accepted a fixed token in place of a nonce on hosts whose name matched a demo list, which could let a visitor render the Elementor content of an unpublished post. Preview now requires a valid nonce and edit permission for that template
 * Security: Removed an unused public AJAX endpoint for variation images that was reachable without authentication
