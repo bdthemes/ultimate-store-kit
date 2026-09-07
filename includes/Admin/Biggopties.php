@@ -52,7 +52,7 @@ class Biggopties {
 	 * Enqueue admin scripts
 	 */
 	public function enqueue_admin_scripts() {
-		wp_enqueue_style('bdt-product-feed', BDTUSK_ASSETS_URL . 'admin/others/css/product-feed.css', [], BDTUSK_VER);
+		wp_enqueue_style('ultimate-store-kit-product-feed', BDTUSK_ASSETS_URL . 'admin/others/css/product-feed.css', [], BDTUSK_VER);
 		wp_enqueue_script('usk-biggopti', BDTUSK_ASSETS_URL  . 'admin/others/js/biggopti.js', ['jquery'], BDTUSK_VER, true);
 
 		$dismissals = get_option('bdt_biggopti_dismissals', []);
@@ -75,7 +75,7 @@ class Biggopties {
 		$script_config = [
 			'ajaxurl'				=> admin_url('admin-ajax.php'),
 			'nonce'					=> wp_create_nonce('ultimate-store-kit'),
-			'isPro'             	=> function_exists('usk_license_validation') && usk_license_validation(),
+			'isPro'             	=> function_exists('ultimate_store_kit_license_validation') && ultimate_store_kit_license_validation(),
 			'assetsUrl'         	=> defined('BDTUSK_ASSETS_URL') ? BDTUSK_ASSETS_URL : '',
 			'dismissedDisplayIds'	=> $dismissed_display_ids,
 			'currentSector'      	=> $current_sector,
@@ -92,7 +92,7 @@ class Biggopties {
 	private function get_api_biggopties_data() {
 		// API endpoint for biggopties - you can change this to your actual endpoint
 		$api_url       = '';
-		$transient_key = 'bdt_usk_biggopties_api';
+		$transient_key = 'ultimate_store_kit_biggopties_api';
 
 		$cached_data = get_transient($transient_key);
 
@@ -219,7 +219,7 @@ class Biggopties {
 	private function is_biggopti_compatible_with_plugin($biggopti) {
 		// Get current plugin info
 		$current_plugin_slug = $this->get_current_plugin_slug();
-		$is_pro_active = function_exists('_is_usk_pro_activated') ? _is_usk_pro_activated() : false;
+		$is_pro_active = function_exists('ultimate_store_kit_is_pro_activated') ? ultimate_store_kit_is_pro_activated() : false;
 		$is_lite_active = $current_plugin_slug === 'ultimate-store-kit';
 		$is_pro_plugin = $current_plugin_slug === 'ultimate-store-kit-pro';
 

@@ -2,10 +2,10 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor, woocommerce, elementor addons, woocommerce builder, edd
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 Requires PHP: 7.0
 Requires at least: 6.8
-Tested up to: 7.0
+Tested up to: 7.1
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
@@ -147,7 +147,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Show customer address on the thank-you page.
 * [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Provide a detailed order summary on the thank-you page.
 * [Wishlist Button](https://storekit.pro/demo/wishlist-button/) - Add a button for customers to save products to their wishlist.
-* [Wishlist Products](https://storekit.pro/demo/wishlist-products/) - Display saved products in an organized wishlist layout.
+* [Wishlist Products](https://storekit.pro/demo/wishlist-product/) - Display saved products in an organized wishlist layout.
 
 = Easy Digital Downloads 💲 =
 
@@ -171,7 +171,7 @@ Ans. It's due to your server PHP setting. You can increase PHP memory limit from
 Is there any feature that you want to get in this plugins?
 Please use the suggest page to send us a message about the feature you think we should add to our products.
 Needs assistance to use this plugins?
-Feel free to [Contact us](https://bdthemes.com/support-new/) 💌 or check our widget Tutorials to learn about how to use them efficiently.
+Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn about how to use them efficiently.
 
 == Checkout our other Plugins 👑 ==
 
@@ -267,15 +267,26 @@ The compiled output is written to `/assets` and is the only thing the plugin loa
 
 The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Where a library was obtained in a pre-minified form upstream, that is noted:
 
-* DataTables 1.10.21 — https://datatables.net/ — MIT
+* DataTables 3.0.3 — https://datatables.net/ — MIT
 * Accordion 3.1.1 — https://github.com/michu2k/Accordion — MIT
 * MicroModal — https://micromodal.vercel.app/ — MIT
-* Toolslide — https://github.com/ihor-basov/toolslide — MIT
 * Popper — https://popper.js.org/ — MIT (distributed upstream as `popper.min.js`)
-* Tippy.js 6.3.1 — https://atomiks.github.io/tippyjs/ — MIT (distributed upstream as `tippy.all.min.js`)
+* Tippy.js 6.3.7 — https://atomiks.github.io/tippyjs/ — MIT (distributed upstream as `tippy.all.min.js`)
 * Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
 
 == Changelog ==
+
+= 3.1.2 [7th September 2026] =
+
+* Security: Removed a template-preview bypass that accepted a fixed token in place of a nonce on hosts whose name matched a demo list, which could let a visitor render the Elementor content of an unpublished post. Preview now requires a valid nonce and edit permission for that template
+* Security: Removed an unused public AJAX endpoint for variation images that was reachable without authentication
+* Changed: Prefixed plugin functions, options, transients, quick-view Kit settings and script/style handles for WordPress.org naming compliance. Saved settings are migrated automatically on update
+* Fixed: Quick-view modal styling, assigned builder templates and the compare page setting are carried over to the new setting names, so existing configurations are preserved
+* Fixed: Quantity buttons no longer remove WooCommerce's own hooks on the single product page, which could suppress store notices
+* Fixed: The Product Table stylesheet is now registered by this plugin instead of relying on another plugin providing it
+* Fixed: Builder preview data is no longer stored permanently in the options table
+* Updated: DataTables to 3.0.3 and Tippy.js to 6.3.7, and rebuilt the bundled assets
+* Removed: Unused helper functions and a stale third-party credit link
 
 = 3.1.1 [18th August 2026] =
 

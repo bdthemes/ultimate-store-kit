@@ -54,9 +54,9 @@ class Product_Table extends Module_Base {
 
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['datatables', 'micromodal', 'usk-site'];
+            return ['ultimate-store-kit-datatables', 'ultimate-store-kit-micromodal', 'usk-site'];
         } else {
-            return ['datatables', 'micromodal', 'usk-product-table'];
+            return ['ultimate-store-kit-datatables', 'ultimate-store-kit-micromodal', 'usk-product-table'];
         }
     }
 
@@ -64,7 +64,7 @@ class Product_Table extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['usk-font', 'datatables', 'usk-product-table'];
+            return ['usk-font', 'ultimate-store-kit-datatables', 'usk-product-table'];
         }
     }
     public function get_query() {

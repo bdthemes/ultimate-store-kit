@@ -188,13 +188,13 @@ class Ultimate_Store_Kit_Loader {
 	 * @return [type] [description]
 	 */
 	public function register_site_scripts() {
-		wp_register_script('datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.js', [], '1.0.0', true);
-		wp_register_script('micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.js', [], '1.0.0', true);
+		wp_register_script('ultimate-store-kit-datatables', BDTUSK_ASSETS_URL . 'vendor/js/datatables.js', [], '1.0.0', true);
+		wp_register_script('ultimate-store-kit-micromodal', BDTUSK_ASSETS_URL . 'vendor/js/micromodal.js', [], '1.0.0', true);
 		wp_register_script('usk-accordion', BDTUSK_ASSETS_URL . 'vendor/js/accordion.js', [], '1.0.0', true);
 
 		if (ultimate_store_kit_is_widget_enabled('image-hotspot')) {
-			wp_register_script('popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', ['jquery'], BDTUSK_VER, true);
-			wp_register_script('tippyjs', BDTUSK_ASSETS_URL . 'vendor/js/tippy.all.min.js', ['jquery'], BDTUSK_VER, true);
+			wp_register_script('ultimate-store-kit-popper', BDTUSK_ASSETS_URL . 'vendor/js/popper.min.js', ['jquery'], BDTUSK_VER, true);
+			wp_register_script('ultimate-store-kit-tippyjs', BDTUSK_ASSETS_URL . 'vendor/js/tippy.all.min.js', ['jquery'], BDTUSK_VER, true);
 		}
 	}
 
@@ -204,7 +204,7 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_style('usk-font', BDTUSK_URL . 'assets/css/font' . $direction_suffix . '.css', [], BDTUSK_VER);
 
 		if (ultimate_store_kit_is_widget_enabled('image-hotspot')) {
-			wp_register_style('tippy', BDTUSK_URL . 'assets/css/tippy' . $direction_suffix . '.css', [], BDTUSK_VER);
+			wp_register_style('ultimate-store-kit-tippy', BDTUSK_URL . 'assets/css/tippy' . $direction_suffix . '.css', [], BDTUSK_VER);
 		}
 	}
 
@@ -217,12 +217,16 @@ class Ultimate_Store_Kit_Loader {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 
 		wp_register_style('usk-site', BDTUSK_ASSETS_URL . 'css/site' . $direction_suffix . '.css', [], BDTUSK_VER);
-		wp_register_style('slick-modal', BDTUSK_ASSETS_URL . 'vendor/css/slickmodal.css', [], BDTUSK_VER);
-		wp_register_style('toolslide-css', BDTUSK_ASSETS_URL . 'vendor/css/toolslide.css', [], BDTUSK_VER);
+		// The Product Table widget lists this as a style dependency and the file has
+		// always shipped, but it was never registered: the widget was silently
+		// relying on another plugin registering a "datatables" stylesheet.
+		wp_register_style('ultimate-store-kit-datatables', BDTUSK_ASSETS_URL . 'vendor/css/datatables.css', [], BDTUSK_VER);
+		wp_register_style('ultimate-store-kit-slick-modal', BDTUSK_ASSETS_URL . 'vendor/css/slickmodal.css', [], BDTUSK_VER);
+		wp_register_style('ultimate-store-kit-toolslide', BDTUSK_ASSETS_URL . 'vendor/css/toolslide.css', [], BDTUSK_VER);
 
 		wp_enqueue_style('usk-site');
-		wp_enqueue_style('slick-modal');
-		wp_enqueue_style('toolslide-css');
+		wp_enqueue_style('ultimate-store-kit-slick-modal');
+		wp_enqueue_style('ultimate-store-kit-toolslide');
 	}
 
 
@@ -234,13 +238,13 @@ class Ultimate_Store_Kit_Loader {
 
 		wp_register_script('usk-core', BDTUSK_ASSETS_URL . 'js/core.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
 		wp_register_script('usk-site', BDTUSK_ASSETS_URL . 'js/site.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
-		wp_register_script('slick-modal', BDTUSK_ASSETS_URL . 'vendor/js/jquery.slickmodal.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
-		wp_register_script('toolslide-js', BDTUSK_ASSETS_URL . 'vendor/js/toolslide.js', [], BDTUSK_VER, true); // tooltip file should be separate
+		wp_register_script('ultimate-store-kit-slick-modal', BDTUSK_ASSETS_URL . 'vendor/js/jquery.slickmodal.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
+		wp_register_script('ultimate-store-kit-toolslide', BDTUSK_ASSETS_URL . 'vendor/js/toolslide.js', [], BDTUSK_VER, true); // tooltip file should be separate
 
 		wp_enqueue_script('usk-core');
 		// wp_enqueue_script('usk-site');
-		wp_enqueue_script('slick-modal');
-		wp_enqueue_script('toolslide-js');
+		wp_enqueue_script('ultimate-store-kit-slick-modal');
+		wp_enqueue_script('ultimate-store-kit-toolslide');
 
 		wp_localize_script('usk-core', 'ultimate_store_kit_ajax_config', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
@@ -255,18 +259,18 @@ class Ultimate_Store_Kit_Loader {
 
 		wp_enqueue_script('usk-editor');
 
-		$_is_usk_pro_activated = false;
-		if (function_exists('usk_license_validation') && true === usk_license_validation()) {
-			$_is_usk_pro_activated = true;
+		$ultimate_store_kit_is_pro_activated = false;
+		if (function_exists('ultimate_store_kit_license_validation') && true === ultimate_store_kit_license_validation()) {
+			$ultimate_store_kit_is_pro_activated = true;
 		}
 
 		$localize_data = [
-			'pro_installed' => _is_usk_pro_activated(),
-			'pro_license_activated' => $_is_usk_pro_activated,
+			'pro_installed' => ultimate_store_kit_is_pro_activated(),
+			'pro_license_activated' => $ultimate_store_kit_is_pro_activated,
 			'promotional_widgets' => [],
 		];
 
-		if (!$_is_usk_pro_activated) {
+		if (!$ultimate_store_kit_is_pro_activated) {
 			$pro_widget_map = new \UltimateStoreKit\Includes\Pro_Widget_Map();
 			$localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
 		}

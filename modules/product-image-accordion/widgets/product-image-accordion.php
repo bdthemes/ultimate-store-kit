@@ -59,9 +59,9 @@ class Product_Image_Accordion extends Module_Base {
 
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['micromodal', 'usk-site'];
+            return ['ultimate-store-kit-micromodal', 'usk-site'];
         } else {
-            return ['micromodal'];
+            return ['ultimate-store-kit-micromodal'];
         }
     }
 

@@ -66,12 +66,10 @@ class Builder_Cpt {
 				continue;
 			}
 
-			$optionKey = Meta::TEMPLATE_ID . $q->template_type;
-
 			if ($q->post_status == 'publish') {
-				update_option($optionKey, $q->ID);
+				Meta::update_template_option($q->template_type, $q->ID);
 			} else {
-				delete_option($optionKey, $q->ID);
+				Meta::delete_template_option($q->template_type);
 			}
 		}
 	}
@@ -82,7 +80,7 @@ class Builder_Cpt {
 		}
 
 		if ($template = get_post_meta($postId, Meta::TEMPLATE_TYPE, true)) {
-			delete_option(Meta::TEMPLATE_ID . $template);
+			Meta::delete_template_option($template);
 		}
 	}
 
@@ -333,12 +331,11 @@ class Builder_Cpt {
 
 		$post_id = wp_insert_post($page_data);
 
-		$enabledTemplate = strtolower(Meta::TEMPLATE_ID . $type);
 		if ($isEnabled == 1) {
-			update_option($enabledTemplate, $post_id);
+			Meta::update_template_option($type, $post_id);
 		} else {
-			if (get_option($enabledTemplate) == $post_id) {
-				delete_option($enabledTemplate);
+			if (Meta::get_template_option($type) == $post_id) {
+				Meta::delete_template_option($type);
 			}
 		}
 
@@ -392,8 +389,7 @@ class Builder_Cpt {
 
 
 				$templateType    = isset($meta[Meta::TEMPLATE_TYPE][0]) ? $meta[Meta::TEMPLATE_TYPE][0] : '';
-				$enabledTemplate = strtolower(Meta::TEMPLATE_ID . $templateType);
-				$enabledTemplate = get_option($enabledTemplate);
+				$enabledTemplate = Meta::get_template_option($templateType);
 
 				wp_send_json_success([
 					'id'     => $templateData->ID,

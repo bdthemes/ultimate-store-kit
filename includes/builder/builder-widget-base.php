@@ -62,8 +62,8 @@ abstract class Builder_Widget_Base extends Widget_Base {
 
 		global $post;
 
-		$templateId = get_transient('ultimate_store_template_id_' . get_current_user_id());
-		$posts      = get_transient('ultimate_store_template_sample_post_' . get_current_user_id());
+		$templateId = get_transient('ultimate_store_kit_template_id_' . get_current_user_id());
+		$posts      = get_transient('ultimate_store_kit_template_sample_post_' . get_current_user_id());
 
 		if ($posts instanceof \WP_Query && $posts->have_posts() && $templateId == $post->ID) {
 			foreach ($posts->posts as $post) {

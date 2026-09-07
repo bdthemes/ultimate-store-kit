@@ -56,7 +56,7 @@ class Product_List extends Module_Base {
     }
 
     public function get_script_depends() {
-        return ['micromodal'];
+        return ['ultimate-store-kit-micromodal'];
     }
 
     public function get_style_depends() {
