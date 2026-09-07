@@ -71,19 +71,17 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Product Review Carousel](https://storekit.pro/demo/product-review-carousel/) - Display reviews in a dynamic carousel.
 * [Product Table](https://storekit.pro/demo/product-table/) - Organize and showcase products in a sortable table layout.
 * [Shiny Carousel](https://storekit.pro/demo/shiny-carousel/) - Add a sleek and shiny carousel to your WooCommerce store.
-* [Shiny Grid](https://storekit.pro/demo/shiny-carousel/) - Present products in an appealing grid format.
+* [Shiny Grid](https://storekit.pro/demo/shiny-grid/) - Present products in an appealing grid format.
 * [Showcase Slider](https://storekit.pro/demo/showcase-slider/) - Highlight featured products with a customizable slider.
 * [Sub Category](https://storekit.pro/demo/sub-category/) - Display subcategories for better product navigation.
 * [Sub Category Carousel](https://storekit.pro/demo/sub-category-carousel/) - Showcase subcategories in an interactive carousel.
 * [Product Category Carousel](https://storekit.pro/demo/product-category-carousel/) - Add a carousel for product categories to enhance browsing.
 * [Page Cart](https://storekit.pro/demo/page-cart/) - Customize the WooCommerce cart page for better user experience.
 * [Page Checkout](https://storekit.pro/demo/page-checkout/) - Design an optimized and user-friendly checkout page.
-* [Page My Account](https://storekit.pro/demo/page-my-account/) - Personalize the "My Account" page for customers.
 * [Page Order](https://storekit.pro/demo/page-order/) - Simplify and enhance the order tracking experience.
 * [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.
 * [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.
 * [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
-* [Variation Swatches](https://storekit.pro/demo/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
@@ -105,7 +103,6 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Featured Box](https://storekit.pro/demo/featured-box/) - Highlight key features or services with customizable featured boxes.
 * [Info List](https://storekit.pro/demo/info-list/) - Present information in a clean and well-structured list format.
 * [QR Code](https://storekit.pro/demo/qr-code/) - Generate and display QR codes for quick sharing or scanning.
-* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners to your store for announcements, promotions, or highlights.
 
 == Pro version Widgets 🔥 ==
 
@@ -115,12 +112,12 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Account Dashboard](https://storekit.pro/demo/account-dashboard/) - Create a user-friendly dashboard for customer accounts.
 * [Account Details](https://storekit.pro/demo/account-details/) - Allow customers to update personal account details easily.
 * [Account Downloads](https://storekit.pro/demo/account-downloads/) - Display downloadable products for customer accounts.
-* [Account Login-form](https://storekit.pro/demo/account-login-form/) - Add a simple and secure login form for customers.
+* [Account Login Form](https://storekit.pro/demo/account-login-form/) - Add a simple and secure login form for customers.
 * [Account Logout](https://storekit.pro/demo/account-logout/) - Provide a straightforward logout option for users.
 * [Account Navigation](https://storekit.pro/demo/account-navigation/) - Enhance account navigation for better user experience.
-* [Account Order-details](https://storekit.pro/demo/account-order-details/) - Display detailed information about customer orders.
+* [Account Order Details](https://storekit.pro/demo/account-order-details/) - Display detailed information about customer orders.
 * [Account Orders](https://storekit.pro/demo/account-orders/) - List all customer orders in a clean and accessible layout.
-* [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Create a registration form for new users.
+* [Account Registration Form](https://storekit.pro/demo/account-registration-form/) - Create a registration form for new users.
 * [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Add a fully functional "Add to Cart" button to your store.
 * [Additional Information](https://storekit.pro/demo/additional-information/) - Display extra product details with this widget.
 * [Compare Button](https://storekit.pro/demo/compare-button/) - Add a comparison button to products for better decision-making.
@@ -131,8 +128,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Checkout Login Form](https://storekit.pro/demo/checkout-login-form/) - Allow users to log in directly from the checkout page.
 * [Checkout Order Review](https://storekit.pro/demo/checkout-order-review/) - Display a summary of the order before payment.
 * [Checkout Payment](https://storekit.pro/demo/checkout-payment/) - Customize and display payment options during checkout.
-* [Checkout Shipping Form](https://storekit.pro/demo/checkout-shipping-form/) - Add a shipping form for user details during checkout.
-* [Checkout Shipping Methods](https://storekit.pro/demo/checkout-shipping-methods/) - List all available shipping methods for selection.
+* [Page My Account](https://storekit.pro/demo/page-my-account/) - Personalize the "My Account" page for your customers.
 * [Product Description](https://storekit.pro/demo/product-description/) - Display detailed product descriptions attractively.
 * [Product Image](https://storekit.pro/demo/product-image/) - Showcase product images in a visually appealing way.
 * [Product Meta](https://storekit.pro/demo/product-meta/) - Display product metadata like SKU and categories.
@@ -142,12 +138,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Product Stock](https://storekit.pro/demo/product-stock/) - Highlight product stock status dynamically.
 * [Product Tabs](https://storekit.pro/demo/product-tabs/) - Organize product information into collapsible tabs.
 * [Product Title](https://storekit.pro/demo/product-title/) - Customize and display product titles effectively.
-* [Thankyou Order](https://storekit.pro/demo/thankyou-order/) - Customize the thank-you page for completed orders.
-* [Thankyou Order Confirmation](https://storekit.pro/demo/thankyou-order-confirmation/) - Display detailed order confirmation information.
-* [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Show customer address on the thank-you page.
-* [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Provide a detailed order summary on the thank-you page.
-* [Wishlist Button](https://storekit.pro/demo/wishlist-button/) - Add a button for customers to save products to their wishlist.
-* [Wishlist Products](https://storekit.pro/demo/wishlist-product/) - Display saved products in an organized wishlist layout.
+* [Variation Swatches](https://storekit.pro/demo/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
@@ -157,6 +148,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 = Others 🌅 =
 
 * [Breadcrumbs](https://storekit.pro/demo/breadcrumbs/) - Add easy navigation paths to improve user experience and site structure.
+* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners for announcements, promotions and highlights.
 
 More widgets & extensions are coming soon...
 
@@ -277,6 +269,9 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 == Changelog ==
 
 = 3.1.2 [7th September 2026] =
+
+* Fixed: Template Builder could not create a template. Saving failed because the template type value was having its separator stripped, so no type was ever recognised as valid
+* Fixed: Filtering the Template Items list by template type returned no results, and the selected type was not kept in the filter dropdown
 
 * Security: Removed a template-preview bypass that accepted a fixed token in place of a nonce on hosts whose name matched a demo list, which could let a visitor render the Elementor content of an unpublished post. Preview now requires a valid nonce and edit permission for that template
 * Security: Removed an unused public AJAX endpoint for variation images that was reachable without authentication

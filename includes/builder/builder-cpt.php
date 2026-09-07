@@ -179,8 +179,8 @@ class Builder_Cpt {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Repopulates the admin list-table filter dropdown; nothing is written.
-		$selected = isset($_GET['type']) ? sanitize_key(wp_unslash($_GET['type'])) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin list-table filter; the value only re-selects the current dropdown option.
+		$selected = isset($_GET['type']) ? sanitize_text_field(wp_unslash($_GET['type'])) : '';
 ?>
 		<select name="type" id="type">
 			<option value="all" <?php
@@ -250,9 +250,13 @@ class Builder_Cpt {
 			&& $_GET['type'] != ''
 			&& $_GET['type'] != 'all'
 		) {
-			$query->query_vars['meta_key']     = Meta::TEMPLATE_TYPE;
-			$query->query_vars['meta_value']   = sanitize_key(wp_unslash($_GET['type']));
-			$query->query_vars['meta_compare'] = '=';
+			$requested_type = sanitize_text_field(wp_unslash($_GET['type']));
+
+			if (Builder_Template_Helper::getTemplateByIndex($requested_type)) {
+				$query->query_vars['meta_key']     = Meta::TEMPLATE_TYPE;
+				$query->query_vars['meta_value']   = $requested_type;
+				$query->query_vars['meta_compare'] = '=';
+			}
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.DB.SlowDBQuery
 	}
@@ -280,7 +284,7 @@ class Builder_Cpt {
 
 		$templateId = isset($data['template_id']) ? absint($data['template_id']) : 0;
 		$name       = isset($data['template_name']) ? sanitize_text_field($data['template_name']) : '';
-		$type       = isset($data['template_type']) ? sanitize_key($data['template_type']) : '';
+		$type       = isset($data['template_type']) ? sanitize_text_field($data['template_type']) : '';
 		$editWith   = isset($data['edit_with']) ? sanitize_key($data['edit_with']) : 'elementor'; //gutenberg
 		$isEnabled  = (isset($data['template_status']) && $data['template_status']) == 1 ? 1 : 0;
 
