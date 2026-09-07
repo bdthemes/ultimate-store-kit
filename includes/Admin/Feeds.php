@@ -103,8 +103,12 @@ class Feeds {
 	 * @return string
 	 */
 	private function get_rss_posts_data() {
-		$transient_key = $this->settings['transient_key'] . '_rss';
-		$cached_data   = get_transient($transient_key);
+		// Written out in full rather than concatenated so the prefix is visible to
+		// static analysis. The resolved key is byte-identical to the previous
+		// $this->settings['transient_key'] . '_rss', so no cached data is orphaned.
+		$transient_key        = 'bdthemes_product_feeds_rss';
+		$transient_failed_key = 'bdthemes_product_feeds_rss_failed';
+		$cached_data          = get_transient($transient_key);
 
 		if (! empty($cached_data)) {
 			/**
@@ -115,7 +119,7 @@ class Feeds {
 			if (! is_array($rss_items)) {
 				$rss_items = [];
 			}
-		} elseif (get_transient($transient_key . '_failed')) {
+		} elseif (get_transient($transient_failed_key)) {
 			/**
 			 * A recent fetch failed, so skip the blocking request entirely.
 			 */
@@ -128,7 +132,7 @@ class Feeds {
 			remove_action('wp_feed_options', [$this, 'set_feed_timeout']);
 
 			if (is_wp_error($rss)) {
-				set_transient($transient_key . '_failed', 1, self::FAILURE_BACKOFF);
+				set_transient($transient_failed_key, 1, self::FAILURE_BACKOFF);
 				return '<li>' . esc_html__('Items Not Found', 'ultimate-store-kit') . '.</li>';
 			}
 

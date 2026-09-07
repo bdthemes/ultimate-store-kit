@@ -131,17 +131,14 @@ class Builder_Template_Helper {
 
 		$separator       = static::separator();
 		$template        = strtolower( "{$postType}{$separator}{$slug}" );
-		$enabledTemplate = strtolower( Meta::TEMPLATE_ID . $template );
-
 		/**
 		 * important area for debugging
 		 */
 
-		return get_option( $enabledTemplate );
+		return Meta::get_template_option( $template );
 	}
 
 	public static function getTemplateId( $templateType ) {
-		$metaIndex = strtolower( Meta::TEMPLATE_ID . $templateType );
-		return intval( get_option( $metaIndex ) );
+		return intval( Meta::get_template_option( $templateType ) );
 	}
 }

@@ -99,7 +99,7 @@ class Dashboard {
                 'version' => BDTUSK_VER,
                 'restUrl' => esc_url_raw(rest_url('ultimate-store-kit/v1/')),
                 'restNonce' => wp_create_nonce('wp_rest'),
-                'isPro' => function_exists('usk_license_validation') ? usk_license_validation() : false,
+                'isPro' => function_exists('ultimate_store_kit_license_validation') ? ultimate_store_kit_license_validation() : false,
                 'isProPluginActive' => defined('BDTUSK_PRO_VER'),
                 'adminUrl' => admin_url(),
                 'licenseData' => apply_filters('ultimate_store_kit_license_data', []),

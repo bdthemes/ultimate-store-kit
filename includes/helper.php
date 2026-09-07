@@ -4,7 +4,7 @@ if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- BDTUSK_ / ultimate_store_kit_ / ultimate-store-kit- are this plugin's established public prefixes.
 
 use UltimateStoreKit\Ultimate_Store_Kit_Loader;
 use Elementor\Plugin;
@@ -45,7 +45,7 @@ if (! defined('BDTUSK_NAME')) {
 	define('BDTUSK_NAME', 'Ultimate Store Kit');
 }
 
-if (_is_usk_pro_activated()) {
+if (ultimate_store_kit_is_pro_activated()) {
 	if (! defined('BDTUSK_PC')) {
 		define('BDTUSK_PC', '');
 	} // pro control badge
@@ -1002,21 +1002,6 @@ function ultimate_store_kit_custom_excerpt($limit = 25, $strip_shortcode = false
 	return wpautop($output);
 }
 
-function usk_get_order_options() {
-	$options = [
-		'title'              => __('Title', 'ultimate-store-kit'),
-		'ID'                 => __('ID', 'ultimate-store-kit'),
-		'date'               => __('Date', 'ultimate-store-kit'),
-		'rand'               => __('Random', 'ultimate-store-kit'),
-		'_price'             => __('Product Price', 'ultimate-store-kit'),
-		'total_sales'        => __('Top Seller', 'ultimate-store-kit'),
-		'comment_count'      => __('Most Reviewed', 'ultimate-store-kit'),
-		'_wc_average_rating' => __('Top Rated', 'ultimate-store-kit'),
-	];
-
-	return apply_filters('usk_order_options', $options);
-}
-
 //wishlist
 function ultimate_store_kit_get_wishlist($user_id = 0) {
 	$_wishlist_key = '_ultimate_store_kit_wishlist';
@@ -1034,26 +1019,6 @@ function ultimate_store_kit_get_wishlist($user_id = 0) {
 	}
 
 	return apply_filters('ultimate_store_kit_wishlist', array_unique($_wishlist));
-}
-
-function usk_get_taxonomies() {
-	$taxonomy_list = get_object_taxonomies('product');
-	$taxonomies    = [
-		'search'  => 'Search',
-		'price'   => 'Price',
-		'orderby' => 'Orderby',
-		'order'   => 'Order',
-	];
-
-	foreach ($taxonomy_list as $_taxonomy) {
-		$taxonomy = get_taxonomy($_taxonomy);
-
-		if ($taxonomy->show_ui) {
-			$taxonomies[$_taxonomy] = $taxonomy->label;
-		}
-	}
-
-	return $taxonomies;
 }
 
 function ultimate_store_kit_hide_on_class($selectors) {
@@ -1086,7 +1051,7 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 	// could already open on the shop is allowed through. The previous
 	// wp_verify_nonce() call here had its arguments reversed and its result
 	// discarded, so it checked nothing.
-	if (! usk_is_public_product($product_id)) {
+	if (! ultimate_store_kit_is_public_product($product_id)) {
 		return;
 	}
 
@@ -1261,10 +1226,10 @@ function ultimate_store_kit_quick_view_product_images() {
 /**
  * License Validation
  */
-if (! function_exists('usk_license_validation')) {
-	function usk_license_validation() {
+if (! function_exists('ultimate_store_kit_license_validation')) {
+	function ultimate_store_kit_license_validation() {
 
-		if (function_exists('_is_usk_pro_activated') && false === _is_usk_pro_activated()) {
+		if (function_exists('ultimate_store_kit_is_pro_activated') && false === ultimate_store_kit_is_pro_activated()) {
 			return false;
 		}
 
@@ -1281,7 +1246,8 @@ if (! function_exists('usk_license_validation')) {
 
 
 
-if (! function_exists('usk_is_public_product')) {
+
+if (! function_exists('ultimate_store_kit_is_public_product')) {
 	/**
 	 * Whether a product id may be read or acted on by the current request.
 	 *
@@ -1292,7 +1258,7 @@ if (! function_exists('usk_is_public_product')) {
 	 * @param mixed $product_id Raw product id, typically straight off $_POST.
 	 * @return bool
 	 */
-	function usk_is_public_product($product_id) {
+	function ultimate_store_kit_is_public_product($product_id) {
 		$product_id = absint($product_id);
 
 		// Fail closed when WooCommerce is absent — helper.php also loads on EDD-only sites.
@@ -1327,13 +1293,13 @@ if (! function_exists('usk_is_public_product')) {
  * bound — a cookie that outgrows ~4KB is silently dropped by the browser, and an
  * unbounded list against a logged-in user means unbounded user meta.
  */
-if (! function_exists('usk_get_list_item_limit')) {
-	function usk_get_list_item_limit() {
+if (! function_exists('ultimate_store_kit_get_list_item_limit')) {
+	function ultimate_store_kit_get_list_item_limit() {
 		return (int) apply_filters('ultimate_store_kit_list_item_limit', 50);
 	}
 }
 
-function usk_get_compare_products($user_id = 0) {
+function ultimate_store_kit_get_compare_products($user_id = 0) {
 	$_compare_products_key = '_ultimate_store_kit_compare_products';
 	$_compare_products     = [];
 	if ($user_id != 0) {
@@ -1355,15 +1321,6 @@ function usk_get_compare_products($user_id = 0) {
 	return apply_filters('ultimate_store_kit_compare_products', array_unique($_compare_products));
 }
 
-function usk_get_compare_products_count() {
-	$count    = 0;
-	$user_id  = get_current_user_id();
-	$products = usk_get_compare_products($user_id);
-	if (is_array($products)) {
-		$count = count($products);
-	}
-	return $count;
-}
 
 //if (!function_exists('ultimate_store_kit_get_compare_product_slug')) {
 //    function ultimate_store_kit_compare_product_slug() {
@@ -1371,9 +1328,37 @@ function usk_get_compare_products_count() {
 //    }
 //}
 
+if (! function_exists('ultimate_store_kit_get_compare_page_option')) {
+	/**
+	 * Read the compare-products page id, migrating it off the old "bdt_"-prefixed
+	 * option key the first time it is seen.
+	 *
+	 * The option is written by Ultimate Store Kit Pro on activation and read by
+	 * both plugins, so it is stored user data: a bare rename would detach an
+	 * existing site's compare page.
+	 *
+	 * @return int Page id, or 0 when unset.
+	 */
+	function ultimate_store_kit_get_compare_page_option() {
+		$value = get_option('ultimate_store_kit_compare_products_page_id', null);
+
+		if (null === $value) {
+			$legacy = get_option('bdt_usk_compare_products_page_id', null);
+
+			if (null !== $legacy) {
+				update_option('ultimate_store_kit_compare_products_page_id', $legacy, true);
+				delete_option('bdt_usk_compare_products_page_id');
+				$value = $legacy;
+			}
+		}
+
+		return intval($value);
+	}
+}
+
 if (! function_exists('ultimate_store_kit_compare_product_page')) {
 	function ultimate_store_kit_compare_product_page() {
-		if ($postId = intval(get_option('bdt_usk_compare_products_page_id'))) {
+		if ($postId = ultimate_store_kit_get_compare_page_option()) {
 			$post = get_post($postId);
 			if ($post && $post->post_status == 'publish') {
 				return $post->ID;
@@ -1391,19 +1376,11 @@ if (! function_exists('ultimate_store_kit_is_compare_product_page')) {
 	}
 }
 
-/**
- * Helper function to check if variation swatches Pro is active
- *
- * @return bool
- */
-function usk_has_variation_swatches_support() {
-	return class_exists('UltimateStoreKitPro\\VariationSwatches\\Swatches');
-}
 
 /**
  * Helper function to load variation swatches scripts and styles
  */
-function usk_load_variation_swatches_assets() {
+function ultimate_store_kit_load_variation_swatches_assets() {
 	// Always load the grid variations script for variation support
 	wp_register_script('usk-grid-variations', BDTUSK_ASSETS_URL . 'js/modules/grid-variations.js', ['jquery'], BDTUSK_VER, true);
 	wp_localize_script('usk-grid-variations', 'usk_vars', array(
@@ -1411,89 +1388,26 @@ function usk_load_variation_swatches_assets() {
 		'nonce' => wp_create_nonce('usk_variations')
 	));
 }
-add_action('wp_enqueue_scripts', 'usk_load_variation_swatches_assets', 20);
+add_action('wp_enqueue_scripts', 'ultimate_store_kit_load_variation_swatches_assets', 20);
 
-// Hook into AJAX variation selection to update product image
-function usk_ajax_variation_image_update() {
-	// Public read-only endpoint returning a public product image. A nonce cannot
-	// survive full-page caching for logged-out visitors, so authorisation is
-	// enforced on the product itself further down instead.
-	// phpcs:disable WordPress.Security.NonceVerification.Missing
-	if (!isset($_POST['variation_id']) || !isset($_POST['product_id'])) {
-		wp_send_json_error('Missing required parameters');
-		return;
-	}
-
-	$variation_id = absint($_POST['variation_id']);
-	$product_id = absint($_POST['product_id']);
-	// phpcs:enable WordPress.Security.NonceVerification.Missing
-
-	$variation = wc_get_product($variation_id);
-	if (!$variation) {
-		wp_send_json_error('Invalid variation');
-		return;
-	}
-
-	// wc_get_product() ignores post status, so guard the parent product the same way
-	// the variations endpoint does before exposing anything about it.
-	$parent = wc_get_product($product_id);
-	if (!$parent) {
-		wp_send_json_error('Invalid product');
-		return;
-	}
-
-	if ('publish' !== $parent->get_status() && !current_user_can('read_post', $product_id)) {
-		wp_send_json_error('Product not available', 404);
-		return;
-	}
-
-	if (post_password_required($product_id)) {
-		wp_send_json_error('Product not available', 403);
-		return;
-	}
-
-	// The variation must actually belong to the product that passed the check above,
-	// otherwise the parent id is just a public decoy for an arbitrary variation.
-	if ($variation->get_parent_id() !== $product_id) {
-		wp_send_json_error('Invalid variation');
-		return;
-	}
-
-	$image_id = $variation->get_image_id();
-	$image_url = '';
-
-	if ($image_id) {
-		$image_url = wp_get_attachment_image_url($image_id, 'woocommerce_thumbnail');
-	} else {
-		// If variation has no image, use the parent product image
-		$parent_image_id = $parent->get_image_id();
-		if ($parent_image_id) {
-			$image_url = wp_get_attachment_image_url($parent_image_id, 'woocommerce_thumbnail');
-		}
-	}
-
-	wp_send_json_success(array('image_url' => $image_url));
-}
-add_action('wp_ajax_usk_get_variation_image', 'usk_ajax_variation_image_update');
-add_action('wp_ajax_nopriv_usk_get_variation_image', 'usk_ajax_variation_image_update');
 
 // Start: Add to cart quantity buttons conversion
-if (! function_exists('usk_display_quantity_minus')) {
-	function usk_display_quantity_minus() {
+if (! function_exists('ultimate_store_kit_display_quantity_minus')) {
+	function ultimate_store_kit_display_quantity_minus() {
 		if (! is_product()) return;
 		echo '<button type="button" class="bdt-add-to-cart-qty-minus" ><i class="usk-icon-minus3"></i></button>';
 	}
 }
 
-if (! function_exists('usk_display_quantity_plus')) {
-	function usk_display_quantity_plus() {
+if (! function_exists('ultimate_store_kit_display_quantity_plus')) {
+	function ultimate_store_kit_display_quantity_plus() {
 		if (! is_product()) return;
 		echo '<button type="button" class="bdt-add-to-cart-qty-plus" ><i class="usk-icon-plus3"></i></button>';
 	}
 }
 
-if (! function_exists('usk_add_cart_quantity_plus_minus')) {
-	function usk_add_cart_quantity_plus_minus() {
+if (! function_exists('ultimate_store_kit_add_cart_quantity_plus_minus')) {
+	function ultimate_store_kit_add_cart_quantity_plus_minus() {
 
 		echo '<style>
 		input[type="number"]::-webkit-outer-spin-button,
@@ -1527,19 +1441,23 @@ if (! function_exists('usk_add_cart_quantity_plus_minus')) {
 	}
 }
 
-if (! function_exists('usk_setup_quantity_buttons')) {
-	function usk_setup_quantity_buttons() {
+if (! function_exists('ultimate_store_kit_setup_quantity_buttons')) {
+	function ultimate_store_kit_setup_quantity_buttons() {
 		if (function_exists('is_product')) {
-			// Remove the default version
-			remove_all_actions('woocommerce_before_quantity_input_field');
-			remove_all_actions('woocommerce_after_quantity_input_field');
-			remove_all_actions('woocommerce_before_single_product');
+			// Element Pack renders its own quantity buttons on these hooks. Remove
+			// only those callbacks: the previous remove_all_actions() also stripped
+			// WooCommerce core's own handlers on woocommerce_before_single_product
+			// (notably woocommerce_output_all_notices), suppressing store notices.
+			remove_action('woocommerce_before_quantity_input_field', 'ep_display_quantity_minus');
+			remove_action('woocommerce_after_quantity_input_field', 'ep_display_quantity_plus');
+			remove_action('woocommerce_before_single_product', 'ep_add_cart_quantity_plus_minus');
 
 			// Add our version
-			add_action('woocommerce_before_quantity_input_field', 'usk_display_quantity_minus');
-			add_action('woocommerce_after_quantity_input_field', 'usk_display_quantity_plus');
-			add_action('woocommerce_after_single_product', 'usk_add_cart_quantity_plus_minus');
+			add_action('woocommerce_before_quantity_input_field', 'ultimate_store_kit_display_quantity_minus');
+			add_action('woocommerce_after_quantity_input_field', 'ultimate_store_kit_display_quantity_plus');
+			add_action('woocommerce_after_single_product', 'ultimate_store_kit_add_cart_quantity_plus_minus');
 		}
 	}
 }
+
 // End: Add to cart quantity buttons conversion

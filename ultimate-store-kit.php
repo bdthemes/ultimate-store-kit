@@ -4,7 +4,7 @@
  * Plugin Name: Ultimate Store Kit
  * Plugin URI: https://storekit.pro/
  * Description: Build online stores in WordPress with the powerful store builder addon for Elementor. Enjoy a wide range of customizations and easily build product grids, carousels, single product/page elements, checkouts and more.
- * Version: 3.1.1
+ * Version: 3.1.2
  * Author: BdThemes
  * Author URI: https://bdthemes.com/
  * Text Domain: ultimate-store-kit
@@ -20,7 +20,7 @@ if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- BDTUSK_ / ultimate_store_kit_ / ultimate-store-kit- are this plugin's established public prefixes.
 
 // Check if vendor directory and autoload.php exist
 $ultimate_store_kit_autoload_file = __DIR__ . '/vendor/autoload.php';
@@ -30,7 +30,7 @@ if (file_exists($ultimate_store_kit_autoload_file)) {
 }
 
 // Some pre define value for easy use
-define('BDTUSK_VER', '3.1.1');
+define('BDTUSK_VER', '3.1.2');
 define('BDTUSK__FILE__', __FILE__);
 define('BDTUSK_PNAME', basename(dirname(BDTUSK__FILE__)));
 define('BDTUSK_PBNAME', plugin_basename(BDTUSK__FILE__));
@@ -49,9 +49,9 @@ define('BDTUSK_BUILD_URL', BDTUSK_URL . 'build/');
 
 define('BDTUSK_TITLE', 'Ultimate Store Kit');
 
-if (! function_exists('_is_usk_pro_installed')) {
+if (! function_exists('ultimate_store_kit_is_pro_installed')) {
 
-	function _is_usk_pro_installed() {
+	function ultimate_store_kit_is_pro_installed() {
 
 		if (! function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -64,9 +64,9 @@ if (! function_exists('_is_usk_pro_installed')) {
 	}
 }
 
-if (! function_exists('_is_usk_pro_activated')) {
+if (! function_exists('ultimate_store_kit_is_pro_activated')) {
 
-	function _is_usk_pro_activated() {
+	function ultimate_store_kit_is_pro_activated() {
 
 		if (! function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -86,11 +86,11 @@ if (! function_exists('_is_usk_pro_activated')) {
 // Helper function here
 require(dirname(__FILE__) . '/includes/helper.php');
 
-if (! _is_usk_pro_activated()) {
+if (! ultimate_store_kit_is_pro_activated()) {
 	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
 }
 
-if (function_exists('usk_license_validation') && true !== usk_license_validation()) {
+if (function_exists('ultimate_store_kit_license_validation') && true !== ultimate_store_kit_license_validation()) {
 	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
 }
 
@@ -133,7 +133,7 @@ function bdthemes_ultimate_store_kit_fail_load() {
 
 	$plugin = 'elementor/elementor.php';
 
-	if (_is_dep_plugin_installed($plugin)) {
+	if (ultimate_store_kit_is_dependency_plugin_installed($plugin)) {
 		if (! current_user_can('activate_plugins')) {
 			return;
 		}
@@ -163,7 +163,7 @@ function bdthemes_ultimate_store_kit_dependencies_plugin_fail_load() {
 
 	$plugin = 'woocommerce/woocommerce.php';
 
-	if (_is_dep_plugin_installed($plugin)) {
+	if (ultimate_store_kit_is_dependency_plugin_installed($plugin)) {
 		if (! current_user_can('activate_plugins')) {
 			return;
 		}
@@ -182,12 +182,16 @@ function bdthemes_ultimate_store_kit_dependencies_plugin_fail_load() {
 	printf('<div class="error">%1$s</div>', wp_kses_post($admin_message));
 }
 
-if (! function_exists('_is_dep_plugin_installed')) {
+if (! function_exists('ultimate_store_kit_is_dependency_plugin_installed')) {
 
 	/**
 	 * @plug_slug string plugins slug which you want to check installed or not
 	 */
-	function _is_dep_plugin_installed($plugin_slug) {
+	function ultimate_store_kit_is_dependency_plugin_installed($plugin_slug) {
+		if (! function_exists('get_plugins')) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
 		$file_path         = $plugin_slug;
 		$installed_plugins = get_plugins();
 

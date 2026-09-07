@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- usk_ / BDTUSK_ / ultimate-store-kit- are this plugin's established public prefixes. Ultimate Store Kit Pro calls into these names, as does third-party integration code, so renaming them is a breaking change. Plugin Check only recognises prefixes derived verbatim from the slug and so reports them as unprefixed.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- BDTUSK_ / ultimate_store_kit_ / ultimate-store-kit- are this plugin's established public prefixes.
 
 if (! defined('WPINC')) {
 	die;
@@ -36,37 +36,14 @@ class Builder_Integration {
 
 		add_action('elementor/documents/register_controls', [$this, 'register_document_controls']);
 
-		// Add demo bypass filter for template preview
-		add_filter('ultimate_store_kit/preview/verified_bypass', function ($verify) {
-			// Check if we're in a demo environment or development site
-			// For demo sites, you might want to check domain names or other indicators
-			$demo_hosts = apply_filters('ultimate_store_kit/demo_hosts', [
-				'storekit.pro',
-				'demo.storekit.pro',
-				'localhost',
-				'127.0.0.1'
-			]);
-
-			$current_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])) : '';
-
-			foreach ($demo_hosts as $host) {
-				if (strpos($current_host, $host) !== false) {
-					return true;
-				}
-			}
-
-			return $verify;
-		});
-
-		// Add filter to enable demo mode for preview URLs
-		add_filter('ultimate_store_kit/preview/use_demo_bypass', function ($use_demo) {
-			// Enable demo bypass in Elementor editor
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check on whether the Elementor editor is loading.
-			if (isset($_GET['action']) && $_GET['action'] === 'elementor') {
-				return true;
-			}
-			return $use_demo;
-		});
+		// The template preview used to accept the literal string "verified" in place
+		// of a nonce whenever $_SERVER['HTTP_HOST'] contained one of a list of demo
+		// hostnames. Because Host is attacker-controlled and the check was a substring
+		// match, any unauthenticated visitor could render the Elementor content of an
+		// arbitrary post id -- including drafts and private posts -- on any site whose
+		// Host reached PHP as localhost/127.0.0.1 (common behind a reverse proxy) or
+		// whose domain merely contained one of those strings. Preview is now gated on
+		// the real per-post nonce plus an edit_post capability check; see get_template_id().
 	}
 
 	public function change_preview_editor_url($url, $document) {
@@ -145,13 +122,10 @@ class Builder_Integration {
 			return $url;
 		}
 
-		$is_demo = apply_filters('ultimate_store_kit/preview/use_demo_bypass', false);
-		$nonce_value = $is_demo ? 'verified' : wp_create_nonce('template_preview_' . $post_id);
-
 		$param = [
-			'usk_template_id' => $post_id,
-			'preview_nonce' => $nonce_value,
-			'preview' => true
+			'ultimate_store_kit_template_id'    => $post_id,
+			'ultimate_store_kit_preview_nonce'  => wp_create_nonce('ultimate_store_kit_template_preview_' . $post_id),
+			'preview'                           => true
 		];
 
 		// Add parameters two URL
@@ -202,7 +176,7 @@ class Builder_Integration {
 		}
 		$meta = get_post_meta($post->ID);
 
-		$templateMeta = usk_optional($meta)[Meta::TEMPLATE_TYPE];
+		$templateMeta = ultimate_store_kit_optional($meta)[Meta::TEMPLATE_TYPE];
 		if (! isset($templateMeta[0])) {
 			return;
 		}
@@ -405,7 +379,7 @@ class Builder_Integration {
 			}
 		}
 
-		if ($page_Id = intval(get_option('bdt_usk_compare_products_page_id'))) {
+		if ($page_Id = ultimate_store_kit_get_compare_page_option()) {
 			if (is_page($page_Id)) {
 				if ($custom_template = $this->get_template_id('compare-products', 'product')) {
 					$this->current_template_id = $custom_template;
@@ -449,30 +423,24 @@ class Builder_Integration {
 			return $this->current_template_id;
 		}
 
-		// Handle template preview from URL parameters
-		if (!empty($_GET['preview']) && !empty($_GET['usk_template_id']) && !empty($_GET['preview_nonce'])) {
-			$usk_template_id = sanitize_text_field(wp_unslash($_GET['usk_template_id']));
-			$nonce = sanitize_text_field(wp_unslash($_GET['preview_nonce']));
+		// Handle template preview from URL parameters.
+		if (!empty($_GET['preview']) && !empty($_GET['ultimate_store_kit_template_id']) && !empty($_GET['ultimate_store_kit_preview_nonce'])) {
+			$usk_template_id = absint(wp_unslash($_GET['ultimate_store_kit_template_id']));
+			$nonce = sanitize_text_field(wp_unslash($_GET['ultimate_store_kit_preview_nonce']));
 
-			// Special handling for demo bypass
-			$is_demo_bypass = ($nonce === 'verified');
-			$nonce_verified = $is_demo_bypass ?
-				apply_filters('ultimate_store_kit/preview/verified_bypass', false) :
-				wp_verify_nonce($nonce, 'template_preview_' . $usk_template_id);
+			// The nonce is bound to the specific template and to the user who
+			// generated it, and the capability check makes sure a leaked preview
+			// URL cannot be replayed by someone who may not edit the template.
+			$nonce_verified = $usk_template_id
+				&& wp_verify_nonce($nonce, 'ultimate_store_kit_template_preview_' . $usk_template_id)
+				&& current_user_can('edit_post', $usk_template_id);
 
-			if ($nonce_verified) {
-				// For demo bypass mode, we don't need to check template type
-				if ($is_demo_bypass) {
-					$this->current_template_id = (int)$usk_template_id;
-					return $this->current_template_id;
-				}
-
-				// For normal preview, check template type
+			if ($nonce_verified && get_post_type($usk_template_id) === Meta::POST_TYPE) {
 				$template_type = get_post_meta($usk_template_id, Meta::TEMPLATE_TYPE, true);
 				if (!empty($template_type)) {
 					$template_data = explode(Builder_Template_Helper::separator(), $template_type);
 					if (count($template_data) >= 2 && $template_data[1] === $slug && ($postType === false || $template_data[0] === $postType)) {
-						$this->current_template_id = (int)$usk_template_id;
+						$this->current_template_id = $usk_template_id;
 						return $this->current_template_id;
 					}
 				}

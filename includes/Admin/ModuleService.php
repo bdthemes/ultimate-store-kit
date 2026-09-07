@@ -8,10 +8,6 @@ if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-if (!function_exists('is_plugin_active')) {
-    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-}
-
 class ModuleService {
 
 
@@ -1061,6 +1057,10 @@ class ModuleService {
     }
 
     private static function _is_plugin_installed($plugin, $plugin_path) {
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
         $installed_plugins = get_plugins();
         return isset($installed_plugins[$plugin_path]);
     }
@@ -1078,6 +1078,10 @@ class ModuleService {
 
     public static function is_plugin_active($plugin_path) {
         if ($plugin_path) {
+            if (!function_exists('is_plugin_active')) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            }
+
             return is_plugin_active($plugin_path);
         }
     }
