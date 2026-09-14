@@ -148,7 +148,10 @@ class Builder_Cpt {
 	}
 
 	public function set_post_columns($columns) {
-		return array_slice($columns, 0, 2, true) + ['template_type' => 'Type', 'is_enabled' => 'Status'] + array_slice($columns, 2, null, true);
+		return array_slice($columns, 0, 2, true) + [
+			'template_type' => esc_html__('Type', 'ultimate-store-kit'),
+			'is_enabled'    => esc_html__('Status', 'ultimate-store-kit')
+		] + array_slice($columns, 2, null, true);
 	}
 
 	public function set_custom_column_value($column, $post_id) {
@@ -167,7 +170,9 @@ class Builder_Cpt {
 				}
 				break;
 			case 'is_enabled':
-				echo (Builder_Template_Helper::getTemplateId($templateType) == $post_id ? 'Active' : 'Inactive');
+				echo Builder_Template_Helper::getTemplateId($templateType) == $post_id
+					? esc_html__('Active', 'ultimate-store-kit')
+					: esc_html__('Inactive', 'ultimate-store-kit');
 				break;
 		}
 	}
