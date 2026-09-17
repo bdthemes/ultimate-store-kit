@@ -1,56 +1,163 @@
-=== Ultimate Store Kit ===
+=== Ultimate Store Kit - Store Builder Addons for Elementor, WooCommerce Store Builder, EDD Store Builder ===
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
-Tags: elementor, woocommerce, elementor addons, woocommerce builder, edd
-Stable tag: 3.1.3
+Tags: elementor addons, woocommerce builder, woocommerce store builder, edd store builder, woocommerce widget
+Stable tag: 3.1.4
 Requires PHP: 7.0
 Requires at least: 6.8
 Tested up to: 7.1
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.2.2
+Elementor tested up to: 4.2.4
 
-WooCommerce and EDD Elementor addon with product grid, category, reviews, carousel, filters, cart, checkout, slider and more
+WooCommerce store builder and EDD store builder for Elementor with product grids, widgets, cart, checkout, account pages, filters and sliders.
 
 
 == Description ==
 
-**Ultimate Store Kit – The Complete WooCommerce & EDD Builder for Elementor**
+**Ultimate Store Kit – WooCommerce Store Builder and EDD Store Builder for Elementor**
 
-Ultimate Store Kit is an all-in-one WooCommerce and Easy Digital Downloads (EDD) builder for Elementor. It gives you complete control over your online store design.
-With 80+ advanced widgets and a powerful template builder, you can create stunning product pages, cart pages, checkout pages and account pages. No coding is needed!
+Ultimate Store Kit is a WooCommerce builder and EDD store builder for Elementor. It combines Elementor store addons for WooCommerce and Easy Digital Downloads (EDD), helping you design product displays and key store pages from the Elementor editor.
 
+Use its 80+ Elementor eCommerce widgets and Template Builder to create product grids, carousels, sliders, category displays, review sections, cart pages, checkout pages, order pages and account pages. The free version includes WooCommerce widgets, EDD widgets and other design widgets. The Pro version adds more account, checkout, product, filtering, thank-you, wishlist and EDD review widgets, plus Pro WooCommerce template choices.
 
-### Key Features 👇 ###
+The plugin is designed for WordPress sites that already use WooCommerce or Easy Digital Downloads for product data and Elementor for page design. Ultimate Store Kit does not replace your existing eCommerce platform or move products into a separate system. It reads the store data already available in WordPress and gives you Elementor widgets for presenting that content.
 
-✅ **WooCommerce & EDD Integration** – Build stunning stores for both physical and digital products.
-
-✅ **80+ Custom Widgets** – Includes product grids, carousels, sliders, accordions, review grids, pricing tables and more.
-
-✅ **Template Builder**  – Fully customize all store pages, including shop, product, cart, checkout and account pages inside WordPress.
-
-✅ **Personalized User Accounts** – Create a better shopping experience with custom account page designs.
-
-✅ **More Checkout Customization** – Optimize the checkout process to improve conversions.
-
-✅ **SEO & Speed Optimized** – Ensures fast performance and higher search rankings.
-
-✅ **Fully Integrates with WordPress, Elementor & WooCommerce** – Ensures seamless compatibility with your existing store setup.
-
-Take full control of your WooCommerce store or EDD store with Ultimate Store Kit and design the perfect shopping experience!
+Whether you need a single Elementor widget for one product section or a broader collection of WooCommerce addons and EDD addons for several store pages, Ultimate Store Kit helps you create store layouts without writing code.
 
 
-###USEFUL LINKS 👇###
+### Ultimate Store Kit at a Glance ###
+
+* Build WooCommerce and Easy Digital Downloads layouts with Elementor.
+* Choose from 80+ free and Pro Elementor widgets listed in this readme.
+* Display products in grids, lists, tables, accordions, carousels and sliders.
+* Present product categories and subcategories in grids or carousels.
+* Design cart, checkout, order, single-product and account page layouts.
+* Add product reviews, variation swatches, a mini cart, wishlist tools and comparison tools using the relevant widgets.
+* Create supporting store content with brand, featured box, information list, QR code, marquee and breadcrumb widgets.
+
+
+### Key Features ###
+
+✅ **WooCommerce Store Builder & EDD Store Builder** – Design stores for physical and digital products with Elementor.
+
+✅ **80+ Elementor Widgets** – Use Elementor addons for product grids, carousels, sliders, accordions, review grids, product tables and more.
+
+✅ **WooCommerce Widgets & EDD Widgets** – Display products, categories, reviews and store content using the widget collections listed below.
+
+✅ **Template Builder** – Customize shop, product, cart, checkout, order and account page layouts inside WordPress.
+
+✅ **Account Page Design** – Create custom account page layouts for your store.
+
+✅ **Checkout Customization** – Design checkout layouts with the available page and checkout widgets.
+
+✅ **WooCommerce Store Design** – Build product showcases and store page layouts with grids, carousels, sliders, tables, accordions and page widgets.
+
+✅ **Built for WordPress & Elementor** – Work with WooCommerce and Easy Digital Downloads content from the Elementor editor.
+
+
+### WooCommerce Store Builder for Elementor ###
+
+Ultimate Store Kit provides a collection of WooCommerce addons for displaying products and designing store pages in Elementor. Instead of relying on one layout, you can choose a WooCommerce widget that matches the type of content you want to show.
+
+For product grids and carousels, the free widget collection includes Florence, Glossy and Shiny layouts. You can also present products with the Product List, Product Table, Product Accordion or Product Image Accordion. Heaven Slider, Mentor Slider and Showcase Slider provide slider-based options for featured products and other product selections.
+
+Category-focused widgets include Product Category, Product Category Carousel, Sub Category and Sub Category Carousel. Product Reviews and Product Review Carousel provide separate layouts for customer review content. The collection also includes Mini Cart, Up Sells and Variation Swatches widgets, while Pro adds Image Hotspot and Product Filters.
+
+The page widgets let you work on important areas of a WooCommerce store from Elementor. The free list includes Page Cart, Page Checkout, Page Order and Page Single. My Account Page is listed in the Pro collection. These widgets are documented individually in the feature lists below, with demo links for checking each layout.
+
+
+### WooCommerce Widgets for Product and Store Pages ###
+
+If you are searching for a WooCommerce Store Widget, Ultimate Store Kit provides multiple options rather than a single general-purpose widget. You can select a dedicated widget for product presentation, shopping actions, checkout content, customer accounts or post-purchase information.
+
+The Pro collection adds individual product widgets for Add To Cart, Additional Information, Call For Price, Product Description, Short Description, Product Image, Product Meta, Product Price, Product Rating, Product Related, Product Stock, Product Tabs and Product Title. Pro also includes Product Filters and Image Hotspot. These separate Elementor widget options let you assemble a product layout from the components listed in the plugin.
+
+For checkout layouts, the Pro list includes Checkout Additional Info, Checkout Billing Address, Checkout Coupon Form, Checkout Login Form, Checkout Order Review, Checkout Payment, Checkout Shipping Form and Checkout Shipping Methods. Cart and checkout page widgets are also available in the free collection, so review the complete widget lists when deciding which version fits your planned layout.
+
+Account-focused Pro widgets include My Account Page, Account Address, Account Dashboard, Account Details, Account Downloads, Account Login-form, Account Logout, Account Navigation, Account Order-details, Account Orders and Account Registration-form. The Pro list also includes Thankyou Order, Thankyou Order Confirmation, Thankyou Order Customer Address and Thankyou Order Details for completed-order layouts.
+
+Wishlist Button and Wishlist Products provide the listed wishlist tools, while Compare Button and Compare Products provide product-comparison layouts. Together, these WooCommerce widgets cover different stages of the store experience while keeping layout work inside Elementor.
+
+
+### WooCommerce Store Design Options ###
+
+Use Ultimate Store Kit as a WooCommerce store builder to design product displays and store pages in Elementor. Its WooCommerce addons include product grids, carousels, sliders, categories, reviews, a mini cart, product tables, cart and checkout pages and other WooCommerce widget options listed below.
+
+Choose a grid, list, table or accordion when you want products visible together on one section of a page. Choose a carousel or slider when you want a rotating product display. Category and subcategory widgets can provide another way to organize product browsing, while review widgets can display customer feedback.
+
+For store actions and page layouts, use the relevant cart, checkout, order, account, product, comparison or wishlist widgets. The available styling and layout choices belong to each widget, so the demo and documentation links are the best place to inspect a specific tool before adding it to a page.
+
+
+### EDD Store Builder for Digital Products ###
+
+Ultimate Store Kit also works as an EDD store builder for sites using Easy Digital Downloads. The EDD addons use the digital product and category data already stored in WordPress, so you do not need to import products into another store system before building the layouts.
+
+The free EDD widget collection includes Beauty, Classic, Standard and Trendy product designs. Each design is available as a grid and a carousel, giving you a static multi-item layout or a rotating presentation. EDD Category Grid and EDD Category Carousel provide separate choices for displaying digital product categories.
+
+The Pro collection adds EDD Product Reviews and EDD Product Review Carousel. Use the standard review layout when you want reviews presented together on the page, or use the carousel option when a rotating review presentation fits the design.
+
+Each EDD widget is available for Elementor-based store design. Review the EDD widget list and linked demos below to compare the Beauty, Classic, Standard, Trendy, category and review layouts.
+
+
+### Elementor Store Addons Beyond Product Listings ###
+
+Ultimate Store Kit includes general Elementor store addons alongside its WooCommerce and EDD widgets. Brand Grid and Brand Carousel provide two ways to display brand logos. Featured Box and Info List provide layouts for highlighted information, while Marquee can display scrolling announcements, promotions or other store content.
+
+The QR Code widget generates and displays QR codes using the external service disclosed later in this readme. It can point to a product permalink and can include the product add-to-cart query string when the cart URL option is enabled. Because that widget uses an external image service, review the External services section for details about what is requested when the widget appears on a page.
+
+Breadcrumbs is listed in the Pro collection for adding navigation paths. These supporting Elementor addons can be used alongside product, category, cart, checkout and account widgets when a store layout needs more than a product display.
+
+
+### Free and Pro Elementor Addon Coverage ###
+
+The free collection includes WooCommerce product displays, page widgets, EDD grids and carousels and general design widgets. The Pro collection extends the plugin with individual account, checkout, product, thank-you, wishlist and comparison widgets, as well as EDD review widgets and Breadcrumbs.
+
+The complete free and Pro inventories appear below. Check those lists before selecting a widget because similarly related store areas may have both a full-page widget and separate component widgets. For example, the free collection lists Page Checkout, while the Pro collection lists individual checkout components such as billing address, payment, order review and shipping methods.
+
+
+### Pro Product Filters, Store Widgets and Templates ###
+
+Ultimate Store Kit Pro expands the WooCommerce builder with Product Filters for product browsing, Image Hotspot for interactive product presentation, Call For Price for WooCommerce product layouts and Short Description for displaying the WooCommerce product short description. My Account Page is also part of the Pro widget collection.
+
+The StoreKit template menu lists Pro ready-made templates for Single Page, Cart, Checkout, Order Received and My Account. Its custom WooCommerce store template collection lists Pro templates for Single Page, Checkout, Order Received and My Account. The Shop Page template is shown separately without a Pro label.
+
+Templates and widgets with similar names are separate items. For example, Page Cart and Page Checkout appear in the free widget catalog, while Cart and Checkout also appear as Pro ready-made template types. Review the live template and pricing pages for the latest plan availability before upgrading.
+
+
+### Pro Productivity Tools and Plan Coverage ###
+
+The StoreKit Free-versus-Pro comparison lists Live Copy or Paste and Duplicator as the two additional Pro productivity tools. The same comparison lists responsive layouts, smooth transitions and automatic new-product badges for both Free and Pro, so those features are not presented here as Pro-only.
+
+The pricing page states that paid plans include all free features, the complete 80+ widget collection, the Rooten Theme and continuous product updates. White Label Branding is shown for the Developer plan, while the Personal and Business plans are shown without white-label branding. Check the pricing page for the latest license and plan details.
+
+
+### How to Start Building Your Store Layout ###
+
+1. Install and activate Ultimate Store Kit from the Plugins area in WordPress.
+2. Open the page you want to design with the Elementor editor.
+3. Add the Ultimate Store Kit Elementor widget that matches the content you want to display.
+4. Use product, category, review, cart, checkout, order or account widgets according to the page you are building.
+5. Use the Template Builder when you want to create layouts for WooCommerce store pages.
+
+You can view the demos to compare layouts before choosing a widget. The documentation and video tutorial provide more information about configuring the plugin and using its store-building tools.
+
+Build your WooCommerce or EDD store design with Ultimate Store Kit, keep your existing store data and choose the Elementor store addons that fit each page.
+
+
+### Useful Links 👇 ###
 **[Live Demo](https://storekit.pro/)** | **[Documentation](https://bdthemes.com/knowledge-base/ultimate-store-kit/)** | **[Video Tutorial](https://www.youtube.com/watch?v=uX7TaFJgs9w&list=PLP0S85GEw7DPkLjMkYt4qNkJy3ywuakLd)** | **[Need Support?](https://bdthemes.com/support/)**
 
 https://youtu.be/EI21j-CU9t4?si=1eFri9BweVmQfnbN
 
 = Template Builder 💎 =
 
-Enjoy the full length of Online Store Page customizations with Template Builder. This option can render all pages inside WordPress and lets you choose unique designs at your preferences.
+Use the Template Builder to customize online store pages inside WordPress and apply different layouts to different store areas.
 
-Build, customize and manage single pages, cart pages and every pages belonging to your store.
+Build, customize and manage single-product, cart, checkout, order and account page layouts with Elementor.
+
+The StoreKit template collection includes a Shop Page template and Pro template choices for Single Page, Cart, Checkout, Order Received and My Account. Pro custom template choices are listed for Single Page, Checkout, Order Received and My Account. View the [template collection](https://storekit.pro/templates/) to compare the available designs.
 
 == Free Widgets for Lifetime: 🔥 ==
 
@@ -71,7 +178,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Product Review Carousel](https://storekit.pro/demo/product-review-carousel/) - Display reviews in a dynamic carousel.
 * [Product Table](https://storekit.pro/demo/product-table/) - Organize and showcase products in a sortable table layout.
 * [Shiny Carousel](https://storekit.pro/demo/shiny-carousel/) - Add a sleek and shiny carousel to your WooCommerce store.
-* [Shiny Grid](https://storekit.pro/demo/shiny-grid/) - Present products in an appealing grid format.
+* [Shiny Grid](https://storekit.pro/demo/shiny-carousel/) - Present products in an appealing grid format.
 * [Showcase Slider](https://storekit.pro/demo/showcase-slider/) - Highlight featured products with a customizable slider.
 * [Sub Category](https://storekit.pro/demo/sub-category/) - Display subcategories for better product navigation.
 * [Sub Category Carousel](https://storekit.pro/demo/sub-category-carousel/) - Showcase subcategories in an interactive carousel.
@@ -81,7 +188,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Page Order](https://storekit.pro/demo/page-order/) - Simplify and enhance the order tracking experience.
 * [Page Single](https://storekit.pro/demo/page-single/) - Customize single product pages to boost conversions.
 * [Up Sells](https://storekit.pro/demo/up-sells/) - Promote related or complementary products to increase sales.
-* [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
+* [Variation Swatches](https://storekit.pro/demo/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
 
 = Easy Digital Downloads 💲 =
 
@@ -103,6 +210,7 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Featured Box](https://storekit.pro/demo/featured-box/) - Highlight key features or services with customizable featured boxes.
 * [Info List](https://storekit.pro/demo/info-list/) - Present information in a clean and well-structured list format.
 * [QR Code](https://storekit.pro/demo/qr-code/) - Generate and display QR codes for quick sharing or scanning.
+* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners to your store for announcements, promotions, or highlights.
 
 == Pro version Widgets 🔥 ==
 
@@ -112,14 +220,16 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Account Dashboard](https://storekit.pro/demo/account-dashboard/) - Create a user-friendly dashboard for customer accounts.
 * [Account Details](https://storekit.pro/demo/account-details/) - Allow customers to update personal account details easily.
 * [Account Downloads](https://storekit.pro/demo/account-downloads/) - Display downloadable products for customer accounts.
-* [Account Login Form](https://storekit.pro/demo/account-login-form/) - Add a simple and secure login form for customers.
+* [Account Login-form](https://storekit.pro/demo/account-login-form/) - Add a simple and secure login form for customers.
 * [Account Logout](https://storekit.pro/demo/account-logout/) - Provide a straightforward logout option for users.
 * [Account Navigation](https://storekit.pro/demo/account-navigation/) - Enhance account navigation for better user experience.
-* [Account Order Details](https://storekit.pro/demo/account-order-details/) - Display detailed information about customer orders.
+* [Account Order-details](https://storekit.pro/demo/account-order-details/) - Display detailed information about customer orders.
 * [Account Orders](https://storekit.pro/demo/account-orders/) - List all customer orders in a clean and accessible layout.
-* [Account Registration Form](https://storekit.pro/demo/account-registration-form/) - Create a registration form for new users.
+* [Account Registration-form](https://storekit.pro/demo/account-registration-form/) - Create a registration form for new users.
+* [My Account Page](https://storekit.pro/demo/page-my-account/) - Personalize the WooCommerce My Account page for customers.
 * [Add To Cart](https://storekit.pro/demo/add-to-cart/) - Add a fully functional "Add to Cart" button to your store.
 * [Additional Information](https://storekit.pro/demo/additional-information/) - Display extra product details with this widget.
+* [Call For Price](https://bdthemes.com/knowledge-base/call-for-price-widget/) - Add the Call For Price widget to a WooCommerce product layout.
 * [Compare Button](https://storekit.pro/demo/compare-button/) - Add a comparison button to products for better decision-making.
 * [Compare Products](https://storekit.pro/demo/compare-products/) - Enable side-by-side comparison of multiple products.
 * [Checkout Additional Info](https://storekit.pro/demo/checkout-additional-info/) - Collect additional customer info during checkout.
@@ -128,8 +238,11 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Checkout Login Form](https://storekit.pro/demo/checkout-login-form/) - Allow users to log in directly from the checkout page.
 * [Checkout Order Review](https://storekit.pro/demo/checkout-order-review/) - Display a summary of the order before payment.
 * [Checkout Payment](https://storekit.pro/demo/checkout-payment/) - Customize and display payment options during checkout.
-* [Page My Account](https://storekit.pro/demo/page-my-account/) - Personalize the "My Account" page for your customers.
+* [Checkout Shipping Form](https://storekit.pro/demo/checkout-shipping-form/) - Add a shipping form for user details during checkout.
+* [Checkout Shipping Methods](https://storekit.pro/demo/checkout-shipping-methods/) - List all available shipping methods for selection.
+* [Image Hotspot](https://storekit.pro/demo/image-hotspot/) - Add interactive hotspots to images for enhanced user engagement and information display.
 * [Product Description](https://storekit.pro/demo/product-description/) - Display detailed product descriptions attractively.
+* [Product Filters](https://storekit.pro/demo/product-filters/) - Add product filters to help shoppers narrow WooCommerce product results.
 * [Product Image](https://storekit.pro/demo/product-image/) - Showcase product images in a visually appealing way.
 * [Product Meta](https://storekit.pro/demo/product-meta/) - Display product metadata like SKU and categories.
 * [Product Price](https://storekit.pro/demo/product-price/) - Highlight product pricing in a customizable style.
@@ -138,7 +251,13 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 * [Product Stock](https://storekit.pro/demo/product-stock/) - Highlight product stock status dynamically.
 * [Product Tabs](https://storekit.pro/demo/product-tabs/) - Organize product information into collapsible tabs.
 * [Product Title](https://storekit.pro/demo/product-title/) - Customize and display product titles effectively.
-* [Variation Swatches](https://storekit.pro/demo/variation-swatches/) - Enhance WooCommerce product variations with customizable color, image and label swatches.
+* [Short Description](https://bdthemes.com/knowledge-base/short-description-widget/) - Display the WooCommerce product short description in an Elementor layout.
+* [Thankyou Order](https://storekit.pro/demo/thankyou-order/) - Customize the thank-you page for completed orders.
+* [Thankyou Order Confirmation](https://storekit.pro/demo/thankyou-order-confirmation/) - Display detailed order confirmation information.
+* [Thankyou Order Customer Address](https://storekit.pro/demo/thankyou-order-customer-address/) - Show customer address on the thank-you page.
+* [Thankyou Order Details](https://storekit.pro/demo/thankyou-order-details/) - Provide a detailed order summary on the thank-you page.
+* [Wishlist Button](https://storekit.pro/demo/wishlist-button/) - Add a button for customers to save products to their wishlist.
+* [Wishlist Products](https://storekit.pro/demo/wishlist-products/) - Display saved products in an organized wishlist layout.
 
 = Easy Digital Downloads 💲 =
 
@@ -148,7 +267,6 @@ Build, customize and manage single pages, cart pages and every pages belonging t
 = Others 🌅 =
 
 * [Breadcrumbs](https://storekit.pro/demo/breadcrumbs/) - Add easy navigation paths to improve user experience and site structure.
-* [Marquee](https://storekit.pro/demo/marquee/) - Add scrolling text or content banners for announcements, promotions and highlights.
 
 More widgets & extensions are coming soon...
 
@@ -160,10 +278,10 @@ Ans. It's due to your server PHP setting. You can increase PHP memory limit from
 
 == Need Help? ==
 
-Is there any feature that you want to get in this plugins?
-Please use the suggest page to send us a message about the feature you think we should add to our products.
-Needs assistance to use this plugins?
-Feel free to [Contact us](https://bdthemes.com/support/) 💌 or check our widget Tutorials to learn about how to use them efficiently.
+Is there a feature you want to see in this plugin?
+Use the support page to tell us which feature you would like us to add.
+Need assistance using the plugin?
+Feel free to [contact us](https://bdthemes.com/support-new/) 💌 or check our widget tutorials to learn how to use the available tools.
 
 == Checkout our other Plugins 👑 ==
 
@@ -204,13 +322,11 @@ Visit [BdThemes](https://bdthemes.com/) to learn about our services, Elementor p
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
+This section describes how to install and activate the plugin.
 
 1. Upload `ultimate-store-kit.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Start use it by go to elementor editor.
+3. Open the Elementor editor and add an Ultimate Store Kit widget.
 
 https://youtu.be/9J4zCaDcPnk
 
@@ -259,14 +375,19 @@ The compiled output is written to `/assets` and is the only thing the plugin loa
 
 The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Where a library was obtained in a pre-minified form upstream, that is noted:
 
-* DataTables 3.0.3 — https://datatables.net/ — MIT
+* DataTables 1.10.21 — https://datatables.net/ — MIT
 * Accordion 3.1.1 — https://github.com/michu2k/Accordion — MIT
 * MicroModal — https://micromodal.vercel.app/ — MIT
+* Toolslide — https://github.com/ihor-basov/toolslide — MIT
 * Popper — https://popper.js.org/ — MIT (distributed upstream as `popper.min.js`)
-* Tippy.js 6.3.7 — https://atomiks.github.io/tippyjs/ — MIT (distributed upstream as `tippy.all.min.js`)
+* Tippy.js 6.3.1 — https://atomiks.github.io/tippyjs/ — MIT (distributed upstream as `tippy.all.min.js`)
 * Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
 
 == Changelog ==
+
+= 3.1.4 [17th September 2026] =
+
+* Fixed: String translation issue fixed
 
 = 3.1.3 [14th September 2026] =
 
@@ -603,50 +724,94 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 == Upgrade Notice ==
 
-- Click on update plugin and install the new update version of your plugin, simple.
+- Update the plugin from the Plugins screen in your WordPress dashboard.
 
 
 == Frequently Asked Questions ==
 
-= Is your plugin compatible with latest WordPress update? =
+= Is Ultimate Store Kit a WooCommerce store builder? =
 
-Yes. Ultimate Store Kit is tested with the latest version update of WordPress and it is compatible with the platform.
+Yes. Ultimate Store Kit works as a WooCommerce store builder for Elementor. Use the Template Builder and WooCommerce widgets to design product displays and layouts for shop, product, cart, checkout, order and account pages.
+
+= Can I use Ultimate Store Kit as an EDD store builder? =
+
+Yes. The EDD store builder features work with Easy Digital Downloads product data. You can create EDD product and category grids or carousels using Beauty, Classic, Standard and Trendy layouts. EDD review widgets are listed in the Pro collection.
+
+= Is Ultimate Store Kit an Elementor addon or an Elementor widget plugin? =
+
+Ultimate Store Kit is an Elementor addon that contains a collection of store-focused Elementor widgets. Each Elementor widget handles a specific layout or store function, while the Template Builder combines those widgets into complete page layouts.
+
+= What is included in the Elementor store addons? =
+
+The Elementor store addons include WooCommerce addons, EDD addons and general design widgets. The available tools cover product grids, carousels, sliders, categories, reviews, tables, accordions, cart and checkout layouts, account areas, brand displays and other widgets listed in this readme.
+
+= Which WooCommerce widgets are included? =
+
+Instead of providing only one WooCommerce Store Widget, Ultimate Store Kit includes multiple WooCommerce widget options. These include product grids, product carousels, sliders, product categories, reviews, a mini cart, product tables, product lists, page layouts, variation swatches and other free and Pro widgets listed above.
+
+= Which premium WooCommerce addons are included in Ultimate Store Kit Pro? =
+
+Ultimate Store Kit Pro includes individual account, checkout, product, thank-you, wishlist, comparison and EDD review widgets. Verified Pro additions include Product Filters, Image Hotspot, Call For Price, Short Description and My Account Page. The complete Pro Elementor widget inventory is listed above.
+
+= Is Product Filters a Pro WooCommerce widget? =
+
+Yes. Product Filters is listed as a Pro WooCommerce widget on the StoreKit widget and pricing pages. It can be used as part of an Elementor-based WooCommerce store design to give shoppers product-filtering controls.
+
+= Are the Pro WooCommerce templates the same as the page widgets? =
+
+No. Templates and widgets are separate items even when their names are similar. For example, Page Cart and Page Checkout are listed in the free widget collection, while Cart and Checkout are also listed as Pro ready-made template types. StoreKit also lists Pro template choices for Single Page, Order Received and My Account.
+
+= Which productivity tools are listed for Ultimate Store Kit Pro? =
+
+The StoreKit comparison lists Live Copy or Paste and Duplicator as the additional Pro productivity tools. White Label Branding is plan-specific: the pricing page shows it for the Developer plan, not the Personal or Business plans.
+
+= Which EDD widgets and EDD addons are included? =
+
+The EDD addons include Beauty, Classic, Standard and Trendy product grids and carousels, plus EDD category grid and carousel widgets. The Pro version also lists EDD Product Reviews and EDD Product Review Carousel. Each EDD widget is designed for use with Elementor.
+
+= Can the WooCommerce addons help with WooCommerce store design? =
+
+Yes. You can use the WooCommerce addons for WooCommerce store design in Elementor, including product showcases and layouts for cart, checkout, order, single-product and account pages. The exact available widgets depend on whether you use the free or Pro version.
+
+= Which WordPress and Elementor versions are listed as compatible? =
+
+This release requires WordPress 6.8 or later and PHP 7.0 or later. The readme lists compatibility tested through WordPress 7.0. Ultimate Store Kit requires Elementor 4.0.0 or later and lists testing through Elementor 4.2.2.
 
 = Do you provide documentation? =
 
-We provide documentation for each of our products/plugins/widgets to help users to better utilize the tools.
+Yes. The documentation covers Ultimate Store Kit features and widgets. Use the documentation link near the beginning of this readme to learn how to configure the available tools.
 
 = What are the benefits of your plugin? =
 
-Ultimate Store Kit is the perfect online store design tool that combines multiple web designing features into one plugin. Using this tool, you can utilize online store platforms like WooCommerce, EDD and Download Monitor to shape your business as you want.
+Ultimate Store Kit combines WooCommerce and EDD store design tools in one Elementor addon. You can build product displays and customize key store page layouts without moving product data to a separate eCommerce platform.
 
 = Does your plugin work with my theme? =
 
-Ultimate Store Kit is designed to work with major WordPress themes and is compatible with all themes made for WordPress Elementor.
+Ultimate Store Kit is designed for use with WordPress themes that support Elementor. If you encounter a theme-specific conflict, use the support link near the beginning of this readme.
 
 = How can I import my products from the existing EDD/WooCommerce/Digital Downloads store? =
 
-You don't have to import anything. Ultimate Store Kit doesn't use a separate platform to store your shop data. Rather, it reads the store data from your existing store in WordPress automatically.
+You do not have to import products into Ultimate Store Kit. The plugin does not use a separate platform to store your shop data; it reads product data from your existing WooCommerce or Easy Digital Downloads store in WordPress.
 
 = Is Ultimate Store Kit an eCommerce platform? =
 
-No. Ultimate Store Kit is not a new eCommerce platform but a support plugin for existing platforms on WordPress and works for design purposes.
+No. Ultimate Store Kit is not a separate eCommerce platform. It is an Elementor store addon for designing content and page layouts that use data from WooCommerce or Easy Digital Downloads.
 
 = Where can I request new features? =
 
-Please contact our support team through email or LiveChat in case you need to request new features for our product. Our team will connect with you within 24 hours.
+Use the support link near the beginning of this readme to contact the team and request a feature.
 
 = Do I need Elementor Pro to use Ultimate Store Kit? =
 
-There is no need for Elementor Pro because Ultimate Store Kit works with both the free and pro versions of Elementor page builder plugin.
+No. Ultimate Store Kit works with both the free and Pro versions of the Elementor page builder.
 
 = Where can I see the Wishlist after I click the Wishlist button? =
 
-After adding any product to the wishlist, you can find the wishlist when you log into the store and click on the My Account menu to reveal the user dashboard.
+The Wishlist Button and Wishlist Products widgets are listed as Pro widgets. After adding a product to the wishlist, log in to the store and open the My Account area to view the wishlist.
 
-= How can I shift to Pro plugin? =
+= How can I upgrade to the Pro plugin? =
 
-Visit BdThemes.com to buy a plugin license or see the current page for the licensing option to buy and shift to Pro plugin of Ultimate Store Kit.
+Visit BdThemes.com or use the licensing option on the plugin page to purchase an Ultimate Store Kit Pro license.
 
 = How can I report security bugs? =
 
