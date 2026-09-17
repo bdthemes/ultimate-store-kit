@@ -43,7 +43,11 @@
         }
 
         $switcher.attr('aria-checked', isActive ? 'true' : 'false');
-        $modal.find('.usk-switcher-status-text').text(isActive ? __('Active', 'ultimate-store-kit') : __('Inactive', 'ultimate-store-kit'));
+        // Translate both labels up front: a ternary of two __() calls gets
+        // minified into __(cond ? 'Active' : 'Inactive'), which breaks i18n parsing.
+        var activeText = __('Active', 'ultimate-store-kit');
+        var inactiveText = __('Inactive', 'ultimate-store-kit');
+        $modal.find('.usk-switcher-status-text').text(isActive ? activeText : inactiveText);
     }
 
     $(document).on('click', '#ultimate-builder-kit-builder-modal .usk-modal-close-button', function (e) {
