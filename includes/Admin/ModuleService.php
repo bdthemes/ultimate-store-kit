@@ -763,7 +763,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order',
-                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order/',
+                    'demo_url'     => 'https://storekit.pro/demo/thank-you-order/',
                     'video_url'    => '',
                 ],
                 [
@@ -775,7 +775,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order',
-                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order-details/',
+                    'demo_url'     => 'https://storekit.pro/demo/thank-you-order-details/',
                     'video_url'    => '',
                 ],
                 [
@@ -787,7 +787,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order',
-                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order-customer-address/',
+                    'demo_url'     => 'https://storekit.pro/demo/thank-you-order-customer-address/',
                     'video_url'    => '',
                 ],
                 [
@@ -799,7 +799,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce thank-you order',
-                    'demo_url'     => 'https://storekit.pro/demo/thankyou-order-confirmation/',
+                    'demo_url'     => 'https://storekit.pro/demo/thank-you-order-confirmation/',
                     'video_url'    => '',
                 ],
                 [
@@ -811,7 +811,7 @@ class ModuleService {
                     'plugin_name'  => 'woocommerce',
                     'plugin_path'  => 'woocommerce/woocommerce.php',
                     'content_type' => 'woocommerce others',
-                    'demo_url'     => 'https://storekit.pro/demo/wishlist-button/',
+                    'demo_url'     => 'https://storekit.pro/demo/wishlistbutton/',
                     'video_url'    => '',
                 ],
                 [
