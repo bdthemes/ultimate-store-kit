@@ -49,9 +49,9 @@ class Florence_Carousel extends Module_Base {
 
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['swiper', 'micromodal', 'usk-site'];
+            return ['swiper', 'ultimate-store-kit-micromodal', 'usk-site'];
         } else {
-            return ['swiper', 'micromodal', 'usk-florence-carousel'];
+            return ['swiper', 'ultimate-store-kit-micromodal', 'usk-florence-carousel'];
         }
     }
 

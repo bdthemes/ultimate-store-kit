@@ -50,7 +50,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_layout',
+            'ultimate_store_kit_modal_layout',
             [
                 'label'     => esc_html__('Layout', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HEADING,
@@ -58,14 +58,14 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         // $this->add_responsive_control(
-        //         'modal_width',
+        //         'ultimate_store_kit_modal_width',
         //         [
         //             'label'         => esc_html__( 'Width', 'ultimate-store-kit' ),
         //             'type'          => Controls_Manager::SLIDER,
         //         ]
         // );
         $this->add_responsive_control(
-            'modal_width',
+            'ultimate_store_kit_modal_width',
             [
                 'label'         => esc_html__('Width', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SLIDER,
@@ -81,7 +81,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_responsive_control(
-            'modal_height',
+            'ultimate_store_kit_modal_height',
             [
                 'label'         => esc_html__('Height', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SLIDER,
@@ -97,7 +97,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_animation',
+            'ultimate_store_kit_modal_animation',
             [
                 'label'      => esc_html__('Animation Type', 'ultimate-store-kit'),
                 'type'       => Controls_Manager::SELECT,
@@ -143,7 +143,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'close_btn_heading',
+            'ultimate_store_kit_modal_close_btn_heading',
             [
                 'label'     => esc_html__('Close Button', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::HEADING,
@@ -151,7 +151,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'show_close_btn',
+            'ultimate_store_kit_modal_show_close_btn',
             [
                 'label'         => esc_html__('Enable Close Button', 'ultimate-store-kit'),
                 'type'          => Controls_Manager::SWITCHER,
@@ -172,12 +172,12 @@ class Settings_Modal extends Tab_Base {
         //             ''  => esc_html__( 'OutSide', 'ultimate-store-kit' ),
         //         ],
         //         'condition' => [
-        //             'show_close_btn' => 'yes'
+        //             'ultimate_store_kit_modal_show_close_btn' => 'yes'
         //         ]
         //     ]
         // );
         $this->add_control(
-            'button_style',
+            'ultimate_store_kit_modal_button_style',
             [
                 'label'      => esc_html__('Button Style', 'ultimate-store-kit'),
                 'type'       => Controls_Manager::SELECT,
@@ -190,20 +190,20 @@ class Settings_Modal extends Tab_Base {
                     'text label'     => esc_html__('Text Label', 'ultimate-store-kit'),
                 ],
                 'condition' => [
-                    'show_close_btn' => 'yes'
+                    'ultimate_store_kit_modal_show_close_btn' => 'yes'
                 ]
             ]
         );
         $this->add_control(
-            'button_text',
+            'ultimate_store_kit_modal_button_text',
             [
                 'label'       => esc_html__('Button Text', 'ultimate-store-kit'),
                 'type'        => Controls_Manager::TEXT,
                 'dynamic'     => [ 'active' => true ],
                 'placeholder' => esc_html__('close', 'ultimate-store-kit'),
                 'condition' => [
-                    'show_close_btn' => 'yes',
-                    'button_style' => [
+                    'ultimate_store_kit_modal_show_close_btn' => 'yes',
+                    'ultimate_store_kit_modal_button_style' => [
                         'text simple',
                         'text label'
                     ]
@@ -219,7 +219,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_background',
+            'ultimate_store_kit_modal_background',
             [
                 'label'     => esc_html__('Background', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
@@ -227,7 +227,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_overlay',
+            'ultimate_store_kit_modal_overlay',
             [
                 'label'     => esc_html__('Overlay', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
@@ -235,7 +235,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_close_btn',
+            'ultimate_store_kit_modal_close_btn',
             [
                 'label' => esc_html__('Close Button', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -243,16 +243,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_close_btn_tabs'
+            'ultimate_store_kit_modal_close_btn_tabs'
         );
         $this->start_controls_tab(
-            'close_btn_normal',
+            'ultimate_store_kit_modal_close_btn_normal',
             [
                 'label' => esc_html__('Normal', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_close_btn_color',
+            'ultimate_store_kit_modal_close_btn_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -262,7 +262,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_close_btn_bg_color',
+            'ultimate_store_kit_modal_close_btn_bg_color',
             [
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -273,13 +273,13 @@ class Settings_Modal extends Tab_Base {
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'close_btn_hover',
+            'ultimate_store_kit_modal_close_btn_hover',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_close_btn_hover_color',
+            'ultimate_store_kit_modal_close_btn_hover_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -289,7 +289,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_close_btn_hover_bg_color',
+            'ultimate_store_kit_modal_close_btn_hover_bg_color',
             [
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -301,7 +301,7 @@ class Settings_Modal extends Tab_Base {
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->add_control(
-            'modal_heading_title',
+            'ultimate_store_kit_modal_heading_title',
             [
                 'label' => esc_html__('Title', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -309,16 +309,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_title_tabs'
+            'ultimate_store_kit_modal_title_tabs'
         );
         $this->start_controls_tab(
-            'title_tab_normal',
+            'ultimate_store_kit_modal_title_tab_normal',
             [
                 'label' => esc_html__('Normal', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_title_color',
+            'ultimate_store_kit_modal_title_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -329,13 +329,13 @@ class Settings_Modal extends Tab_Base {
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'title_tab_hover',
+            'ultimate_store_kit_modal_title_tab_hover',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_title_hover_color',
+            'ultimate_store_kit_modal_title_hover_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -360,13 +360,13 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_title_typography',
+                'name' => 'ultimate_store_kit_modal_title_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.usk-modal-page .usk-product-title .product_title',
             ]
         );
         $this->add_control(
-            'modal_rating_star',
+            'ultimate_store_kit_modal_rating_star',
             [
                 'label' => esc_html__('Rating', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -374,16 +374,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_rating_tabs'
+            'ultimate_store_kit_modal_rating_tabs'
         );
         $this->start_controls_tab(
-            'modal_rating_normal',
+            'ultimate_store_kit_modal_rating_normal',
             [
                 'label' => esc_html__('Normal', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'rating_color',
+            'ultimate_store_kit_modal_rating_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -395,13 +395,13 @@ class Settings_Modal extends Tab_Base {
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'modal_rating_active',
+            'ultimate_store_kit_modal_rating_active',
             [
                 'label' => esc_html__('Active', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'active_rating_color',
+            'ultimate_store_kit_modal_active_rating_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -414,7 +414,7 @@ class Settings_Modal extends Tab_Base {
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->add_control(
-            'modal_sale_price_heading',
+            'ultimate_store_kit_modal_sale_price_heading',
             [
                 'label' => esc_html__('Price', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -422,16 +422,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_price_tabs'
+            'ultimate_store_kit_modal_price_tabs'
         );
         $this->start_controls_tab(
-            'price_regular_tab',
+            'ultimate_store_kit_modal_price_regular_tab',
             [
                 'label' => esc_html__('Regular', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'regular_price_color',
+            'ultimate_store_kit_modal_regular_price_color',
             [
                 'label'     => esc_html__('Regular Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
@@ -444,13 +444,13 @@ class Settings_Modal extends Tab_Base {
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'price_sale_tab',
+            'ultimate_store_kit_modal_price_sale_tab',
             [
                 'label' => esc_html__('Sale', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'sale_price_color',
+            'ultimate_store_kit_modal_sale_price_color',
             [
                 'label'     => esc_html__('Color', 'ultimate-store-kit'),
                 'type'      => Controls_Manager::COLOR,
@@ -467,14 +467,14 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'     => 'sale_price_typography',
+                'name'     => 'ultimate_store_kit_modal_sale_price_typography',
                 'label'    => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '
                 .usk-modal-page .usk-product-price .price *',
             ]
         );
         $this->add_control(
-            'modal_heading_desc',
+            'ultimate_store_kit_modal_heading_desc',
             [
                 'label' => esc_html__('Description', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -482,7 +482,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_desc_color',
+            'ultimate_store_kit_modal_desc_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -494,13 +494,13 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_desc_typography',
+                'name' => 'ultimate_store_kit_modal_desc_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-desc p',
             ]
         );
         $this->add_control(
-            'modal_heading_btn',
+            'ultimate_store_kit_modal_heading_btn',
             [
                 'label' => esc_html__('Button', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -508,16 +508,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_btn_tabs'
+            'ultimate_store_kit_modal_btn_tabs'
         );
         $this->start_controls_tab(
-            'modal_tab_normal',
+            'ultimate_store_kit_modal_tab_normal',
             [
                 'label' => esc_html__('Normal', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_btn_color',
+            'ultimate_store_kit_modal_btn_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -527,7 +527,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_btn_bg_color',
+            'ultimate_store_kit_modal_btn_bg_color',
             [
                 'label' => esc_html__('Background', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -538,13 +538,13 @@ class Settings_Modal extends Tab_Base {
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'modal_btn_tab_hover',
+            'ultimate_store_kit_modal_btn_tab_hover',
             [
                 'label' => esc_html__('Hover', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_btn_hover_color',
+            'ultimate_store_kit_modal_btn_hover_color',
             [
                 'label' => esc_html__('Hover Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -554,7 +554,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_btn_hover_bg_color',
+            'ultimate_store_kit_modal_btn_hover_bg_color',
             [
                 'label' => esc_html__('Hover Background', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -566,7 +566,7 @@ class Settings_Modal extends Tab_Base {
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->add_control(
-            'modal_heading_stock',
+            'ultimate_store_kit_modal_heading_stock',
             [
                 'label' => esc_html__('Stock Status', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -574,7 +574,7 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->add_control(
-            'modal_stock_color',
+            'ultimate_store_kit_modal_stock_color',
             [
                 'label' => esc_html__('Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -586,13 +586,13 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_stock_typography',
+                'name' => 'ultimate_store_kit_modal_stock_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.ultimate-store-kit-product-modal-wrap .usk-modal-page .usk-modal-content-box .usk-quick-action-wrap .out-of-stock',
             ]
         );
         $this->add_control(
-            'modal_heading_sku',
+            'ultimate_store_kit_modal_heading_sku',
             [
                 'label' => esc_html__('SKU', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -600,16 +600,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_sku_tabs'
+            'ultimate_store_kit_modal_sku_tabs'
         );
         $this->start_controls_tab(
-            'sku_tab_label',
+            'ultimate_store_kit_modal_sku_tab_label',
             [
                 'label' => esc_html__('Label', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_sku_label_color',
+            'ultimate_store_kit_modal_sku_label_color',
             [
                 'label' => esc_html__('Label Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -621,20 +621,20 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_sku_label_typography',
+                'name' => 'ultimate_store_kit_modal_sku_label_typography',
                 'label' => esc_html__('Label Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-meta .sku_wrapper .sku',
             ]
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'sku_tab_value',
+            'ultimate_store_kit_modal_sku_tab_value',
             [
                 'label' => esc_html__('Value', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_sku_color',
+            'ultimate_store_kit_modal_sku_color',
             [
                 'label' => esc_html__('Sku Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -646,7 +646,7 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_sku_typography',
+                'name' => 'ultimate_store_kit_modal_sku_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-meta .sku_wrapper .sku',
             ]
@@ -654,7 +654,7 @@ class Settings_Modal extends Tab_Base {
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->add_control(
-            'modal_heading_category',
+            'ultimate_store_kit_modal_heading_category',
             [
                 'label' => esc_html__('Category', 'ultimate-store-kit'),
                 'type' => Controls_Manager::HEADING,
@@ -662,16 +662,16 @@ class Settings_Modal extends Tab_Base {
             ]
         );
         $this->start_controls_tabs(
-            'modal_category_tabs'
+            'ultimate_store_kit_modal_category_tabs'
         );
         $this->start_controls_tab(
-            'category_tab_label',
+            'ultimate_store_kit_modal_category_tab_label',
             [
                 'label' => esc_html__('Label', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_category_label_color',
+            'ultimate_store_kit_modal_category_label_color',
             [
                 'label' => esc_html__('Label Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -683,20 +683,20 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_category_label_typography',
+                'name' => 'ultimate_store_kit_modal_category_label_typography',
                 'label' => esc_html__('Label Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-meta .posted_in',
             ]
         );
         $this->end_controls_tab();
         $this->start_controls_tab(
-            'category_tab_value',
+            'ultimate_store_kit_modal_category_tab_value',
             [
                 'label' => esc_html__('Value', 'ultimate-store-kit'),
             ]
         );
         $this->add_control(
-            'modal_category_color',
+            'ultimate_store_kit_modal_category_color',
             [
                 'label' => esc_html__('Category Color', 'ultimate-store-kit'),
                 'type' => Controls_Manager::COLOR,
@@ -708,7 +708,7 @@ class Settings_Modal extends Tab_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'modal_category_typography',
+                'name' => 'ultimate_store_kit_modal_category_typography',
                 'label' => esc_html__('Typography', 'ultimate-store-kit'),
                 'selector' => '.product-quick-view .usk-modal-page .usk-modal-product .product .usk-modal-content-box .usk-product-meta .posted_in a',
             ]

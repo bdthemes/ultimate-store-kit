@@ -39,15 +39,15 @@ class Mini_Cart extends Module_Base {
 		if ( $this->usk_is_edit_mode() ) {
 			return [ 'usk-all-styles' ];
 		} else {
-			return [ 'usk-font', 'usk-mini-cart', 'toolslide-css' ];
+			return [ 'usk-font', 'usk-mini-cart', 'ultimate-store-kit-toolslide' ];
 		}
 	}
 
 	public function get_script_depends() {
 		if ( $this->usk_is_edit_mode() ) {
-			return [ 'toolslide-js', 'usk-site' ];
+			return [ 'ultimate-store-kit-toolslide', 'usk-site' ];
 		} else {
-			return [ 'toolslide-js', 'usk-mini-cart' ]; 
+			return [ 'ultimate-store-kit-toolslide', 'usk-mini-cart' ]; 
 		}
 	}
 

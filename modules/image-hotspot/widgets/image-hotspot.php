@@ -62,15 +62,15 @@ class Image_Hotspot extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['swiper', 'usk-all-styles'];
         } else {
-            return ['swiper', 'usk-font', 'usk-image-hotspot', 'tippy'];
+            return ['swiper', 'usk-font', 'usk-image-hotspot', 'ultimate-store-kit-tippy'];
         }
     }
 
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['swiper', 'micromodal', 'popper', 'tippyjs', 'usk-site'];
+            return ['swiper', 'ultimate-store-kit-micromodal', 'ultimate-store-kit-popper', 'ultimate-store-kit-tippyjs', 'usk-site'];
         } else {
-            return ['swiper', 'micromodal', 'popper', 'tippyjs', 'usk-image-hotspot'];
+            return ['swiper', 'ultimate-store-kit-micromodal', 'ultimate-store-kit-popper', 'ultimate-store-kit-tippyjs', 'usk-image-hotspot'];
         }
     }
 

@@ -56,9 +56,9 @@ class Mobile_Menu extends Module_Base {
 
 	public function get_script_depends() {
 		if ($this->usk_is_edit_mode()) {
-			return ['popper', 'tippyjs', 'usk-site'];
+			return ['ultimate-store-kit-popper', 'ultimate-store-kit-tippyjs', 'usk-site'];
 		} else {
-			return ['popper', 'tippyjs', 'usk-mobile-menu'];
+			return ['ultimate-store-kit-popper', 'ultimate-store-kit-tippyjs', 'usk-mobile-menu'];
 		}
 	}
 

@@ -120,7 +120,7 @@ trait Global_Widget_Template
 		global $product;
 		$user_id = get_current_user_id();
 		$product_id = $product->get_ID();
-		$compare_products = usk_get_compare_products($user_id);
+		$compare_products = ultimate_store_kit_get_compare_products($user_id);
 		$is_compared = in_array($product_id, $compare_products);
 
 		$compare_page_id = '';
