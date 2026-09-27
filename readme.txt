@@ -385,6 +385,10 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
+= 3.1.X [XXrd September 2026] =
+
+Fixed: The plugin no longer overrides the theme’s WooCommerce Cart Page by default. The Template Builder cart is now used only when a cart template is explicitly assigned; otherwise, the theme’s default cart page is displayed.
+
 = 3.1.4 [17th September 2026] =
 
 * Fixed: String translation issue fixed

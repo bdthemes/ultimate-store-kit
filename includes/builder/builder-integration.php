@@ -488,8 +488,16 @@ class Builder_Integration {
 			return false;
 		}
 
-		$custom_template           = $this->get_template_id( 'cart', 'product' );
-		$this->current_template_id = $custom_template ? absint( $custom_template ) : null;
+		$custom_template = $this->get_template_id( 'cart', 'product' );
+
+		// Only take over the cart page when a Theme Builder cart template has
+		// been assigned. Without one, WooCommerce and the active theme keep
+		// rendering their own cart page (block, shortcode or theme override).
+		if ( ! $custom_template ) {
+			return false;
+		}
+
+		$this->current_template_id = absint( $custom_template );
 
 		return $this->getTemplatePath( 'woocommerce/cart', $template );
 	}
