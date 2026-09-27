@@ -184,8 +184,8 @@ const WidgetsPage = ({
 		<div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-solid border-gray-100 bg-white px-4 py-3">
 			{/* Filters group — wraps on small screens */}
 			<div className="flex flex-wrap items-center gap-3">
-				<div className="relative">
-					<SearchIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 block text-gray-400" />
+				<div className="relative flex items-center">
+					<SearchIcon className="pointer-events-none absolute right-3 inset-y-0 my-auto h-4 w-4 block text-gray-400" />
 					<input
 						type="text"
 						className={`${toolbarControl} block w-full rounded-md border border-solid border-gray-200 bg-transparent pr-10 pl-3 text-slate-700 placeholder:text-gray-500 focus:border-uks-brand focus:outline-none focus:ring-2 focus:ring-uks-brand/25 sm:w-48`}
