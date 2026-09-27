@@ -144,6 +144,11 @@ const getModuleSidebarIcon = (group) => {
 	}
 	if (haystack.includes('sales-notification') || haystack.includes('notification')) {
 		return 'sales-notification';
+	if (haystack.includes('back-order') || haystack.includes('back order') || haystack.includes('backorder')) {
+		return 'back-order';
+	}
+	if (haystack.includes('pre-order') || haystack.includes('pre order') || haystack.includes('preorder')) {
+		return 'pre-order';
 	}
 	return 'grid';
 };

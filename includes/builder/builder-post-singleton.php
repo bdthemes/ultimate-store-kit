@@ -20,7 +20,7 @@ class Builder_Post_Singleton {
 
         $meta = get_post_meta($postId);
 
-        $templateMeta = usk_optional($meta)[Meta::TEMPLATE_TYPE];
+        $templateMeta = ultimate_store_kit_optional($meta)[Meta::TEMPLATE_TYPE];
 
         if (!isset($templateMeta[0])) {
             return;
@@ -48,8 +48,11 @@ class Builder_Post_Singleton {
 
         if ($wp_query->have_posts()) {
             $post = $wp_query->posts[0];
-            set_transient('ultimate_store_template_id_' . get_current_user_id(), $postId);
-            set_transient('ultimate_store_template_sample_post_' . get_current_user_id(), $wp_query);
+            // An explicit lifetime is required: a transient stored with no expiry is
+            // autoloaded on every request, so these editor-preview handoffs otherwise
+            // accumulate one permanent wp_options row per user who opens the builder.
+            set_transient('ultimate_store_kit_template_id_' . get_current_user_id(), $postId, HOUR_IN_SECONDS);
+            set_transient('ultimate_store_kit_template_sample_post_' . get_current_user_id(), $wp_query, HOUR_IN_SECONDS);
             $GLOBALS['post'] = $post;
             setup_postdata($post);
         }

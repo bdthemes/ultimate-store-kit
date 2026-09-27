@@ -8,10 +8,6 @@ if (! defined('ABSPATH')) {
 
 // Exit if accessed directly
 
-if (! function_exists('is_plugin_active')) {
-	include_once ABSPATH . 'wp-admin/includes/plugin.php';
-}
-
 final class WishlistCompare {
 	public function __construct() {
 		add_action('wp_ajax_usk_add_to_wishlist', [$this, 'usk_add_to_wishlist']);
@@ -81,12 +77,12 @@ final class WishlistCompare {
 		} else {
 			// Only gate additions. A removal just drops an id the visitor already
 			// holds, so it must keep working even if the product was since unpublished.
-			if (! usk_is_public_product($product_id)) {
+			if (! ultimate_store_kit_is_public_product($product_id)) {
 				$response['message'] = __('Invalid product!', 'ultimate-store-kit');
 				wp_send_json($response);
 			}
 
-			if ($wishlistCounter >= usk_get_list_item_limit()) {
+			if ($wishlistCounter >= ultimate_store_kit_get_list_item_limit()) {
 				$response['message'] = __('Wishlist is full!', 'ultimate-store-kit');
 				wp_send_json($response);
 			}
@@ -198,19 +194,19 @@ final class WishlistCompare {
 
 		$product_id = absint($_POST['product_id']);
 
-		if (! usk_is_public_product($product_id)) {
+		if (! ultimate_store_kit_is_public_product($product_id)) {
 			$response['message'] = __('Invalid product!', 'ultimate-store-kit');
 			wp_send_json($response);
 		}
 
 		$user_id          = get_current_user_id();
-		$compare_products = usk_get_compare_products($user_id);
+		$compare_products = ultimate_store_kit_get_compare_products($user_id);
 
 		if (! is_array($compare_products)) {
 			$compare_products = [];
 		}
 
-		if (count($compare_products) >= usk_get_list_item_limit() && ! in_array($product_id, $compare_products)) {
+		if (count($compare_products) >= ultimate_store_kit_get_list_item_limit() && ! in_array($product_id, $compare_products)) {
 			$response['message'] = __('Compare list is full!', 'ultimate-store-kit');
 			wp_send_json($response);
 		}
@@ -255,7 +251,7 @@ final class WishlistCompare {
 		}
 		$product_id       = absint($_POST['product_id']);
 		$user_id          = get_current_user_id();
-		$compare_products = usk_get_compare_products($user_id);
+		$compare_products = ultimate_store_kit_get_compare_products($user_id);
 
 		//add remove from compare products
 		if (($key = array_search($product_id, $compare_products)) !== false) {
@@ -264,7 +260,7 @@ final class WishlistCompare {
 		}
 
 		// Reindex: unset() leaves a gap, and a gapped array json_encodes to an
-		// object, which breaks the cookie read back in usk_get_compare_products().
+		// object, which breaks the cookie read back in ultimate_store_kit_get_compare_products().
 		$compare_products = array_values(array_unique($compare_products));
 
 		// update compare_products

@@ -8,10 +8,6 @@ if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-if (!function_exists('is_plugin_active')) {
-    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-}
-
 class ModuleService {
 
 
@@ -1051,7 +1047,116 @@ class ModuleService {
                     'video_url'    => '',
                 ]
             ],
-            'ultimate_store_kit_other_settings' => []
+            'ultimate_store_kit_other_settings' => [
+
+                [
+                    'name'      => 'fsc_group_start',
+                    'label'     => esc_html__('Flash Sale Countdown', 'ultimate-store-kit'),
+                    'type'      => 'start_group',
+                    'video_url' => '',
+                ],
+                [
+                    'name'         => 'flash-sale-countdown',
+                    'label'        => esc_html__('Enable', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce product',
+                    'demo_url'     => '',
+                    'video_url'    => '',
+                    'parent'       => true,
+                ],
+                [
+                    'name'    => 'usk_fsc_single_position',
+                    'label'   => esc_html__('Single Product Position', 'ultimate-store-kit'),
+                    'type'    => 'select',
+                    'default' => 'after_price',
+                    'options' => [
+                        'before_price'       => esc_html__('Before Price', 'ultimate-store-kit'),
+                        'after_price'        => esc_html__('After Price', 'ultimate-store-kit'),
+                        'before_add_to_cart' => esc_html__('Before Add to Cart', 'ultimate-store-kit'),
+                        'after_add_to_cart'  => esc_html__('After Add to Cart', 'ultimate-store-kit'),
+                    ],
+                ],
+                [
+                    'name'    => 'usk_fsc_show_on_archive',
+                    'label'   => esc_html__('Show on Shop / Archive', 'ultimate-store-kit'),
+                    'type'    => 'select',
+                    'default' => 'yes',
+                    'options' => [
+                        'yes' => esc_html__('Yes', 'ultimate-store-kit'),
+                        'no'  => esc_html__('No', 'ultimate-store-kit'),
+                    ],
+                ],
+                [
+                    'name'    => 'usk_fsc_archive_position',
+                    'label'   => esc_html__('Archive Position', 'ultimate-store-kit'),
+                    'type'    => 'select',
+                    'default' => 'after_price',
+                    'options' => [
+                        'before_price'       => esc_html__('Before Price', 'ultimate-store-kit'),
+                        'after_price'        => esc_html__('After Price', 'ultimate-store-kit'),
+                        'before_add_to_cart' => esc_html__('Before Add to Cart', 'ultimate-store-kit'),
+                        'after_add_to_cart'  => esc_html__('After Add to Cart', 'ultimate-store-kit'),
+                    ],
+                ],
+                [
+                    'name' => 'fsc_group_end',
+                    'type' => 'end_group',
+                ],
+
+                // Back Order Feature
+                [
+                    'name'      => 'back_order_group_start',
+                    'label'     => esc_html__('Back Order', 'ultimate-store-kit'),
+                    'type'      => 'start_group',
+                    'video_url' => '',
+                ],
+                [
+                    'name'         => 'back-order',
+                    'label'        => esc_html__('Enable', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce product',
+                    'demo_url'     => 'https://storekit.pro/demo/back-order/',
+                    'video_url'    => '',
+                    'parent'       => true,
+                ],
+                [
+                    'name' => 'back_order_group_end',
+                    'type' => 'end_group',
+                ],
+
+                // Pre-Order Feature
+                [
+                    'name'      => 'pre_order_group_start',
+                    'label'     => esc_html__('Pre-Order', 'ultimate-store-kit'),
+                    'type'      => 'start_group',
+                    'video_url' => '',
+                ],
+                [
+                    'name'         => 'pre-order',
+                    'label'        => esc_html__('Enable', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "off",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce product',
+                    'demo_url'     => 'https://storekit.pro/demo/pre-order/',
+                    'video_url'    => '',
+                    'parent'       => true,
+                ],
+                [
+                    'name' => 'pre_order_group_end',
+                    'type' => 'end_group',
+                ],
+            ]
         ];
 
         $settings                    = [];
@@ -1061,6 +1166,10 @@ class ModuleService {
     }
 
     private static function _is_plugin_installed($plugin, $plugin_path) {
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
         $installed_plugins = get_plugins();
         return isset($installed_plugins[$plugin_path]);
     }
@@ -1078,6 +1187,10 @@ class ModuleService {
 
     public static function is_plugin_active($plugin_path) {
         if ($plugin_path) {
+            if (!function_exists('is_plugin_active')) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            }
+
             return is_plugin_active($plugin_path);
         }
     }

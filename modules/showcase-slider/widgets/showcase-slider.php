@@ -55,9 +55,9 @@ class Showcase_Slider extends Module_Base {
 
     public function get_script_depends() {
         if ($this->usk_is_edit_mode()) {
-            return ['swiper', 'micromodal', 'usk-site'];
+            return ['swiper', 'ultimate-store-kit-micromodal', 'usk-site'];
         } else {
-            return ['swiper', 'micromodal', 'usk-showcase-slider'];
+            return ['swiper', 'ultimate-store-kit-micromodal', 'usk-showcase-slider'];
         }
     }
 

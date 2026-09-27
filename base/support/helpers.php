@@ -8,11 +8,11 @@ if (! defined('ABSPATH')) {
 
 use UltimateStoreKit\Base\Support\Optional;
 
-if (! function_exists('usk_optional')) {
+if (! function_exists('ultimate_store_kit_optional')) {
     /**
      * Provide access to optional objects.
      *
-     * Named usk_optional() rather than optional(): the unprefixed name is the
+     * Named ultimate_store_kit_optional() rather than optional(): the unprefixed name is the
      * Laravel helper, which any plugin bundling illuminate/support also declares.
      * Behind a function_exists() guard the first declaration wins, so an
      * unprefixed version would silently hand this plugin a foreign Optional class.
@@ -21,7 +21,7 @@ if (! function_exists('usk_optional')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function usk_optional($value = null, ?callable $callback = null) {
+    function ultimate_store_kit_optional($value = null, ?callable $callback = null) {
         if (is_null($callback)) {
             return new Optional($value);
         } elseif (! is_null($value)) {

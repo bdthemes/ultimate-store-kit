@@ -66,12 +66,10 @@ class Builder_Cpt {
 				continue;
 			}
 
-			$optionKey = Meta::TEMPLATE_ID . $q->template_type;
-
 			if ($q->post_status == 'publish') {
-				update_option($optionKey, $q->ID);
+				Meta::update_template_option($q->template_type, $q->ID);
 			} else {
-				delete_option($optionKey, $q->ID);
+				Meta::delete_template_option($q->template_type);
 			}
 		}
 	}
@@ -82,7 +80,7 @@ class Builder_Cpt {
 		}
 
 		if ($template = get_post_meta($postId, Meta::TEMPLATE_TYPE, true)) {
-			delete_option(Meta::TEMPLATE_ID . $template);
+			Meta::delete_template_option($template);
 		}
 	}
 
@@ -150,7 +148,10 @@ class Builder_Cpt {
 	}
 
 	public function set_post_columns($columns) {
-		return array_slice($columns, 0, 2, true) + ['template_type' => 'Type', 'is_enabled' => 'Status'] + array_slice($columns, 2, null, true);
+		return array_slice($columns, 0, 2, true) + [
+			'template_type' => esc_html__('Type', 'ultimate-store-kit'),
+			'is_enabled'    => esc_html__('Status', 'ultimate-store-kit')
+		] + array_slice($columns, 2, null, true);
 	}
 
 	public function set_custom_column_value($column, $post_id) {
@@ -169,7 +170,9 @@ class Builder_Cpt {
 				}
 				break;
 			case 'is_enabled':
-				echo (Builder_Template_Helper::getTemplateId($templateType) == $post_id ? 'Active' : 'Inactive');
+				echo Builder_Template_Helper::getTemplateId($templateType) == $post_id
+					? esc_html__('Active', 'ultimate-store-kit')
+					: esc_html__('Inactive', 'ultimate-store-kit');
 				break;
 		}
 	}
@@ -181,8 +184,8 @@ class Builder_Cpt {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Repopulates the admin list-table filter dropdown; nothing is written.
-		$selected = isset($_GET['type']) ? sanitize_key(wp_unslash($_GET['type'])) : '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin list-table filter; the value only re-selects the current dropdown option.
+		$selected = isset($_GET['type']) ? sanitize_text_field(wp_unslash($_GET['type'])) : '';
 ?>
 		<select name="type" id="type">
 			<option value="all" <?php
@@ -252,9 +255,13 @@ class Builder_Cpt {
 			&& $_GET['type'] != ''
 			&& $_GET['type'] != 'all'
 		) {
-			$query->query_vars['meta_key']     = Meta::TEMPLATE_TYPE;
-			$query->query_vars['meta_value']   = sanitize_key(wp_unslash($_GET['type']));
-			$query->query_vars['meta_compare'] = '=';
+			$requested_type = sanitize_text_field(wp_unslash($_GET['type']));
+
+			if (Builder_Template_Helper::getTemplateByIndex($requested_type)) {
+				$query->query_vars['meta_key']     = Meta::TEMPLATE_TYPE;
+				$query->query_vars['meta_value']   = $requested_type;
+				$query->query_vars['meta_compare'] = '=';
+			}
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.DB.SlowDBQuery
 	}
@@ -282,7 +289,10 @@ class Builder_Cpt {
 
 		$templateId = isset($data['template_id']) ? absint($data['template_id']) : 0;
 		$name       = isset($data['template_name']) ? sanitize_text_field($data['template_name']) : '';
-		$type       = isset($data['template_type']) ? sanitize_key($data['template_type']) : '';
+		$type       = isset($data['template_type'])
+			? implode(Builder_Template_Helper::separator(), array_map('sanitize_key', explode(Builder_Template_Helper::separator(), $data['template_type'])))
+			: '';
+		$type       = isset($data['template_type']) ? sanitize_text_field($data['template_type']) : '';
 		$editWith   = isset($data['edit_with']) ? sanitize_key($data['edit_with']) : 'elementor'; //gutenberg
 		$isEnabled  = (isset($data['template_status']) && $data['template_status']) == 1 ? 1 : 0;
 
@@ -333,12 +343,11 @@ class Builder_Cpt {
 
 		$post_id = wp_insert_post($page_data);
 
-		$enabledTemplate = strtolower(Meta::TEMPLATE_ID . $type);
 		if ($isEnabled == 1) {
-			update_option($enabledTemplate, $post_id);
+			Meta::update_template_option($type, $post_id);
 		} else {
-			if (get_option($enabledTemplate) == $post_id) {
-				delete_option($enabledTemplate);
+			if (Meta::get_template_option($type) == $post_id) {
+				Meta::delete_template_option($type);
 			}
 		}
 
@@ -392,8 +401,7 @@ class Builder_Cpt {
 
 
 				$templateType    = isset($meta[Meta::TEMPLATE_TYPE][0]) ? $meta[Meta::TEMPLATE_TYPE][0] : '';
-				$enabledTemplate = strtolower(Meta::TEMPLATE_ID . $templateType);
-				$enabledTemplate = get_option($enabledTemplate);
+				$enabledTemplate = Meta::get_template_option($templateType);
 
 				wp_send_json_success([
 					'id'     => $templateData->ID,
