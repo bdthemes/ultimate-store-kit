@@ -57,7 +57,9 @@ class Cart_Render {
 			return '';
 		}
 
-		if ( ! Plugin::instance()->db->is_built_with_elementor( $page_id ) ) {
+		$document = Plugin::instance()->documents->get( $page_id );
+
+		if ( ! $document || ! $document->is_built_with_elementor() ) {
 			return '';
 		}
 

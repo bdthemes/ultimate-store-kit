@@ -1421,7 +1421,13 @@ if (! function_exists('ultimate_store_kit_add_cart_quantity_plus_minus')) {
 		}
 	</style>';
 
-		wc_enqueue_js("
+		// wc_enqueue_js() is deprecated since WooCommerce 10.4. This runs while the
+		// product is being rendered, after jQuery has usually been printed in the
+		// head, so the script goes on a footer handle of its own - the same point
+		// wc_enqueue_js() used to print it - wrapped in the same ready handler.
+		wp_register_script('usk-quantity-buttons', false, ['jquery'], BDTUSK_VER, true);
+		wp_enqueue_script('usk-quantity-buttons');
+		wp_add_inline_script('usk-quantity-buttons', "jQuery(function($) {
 		$(document).off('click.bdtQtyHandler'); // Remove previous handler
 		$(document).on('click.bdtQtyHandler', 'button.bdt-add-to-cart-qty-plus, button.bdt-add-to-cart-qty-minus', function(e) {
 			e.preventDefault();
@@ -1437,7 +1443,7 @@ if (! function_exists('ultimate_store_kit_add_cart_quantity_plus_minus')) {
 				qty.val(Math.max(val - step, min)).trigger('change');
 			}
 		});
-	");
+	});");
 	}
 }
 

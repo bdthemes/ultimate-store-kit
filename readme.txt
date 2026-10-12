@@ -2,8 +2,8 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, woocommerce builder, woocommerce store builder, edd store builder, woocommerce widget
-Stable tag: 3.1.4
-Requires PHP: 7.0
+Stable tag: 4.0.0
+Requires PHP: 7.4
 Requires at least: 6.8
 Tested up to: 7.1
 License: GPL3
@@ -385,9 +385,11 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
-= 3.1.X [XXrd September 2026] =
+= 4.0.0 [12th October 2026] =
 
-Fixed: The plugin no longer overrides the theme’s WooCommerce Cart Page by default. The Template Builder cart is now used only when a cart template is explicitly assigned; otherwise, the theme’s default cart page is displayed.
+* Fixed: The plugin no longer overrides the theme’s WooCommerce Cart Page by default. The Template Builder cart is now used only when a cart template is explicitly assigned; otherwise, the theme’s default cart page is displayed.
+* Fixed: Search icon position
+* Changed: The single product quantity buttons no longer use wc_enqueue_js(), deprecated since WooCommerce 10.4
 
 = 3.1.4 [17th September 2026] =
 

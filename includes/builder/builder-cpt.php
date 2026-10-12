@@ -362,7 +362,7 @@ class Builder_Cpt {
 			}
 			update_post_meta($post_id, '_wp_page_template', 'elementor_header_footer');
 			update_post_meta($post_id, '_elementor_edit_mode', 'builder');
-			update_post_meta($post_id, '_elementor_version', '3.7.1');
+			update_post_meta($post_id, '_elementor_version', defined('ELEMENTOR_VERSION') ? ELEMENTOR_VERSION : '3.7.1');
 		}
 
 		if ($templateId) {
