@@ -9,7 +9,7 @@ Tested up to: 7.1
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.2.4
+Elementor tested up to: 4.3.5
 
 WooCommerce store builder and EDD store builder for Elementor with product grids, widgets, cart, checkout, account pages, filters and sliders.
 
@@ -385,8 +385,20 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
-= 4.0.0 [12th October 2026] =
+= 4.0.0 [19th October 2026] =
 
+* Added: Flash Sale countdown module added (Pro)
+* Added: Back Order and Pre Order Modules added (Pro)
+* Added: Multistep checkout module added (Pro)
+* Added: Product Discount Marquee added (Pro)
+* Added: Vacation Mode module added (Pro)
+* Added: Additional checkout field module added (Pro)
+* Added: Buy One Get One module added - 2x1 / 3x2 deals, free gifts (automatic or customer's choice), buy-one-get-the-same and quantity discounts (Pro)
+* Added: PDF Invoice module added - invoices, packing slips and credit notes, attached to emails and downloadable by customers (Pro)
+* Added: Variation Swatches - Colour controls for background, text, border, selected / hover, selected background, out of stock and tooltips, plus gap between swatches and font size (Pro)
+* Added: Multistep Checkout - An Additional Information step, shown when the Additional Checkout Fields module places fields in that section (Pro)
+* Added: Back Order / Pre-Order - Per-variation support for variable products: messages, countdowns and button text follow the selected variation (Pro)
+* Fixed: Fixed an issue with the currency switcher width (Pro)
 * Fixed: The plugin no longer overrides the theme’s WooCommerce Cart Page by default. The Template Builder cart is now used only when a cart template is explicitly assigned; otherwise, the theme’s default cart page is displayed.
 * Fixed: Search icon position
 * Changed: The single product quantity buttons no longer use wc_enqueue_js(), deprecated since WooCommerce 10.4
