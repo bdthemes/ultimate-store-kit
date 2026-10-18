@@ -11,7 +11,7 @@ import AboutInfo from './pages/AboutInfo';
 import ProModulePlaceholder from './pages/ProModulePlaceholder';
 import { appShell, bodyRow, mainContent } from './tw';
 import Toast from './components/Toast';
-import { getPlaceholderModules } from './utils';
+import { getPlaceholderModules, getModuleSidebarIcon, proGroupDescriptions } from './utils';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -23,13 +23,29 @@ const getSettingsGroups = () => {
 	const groups = [];
 	widgets.forEach((w) => {
 		if (w.type === 'start_group') {
-			groups.push({ id: `settings-${slugify(w.label)}`, label: w.label });
+			groups.push({ id: `settings-${slugify(w.label)}`, label: w.label, proOnly: false });
+		} else if (w.parent && w.widget_type === 'pro' && groups.length) {
+			// The group's main switch is a Pro feature, so the whole group is.
+			groups[groups.length - 1].proOnly = true;
 		}
 	});
 	return groups;
 };
 
 const settingsGroups = getSettingsGroups();
+
+/**
+ * The locked "Get Pro" page for a Pro-only settings group (Flash Sale
+ * Countdown, Back Order, Pre-Order), so they match the other Pro modules.
+ */
+const getProGroupPlaceholder = (pageId) => {
+	const group = settingsGroups.find((g) => g.id === pageId && g.proOnly);
+	if (!group) {
+		return null;
+	}
+	const icon = getModuleSidebarIcon(group);
+	return { id: group.id, label: group.label, icon, description: proGroupDescriptions[icon] || '', badge: 'Pro', proPlaceholder: true };
+};
 
 const getPageFromHash = () => {
 	const hash = window.location.hash.replace('#', '');
@@ -193,7 +209,7 @@ const App = () => {
 			// If user doesn't have an active license, show placeholder for module pages
 			if (!isProActive) {
 				const placeholders = getPlaceholderModules();
-				const placeholder = placeholders.find((p) => p.id === activePage);
+				const placeholder = placeholders.find((p) => p.id === activePage) || getProGroupPlaceholder(activePage);
 				if (placeholder) {
 					return <ProModulePlaceholder module={placeholder} />;
 				}
@@ -204,7 +220,7 @@ const App = () => {
 
 		// Check placeholder modules (upsell for non-pro users)
 		const placeholders = getPlaceholderModules();
-		const placeholder = placeholders.find((p) => p.id === activePage);
+		const placeholder = placeholders.find((p) => p.id === activePage) || (!isProActive && getProGroupPlaceholder(activePage));
 		if (placeholder) {
 			return <ProModulePlaceholder module={placeholder} />;
 		}
