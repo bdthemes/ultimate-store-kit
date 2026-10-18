@@ -65,7 +65,54 @@ const defaultPlaceholders = [
 		badge: 'Pro',
 		proPlaceholder: true,
 	},
+	{
+		id: 'multistep-checkout',
+		label: __('Multistep Checkout', 'ultimate-store-kit'),
+		description: __('Split checkout into clear, guided steps to reduce abandoned carts.', 'ultimate-store-kit'),
+		icon: 'multistep-checkout',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
+	{
+		id: 'vacation-mode',
+		label: __('Vacation Mode', 'ultimate-store-kit'),
+		description: __('Pause orders and show a store notice while you are away.', 'ultimate-store-kit'),
+		icon: 'vacation-mode',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
+	{
+		id: 'additional-checkout-fields',
+		label: __('Additional Checkout Fields', 'ultimate-store-kit'),
+		description: __('Add custom fields to the checkout and show them in orders and emails.', 'ultimate-store-kit'),
+		icon: 'additional-checkout-fields',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
+	{
+		id: 'buy-one-get-one',
+		label: __('Buy One Get One', 'ultimate-store-kit'),
+		description: __('Run BOGO deals, free gifts and quantity discounts.', 'ultimate-store-kit'),
+		icon: 'buy-one-get-one',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
+	{
+		id: 'pdf-invoice',
+		label: __('PDF Invoice', 'ultimate-store-kit'),
+		description: __('Attach PDF invoices, packing slips and credit notes to order emails.', 'ultimate-store-kit'),
+		icon: 'pdf-invoice',
+		badge: 'Pro',
+		proPlaceholder: true,
+	},
 ];
+
+// Descriptions for the Pro-only settings groups' locked pages, keyed by icon.
+const proGroupDescriptions = {
+	'flash-sale-countdown': __('Show a countdown timer on products with a scheduled sale to create urgency.', 'ultimate-store-kit'),
+	'back-order': __('Show backorder status, custom messages and a restock countdown on product pages.', 'ultimate-store-kit'),
+	'pre-order': __('Take orders for products before they are released, with a release date countdown.', 'ultimate-store-kit'),
+};
 
 const getPlaceholderModules = () =>
 	applyFilters('usk.admin.placeholderModules', defaultPlaceholders);
@@ -176,6 +223,8 @@ const buildSidebarSections = ({
 				id: group.id,
 				label: group.label,
 				icon: getModuleSidebarIcon(group),
+				// Pro-only groups get the same badge as the other Pro modules.
+				...(group.proOnly && !isPro ? { badge: 'Pro', proPlaceholder: true } : {}),
 			}));
 
 			if (isPro) {
@@ -208,5 +257,6 @@ export {
 	getNavItems,
 	getPlaceholderModules,
 	groupHeadingClass,
+	proGroupDescriptions,
 	navItems,
 };
