@@ -19,12 +19,15 @@ class Dashboard {
 
     private function __construct() {
         add_action('admin_menu', [$this, 'register_admin_menu']);
+        // After the Template Builder entry (202), so the deals entry stays last.
+        add_action('admin_menu', [$this, 'register_deals_menu'], 203);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
         add_filter('plugin_action_links_' . BDTUSK_PBNAME, [$this, 'plugin_action_meta']);
         add_action('admin_init', [$this, 'init']);
     }
 
     public function init() {
+        $this->redirect_to_deals();
         Feeds::get_instance();
         Biggopties::get_instance();
     }
@@ -56,6 +59,76 @@ class Dashboard {
             'manage_options',
             'ultimate-store-kit'
         );
+    }
+
+    /**
+     * Deals page the free version's "Up To 86% Off" menu entry opens.
+     */
+    const DEALS_URL = 'https://bdthemes.com/deals/?utm_source=UltimateStoreKit&utm_medium=plugin_menu&utm_campaign=UltimateStoreKit';
+
+    /**
+     * Free version only: the BdThemes deals page (admin_init redirects there).
+     */
+    public function register_deals_menu() {
+        if (true === ultimate_store_kit_is_pro_activated()) {
+            return;
+        }
+
+        add_submenu_page(
+            'ultimate-store-kit',
+            esc_html__('Ultimate Store Kit', 'ultimate-store-kit'),
+            esc_html__('Up To 86% Off', 'ultimate-store-kit'),
+            'manage_options',
+            'ultimate-store-kit_deals',
+            [$this, 'print_admin_page']
+        );
+
+        add_action('admin_head', [$this, 'deals_menu_assets']);
+    }
+
+    /**
+     * Send the "Up To 86% Off" menu entry to the BdThemes deals page.
+     *
+     * @return void
+     */
+    public function redirect_to_deals() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of the current admin page slug, no form data processed.
+        if (! isset($_GET['page']) || 'ultimate-store-kit_deals' !== $_GET['page'] || ! current_user_can('manage_options')) {
+            return;
+        }
+
+        // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- Intentional redirect to the external BdThemes deals page; wp_safe_redirect() would block this off-site host.
+        wp_redirect(self::DEALS_URL);
+        exit;
+    }
+
+    /**
+     * Highlight the deals entry and open it in a new tab.
+     *
+     * @return void
+     */
+    public function deals_menu_assets() {
+?>
+        <style>
+            #adminmenu #toplevel_page_ultimate-store-kit a[href$="page=ultimate-store-kit_deals"] {
+                color: #ffc107;
+                font-weight: 600;
+            }
+            #adminmenu #toplevel_page_ultimate-store-kit a[href$="page=ultimate-store-kit_deals"]:hover,
+            #adminmenu #toplevel_page_ultimate-store-kit a[href$="page=ultimate-store-kit_deals"]:focus {
+                color: #ffffff;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var link = document.querySelector('#toplevel_page_ultimate-store-kit a[href$="page=ultimate-store-kit_deals"]');
+                if (link) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            });
+        </script>
+<?php
     }
 
     public function ultimate_store_kit_icon() {
