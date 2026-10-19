@@ -385,7 +385,7 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
-= 4.0.0 [19th October 2026] =
+= 4.0.0 [20th October 2026] =
 
 * Added: Flash Sale countdown module added (Pro)
 * Added: Back Order and Pre Order Modules added (Pro)
@@ -398,6 +398,7 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 * Added: Variation Swatches - Colour controls for background, text, border, selected / hover, selected background, out of stock and tooltips, plus gap between swatches and font size (Pro)
 * Added: Multistep Checkout - An Additional Information step, shown when the Additional Checkout Fields module places fields in that section (Pro)
 * Added: Back Order / Pre-Order - Per-variation support for variable products: messages, countdowns and button text follow the selected variation (Pro)
+* Added: BdThemes deals notice on the Dashboard, Plugins screen and plugin dashboard; “Don’t Show Again” hides it in every BdThemes plugin
 * Fixed: Fixed an issue with the currency switcher width (Pro)
 * Fixed: The plugin no longer overrides the theme’s WooCommerce Cart Page by default. The Template Builder cart is now used only when a cart template is explicitly assigned; otherwise, the theme’s default cart page is displayed.
 * Fixed: Search icon position
