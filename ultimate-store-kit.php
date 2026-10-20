@@ -20,6 +20,11 @@ if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
+// BdThemes deals biggopti, shared by all BdThemes plugins (shown once).
+if ( is_admin() ) {
+	require_once __DIR__ . '/includes/bdthemes-deals-biggopti.php';
+}
+
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- BDTUSK_ / ultimate_store_kit_ / ultimate-store-kit- are this plugin's established public prefixes.
 
 // Check if vendor directory and autoload.php exist
