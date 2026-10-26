@@ -97,14 +97,6 @@ const defaultPlaceholders = [
 		badge: 'Pro',
 		proPlaceholder: true,
 	},
-	{
-		id: 'pdf-invoice',
-		label: __('PDF Invoice', 'ultimate-store-kit'),
-		description: __('Attach PDF invoices, packing slips and credit notes to order emails.', 'ultimate-store-kit'),
-		icon: 'pdf-invoice',
-		badge: 'Pro',
-		proPlaceholder: true,
-	},
 ];
 
 // Descriptions for the Pro-only settings groups' locked pages, keyed by icon.

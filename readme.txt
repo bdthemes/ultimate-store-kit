@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, woocommerce builder, woocommerce store builder, edd store builder, woocommerce widget
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 Requires PHP: 7.4
 Requires at least: 6.8
 Tested up to: 7.1
@@ -385,6 +385,10 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
+= 4.0.1 [26th October 2026] =
+
+* Updated: System improved
+
 = 4.0.0 [20th October 2026] =
 
 * Added: Flash Sale countdown module added (Pro)
@@ -394,7 +398,6 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 * Added: Vacation Mode module added (Pro)
 * Added: Additional checkout field module added (Pro)
 * Added: Buy One Get One module added - 2x1 / 3x2 deals, free gifts (automatic or customer's choice), buy-one-get-the-same and quantity discounts (Pro)
-* Added: PDF Invoice module added - invoices, packing slips and credit notes, attached to emails and downloadable by customers (Pro)
 * Added: Variation Swatches - Colour controls for background, text, border, selected / hover, selected background, out of stock and tooltips, plus gap between swatches and font size (Pro)
 * Added: Multistep Checkout - An Additional Information step, shown when the Additional Checkout Fields module places fields in that section (Pro)
 * Added: Back Order / Pre-Order - Per-variation support for variable products: messages, countdowns and button text follow the selected variation (Pro)
