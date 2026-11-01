@@ -385,8 +385,9 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
-= 4.0.2 [28th October 2026] =
+= 4.0.2 [1st November 2026] =
 
+* Fixed: Order Received template and Page Order widget now require the order key, like WooCommerce, before showing an order
 * Updated: System improved
 
 = 4.0.1 [26th October 2026] =

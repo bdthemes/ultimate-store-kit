@@ -27,6 +27,12 @@ class Builder_Integration {
 	private $current_template = null;
 	public $current_template_id = null;
 
+	/**
+	 * True when the template for this request comes from a nonce-verified
+	 * template preview rather than the published builder settings.
+	 */
+	public $is_template_preview = false;
+
 	function __construct() {
 		add_filter('template_include', [$this, 'set_builder_template'], 9999);
 		add_action('elementor/editor/init', [$this, 'set_sample_post'], 999);
@@ -285,6 +291,15 @@ class Builder_Integration {
 
 		if (is_order_received_page()) {
 			if ($custom_template = $this->get_template_id('order-received', 'product')) {
+				// The custom template replaces the checkout shortcode, which is where
+				// WooCommerce checks the order key and the customer before showing an
+				// order. Serve it only for an order this visitor may see; any other
+				// request gets WooCommerce's own page (generic notice, login or
+				// email-verification form) so order IDs cannot be enumerated.
+				if (! ultimate_store_kit_get_order_received_order()) {
+					return $template;
+				}
+
 				$this->current_template_id = $custom_template;
 				return $this->getTemplatePath('woocommerce/order-received', $template);
 			}
@@ -441,6 +456,7 @@ class Builder_Integration {
 					$template_data = explode(Builder_Template_Helper::separator(), $template_type);
 					if (count($template_data) >= 2 && $template_data[1] === $slug && ($postType === false || $template_data[0] === $postType)) {
 						$this->current_template_id = $usk_template_id;
+						$this->is_template_preview = true;
 						return $this->current_template_id;
 					}
 				}

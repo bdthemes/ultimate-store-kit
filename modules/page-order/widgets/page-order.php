@@ -1014,31 +1014,6 @@
         $this->end_controls_section();
     }
 
-    protected function get_last_order_id() {
-        global $wpdb;
-
-        $statuses = array_keys( wc_get_order_statuses() );
-
-        if ( empty( $statuses ) ) {
-            return 0;
-        }
-
-        // The status list is variable-length, so the placeholders are generated from
-        // its count; every value itself still goes through prepare().
-        $placeholders = implode( ', ', array_fill( 0, count( $statuses ), '%s' ) );
-
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Editor-preview helper run once per preview render. $placeholders is a generated run of %s, never data; the values are bound by prepare().
-        $results = $wpdb->get_col(
-            $wpdb->prepare(
-                "SELECT MAX(ID) FROM {$wpdb->posts} WHERE post_type = 'shop_order' AND post_status IN ({$placeholders})",
-                $statuses
-            )
-        );
-        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
-
-        return $results ? reset( $results ) : 0;
-    }
-
     public function order_thank_you( $order ) {
         $settings            = $this->get_settings_for_display();
         $order_received_text = $settings['thankyou_order_received_text'];
@@ -1265,31 +1240,15 @@
 
                     public function render() {
 
-                // Check if we're in Elementor editor
-                        if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-                            // Get last order for preview
-                            $orders = wc_get_orders( [ 'limit' => 1 ] );
-
-                            if ( !empty( $orders ) ) {
-                                $order = $orders[0];
-                            } else {
-                                echo esc_html__( 'No orders found. Please create a test order to preview this widget.', 'ultimate-store-kit' );
-                                return;
-                            }
-
-                        } else {
-                            // Normal frontend rendering
-                            global $wp;
-                            $order_id = isset( $wp->query_vars['order-received'] ) ? $wp->query_vars['order-received'] : $this->get_last_order_id();
-
-                            if ( !$order_id ) {
-                                return;
-                            }
-
-                            $order = wc_get_order( $order_id );
-                        }
+                        // Only an order the visitor may see: its key from the URL, and
+                        // the logged-in owner for a registered customer's order. The
+                        // editor and template preview get the latest order as sample data.
+                        $order = ultimate_store_kit_get_order_received_order();
 
                         if ( !$order ) {
+                            if ( ultimate_store_kit_is_order_preview() ) {
+                                echo esc_html__( 'No orders found. Please create a test order to preview this widget.', 'ultimate-store-kit' );
+                            }
                             return;
                         }
 

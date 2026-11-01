@@ -1467,3 +1467,91 @@ if (! function_exists('ultimate_store_kit_setup_quantity_buttons')) {
 }
 
 // End: Add to cart quantity buttons conversion
+
+if (! function_exists('ultimate_store_kit_is_order_preview')) {
+	/**
+	 * Whether the current request renders sample order data for someone building
+	 * a template: the Elementor editor/preview, or a nonce-verified USK template
+	 * preview. Both are limited to users who may edit the document.
+	 */
+	function ultimate_store_kit_is_order_preview() {
+		if (class_exists('\Elementor\Plugin') && Plugin::$instance->editor && Plugin::$instance->preview) {
+			if (Plugin::$instance->editor->is_edit_mode() || Plugin::$instance->preview->is_preview_mode()) {
+				return true;
+			}
+		}
+
+		return class_exists('\UltimateStoreKit\Builder\Builder_Integration')
+			&& \UltimateStoreKit\Builder\Builder_Integration::instance()->is_template_preview;
+	}
+}
+
+if (! function_exists('ultimate_store_kit_get_order_received_order')) {
+	/**
+	 * The order the current visitor may see on the order-received (thank-you) endpoint.
+	 *
+	 * Mirrors WC_Shortcode_Checkout::order_received(): the `key` query arg must match
+	 * the order key, a registered customer's order is shown only to that customer, and
+	 * a guest order past WooCommerce's grace period needs its billing email verified.
+	 * USK templates and widgets replace the checkout shortcode that runs these checks,
+	 * so they must take the order from here, never from the order-received ID alone
+	 * (order IDs are sequential and trivially enumerable).
+	 *
+	 * @param bool $allow_preview Return the latest order as sample data in the editor
+	 *                            and template preview.
+	 *
+	 * @return \WC_Order|false
+	 */
+	function ultimate_store_kit_get_order_received_order($allow_preview = true) {
+		if (! function_exists('wc_get_order')) {
+			return false;
+		}
+
+		if ($allow_preview && ultimate_store_kit_is_order_preview()) {
+			$orders = wc_get_orders(['limit' => 1]);
+			return ! empty($orders) ? reset($orders) : false;
+		}
+
+		global $wp;
+
+		if (empty($wp->query_vars['order-received'])) {
+			return false;
+		}
+
+		/** This filter is documented in woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php */
+		$order_id = apply_filters('woocommerce_thankyou_order_id', absint($wp->query_vars['order-received']));
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Bearer-style order-key lookup compared with hash_equals(), as WooCommerce does; emailed links cannot carry a nonce.
+		$order_key = (empty($_GET['key']) || ! is_string($_GET['key'])) ? '' : sanitize_text_field(wp_unslash($_GET['key']));
+		/** This filter is documented in woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php */
+		$order_key = apply_filters('woocommerce_thankyou_order_key', $order_key);
+
+		$order = $order_id > 0 ? wc_get_order($order_id) : false;
+
+		if (! $order instanceof \WC_Order || ! is_string($order_key) || ! hash_equals($order->get_order_key(), $order_key)) {
+			return false;
+		}
+
+		$customer_id = $order->get_customer_id();
+
+		/** This filter is documented in woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php */
+		if ($customer_id && get_current_user_id() !== $customer_id && apply_filters('woocommerce_order_received_verify_known_shoppers', true)) {
+			return false;
+		}
+
+		$users = '\Automattic\WooCommerce\Internal\Utilities\Users';
+
+		if (is_callable([$users, 'should_user_verify_order_email'])) {
+			$supplied_email = null;
+
+			if (wp_verify_nonce(filter_input(INPUT_POST, 'check_submission'), 'wc_verify_email')) {
+				$supplied_email = sanitize_email(wp_unslash(filter_input(INPUT_POST, 'email')));
+			}
+
+			if (call_user_func([$users, 'should_user_verify_order_email'], $order->get_id(), $supplied_email, 'order-received')) {
+				return false;
+			}
+		}
+
+		return $order;
+	}
+}
