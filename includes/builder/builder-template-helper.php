@@ -31,6 +31,7 @@ class Builder_Template_Helper {
 			'category'       => 'Category Page',
 			'tag'            => 'Tag Page',
 			'cart'           => 'Cart Page',
+			'empty-cart'     => 'Empty Cart Page',
 			'checkout'       => 'Checkout',
 			'order-received' => 'Order Received (Thank You Page)',
 		];

@@ -141,6 +141,10 @@ class Ultimate_Store_Kit_Loader {
 		if (class_exists('woocommerce')) {
 			require_once BDTUSK_PATH . 'includes/builder/loading-builder.php';
 		}
+
+		// Asset Optimization: per-page combined widget CSS/JS files.
+		require_once BDTUSK_INC_PATH . 'class-asset-combiner.php';
+		Includes\Asset_Combiner::init();
 	}
 
 	/**
@@ -199,7 +203,8 @@ class Ultimate_Store_Kit_Loader {
 	}
 
 	public function register_site_styles() {
-		$direction_suffix = is_rtl() ? '.rtl' : '';
+		// The stylesheets are built as <name>-rtl.css.
+		$direction_suffix = is_rtl() ? '-rtl' : '';
 		wp_register_style('usk-all-styles', BDTUSK_URL . 'assets/css/all-styles' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_register_style('usk-font', BDTUSK_URL . 'assets/css/font' . $direction_suffix . '.css', [], BDTUSK_VER);
 
@@ -214,9 +219,13 @@ class Ultimate_Store_Kit_Loader {
 	 */
 	public function enqueue_site_styles() {
 
-		$direction_suffix = is_rtl() ? '.rtl' : '';
+		$direction_suffix = is_rtl() ? '-rtl' : '';
 
-		wp_register_style('usk-site', BDTUSK_ASSETS_URL . 'css/site' . $direction_suffix . '.css', [], BDTUSK_VER);
+		// With Asset Optimization on, the modal and slide-panel libraries come in
+		// with the site stylesheet, so a widget brings all three through its own
+		// dependency on `usk-site`, as they always loaded together.
+		$site_style_deps = ultimate_store_kit_is_asset_optimization_enabled() ? ['ultimate-store-kit-slick-modal', 'ultimate-store-kit-toolslide'] : [];
+		wp_register_style('usk-site', BDTUSK_ASSETS_URL . 'css/site' . $direction_suffix . '.css', $site_style_deps, BDTUSK_VER);
 		// The Product Table widget lists this as a style dependency and the file has
 		// always shipped, but it was never registered: the widget was silently
 		// relying on another plugin registering a "datatables" stylesheet.
@@ -224,9 +233,52 @@ class Ultimate_Store_Kit_Loader {
 		wp_register_style('ultimate-store-kit-slick-modal', BDTUSK_ASSETS_URL . 'vendor/css/slickmodal.css', [], BDTUSK_VER);
 		wp_register_style('ultimate-store-kit-toolslide', BDTUSK_ASSETS_URL . 'vendor/css/toolslide.css', [], BDTUSK_VER);
 
-		wp_enqueue_style('usk-site');
-		wp_enqueue_style('ultimate-store-kit-slick-modal');
-		wp_enqueue_style('ultimate-store-kit-toolslide');
+		if ($this->needs_site_assets()) {
+			wp_enqueue_style('usk-site');
+			wp_enqueue_style('ultimate-store-kit-slick-modal');
+			wp_enqueue_style('ultimate-store-kit-toolslide');
+		}
+	}
+
+	/**
+	 * Whether this request loads the site stylesheet and script (and the modal and
+	 * slide-panel libraries the widgets share) up front.
+	 *
+	 * Without Asset Optimization every page does, as always. With it on, widget
+	 * files depend on `usk-site` / `usk-core`, which bring the libraries with them,
+	 * so a page loads them exactly when it shows an Ultimate Store Kit widget. Only
+	 * the Elementor editor and preview still load them up front, and so does a site
+	 * running an Ultimate Store Kit Pro older than 4.1.0, whose widgets do not
+	 * declare those dependencies yet.
+	 *
+	 * @return bool
+	 */
+	private function needs_site_assets() {
+		static $needed = null;
+
+		if (null !== $needed) {
+			return $needed;
+		}
+
+		if (!ultimate_store_kit_is_asset_optimization_enabled() || is_admin()) {
+			$needed = true;
+		} elseif (ultimate_store_kit_is_preview() || ultimate_store_kit_is_edit() || isset($_GET['elementor-preview'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only decides which assets load.
+			$needed = true;
+		} elseif (defined('BDTUSK_PRO_VER') && version_compare(BDTUSK_PRO_VER, '4.1.0', '<')) {
+			$needed = true;
+		} else {
+			$needed = false;
+		}
+
+		/**
+		 * Filters whether the Ultimate Store Kit site stylesheet and script are
+		 * enqueued on this request regardless of the widgets on the page.
+		 *
+		 * @param bool $needed Whether to enqueue them.
+		 */
+		$needed = (bool) apply_filters('ultimate_store_kit/frontend/enqueue_site_assets', $needed);
+
+		return $needed;
 	}
 
 
@@ -236,15 +288,17 @@ class Ultimate_Store_Kit_Loader {
 	 */
 	public function enqueue_site_scripts() {
 
-		wp_register_script('usk-core', BDTUSK_ASSETS_URL . 'js/core.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
+		$core_deps = ultimate_store_kit_is_asset_optimization_enabled() ? ['jquery', 'ultimate-store-kit-slick-modal', 'ultimate-store-kit-toolslide'] : ['jquery'];
+		wp_register_script('usk-core', BDTUSK_ASSETS_URL . 'js/core.js', $core_deps, BDTUSK_VER, true); // tooltip file should be separate
 		wp_register_script('usk-site', BDTUSK_ASSETS_URL . 'js/site.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
 		wp_register_script('ultimate-store-kit-slick-modal', BDTUSK_ASSETS_URL . 'vendor/js/jquery.slickmodal.js', ['jquery'], BDTUSK_VER, true); // tooltip file should be separate
 		wp_register_script('ultimate-store-kit-toolslide', BDTUSK_ASSETS_URL . 'vendor/js/toolslide.js', [], BDTUSK_VER, true); // tooltip file should be separate
 
-		wp_enqueue_script('usk-core');
-		// wp_enqueue_script('usk-site');
-		wp_enqueue_script('ultimate-store-kit-slick-modal');
-		wp_enqueue_script('ultimate-store-kit-toolslide');
+		if ($this->needs_site_assets()) {
+			wp_enqueue_script('usk-core');
+			wp_enqueue_script('ultimate-store-kit-slick-modal');
+			wp_enqueue_script('ultimate-store-kit-toolslide');
+		}
 
 		wp_localize_script('usk-core', 'ultimate_store_kit_ajax_config', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
@@ -399,6 +453,7 @@ class Ultimate_Store_Kit_Loader {
 
 		// Register REST API routes unconditionally (outside is_admin)
 		\UltimateStoreKit\API\Settings::get_instance();
+		\UltimateStoreKit\API\OtherPlugins::get_instance();
 
 		add_action('init', [$this, 'init']);
 	}

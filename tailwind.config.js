@@ -20,6 +20,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: [
+					'"IBM Plex Sans"',
 					'-apple-system',
 					'BlinkMacSystemFont',
 					'"Segoe UI"',
@@ -31,8 +32,8 @@ module.exports = {
 			},
 			colors: {
 				uks: {
-					brand: '#00216A',
-					'brand-dark': '#00216A',
+					brand: '#E30C1D',
+					'brand-dark': '#B80A17',
 					dark: '#1a2332',
 					/** ~darken($dark, 3%) for sidebar promo */
 					'dark-deep': '#161e2a',
@@ -43,11 +44,26 @@ module.exports = {
 			},
 			borderRadius: {
 				usk: '10px',
+				// Element Pack dashboard radii.
+				tile: '11px',
+				panel: '16px',
+				card: '18px',
 			},
 			boxShadow: {
 				usk: '0 2px 8px rgba(0, 0, 0, 0.06)',
+				pop: '0 24px 60px -16px rgba(0, 0, 0, 0.32)',
+				glow: '0 6px 18px rgba(227, 12, 29, 0.28)',
+				'glow-lg': '0 8px 24px rgba(227, 12, 29, 0.38)',
+				lift: '0 12px 26px -14px rgba(0, 0, 0, 0.22)',
+			},
+			backgroundImage: {
+				'gradient-brand': 'linear-gradient(135deg, #ff4f57, #E30C1D)',
 			},
 			keyframes: {
+				uskPop: {
+					from: { opacity: '0', transform: 'translateY(6px) scale(.98)' },
+					to: { opacity: '1', transform: 'none' },
+				},
 				uskSlideIn: {
 					from: { opacity: '0', transform: 'translateY(-8px)' },
 					to: { opacity: '1', transform: 'translateY(0)' },
@@ -60,6 +76,7 @@ module.exports = {
 			},
 			animation: {
 				'usk-slide-in': 'uskSlideIn 0.3s ease',
+				'usk-pop': 'uskPop .25s cubic-bezier(.16,1,.3,1) both',
 				'offer-drawer': 'offerDrawerSlide 200ms ease-out',
 			},
 		},

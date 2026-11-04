@@ -176,8 +176,18 @@ class Dashboard {
                 'isProPluginActive' => defined('BDTUSK_PRO_VER'),
                 'adminUrl' => admin_url(),
                 'licenseData' => apply_filters('ultimate_store_kit_license_data', []),
+                'userName' => wp_get_current_user()->display_name,
+                'templateBuilderUrl' => admin_url('edit.php?post_type=usk-template-builder'),
+                'templatesCount' => $this->count_builder_templates(),
+                'templatesActive' => $this->count_active_builder_templates(),
+                'system' => $this->get_system_status(),
+                'releases' => $this->get_recent_releases(),
+                'assetStats' => class_exists('\UltimateStoreKit\Includes\Asset_Combiner') ? \UltimateStoreKit\Includes\Asset_Combiner::stats() : null,
             ]
         );
+
+        // Widget glyphs (usk-icon-*) for the widget cards.
+        wp_enqueue_style('usk-admin-font', BDTUSK_ASSETS_URL . 'css/font' . (is_rtl() ? '-rtl' : '') . '.css', [], BDTUSK_VER);
 
         wp_enqueue_style(
             'ultimate-store-kit-admin',
@@ -278,6 +288,144 @@ class Dashboard {
             'actionType' => $action_type,
             'message' => $message,
         ];
+    }
+
+    /**
+     * Published Template Builder templates.
+     *
+     * @return int
+     */
+    private function count_builder_templates() {
+        $counts = wp_count_posts('usk-template-builder');
+
+        return isset($counts->publish) ? (int) $counts->publish : 0;
+    }
+
+    /**
+     * Templates in use: one per assigned template type, plus switched-on
+     * conditional templates.
+     *
+     * @return int
+     */
+    private function count_active_builder_templates() {
+        global $wpdb;
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- One cheap count for the dashboard.
+        $assigned = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name LIKE %s AND option_value <> ''",
+            $wpdb->esc_like('ultimate_store_kit_template_') . '%'
+        ));
+
+        $conditional = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id WHERE pm.meta_key = %s AND pm.meta_value = '1' AND p.post_status = 'publish'",
+            '_ultimate_store_kit_template_conditional_active'
+        ));
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+        return $assigned + $conditional;
+    }
+
+    /**
+     * Server and plugin checks for the dashboard's System status card.
+     *
+     * @return array[] Rows of label, value and status (ok|warn|bad).
+     */
+    private function get_system_status() {
+        $memory      = wp_convert_hr_to_bytes((string) ini_get('memory_limit'));
+        $max_exec    = (int) ini_get('max_execution_time');
+        $php_version = PHP_VERSION;
+
+        $rows = [
+            [
+                'label'  => __('PHP version', 'ultimate-store-kit'),
+                'value'  => $php_version,
+                'status' => version_compare($php_version, '7.4', '>=') ? 'ok' : 'bad',
+            ],
+            [
+                'label'  => __('Memory limit', 'ultimate-store-kit'),
+                'value'  => $memory < 0 ? __('Unlimited', 'ultimate-store-kit') : (string) ini_get('memory_limit'),
+                'status' => ($memory < 0 || $memory >= 256 * MB_IN_BYTES) ? 'ok' : 'warn',
+            ],
+            [
+                'label'  => __('Max execution time', 'ultimate-store-kit'),
+                'value'  => 0 === $max_exec ? __('Unlimited', 'ultimate-store-kit') : (string) $max_exec,
+                'status' => (0 === $max_exec || $max_exec >= 90) ? 'ok' : 'warn',
+            ],
+            [
+                'label'  => __('WooCommerce', 'ultimate-store-kit'),
+                'value'  => defined('WC_VERSION') ? WC_VERSION : __('Not active', 'ultimate-store-kit'),
+                'status' => defined('WC_VERSION') ? 'ok' : 'warn',
+            ],
+            [
+                'label'  => __('Elementor', 'ultimate-store-kit'),
+                'value'  => defined('ELEMENTOR_VERSION') ? ELEMENTOR_VERSION : __('Not active', 'ultimate-store-kit'),
+                'status' => defined('ELEMENTOR_VERSION') ? 'ok' : 'bad',
+            ],
+        ];
+
+        return $rows;
+    }
+
+    /**
+     * The latest releases from readme.txt's changelog, for Recent activity.
+     *
+     * @param int $limit Number of releases.
+     * @return array[] version, date, summary (first entry) and counts of added/fixed/updated entries.
+     */
+    private function get_recent_releases($limit = 5) {
+        $readme = BDTUSK_PATH . 'readme.txt';
+
+        if (!is_readable($readme)) {
+            return [];
+        }
+
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local plugin file.
+        $contents = (string) file_get_contents($readme);
+        $start    = strpos($contents, '== Changelog ==');
+
+        if (false === $start) {
+            return [];
+        }
+
+        $releases = [];
+        $current  = null;
+
+        foreach (preg_split('/\R/', substr($contents, $start)) as $line) {
+            $line = trim($line);
+
+            if (preg_match('/^=\s*([0-9][0-9.]*)\s*(?:\[([^\]]*)\]|[-–]\s*(.*?))?\s*=$/u', $line, $m)) {
+                if ($current) {
+                    $releases[] = $current;
+                    if (count($releases) >= $limit) {
+                        $current = null;
+                        break;
+                    }
+                }
+                $current = [
+                    'version' => $m[1],
+                    'date'    => trim(!empty($m[2]) ? $m[2] : (isset($m[3]) ? $m[3] : '')),
+                    'summary' => '',
+                    'counts'  => ['added' => 0, 'fixed' => 0, 'updated' => 0],
+                ];
+                continue;
+            }
+
+            if ($current && preg_match('/^\*\s*(Added|Fixed|Updated|Tweaked|Improved|Security)\s*:\s*(.+)$/i', $line, $m)) {
+                $type = strtolower($m[1]);
+                $type = in_array($type, ['added', 'fixed'], true) ? $type : 'updated';
+                $current['counts'][$type]++;
+
+                if ('' === $current['summary']) {
+                    $current['summary'] = wp_strip_all_tags($m[2]);
+                }
+            }
+        }
+
+        if ($current) {
+            $releases[] = $current;
+        }
+
+        return array_slice($releases, 0, $limit);
     }
 
     public function get_saved_settings() {

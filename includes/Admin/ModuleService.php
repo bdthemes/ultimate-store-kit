@@ -537,6 +537,18 @@ class ModuleService {
                     'video_url'    => '',
                 ],
                 [
+                    'name'         => 'ajax-search',
+                    'label'        => esc_html__('Ajax Product Search', 'ultimate-store-kit'),
+                    'type'         => 'checkbox',
+                    'default'      => "on",
+                    'widget_type'  => 'pro',
+                    'plugin_name'  => 'woocommerce',
+                    'plugin_path'  => 'woocommerce/woocommerce.php',
+                    'content_type' => 'woocommerce others new',
+                    'demo_url'     => 'https://storekit.pro/demo/ajax-search/',
+                    'video_url'    => '',
+                ],
+                [
                     'name'         => 'product-image',
                     'label'        => esc_html__('Product Image (Single)', 'ultimate-store-kit'),
                     'type'         => 'checkbox',

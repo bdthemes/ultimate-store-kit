@@ -14,7 +14,46 @@
         $("#ultimate-builder-kit-builder-modal form")[0].reset();
         $("#ultimate-builder-kit-builder-modal form .template_id").val('');
         setTemplateStatusSwitcher(1);
+        setConditions({}, {});
+        toggleConditions();
     }
+
+    // Display conditions: only some template types have them, and each type
+    // only some of the pickers (see Template_Conditions::supported_types()).
+    function toggleConditions() {
+        var $wrap = $('#ultimate-builder-kit-builder-modal .usk-template-conditions');
+        var types = $wrap.data('condition-types') || {};
+        var type = String($('#ultimate-builder-kit-builder-modal #template_type').val() || '').toLowerCase();
+        var allowed = types[type] || [];
+
+        $wrap.toggle(allowed.length > 0);
+        $wrap.find('.usk-template-condition').each(function () {
+            var $field = $(this);
+            var isAllowed = allowed.indexOf($field.data('condition')) !== -1;
+
+            $field.toggle(isAllowed);
+            // Hidden pickers must not submit values for a type that ignores them.
+            $field.find('select').prop('disabled', !isAllowed);
+        });
+    }
+
+    function setConditions(conditions, products) {
+        var $modal = $('#ultimate-builder-kit-builder-modal');
+        var $products = $modal.find('#usk_condition_products');
+
+        $products.empty();
+        $.each(products || {}, function (id, name) {
+            $products.append(new Option(name, id, true, true));
+        });
+        $products.trigger('change');
+
+        $.each(['product_cat', 'product_tag'], function (i, taxonomy) {
+            var ids = (conditions && conditions[taxonomy]) || [];
+            $modal.find('#usk_condition_' + taxonomy).val(ids.map(String)).trigger('change');
+        });
+    }
+
+    $(document).on('change', '#ultimate-builder-kit-builder-modal #template_type', toggleConditions);
 
     function setSubmitBtn(string){
         $("#ultimate-builder-kit-builder-modal form .usk-modal-submit-btn").val(string)
@@ -111,6 +150,8 @@
                     $("#ultimate-builder-kit-builder-modal form #template_name").val(response.data.name).change();
                     $("#ultimate-builder-kit-builder-modal form #template_type").val(response.data.type).change();
                     setTemplateStatusSwitcher(response.data.status);
+                    setConditions(response.data.conditions, response.data.products);
+                    toggleConditions();
                 }
                 showModal();
             },

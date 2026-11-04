@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, woocommerce builder, woocommerce store builder, edd store builder, woocommerce widget
-Stable tag: 4.0.2
+Stable tag: 4.1.0
 Requires PHP: 7.4
 Requires at least: 6.8
 Tested up to: 7.1
@@ -384,6 +384,20 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 * Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
 
 == Changelog ==
+
+= 4.1.0 [3rd November 2026] =
+
+* Added: Template Builder display conditions - Single Product templates can be limited to specific products, categories (including sub-categories) or tags, and Category / Tag templates to specific categories or tags; a matching conditional template takes priority over the default template of its type
+* Added: Empty Cart Page template type, shown on the cart page while the cart is empty
+* Added: Asset Optimization (Store Kit > Performance) - store-wide CSS/JS load only on pages with an Ultimate Store Kit widget, and the widget CSS/JS of a page is combined into cached files
+* Added: Redesigned admin dashboard with stats, quick actions, suggestions, a Modules page, Performance page and ⌘K search
+* Added: Other Plugins page in the dashboard to install and activate BdThemes plugins
+* Added: Dashboard tabs that don't fit the screen move into a "More" menu
+* Added: Ajax Product Search widget (Pro)
+* Added: Size Chart, Free Shipping Bar, Sticky Add to Cart, Direct Checkout (Buy Now), Product Badges, Product Video, Partial Payment and Cart Recovery modules (Pro)
+* Fixed: Moving a template to the Trash no longer unassigns a different active template of the same type
+* Fixed: Editor preview of Category and Tag templates now opens a product category or tag page
+* Fixed: Right-to-left sites loaded widget, site and icon stylesheets from file names that did not exist
 
 = 4.0.2 [1st November 2026] =
 

@@ -253,6 +253,16 @@ trait Global_Widget_Template
 				printf('<div class="usk-badge-wrap usk-new-badge"><span class="usk-badge">%s</span></div>', esc_html__('New', 'ultimate-store-kit'));
 			}
 		endif;
+
+		/**
+		 * Fires at the end of a product's badge area in the grid, carousel,
+		 * list and slider widgets, so add-ons can print extra badges there
+		 * (used by Ultimate Store Kit Pro's Product Badges module).
+		 *
+		 * @param \WC_Product $product  Product being rendered.
+		 * @param array       $settings Widget settings.
+		 */
+		do_action('ultimate_store_kit/product_badges', $product, $settings);
 	}
 	protected function register_global_template_navigation()
 	{

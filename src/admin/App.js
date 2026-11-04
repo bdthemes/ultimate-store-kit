@@ -1,17 +1,21 @@
 import { useState, useCallback, useEffect } from '@wordpress/element';
 import { applyFilters, addAction, removeAction } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import AppBar from './components/shell/AppBar';
+import TabStrip from './components/shell/TabStrip';
 import Welcome from './pages/Welcome';
+import ModulesPage from './pages/ModulesPage';
+import PerformancePage from './pages/PerformancePage';
+import OtherPluginsPage from './pages/OtherPluginsPage';
 import WidgetsPage from './pages/WidgetsPage';
 import OtherSettings from './pages/OtherSettings';
 import GetPro from './pages/GetPro';
 import AboutInfo from './pages/AboutInfo';
 import ProModulePlaceholder from './pages/ProModulePlaceholder';
-import { appShell, bodyRow, mainContent } from './tw';
 import Toast from './components/Toast';
-import { getPlaceholderModules, getModuleSidebarIcon, proGroupDescriptions } from './utils';
+import { getPlaceholderModules, getModuleSidebarIcon, proGroupDescriptions, buildSidebarSections } from './utils';
+import { DashboardIcon, WidgetsIcon, ModulesIcon, TemplateIcon, KeyIcon, ZapIcon, InfoIcon, ArrowLeftIcon, GaugeIcon, PlugIcon } from './components/ui/Icons';
+import { ProTag } from './components/ui/Primitives';
 
 const adminData = window.ultimateStoreKitAdminData || {};
 
@@ -61,6 +65,9 @@ const getPageFromHash = () => {
 		'woocommerce-widgets',
 		'edd-widgets',
 		'other-widgets',
+		'modules',
+		'performance',
+		'other-plugins',
 		'get-pro',
 		'about',
 		...settingsGroups.map((g) => g.id),
@@ -78,8 +85,6 @@ const App = () => {
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-	const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 1024);
 
 	// Allow pro (or any extension) to trigger toasts via doAction('usk.admin.notify', {...})
 	useEffect(() => {
@@ -127,34 +132,6 @@ const App = () => {
 		}
 	}, [isProActive, activePage]);
 
-	useEffect(() => {
-		setIsSidebarOpen(false);
-	}, [activePage]);
-
-	useEffect(() => {
-		document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
-		return () => {
-			document.body.style.overflow = '';
-		};
-	}, [isSidebarOpen]);
-
-	useEffect(() => {
-		const handleResize = () => {
-			const desktop = window.innerWidth > 1024;
-			setIsDesktop(desktop);
-			if (desktop) {
-				setIsSidebarOpen(false);
-			}
-		};
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
-
-	const handleToggleSidebar = useCallback((event) => {
-		if (event?.preventDefault) event.preventDefault();
-		if (event?.stopPropagation) event.stopPropagation();
-		setIsSidebarOpen((prev) => !prev);
-	}, []);
 
 	const saveSettings = useCallback(
 		(section, sectionSettings) => {
@@ -200,6 +177,87 @@ const App = () => {
 		[]
 	);
 
+	const navigate = useCallback((pageId) => {
+		setActivePage(pageId);
+		if (window.location.hash !== `#${pageId}`) {
+			window.location.hash = `#${pageId}`;
+		}
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}, []);
+
+	// The Modules section of the old sidebar (core settings groups, Pro
+	// modules and their placeholders) is now the Modules page.
+	const sidebarSections = buildSidebarSections({ isPro: isProActive, settingsGroups });
+	const moduleItems = (sidebarSections.find((section) => section.id === 'modules') || { items: [] }).items;
+	const supportItems = (sidebarSections.find((section) => section.id === 'support') || { items: [] }).items;
+	const moduleIds = moduleItems.map((item) => item.id);
+	const proPagesForNav = applyFilters('usk.admin.pages', {});
+	const hasLicensePage = !!proPagesForNav.license;
+	const widgetPageIds = ['widgets', 'woocommerce-widgets', 'edd-widgets', 'other-widgets'];
+
+	const tabs = [
+		{ key: 'welcome', label: __('Dashboard', 'ultimate-store-kit'), icon: DashboardIcon, active: activePage === 'welcome' },
+		{ key: 'woocommerce-widgets', label: __('Widgets', 'ultimate-store-kit'), icon: WidgetsIcon, active: widgetPageIds.includes(activePage) },
+		{ key: 'modules', label: __('Modules', 'ultimate-store-kit'), icon: ModulesIcon, active: activePage === 'modules' || moduleIds.includes(activePage) },
+		{ key: 'performance', label: __('Performance', 'ultimate-store-kit'), icon: GaugeIcon, active: activePage === 'performance' },
+		{ key: 'template-builder', label: __('Template Builder', 'ultimate-store-kit'), icon: TemplateIcon, href: adminData.templateBuilderUrl },
+	];
+
+	if (hasLicensePage) {
+		tabs.push({ key: 'license', label: __('License', 'ultimate-store-kit'), icon: KeyIcon, active: activePage === 'license' });
+	} else if (!isProActive) {
+		tabs.push({ key: 'get-pro', label: __('Get Pro', 'ultimate-store-kit'), icon: ZapIcon, active: activePage === 'get-pro' });
+	}
+
+	tabs.push({ key: 'about', label: __('About & Info', 'ultimate-store-kit'), icon: InfoIcon, active: activePage === 'about' });
+	tabs.push({ key: 'other-plugins', label: __('Other Plugins', 'ultimate-store-kit'), icon: PlugIcon, active: activePage === 'other-plugins' });
+
+	// Anything else an add-on puts in the old sidebar's Support group goes to "More".
+	const shownTabKeys = tabs.map((tab) => tab.key);
+	const moreItems = supportItems
+		.filter((item) => !shownTabKeys.includes(item.id) && !(item.id === 'get-pro' && (isProActive || hasLicensePage)))
+		.map((item) => ({
+			key: item.id,
+			label: item.label,
+			icon: item.id === 'license' ? KeyIcon : item.id === 'get-pro' ? ZapIcon : InfoIcon,
+			active: activePage === item.id,
+		}));
+
+	const searchItems = [
+		{ id: 'welcome', label: __('Dashboard', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'woocommerce-widgets', label: __('WooCommerce widgets', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'edd-widgets', label: __('EDD widgets', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'other-widgets', label: __('Other widgets', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'modules', label: __('All modules', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'template-builder', label: __('Template Builder', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit'), href: adminData.templateBuilderUrl },
+		{ id: 'performance', label: __('Performance', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'about', label: __('About & Info', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		{ id: 'other-plugins', label: __('Other Plugins', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') },
+		...(hasLicensePage ? [{ id: 'license', label: __('License', 'ultimate-store-kit'), group: __('Pages', 'ultimate-store-kit') }] : []),
+		...moreItems.map((item) => ({ id: item.key, label: item.label, group: __('Pages', 'ultimate-store-kit') })),
+		...moduleItems.map((item) => ({ id: item.id, label: item.label, group: __('Modules', 'ultimate-store-kit') })),
+		...[
+			['ultimate_store_kit_active_modules', 'woocommerce-widgets'],
+			['ultimate_store_kit_edd_modules', 'edd-widgets'],
+			['ultimate_store_kit_general_modules', 'other-widgets'],
+		].flatMap(([key, page]) =>
+			(adminData.widgets?.[key] || [])
+				.filter((w) => w.type === 'checkbox')
+				.map((w) => ({ id: `${page}?search=${encodeURIComponent(w.label)}`, label: w.label, group: __('Widgets', 'ultimate-store-kit') }))
+		),
+	];
+
+	const onSearchSelect = (item) => {
+		if (item.href) {
+			window.location.href = item.href;
+			return;
+		}
+		window.location.hash = `#${item.id}`;
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	const activeModule = moduleItems.find((item) => item.id === activePage);
+
 	const renderPage = () => {
 		const widgets = adminData.widgets || {};
 
@@ -232,6 +290,21 @@ const App = () => {
 						widgets={widgets}
 						settings={settings}
 						isPro={isProActive}
+						moduleItems={moduleItems}
+						onNavigate={navigate}
+					/>
+				);
+			case 'other-plugins':
+				return <OtherPluginsPage onNotify={setNotification} />;
+			case 'performance':
+				return <PerformancePage settings={settings} onSave={saveSettings} saving={saving} />;
+			case 'modules':
+				return (
+					<ModulesPage
+						items={moduleItems}
+						settings={settings}
+						isPro={isProActive}
+						onNavigate={navigate}
 					/>
 				);
 			case 'widgets':
@@ -252,6 +325,7 @@ const App = () => {
 						saving={saving}
 						isPro={isProActive}
 						widgetType={widgetTypeMap[activePage]}
+						onNavigate={navigate}
 					/>
 				);
 			}
@@ -261,6 +335,8 @@ const App = () => {
 						widgets={widgets}
 						settings={settings}
 						isPro={isProActive}
+						moduleItems={moduleItems}
+						onNavigate={navigate}
 					/>
 				) : (
 					<GetPro isPro={isProActive} />
@@ -282,52 +358,54 @@ const App = () => {
 						/>
 					);
 				}
-				return <Welcome widgets={widgets} settings={settings} />;
+				return <Welcome widgets={widgets} settings={settings} isPro={isProActive} moduleItems={moduleItems} onNavigate={navigate} />;
 			}
 		}
 	};
 
 	return (
-		<div className={appShell}>
+		<div className="usk-app min-h-[calc(100vh-32px)] bg-[#f0f0f1] text-sm text-[#1d2327]">
 			<Toast notification={notification} onDismiss={() => setNotification(null)} />
-			<Header
-				version={adminData.version}
-				isPro={isProActive}
-				isSidebarOpen={isSidebarOpen}
-				isDesktop={isDesktop}
-				onToggleSidebar={handleToggleSidebar}
-			/>
-			<div className="bg-slate-50">
-			<div className={`${bodyRow}`}>
-				<Sidebar
-					activePage={activePage}
-					onNavigate={setActivePage}
-					isPro={isProActive}
-					isOpen={isSidebarOpen}
-					isDesktop={isDesktop}
-					onClose={() => setIsSidebarOpen(false)}
-					settingsGroups={settingsGroups}
-				/>
-				<div className={`${mainContent} flex flex-col`}>
-					<div className="flex-1">{renderPage()}</div>
+			<div className="mx-auto box-border w-full max-w-[1400px] px-12 pb-[60px] pt-[30px] max-[1024px]:px-7 max-[1024px]:pt-6 max-[640px]:px-0 max-[640px]:pt-4">
+				<div className="rounded-card border border-solid border-[#e6e6ea] bg-white">
+					<AppBar
+						version={adminData.version}
+						isPro={isProActive}
+						isProPluginActive={!!adminData.isProPluginActive}
+						templateBuilderUrl={adminData.templateBuilderUrl}
+						searchItems={searchItems}
+						onSearchSelect={onSearchSelect}
+					/>
+					<TabStrip tabs={tabs} moreItems={moreItems} onNavigate={navigate} />
 				</div>
+
+				<main className="mt-[26px]">
+					{activeModule ? (
+						<div className="mb-4 flex flex-wrap items-center gap-2 text-[13px] font-semibold text-[#6c6c75]">
+							<button
+								type="button"
+								onClick={() => navigate('modules')}
+								className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-solid border-[#e6e6ea] bg-white px-3 py-1.5 text-[13px] font-bold text-[#3f3f46] transition-colors hover:border-[#e30c1d] hover:text-[#e30c1d]"
+							>
+								<ArrowLeftIcon size={14} />
+								{__('All modules', 'ultimate-store-kit')}
+							</button>
+							<span aria-hidden="true">/</span>
+							<span className="text-[#0f1115]">{activeModule.label}</span>
+							{activeModule.badge && !isProActive ? <ProTag /> : null}
+						</div>
+					) : null}
+					{renderPage()}
+				</main>
+
+				<footer className="mt-10 text-center text-[12.5px] text-[#8a8a93]">
+					{__('Ultimate Store Kit Addon made with love by', 'ultimate-store-kit')}{' '}
+					<a target="_blank" rel="noopener noreferrer" href="https://bdthemes.com" className="font-semibold text-[#e30c1d] no-underline hover:underline">
+						BdThemes
+					</a>
+					. {__('All rights reserved.', 'ultimate-store-kit')}
+				</footer>
 			</div>
-			</div>
-			<footer className="p-5 bg-white py-4 text-center text-sm text-slate-500 rounded-bl-lg rounded-br-lg">
-				{__(
-					'Ultimate Store Kit Addon made with love by',
-					'ultimate-store-kit'
-				)}{' '}
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://bdthemes.com"
-					className="text-uks-brand no-underline hover:underline"
-				>
-					BdThemes
-				</a>
-				. {__('All rights reserved.', 'ultimate-store-kit')}
-			</footer>
 		</div>
 	);
 };

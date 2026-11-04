@@ -46,7 +46,8 @@ class QR_Code extends Module_Base {
         if ($this->usk_is_edit_mode()) {
             return ['usk-all-styles'];
         } else {
-            return ['usk-font', 'usk-qr-code'];
+            // No stylesheet of its own: the site stylesheet carries its styles.
+            return ['usk-font', 'usk-site'];
         }
     }
 

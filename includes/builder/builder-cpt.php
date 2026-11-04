@@ -79,7 +79,9 @@ class Builder_Cpt {
 			return;
 		}
 
-		if ($template = get_post_meta($postId, Meta::TEMPLATE_TYPE, true)) {
+		// Only release the type's default when it is this template; trashing
+		// another (or a conditional) template of the type must not unassign it.
+		if (($template = get_post_meta($postId, Meta::TEMPLATE_TYPE, true)) && (int) Meta::get_template_option($template) === (int) $postId) {
 			Meta::delete_template_option($template);
 		}
 	}
@@ -170,6 +172,14 @@ class Builder_Cpt {
 				}
 				break;
 			case 'is_enabled':
+				if (Template_Conditions::has_conditions($post_id)) {
+					echo Template_Conditions::is_active($post_id)
+						? esc_html__('Active', 'ultimate-store-kit')
+						: esc_html__('Inactive', 'ultimate-store-kit');
+					echo '<br><small>' . esc_html(Template_Conditions::describe($post_id)) . '</small>';
+					break;
+				}
+
 				echo Builder_Template_Helper::getTemplateId($templateType) == $post_id
 					? esc_html__('Active', 'ultimate-store-kit')
 					: esc_html__('Inactive', 'ultimate-store-kit');
@@ -343,7 +353,14 @@ class Builder_Cpt {
 
 		$post_id = wp_insert_post($page_data);
 
-		if ($isEnabled == 1) {
+		// A template with display conditions is not the type's default: it is
+		// switched on and off through its own meta (see Template_Conditions).
+		$conditions     = isset($data['usk_conditions']) && is_array($data['usk_conditions']) ? $data['usk_conditions'] : [];
+		$is_conditional = $post_id && ! is_wp_error($post_id) && Template_Conditions::save($post_id, $type, $conditions, 1 == $isEnabled);
+
+		if ($is_conditional) {
+			// Handled above.
+		} elseif ($isEnabled == 1) {
 			Meta::update_template_option($type, $post_id);
 		} else {
 			if (Meta::get_template_option($type) == $post_id) {
@@ -402,12 +419,18 @@ class Builder_Cpt {
 
 				$templateType    = isset($meta[Meta::TEMPLATE_TYPE][0]) ? $meta[Meta::TEMPLATE_TYPE][0] : '';
 				$enabledTemplate = Meta::get_template_option($templateType);
+				$conditions      = Template_Conditions::get($templateData->ID);
+				$is_enabled      = $conditions
+					? Template_Conditions::is_active($templateData->ID)
+					: (int) $enabledTemplate === (int) $templateData->ID;
 
 				wp_send_json_success([
-					'id'     => $templateData->ID,
-					'name'   => $templateData->post_title,
-					'type'   => $templateType,
-					'status' => is_numeric($enabledTemplate) ? 1 : 0,
+					'id'         => $templateData->ID,
+					'name'       => $templateData->post_title,
+					'type'       => $templateType,
+					'status'     => $is_enabled ? 1 : 0,
+					'conditions' => (object) $conditions,
+					'products'   => (object) Template_Conditions::selected_products($templateData->ID),
 				]);
 			}
 		}
@@ -426,6 +449,15 @@ class Builder_Cpt {
 			if (is_object($screen) && Meta::POST_TYPE == $screen->post_type) {
 				wp_enqueue_style('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/css/ultimate-builder.css', [], BDTUSK_VER);
 				wp_enqueue_script('ultimate-store-kit-builder', BDTUSK_ASSETS_URL . 'admin/others/js/ultimate-builder.js', ['jquery', 'wp-i18n'], BDTUSK_VER, true);
+
+				// Display-condition pickers use WooCommerce's enhanced selects,
+				// which WooCommerce registers later on this same hook.
+				add_action('admin_enqueue_scripts', function () {
+					if (wp_script_is('wc-enhanced-select', 'registered')) {
+						wp_enqueue_script('wc-enhanced-select');
+						wp_enqueue_style('woocommerce_admin_styles');
+					}
+				}, 20);
 				wp_set_script_translations('ultimate-store-kit-builder', 'ultimate-store-kit');
 
 				wp_localize_script('ultimate-store-kit-builder', 'UltimateStoreKitConfigBuilder', [

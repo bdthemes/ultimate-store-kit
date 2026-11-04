@@ -17,6 +17,7 @@ use Elementor\Plugin;
 use UltimateStoreKit\Includes\Builder\Builder_Template_Helper;
 use UltimateStoreKit\Base\Singleton;
 use UltimateStoreKit\Includes\Builder\Meta;
+use UltimateStoreKit\Includes\Builder\Template_Conditions;
 use UltimateStoreKit\Includes\Controls\SelectInput\Dynamic_Select;
 
 
@@ -71,29 +72,38 @@ class Builder_Integration {
 		// Get template URL based on template type
 		$template_url = '';
 
+		// Conditional templates preview on something they apply to.
+		$conditions = Template_Conditions::get($post_id);
+
 		// Check for product category first
-		if ($template_slug === 'product-category') {
-			$product_cats = get_terms([
+		if ($template_slug === 'product-category' || ($template_slug === 'category' && $post_type === 'product')) {
+			$product_cats = !empty($conditions['product_cat']) ? [get_term($conditions['product_cat'][0], 'product_cat')] : get_terms([
 				'taxonomy'   => 'product_cat',
 				'hide_empty' => true,
 				'number'     => 1,
 			]);
 
-			if (!empty($product_cats) && !is_wp_error($product_cats)) {
-				$template_url = get_term_link($product_cats[0]);
+			// get_terms() does not always return a zero-indexed list.
+			$preview_term = is_array($product_cats) ? reset($product_cats) : null;
+
+			if ($preview_term && !is_wp_error($preview_term)) {
+				$template_url = get_term_link($preview_term);
 			}
 		}
 
 		// Check for product tag
-		elseif ($template_slug === 'product-tag') {
-			$product_tags = get_terms([
+		elseif ($template_slug === 'product-tag' || ($template_slug === 'tag' && $post_type === 'product')) {
+			$product_tags = !empty($conditions['product_tag']) ? [get_term($conditions['product_tag'][0], 'product_tag')] : get_terms([
 				'taxonomy'   => 'product_tag',
 				'hide_empty' => true,
 				'number'     => 1,
 			]);
 
-			if (!empty($product_tags) && !is_wp_error($product_tags)) {
-				$template_url = get_term_link($product_tags[0]);
+			// get_terms() does not always return a zero-indexed list.
+			$preview_term = is_array($product_tags) ? reset($product_tags) : null;
+
+			if ($preview_term && !is_wp_error($preview_term)) {
+				$template_url = get_term_link($preview_term);
 			}
 		} elseif ($template_slug === 'shop' || $template_slug === 'archive') {
 			$template_url = get_permalink(wc_get_page_id('shop'));
@@ -102,10 +112,14 @@ class Builder_Integration {
 			$page_settings_model = $page_settings_manager->get_model($post_id);
 			$sample_product = $page_settings_model->get_settings('usk_builder_sample_post_id');
 
+			if (empty($sample_product)) {
+				$sample_product = Template_Conditions::sample_product($post_id);
+			}
+
 			$template_url = !empty($sample_product) ?
 				get_permalink($sample_product) :
 				$this->get_default_product_url();
-		} elseif ($template_slug === 'cart') {
+		} elseif ($template_slug === 'cart' || $template_slug === 'empty-cart') {
 			$template_url = wc_get_cart_url();
 		} elseif ($template_slug === 'checkout') {
 			$template_url = wc_get_checkout_url();
@@ -425,6 +439,38 @@ class Builder_Integration {
 
 
 	/**
+	 * The builder template this request previews, once its nonce is verified.
+	 *
+	 * The nonce is bound to the specific template and to the user who
+	 * generated it, and the capability check makes sure a leaked preview URL
+	 * cannot be replayed by someone who may not edit the template.
+	 *
+	 * @return array{id: int, type: string}|null
+	 */
+	protected function get_verified_preview_template() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- The nonce is verified right below.
+		if (empty($_GET['preview']) || empty($_GET['ultimate_store_kit_template_id']) || empty($_GET['ultimate_store_kit_preview_nonce'])) {
+			return null;
+		}
+
+		$usk_template_id = absint(wp_unslash($_GET['ultimate_store_kit_template_id']));
+		$nonce           = sanitize_text_field(wp_unslash($_GET['ultimate_store_kit_preview_nonce']));
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+		$nonce_verified = $usk_template_id
+			&& wp_verify_nonce($nonce, 'ultimate_store_kit_template_preview_' . $usk_template_id)
+			&& current_user_can('edit_post', $usk_template_id);
+
+		if (! $nonce_verified || get_post_type($usk_template_id) !== Meta::POST_TYPE) {
+			return null;
+		}
+
+		$template_type = get_post_meta($usk_template_id, Meta::TEMPLATE_TYPE, true);
+
+		return empty($template_type) ? null : ['id' => $usk_template_id, 'type' => (string) $template_type];
+	}
+
+	/**
 	 * Get Template Path ID
 	 *
 	 * @param $slug
@@ -439,32 +485,24 @@ class Builder_Integration {
 		}
 
 		// Handle template preview from URL parameters.
-		if (!empty($_GET['preview']) && !empty($_GET['ultimate_store_kit_template_id']) && !empty($_GET['ultimate_store_kit_preview_nonce'])) {
-			$usk_template_id = absint(wp_unslash($_GET['ultimate_store_kit_template_id']));
-			$nonce = sanitize_text_field(wp_unslash($_GET['ultimate_store_kit_preview_nonce']));
+		$preview = $this->get_verified_preview_template();
 
-			// The nonce is bound to the specific template and to the user who
-			// generated it, and the capability check makes sure a leaked preview
-			// URL cannot be replayed by someone who may not edit the template.
-			$nonce_verified = $usk_template_id
-				&& wp_verify_nonce($nonce, 'ultimate_store_kit_template_preview_' . $usk_template_id)
-				&& current_user_can('edit_post', $usk_template_id);
-
-			if ($nonce_verified && get_post_type($usk_template_id) === Meta::POST_TYPE) {
-				$template_type = get_post_meta($usk_template_id, Meta::TEMPLATE_TYPE, true);
-				if (!empty($template_type)) {
-					$template_data = explode(Builder_Template_Helper::separator(), $template_type);
-					if (count($template_data) >= 2 && $template_data[1] === $slug && ($postType === false || $template_data[0] === $postType)) {
-						$this->current_template_id = $usk_template_id;
-						$this->is_template_preview = true;
-						return $this->current_template_id;
-					}
-				}
+		if ($preview) {
+			$template_data = explode(Builder_Template_Helper::separator(), $preview['type']);
+			if (count($template_data) >= 2 && $template_data[1] === $slug && ($postType === false || $template_data[0] === $postType)) {
+				$this->current_template_id = $preview['id'];
+				$this->is_template_preview = true;
+				return $this->current_template_id;
 			}
 		}
 
-		// Regular template retrieval
-		$templateId = Builder_Template_Helper::getTemplate($slug, $postType);
+		// Regular template retrieval: a conditional template that matches this
+		// product or term wins over the type's default template.
+		$templateId = Template_Conditions::match($slug, $postType ? $postType : get_post_type());
+
+		if (! $templateId) {
+			$templateId = Builder_Template_Helper::getTemplate($slug, $postType);
+		}
 		$this->current_template_id = apply_filters('ultimate-store-kit-builder/custom-shop-template', $templateId);
 
 		return $this->current_template_id;
@@ -504,7 +542,26 @@ class Builder_Integration {
 			return false;
 		}
 
-		$custom_template = $this->get_template_id( 'cart', 'product' );
+		$custom_template = 0;
+
+		// An empty cart gets the Empty Cart template when one is assigned; its
+		// editor preview shows it whatever the previewing user's cart holds.
+		$preview        = $this->get_verified_preview_template();
+		$previews_empty = $preview && 'product' . Builder_Template_Helper::separator() . 'empty-cart' === $preview['type'];
+		$previews_cart  = $preview && 'product' . Builder_Template_Helper::separator() . 'cart' === $preview['type'];
+
+		if ( ! $previews_cart && ( $previews_empty || ( WC()->cart && WC()->cart->is_empty() ) ) ) {
+			$custom_template = $this->get_template_id( 'empty-cart', 'product' );
+		} elseif ( ! $preview && Builder_Template_Helper::getTemplate( 'empty-cart', 'product' ) ) {
+			// WooCommerce's cart script swaps in its own empty-cart notice when the
+			// last item is removed without a page load; reload to show the template.
+			add_action( 'wp_enqueue_scripts', [ $this, 'reload_when_cart_emptied' ] );
+		}
+
+		if ( ! $custom_template ) {
+			$this->current_template_id = null;
+			$custom_template           = $this->get_template_id( 'cart', 'product' );
+		}
 
 		// Only take over the cart page when a Theme Builder cart template has
 		// been assigned. Without one, WooCommerce and the active theme keep
@@ -516,6 +573,21 @@ class Builder_Integration {
 		$this->current_template_id = absint( $custom_template );
 
 		return $this->getTemplatePath( 'woocommerce/cart', $template );
+	}
+
+	/**
+	 * Reload the cart page once WooCommerce reports that it emptied the cart.
+	 *
+	 * The classic cart fires wc_cart_emptied; the Cart block has no event, so
+	 * its store is watched for the item count dropping to zero.
+	 */
+	public function reload_when_cart_emptied() {
+		wp_enqueue_script( 'jquery' );
+		wp_add_inline_script(
+			'jquery',
+			'jQuery(function($){$(document.body).on("wc_cart_emptied",function(){window.location.reload();});});'
+			. 'window.addEventListener("load",function(){var d=window.wp&&window.wp.data;if(!d||!d.select("wc/store/cart")){return;}var had=false;d.subscribe(function(){var c=d.select("wc/store/cart").getCartData(),n=c&&c.items?c.items.length:0;if(had&&n===0){had=false;window.location.reload();return;}if(n>0){had=true;}});});'
+		);
 	}
 
 	/**

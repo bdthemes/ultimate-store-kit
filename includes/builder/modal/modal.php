@@ -83,6 +83,40 @@
 					</select>
 					<label for="fname"><?php esc_html_e( 'Name your template', 'ultimate-store-kit' ); ?></label>
 					<input type="text" name="template_name" id="template_name" placeholder="<?php echo esc_attr__( 'Enter template name', 'ultimate-store-kit' ); ?>">
+					<?php
+					$usk_condition_types = \UltimateStoreKit\Includes\Builder\Template_Conditions::supported_types();
+					?>
+					<div class="usk-template-conditions" data-condition-types="<?php echo esc_attr( wp_json_encode( $usk_condition_types ) ); ?>" style="display: none">
+						<div class="usk-form-title"><?php esc_html_e( 'Display Conditions (optional)', 'ultimate-store-kit' ); ?></div>
+						<p class="usk-template-conditions-desc"><?php esc_html_e( 'Leave empty to use this template everywhere. Choose products, categories or tags to use it only there; it then takes priority over the default template of this type.', 'ultimate-store-kit' ); ?></p>
+						<div class="usk-template-condition" data-condition="products">
+							<label for="usk_condition_products"><?php esc_html_e( 'Products', 'ultimate-store-kit' ); ?></label>
+							<select id="usk_condition_products" name="usk_conditions[products][]" class="wc-product-search" multiple="multiple" style="width: 100%" data-action="woocommerce_json_search_products" data-placeholder="<?php echo esc_attr__( 'Search for a product…', 'ultimate-store-kit' ); ?>"></select>
+						</div>
+						<?php
+						foreach ( [
+							'product_cat' => __( 'Product Categories', 'ultimate-store-kit' ),
+							'product_tag' => __( 'Product Tags', 'ultimate-store-kit' ),
+						] as $usk_taxonomy => $usk_taxonomy_label ) :
+							$usk_terms = taxonomy_exists( $usk_taxonomy ) ? get_terms( [
+								'taxonomy'   => $usk_taxonomy,
+								'hide_empty' => false,
+								'number'     => 1000,
+								'orderby'    => 'name',
+							] ) : [];
+							?>
+							<div class="usk-template-condition" data-condition="<?php echo esc_attr( $usk_taxonomy ); ?>">
+								<label for="usk_condition_<?php echo esc_attr( $usk_taxonomy ); ?>"><?php echo esc_html( $usk_taxonomy_label ); ?></label>
+								<select id="usk_condition_<?php echo esc_attr( $usk_taxonomy ); ?>" name="usk_conditions[<?php echo esc_attr( $usk_taxonomy ); ?>][]" class="wc-enhanced-select" multiple="multiple" style="width: 100%" data-placeholder="<?php echo esc_attr__( 'Any', 'ultimate-store-kit' ); ?>">
+									<?php if ( ! is_wp_error( $usk_terms ) ) : ?>
+										<?php foreach ( $usk_terms as $usk_term ) : ?>
+											<option value="<?php echo esc_attr( $usk_term->term_id ); ?>"><?php echo esc_html( \UltimateStoreKit\Includes\Builder\Template_Conditions::term_label( $usk_term ) ); ?></option>
+										<?php endforeach; ?>
+									<?php endif; ?>
+								</select>
+							</div>
+						<?php endforeach; ?>
+					</div>
 					<div class="usk-template-status-switcher-wrap">
 						<input type="hidden" name="template_status" id="usk_template_status" value="1">
 						<div class="usk-template-status-switcher usk-active" id="usk_template_status_switcher" role="switch" aria-checked="true" tabindex="0">

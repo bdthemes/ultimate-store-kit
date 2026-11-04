@@ -53,7 +53,8 @@ final class Manager {
     public function load_module_instance($module) {
 
 
-        $direction = is_rtl() ? '.rtl' : '';
+        // Widget stylesheets are built as <module>-rtl.css.
+        $direction = is_rtl() ? '-rtl' : '';
 
 
         $module_id  = $module['name'];
@@ -65,11 +66,11 @@ final class Manager {
         if (!ultimate_store_kit_is_preview()) {
             // register widgets css
             if (ModuleService::has_module_style($module_id)) {
-                wp_register_style('usk-' . $module_id, BDTUSK_URL . 'assets/css/widgets/' . $module_id . $direction . '.css', [], BDTUSK_VER);
+                wp_register_style('usk-' . $module_id, BDTUSK_URL . 'assets/css/widgets/' . $module_id . $direction . '.css', ultimate_store_kit_module_asset_depends('css', $module_id), BDTUSK_VER);
             }
             // register widget JS
             if (ModuleService::has_module_script($module_id)) {
-                wp_register_script('usk-' . $module_id, BDTUSK_URL . 'assets/js/widgets/' . $module_id . '.js', ['jquery'], BDTUSK_VER, true);
+                wp_register_script('usk-' . $module_id, BDTUSK_URL . 'assets/js/widgets/' . $module_id . '.js', ultimate_store_kit_module_asset_depends('js', $module_id), BDTUSK_VER, true);
             }
         }
 

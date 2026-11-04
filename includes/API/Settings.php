@@ -37,6 +37,11 @@ class Settings extends Base {
                 'methods'  => 'POST',
                 'callback' => [$this, 'save_settings'],
             ],
+            [
+                'path'     => '/optimization/regenerate',
+                'methods'  => 'POST',
+                'callback' => [$this, 'regenerate_combined_assets'],
+            ],
         ];
     }
 
@@ -62,5 +67,19 @@ class Settings extends Base {
         update_option($section, $sanitized);
 
         return $this->success(['message' => __('Settings saved successfully.', 'ultimate-store-kit')]);
+    }
+
+    /**
+     * Delete the combined asset files; pages rebuild them on their next view.
+     */
+    public function regenerate_combined_assets(\WP_REST_Request $request) {
+        if (class_exists('\UltimateStoreKit\Includes\Asset_Combiner')) {
+            \UltimateStoreKit\Includes\Asset_Combiner::flush();
+        }
+
+        return $this->success([
+            'message' => __('Combined files cleared. Pages rebuild them on their next visit.', 'ultimate-store-kit'),
+            'stats'   => class_exists('\UltimateStoreKit\Includes\Asset_Combiner') ? \UltimateStoreKit\Includes\Asset_Combiner::stats() : null,
+        ]);
     }
 }

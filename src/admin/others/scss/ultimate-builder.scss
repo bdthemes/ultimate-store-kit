@@ -280,3 +280,41 @@ body.post-type-usk-template-builder .row-actions span.inline
         padding: 100px;
     }
 }
+/** Display conditions */
+#ultimate-builder-kit-builder-modal-wrapper {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.usk-modal-form .usk-template-conditions {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 10px;
+    padding: 12px 0 4px;
+    border-top: 1px solid #eee;
+}
+.usk-modal-form .usk-template-conditions .usk-form-title {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.usk-modal-form .usk-template-conditions-desc {
+    margin: 0;
+    font-size: 12px;
+    color: #6d7882;
+}
+.usk-modal-form .usk-template-condition {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 6px;
+}
+.usk-modal-form .usk-template-condition .select2-container {
+    margin-bottom: 4px;
+}
+.usk-modal-form .usk-template-condition .select2-search__field {
+    height: auto;
+    margin: 5px 0 0;
+    border: 0;
+    text-transform: none;
+}
+body.post-type-usk-template-builder .select2-container--open {
+    z-index: 100000;
+}
