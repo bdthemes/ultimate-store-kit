@@ -199,23 +199,20 @@ const getModuleSidebarIcon = (group) => {
 /**
  * Description and on/off state of a module item, for the Modules page and the
  * dashboard. State comes from ultimate_store_kit_other_settings, where module
- * switches are stored (core groups use their slug, Pro modules their page id);
- * it is null when the module keeps its switch elsewhere.
+ * switches are stored (core groups use their slug, Pro modules their page id).
  *
  * @param {object} item     Module item ({ id, icon, … }).
  * @param {object} settings All saved settings.
- * @returns {{description: string, status: ('on'|'off'|null)}}
+ * @returns {{description: string, status: ('on'|'off')}}
  */
 const getModuleInfo = (item, settings) => {
 	const placeholder = getPlaceholderModules().find((p) => p.id === item.id);
 	const proPage = ((window.ultimateStoreKitProData || {}).pages || {})[item.id];
 	const key = item.id.startsWith('settings-') ? item.id.slice('settings-'.length) : item.id;
 	const other = (settings && settings.ultimate_store_kit_other_settings) || {};
-	let status = null;
-
-	if (Object.prototype.hasOwnProperty.call(other, key)) {
-		status = other[key] === 'on' || other[key] === 'yes' ? 'on' : 'off';
-	}
+	// A module whose switch was never saved is off: the loaders only start a
+	// module when its key is 'on'.
+	const status = other[key] === 'on' || other[key] === 'yes' ? 'on' : 'off';
 
 	return {
 		description: (proPage && proPage.description) || (placeholder && placeholder.description) || proGroupDescriptions[item.icon] || '',

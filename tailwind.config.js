@@ -10,7 +10,13 @@ module.exports = {
 	// So width/height/flex utilities on the SAME element as `ultimate-store-kit-admin-root`
 	// never match — put Tailwind classes only on descendants, or use a wrapper with
 	// `display: contents` around portaled UI (see OfferEditor).
-	important: '.ultimate-store-kit-admin-root',
+	// Prefixed with #wpbody-content so these utilities outrank the same class names
+	// in Ultimate Store Kit Pro's own Tailwind build, which loads later with the
+	// plain root scope: otherwise its `.hidden`, `.grid-cols-3`, `.font-sans`…
+	// override this build's responsive variants. This build already scans Pro's
+	// admin source (see `content`), so Pro pages render from these rules too;
+	// Pro's portals outside #wpbody-content keep its own stylesheet.
+	important: '#wpbody-content .ultimate-store-kit-admin-root',
 
 	corePlugins: {
 		preflight: false,
