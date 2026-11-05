@@ -64,6 +64,16 @@ class Settings extends Base {
         }
 
         $sanitized = $this->sanitize_settings($settings);
+
+        // ultimate_store_kit_other_settings is shared: every module page keeps its
+        // switch there, and Pro switches modules through its own route. A page
+        // posts only what it knows, so merge instead of replacing, or saving one
+        // page would switch off modules turned on elsewhere since it loaded.
+        if ('ultimate_store_kit_other_settings' === $section) {
+            $stored    = get_option($section, []);
+            $sanitized = array_merge(is_array($stored) ? $stored : [], $sanitized);
+        }
+
         update_option($section, $sanitized);
 
         return $this->success(['message' => __('Settings saved successfully.', 'ultimate-store-kit')]);
