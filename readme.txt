@@ -385,7 +385,7 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
-= 4.1.0 [3rd November 2026] =
+= 4.1.0 [5th November 2026] =
 
 * Added: Template Builder display conditions - Single Product templates can be limited to specific products, categories (including sub-categories) or tags, and Category / Tag templates to specific categories or tags; a matching conditional template takes priority over the default template of its type
 * Added: Empty Cart Page template type, shown on the cart page while the cart is empty
