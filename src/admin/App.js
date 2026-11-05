@@ -81,7 +81,19 @@ const getPageFromHash = () => {
 
 const App = () => {
 	const [activePage, setActivePage] = useState(getPageFromHash());
-	const [settings, setSettings] = useState(adminData.savedSettings || {});
+	// One settings object for the whole dashboard: Pro module pages switch modules
+	// by writing into adminData.savedSettings directly (see Pro's moduleState.js),
+	// so the state wraps that same object instead of a copy. An empty option
+	// arrives from PHP as [], which is turned into an object to write into.
+	const [settings, setSettings] = useState(() => {
+		adminData.savedSettings = adminData.savedSettings || {};
+		Object.keys(adminData.savedSettings).forEach((key) => {
+			if (Array.isArray(adminData.savedSettings[key])) {
+				adminData.savedSettings[key] = {};
+			}
+		});
+		return { ...adminData.savedSettings };
+	});
 	const [isProActive, setIsProActive] = useState(!!adminData.isPro);
 	const [saving, setSaving] = useState(false);
 	const [notification, setNotification] = useState(null);
@@ -113,6 +125,8 @@ const App = () => {
 	useEffect(() => {
 		const handleHashChange = () => {
 			setActivePage(getPageFromHash());
+			// Pick up module switches made on the page just left.
+			setSettings({ ...adminData.savedSettings });
 		};
 
 		window.addEventListener('hashchange', handleHashChange);
@@ -150,10 +164,12 @@ const App = () => {
 					return res.json();
 				})
 				.then((data) => {
-					setSettings((prev) => ({
-						...prev,
-						[section]: sectionSettings,
-					}));
+					// Update the shared section object in place (other code holds it).
+					if (!adminData.savedSettings[section] || Array.isArray(adminData.savedSettings[section])) {
+						adminData.savedSettings[section] = {};
+					}
+					Object.assign(adminData.savedSettings[section], sectionSettings);
+					setSettings({ ...adminData.savedSettings });
 					setNotification({
 						type: 'success',
 						message:
