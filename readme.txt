@@ -9,7 +9,7 @@ Tested up to: 7.1
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 4.0.0
-Elementor tested up to: 4.3.5
+Elementor tested up to: 4.3.6
 
 WooCommerce store builder and EDD store builder for Elementor with product grids, widgets, cart, checkout, account pages, filters and sliders.
 
@@ -385,7 +385,7 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 
 == Changelog ==
 
-= 4.1.0 [5th November 2026] =
+= 4.1.0 [8th November 2026] =
 
 * Added: Template Builder display conditions - Single Product templates can be limited to specific products, categories (including sub-categories) or tags, and Category / Tag templates to specific categories or tags; a matching conditional template takes priority over the default template of its type
 * Added: Empty Cart Page template type, shown on the cart page while the cart is empty
