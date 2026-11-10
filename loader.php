@@ -338,13 +338,26 @@ class Ultimate_Store_Kit_Loader {
 	}
 
 	public function enqueue_editor_styles() {
-		$direction_suffix = is_rtl() ? '.rtl' : '';
+		$direction_suffix = is_rtl() ? '-rtl' : '';
 
 		wp_register_style('usk-editor', BDTUSK_ASSETS_URL . 'css/editor' . $direction_suffix . '.css', [], BDTUSK_VER);
 		wp_register_style('usk-font', BDTUSK_ASSETS_URL . 'css/font' . $direction_suffix . '.css', [], BDTUSK_VER);
 
 		wp_enqueue_style('usk-editor');
 		wp_enqueue_style('usk-font');
+
+		// The badge and tooltip texts live here, not in editor.scss, so they can be translated.
+		wp_add_inline_style(
+			'usk-editor',
+			sprintf(
+				'.usk-new-control:after{content:%1$s}.usk-pro-control:after{content:%2$s}#elementor-panel #elementor-controls .usk-disabled-control .elementor-control-field:after{content:%3$s}',
+				/* translators: Badge shown after the label of a recently added widget control. */
+				ultimate_store_kit_css_string(_x('NEW', 'editor control badge', 'ultimate-store-kit')),
+				/* translators: Badge shown after the label of a control that needs the Pro version. */
+				ultimate_store_kit_css_string(_x('PRO', 'editor control badge', 'ultimate-store-kit')),
+				ultimate_store_kit_css_string(__('This is a pro control, available with Ultimate Store Kit Pro version.', 'ultimate-store-kit'))
+			)
+		);
 	}
 
 

@@ -1253,7 +1253,7 @@
                         }
 
                     ?>
-        <div class="usk-page-order">
+        <div class="usk-page-order" style="<?php echo esc_attr( '--usk-order-total-label: ' . ultimate_store_kit_css_string( __( 'Total:', 'ultimate-store-kit' ) ) ); ?>">
             <?php
                 $this->order_thank_you( $order );
                         $this->thank_you_order_confirmation( $order );
