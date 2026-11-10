@@ -40,16 +40,15 @@
     }
 }
 
+// Badge texts are translatable and added inline by the loader (enqueue_editor_styles).
 .usk-new-control {
     &:after {
-        content: 'NEW';
         background-color: orangered;
     }
 }
 
 .usk-pro-control {
     &:after {
-        content: 'PRO';
         background-color: #e62a3f;
     }
 }
@@ -78,7 +77,7 @@
 }
 
 #elementor-panel #elementor-controls .usk-disabled-control .elementor-control-field:after {
-    content: "This is a pro control, available with Ultimate Store Kit Pro version.";
+    // Tooltip text is translatable and added inline by the loader (enqueue_editor_styles).
     padding: 10px;
     display: none;
     position: absolute;

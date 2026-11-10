@@ -628,7 +628,8 @@
   }
 
   .usk-page-order .woocommerce-table tbody td.product-total::before {
-    content: "Total:";
+    // Translated label set on .usk-page-order by the widget's render().
+    content: var(--usk-order-total-label, "");
     font-weight: 500;
     color: var(--usk-order-page-text-body);
   }

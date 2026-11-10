@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, woocommerce builder, woocommerce store builder, edd store builder, woocommerce widget
-Stable tag: 4.1.0
+Stable tag: 4.1.1
 Requires PHP: 7.4
 Requires at least: 6.8
 Tested up to: 7.1
@@ -384,6 +384,12 @@ The following libraries are shipped under `/src/vendor` and `/assets/vendor`. Wh
 * Slick Modal 5.0 — https://codecanyon.net/item/slick-modal-css3-powered-popups/12335988
 
 == Changelog ==
+
+= 4.1.1 [10th November 2026] =
+
+* Fixed: The "NEW" and "PRO" control badges and the Pro control tooltip in the Elementor editor can now be translated (the texts were hard-coded in the CSS files)
+* Fixed: The "Total:" label of the Page Order widget on mobile can now be translated
+* Fixed: Right-to-left sites loaded the editor stylesheet from a file name that did not exist
 
 = 4.1.0 [8th November 2026] =
 

@@ -68,6 +68,31 @@ if (ultimate_store_kit_is_pro_activated()) {
  */
 
 
+/**
+ * Quote a (translated) string for use as a CSS `content` value.
+ *
+ * Labels that CSS draws through `::before` / `::after` must come from PHP so
+ * they can be translated. Every ASCII character other than letters, digits,
+ * space and plain punctuation is written as a CSS hex escape, so quotes,
+ * backslashes, line breaks and `<` cannot end the string or the <style> tag.
+ *
+ * @param string $text Plain text.
+ * @return string Double-quoted CSS string, e.g. "NEW".
+ */
+function ultimate_store_kit_css_string($text) {
+	$text = wp_check_invalid_utf8((string) $text, true);
+
+	$escaped = preg_replace_callback(
+		'/[^\x{80}-\x{10FFFF}A-Za-z0-9 .,:;!?()_\-]/u',
+		function ($match) {
+			return sprintf('\\%X ', ord($match[0]));
+		},
+		$text
+	);
+
+	return '"' . (null === $escaped ? '' : $escaped) . '"';
+}
+
 function ultimate_store_kit_is_edit() {
 	return Plugin::$instance->editor->is_edit_mode();
 }
