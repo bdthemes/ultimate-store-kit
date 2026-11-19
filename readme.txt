@@ -1,5 +1,5 @@
 === Ultimate Store Kit - Store Builder Addons for Elementor, WooCommerce Store Builder, EDD Store Builder ===
-Contributors: bdthemes, selimmw, mohammaadfarid, abutalib, maudud, muhammadasik, sohanurrahman, saifullahnakiih, shaikatazim, mohan00, shmusuf, arafatakashakku, shamim496
+Contributors: bdthemes, selimmw, abutalib, maudud, sohanurrahman, saifullahnakiih, mohan00, arafatakashakku, shamim496
 Donate link: https://bdthemes.com/
 Tags: elementor addons, woocommerce builder, woocommerce store builder, edd store builder, woocommerce widget
 Stable tag: 4.1.1
