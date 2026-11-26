@@ -828,7 +828,7 @@ class EDD_Category_Grid extends Module_Base
                 $image_alt_text = pathinfo( $category_image, PATHINFO_FILENAME );
 
                 $this->add_render_attribute('edd-category-item', 'class', ['edd-item', 'category-link'], true);
-                $this->add_render_attribute('edd-category-item', 'href', get_term_link($category->term_id, 'download_category'), true);?>
+                $this->add_render_attribute('edd-category-item', 'href', esc_url(get_term_link($category->term_id, 'download_category')), true);?>
 					<a <?php $this->print_render_attribute_string('edd-category-item');?>>
 
 						<?php if (!$category_thumb_id) {

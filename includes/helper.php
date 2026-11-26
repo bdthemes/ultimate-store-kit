@@ -935,6 +935,11 @@ function ultimate_store_kit_mask_shapes() {
  */
 function ultimate_store_kit_svg_icon($icon) {
 
+	// The file is included, so only a bare icon name may select it: no path parts.
+	if (! is_string($icon) || '' === $icon || preg_match('/[^a-zA-Z0-9_-]/', $icon)) {
+		return false;
+	}
+
 	$icon_path = BDTUSK_ASSETS_PATH . "images/svg/{$icon}.svg";
 
 	if (! file_exists($icon_path)) {
@@ -1082,13 +1087,25 @@ function ultimate_store_kit_wc_product_quick_view_content($product_id) {
 
 	global $woocommerce;
 	global $post;
+	global $wp_query, $wp_the_query;
 
-	if (intval($product_id)) {
+	$product_id = absint($product_id);
+
+	if ($product_id) {
 		$post      = get_post($product_id);
 		$next_post = get_next_post();
 		$prev_post = get_previous_post();
 
-		wp('p=' . $product_id . '&post_type=product');
+		// Load exactly the product that passed the check above as the main query.
+		// wp() built the query from the request: any public query var in the POST
+		// body (attachment_id, page_id ...) replaced "p" after the check, so a
+		// visitor could open a password-protected product's short description.
+		$wp_the_query = new WP_Query([
+			'p'                   => $product_id,
+			'post_type'           => 'product',
+			'ignore_sticky_posts' => true,
+		]);
+		$wp_query     = $wp_the_query;
 		ob_start();
 	?>
 		<div class="usk-modal-page">
@@ -1533,6 +1550,14 @@ if (! function_exists('ultimate_store_kit_get_order_received_order')) {
 		}
 
 		if ($allow_preview && ultimate_store_kit_is_order_preview()) {
+			// The sample is a real customer's latest order (items, totals, note, and
+			// in Pro's widgets the addresses). Anyone who may edit a post can open
+			// the Elementor editor or preview, so it goes only to people who may
+			// manage orders anyway.
+			if (! current_user_can('edit_shop_orders')) {
+				return false;
+			}
+
 			$orders = wc_get_orders(['limit' => 1]);
 			return ! empty($orders) ? reset($orders) : false;
 		}

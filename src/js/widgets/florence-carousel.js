@@ -7,7 +7,7 @@
         }
         
         var $gridCarouselContainer = $gridCarousel.find(".swiper-carousel");
-        var $settings = $gridCarousel.find('.usk-carousel').data("settings");
+        var $settings = uskSafeSwiperSettings($gridCarousel.find('.usk-carousel').data("settings"));
 
         const Swiper = elementorFrontend.utils.swiper;
 		initSwiper();

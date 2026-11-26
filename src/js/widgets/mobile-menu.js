@@ -18,7 +18,7 @@
 			widgetID = $scope.data('id');
 		
 		$tooltip.each( function( index ) {
-			tippy( this, {
+			uskSafeTippy( this, {
 				allowHTML: true,
 				theme: 'usk-tippy-' + widgetID
 			});

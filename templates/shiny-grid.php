@@ -77,6 +77,8 @@ class USK_Shiny_Grid_Template {
                         <?php if (
                             (isset($settings['show_excerpt']) ? $settings['show_excerpt'] : true)
                             && isset($settings['layout_style']) && $settings['layout_style'] === 'list'
+                            // A password-protected product's text stays behind its password, as on the product page.
+                            && ! post_password_required($product->get_id())
                         ): ?>
                             <div class="usk-desc">
                                 <span class="desc">

@@ -1828,7 +1828,8 @@ class Mentor_Slider extends Module_Base {
                                 );
                             endif; ?>
 
-                            <?php if ('yes' == $settings['show_excerpt']) :
+                            <?php // A password-protected product's text stays behind its password, as on the product page.
+                            if ('yes' == $settings['show_excerpt'] && ! post_password_required($product->get_id())) :
                                 $excerpt = $product->get_short_description();
                                 if (empty($excerpt)) {
                                     $excerpt = $product->get_description();

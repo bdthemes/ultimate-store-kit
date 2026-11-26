@@ -103,14 +103,87 @@ class Dynamic_Select_Input_Module {
 	 */
 	protected function getPostType() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Only reached from getSelectInputData(), which verifies the usk_dynamic_select nonce first.
-		return isset($_POST['post_type']) ? sanitize_text_field(wp_unslash($_POST['post_type'])) : '';
+		$post_type = isset($_POST['post_type']) ? sanitize_key(wp_unslash($_POST['post_type'])) : '';
+
+		if ('' === $post_type) {
+			return '';
+		}
+
+		// '_related_post_type' is an internal marker handled by the callers. Anything
+		// else must be a public post type: this endpoint only needs edit_posts, so it
+		// must not list coupons (shop_coupon titles are the codes), orders, templates
+		// or other internal types.
+		if ('_related_post_type' === $post_type) {
+			return $post_type;
+		}
+
+		return in_array($post_type, $this->getAllPublicPostTypes(), true) ? $post_type : '';
 	}
 
 	/**
 	 * @return string[]|\WP_Post_Type[]
 	 */
 	protected function getAllPublicPostTypes() {
-		return array_values(get_post_types(['public' => true]));
+		// Media, saved Elementor templates and the builder's own templates can't be
+		// shown by these widgets, so they are not offered.
+		return array_values(array_diff(get_post_types(['public' => true]), ['attachment', 'elementor_library', 'usk-template-builder']));
+	}
+
+	/**
+	 * Build the select options for a post query, leaving out posts the current
+	 * user may not read (for example other authors' drafts for a Contributor), so
+	 * neither their titles nor a content search can reveal them.
+	 *
+	 * @param WP_Query $query
+	 *
+	 * @return array
+	 */
+	protected function getPostResults(WP_Query $query) {
+		$results = [];
+
+		foreach ($query->posts as $post) {
+			if (!current_user_can('read_post', $post->ID)) {
+				continue;
+			}
+
+			$post_type_obj = get_post_type_object($post->post_type);
+			$text          = ($post_type_obj && $post_type_obj->hierarchical) ? $this->get_post_name_with_parents($post) : $post->post_title;
+
+			// Escaped here: the control prints option labels unescaped.
+			$results[] = [
+				'id'   => $post->ID,
+				'text' => esc_html($text),
+			];
+		}
+
+		return $results;
+	}
+
+	/**
+	 * Add a search term to a post query.
+	 *
+	 * This endpoint only needs edit_posts, which a Contributor has. WordPress
+	 * searches content and excerpts too, so a term would match inside other
+	 * authors' password-protected posts and reveal, title by title, what they
+	 * say. Users who may not edit others' posts search titles only, which are
+	 * public anyway.
+	 *
+	 * @param array  $args       WP_Query arguments.
+	 * @param string $searchText Search term.
+	 * @return array
+	 */
+	protected function addSearchArgs(array $args, $searchText) {
+		if ('' === $searchText) {
+			return $args;
+		}
+
+		$args['s'] = $searchText;
+
+		if (!current_user_can('edit_others_posts')) {
+			$args['search_columns'] = ['post_title'];
+		}
+
+		return $args;
 	}
 
 	/**
@@ -127,7 +200,15 @@ class Dynamic_Select_Input_Module {
 	protected function getselecedIds() {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Only reached from getSelectInputData(), which verifies the usk_dynamic_select nonce first.
-		return isset($_POST['ids']) ? sanitize_text_field(wp_unslash($_POST['ids'])) : [];
+		if (!isset($_POST['ids'])) {
+			return [];
+		}
+
+		// Every consumer feeds this into post__in / include, so force a flat list of
+		// positive integers instead of trusting the raw request shape. The control
+		// posts an array, which sanitize_text_field() used to turn into ''.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Only reached from getSelectInputData(), which verifies the usk_dynamic_select nonce first.
+		return array_slice(array_values(array_filter(wp_parse_id_list(wp_unslash($_POST['ids'])))), 0, 100);
 	}
 
 
@@ -175,27 +256,11 @@ class Dynamic_Select_Input_Module {
 			$args['posts_per_page'] = 20;
 		}
 
-		if ($searchText) {
-			$args['s'] = $searchText;
-		}
+		$args = $this->addSearchArgs($args, $searchText);
 
-		$query   = new WP_Query($args);
-		$results = [];
-		foreach ($query->posts as $post) {
-			$post_type_obj = get_post_type_object($post->post_type);
-			if (!empty($data['include_type'])) {
-				$text = $post_type_obj->labels->name . ': ' . $post->post_title;
-			} else {
-				$text = ($post_type_obj->hierarchical) ? $this->get_post_name_with_parents($post) : $post->post_title;
-			}
+		$args['ignore_sticky_posts'] = true;
 
-			$results[] = [
-				'id'   => $post->ID,
-				'text' => esc_html($text),
-			];
-		}
-
-		return $results;
+		return $this->getPostResults(new WP_Query($args));
 	}
 
 	public function getOnlyPosts() {
@@ -214,27 +279,11 @@ class Dynamic_Select_Input_Module {
 			$args['posts_per_page'] = 20;
 		}
 
-		if ($searchText) {
-			$args['s'] = $searchText;
-		}
+		$args = $this->addSearchArgs($args, $searchText);
 
-		$query   = new WP_Query($args);
-		$results = [];
-		foreach ($query->posts as $post) {
-			$post_type_obj = get_post_type_object($post->post_type);
-			if (!empty($data['include_type'])) {
-				$text = $post_type_obj->labels->name . ': ' . $post->post_title;
-			} else {
-				$text = ($post_type_obj->hierarchical) ? $this->get_post_name_with_parents($post) : $post->post_title;
-			}
+		$args['ignore_sticky_posts'] = true;
 
-			$results[] = [
-				'id'   => $post->ID,
-				'text' => esc_html($text),
-			];
-		}
-
-		return $results;
+		return $this->getPostResults(new WP_Query($args));
 	}
 
 	private function get_post_name_with_parents($post, $max = 3) {
@@ -275,11 +324,18 @@ class Dynamic_Select_Input_Module {
 		$taxonomies  = $this->getAllPublicTaxonomies();
 		$include     = $this->getselecedIds();
 
+		$post_type = '';
+
 		if ($this->getPostType() == '_related_post_type') {
 			$post_type = 'any';
 		} elseif ($this->getPostType()) {
 			$post_type = $this->getPostType();
 		}
+
+		if ('' === $post_type) {
+			return [];
+		}
+
 		$post_taxonomies = get_object_taxonomies($post_type);
 		$taxonomies      = array_intersect($post_taxonomies, $taxonomies);
 		$data            = [];
@@ -336,15 +392,32 @@ class Dynamic_Select_Input_Module {
 		$args = [
 			'fields'  => ['ID', 'display_name'],
 			'orderby' => 'display_name',
+			// Always bounded: without a limit an empty search returned every user,
+			// customers included.
+			'number'  => 20,
 		];
+
+		// Match the REST API: without list_users only people who have published
+		// something are listed, and the search matches names only, never e-mail
+		// addresses, URLs or login names, so it can't be used to discover them.
+		$can_list_users = current_user_can('list_users');
+
+		if (!$can_list_users) {
+			$args['has_published_posts'] = true;
+		}
 
 		if (!empty($include)) {
 			$args['include'] = $include;
+			// Room for every already-selected author, still bounded.
+			$args['number'] = min(100, max(20, count($include)));
 		}
 
 		if ($search_text) {
-			$args['number'] = 20;
 			$args['search'] = "*$search_text*";
+
+			if (!$can_list_users) {
+				$args['search_columns'] = ['user_nicename', 'display_name'];
+			}
 		}
 
 		$users = get_users($args);

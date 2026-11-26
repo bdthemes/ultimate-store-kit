@@ -348,10 +348,20 @@ class Builder_Cpt {
 		$wp_rewrite->init();
 
 		if ($templateId) {
+			// Only an existing builder template may be updated here: any other post id
+			// would be turned into a published template (and its content replaced).
+			if (get_post_type($templateId) !== Meta::POST_TYPE) {
+				wp_send_json_error(['success' => false, 'errors_arr' => ['template' => 'Template not found']], 404);
+			}
+
 			$page_data['ID'] = $templateId;
 		}
 
-		$post_id = wp_insert_post($page_data);
+		$post_id = wp_insert_post($page_data, true);
+
+		if (is_wp_error($post_id) || ! $post_id) {
+			wp_send_json_error(['success' => false, 'errors_arr' => ['template' => 'The template could not be saved']], 500);
+		}
 
 		// A template with display conditions is not the type's default: it is
 		// switched on and off through its own meta (see Template_Conditions).

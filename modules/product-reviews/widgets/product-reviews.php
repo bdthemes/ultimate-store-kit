@@ -706,10 +706,11 @@ class Product_Reviews extends Module_Base {
     private function get_reviews_total_count() {
         $settings = $this->get_settings_for_display();
         return (int) get_comments([
-            'type'      => 'review',
-            'status'    => $settings['status'],
-            'post_type' => 'product',
-            'count'     => true,
+            'type'        => 'review',
+            'status'      => ultimate_store_kit_review_query_status($settings['status']),
+            'post_type'   => 'product',
+            'post_status' => 'publish',
+            'count'       => true,
         ]);
     }
 
@@ -751,13 +752,16 @@ class Product_Reviews extends Module_Base {
         }
 
         $query_args = [
-            'type'      => 'review',
-            'order'     => $settings['review_order'],
-            'status'    => $settings['status'],
-            'orderby'   => $settings['orderby'],
-            'number'    => $number,
-            'offset'    => $offset,
-            'post_type' => 'product',
+            'type'        => 'review',
+            'order'       => $settings['review_order'],
+            // Unapproved reviews only for people who may moderate them.
+            'status'      => ultimate_store_kit_review_query_status($settings['status']),
+            'orderby'     => $settings['orderby'],
+            'number'      => $number,
+            'offset'      => $offset,
+            'post_type'   => 'product',
+            // Not the reviews of unpublished (draft, private, trashed) products.
+            'post_status' => 'publish',
         ];
 
         $this->_comments_query = new \WP_Comment_Query();
@@ -781,7 +785,14 @@ class Product_Reviews extends Module_Base {
         if ($comments) {
             foreach ($comments as $index => $comment):
                 $product_id = $comment->comment_post_ID;
-                $product = wc_get_product($product_id);?>
+                $product = wc_get_product($product_id);
+
+                // Like the comments of any protected post, a password-protected
+                // product's reviews stay behind its password.
+                if (! $product || post_password_required($product_id)) {
+                    continue;
+                }
+                ?>
                 <?php if ($comment->comment_approved == '0'): ?>
                     <p class="usk-waiting-approval-info">
                         <em><?php esc_html_e('Thanks, your review is awaiting for approval', 'ultimate-store-kit');?></em>
@@ -806,7 +817,7 @@ class Product_Reviews extends Module_Base {
                             <?php if ($settings['show_author']): ?>
                                 <div class="usk-author-name">
                                     <span><?php esc_html_e('purchase by', 'ultimate-store-kit');?></span>
-                                    <?php printf('<a href="%2$s">%1$s</a>', esc_html($comment->comment_author), esc_url(get_the_author_meta('url')));?>
+                                    <?php printf('<a href="%2$s">%1$s</a>', ultimate_store_kit_escape_shortcode_brackets(esc_html($comment->comment_author)), esc_url(get_the_author_meta('url')));?>
                                 </div>
                             <?php endif;?>
                         </div>
@@ -824,7 +835,10 @@ class Product_Reviews extends Module_Base {
                     <?php if ($settings['show_review_text']): ?>
                         <div class="usk-text">
 
-                            <?php echo esc_html(wp_trim_words($comment->comment_content, $settings['review_text_limit'], '...')); ?>
+                            <?php
+                            // Visitors write reviews, and the_content runs shortcodes after Elementor.
+                            echo ultimate_store_kit_escape_shortcode_brackets(esc_html(wp_trim_words($comment->comment_content, $settings['review_text_limit'], '...'))); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html() above; only [ and ] become entities.
+                            ?>
 
                         </div>
                     <?php endif;?>

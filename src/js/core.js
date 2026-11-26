@@ -1,5 +1,52 @@
+// Every widget script depends on this one (handle usk-core), so the shared
+// helpers for values read from page markup are bundled here.
+import "./usk-safe-settings";
+
 (function ($, elementor) {
     ("use strict");
+
+    /**
+     * A value read from page markup that a library concatenates into an HTML
+     * string inside a double-quoted attribute. The browser decodes the entities
+     * again when it parses that string, so the attribute keeps the same text.
+     */
+    function uskAttributeText(value) {
+        if (value === undefined || value === null) {
+            return value;
+        }
+        return String(value).replace(/[&<>"'`]/g, function (character) {
+            return "&#" + character.charCodeAt(0) + ";";
+        });
+    }
+
+    /**
+     * Whether a link points to a page of this site. A pagination link is fetched
+     * and its response parsed as HTML in the page, so it must come from here.
+     */
+    function uskIsSameOriginUrl(url) {
+        if (typeof url !== "string" || "" === uskSafeUrl(url)) {
+            return false;
+        }
+        try {
+            var parsed = new URL(url, window.location.href);
+            return /^https?:$/.test(parsed.protocol) && parsed.origin === window.location.origin;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    /**
+     * The URL a wishlist/compare button links to once its product is added.
+     * jQuery turns a JSON-looking value into an array or object, whose string
+     * form can still be a "javascript:" URL, so it is checked as a string.
+     */
+    function uskSafeRedirectUrl(value) {
+        if (value === undefined || value === null) {
+            return value;
+        }
+        return uskSafeUrl(String(value));
+    }
+
     $(document).on("click", ".quick_view", function () {
         var product_id = $(this).data("id");
         get_product_details(product_id);
@@ -7,7 +54,11 @@
 
     //woocommerce gallery
     $(document).on("click", ".thumbnails a", function (e) {
-        var img_url = $(this).attr("data-href");
+        // data-* is not a URL attribute, so KSES keeps "javascript:" in it.
+        var img_url = uskSafeUrl($(this).attr("data-href"));
+        if (!img_url) {
+            return;
+        }
         $(".usk-modal-image-wrapper .images > a").attr("href", img_url);
         $(".usk-modal-image-wrapper .images > a > img").attr({
             src: img_url,
@@ -19,18 +70,29 @@
         ".usk-modal-page .usk-modal-product .images a",
         function (e) {
             e.preventDefault();
-            var img_url = $(this).attr("data-href");
+            var img_url = uskSafeUrl($(this).attr("data-href"));
             var img_src = $(this).find("img").attr("srcset");
             // $('.woocommerce-main-image').find('img').attr('src', img_url);
             // $('.woocommerce-main-image').find('img').attr('srcset', img_src);
-            $(".woocommerce-main-image").closest("a").attr("href", img_url);
+            if (img_url) {
+                $(".woocommerce-main-image").closest("a").attr("href", img_url);
 
-            $(".woocommerce-main-image").find("img").attr({
-                src: img_url,
-                srcset: img_src,
-            });
+                $(".woocommerce-main-image").find("img").attr({
+                    src: img_url,
+                    srcset: img_src,
+                });
+            }
 
-            $("a.zoom").prettyPhoto({
+            // prettyPhoto renders a link's title and its image's alt, URL-decoded,
+            // as HTML, so "%3Cimg onerror%3E" in plain page text becomes markup.
+            // Only the gallery of a quick view this script loaded is bound, not
+            // every matching link on the page (page content can imitate it).
+            var $page = $(this).closest(".usk-modal-page");
+            if (!$page.length || !jQuery.data($page[0], "uskQuickViewLoaded")) {
+                return;
+            }
+
+            $page.find("a.zoom").prettyPhoto({
                 hook: "data-rel",
                 social_tools: false,
                 theme: "pp_woocommerce",
@@ -38,7 +100,7 @@
                 opacity: 0.8,
                 deeplinking: false,
             });
-            $("a[data-rel^='prettyPhoto']").prettyPhoto({
+            $page.find("a[data-rel^='prettyPhoto']").prettyPhoto({
                 hook: "data-rel",
                 social_tools: false,
                 theme: "pp_woocommerce",
@@ -61,6 +123,11 @@
                 success: function (response) {
                     setTimeout(function () {
                         $("#quick-view-id").html(response);
+                        // Kept in jQuery's data store, which markup cannot set
+                        // (unlike data-* attributes).
+                        $("#quick-view-id").find(".usk-modal-page").each(function () {
+                            jQuery.data(this, "uskQuickViewLoaded", true);
+                        });
                     }, 1000);
                 },
             });
@@ -71,8 +138,14 @@
         "click",
         ".usk-pagination a",
         function (b) {
-            b.preventDefault();
             const requestUrl = $(this).prop("href");
+            // The response is parsed as HTML in this page, so a link to another
+            // site (markup imitating the grid in page content) is not fetched;
+            // the browser just follows it.
+            if (!uskIsSameOriginUrl(requestUrl)) {
+                return;
+            }
+            b.preventDefault();
             $.ajax({
                 url: requestUrl,
                 success: function (d) {
@@ -95,7 +168,8 @@
         // e.preventDefault();
         var $this = $(this),
             $product_id = $this.data("product_id"),
-            $redirect_url = $this.data("redirect_url"),
+            // Becomes the link's href; data-* keeps "javascript:" through KSES.
+            $redirect_url = uskSafeRedirectUrl($this.data("redirect_url")),
             $area_label = $this.data("aria_label");
         $.ajax({
             url: ultimate_store_kit_ajax_config.ajaxurl,
@@ -160,7 +234,8 @@
     $(".ajax_add_to_compare").on("click", function (e) {
         var $this = $(this),
             $product_id = $this.data("product_id"),
-            $redirect_url = $this.data("redirect_url"),
+            // Becomes the link's href; data-* keeps "javascript:" through KSES.
+            $redirect_url = uskSafeRedirectUrl($this.data("redirect_url")),
             $area_label = $this.data("aria_label");
         $.ajax({
             url: ultimate_store_kit_ajax_config.ajaxurl,
@@ -210,9 +285,12 @@
         var height = $(".product-quick-view").data("modal-height");
         var animation = $(".product-quick-view").data("animation");
         var close_btn = $(".product-quick-view").data("close-btn");
-        var btn_style = $(".product-quick-view").data("btn-style");
+        // SlickModals builds its close button by concatenating these two into an
+        // HTML string, and the first .product-quick-view in the document may be
+        // page content, not the modal the plugin prints in the footer.
+        var btn_style = uskAttributeText($(".product-quick-view").data("btn-style"));
         // var btn_place   = $('.product-quick-view').data('btn-place');
-        var btn_text = $(".product-quick-view").data("btn-text");
+        var btn_text = uskAttributeText($(".product-quick-view").data("btn-text"));
         var modal_bg = $(".product-quick-view").data("modal-bg");
         var modal_overlay = $(".product-quick-view").data("modal-overlay");
         $(".product-quick-view").SlickModals({

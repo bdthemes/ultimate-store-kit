@@ -90,6 +90,7 @@ if (! function_exists('ultimate_store_kit_is_pro_activated')) {
 
 // Helper function here
 require(dirname(__FILE__) . '/includes/helper.php');
+require(dirname(__FILE__) . '/includes/security-helpers.php');
 
 if (! ultimate_store_kit_is_pro_activated()) {
 	require_once BDTUSK_INC_PATH . 'class-pro-widget-map.php';
