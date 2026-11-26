@@ -6,7 +6,7 @@
       return;
     }
     var $eddCategoryCarouselContainer = $eddCategoryCarousel.find(".swiper-carousel");
-    var $settings = $eddCategoryCarousel.find(".usk-carousel").data("settings");
+    var $settings = uskSafeSwiperSettings($eddCategoryCarousel.find(".usk-carousel").data("settings"));
 
     const Swiper = elementorFrontend.utils.swiper;
 		initSwiper();

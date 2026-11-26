@@ -6,7 +6,7 @@
             return;
         }
         var $SubCategoryCarouselContainer = $SubCategoryCarousel.find(".swiper-carousel");
-        var $carouselSettings = $SubCategoryCarousel.find('.usk-carousel').data("settings");
+        var $carouselSettings = uskSafeSwiperSettings($SubCategoryCarousel.find('.usk-carousel').data("settings"));
 
         const Swiper = elementorFrontend.utils.swiper;
 		initSwiper();
@@ -28,7 +28,7 @@
             $(items).each(function (index) {
                 var element = $(this).find(".usk-image-slider");
                 const Swiper = elementorFrontend.utils.swiper;
-                var $settings = $(this).data('settings');
+                var $settings = uskSafeSwiperSettings($(this).data('settings'));
 
                 if ($settings.effect === 'creative') {
                     if ($settings.creativeEffect === 'creative-1') {

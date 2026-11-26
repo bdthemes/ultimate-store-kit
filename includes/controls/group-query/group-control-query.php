@@ -927,8 +927,13 @@ trait Group_Control_Query
 		$paged            = absint($page);
 
 		$args = [
-			'post_type' => 'product',
-			'paged'     => $paged
+			'post_type'   => 'product',
+			'paged'       => $paged,
+			// What visitors get from WordPress by default, made explicit: in the
+			// Elementor editor widgets are rendered in an admin-ajax request, where
+			// WP_Query would also return every author's draft, pending and scheduled
+			// product to anyone editing a post (manual selection included).
+			'post_status' => current_user_can('read_private_products') ? ['publish', 'private'] : 'publish',
 		];
 
 		if (!empty($settings['product_limit'])) {

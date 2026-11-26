@@ -1206,7 +1206,8 @@ class Heaven_Slider extends Module_Base {
                                     );
                                 endif; ?>
 
-                                <?php if ('yes' == $settings['show_excerpt']): ?>
+                                <?php // A password-protected product's text stays behind its password, as on the product page.
+                                if ('yes' == $settings['show_excerpt'] && ! post_password_required($product->get_id())): ?>
                                     <div class="usk-text">
                                         <?php echo wp_kses_post(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...')); ?>
                                     </div>

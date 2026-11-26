@@ -1114,7 +1114,9 @@
                     if ( $order->get_customer_note() ): ?>
                         <tr>
                             <th><?php esc_html_e( 'Note:', 'ultimate-store-kit' ); ?></th>
-                            <td><?php echo wp_kses_post( nl2br( wptexturize( $order->get_customer_note() ) ) ); ?></td>
+                            <td><?php
+                            // The customer writes the note, and the_content runs shortcodes after Elementor.
+                            echo wp_kses_post( nl2br( wptexturize( ultimate_store_kit_escape_shortcode_brackets( $order->get_customer_note() ) ) ) ); ?></td>
                         </tr>
                     <?php endif; ?>
                 </tfoot>

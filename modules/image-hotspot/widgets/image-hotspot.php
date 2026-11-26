@@ -2650,13 +2650,18 @@ class Image_Hotspot extends Module_Base {
 
 
                             $unique_id_class = isset($unique_ids[$index]) ? esc_attr($unique_ids[$index]) : '';
+                            $marker_title    = '';
 
                             if ($settings['image_hotspot_layout'] == 'tooltip') {
+                                // The product card is printed as markup in a <template>
+                                // below, which the script hands to tippy as nodes. As a
+                                // data-tippy-content attribute it went through esc_attr(),
+                                // which keeps existing entities, and the browser decoded it
+                                // once more, so entity-encoded text in a product title or
+                                // category name became live markup in the tooltip.
                                 $marker_title = $this->render_tooltip_product_content();
 
                                 $this->add_render_attribute('marker', 'class', 'usk-thumbs-item  elementor-repeater-item-' . esc_attr($unique_id_class), true);
-
-                                $this->add_render_attribute('marker', 'data-tippy-content', $marker_title, true);
 
                                 $this->add_render_attribute('marker', 'class', 'bdt-tippy-tooltip');
                                 $this->add_render_attribute('marker', 'data-tippy', '', true);
@@ -2699,6 +2704,9 @@ class Image_Hotspot extends Module_Base {
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>
+                    <?php if ('' !== $marker_title) : ?>
+                        <template class="usk-image-hotspot-tooltip-content"><?php echo $marker_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The product card render_product_content() printed; every value in it is escaped there. ?></template>
+                    <?php endif; ?>
                 </div>
 <?php
                             $index++;

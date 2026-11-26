@@ -4,6 +4,50 @@
 
 (function($, elementor) {
     'use strict';
+
+    // DataTables merges the data-* attributes of the <table> over the init options
+    // and those of each header cell over the column options (title, defaultContent,
+    // render ...), and writes some of them as HTML. Fake widget markup in post content
+    // can carry them, so they are removed before DataTable() runs, as ep-table.js does.
+    // Only what the products table prints itself is kept: data-orderable="true" or
+    // "false" on header cells, and a numeric data-order (the price) on body cells.
+    var stripDataTableAttributes = function($table) {
+        $table.find('> thead th, > thead td, > tfoot th, > tfoot td, > tbody > tr, > tbody > tr > td, > tbody > tr > th').addBack().each(function() {
+            var el = this,
+                tag = el.nodeName.toLowerCase(),
+                section = el.parentNode && el.parentNode.parentNode ? el.parentNode.parentNode.nodeName.toLowerCase() : '',
+                isCell = 'td' === tag || 'th' === tag,
+                isHeaderCell = isCell && ('thead' === section || 'tfoot' === section),
+                isBodyCell = isCell && 'tbody' === section,
+                names = [];
+
+            for (var i = 0; i < el.attributes.length; i++) {
+                var name = el.attributes[i].name,
+                    value = el.attributes[i].value;
+
+                if (0 !== name.indexOf('data-')) {
+                    continue;
+                }
+
+                if (isHeaderCell && 'data-orderable' === name && /^(true|false)$/.test(value)) {
+                    continue;
+                }
+
+                if (isBodyCell && 'data-order' === name && /^-?\d*\.?\d*$/.test(value)) {
+                    continue;
+                }
+
+                names.push(name);
+            }
+
+            for (var j = 0; j < names.length; j++) {
+                el.removeAttribute(names[j]);
+            }
+
+            $.removeData(el);
+        });
+    };
+
     var widgetWCProductTable = function($scope, $) {
 
         var $productTable = $scope.find('.usk-wc-products-table'),
@@ -14,6 +58,8 @@
         if (!$productTable.length) {
             return;
         }
+
+        stripDataTableAttributes($table);
 
         //$settings.language = window.ElementPackConfig.data_table.language;
 

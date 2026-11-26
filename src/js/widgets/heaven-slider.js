@@ -11,7 +11,7 @@
         }
 
         var $sliderContainer = $slider.find('.usk-main-slider'),
-            $settings = $mainSlider.data('settings');
+            $settings = uskSafeSwiperSettings($mainSlider.data('settings'));
             
         const Swiper = elementorFrontend.utils.swiper;
         initSwiper();

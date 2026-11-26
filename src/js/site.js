@@ -1,3 +1,7 @@
+// Helpers for values read from page markup, used by the widget scripts below.
+// This bundle stands in for every widget script in the editor and preview.
+import "./usk-safe-settings";
+
 // Import all Modules
 import "./modules/grid-variations";
 

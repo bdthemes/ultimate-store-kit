@@ -5,7 +5,7 @@
     var widgetImageHotspot = function ($scope, $) {
 
         var $imageHotspot = $scope.find('.usk-image-hotspot'),
-            $settings = $imageHotspot.data('settings');
+            $settings = uskSafeSwiperSettings($imageHotspot.data('settings'));
 
         if (!$imageHotspot.length) {
             return;
@@ -41,12 +41,21 @@
         var $tooltip = $imageHotspot.find('.bdt-tippy-tooltip');
 		
 		$tooltip.each( function( index ) {
-			tippy( this, {
+			var props = {
 				allowHTML: true,
 				interactive: true,
 				theme: 'bdt-tippy-' + $settings.id,
                 appendTo: document.body,
-			});				
+			};
+
+			// The product card is printed in a <template> inside the marker and
+			// handed to tippy as nodes, so it is never re-parsed from a string.
+			var cardTemplate = this.querySelector('template.usk-image-hotspot-tooltip-content');
+			if (cardTemplate && cardTemplate.content) {
+				props.content = cardTemplate.content.cloneNode(true);
+			}
+
+			uskSafeTippy( this, props );
 		});
 
     };

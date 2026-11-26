@@ -1281,7 +1281,8 @@ class Product_Accordion extends Module_Base
                                             <?php $this->print_price_output($product->get_price_html()); ?>
                                         </div>
                                     <?php endif; ?>
-                                    <?php if ('yes' == $settings['show_description']): ?>
+                                    <?php // A password-protected product's text stays behind its password, as on the product page.
+                                    if ('yes' == $settings['show_description'] && ! post_password_required($product->get_id())): ?>
                                         <div class="usk-desc">
                                             <p class="desc">
                                                 <?php echo esc_html(wp_trim_words($product->get_short_description(), $settings['excerpt_limit'], '...')); ?>

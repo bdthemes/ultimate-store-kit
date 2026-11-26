@@ -2181,10 +2181,10 @@ class Product_Table extends Module_Base {
             if ('yes' === $settings['open_thumb_in_lightbox']) {
                 $this->add_render_attribute('product_image', 'data-elementor-open-lightbox', 'yes', true); // no
                 $img_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-                $this->add_render_attribute('product_image', 'href', $img_url[0], true);
+                $this->add_render_attribute('product_image', 'href', esc_url($img_url[0]), true);
                 //$this->add_render_attribute( 'product_image_wrapper', 'usk-lightbox', '' );
             } else {
-                $this->add_render_attribute('product_image', 'href', get_the_permalink(), true);
+                $this->add_render_attribute('product_image', 'href', esc_url(get_the_permalink()), true);
             }
 
             ?>
